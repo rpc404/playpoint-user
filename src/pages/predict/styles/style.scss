@@ -1,0 +1,387 @@
+.prediction__container {
+  .main__container {
+    display: flex;
+    align-items: flex-start;
+
+    .recentPredictions {
+      width: 23vw;
+      @media (max-width: 576px) {
+        display: none;
+      }
+
+      h3 {
+        padding: 0 1.5vw;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+
+      .prediction__items {
+        height: 83vh;
+        overflow-y: scroll;
+
+        &.windowsOS{
+          height: 77vh;
+        }
+
+        .predictedCard__container {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          border-bottom: 0.5px solid #0001;
+          padding: 7px 1.5vw 10px 1.5vw;
+
+          &:hover {
+            background: #f1f2f6;
+            cursor: pointer;
+          }
+
+          .info {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            justify-content: space-between;
+
+            p:first-child {
+              color: #2ecc71;
+            }
+
+            p:last-child {
+              color: #0008;
+              font-size: 14px;
+            }
+          }
+
+          canvas {
+            margin-top: 6px;
+          }
+
+          div {
+            width: 100%;
+            p {
+              font-size: 14px;
+              color: #3a3a3a;
+              line-height: 1.5;
+            }
+
+            .details {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%;
+              margin-bottom: 5px;
+
+              .MuiButton-root {
+                text-transform: capitalize;
+                padding: 0;
+                color: #3498db;
+              }
+
+              p {
+                background: #000;
+                color: #fff;
+                padding: 1px 15px;
+                border-radius: 10px;
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .predictionTable {
+      flex: 1;
+      border-left: 0.5px solid #0001;
+      border-right: 0.5px solid #0001;
+      overflow-y: hidden;
+
+      .predictionTable__topBar {
+        border-bottom: 0.5px solid #0001;
+        padding: 10px 1vw 10px 1vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f1f2f6;
+
+        @media (max-width: 576px) {
+          flex-direction: column;
+        }
+
+        .predictionTable__competitor {
+          display: flex;
+          gap: 5px;
+          align-items: center;
+
+          div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            font-size: 18px;
+
+            @media (max-width: 576px) {
+              font-size: 20px;
+            }
+
+            img {
+              width: 30px;
+              height: 30px;
+              object-fit: cover;
+              border-radius: 50%;
+
+              @media (max-width: 576px) {
+                width: 40px;
+                height: 40px;
+              }
+            }
+          }
+        }
+
+        .marketInfo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          font-size: 14px;
+
+          div {
+            @media (max-width: 576px) {
+              margin-top: 8px;
+              display: flex;
+              font-size: 12px;
+            }
+          }
+
+          & > div > p:last-child {
+            color: #0006;
+          }
+        }
+      }
+
+      .predictionTable__mainContainer {
+        flex-direction: column;
+        height: 81vh;
+        overflow-y: scroll;
+        padding-bottom: 20px;
+
+        .graphData {
+          margin: 3vh auto;
+          padding: 0 2.5vw;
+        }
+
+        .eventDetails {
+          margin-top: 40px;
+          background: #f1f2f6;
+          padding: 10px 1vw;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 14px;
+
+          @media (max-width: 576px) {
+            flex-direction: column;
+            gap: 8px;
+          }
+
+          p {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          }
+        }
+
+        .predictionTabs__container {
+          .MuiTab-root {
+            text-transform: capitalize;
+          }
+
+          #simple-tabpanel-0,
+          #simple-tabpanel-1,
+          #simple-tabpanel-2,
+          #simple-tabpanel-3 {
+            .MuiBox-root {
+              padding: 5px 20px;
+
+              .topBar {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                font-size: 15px;
+                justify-content: space-between;
+
+                div {
+                  display: flex;
+                  align-items: center;
+                }
+
+                .MuiButton-root {
+                  padding: 0 10px;
+                  min-width: 0;
+                  color: #3a3a3a;
+                  font-weight: 500;
+
+                  &.active {
+                    color: #3498db;
+                  }
+                }
+              }
+            }
+
+            .questionaires {
+              .questionItem {
+                border-top: 0.5px solid #0001;
+                padding: 10px 5px;
+                font-size: 15px;
+                .top {
+                  display: flex;
+                  align-items: flex-start;
+                  justify-content: space-between;
+
+                  p:first-child {
+                    flex: 1;
+                    font-weight: 500;
+                  }
+
+                  p:last-child {
+                    color: #2ecc71;
+                  }
+                }
+
+                .answers {
+                  display: flex;
+                  margin-top: 5px;
+                  align-items: center;
+                  gap: 15px;
+                  color: #6a6a6a;
+                  .label {
+                    display: flex;
+                    align-items: center;
+                    font-size: 14px;
+                    gap: 8px;
+
+                    .MuiCheckbox-root {
+                      padding: 0;
+                    }
+                  }
+                }
+              }
+            }
+
+            .predictionAmount {
+              border-top: 0.5px solid #0001;
+              align-items: flex-start;
+              padding-top: 10px;
+              gap: 25px;
+              display: flex;
+
+              @media (max-width: 576px) {
+                flex-direction: column;
+                gap: 15px;
+              }
+
+              div {
+                flex: 1 1 0;
+
+                @media (max-width: 576px) {
+                  flex: 1;
+                }
+              }
+
+              .top {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                @media (max-width: 576px) {
+                  width: 90vw;
+                }
+              }
+
+              h4 {
+                font-weight: 500;
+                font-size: 16px;
+              }
+
+              .MuiSlider-root {
+                width: 23vw;
+                margin-left: 11px;
+
+                @media (max-width: 576px) {
+                  width: 85vw;
+                }
+              }
+
+              .MuiButton-root {
+                background: #2ecc71;
+                width: 100%;
+                margin-top: 10px;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .leaderboards {
+      width: 20vw;
+
+      @media (max-width: 576px) {
+        display: none;
+      }
+
+      .leaderboardsTitle {
+        font-weight: 500;
+        margin: 10px 8px;
+        margin-bottom: 15px;
+      }
+
+      .leaderboardItemsTitle {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 0.5px solid #0001;
+        padding-bottom: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0 8px;
+
+        p {
+          flex: 1 1 0;
+          display: flex;
+          align-items: center;
+          gap: 2px;
+        }
+      }
+
+      .leaderboardItems {
+        font-size: 14px;
+        height: 80vh;
+        overflow-y: scroll;
+        padding-bottom: 10px;
+
+        &.windowsOS{
+          height: 77vh;
+        }
+
+        .leaderboardItem__container {
+          background: #f1f2f6;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 8px;
+          border-bottom: 0.5px solid #0001;
+
+          &:hover {
+            background: rgb(251, 251, 251);
+            cursor: pointer;
+          }
+
+          p {
+            flex: 1 1 0;
+          }
+        }
+      }
+    }
+  }
+}

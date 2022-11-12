@@ -1,0 +1,32 @@
+[
+    {
+        "marketplaceSlug": "worldcup-qatar-2022",
+        "marketplaceCoverImage": "https://ik.imagekit.io/domsan/Screen_Shot_2022-09-07_at_21.18.52_TY1tSeXaA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662564842084",
+        "marketplaceName": "Worldcup Qatar 2022"
+    },
+    {
+        "marketplaceSlug": "champions-league",
+        "marketplaceCoverImage": "https://ik.imagekit.io/domsan/Screen_Shot_2022-09-07_at_21.48.45_-WPbeTL3K.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662566633497",
+        "marketplaceName": "Champions League"
+    },
+    {
+        "marketplaceSlug": "premier-league-2022",
+        "marketplaceCoverImage": "https://ik.imagekit.io/domsan/Screen_Shot_2022-09-07_at_21.47.28_1PP4Tvar5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662566557506",
+        "marketplaceName": "Premier League"
+    },
+    {
+        "marketplaceSlug": "european-league",
+        "marketplaceCoverImage": "https://ik.imagekit.io/domsan/Screen_Shot_2022-10-02_at_00.14.55_RnOeC1kas.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664649334321",
+        "marketplaceName": "European League"
+    },
+    {
+        "marketplaceSlug": "uefa-nations-league-2022",
+        "marketplaceCoverImage": "https://ik.imagekit.io/domsan/Screen_Shot_2022-10-02_at_00.15.46_rfUHNRYtI.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664649333873",
+        "marketplaceName": "UEFA Nations League"
+    },
+    {
+        "marketplaceSlug": "saff-championship-2022",
+        "marketplaceCoverImage": "https://ik.imagekit.io/domsan/Screen_Shot_2022-10-02_at_00.16.39_pmEqU_5Ri.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664649334303",
+        "marketplaceName": "SAFF Championship"
+    }
+]

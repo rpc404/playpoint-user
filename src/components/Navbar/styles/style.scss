@@ -1,0 +1,73 @@
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 5vw;
+  background: #000;
+  color: #fff;
+
+  .logo__container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+
+    img {
+      width: 40px;
+      object-fit: contain;
+    }
+    h3 {
+      font-weight: 500;
+    }
+
+    .navLinks {
+      margin-left: 25px;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 25px;
+
+      @media (max-width: 576px) {
+        display: none;
+      }
+
+      div {
+        color: rgba(254, 254, 254, 0.7);
+        text-decoration: none;
+        transition: 0.2s all ease-in-out;
+        font-weight: 300;
+        font-size: 15px;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .navbar__authentication {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .MuiButton-root {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-transform: capitalize;
+    }
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+
+  .drawer {
+    i {
+      font-size: 22px;
+    }
+    .drawerListItem {
+      gap: 5px!important;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.notFound__container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 45px;
+    gap: 10px;
+
+    img{
+        width: 30vw;
+        display: block;
+        margin: 0 auto;
+
+        @media (max-width: 576px){
+            width: 85vw;
+        }
+    }
+
+    .MuiButton-root {
+        gap: 5px;
+        font-size: 18px;
+        text-transform: capitalize;
+    }
+}
