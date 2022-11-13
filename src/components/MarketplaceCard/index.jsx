@@ -10,7 +10,7 @@ export default function MarketplaceCard({
     marketplace;
 
   const styles = {
-    background: `url(${marketplaceCoverImage}) no-repeat`,
+    background: `url(${marketplaceCoverImage?.url}) no-repeat`,
     backgroundSize: "cover",
     backgroundPosition: "center",
   };
@@ -19,7 +19,11 @@ export default function MarketplaceCard({
     <div
       className="marketplaceCard__container"
       onClick={() => {
-        navigate(`/fixture/${marketplaceSlug}`);
+        navigate(`/fixture`, {
+          state: {
+            marketplaceSlug
+          }
+        });
         setActiveFixtureBackground(marketplaceCoverImage);
       }}
     >

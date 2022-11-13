@@ -7,11 +7,21 @@ import { Helmet } from "react-helmet";
 import SetFixtureGamedates from "../../utils/SetFixtureGamedates";
 import { a11yProps, TabPanel } from "../../components/TabPanel";
 import QuickView from "../../components/QuickView";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./styles/style.css";
+import { getFixtures } from "../../api/Fixture";
 
 export default function Fixture() {
-  let { marketplaceSlug } = useParams();
+  let params = useLocation();
+  const marketplaceSlug = params.state?.marketplaceSlug
+  const [fixtures, setFixtures] = React.useState([]);
+
+  React.useEffect(() => {
+    (async () => {
+      const fixtures = await getFixtures(marketplaceSlug)
+      setFixtures(fixtures.data.data)
+    })()
+  }, [])
   /**
    * @dev states for the tab panel
    */

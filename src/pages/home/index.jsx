@@ -1,15 +1,20 @@
 import React from "react";
 import { Skeleton, Stack } from "@mui/material";
 import "./styles/style.css";
-import Marketplaces from "../../mocks/Marketplaces.json";
+// import Marketplaces from "../../mocks/Marketplaces.json";
 import MarketplaceCard from "../../components/MarketplaceCard";
+import { getMarketplaces } from "../../api/Marketplace";
 
 export default function Home({setActiveFixtureBackground}) {
   const [marketplaceItems, setMarketplaceItems] = React.useState([]);
 
   React.useEffect(() => {
-    setMarketplaceItems(Marketplaces);
-  }, [marketplaceItems]);
+    (async () => {
+      const res = await getMarketplaces();
+      console.log(res.data.data)
+      setMarketplaceItems(res.data.data.reverse());
+    })();
+  }, []);
 
   return (
     <div className="home__container">

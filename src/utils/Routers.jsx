@@ -14,7 +14,7 @@ export default function PageRouters() {
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home setActiveFixtureBackground={setActiveFixtureBackground}/>} />
-      <Route path="fixture/:marketplaceSlug" element={<Fixture activeFixtureBackground={activeFixtureBackground}/>} />
+      <Route path="fixture" element={<Fixture activeFixtureBackground={activeFixtureBackground}/>} />
       <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
     </Routes>
   );
