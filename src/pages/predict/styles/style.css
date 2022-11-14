@@ -1,1 +1,402 @@
-.prediction__container .main__container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.prediction__container .main__container .recentPredictions{width:23vw}@media (max-width:576px){.prediction__container .main__container .recentPredictions{display:none}}.prediction__container .main__container .recentPredictions h3{padding:0 1.5vw;margin-top:10px;margin-bottom:10px;font-weight:500}.prediction__container .main__container .recentPredictions .prediction__items{height:83vh;overflow-y:scroll}.prediction__container .main__container .recentPredictions .prediction__items.windowsOS{height:77vh}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;gap:8px;border-bottom:0.5px solid rgba(0,0,0,0.0666666667);padding:7px 1.5vw 10px 1.5vw}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container:hover{background:#f1f2f6;cursor:pointer}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:5px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info p:first-child{color:#2ecc71}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info p:last-child{color:rgba(0,0,0,0.5333333333);font-size:14px}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container canvas{margin-top:6px}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div{width:100%}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div p{font-size:14px;color:#3a3a3a;line-height:1.5}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;width:100%;margin-bottom:5px}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details .MuiButton-root{text-transform:capitalize;padding:0;color:#3498db}.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details p{background:#000;color:#fff;padding:1px 15px;border-radius:10px;font-size:12px}.prediction__container .main__container .predictionTable{-webkit-box-flex:1;-ms-flex:1;flex:1;border-left:0.5px solid rgba(0,0,0,0.0666666667);border-right:0.5px solid rgba(0,0,0,0.0666666667);overflow-y:hidden}.prediction__container .main__container .predictionTable .predictionTable__topBar{border-bottom:0.5px solid rgba(0,0,0,0.0666666667);padding:10px 1vw 10px 1vw;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;background:#f1f2f6}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__topBar{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}}.prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor{display:-webkit-box;display:-ms-flexbox;display:flex;gap:5px;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:5px;font-weight:500;font-size:18px}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div{font-size:20px}}.prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div img{width:30px;height:30px;-o-object-fit:cover;object-fit:cover;border-radius:50%}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div img{width:40px;height:40px}}.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:15px;font-size:14px}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div{margin-top:8px;display:-webkit-box;display:-ms-flexbox;display:flex;font-size:12px}}.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo>div>p:last-child{color:rgba(0,0,0,0.4)}.prediction__container .main__container .predictionTable .predictionTable__mainContainer{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:81vh;overflow-y:scroll;padding-bottom:20px}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .graphData{margin:3vh auto;padding:0 2.5vw}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails{margin-top:40px;background:#f1f2f6;padding:10px 1vw;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;font-size:14px}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;gap:8px}}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails p{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:5px}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container .MuiTab-root{text-transform:capitalize}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root{padding:5px 20px}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar{display:-webkit-box;display:-ms-flexbox;display:flex;gap:10px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:15px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar .MuiButton-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar .MuiButton-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar .MuiButton-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar .MuiButton-root{padding:0 10px;min-width:0;color:#3a3a3a;font-weight:500}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar .MuiButton-root.active,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar .MuiButton-root.active,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar .MuiButton-root.active,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar .MuiButton-root.active{color:#3498db}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem{border-top:0.5px solid rgba(0,0,0,0.0666666667);padding:10px 5px;font-size:15px}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .top{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top p:first-child,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top p:first-child,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .top p:first-child,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .top p:first-child{-webkit-box-flex:1;-ms-flex:1;flex:1;font-weight:500}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top p:last-child,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top p:last-child,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .top p:last-child,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .top p:last-child{color:#2ecc71}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .answers,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .answers,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .answers,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .answers{display:-webkit-box;display:-ms-flexbox;display:flex;margin-top:5px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:15px;color:#6a6a6a}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .answers .label,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .answers .label,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .answers .label,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .answers .label{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:14px;gap:8px}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .answers .label .MuiCheckbox-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .answers .label .MuiCheckbox-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .answers .label .MuiCheckbox-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .answers .label .MuiCheckbox-root{padding:0}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount{border-top:0.5px solid rgba(0,0,0,0.0666666667);-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding-top:10px;gap:25px;display:-webkit-box;display:-ms-flexbox;display:flex}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;gap:15px}}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount div{-webkit-box-flex:1;-ms-flex:1 1 0px;flex:1 1 0}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount div,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount div{-webkit-box-flex:1;-ms-flex:1;flex:1}}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .top{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .top,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .top{width:90vw}}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount h4,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount h4,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount h4,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount h4{font-weight:500;font-size:16px}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .MuiSlider-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .MuiSlider-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .MuiSlider-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .MuiSlider-root{width:23vw;margin-left:11px}@media (max-width:576px){.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .MuiSlider-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .MuiSlider-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .MuiSlider-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .MuiSlider-root{width:85vw}}.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .MuiButton-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .MuiButton-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .MuiButton-root,.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .MuiButton-root{background:#2ecc71;width:100%;margin-top:10px;color:#fff}.prediction__container .main__container .leaderboards{width:20vw}@media (max-width:576px){.prediction__container .main__container .leaderboards{display:none}}.prediction__container .main__container .leaderboards .leaderboardsTitle{font-weight:500;margin:10px 8px;margin-bottom:15px}.prediction__container .main__container .leaderboards .leaderboardItemsTitle{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;border-bottom:0.5px solid rgba(0,0,0,0.0666666667);padding-bottom:10px;font-size:14px;font-weight:500;margin:0 8px}.prediction__container .main__container .leaderboards .leaderboardItemsTitle p{-webkit-box-flex:1;-ms-flex:1 1 0px;flex:1 1 0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:2px}.prediction__container .main__container .leaderboards .leaderboardItems{font-size:14px;height:80vh;overflow-y:scroll;padding-bottom:10px}.prediction__container .main__container .leaderboards .leaderboardItems.windowsOS{height:77vh}.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container{background:#f1f2f6;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:8px;border-bottom:0.5px solid rgba(0,0,0,0.0666666667)}.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container:hover{background:rgb(251,251,251);cursor:pointer}.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p{-webkit-box-flex:1;-ms-flex:1 1 0px;flex:1 1 0}
+.prediction__container .main__container {
+  display: flex;
+  align-items: flex-start;
+}
+.prediction__container .main__container .recentPredictions {
+  width: 23vw;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .recentPredictions {
+    display: none;
+  }
+}
+.prediction__container .main__container .recentPredictions h3 {
+  padding: 0 1.5vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.prediction__container .main__container .recentPredictions .prediction__items {
+  height: 83vh;
+  overflow-y: scroll;
+}
+.prediction__container .main__container .recentPredictions .prediction__items.windowsOS {
+  height: 77vh;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  padding: 7px 1.5vw 10px 1.5vw;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container:hover {
+  background: #f1f2f6;
+  cursor: pointer;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  justify-content: space-between;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info p:first-child {
+  color: #2ecc71;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info p:last-child {
+  color: rgba(0, 0, 0, 0.5333333333);
+  font-size: 14px;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container canvas {
+  margin-top: 6px;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div {
+  width: 100%;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div p {
+  font-size: 14px;
+  color: #3a3a3a;
+  line-height: 1.5;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details .MuiButton-root {
+  text-transform: capitalize;
+  padding: 0;
+  color: #3498db;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details p {
+  background: #000;
+  color: #fff;
+  padding: 1px 15px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+.prediction__container .main__container .predictionTable {
+  flex: 1;
+  border-left: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  border-right: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  overflow-y: hidden;
+}
+.prediction__container .main__container .predictionTable .predictionTable__topBar {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  padding: 10px 1vw 10px 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f2f6;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__topBar {
+    flex-direction: column;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  font-size: 18px;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div {
+    font-size: 20px;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div img {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div img {
+    width: 40px;
+    height: 40px;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 14px;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div {
+    margin-top: 8px;
+    display: flex;
+    font-size: 12px;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo > div > p:last-child {
+  color: rgba(0, 0, 0, 0.4);
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer {
+  flex-direction: column;
+  height: 81vh;
+  overflow-y: scroll;
+  padding-bottom: 20px;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .graphData {
+  margin: 3vh auto;
+  padding: 0 2.5vw;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails {
+  margin-top: 40px;
+  background: #f1f2f6;
+  padding: 10px 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container .MuiTab-root {
+  text-transform: capitalize;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root {
+  padding: 5px 20px;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 15px;
+  justify-content: space-between;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar div {
+  display: flex;
+  align-items: center;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar .MuiButton-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar .MuiButton-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar .MuiButton-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar .MuiButton-root {
+  padding: 0 10px;
+  min-width: 0;
+  color: #3a3a3a;
+  font-weight: 500;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar .MuiButton-root.active,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar .MuiButton-root.active,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar .MuiButton-root.active,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar .MuiButton-root.active {
+  color: #3498db;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem {
+  border-top: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  padding: 10px 5px;
+  font-size: 15px;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top p:first-child,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top p:first-child,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .top p:first-child,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .top p:first-child {
+  flex: 1;
+  font-weight: 500;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top p:last-child,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top p:last-child,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .top p:last-child,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .top p:last-child {
+  color: #2ecc71;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .answers,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .answers,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .answers,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .answers {
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  gap: 15px;
+  color: #6a6a6a;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .answers .label,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .answers .label,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .answers .label,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .answers .label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 8px;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .answers .label .MuiCheckbox-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .answers .label .MuiCheckbox-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .answers .label .MuiCheckbox-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .answers .label .MuiCheckbox-root {
+  padding: 0;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount {
+  border-top: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  align-items: flex-start;
+  padding-top: 10px;
+  gap: 25px;
+  display: flex;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount div {
+  flex: 1 1 0;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount div,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount div {
+    flex: 1;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .top,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .top {
+    width: 90vw;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount h4,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount h4,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount h4,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount h4 {
+  font-weight: 500;
+  font-size: 16px;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .MuiSlider-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .MuiSlider-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .MuiSlider-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .MuiSlider-root {
+  width: 23vw;
+  margin-left: 11px;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .MuiSlider-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .MuiSlider-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .MuiSlider-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .MuiSlider-root {
+    width: 85vw;
+  }
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .MuiButton-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .MuiButton-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .MuiButton-root,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .MuiButton-root {
+  background: #2ecc71;
+  width: 100%;
+  margin-top: 10px;
+  color: #fff;
+}
+.prediction__container .main__container .leaderboards {
+  width: 20vw;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .leaderboards {
+    display: none;
+  }
+}
+.prediction__container .main__container .leaderboards .leaderboardsTitle {
+  font-weight: 500;
+  margin: 10px 8px;
+  margin-bottom: 15px;
+}
+.prediction__container .main__container .leaderboards .leaderboardItemsTitle {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  padding-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 8px;
+}
+.prediction__container .main__container .leaderboards .leaderboardItemsTitle p {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.prediction__container .main__container .leaderboards .leaderboardItems {
+  font-size: 14px;
+  height: 80vh;
+  overflow-y: scroll;
+  padding-bottom: 10px;
+}
+.prediction__container .main__container .leaderboards .leaderboardItems.windowsOS {
+  height: 77vh;
+}
+.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container {
+  background: #f1f2f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+}
+.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container:hover {
+  background: rgb(251, 251, 251);
+  cursor: pointer;
+}
+.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p {
+  flex: 1 1 0;
+}/*# sourceMappingURL=style.css.map */

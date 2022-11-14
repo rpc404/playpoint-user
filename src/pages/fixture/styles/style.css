@@ -1,1 +1,229 @@
-.fixtures__container h1{font-size:3.8em;padding:80px 5vw;-webkit-box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.6);box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.6);color:#fff}@media (max-width:576px){.fixtures__container h1{font-size:1.5em;padding:50px 5vw}}.fixtures__container h2{padding:10px 2vw}.fixtures__container .MuiBox-root{padding:0 5vw}@media (max-width:576px){.fixtures__container .MuiBox-root{padding:0}}.fixtures__container .MuiBox-root .fixtureCardItems__container{height:60vh;overflow-y:scroll}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container{padding:25px 0}@media (max-width:576px){.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container{padding:15px 5vw}}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container span{font-weight:500;margin-bottom:10px;font-size:22px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:5px}@media (max-width:576px){.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container span{margin-bottom:0;font-size:18px}}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item{font-size:14px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;color:#5a5a5a;border-bottom:0.5px solid #9a9a9a;padding:15px 0;position:relative}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__location{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:absolute;left:50%;top:50%;gap:5px;-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0)}@media (max-width:576px){.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__location{display:none}}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:10px;-webkit-box-pack:right;-ms-flex-pack:right;justify-content:right}@media (max-width:576px){.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails{gap:8px;text-transform:capitalize;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-pack:left;-ms-flex-pack:left;justify-content:left}}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .teamName{font-weight:500;color:#2a2a2a;font-size:17px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:6.5vw;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}@media (max-width:576px){.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .teamName{font-size:14px;width:100%}}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .Away__Image,.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .home__Image{width:35px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .Away__Image img,.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .home__Image img{width:100%}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .gameTime{border:1px solid #9a9a9a;padding:3px;font-size:14px}@media (max-width:576px){.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action{display:none}}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root{text-transform:capitalize;padding:1px 5px;color:#000}@media (max-width:576px){.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root{padding:1px 2px;min-width:30px}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root i{font-size:18px}}.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root.quickView{border:1px solid #9a9a9a}.fixtures__container .quickViewModal__container{position:fixed;top:0;left:0;z-index:2;background:rgba(0,0,0,0.6);width:100vw;height:100vh}.fixtures__container .quickViewModal__container .container{position:relative;width:100vw;height:100vh}.fixtures__container .quickViewModal__container .container .item{background:#fff;position:absolute;top:50%;left:50%;-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);background:#fff;padding:20px 30px;border-radius:16px}.fixtures__container .quickViewModal__container .container .item .closeBtn{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:red;text-transform:capitalize;padding:0}.fixtures__container .quickViewModal__container .container .item .closeBtn i{font-size:20px}.fixtures__container .quickViewModal__container .container .item .info__container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.fixtures__container .quickViewModal__container .container .item .info__container span{color:#7a7a7a}.fixtures__container .quickViewModal__container .container .item .topBar{margin-top:5px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:10px;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.fixtures__container .quickViewModal__container .container .item .topBar img{width:50px;height:50px}.fixtures__container .quickViewModal__container .container .item .stadiumInformation{text-align:center;padding:10px 0 25px 0}.fixtures__container .quickViewModal__container .container .item .actions{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;gap:18px}.fixtures__container .quickViewModal__container .container .item .actions .MuiButton-root{background:#000;color:#fff;text-transform:capitalize;gap:5px}.fixtures__container .noFixture__container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:0 5vw;text-align:center}.fixtures__container .noFixture__container img{margin-top:10px;width:30vw;-o-object-fit:contain;object-fit:contain}@media (max-width:576px){.fixtures__container .noFixture__container img{width:85vw}}
+.fixtures__container h1 {
+  font-size: 3.8em;
+  padding: 80px 5vw;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+@media (max-width: 576px) {
+  .fixtures__container h1 {
+    font-size: 1.5em;
+    padding: 50px 5vw;
+  }
+}
+.fixtures__container h2 {
+  padding: 10px 2vw;
+}
+.fixtures__container .MuiBox-root {
+  padding: 0 5vw;
+}
+@media (max-width: 576px) {
+  .fixtures__container .MuiBox-root {
+    padding: 0;
+  }
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container {
+  height: 60vh;
+  overflow-y: scroll;
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container {
+  padding: 25px 0;
+}
+@media (max-width: 576px) {
+  .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container {
+    padding: 15px 5vw;
+  }
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container span {
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+@media (max-width: 576px) {
+  .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container span {
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #5a5a5a;
+  border-bottom: 0.5px solid #9a9a9a;
+  padding: 15px 0;
+  position: relative;
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__location {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  gap: 5px;
+  transform: translate3d(-50%, -50%, 0);
+}
+@media (max-width: 576px) {
+  .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__location {
+    display: none;
+  }
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: right;
+}
+@media (max-width: 576px) {
+  .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails {
+    gap: 8px;
+    text-transform: capitalize;
+    flex: 1;
+    justify-content: left;
+  }
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .teamName {
+  font-weight: 500;
+  color: #2a2a2a;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  width: 6.5vw;
+  justify-content: center;
+  text-align: center;
+}
+@media (max-width: 576px) {
+  .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .teamName {
+    font-size: 14px;
+    width: 100%;
+  }
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .home__Image,
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .Away__Image {
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .home__Image img,
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .Away__Image img {
+  width: 100%;
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .gameTime {
+  border: 1px solid #9a9a9a;
+  padding: 3px;
+  font-size: 14px;
+}
+@media (max-width: 576px) {
+  .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action {
+    display: none;
+  }
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root {
+  text-transform: capitalize;
+  padding: 1px 5px;
+  color: #000;
+}
+@media (max-width: 576px) {
+  .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root {
+    padding: 1px 2px;
+    min-width: 30px;
+  }
+  .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root i {
+    font-size: 18px;
+  }
+}
+.fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root.quickView {
+  border: 1px solid #9a9a9a;
+}
+.fixtures__container .quickViewModal__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
+}
+.fixtures__container .quickViewModal__container .container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.fixtures__container .quickViewModal__container .container .item {
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 16px;
+}
+.fixtures__container .quickViewModal__container .container .item .closeBtn {
+  display: flex;
+  align-items: center;
+  color: red;
+  text-transform: capitalize;
+  padding: 0;
+}
+.fixtures__container .quickViewModal__container .container .item .closeBtn i {
+  font-size: 20px;
+}
+.fixtures__container .quickViewModal__container .container .item .info__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fixtures__container .quickViewModal__container .container .item .info__container span {
+  color: #7a7a7a;
+}
+.fixtures__container .quickViewModal__container .container .item .topBar {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.fixtures__container .quickViewModal__container .container .item .topBar img {
+  width: 50px;
+  height: 50px;
+}
+.fixtures__container .quickViewModal__container .container .item .stadiumInformation {
+  text-align: center;
+  padding: 10px 0 25px 0;
+}
+.fixtures__container .quickViewModal__container .container .item .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.fixtures__container .quickViewModal__container .container .item .actions .MuiButton-root {
+  background: #000;
+  color: #fff;
+  text-transform: capitalize;
+  gap: 5px;
+}
+.fixtures__container .noFixture__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5vw;
+  text-align: center;
+}
+.fixtures__container .noFixture__container img {
+  margin-top: 10px;
+  width: 30vw;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media (max-width: 576px) {
+  .fixtures__container .noFixture__container img {
+    width: 85vw;
+  }
+}/*# sourceMappingURL=style.css.map */

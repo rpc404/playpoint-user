@@ -1,24 +1,14 @@
 .navbar__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 13px 5vw;
   background: #000;
   color: #fff;
 }
 .navbar__container .logo__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 8px;
   cursor: pointer;
 }
@@ -32,16 +22,9 @@
 }
 .navbar__container .logo__container .navLinks {
   margin-left: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  align-items: center;
+  flex-direction: row;
   gap: 25px;
 }
 @media (max-width: 576px) {
@@ -52,7 +35,6 @@
 .navbar__container .logo__container .navLinks div {
   color: rgba(254, 254, 254, 0.7);
   text-decoration: none;
-  -webkit-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
   font-weight: 300;
   font-size: 15px;
@@ -61,22 +43,14 @@
   color: #fff;
 }
 .navbar__container .navbar__authentication {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 15px;
 }
 .navbar__container .navbar__authentication .MuiButton-root {
   color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 5px;
   text-transform: capitalize;
 }
@@ -90,4 +64,4 @@
 }
 .navbar__container .drawer .drawerListItem {
   gap: 5px !important;
-}
+}/*# sourceMappingURL=style.css.map */

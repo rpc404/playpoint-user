@@ -19,7 +19,8 @@ export default function Fixture() {
   React.useEffect(() => {
     (async () => {
       const fixtures = await getFixtures(marketplaceSlug)
-      setFixtures(fixtures.data.data)
+
+      setFixtures(fixtures.data.fixtures)
     })()
   }, [])
   /**
