@@ -1,15 +1,25 @@
 import { Button, Typography } from "@mui/material";
 import React from "react";
-import CountryFlags from "../../helpers/CountryFlags.json";
-import WorldcupFixtures from "../../helpers/WorldcupFixtures.json";
+// import CountryFlags from "../../helpers/CountryFlags.json";
+// import WorldcupFixtures from "../../helpers/WorldcupFixtures.json";
 import Moment from "moment";
 import { useNavigate } from "react-router-dom";
+import { getFixtures } from "../../api/Fixture";
 
-export default function FixtureCard({ data, handleModalOpen, group }) {
-  const navigate =  useNavigate();
+export default function FixtureCard({ data, handleModalOpen, group, marketplaceSlug }) {
+  const navigate = useNavigate();
   const getFixtureId = (a, b) => {
     return a + "_vs_" + b;
   };
+
+  const [fixtures, setFixtures] = React.useState([]);
+
+  React.useEffect(() => {
+    (async () => {
+      const fixtures = await getFixtures(marketplaceSlug);
+      setFixtures(fixtures?.data?.fixtures);
+    })();
+  }, []);
 
   /**
    * @dev only list games according to dates
@@ -17,8 +27,8 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
   const getGamesByDate = (date) => {
     var games = [];
 
-    WorldcupFixtures.forEach((data) => {
-      if (Moment(data.DateUtc).format("LL") === date) {
+    fixtures.forEach((data) => {
+      if (Moment(data?.DateUtc).format("LL") === date) {
         games.push(data);
       }
     });
@@ -37,22 +47,23 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
           return (
             <div className="gameDetails__item" key={index}>
               {window.innerWidth > 576 ? (
-                <div onClick={() =>
-                  navigate(
-                    `/predict/${getFixtureId(
-                      data.HomeTeam,
-                      data.AwayTeam
-                    )}`
-                  )
-                } className="gameDetails__teamDetails" style={{cursor: "pointer"}}>
-                  <div className="teamName">{data.HomeTeam}</div>
-                  {CountryFlags.map((country, i) => {
+                <div
+                  onClick={() =>
+                    navigate(
+                      `/predict/${data?._id}`
+                    )
+                  }
+                  className="gameDetails__teamDetails"
+                  style={{ cursor: "pointer" }}
+                >
+                  <div className="teamName">{data?.HomeTeam}</div>
+                  {/* {CountryFlags.map((country, i) => {
                     return (
-                      (country.name === data.HomeTeam ||
+                      (country.name === data?.HomeTeam ||
                         (country.name === "United States" &&
-                          data.HomeTeam === "USA") ||
+                          data?.HomeTeam === "USA") ||
                         (country.name === "South Korea" &&
-                          data.HomeTeam === "Korea Republic")) && (
+                          data?.HomeTeam === "Korea Republic")) && (
                         <img
                           src={country.image}
                           alt={country.name}
@@ -62,19 +73,17 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
                         />
                       )
                     );
-                  })}
+                  })} */}
                   <div className="gameTime">
-                    {data.DateUtc.split(" ")[1].split(":")[0] +
-                      ":" +
-                      data.DateUtc.split(" ")[1].split(":")[1]}
+                    {data?.DateUtc}
                   </div>
-                  {CountryFlags.map((country, i) => {
+                  {/* {CountryFlags.map((country, i) => {
                     return (
-                      (country.name === data.AwayTeam ||
+                      (country.name === data?.AwayTeam ||
                         (country.name === "United States" &&
-                          data.AwayTeam === "USA") ||
+                          data?.AwayTeam === "USA") ||
                         (country.name === "South Korea" &&
-                          data.AwayTeam === "Korea Republic")) && (
+                          data?.AwayTeam === "Korea Republic")) && (
                         <img
                           src={country?.image}
                           alt={country.name}
@@ -84,26 +93,26 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
                         />
                       )
                     );
-                  })}
-                  <div className="teamName">{data.AwayTeam}</div>
+                  })} */}
+                  <div className="teamName">{data?.AwayTeam}</div>
                 </div>
               ) : (
-                <Button className="gameDetails__teamDetails" onClick={() =>
-                  navigate(
-                    `/predict/${getFixtureId(
-                      data.HomeTeam,
-                      data.AwayTeam
-                    )}`
-                  )
-                }>
-                  <div className="teamName">{data.HomeTeam}</div>
-                  {CountryFlags.map((country, i) => {
+                <Button
+                  className="gameDetails__teamDetails"
+                  onClick={() =>
+                    navigate(
+                      `/predict/${getFixtureId(data?.HomeTeam, data?.AwayTeam)}`
+                    )
+                  }
+                >
+                  <div className="teamName">{data?.HomeTeam}</div>
+                  {/* {CountryFlags.map((country, i) => {
                     return (
-                      (country.name === data.HomeTeam ||
+                      (country.name === data?.HomeTeam ||
                         (country.name === "United States" &&
-                          data.HomeTeam === "USA") ||
+                          data?.HomeTeam === "USA") ||
                         (country.name === "South Korea" &&
-                          data.HomeTeam === "Korea Republic")) && (
+                          data?.HomeTeam === "Korea Republic")) && (
                         <img
                           src={country.image}
                           alt={country.name}
@@ -113,19 +122,17 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
                         />
                       )
                     );
-                  })}
+                  })} */}
                   <div className="gameTime">
-                    {data.DateUtc.split(" ")[1].split(":")[0] +
-                      ":" +
-                      data.DateUtc.split(" ")[1].split(":")[1]}
+                    {data?.DateUtc}
                   </div>
-                  {CountryFlags.map((country, i) => {
+                  {/* {CountryFlags.map((country, i) => {
                     return (
-                      (country.name === data.AwayTeam ||
+                      (country.name === data?.AwayTeam ||
                         (country.name === "United States" &&
-                          data.AwayTeam === "USA") ||
+                          data?.AwayTeam === "USA") ||
                         (country.name === "South Korea" &&
-                          data.AwayTeam === "Korea Republic")) && (
+                          data?.AwayTeam === "Korea Republic")) && (
                         <img
                           src={country?.image}
                           alt={country.name}
@@ -135,13 +142,13 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
                         />
                       )
                     );
-                  })}
-                  <div className="teamName">{data.AwayTeam}</div>
+                  })} */}
+                  <div className="teamName">{data?.AwayTeam}</div>
                 </Button>
               )}
 
               <div className="gameDetails__location">
-                <i className="ri-map-pin-2-line"></i> {data.Location}
+                <i className="ri-map-pin-2-line"></i> {data?.Location}
               </div>
 
               <div className="gameDetails__action">
@@ -157,70 +164,23 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
               </div>
             </div>
           );
-        } else if (data.Group === group)
+        } else if (data?.Group === group)
           return (
             <div className="gameDetails__item" key={index}>
               {window.innerWidth > 576 ? (
-                <div className="gameDetails__teamDetails">
-                  <div className="teamName">{data.HomeTeam}</div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data.HomeTeam ||
-                        (country.name === "United States" &&
-                          data.HomeTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data.HomeTeam === "Korea Republic")) && (
-                        <img
-                          src={country.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="home__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="gameTime">
-                    {data.DateUtc.split(" ")[1].split(":")[0] +
-                      ":" +
-                      data.DateUtc.split(" ")[1].split(":")[1]}
-                  </div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data.AwayTeam ||
-                        (country.name === "United States" &&
-                          data.AwayTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data.AwayTeam === "Korea Republic")) && (
-                        <img
-                          src={country?.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="Away__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="teamName">{data.AwayTeam}</div>
-                </div>
-              ) : (
-                <Button className="gameDetails__teamDetails" onClick={() =>
+                <div className="gameDetails__teamDetails" onClick={() =>
                   navigate(
-                    `/predict/${getFixtureId(
-                      data.HomeTeam,
-                      data.AwayTeam
-                    )}`
+                    `/predict/${data?._id}`
                   )
                 }>
-                  <div className="teamName">{data.HomeTeam}</div>
-                  {CountryFlags.map((country, i) => {
+                  <div className="teamName">{data?.HomeTeam}</div>
+                  {/* {CountryFlags.map((country, i) => {
                     return (
-                      (country.name === data.HomeTeam ||
+                      (country.name === data?.HomeTeam ||
                         (country.name === "United States" &&
-                          data.HomeTeam === "USA") ||
+                          data?.HomeTeam === "USA") ||
                         (country.name === "South Korea" &&
-                          data.HomeTeam === "Korea Republic")) && (
+                          data?.HomeTeam === "Korea Republic")) && (
                         <img
                           src={country.image}
                           alt={country.name}
@@ -230,19 +190,17 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
                         />
                       )
                     );
-                  })}
+                  })} */}
                   <div className="gameTime">
-                    {data.DateUtc.split(" ")[1].split(":")[0] +
-                      ":" +
-                      data.DateUtc.split(" ")[1].split(":")[1]}
+                    {data?.DateUtc}
                   </div>
-                  {CountryFlags.map((country, i) => {
+                  {/* {CountryFlags.map((country, i) => {
                     return (
-                      (country.name === data.AwayTeam ||
+                      (country.name === data?.AwayTeam ||
                         (country.name === "United States" &&
-                          data.AwayTeam === "USA") ||
+                          data?.AwayTeam === "USA") ||
                         (country.name === "South Korea" &&
-                          data.AwayTeam === "Korea Republic")) && (
+                          data?.AwayTeam === "Korea Republic")) && (
                         <img
                           src={country?.image}
                           alt={country.name}
@@ -252,13 +210,62 @@ export default function FixtureCard({ data, handleModalOpen, group }) {
                         />
                       )
                     );
-                  })}
-                  <div className="teamName">{data.AwayTeam}</div>
+                  })} */}
+                  <div className="teamName">{data?.AwayTeam}</div>
+                </div>
+              ) : (
+                <Button
+                  className="gameDetails__teamDetails"
+                  onClick={() =>
+                    navigate(
+                      `/predict/${data._id}`
+                    )
+                  }
+                >
+                  <div className="teamName">{data?.HomeTeam}</div>
+                  {/* {CountryFlags.map((country, i) => {
+                    return (
+                      (country.name === data?.HomeTeam ||
+                        (country.name === "United States" &&
+                          data?.HomeTeam === "USA") ||
+                        (country.name === "South Korea" &&
+                          data?.HomeTeam === "Korea Republic")) && (
+                        <img
+                          src={country.image}
+                          alt={country.name}
+                          key={i}
+                          loading="lazy"
+                          className="home__Image"
+                        />
+                      )
+                    );
+                  })} */}
+                  <div className="gameTime">
+                    {data?.DateUtc}
+                  </div>
+                  {/* {CountryFlags.map((country, i) => {
+                    return (
+                      (country.name === data?.AwayTeam ||
+                        (country.name === "United States" &&
+                          data?.AwayTeam === "USA") ||
+                        (country.name === "South Korea" &&
+                          data?.AwayTeam === "Korea Republic")) && (
+                        <img
+                          src={country?.image}
+                          alt={country.name}
+                          key={i}
+                          loading="lazy"
+                          className="Away__Image"
+                        />
+                      )
+                    );
+                  })} */}
+                  <div className="teamName">{data?.AwayTeam}</div>
                 </Button>
               )}
 
               <div className="gameDetails__location">
-                <i className="ri-map-pin-2-line"></i> {data.Location}
+                <i className="ri-map-pin-2-line"></i> {data?.Location}
               </div>
 
               <div className="gameDetails__action">

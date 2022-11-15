@@ -45,9 +45,7 @@ export default function QuickView({ handleModalClose }) {
                 );
               })}
               <div className="gameTime">
-                {gameData?.DateUtc.split(" ")[1].split(":")[0] +
-                  ":" +
-                  gameData?.DateUtc.split(" ")[1].split(":")[1]}{" "}
+                {gameData?.DateUtc}
                 UTC
               </div>
               {CountryFlags.map((country, index) => {
@@ -69,10 +67,7 @@ export default function QuickView({ handleModalClose }) {
                 onClick={() => {
                   document.body.style = "";
                   navigate(
-                    `/predict/${getFixtureId(
-                      gameData.HomeTeam,
-                      gameData.AwayTeam
-                    )}`
+                    `/predict/${gameData._id}`
                   );
                 }}
               >
