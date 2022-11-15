@@ -1,12 +1,11 @@
 import { Button } from "@mui/material";
 import React from "react";
 import CountryFlags from "../../helpers/CountryFlags.json";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function QuickView({ handleModalClose }) {
   const navigate = useNavigate();
   const [gameData, setGameData] = React.useState(null);
-  let { marketplaceSlug } = useParams();
 
   const handleModal = () => {
     document.body.style = "";
@@ -18,10 +17,6 @@ export default function QuickView({ handleModalClose }) {
     setGameData(tempGame);
   }, []);
 
-  const getFixtureId = (a, b) => {
-    return a + "_vs_" + b;
-  };
-
   return (
     <div className="quickViewModal__container">
       <div className="container">
@@ -29,7 +24,7 @@ export default function QuickView({ handleModalClose }) {
           <div className="item">
             <div className="info__container">
               <div>
-                Football / <span>{marketplaceSlug}</span>
+                Football / <span>{gameData.marketplaceSlug}</span>
               </div>
               <Button onClick={handleModal} className="closeBtn">
                 Close <i className="ri-close-line"></i>

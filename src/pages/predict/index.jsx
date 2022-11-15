@@ -5,13 +5,12 @@ import { LineChart, LineSeries } from "reaviz";
 import PredictionTabs from "../../components/PredictionTabs";
 import "./styles/style.css";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { getFixutreById } from "../../api/Fixture";
-// import { useParams } from "react-router-dom";
 
-export default function Predict() {
+export default function Predict({socket}) {
   const [activeOS, setActiveOS] = React.useState("");
   const [fixture, setFixture] = React.useState({});
+  const [poolSize, setPoolSize] = React.useState("Unlimited");
   const { fixtureId } = useParams();
 
   React.useEffect(() => {
@@ -121,14 +120,13 @@ export default function Predict() {
             />
             <div className="eventDetails">
               <p>
-                <i className="ri-calendar-todo-line"></i> Event Details: 22nd
-                November, 2022
+                <i className="ri-calendar-todo-line"></i> Event Details: {fixture.DateUtc}
               </p>
               <p>
-                <i className="ri-bar-chart-2-line"></i> Pool Size: Unlimited
+                <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
-            <PredictionTabs />
+            <PredictionTabs fixtureId={fixtureId} setPoolSize={setPoolSize} />
           </div>
         </div>
 
