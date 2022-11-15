@@ -7,10 +7,10 @@ import "./styles/style.css";
 import { useParams } from "react-router-dom";
 import { getFixutreById } from "../../api/Fixture";
 
-export default function Predict({socket}) {
+export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
   const [fixture, setFixture] = React.useState({});
-  const [poolSize, setPoolSize] = React.useState("Unlimited");
+  const [poolSize, setPoolSize] = React.useState("unlimited");
   const { fixtureId } = useParams();
 
   React.useEffect(() => {
@@ -24,8 +24,8 @@ export default function Predict({socket}) {
     // Fetch fixtures
     (async () => {
       const response = await getFixutreById(fixtureId);
-      setFixture(response.data?.fixture)
-    })()
+      setFixture(response.data?.fixture);
+    })();
   }, []);
   return (
     <div className="prediction__container">
@@ -97,7 +97,7 @@ export default function Predict({socket}) {
               </div>
             </div>
           </div>
-          
+
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <LineChart
               className="graphData"
@@ -120,13 +120,14 @@ export default function Predict({socket}) {
             />
             <div className="eventDetails">
               <p>
-                <i className="ri-calendar-todo-line"></i> Event Details: {fixture.DateUtc}
+                <i className="ri-calendar-todo-line"></i> Event Details:{" "}
+                {fixture.DateUtc}
               </p>
               <p>
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
-            <PredictionTabs fixtureId={fixtureId} setPoolSize={setPoolSize} />
+            <PredictionTabs poolSize={poolSize} fixtureId={fixtureId} setPoolSize={setPoolSize} />
           </div>
         </div>
 

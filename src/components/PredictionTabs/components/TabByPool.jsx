@@ -1,5 +1,6 @@
 import { Button, Checkbox, Slider } from "@mui/material";
 import React from "react";
+import { getQuestionaireByFixtureId } from "../../../api/Prediction";
 
 /**
  * @dev utils for slider
@@ -31,7 +32,12 @@ const marks = [
   },
 ];
 
-const PoolType = ({ userPrediction, setUserPrediction }) => {
+const PoolType = ({
+  userPrediction,
+  setUserPrediction,
+  poolSize,
+  fixtureId,
+}) => {
   const handleActiveAmount = (amount) => {
     setUserPrediction({
       ...userPrediction,
@@ -44,6 +50,41 @@ const PoolType = ({ userPrediction, setUserPrediction }) => {
       activeQuestionaire: questionaire,
     });
   };
+
+  const [questionaire, setQuestionaire] = React.useState({
+    questionaires: [],
+    tempQuestionaire: [],
+    loading: true,
+  });
+
+  const [predictionCount, setPredictionCount] = React.useState(1);
+  const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
+
+  React.useEffect(() => {
+    setTotalPredictionPrice(userPrediction.activeAmount * predictionCount);
+  }, [userPrediction.activeAmount, predictionCount]);
+
+  React.useEffect(() => {
+    (async () => {
+      const allQuestionairesByFixtureId = await getQuestionaireByFixtureId(
+        fixtureId
+      );
+
+      let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
+        return (
+          q.questionaireType === userPrediction.activeQuestionaire &&
+          q.poolType === poolSize &&
+          q.questionairePrice === userPrediction.activeAmount
+        );
+      });
+
+      setQuestionaire({
+        questionaires: allQuestionairesByFixtureId.data.questionaire,
+        tempQuestionaire: tempQ,
+        loading: false,
+      });
+    })();
+  }, [userPrediction]);
 
   return (
     <>
@@ -79,96 +120,31 @@ const PoolType = ({ userPrediction, setUserPrediction }) => {
       </div>
 
       <div className="questionaires">
-        <div className="questionItem">
-          <div className="top">
-            <p>
-              1. Which of the two teams leads in the first half of the match?
-            </p>
-            <p>20 Points</p>
-          </div>
-          <div className="answers">
-            <div className="label">
-              <Checkbox />
-              Sweden
-            </div>
-            <div className="label">
-              <Checkbox />
-              Draw
-            </div>
-            <div className="label">
-              <Checkbox />
-              Brazil
-            </div>
-          </div>
-        </div>
-        <div className="questionItem">
-          <div className="top">
-            <p>
-              2. Which of the two teams leads in the first half of the match?
-            </p>
-            <p>30 Points</p>
-          </div>
-          <div className="answers">
-            <div className="label">
-              <Checkbox />
-              Sweden
-            </div>
-            <div className="label">
-              <Checkbox />
-              Draw
-            </div>
-            <div className="label">
-              <Checkbox />
-              Brazil
-            </div>
-          </div>
-        </div>
-        <div className="questionItem">
-          <div className="top">
-            <p>
-              3. Which of the two teams leads in the first half of the match?
-            </p>
-            <p>50 Points</p>
-          </div>
-          <div className="answers">
-            <div className="label">
-              <Checkbox />
-              Sweden
-            </div>
-            <div className="label">
-              <Checkbox />
-              Draw
-            </div>
-            <div className="label">
-              <Checkbox />
-              Brazil
-            </div>
-          </div>
-        </div>
-        {userPrediction.activeQuestionaire === 4 && (
-          <div className="questionItem">
-            <div className="top">
-              <p>
-                4. Which of the two teams leads in the first half of the match?
-              </p>
-              <p>70 Points</p>
-            </div>
-            <div className="answers">
-              <div className="label">
-                <Checkbox />
-                Sweden
+        {!questionaire.loading &&
+          questionaire.tempQuestionaire[0]?.questionaires.map((q, index) => (
+            <div className="questionItem" key={index}>
+              <div className="top">
+                <p>
+                  {++index}. {q}
+                </p>
+                <p>20 Points</p>
               </div>
-              <div className="label">
-                <Checkbox />
-                Draw
-              </div>
-              <div className="label">
-                <Checkbox />
-                Brazil
+              <div className="answers">
+                <div className="label">
+                  <Checkbox />
+                  Sweden
+                </div>
+                <div className="label">
+                  <Checkbox />
+                  Draw
+                </div>
+                <div className="label">
+                  <Checkbox />
+                  Brazil
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          ))}
       </div>
 
       <div className="predictionAmount">
@@ -183,12 +159,16 @@ const PoolType = ({ userPrediction, setUserPrediction }) => {
             marks={marks}
             max={5}
             min={1}
+            onChange={(e, value) => {
+              setPredictionCount(value);
+            }}
           />
         </div>
 
         <div>
           <div className="top">
-            <h4>Total Amount: $5</h4>
+            <h4>Total Amount: ${totalPredictionPrice}</h4>
+            {/* @note must get balance from user wallet balance */}
             <h4>Available: $10</h4>
           </div>
           <Button>Predict</Button>
