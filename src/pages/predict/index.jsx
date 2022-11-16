@@ -4,9 +4,14 @@ import { Button } from "@mui/material";
 import { LineChart, LineSeries } from "reaviz";
 import PredictionTabs from "../../components/PredictionTabs";
 import "./styles/style.css";
+import { useParams } from "react-router-dom";
+import { getFixutreById } from "../../api/Fixture";
 
-export default function Predict() {
+export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
+  const [fixture, setFixture] = React.useState({});
+  const [poolSize, setPoolSize] = React.useState("unlimited");
+  const { fixtureId } = useParams();
 
   React.useEffect(() => {
     // Windows
@@ -15,14 +20,23 @@ export default function Predict() {
     else if (navigator.appVersion.indexOf("Mac") != -1) setActiveOS("macOS");
     // Linux and other
     else setActiveOS("otherOS");
+
+    // Fetch fixtures
+    (async () => {
+      const response = await getFixutreById(fixtureId);
+      setFixture(response.data?.fixture);
+    })();
   }, []);
   return (
     <div className="prediction__container">
       <Helmet>
-        <title>Brazil vs Qatar | Prediction | Playpoint</title>
+        <title>Playpoint | Prediction | Playpoint</title>
       </Helmet>
 
       <div className="main__container">
+        {/*
+         * @note Recent Predictions
+         */}
         <div className="recentPredictions">
           <h3>Active Predictions</h3>
 
@@ -46,11 +60,15 @@ export default function Predict() {
             })}
           </div>
         </div>
+
+        {/*
+         * @note Prediction Tabs
+         */}
         <div className="predictionTable">
           <div className="predictionTable__topBar">
             <div className="predictionTable__competitor">
               <div>
-                <p>Sweden</p>
+                <p>{fixture.HomeTeam}</p>
                 <img
                   src="https://www.kindpng.com/picc/m/297-2972143_sweden-logo-png-transparent-png.png"
                   alt=""
@@ -64,7 +82,7 @@ export default function Predict() {
                   alt=""
                   loading="lazy"
                 />
-                <p>Brazil</p>
+                <p>{fixture.AwayTeam}</p>
               </div>
             </div>
 
@@ -79,6 +97,7 @@ export default function Predict() {
               </div>
             </div>
           </div>
+
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <LineChart
               className="graphData"
@@ -101,16 +120,20 @@ export default function Predict() {
             />
             <div className="eventDetails">
               <p>
-                <i className="ri-calendar-todo-line"></i> Event Details: 22nd
-                November, 2022
+                <i className="ri-calendar-todo-line"></i> Event Details:{" "}
+                {fixture.DateUtc}
               </p>
               <p>
-                <i className="ri-bar-chart-2-line"></i> Pool Size: Unlimited
+                <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
-            <PredictionTabs />
+            <PredictionTabs poolSize={poolSize} fixtureId={fixtureId} setPoolSize={setPoolSize} />
           </div>
         </div>
+
+        {/*
+         * @note Recent Predictions
+         */}
         <div className="leaderboards">
           <h3 className="leaderboardsTitle">Leaderboards</h3>
           <div className="leaderboardItemsTitle">

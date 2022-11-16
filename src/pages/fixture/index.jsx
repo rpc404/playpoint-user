@@ -13,16 +13,16 @@ import { getFixtures } from "../../api/Fixture";
 
 export default function Fixture() {
   let params = useLocation();
-  const marketplaceSlug = params.state?.marketplaceSlug
+  const marketplaceSlug = params.state.marketplaceSlug;
+
   const [fixtures, setFixtures] = React.useState([]);
 
   React.useEffect(() => {
     (async () => {
-      const fixtures = await getFixtures(marketplaceSlug)
-
-      setFixtures(fixtures.data.fixtures)
-    })()
-  }, [])
+      const fixtures = await getFixtures(marketplaceSlug);
+      setFixtures(fixtures?.data?.fixtures);
+    })();
+  }, []);
   /**
    * @dev states for the tab panel
    */
@@ -59,7 +59,10 @@ export default function Fixture() {
         <title>Fixtures | Playpoint</title>
       </Helmet>
 
-      <SetFixtureGamedates setGameDates={setGameDates} />
+      <SetFixtureGamedates
+        marketplaceSlug={marketplaceSlug}
+        setGameDates={setGameDates}
+      />
 
       {modalOpen && <QuickView handleModalClose={setModalOpen} />}
 
@@ -72,7 +75,7 @@ export default function Fixture() {
         Fixtures
       </h1>
 
-      {marketplaceSlug === "worldcup-qatar-2022" ? (
+      {fixtures.length > 0 ? (
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
@@ -108,6 +111,7 @@ export default function Fixture() {
             {gameDates.all.map((data, index) => {
               return (
                 <FixtureCard
+                  marketplaceSlug={marketplaceSlug}
                   handleModalOpen={handleModalOpen}
                   group="all"
                   data={data}
@@ -125,6 +129,7 @@ export default function Fixture() {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
+                  marketplaceSlug={marketplaceSlug}
                   group="Group A"
                   data={data}
                   key={index}
@@ -142,6 +147,7 @@ export default function Fixture() {
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
                   group="Group B"
+                  marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
                 />
@@ -158,6 +164,7 @@ export default function Fixture() {
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
                   group="Group C"
+                  marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
                 />
@@ -174,6 +181,7 @@ export default function Fixture() {
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
                   group="Group D"
+                  marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
                 />
@@ -190,6 +198,7 @@ export default function Fixture() {
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
                   group="Group E"
+                  marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
                 />
@@ -206,6 +215,7 @@ export default function Fixture() {
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
                   group="Group F"
+                  marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
                 />
@@ -222,6 +232,7 @@ export default function Fixture() {
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
                   group="Group G"
+                  marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
                 />
@@ -238,6 +249,7 @@ export default function Fixture() {
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
                   group="Group H"
+                  marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
                 />
