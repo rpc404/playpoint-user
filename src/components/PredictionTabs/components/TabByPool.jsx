@@ -1,6 +1,10 @@
-import { Button, Checkbox, Slider } from "@mui/material";
+import { Button, Slider } from "@mui/material";
 import React from "react";
 import { getQuestionaireByFixtureId } from "../../../api/Prediction";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
 
 /**
  * @dev utils for slider
@@ -69,7 +73,6 @@ const PoolType = ({
       const allQuestionairesByFixtureId = await getQuestionaireByFixtureId(
         fixtureId
       );
-
       let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
         return (
           q.questionaireType === userPrediction.activeQuestionaire &&
@@ -85,6 +88,12 @@ const PoolType = ({
       });
     })();
   }, [userPrediction]);
+
+  const [userAnswer, setUserAnswer] = React.useState(
+    userPrediction.questionaireType === 3
+      ? [{ 0: 0 }, { 1: 0 }, { 2: 0 }]
+      : [{ 0: 0 }, { 1: 0 }, { 2: 0 }, { 3: 0 }]
+  );
 
   return (
     <>
@@ -121,30 +130,41 @@ const PoolType = ({
 
       <div className="questionaires">
         {!questionaire.loading &&
-          questionaire.tempQuestionaire[0]?.questionaires.map((q, index) => (
-            <div className="questionItem" key={index}>
-              <div className="top">
-                <p>
-                  {++index}. {q}
-                </p>
-                <p>20 Points</p>
+          questionaire.tempQuestionaire[0]?.questionaires.questions.map(
+            (q, index) => (
+              <div className="questionItem" key={index}>
+                <div className="top">
+                  <p>
+                    {index + 1}. {q}
+                  </p>
+                  <p>{(index + 1) * 20} Points</p>
+                </div>
+                <div className="answers">
+                  <FormControl>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
+                    >
+                      {questionaire.tempQuestionaire[0]?.questionaires.answers[
+                        index
+                      ]
+                        .split(",")
+                        .map((a, i) => (
+                          <div className="label" key={i}>
+                            <FormControlLabel
+                              value={i}
+                              control={<Radio />}
+                              label={a}
+                            />
+                          </div>
+                        ))}
+                    </RadioGroup>
+                  </FormControl>
+                </div>
               </div>
-              <div className="answers">
-                <div className="label">
-                  <Checkbox />
-                  Sweden
-                </div>
-                <div className="label">
-                  <Checkbox />
-                  Draw
-                </div>
-                <div className="label">
-                  <Checkbox />
-                  Brazil
-                </div>
-              </div>
-            </div>
-          ))}
+            )
+          )}
       </div>
 
       <div className="predictionAmount">
