@@ -1,0 +1,7 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/" },
+      { "source": "/fixture", "destination": "/fixture" },
+      { "source": "/predict/:match*", "destination": "/predict/:match*" }
+    ]
+  }

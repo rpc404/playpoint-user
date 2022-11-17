@@ -94,7 +94,21 @@ const PoolType = ({
       ? [{ 0: 0 }, { 1: 0 }, { 2: 0 }]
       : [{ 0: 0 }, { 1: 0 }, { 2: 0 }, { 3: 0 }]
   );
+  const _predictionData = {
+    _userAnswer:{},
+    _userId:"",
+    _totalAmount:0
+  }
+  const handleRadioChange = (question,answer)=>{
+    _predictionData._userAnswer[question] = answer;
+  }
 
+  const handlePredction = ()=>{
+    const userData = JSON.parse(localStorage.getItem("rpcUserData"))
+    _predictionData._userId = userData.rpcAccountAddress||"";
+    _predictionData._totalAmount = totalPredictionPrice;
+    console.log(_predictionData);
+  }
   return (
     <>
       <div className="topBar">
@@ -156,6 +170,7 @@ const PoolType = ({
                               value={i}
                               control={<Radio />}
                               label={a}
+                              onChange={e => handleRadioChange(index,e.target.value)}
                             />
                           </div>
                         ))}
@@ -191,7 +206,7 @@ const PoolType = ({
             {/* @note must get balance from user wallet balance */}
             <h4>Available: $10</h4>
           </div>
-          <Button>Predict</Button>
+          <Button onClick={()=>handlePredction()}>Predict</Button>
         </div>
       </div>
     </>
