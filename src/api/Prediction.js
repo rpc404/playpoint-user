@@ -13,3 +13,9 @@ export const setPrediction = (data) => {
     }
   );
 };
+
+export const getUserPredictions = (userId) => {
+  return axios.get(
+    import.meta.env.VITE_API_URI + `api/v1/prediction?userid=${userId}`
+  );
+};
