@@ -8,7 +8,8 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import "./styles/style.css"
+import "./styles/style.css";
+import { toast } from "react-toastify";
 
 /**
  * @dev utils for slider
@@ -174,8 +175,16 @@ const PoolType = ({
                             aria-labelledby="demo-row-radio-buttons-group-label"
                           >
                             <div className="label" key={i}>
-                              <input type="radio" name="answer-options" value={i} onChange={(e)=>handleRadioChange(index, e.target.value)} className="custom-radio" />
-                              <label className="custom-label">{1}</label>
+                              <input
+                                type="radio"
+                                name="answer-options"
+                                value={q}
+                                onChange={(e) =>
+                                  handleRadioChange(index, e.target.value)
+                                }
+                                className="custom-radio"
+                              />
+                              <label className="custom-label">{q}</label>
                               {/* <FormControlLabel
                                 value={i}
                                 control={<Radio />}
