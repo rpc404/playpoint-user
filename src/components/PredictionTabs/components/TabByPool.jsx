@@ -89,26 +89,26 @@ const PoolType = ({
     })();
   }, [userPrediction]);
 
-  const [userAnswer, setUserAnswer] = React.useState(
-    userPrediction.questionaireType === 3
-      ? [{ 0: 0 }, { 1: 0 }, { 2: 0 }]
-      : [{ 0: 0 }, { 1: 0 }, { 2: 0 }, { 3: 0 }]
-  );
+  // const [userAnswer, setUserAnswer] = React.useState(
+  //   userPrediction.questionaireType === 3
+  //     ? [{ 0: 0 }, { 1: 0 }, { 2: 0 }]
+  //     : [{ 0: 0 }, { 1: 0 }, { 2: 0 }, { 3: 0 }]
+  // );
   const _predictionData = {
-    _userAnswer:{},
-    _userId:"",
-    _totalAmount:0
-  }
-  const handleRadioChange = (question,answer)=>{
+    _userAnswer: {},
+    _userId: "",
+    _totalAmount: 0,
+  };
+  const handleRadioChange = (question, answer) => {
     _predictionData._userAnswer[question] = answer;
-  }
+  };
 
-  const handlePredction = ()=>{
-    const userData = JSON.parse(localStorage.getItem("rpcUserData"))
-    _predictionData._userId = userData.rpcAccountAddress||"";
+  const handlePredction = () => {
+    const userData = JSON.parse(localStorage.getItem("rpcUserData"));
+    _predictionData._userId = userData.rpcAccountAddress || "";
     _predictionData._totalAmount = totalPredictionPrice;
     console.log(_predictionData);
-  }
+  };
   return (
     <>
       <div className="topBar">
@@ -154,28 +154,44 @@ const PoolType = ({
                   <p>{(index + 1) * 20} Points</p>
                 </div>
                 <div className="answers">
-                  <FormControl>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      {questionaire.tempQuestionaire[0]?.questionaires.answers[
-                        index
-                      ]
-                        .split(",")
-                        .map((a, i) => (
-                          <div className="label" key={i}>
-                            <FormControlLabel
-                              value={i}
-                              control={<Radio />}
-                              label={a}
-                              onChange={e => handleRadioChange(index,e.target.value)}
-                            />
-                          </div>
-                        ))}
-                    </RadioGroup>
-                  </FormControl>
+                  {questionaire.tempQuestionaire[0]?.questionaires.answers[
+                    index
+                  ]
+                    .split(",")
+                    .map((q, i) =>
+                      q !== "input" ? (
+                        <FormControl key={i}>
+                          <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                          >
+                            <div className="label" key={i}>
+                              <FormControlLabel
+                                value={0}
+                                control={<Radio />}
+                                label={1}
+                                onChange={() => handleRadioChange(index, 1)}
+                                onChange={(e) =>
+                                  handleRadioChange(index, e.target.value)
+                                }
+                              />
+                            </div>
+                          </RadioGroup>
+                        </FormControl>
+                      ) : q === "input" ? (
+                        <div key={i}>
+                          <input
+                            style={{ padding: "5px 10px" }}
+                            type="text"
+                            placeholder={"Your Answer..."}
+                            onChange={(e) =>
+                              handleRadioChange(index, e.target.value)
+                            }
+                          />
+                        </div>
+                      ) : null
+                    )}
                 </div>
               </div>
             )
@@ -206,7 +222,7 @@ const PoolType = ({
             {/* @note must get balance from user wallet balance */}
             <h4>Available: $10</h4>
           </div>
-          <Button onClick={()=>handlePredction()}>Predict</Button>
+          <Button onClick={() => handlePredction()}>Predict</Button>
         </div>
       </div>
     </>
