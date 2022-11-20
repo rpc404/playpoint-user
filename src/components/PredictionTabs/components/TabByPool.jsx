@@ -213,7 +213,7 @@ const PoolType = ({
                           <input
                             style={{ padding: "5px 10px" }}
                             type="text"
-                            value={""}
+                            value={_predictionData.answers[index]}
                             placeholder={"Your Answer..."}
                             onChange={(e) =>
                               handleRadioChange(index, e.target.value)
