@@ -5,8 +5,20 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Helmet } from "react-helmet";
 import UserHistory from "../../mocks/UserHistory.json";
+import { getUserPredictions } from "../../api/Prediction";
 
 export default function Profile() {
+  const [userProfile, setUserProfile] =  React.useState([]);
+  const userID = JSON.parse(localStorage.getItem('rpcUserData')).rpcAccountAddress  || ""
+  React.useEffect(()=>{
+    if(userID){
+      getUserPredictions(userID).then(res=>{
+        if(res.data.data){
+          setUserProfile(res.data.data)
+        }
+      })
+    }
+  },[])
   return (
     <div className="profile__container">
       <Helmet>
@@ -59,11 +71,11 @@ export default function Profile() {
         </div>
 
         <div className="history__items">
-          {UserHistory.map((data, index) => (
+          {userProfile.map((data, index) => (
             <div className="history__item" key={index}>
-              <p>{data.id}</p>
+              <p>{data._id.substring(4,15)}</p>
               <p className={data.result}>
-                <span>{data.result}</span>
+                <span>{data.result || "-"}</span>
               </p>
               <p>
                 ${data.amount}~{data.amount} PPTT
@@ -74,13 +86,13 @@ export default function Profile() {
                     ${data.resultAmount}~{data.resultAmount * 0.015} PPTT
                   </>
                 ) : (
-                  <></>
+                  <>{"-"}</>
                 )}
               </p>
               <p>
-                <b>{data.match.home}</b> VS <b>{data.match.away}</b>
+                <b>{data?.match?.home || "-"}</b> VS <b>{data?.match?.away || "-"}</b>
               </p>
-              <p>{data.date}</p>
+              <p>{data.created_at}</p>
             </div>
           ))}
         </div>
