@@ -62,18 +62,23 @@ export default function Home({setActiveFixtureBackground}) {
         <div className="marketingBanners__items">
           <div className="marketingBanners__item">
             <img src="https://img.freepik.com/free-vector/employee-working-office-interior-workplace-flat-vector-illustration_1150-37453.jpg?w=826&t=st=1664647893~exp=1664648493~hmac=1edcd93a5a19f365559dda8959dfe3f9b3b4805d94aff0db6d38eb2c13e07f67" alt="" />
-            <h2>Lorem Ipsum</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi laboriosam recusandae accusamus quaerat odit nesciunt reprehenderit alias at sapiente.</p>
-          </div>
+            <h2>SELECT THE POOL </h2>
+            <p>
+            Select the Pool of League you would want to predict in. <br/>
+Click on quick view of the match you want to play and predict. <br/>
+Select the desirable Wager Stakes per unit entry options.
+              </p> </div>
           <div className="marketingBanners__item">
-            <h2>Lorem Ipsum</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi laboriosam recusandae accusamus quaerat odit nesciunt reprehenderit alias at sapiente.</p>
+            <h2>MAKE YOUR PREDICTION</h2>
+            <p>
+            Answer the four questions. <br/>Each questions have been marked points.<br/>Once the scheduled selected match kicks off the real-time show concludes.
+            </p>
             <img src="https://img.freepik.com/free-vector/employee-working-office-interior-workplace-flat-vector-illustration_1150-37453.jpg?w=826&t=st=1664647893~exp=1664648493~hmac=1edcd93a5a19f365559dda8959dfe3f9b3b4805d94aff0db6d38eb2c13e07f67" alt="" />
           </div>
           <div className="marketingBanners__item">
             <img src="https://img.freepik.com/free-vector/employee-working-office-interior-workplace-flat-vector-illustration_1150-37453.jpg?w=826&t=st=1664647893~exp=1664648493~hmac=1edcd93a5a19f365559dda8959dfe3f9b3b4805d94aff0db6d38eb2c13e07f67" alt="" />
-            <h2>Lorem Ipsum</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi laboriosam recusandae accusamus quaerat odit nesciunt reprehenderit alias at sapiente.</p>
+            <h2>HIGHEST POINT WINS</h2>
+            <p>After systematic scores computational procedures, the winners are determined and sweepstakes are awarded in accordance.</p>
           </div>
         </div>
       </div>
