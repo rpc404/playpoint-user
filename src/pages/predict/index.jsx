@@ -81,6 +81,7 @@ export default function Predict({ socket }) {
                     <p>{data.predictedBy} predicted on {fixture?.HomeTeam} vs {fixture?.AwayTeam}.</p>
                     <div className="info">
                       <p>${data?.amount}~{(data?.amount / 0.015).toFixed(2)} PPTT</p>
+                      {console.log(moment(data.created_at).startOf('hour'))}
                       <p>{moment(data?.created_at).startOf('hour').fromNow()}</p>
                     </div>
                   </div>
