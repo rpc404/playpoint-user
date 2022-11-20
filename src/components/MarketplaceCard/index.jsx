@@ -27,6 +27,7 @@ export default function MarketplaceCard({
         setActiveFixtureBackground(marketplaceCoverImage);
       }}
     >
+   
       <div className="coverImage" style={styles}></div>
       <span className="marketplaceDetails">
         <span className="marketplaceName">

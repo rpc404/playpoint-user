@@ -101,7 +101,7 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                   className="gameDetails__teamDetails"
                   onClick={() =>
                     navigate(
-                      `/predict/${getFixtureId(data?.HomeTeam, data?.AwayTeam)}`
+                      `/predict/${data?._id}`
                     )
                   }
                 >
