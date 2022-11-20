@@ -7,12 +7,16 @@ import "./styles/style.css";
 import { useParams } from "react-router-dom";
 import { getFixutreById } from "../../api/Fixture";
 import allFlags from "../../helpers/CountryFlags.json"
+import { getAllPredictions, getQuestionaireByFixtureId } from "../../api/Prediction";
+import moment from "moment";
 
 export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
   const { fixtureId } = useParams();
+  const [predictions, setPredictions] = React.useState([]);
+  const [questionaires, setQuestionaires] = React.useState([]);
 
 
   const getCountryFlag=(country)=>{
@@ -38,6 +42,16 @@ export default function Predict({ socket }) {
       const response = await getFixutreById(fixtureId);
       setFixture(response.data?.fixture);
     })();
+
+    (async () => {
+      const response = await getAllPredictions();
+      setPredictions(response.data.data)
+    })();
+
+    (async () => {
+      const response = await getQuestionaireByFixtureId(fixtureId);
+      setQuestionaires(response.data.data)
+    })()
   }, []);
 
 
@@ -55,18 +69,19 @@ export default function Predict({ socket }) {
           <h3>Active Predictions</h3>
 
           <div className={`prediction__items ${activeOS}`}>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((data) => {
+            {predictions.length >= 1 && predictions.map((data, index) => {
+              // console.log(fixture)
               return (
-                <div className="predictedCard__container" key={data}>
+                <div className="predictedCard__container" key={index}>
                   <div>
                     <div className="details">
                       <Button>View Answer</Button>
-                      <p>Duo</p>
+                      {/* <p>{console.log()}</p> */}
                     </div>
-                    <p>0x3ebfb8e...0b9c4 predicted on Sweden vs Netherlands.</p>
+                    <p>{data.predictedBy} predicted on {fixture?.HomeTeam} vs {fixture?.AwayTeam}.</p>
                     <div className="info">
-                      <p>$5~0.075 PPTT</p>
-                      <p>2m Ago</p>
+                      <p>${data?.amount}~{(data?.amount / 0.015).toFixed(2)} PPTT</p>
+                      <p>{moment(data?.created_at).startOf('hour').fromNow()}</p>
                     </div>
                   </div>
                 </div>

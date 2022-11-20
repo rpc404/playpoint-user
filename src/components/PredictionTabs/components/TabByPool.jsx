@@ -99,12 +99,16 @@ const PoolType = ({
   //     ? [{ 0: 0 }, { 1: 0 }, { 2: 0 }]
   //     : [{ 0: 0 }, { 1: 0 }, { 2: 0 }, { 3: 0 }]
   // );
+
+  // console.log(questionaire)
   const _predictionData = {
     answers: {},
     predictedBy: "",
     amount: 0,
     questionaireId: "",
+    // questionType: ,
   };
+
   const handleRadioChange = (question, answer) => {
     _predictionData.answers[question] = answer;
   };
@@ -113,10 +117,10 @@ const PoolType = ({
     const userData = JSON.parse(localStorage.getItem("rpcUserData"));
     _predictionData.predictedBy = userData.rpcAccountAddress || "";
     _predictionData.amount = totalPredictionPrice;
-    _predictionData.questionaireId = questionaire.questionaires[0]._id;
-
-    await setPrediction(_predictionData);
-    toast("Wow so easy!");
+    _predictionData.questionaireId = questionaire.questionaires[0]._id
+    // console.table(questionaire.questionaires[0].poolType)
+    await setPrediction(_predictionData)
+    toast("Predicted Successfully!");
   };
   return (
     <>

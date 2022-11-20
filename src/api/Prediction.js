@@ -13,3 +13,8 @@ export const setPrediction = (data) => {
     }
   );
 };
+
+export const getAllPredictions = () => {
+  return axios.get(import.meta.env.VITE_API_URI + `api/v1/prediction`);
+}
+
