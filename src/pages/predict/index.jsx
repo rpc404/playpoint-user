@@ -23,6 +23,11 @@ export default function Predict({ socket }) {
   const [questionaires, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
 
+  const [poolStats, setPoolStats] = React.useState({
+    totalPrediction: 0,
+    totalVolume: 0,
+  });
+
   const getCountryFlag = (country) => {
     let _url = "";
     allFlags.map((flag, key) => {
@@ -67,6 +72,21 @@ export default function Predict({ socket }) {
       const response = await getQuestionaireByFixtureId(fixtureId);
       setQuestionaires(response.data.data);
     })();
+
+    const poolVolume = async () => {
+      let Volume = 0;
+      predictions.map((prediction) => {
+        Volume += prediction.amount;
+      });
+      return Volume;
+    };
+
+    (async () => {
+      setPoolStats({
+        totalPrediction: predictions.length,
+        totalVolume: await poolVolume(),
+      });
+    })();
   }, []);
 
   return (
@@ -89,7 +109,11 @@ export default function Predict({ socket }) {
                   <div className="predictedCard__container" key={index}>
                     <div>
                       <div className="details">
-                        <Button onClick={() => toast("This is under maintainance!")}>View Answer</Button>
+                        <Button
+                          onClick={() => toast("This is under maintainance!")}
+                        >
+                          View Answer
+                        </Button>
                         {/* <p>{console.log()}</p> */}
                       </div>
                       <p>
@@ -141,12 +165,12 @@ export default function Predict({ socket }) {
 
             <div className="marketInfo">
               <div>
-                <p>24h Volume (PPTT)</p>
-                <p>12,233,333</p>
+                <p>24h Volume</p>
+                <p>{poolStats?.totalVolume}$ | {(poolStats?.totalVolume /0.015).toFixed(2)} PPTT</p>
               </div>
               <div>
                 <p>Total Predictions</p>
-                <p>1,233,455</p>
+                <p>{poolStats?.totalPrediction}</p>
               </div>
             </div>
           </div>
