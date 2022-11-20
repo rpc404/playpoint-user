@@ -112,8 +112,8 @@ export default function Navbar({ rpcAPI }) {
           <>
             <Button
               onClick={(e) => {
-                //   e.stopPropagation();
-                //   navigate("/profile");
+                  e.stopPropagation();
+                  navigate("/profile");
               }}
             >
               <i className="ri-user-line"></i>{" "}
