@@ -12,6 +12,7 @@ import {
   getQuestionaireByFixtureId,
 } from "../../api/Prediction";
 import moment from "moment";
+import { toast } from "react-toastify";
 
 export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
@@ -88,7 +89,7 @@ export default function Predict({ socket }) {
                   <div className="predictedCard__container" key={index}>
                     <div>
                       <div className="details">
-                        <Button>View Answer</Button>
+                        <Button onClick={() => toast("This is under maintainance!")}>View Answer</Button>
                         {/* <p>{console.log()}</p> */}
                       </div>
                       <p>
