@@ -135,7 +135,7 @@ const PoolType = ({
         </div>
         <div>
           <div>Questionaires:</div>
-          {[3, 4].map((questionaire) => (
+          {/* {[3, 4].map((questionaire) => (
             <Button
               key={questionaire}
               onClick={() => handleActiveQuestionaire(questionaire)}
@@ -147,7 +147,19 @@ const PoolType = ({
             >
               {questionaire}
             </Button>
-          ))}
+          ))} */}{[3].map((questionaire) => (
+            <Button
+            key={questionaire}
+            onClick={() => handleActiveQuestionaire(questionaire)}
+            className={
+              userPrediction.activeQuestionaire === questionaire
+                ? "active"
+                : ""
+            }
+          >
+            {questionaire}
+          </Button>
+        ))}
         </div>
       </div>
 
@@ -224,8 +236,8 @@ const PoolType = ({
       </div>
 
       <div className="predictionAmount">
-        <div>
-          {/* <h4>Prediction Count:</h4>
+        {/* <div>
+          <h4>Prediction Count:</h4>
           <Slider
             aria-label="Custom marks"
             defaultValue={1}
@@ -238,8 +250,8 @@ const PoolType = ({
             onChange={(e, value) => {
               setPredictionCount(value);
             }}
-          /> */}
-        </div>
+          />
+        </div> */}
 
         <div>
           <div className="top">
