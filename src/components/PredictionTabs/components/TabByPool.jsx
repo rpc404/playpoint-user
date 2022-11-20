@@ -5,6 +5,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import "./styles/style.css"
 
 /**
  * @dev utils for slider
@@ -160,22 +161,22 @@ const PoolType = ({
                     .split(",")
                     .map((q, i) =>
                       q !== "input" ? (
-                        <FormControl key={i}>
+                        <FormControl key={i} className="row-radio">
                           <RadioGroup
                             row
                             aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
                           >
                             <div className="label" key={i}>
-                              <FormControlLabel
-                                value={0}
+                              <input type="radio" name="answer-options" value={i} onChange={(e)=>handleRadioChange(index, e.target.value)} className="custom-radio" />
+                              <label className="custom-label">{1}</label>
+                              {/* <FormControlLabel
+                                value={i}
                                 control={<Radio />}
                                 label={1}
-                                onChange={() => handleRadioChange(index, 1)}
                                 onChange={(e) =>
                                   handleRadioChange(index, e.target.value)
                                 }
-                              />
+                              /> */}
                             </div>
                           </RadioGroup>
                         </FormControl>
