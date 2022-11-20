@@ -30,7 +30,7 @@ Select the desirable Wager Stakes per unit entry options.
           <div className="marketingBanners__item">
             <h2>MAKE YOUR PREDICTION</h2>
             <p>
-            Answer the four questions. <br/>Each questions have been marked points.<br/>Once the match kicks off the predict closes.
+            Answer the four questions. <br/>Each questions have been marked points.<br/>Once the match kicks off the prediction closes.
             </p>
             <img src="https://cdni.iconscout.com/illustration/premium/thumb/future-prediction-by-employer-4252956-3526673.png" style={{scale:"1"}} alt="" />
           </div>
