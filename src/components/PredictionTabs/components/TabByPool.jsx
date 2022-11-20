@@ -160,7 +160,14 @@ const PoolType = ({
                   <p>
                     {index + 1}. {q}
                   </p>
-                  <p>{(index + 1) * 20} Points</p>
+                  <p>
+                    {
+                      questionaire.tempQuestionaire[0]?.questionaires.points[
+                        index
+                      ]
+                    }{" "}
+                    Points
+                  </p>
                 </div>
                 <div className="answers">
                   {questionaire.tempQuestionaire[0]?.questionaires.answers[
