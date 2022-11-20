@@ -1,11 +1,15 @@
 import { Button, Slider } from "@mui/material";
 import React from "react";
-import { getQuestionaireByFixtureId } from "../../../api/Prediction";
+import {
+  getQuestionaireByFixtureId,
+  setPrediction,
+} from "../../../api/Prediction";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import "./styles/style.css"
+import "./styles/style.css";
+import { toast } from "react-toastify";
 
 /**
  * @dev utils for slider
@@ -96,25 +100,23 @@ const PoolType = ({
   //     : [{ 0: 0 }, { 1: 0 }, { 2: 0 }, { 3: 0 }]
   // );
   const _predictionData = {
-    _userAnswer: {},
-    _userId: "",
-    _totalAmount: 0,
+    answers: {},
+    predictedBy: "",
+    amount: 0,
+    questionaireId: "",
   };
   const handleRadioChange = (question, answer) => {
-    _predictionData._userAnswer[question] = answer;
+    _predictionData.answers[question] = answer;
   };
 
-  const handlePredction = () => {
+  const handlePredction = async () => {
     const userData = JSON.parse(localStorage.getItem("rpcUserData"));
-    _predictionData._userId = userData.rpcAccountAddress || "";
-    _predictionData._totalAmount = totalPredictionPrice;
-    console.log(_predictionData);
-    // reset
-    // _predictionData._userAnswer ={},
-    // _predictionData._totalAmount = 0;
-    Promise.resolve(()=>{
-      _predictionData._userAnswer ={}
-    }).then(()=>console.log("e"))
+    _predictionData.predictedBy = userData.rpcAccountAddress || "";
+    _predictionData.amount = totalPredictionPrice;
+    _predictionData.questionaireId = questionaire.questionaires[0]._id;
+
+    await setPrediction(_predictionData);
+    toast("Wow so easy!");
   };
   return (
     <>
@@ -133,10 +135,10 @@ const PoolType = ({
         </div>
         <div>
           <div>Questionaires:</div>
-          {[3, 4].map((questionaire) => (
+          {[4].map((questionaire) => (
             <Button
               key={questionaire}
-              onClick={() => handleActiveQuestionaire(questionaire)}
+              // onClick={() => handleActiveQuestionaire(questionaire)}
               className={
                 userPrediction.activeQuestionaire === questionaire
                   ? "active"
@@ -158,7 +160,14 @@ const PoolType = ({
                   <p>
                     {index + 1}. {q}
                   </p>
-                  <p>{(index + 1) * 20} Points</p>
+                  <p>
+                    {
+                      questionaire.tempQuestionaire[0]?.questionaires.points[
+                        index
+                      ]
+                    }{" "}
+                    Points
+                  </p>
                 </div>
                 <div className="answers">
                   {questionaire.tempQuestionaire[0]?.questionaires.answers[
@@ -173,12 +182,21 @@ const PoolType = ({
                             aria-labelledby="demo-row-radio-buttons-group-label"
                           >
                             <div className="label" key={i}>
-                              <input type="radio" name="answer-options" value={i} onChange={(e)=>handleRadioChange(index, e.target.value)} className="custom-radio" />
-                              <label className="custom-label">{1}</label>
+                              <input
+                                type="radio"
+                                name="answer-options"
+                                value={q}
+                                onChange={(e) =>
+                                  handleRadioChange(index, e.target.value)
+                                }
+                                className="custom-radio"
+                              />
+                              <label className="custom-label">{q}</label>
                               {/* <FormControlLabel
                                 value={i}
                                 control={<Radio />}
-                                label={1}
+                                label={q}
+                                // onChange={() => handleRadioChange(index, 1)}
                                 onChange={(e) =>
                                   handleRadioChange(index, e.target.value)
                                 }
@@ -191,7 +209,7 @@ const PoolType = ({
                           <input
                             style={{ padding: "5px 10px" }}
                             type="text"
-                            value={_predictionData._userAnswer[index]}
+                            value={""}
                             placeholder={"Your Answer..."}
                             onChange={(e) =>
                               handleRadioChange(index, e.target.value)
@@ -207,7 +225,7 @@ const PoolType = ({
       </div>
 
       <div className="predictionAmount">
-        <div>
+        {/* <div>
           <h4>Prediction Count:</h4>
           <Slider
             aria-label="Custom marks"
@@ -222,7 +240,7 @@ const PoolType = ({
               setPredictionCount(value);
             }}
           />
-        </div>
+        </div> */}
 
         <div>
           <div className="top">
