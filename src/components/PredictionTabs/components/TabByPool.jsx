@@ -116,9 +116,9 @@ const PoolType = ({
   const handlePredction = async () => {
     const userData = JSON.parse(localStorage.getItem("rpcUserData"));
     _predictionData.predictedBy = userData.rpcAccountAddress || "";
-    _predictionData.amount = totalPredictionPrice;
+    _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id
-
+    // console.log(_predictionData)
     await setPrediction(_predictionData)
     toast("Predicted Successfully!");
   };
