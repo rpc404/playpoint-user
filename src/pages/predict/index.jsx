@@ -146,7 +146,7 @@ export default function Predict({ socket }) {
         </div>
 
         {/*
-         * @note Recent Predictions
+         * @note Leaderboards Predictions
          */}
         <div className="leaderboards">
           <h3 className="leaderboardsTitle">Leaderboards</h3>

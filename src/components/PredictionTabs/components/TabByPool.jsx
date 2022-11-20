@@ -135,7 +135,7 @@ const PoolType = ({
         </div>
         <div>
           <div>Questionaires:</div>
-          {/* {[3, 4].map((questionaire) => (
+          {[4].map((questionaire) => (
             <Button
               key={questionaire}
               onClick={() => handleActiveQuestionaire(questionaire)}
@@ -147,19 +147,7 @@ const PoolType = ({
             >
               {questionaire}
             </Button>
-          ))} */}{[3].map((questionaire) => (
-            <Button
-            key={questionaire}
-            onClick={() => handleActiveQuestionaire(questionaire)}
-            className={
-              userPrediction.activeQuestionaire === questionaire
-                ? "active"
-                : ""
-            }
-          >
-            {questionaire}
-          </Button>
-        ))}
+          ))}
         </div>
       </div>
 
