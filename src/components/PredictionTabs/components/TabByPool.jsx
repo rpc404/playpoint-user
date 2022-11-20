@@ -1,6 +1,9 @@
 import { Button, Slider } from "@mui/material";
 import React from "react";
-import { getQuestionaireByFixtureId } from "../../../api/Prediction";
+import {
+  getQuestionaireByFixtureId,
+  setPrediction,
+} from "../../../api/Prediction";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -95,19 +98,23 @@ const PoolType = ({
   //     : [{ 0: 0 }, { 1: 0 }, { 2: 0 }, { 3: 0 }]
   // );
   const _predictionData = {
-    _userAnswer: {},
-    _userId: "",
-    _totalAmount: 0,
+    answers: {},
+    predictedBy: "",
+    amount: 0,
+    questionaireId: "",
   };
   const handleRadioChange = (question, answer) => {
-    _predictionData._userAnswer[question] = answer;
+    _predictionData.answers[question] = answer;
   };
 
-  const handlePredction = () => {
+  const handlePredction = async () => {
     const userData = JSON.parse(localStorage.getItem("rpcUserData"));
-    _predictionData._userId = userData.rpcAccountAddress || "";
-    _predictionData._totalAmount = totalPredictionPrice;
-    console.log(_predictionData);
+    _predictionData.predictedBy = userData.rpcAccountAddress || "";
+    _predictionData.amount = totalPredictionPrice;
+    _predictionData.questionaireId = questionaire.questionaires[0]._id;
+
+    await setPrediction(_predictionData);
+    toast("Wow so easy!");
   };
   return (
     <>
@@ -170,8 +177,8 @@ const PoolType = ({
                               <FormControlLabel
                                 value={0}
                                 control={<Radio />}
-                                label={1}
-                                onChange={() => handleRadioChange(index, 1)}
+                                label={q}
+                                // onChange={() => handleRadioChange(index, 1)}
                                 onChange={(e) =>
                                   handleRadioChange(index, e.target.value)
                                 }
@@ -200,7 +207,7 @@ const PoolType = ({
 
       <div className="predictionAmount">
         <div>
-          <h4>Prediction Count:</h4>
+          {/* <h4>Prediction Count:</h4>
           <Slider
             aria-label="Custom marks"
             defaultValue={1}
@@ -213,7 +220,7 @@ const PoolType = ({
             onChange={(e, value) => {
               setPredictionCount(value);
             }}
-          />
+          /> */}
         </div>
 
         <div>
