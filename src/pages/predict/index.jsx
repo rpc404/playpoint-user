@@ -45,7 +45,7 @@ export default function Predict({ socket }) {
 
     (async () => {
       const response = await getAllPredictions();
-      setPredictions(response.data.data)
+      setPredictions(response.data.data.reverse());
     })();
 
     (async () => {
@@ -82,7 +82,7 @@ export default function Predict({ socket }) {
                     <div className="info">
                       <p>${data?.amount}~{(data?.amount / 0.015).toFixed(2)} PPTT</p>
                       {console.log(moment(data.created_at).startOf('hour'))}
-                      <p>{moment(data?.created_at).startOf('hour').fromNow()}</p>
+                      <p>{moment(data?.created_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
                     </div>
                   </div>
                 </div>
