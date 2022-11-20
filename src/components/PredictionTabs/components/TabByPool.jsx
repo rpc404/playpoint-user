@@ -109,6 +109,12 @@ const PoolType = ({
     _predictionData._userId = userData.rpcAccountAddress || "";
     _predictionData._totalAmount = totalPredictionPrice;
     console.log(_predictionData);
+    // reset
+    // _predictionData._userAnswer ={},
+    // _predictionData._totalAmount = 0;
+    Promise.resolve(()=>{
+      _predictionData._userAnswer ={}
+    }).then(()=>console.log("e"))
   };
   return (
     <>
@@ -185,6 +191,7 @@ const PoolType = ({
                           <input
                             style={{ padding: "5px 10px" }}
                             type="text"
+                            value={_predictionData._userAnswer[index]}
                             placeholder={"Your Answer..."}
                             onChange={(e) =>
                               handleRadioChange(index, e.target.value)
