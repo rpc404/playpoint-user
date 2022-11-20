@@ -73,10 +73,10 @@ Select the desirable Wager Stakes per unit entry options.
             <p>
             Answer the four questions. <br/>Each questions have been marked points.<br/>Once the scheduled selected match kicks off the real-time show concludes.
             </p>
-            <img src="https://img.freepik.com/free-vector/employee-working-office-interior-workplace-flat-vector-illustration_1150-37453.jpg?w=826&t=st=1664647893~exp=1664648493~hmac=1edcd93a5a19f365559dda8959dfe3f9b3b4805d94aff0db6d38eb2c13e07f67" alt="" />
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/future-prediction-by-employer-4252956-3526673.png" style={{scale:"1"}} alt="" />
           </div>
           <div className="marketingBanners__item">
-            <img src="https://img.freepik.com/free-vector/employee-working-office-interior-workplace-flat-vector-illustration_1150-37453.jpg?w=826&t=st=1664647893~exp=1664648493~hmac=1edcd93a5a19f365559dda8959dfe3f9b3b4805d94aff0db6d38eb2c13e07f67" alt="" />
+            <img src="https://img.freepik.com/premium-vector/money-growth-success-progress-report-vector-illustration-calculating-measuring-company-sales-improvement-statistics_610956-1547.jpg?w=2000" alt="" />
             <h2>HIGHEST POINT WINS</h2>
             <p>After systematic scores computational procedures, the winners are determined and sweepstakes are awarded in accordance.</p>
           </div>
