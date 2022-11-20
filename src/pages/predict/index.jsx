@@ -6,12 +6,24 @@ import PredictionTabs from "../../components/PredictionTabs";
 import "./styles/style.css";
 import { useParams } from "react-router-dom";
 import { getFixutreById } from "../../api/Fixture";
+import allFlags from "../../helpers/CountryFlags.json"
 
 export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
   const { fixtureId } = useParams();
+
+
+  const getCountryFlag=(country)=>{
+    let _url = "";
+    allFlags.map((flag,key)=>{
+      if(flag.name===country){
+        _url = flag.image
+      }
+    })
+    return _url;
+  }
 
   React.useEffect(() => {
     // Windows
@@ -27,6 +39,8 @@ export default function Predict({ socket }) {
       setFixture(response.data?.fixture);
     })();
   }, []);
+
+
   return (
     <div className="prediction__container">
       <Helmet>
@@ -70,7 +84,7 @@ export default function Predict({ socket }) {
               <div>
                 <p>{fixture.HomeTeam}</p>
                 <img
-                  src="https://www.kindpng.com/picc/m/297-2972143_sweden-logo-png-transparent-png.png"
+                  src={getCountryFlag(fixture.HomeTeam)}
                   alt=""
                   loading="lazy"
                 />
@@ -78,7 +92,7 @@ export default function Predict({ socket }) {
               <span>vs</span>
               <div>
                 <img
-                  src="https://seeklogo.com/images/F/flag-of-brazil-logo-94D3E82278-seeklogo.com.png"
+                  src={getCountryFlag(fixture.AwayTeam)}
                   alt=""
                   loading="lazy"
                 />
