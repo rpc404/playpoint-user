@@ -43,6 +43,7 @@ export default function App() {
     alert(
       "Consider using Metamask Extension on browsers, or use Metamask Phone."
     );
+  handleRPCLogin();
 
   /**
    *************************************************************************************************

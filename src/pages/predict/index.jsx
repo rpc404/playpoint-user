@@ -6,24 +6,40 @@ import PredictionTabs from "../../components/PredictionTabs";
 import "./styles/style.css";
 import { useParams } from "react-router-dom";
 import { getFixutreById } from "../../api/Fixture";
-import allFlags from "../../helpers/CountryFlags.json"
+import allFlags from "../../helpers/CountryFlags.json";
+import {
+  getAllPredictions,
+  getQuestionaireByFixtureId,
+} from "../../api/Prediction";
+import moment from "moment";
+import { toast } from "react-toastify";
 
 export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
   const { fixtureId } = useParams();
+  const [predictions, setPredictions] = React.useState([]);
+  const [questionaires, setQuestionaires] = React.useState([]);
+  const [lineChartData, setLineChartData] = React.useState([]);
 
-
-  const getCountryFlag=(country)=>{
+  const getCountryFlag = (country) => {
     let _url = "";
-    allFlags.map((flag,key)=>{
-      if(flag.name===country){
-        _url = flag.image
+    allFlags.map((flag, key) => {
+      if (flag.name === country) {
+        _url = flag.image;
       }
-    })
+    });
     return _url;
-  }
+  };
+
+  const poolVolume = async (p) => {
+    let Volume = 0;
+    await p.map((prediction) => {
+      Volume += prediction.amount;
+    });
+    return Volume;
+  };
 
   React.useEffect(() => {
     // Windows
@@ -38,9 +54,28 @@ export default function Predict({ socket }) {
       const response = await getFixutreById(fixtureId);
       setFixture(response.data?.fixture);
     })();
+
+    (async () => {
+      const response = await getAllPredictions();
+      setPredictions(response.data.data.reverse());
+
+      let lineChartData = [];
+
+      response.data.data.map((prediction, key) => {
+        lineChartData.push({
+          key: new Date(prediction.created_at),
+          data: prediction.amount,
+        });
+      });
+
+      setLineChartData(lineChartData);
+    })();
+
+    (async () => {
+      const response = await getQuestionaireByFixtureId(fixtureId);
+      setQuestionaires(response.data.data);
+    })();
   }, []);
-
-
   return (
     <div className="prediction__container">
       <Helmet>
@@ -55,23 +90,38 @@ export default function Predict({ socket }) {
           <h3>Active Predictions</h3>
 
           <div className={`prediction__items ${activeOS}`}>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((data) => {
-              return (
-                <div className="predictedCard__container" key={data}>
-                  <div>
-                    <div className="details">
-                      <Button>View Answer</Button>
-                      <p>Duo</p>
-                    </div>
-                    <p>0x3ebfb8e...0b9c4 predicted on Sweden vs Netherlands.</p>
-                    <div className="info">
-                      <p>$5~0.075 PPTT</p>
-                      <p>2m Ago</p>
+            {predictions.length >= 1 &&
+              predictions.map((data, index) => {
+                return (
+                  <div className="predictedCard__container" key={index}>
+                    <div>
+                      <div className="details">
+                        <Button
+                          onClick={() => toast("This is under maintainance!")}
+                        >
+                          View Answer
+                        </Button>
+                        {/* <p>{console.log()}</p> */}
+                      </div>
+                      <p>
+                        {data.predictedBy} predicted on {fixture?.HomeTeam} vs{" "}
+                        {fixture?.AwayTeam}.
+                      </p>
+                      <div className="info">
+                        <p>
+                          ${data?.amount}~{(data?.amount / 0.015).toFixed(2)}{" "}
+                          PPTT
+                        </p>
+                        <p>
+                          {moment(data?.created_at).format(
+                            "MMMM Do YYYY, h:mm:ss a"
+                          )}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
 
@@ -101,13 +151,14 @@ export default function Predict({ socket }) {
             </div>
 
             <div className="marketInfo">
+              {/* @note this needs to be resolved */}
               <div>
-                <p>24h Volume (PPTT)</p>
-                <p>12,233,333</p>
+                <p>24h Volume</p>
+                <p> PPTT</p>
               </div>
               <div>
                 <p>Total Predictions</p>
-                <p>1,233,455</p>
+                <p>{predictions.length >= 1 && predictions.length}</p>
               </div>
             </div>
           </div>
@@ -117,13 +168,7 @@ export default function Predict({ socket }) {
               className="graphData"
               width="90%"
               height={window.innerWidth >= 576 ? 350 : 200}
-              data={[
-                { key: new Date("11/25/2019"), data: 30 },
-                { key: new Date("11/29/2019"), data: 14 },
-                { key: new Date("11/30/2019"), data: 5 },
-                { key: new Date("12/01/2019"), data: 40 },
-                { key: new Date("12/02/2019"), data: 20 },
-              ]}
+              data={lineChartData}
               series={
                 <LineSeries
                   colorScheme={(_data, _index, active) =>
@@ -141,7 +186,11 @@ export default function Predict({ socket }) {
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
-            <PredictionTabs poolSize={poolSize} fixtureId={fixtureId} setPoolSize={setPoolSize} />
+            <PredictionTabs
+              poolSize={poolSize}
+              fixtureId={fixtureId}
+              setPoolSize={setPoolSize}
+            />
           </div>
         </div>
 
@@ -162,10 +211,7 @@ export default function Predict({ socket }) {
             </p>
           </div>
           <div className={`leaderboardItems ${activeOS}`}>
-            {[
-              0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-              19, 20, 21, 22, 23, 24,
-            ].map((data) => {
+            {/* {fixture[0].length >=1 && fixture.map((data) => {
               return (
                 <div className="leaderboardItem__container" key={data}>
                   <p>AUS/QTR</p>
@@ -173,7 +219,7 @@ export default function Predict({ socket }) {
                   <p>$432k</p>
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
       </div>

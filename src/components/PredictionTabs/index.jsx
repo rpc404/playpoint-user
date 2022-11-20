@@ -10,7 +10,6 @@ export default function PredictionTabs({ poolSize, setPoolSize, fixtureId }) {
     activeQuestionaire: 4,
   });
 
-  
   /**
    *
    * @dev this state is for MUI tabs
