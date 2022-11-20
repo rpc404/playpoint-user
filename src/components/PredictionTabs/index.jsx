@@ -7,10 +7,9 @@ export default function PredictionTabs({ poolSize, setPoolSize, fixtureId }) {
   const [value, setValue] = React.useState(0);
   const [userPrediction, setUserPrediction] = React.useState({
     activeAmount: 5,
-    activeQuestionaire: 3,
+    activeQuestionaire: 4,
   });
 
-  
   /**
    *
    * @dev this state is for MUI tabs

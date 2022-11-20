@@ -6,8 +6,7 @@
 .profile__container .blob1 {
   background: url("https://ik.imagekit.io/domsan/Screen_Shot_2022-09-08_at_20.10.25_Fwn3-6res.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662647143911") no-repeat fixed center center;
   background-size: cover;
-  -webkit-box-shadow: inset 0 0 0 2000px rgba(33, 33, 33, 0.3);
-          box-shadow: inset 0 0 0 2000px rgba(33, 33, 33, 0.3);
+  box-shadow: inset 0 0 0 2000px rgba(33, 33, 33, 0.3);
   width: 100vw;
   height: 270px;
   position: absolute;
@@ -16,31 +15,20 @@
   z-index: -1;
 }
 .profile__container .summary__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   max-width: 55vw;
   margin: 0 auto;
 }
 .profile__container .summary__container .summaryItem {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 8px;
   background: rgba(162, 155, 254, 0.5490196078);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   padding: 12px 19px 12px 15px;
   border-radius: 12px;
   color: #fff;
@@ -59,21 +47,12 @@
   font-weight: 400;
 }
 .profile__container .userData {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   z-index: 1;
   margin-top: 3vh;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
 .profile__container .userData img {
@@ -82,16 +61,11 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
-  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 .profile__container .userData .MuiButton-root {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 8px;
   text-transform: capitalize;
   background: #6b5ce7;
@@ -103,39 +77,25 @@
   margin-top: 20px;
 }
 .profile__container .history__container .titles {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding: 15px 0;
   background: #2f3542;
   color: #fff;
 }
 .profile__container .history__container .titles p {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
+  flex: 1 1 0;
   text-transform: uppercase;
   padding: 0 5px;
   font-size: 14px;
   font-weight: 500;
 }
 .profile__container .history__container .history__items .history__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding: 10px 0;
   cursor: pointer;
@@ -144,9 +104,7 @@
   background: #ced6e0;
 }
 .profile__container .history__container .history__items .history__item p {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
+  flex: 1 1 0;
   text-transform: uppercase;
   padding: 0 5px;
   font-size: 14px;
@@ -190,5 +148,4 @@
 }
 .profile__container .MuiPagination-root {
   margin: 10px 4.5vw;
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

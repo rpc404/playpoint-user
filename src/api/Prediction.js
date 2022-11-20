@@ -5,3 +5,22 @@ export const getQuestionaireByFixtureId = (fixtureId) => {
     import.meta.env.VITE_API_URI + `api/v1/questionaires/${fixtureId}`
   );
 };
+
+export const setPrediction = (data) => {
+  return axios.post(
+    import.meta.env.VITE_API_URI + `api/v1/prediction`,{
+      "data": data
+    }
+  );
+};
+
+export const getUserPredictions = (userId) => {
+  return axios.get(
+    import.meta.env.VITE_API_URI + `api/v1/prediction?userid=${userId}`
+  );
+};
+
+export const getAllPredictions = () => {
+  return axios.get(import.meta.env.VITE_API_URI + `api/v1/prediction`);
+}
+

@@ -108,6 +108,7 @@ export default function Navbar({ rpcAPI }) {
           <Button onClick={() => handleLogin()}>
             <i className="ri-fingerprint-line"></i> Login / Register
           </Button>
+          // handleLogin()
         ) : (
           <>
             <Button
