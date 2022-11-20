@@ -252,7 +252,7 @@ const PoolType = ({
             {/* @note must get balance from user wallet balance */}
             <h4>Available: $10</h4>
           </div>
-          <Button onClick={() => handlePredction()}>Predict</Button>
+          <Button disabled={true} onClick={() => handlePredction()}>Predict</Button>
         </div>
       </div>
     </>
