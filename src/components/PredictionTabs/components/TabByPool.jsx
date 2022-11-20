@@ -118,7 +118,7 @@ const PoolType = ({
     _predictionData.predictedBy = userData.rpcAccountAddress || "";
     _predictionData.amount = totalPredictionPrice;
     _predictionData.questionaireId = questionaire.questionaires[0]._id
-    // console.table(questionaire.questionaires[0].poolType)
+
     await setPrediction(_predictionData)
     toast("Predicted Successfully!");
   };

@@ -23,11 +23,6 @@ export default function Predict({ socket }) {
   const [questionaires, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
 
-  const [poolStats, setPoolStats] = React.useState({
-    totalPrediction: 0,
-    totalVolume: 0,
-  });
-
   const getCountryFlag = (country) => {
     let _url = "";
     allFlags.map((flag, key) => {
@@ -36,6 +31,14 @@ export default function Predict({ socket }) {
       }
     });
     return _url;
+  };
+
+  const poolVolume = async (p) => {
+    let Volume = 0;
+    await p.map((prediction) => {
+      Volume += prediction.amount;
+    });
+    return Volume;
   };
 
   React.useEffect(() => {
@@ -57,8 +60,8 @@ export default function Predict({ socket }) {
       setPredictions(response.data.data.reverse());
 
       let lineChartData = [];
+
       response.data.data.map((prediction, key) => {
-        console.log(prediction);
         lineChartData.push({
           key: new Date(prediction.created_at),
           data: prediction.amount,
@@ -73,20 +76,6 @@ export default function Predict({ socket }) {
       setQuestionaires(response.data.data);
     })();
 
-    const poolVolume = async () => {
-      let Volume = 0;
-      predictions.map((prediction) => {
-        Volume += prediction.amount;
-      });
-      return Volume;
-    };
-
-    (async () => {
-      setPoolStats({
-        totalPrediction: predictions.length,
-        totalVolume: await poolVolume(),
-      });
-    })();
   }, []);
 
   return (
@@ -164,13 +153,14 @@ export default function Predict({ socket }) {
             </div>
 
             <div className="marketInfo">
+              {/* @note this needs to be resolved */}
               <div>
                 <p>24h Volume</p>
-                <p>{poolStats?.totalVolume}$ | {(poolStats?.totalVolume /0.015).toFixed(2)} PPTT</p>
+                <p> PPTT</p>
               </div>
               <div>
                 <p>Total Predictions</p>
-                <p>{poolStats?.totalPrediction}</p>
+                <p>{predictions.length >= 1 && predictions.length}</p>
               </div>
             </div>
           </div>
