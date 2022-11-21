@@ -10,6 +10,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import "./styles/style.css";
 import { toast } from "react-toastify";
+import loader from "../../../helpers/loading.gif";
+
 
 /**
  * @dev utils for slider
@@ -68,6 +70,7 @@ const PoolType = ({
 
   const [predictionCount, setPredictionCount] = React.useState(1);
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
+  const [predicting,setPredicting] = React.useState(false)
 
   React.useEffect(() => {
     setTotalPredictionPrice(userPrediction.activeAmount * predictionCount);
@@ -113,14 +116,35 @@ const PoolType = ({
     _predictionData.answers[question] = answer;
   };
 
+  const validation = (answers) => {
+    let _ = false;
+    for (let index = 0; index <  questionaire.tempQuestionaire[0]?.questionaires.questions.length; index++) {
+      if(answers.hasOwnProperty(index)){
+        _ = true;
+      
+      }else{
+        _ = false;
+      }
+    }
+    return _;
+  }
+
   const handlePredction = async () => {
     const userData = JSON.parse(localStorage.getItem("rpcUserData"));
     _predictionData.predictedBy = userData.rpcAccountAddress || "";
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id
-    // console.log(_predictionData)
-    await setPrediction(_predictionData)
-    toast("Predicted Successfully!");
+   
+    if(validation(_predictionData.answers)){
+      setPredicting(true);
+     return await setPrediction(_predictionData).then(()=>{
+      toast("Predicted Successfully!")
+      _predictionData.answers={};
+    }).catch(err=>console.log(err))
+      .finally(()=>setPredicting(false))
+    }
+    return toast.error("Enter All Answers")
+   
   };
   return (
     <>
@@ -252,7 +276,13 @@ const PoolType = ({
             {/* @note must get balance from user wallet balance */}
             <h4>Available: $10</h4>
           </div>
-          <Button disabled={true} onClick={() => handlePredction()}>Prediction Closed</Button>
+          {/* 
+          @note button needs to be disabled after */}
+          <Button onClick={() => handlePredction()} disabled={predicting}>
+            {
+              predicting ? <img src={loader} alt="loading" /> : "Predict"
+            }
+          </Button>
         </div>
       </div>
     </>

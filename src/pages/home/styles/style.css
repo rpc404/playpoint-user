@@ -1,8 +1,20 @@
-.home__container {
-  padding-top: 50px;
+.home__container .divider {
+  background: rgb(255, 91, 91);
+  background: linear-gradient(140deg, rgb(255, 91, 91) 0%, rgb(255, 163, 57) 20%, rgb(130, 255, 66) 40%, rgb(27, 255, 222) 62%, rgb(14, 234, 238) 81%, rgb(34, 172, 255) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff5b5b",endColorstr="#22acff",GradientType=1);
+  height: 3px;
+  width: 100%;
+}
+.home__container .home__mainTitle {
+  padding: 40px 3vw 35px 3vw;
+  text-decoration: underline;
+}
+.home__container .marketingBanners__container {
+  margin: 50px 0;
+  padding-bottom: 80px;
+  margin-bottom: 0;
 }
 .home__container .marketingBanners__container h1 {
-  font-weight: 500;
   padding: 0 3vw 25px 3vw;
   text-align: center;
 }
@@ -29,8 +41,9 @@
 .home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item {
   height: 56vh;
   width: 26vw;
-  border: 1px solid #000;
-  padding: 20px 25px;
+  border: 1px solid;
+  border-color: #000;
+  padding: 25px;
   transition: 0.3s all ease-in-out;
   -webkit-transition: 0.3s all ease-in-out;
   display: -webkit-box;
@@ -87,7 +100,7 @@
   line-height: 1.5;
 }
 .home__container .marketplace__items {
-  padding: 60px 3vw;
+  padding: 0 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,6 +114,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  margin-bottom: 20px;
+  padding-bottom: 50px;
 }
 @media (max-width: 576px) {
   .home__container .marketplace__items {
