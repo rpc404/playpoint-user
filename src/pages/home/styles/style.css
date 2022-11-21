@@ -25,7 +25,10 @@
     gap: 20px;
   }
 }
-.home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item {
+.home__container
+  .marketingBanners__container
+  .marketingBanners__items
+  .marketingBanners__item {
   height: 56vh;
   width: 26vw;
   border: 1px solid #000;
@@ -37,62 +40,104 @@
   justify-content: space-evenly;
 }
 @media (max-width: 576px) {
-  .home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item {
+  .home__container
+    .marketingBanners__container
+    .marketingBanners__items
+    .marketingBanners__item {
     width: 85vw;
   }
 }
-.home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item:hover {
+.home__container
+  .marketingBanners__container
+  .marketingBanners__items
+  .marketingBanners__item:hover {
   border-color: #9191ff;
   box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   cursor: pointer;
 }
-.home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item h2 {
+.home__container
+  .marketingBanners__container
+  .marketingBanners__items
+  .marketingBanners__item
+  h2 {
   margin-bottom: 10px;
 }
-.home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item:nth-child(2) {
+.home__container
+  .marketingBanners__container
+  .marketingBanners__items
+  .marketingBanners__item:nth-child(2) {
   margin: 0 40px;
   text-align: center;
 }
 @media (max-width: 576px) {
-  .home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item:nth-child(2) {
+  .home__container
+    .marketingBanners__container
+    .marketingBanners__items
+    .marketingBanners__item:nth-child(2) {
     margin: 0;
     text-align: left;
   }
 }
-.home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item:nth-child(3) {
+.home__container
+  .marketingBanners__container
+  .marketingBanners__items
+  .marketingBanners__item:nth-child(3) {
   text-align: right;
 }
 @media (max-width: 576px) {
-  .home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item:nth-child(3) {
+  .home__container
+    .marketingBanners__container
+    .marketingBanners__items
+    .marketingBanners__item:nth-child(3) {
     text-align: left;
   }
 }
-.home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item img {
+.home__container
+  .marketingBanners__container
+  .marketingBanners__items
+  .marketingBanners__item
+  img {
   width: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   min-height: 225px;
 }
-.home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item p {
+.home__container
+  .marketingBanners__container
+  .marketingBanners__items
+  .marketingBanners__item
+  p {
   line-height: 1.5;
 }
 .home__container .marketplace__items {
   padding: 0 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 45px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   padding-bottom: 50px;
 }
 @media (max-width: 576px) {
   .home__container .marketplace__items {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
 .home__container .marketplace__items .marketplaceCard__container {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0px;
   flex: 1 1 0;
   text-decoration: none;
   max-width: 21vw;
@@ -105,6 +150,7 @@
   -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   cursor: pointer;
+  -webkit-transition: 0.3s all ease-in-out;
   transition: 0.3s all ease-in-out;
 }
 @media (max-width: 576px) {
@@ -122,7 +168,11 @@
 .home__container .marketplace__items .marketplaceCard__container .coverImage {
   height: 130px;
 }
-.home__container .marketplace__items .marketplaceCard__container .marketplaceDetails h4 {
+.home__container
+  .marketplace__items
+  .marketplaceCard__container
+  .marketplaceDetails
+  h4 {
   font-weight: 500;
   padding: 8px;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
@@ -131,12 +181,21 @@
   align-items: center;
   gap: 5px;
 }
-.home__container .marketplace__items .marketplaceCard__container .marketplaceDetails .info {
+.home__container
+  .marketplace__items
+  .marketplaceCard__container
+  .marketplaceDetails
+  .info {
   display: flex;
   align-items: center;
   padding-bottom: 10px;
 }
-.home__container .marketplace__items .marketplaceCard__container .marketplaceDetails .info p {
+.home__container
+  .marketplace__items
+  .marketplaceCard__container
+  .marketplaceDetails
+  .info
+  p {
   flex: 1 1 0;
   font-size: 14px;
   text-align: center;
@@ -145,10 +204,16 @@
   align-items: center;
   justify-content: center;
 }
-.home__container .marketplace__items .marketplaceCard__container .marketplaceDetails .info p .flex {
+.home__container
+  .marketplace__items
+  .marketplaceCard__container
+  .marketplaceDetails
+  .info
+  p
+  .flex {
   display: flex;
   align-items: center;
   gap: 5px;
   font-size: 13px;
   margin-top: 3px;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
