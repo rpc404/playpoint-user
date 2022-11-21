@@ -1,12 +1,17 @@
 import { Button, Typography } from "@mui/material";
 import React from "react";
-// import CountryFlags from "../../helpers/CountryFlags.json";
+import CountryFlags from "../../helpers/CountryFlags.json";
 // import WorldcupFixtures from "../../helpers/WorldcupFixtures.json";
 import Moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { getFixtures } from "../../api/Fixture";
 
-export default function FixtureCard({ data, handleModalOpen, group, marketplaceSlug }) {
+export default function FixtureCard({
+  data,
+  handleModalOpen,
+  group,
+  marketplaceSlug,
+}) {
   const navigate = useNavigate();
   const getFixtureId = (a, b) => {
     return a + "_vs_" + b;
@@ -48,16 +53,12 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
             <div className="gameDetails__item" key={index}>
               {window.innerWidth > 576 ? (
                 <div
-                  onClick={() =>
-                    navigate(
-                      `/predict/${data?._id}`
-                    )
-                  }
+                  onClick={() => navigate(`/predict/${data?._id}`)}
                   className="gameDetails__teamDetails"
                   style={{ cursor: "pointer" }}
                 >
                   <div className="teamName">{data?.HomeTeam}</div>
-                  {/* {CountryFlags.map((country, i) => {
+                  {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.HomeTeam ||
                         (country.name === "United States" &&
@@ -73,11 +74,9 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                         />
                       )
                     );
-                  })} */}
-                  <div className="gameTime">
-                    {data?.DateUtc}
-                  </div>
-                  {/* {CountryFlags.map((country, i) => {
+                  })}
+                  <div className="gameTime">{data?.DateUtc}</div>
+                  {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||
                         (country.name === "United States" &&
@@ -93,20 +92,16 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                         />
                       )
                     );
-                  })} */}
+                  })}
                   <div className="teamName">{data?.AwayTeam}</div>
                 </div>
               ) : (
                 <Button
                   className="gameDetails__teamDetails"
-                  onClick={() =>
-                    navigate(
-                      `/predict/${data?._id}`
-                    )
-                  }
+                  onClick={() => navigate(`/predict/${data?._id}`)}
                 >
                   <div className="teamName">{data?.HomeTeam}</div>
-                  {/* {CountryFlags.map((country, i) => {
+                  {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.HomeTeam ||
                         (country.name === "United States" &&
@@ -122,11 +117,9 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                         />
                       )
                     );
-                  })} */}
-                  <div className="gameTime">
-                    {data?.DateUtc}
-                  </div>
-                  {/* {CountryFlags.map((country, i) => {
+                  })}
+                  <div className="gameTime">{data?.DateUtc}</div>
+                  {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||
                         (country.name === "United States" &&
@@ -142,7 +135,7 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                         />
                       )
                     );
-                  })} */}
+                  })}
                   <div className="teamName">{data?.AwayTeam}</div>
                 </Button>
               )}
@@ -168,13 +161,12 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
           return (
             <div className="gameDetails__item" key={index}>
               {window.innerWidth > 576 ? (
-                <div className="gameDetails__teamDetails" onClick={() =>
-                  navigate(
-                    `/predict/${data?._id}`
-                  )
-                }>
+                <div
+                  className="gameDetails__teamDetails"
+                  onClick={() => navigate(`/predict/${data?._id}`)}
+                >
                   <div className="teamName">{data?.HomeTeam}</div>
-                  {/* {CountryFlags.map((country, i) => {
+                  {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.HomeTeam ||
                         (country.name === "United States" &&
@@ -190,11 +182,9 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                         />
                       )
                     );
-                  })} */}
-                  <div className="gameTime">
-                    {data?.DateUtc}
-                  </div>
-                  {/* {CountryFlags.map((country, i) => {
+                  })}
+                  <div className="gameTime">{data?.DateUtc}</div>
+                  {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||
                         (country.name === "United States" &&
@@ -210,20 +200,16 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                         />
                       )
                     );
-                  })} */}
+                  })}
                   <div className="teamName">{data?.AwayTeam}</div>
                 </div>
               ) : (
                 <Button
                   className="gameDetails__teamDetails"
-                  onClick={() =>
-                    navigate(
-                      `/predict/${data._id}`
-                    )
-                  }
+                  onClick={() => navigate(`/predict/${data._id}`)}
                 >
                   <div className="teamName">{data?.HomeTeam}</div>
-                  {/* {CountryFlags.map((country, i) => {
+                  {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.HomeTeam ||
                         (country.name === "United States" &&
@@ -239,11 +225,9 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                         />
                       )
                     );
-                  })} */}
-                  <div className="gameTime">
-                    {data?.DateUtc}
-                  </div>
-                  {/* {CountryFlags.map((country, i) => {
+                  })}
+                  <div className="gameTime">{data?.DateUtc}</div>
+                  {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||
                         (country.name === "United States" &&
@@ -259,7 +243,7 @@ export default function FixtureCard({ data, handleModalOpen, group, marketplaceS
                         />
                       )
                     );
-                  })} */}
+                  })}
                   <div className="teamName">{data?.AwayTeam}</div>
                 </Button>
               )}

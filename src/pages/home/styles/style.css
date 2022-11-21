@@ -1,5 +1,11 @@
-.home__container {
-  padding-top: 50px;
+.home__container .home__mainTitle {
+  padding: 30px 3vw;
+}
+.home__container .marketingBanners__container {
+  margin: 50px 0;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.6666666667);
+  padding-bottom: 80px;
+  margin-bottom: 0;
 }
 .home__container .marketingBanners__container h1 {
   font-weight: 500;
@@ -23,7 +29,7 @@
   height: 56vh;
   width: 26vw;
   border: 1px solid #000;
-  padding: 20px 25px;
+  padding: 25px;
   transition: 0.3s all ease-in-out;
   -webkit-transition: 0.3s all ease-in-out;
   display: flex;
@@ -73,12 +79,13 @@
   line-height: 1.5;
 }
 .home__container .marketplace__items {
-  padding: 60px 3vw;
+  padding: 0 3vw;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 45px;
   flex-direction: row;
+  padding-bottom: 50px;
 }
 @media (max-width: 576px) {
   .home__container .marketplace__items {

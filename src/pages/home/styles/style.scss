@@ -1,6 +1,12 @@
 .home__container {
-  padding-top: 50px;
+  .home__mainTitle{
+    padding: 30px 3vw;
+  }
   .marketingBanners__container {
+    margin: 50px 0;
+    border-bottom: .5px solid #000a;
+    padding-bottom: 80px;
+    margin-bottom: 0;
     h1 {
       font-weight: 500;
       padding: 0 3vw 25px 3vw;
@@ -22,14 +28,14 @@
 
       .marketingBanners__item {
         height: 56vh;
-    width: 26vw;
-    border: 1px solid #000;
-    padding: 20px 25px;
-    transition: 0.3s all ease-in-out;
-    -webkit-transition: 0.3s all ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+        width: 26vw;
+        border: 1px solid #000;
+        padding: 25px;
+        transition: 0.3s all ease-in-out;
+        -webkit-transition: 0.3s all ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
 
         @media (max-width: 576px) {
           width: 85vw;
@@ -79,12 +85,13 @@
   }
 
   .marketplace__items {
-    padding: 60px 3vw;
+    padding: 0 3vw;
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 45px;
     flex-direction: row;
+    padding-bottom: 50px;
 
     @media (max-width: 576px) {
       justify-content: center;

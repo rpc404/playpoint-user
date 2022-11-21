@@ -68,7 +68,7 @@ export default function Fixture() {
 
       <h1
         style={{
-          background: `url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80") no-repeat center center`,
+          background: `url("https://ik.imagekit.io/domsan/image_L63diTKkM.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669019260350") no-repeat center center`,
           backgroundSize: "cover",
         }}
       >

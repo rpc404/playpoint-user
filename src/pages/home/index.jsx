@@ -10,12 +10,55 @@ export default function Home({setActiveFixtureBackground}) {
   React.useEffect(() => {
     (async () => {
       const res = await getMarketplaces();
-      setMarketplaceItems(res.data.marketplaces.reverse());
+      setMarketplaceItems(res.data.marketplaces);
     })();
   }, []);
 
   return (
     <div className="home__container">
+      <h1 className="home__mainTitle">Active Marketplaces</h1>
+      <div className="marketplace__items">
+        {marketplaceItems.length >= 1 ? (
+          marketplaceItems.map((marketplace, index) => {
+            return <MarketplaceCard setActiveFixtureBackground={setActiveFixtureBackground} marketplace={marketplace} key={index} />;
+          })
+        ) : (
+          <>
+            {[0, 1, 2, 3, 4, 5, 6, 7].map((data) => {
+              return (
+                <Stack key={data}>
+                  <Skeleton
+                    animation="wave"
+                    variant="rectangular"
+                    width={window.innerWidth < 576 ? "80vw" :"20vw"}
+                    height={"20vh"}
+                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Skeleton width={200} height={40} />
+                    <Skeleton width={70} />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {[0, 1, 2, 3].map((data) => {
+                      return <Skeleton width={70} height={40} key={data} />;
+                    })}
+                  </div>
+                </Stack>
+              );
+            })}
+          </>
+        )}
+      </div>
+      <hr />
       <div className="marketingBanners__container">
         <h1>Explore endless possibilities with Playpoint.</h1>
         <div className="marketingBanners__items">
@@ -41,6 +84,8 @@ Select the desirable Wager Stakes per unit entry options.
           </div>
         </div>
       </div>
+
+      <h1 className="home__mainTitle">Active Marketplaces</h1>
 
       <div className="marketplace__items">
         {marketplaceItems.length >= 1 ? (
