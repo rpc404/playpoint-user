@@ -26,20 +26,20 @@ export default function Predict({ socket }) {
   const getCountryFlag = (country) => {
     let _url = "";
     allFlags.map((flag, key) => {
-      if (flag.name === country) {
+      if (flag.name === country || flag.name === "United States" || flag.name === "USA" || flag.name === "South Korea" || flag.name === "Korea Public") {
         _url = flag.image;
       }
     });
     return _url;
   };
 
-  const poolVolume = async (p) => {
-    let Volume = 0;
-    await p.map((prediction) => {
-      Volume += prediction.amount;
-    });
-    return Volume;
-  };
+  // const poolVolume = async (p) => {
+  //   let Volume = 0;
+  //   await p.map((prediction) => {
+  //     Volume += prediction.amount;
+  //   });
+  //   return Volume;
+  // };
 
   React.useEffect(() => {
     // Windows
