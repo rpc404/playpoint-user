@@ -108,7 +108,7 @@ export default function Fixture() {
             value={groupValue}
             index={0}
           >
-            {gameDates.all.map((data, index) => {
+            {gameDates.all.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   marketplaceSlug={marketplaceSlug}
@@ -125,7 +125,7 @@ export default function Fixture() {
             value={groupValue}
             index={1}
           >
-            {gameDates.groupA.map((data, index) => {
+            {gameDates.groupA.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -142,7 +142,7 @@ export default function Fixture() {
             value={groupValue}
             index={2}
           >
-            {gameDates?.groupB?.map((data, index) => {
+            {gameDates?.groupB?.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -159,7 +159,7 @@ export default function Fixture() {
             value={groupValue}
             index={3}
           >
-            {gameDates?.groupC?.map((data, index) => {
+            {gameDates?.groupC?.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -176,7 +176,7 @@ export default function Fixture() {
             value={groupValue}
             index={4}
           >
-            {gameDates?.groupD?.map((data, index) => {
+            {gameDates?.groupD?.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -193,7 +193,7 @@ export default function Fixture() {
             value={groupValue}
             index={5}
           >
-            {gameDates?.groupE?.map((data, index) => {
+            {gameDates?.groupE?.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -210,7 +210,7 @@ export default function Fixture() {
             value={groupValue}
             index={6}
           >
-            {gameDates?.groupF?.map((data, index) => {
+            {gameDates?.groupF?.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -227,7 +227,7 @@ export default function Fixture() {
             value={groupValue}
             index={7}
           >
-            {gameDates?.groupG?.map((data, index) => {
+            {gameDates?.groupG?.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -244,7 +244,7 @@ export default function Fixture() {
             value={groupValue}
             index={8}
           >
-            {gameDates?.groupH?.map((data, index) => {
+            {gameDates?.groupH?.reverse().map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
