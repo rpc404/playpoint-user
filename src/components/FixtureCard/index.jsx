@@ -5,6 +5,7 @@ import CountryFlags from "../../helpers/CountryFlags.json";
 import Moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { getFixtures } from "../../api/Fixture";
+import moment from "moment";
 
 export default function FixtureCard({
   data,
@@ -75,7 +76,7 @@ export default function FixtureCard({
                       )
                     );
                   })}
-                  <div className="gameTime">{data?.DateUtc}</div>
+                  <div className="gameTime">{moment(data?.DateUtc).format("lll")}</div>
                   {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||
