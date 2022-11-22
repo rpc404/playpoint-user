@@ -25,7 +25,6 @@ export default function Predict({ socket }) {
   const [lineChartData, setLineChartData] = React.useState([]);
 
   const getCountryFlag = (country) => {
-    console.log(country);
     let _url = "";
     allFlags.map((flag, key) => {
       if (flag.name === country) {
