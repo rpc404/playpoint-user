@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [{ userPublicAddress, isWalletConnected }, dispatchRPCData] =
+  const [{ userPublicAddress, isWalletConnected, username }, dispatchRPCData] =
     useRPCContext();
 
   /**
@@ -156,10 +156,11 @@ export default function Navbar() {
               }}
             >
               <i className="ri-user-line"></i>{" "}
-              {isWalletConnected === true &&
+              {/* {isWalletConnected === true &&
                 userPublicAddress.substring(0, 12) +
                   "..." +
-                  userPublicAddress.slice(-8)}
+                  userPublicAddress.slice(-8)} */}
+                  {isWalletConnected===true && <span>{username}</span>}
             </Button>
             <Button onClick={() => handleLogout()}>
               <i className="ri-logout-box-line"></i> Logout

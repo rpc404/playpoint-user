@@ -10,6 +10,7 @@ export const initialRPCState = {
   isWalletConnected: false,
   userPPTTBalance: 0,
   userETHBalance: 0,
+  username:""
 };
 
 export const RPCReducer = (state, action) => {
@@ -20,6 +21,7 @@ export const RPCReducer = (state, action) => {
         ...state,
         userPublicAddress: action.payload.userPublicAddress,
         isWalletConnected: true,
+        username:action.payload.username,
       };
 
     //   @note disconnect wallet

@@ -12,6 +12,7 @@ export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
+  
   const userID =
     JSON.parse(localStorage.getItem("rpcUserData")).userPublicAddress || "";
   React.useEffect(() => {
@@ -67,7 +68,7 @@ export default function Profile() {
         />
         <div>
           {editMode ? (
-            <div>
+            <div style={{ display: "flex" }}>
               <input value={"@username"} />
               <Button onClick={() => setEditMode(!editMode)}>
               <i class="ri-send-plane-fill"></i>
