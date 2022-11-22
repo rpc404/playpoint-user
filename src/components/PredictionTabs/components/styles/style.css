@@ -4,4 +4,9 @@
 .row-radio .custom-radio {
   height: 20px;
   width: 20px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.login-btn {
+  background-color: var(--toastify-color-info) !important;
+}
+/*# sourceMappingURL=style.css.map */

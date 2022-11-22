@@ -72,6 +72,8 @@ const PoolType = ({
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
   const [predicting,setPredicting] = React.useState(false)
 
+  const userData = JSON.parse(localStorage.getItem("rpcUserData"));
+
   React.useEffect(() => {
     setTotalPredictionPrice(userPrediction.activeAmount * predictionCount);
   }, [userPrediction.activeAmount, predictionCount]);
@@ -130,14 +132,11 @@ const PoolType = ({
   }
 
   const handlePredction = async () => {
-    const userData = JSON.parse(localStorage.getItem("rpcUserData"));
+    
     _predictionData.predictedBy = userData.rpcAccountAddress || "";
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId
-
-    await setPrediction(_predictionData)
-    toast("Predicted Successfully!");
    
     if(validation(_predictionData.answers)){
       setPredicting(true);
@@ -281,11 +280,13 @@ const PoolType = ({
           </div>
           {/* 
           @note button needs to be disabled after */}
-<Button onClick={() => handlePredction()} disabled={predicting}>
+          { userData ? 
+      <Button onClick={() => handlePredction()} disabled={predicting}>
             {
               predicting ? <img src={loader} alt="loading" /> : "Predict"
             }
-          </Button>
+          </Button> : <Button className="login-btn" onClick={()=>handleLogin()}>Login Now to Predict!  </Button>
+}
         </div>
       </div>
     </>
