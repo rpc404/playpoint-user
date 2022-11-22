@@ -102,12 +102,11 @@ export default function Profile() {
       </div>
 
       <Stack spacing={2}>
-        <Pagination count={10} shape="rounded" />
+        <Pagination count={10} shape="rounded" className="pagination"/>
       </Stack>
 
       <div className="mobhistory_container">
         {userProfile.map((data, i) => {
-          console.log(data);
           return (
             <div className="card" key={i}>
               <div className="id__container">

@@ -256,9 +256,9 @@
 }
 .featureSkeleton {
   margin-bottom: 3em;
-  padding-bottom: .5em;
-  border-bottom:1px solid #9A9A9A;
-  padding: .5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #9a9a9a;
+  padding: 0.5em;
   overflow: hidden;
   .skeleton {
     display: flex;
@@ -275,12 +275,17 @@
           display: flex;
           gap: 15px;
         }
-    
       }
       .view {
         display: flex;
         gap: 15px;
       }
     }
+  }
+}
+
+#root > div.profile__container > div.pagination > nav > ul {
+  @media screen and (max-width: 426x) {
+    display: none;
   }
 }

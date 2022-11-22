@@ -313,7 +313,7 @@
 .featureSkeleton {
   margin-bottom: 3em;
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #9A9A9A;
+  border-bottom: 1px solid #9a9a9a;
   padding: 0.5em;
   overflow: hidden;
 }
@@ -348,4 +348,10 @@
   display: -ms-flexbox;
   display: flex;
   gap: 15px;
+}
+
+@media screen and (max-width: 426x) {
+  #root > div.profile__container > div.pagination > nav > ul {
+    display: none;
+  }
 }
