@@ -8,6 +8,14 @@ export const getMarketplaces = async () => {
   return marketplaces;
 };
 
+export const getMarketplaceStat = async (slug) => {
+  var marketplaces = await axios.get(
+    import.meta.env.VITE_API_URI + `api/v1/marketplace-stats/${slug}`
+  );
+
+  return marketplaces;
+};
+
 // var data = JSON.stringify({
 //   collection: "marketplaces",
 //   database: "test",
