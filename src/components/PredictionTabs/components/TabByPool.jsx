@@ -282,6 +282,7 @@ const PoolType = ({
           </div>
           {/* 
           @note button needs to be disabled after */}
+          {console.log(userData)}
           {userData ? (
             <Button onClick={() => handlePredction()} disabled={predicting}>
               {predicting ? <img src={loader} alt="loading" /> : "Predict"}
