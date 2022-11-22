@@ -133,7 +133,7 @@ const PoolType = ({
 
   const handlePredction = async () => {
     
-    _predictionData.predictedBy = userData.rpcAccountAddress || "";
+    _predictionData.predictedBy = userData.userPublicAddress || "";
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId
