@@ -13,6 +13,7 @@ export default function Profile() {
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [username, setUsername] = useState("");
+
   const userID =
     JSON.parse(localStorage.getItem("rpcUserData")).userPublicAddress || "";
   React.useEffect(() => {
