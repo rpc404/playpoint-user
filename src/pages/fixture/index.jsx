@@ -10,17 +10,20 @@ import QuickView from "../../components/QuickView";
 import { useLocation } from "react-router-dom";
 import "./styles/style.css";
 import { getFixtures } from "../../api/Fixture";
+import { Skeleton, Typography } from "@mui/material";
 
 export default function Fixture() {
   let params = useLocation();
   const marketplaceSlug = params.state.marketplaceSlug;
 
   const [fixtures, setFixtures] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     (async () => {
       const fixtures = await getFixtures(marketplaceSlug);
       setFixtures(fixtures?.data?.fixtures);
+      setLoading(false);
     })();
   }, []);
   /**
@@ -75,7 +78,163 @@ export default function Fixture() {
         Fixtures
       </h1>
 
-      {fixtures.length > 0 ? (
+      {loading ? (
+        <Box sx={{ width: "100%" }}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Tabs
+              variant="scrollable"
+              scrollButtons="auto"
+              aria-label="scrollable auto tabs example"
+            >
+              <div className="skeleton__container">
+                <div className="tabSkeleton">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((sk, i) => {
+                    return (
+                      <Skeleton
+                        variant="text"
+                        key={i}
+                        sx={{ fontSize: "3em", width: "2em" }}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </Tabs>
+          </Box>
+          <Box>
+            <div className="featureSkeleton">
+              <div className="skeleton">
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "3em", width: "1em" }}
+                />
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "3em", width: "2em" }}
+                />
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "2em", width: "1em" }}
+                />
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "2em", width: "1em" }}
+                />
+              </div>
+              <div className="featuresSkeleton">
+                <div className="features__container">
+                  <div className="features">
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "1em" }}
+                    />
+                    <div>
+                      <Skeleton
+                        variant="text"
+                        sx={{ fontSize: "2em", width: "1em" }}
+                      />
+                      <Skeleton
+                        variant="text"
+                        sx={{ fontSize: "2em", width: "5em" }}
+                      />{" "}
+                      <Skeleton
+                        variant="text"
+                        sx={{ fontSize: "2em", width: "1em" }}
+                      />
+                    </div>
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "1em" }}
+                    />
+                  </div>
+
+                  <div>
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "5em" }}
+                    />
+                  </div>
+                  <div className="view">
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "2.5em" }}
+                    />
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "1em" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="featureSkeleton">
+              <div className="skeleton">
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "3em", width: "1em" }}
+                />
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "3em", width: "2em" }}
+                />
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "2em", width: "1em" }}
+                />
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "2em", width: "1em" }}
+                />
+              </div>
+              <div className="featuresSkeleton">
+                <div className="features__container">
+                  <div className="features">
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "1em" }}
+                    />
+                    <div>
+                      <Skeleton
+                        variant="text"
+                        sx={{ fontSize: "2em", width: "1em" }}
+                      />
+                      <Skeleton
+                        variant="text"
+                        sx={{ fontSize: "2em", width: "5em" }}
+                      />{" "}
+                      <Skeleton
+                        variant="text"
+                        sx={{ fontSize: "2em", width: "1em" }}
+                      />
+                    </div>
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "1em" }}
+                    />
+                  </div>
+
+                  <div>
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "5em" }}
+                    />
+                  </div>
+                  <div className="view">
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "2.5em" }}
+                    />
+                    <Skeleton
+                      variant="text"
+                      sx={{ fontSize: "2em", width: "1em" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Box>
+        </Box>
+      ) : fixtures.length >= 1 ? (
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
