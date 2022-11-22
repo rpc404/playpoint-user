@@ -7,12 +7,16 @@ import { Helmet } from "react-helmet";
 // import UserHistory from "../../mocks/UserHistory.json";
 import { getUserPredictions } from "../../api/Prediction";
 import moment from "moment";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
-  
+
+  const [{ userPublicAddress, username }, dispatchRPCData] =
+    useRPCContext();
+
   const userID =
     JSON.parse(localStorage.getItem("rpcUserData")).userPublicAddress || "";
   React.useEffect(() => {
@@ -69,14 +73,14 @@ export default function Profile() {
         <div>
           {editMode ? (
             <div style={{ display: "flex" }}>
-              <input value={"@username"} />
+              <input value={username} />
               <Button onClick={() => setEditMode(!editMode)}>
-              <i class="ri-send-plane-fill"></i>
+                <i class="ri-send-plane-fill"></i>
               </Button>
             </div>
           ) : (
             <div style={{ display: "flex" }}>
-              <h2>@UserName</h2>
+              <h2>{username}</h2>
               <Button onClick={() => setEditMode(!editMode)}>
                 <i className="ri-pencil-line"></i>
               </Button>
