@@ -1,17 +1,31 @@
 .prediction__container .main__container {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
 }
 .prediction__container .main__container .recentPredictions {
   width: 23vw;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .recentPredictions {
-    display: none;
+    width: 90%;
+    margin: auto;
   }
 }
 .prediction__container .main__container .recentPredictions h3 {
@@ -195,6 +209,11 @@
   height: 81vh;
   overflow-y: scroll;
   padding-bottom: 20px;
+}
+@media (max-width: 576px) {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer {
+    height: 75vh;
+  }
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .graphData {
   margin: 3vh auto;
