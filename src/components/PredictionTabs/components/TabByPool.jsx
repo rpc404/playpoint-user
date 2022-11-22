@@ -139,17 +139,16 @@ const PoolType = ({
     _predictionData.questionaireId = questionaire.questionaires[0]._id;
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
 
-    console.log(_predictionData, userData);
-    // if (validation(_predictionData.answers)) {
-    //   setPredicting(true);
-    //   return await setPrediction(_predictionData)
-    //     .then(() => {
-    //       toast("Predicted Successfully!");
-    //       _predictionData.answers = {};
-    //     })
-    //     .catch((err) => console.log(err))
-    //     .finally(() => setPredicting(false));
-    // } else return toast.error("Enter All Answers!");
+    if (validation(_predictionData.answers)) {
+      setPredicting(true);
+      return await setPrediction(_predictionData)
+        .then(() => {
+          toast("Predicted Successfully!");
+          _predictionData.answers = {};
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setPredicting(false));
+    } else return toast.error("Enter All Answers!");
   };
   return (
     <>
