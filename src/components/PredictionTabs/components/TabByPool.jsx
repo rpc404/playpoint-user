@@ -4,13 +4,16 @@ import {
   getQuestionaireByFixtureId,
   setPrediction,
 } from "../../../api/Prediction";
-import Radio from "@mui/material/Radio";
+// import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+// import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import "./styles/style.css";
 import { toast } from "react-toastify";
 import loader from "../../../helpers/loading.gif";
+import { handleRPCWalletLogin } from "../../../utils/RPC";
+import { useRPCContext } from "../../../contexts/WalletRPC/RPCContext";
+import { ACTIONS } from "../../../contexts/WalletRPC/RPCReducer";
 
 /**
  * @dev utils for slider
@@ -71,7 +74,8 @@ const PoolType = ({
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
   const [predicting, setPredicting] = React.useState(false);
 
-  const userData = JSON.parse(localStorage.getItem("rpcUserData"));
+  // const userData = JSON.parse(localStorage.getItem("rpcUserData"));
+  const [{userPublicAddress, isWalletConnected}, dispatchRPCData] = useRPCContext();
 
   React.useEffect(() => {
     setTotalPredictionPrice(userPrediction.activeAmount * predictionCount);
@@ -98,13 +102,6 @@ const PoolType = ({
     })();
   }, [userPrediction]);
 
-  // const [userAnswer, setUserAnswer] = React.useState(
-  //   userPrediction.questionaireType === 3
-  //     ? [{ 0: 0 }, { 1: 0 }, { 2: 0 }]
-  //     : [{ 0: 0 }, { 1: 0 }, { 2: 0 }, { 3: 0 }]
-  // );
-
-  // console.log(questionaire)
   const _predictionData = {
     answers: {},
     predictedBy: "",
@@ -133,8 +130,8 @@ const PoolType = ({
     return _;
   };
 
-  const handlePredction = async () => {
-    _predictionData.predictedBy = userData.rpcAccountAddress || "";
+  const handlePrediction = async () => {
+    _predictionData.predictedBy = userPublicAddress;
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id;
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
@@ -150,6 +147,13 @@ const PoolType = ({
         .finally(() => setPredicting(false));
     } else return toast.error("Enter All Answers!");
   };
+
+  const handleLogin = async () => {
+    const data = await handleRPCWalletLogin();
+    await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+    toast("Wallet Connected!");
+  };
+
   return (
     <>
       <div className="topBar">
@@ -282,14 +286,13 @@ const PoolType = ({
           </div>
           {/* 
           @note button needs to be disabled after */}
-          {console.log(userData)}
-          {userData ? (
-            <Button onClick={() => handlePredction()} disabled={predicting}>
+          {isWalletConnected ? (
+            <Button onClick={() => handlePrediction()} disabled={predicting}>
               {predicting ? <img src={loader} alt="loading" /> : "Predict"}
             </Button>
           ) : (
             <Button className="login-btn" onClick={() => handleLogin()}>
-              Login Now to Predict!{" "}
+              Login to Predict!{" "}
             </Button>
           )}
         </div>

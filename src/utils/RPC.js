@@ -29,13 +29,3 @@ export const handleRPCWalletLogin = async () => {
     console.error(error);
   }
 };
-
-export const handleRPCLogout = (dispatch) => {
-  localStorage.removeItem("isRPCUserAuthenticated");
-  localStorage.removeItem("rpcUserData");
-
-  dispatch({
-    rpcAccountAddress: "",
-    isWalletSet: false,
-  });
-};
