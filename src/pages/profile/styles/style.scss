@@ -192,6 +192,12 @@
     }
   }
 
+  .pagination__container {
+    @media screen and (max-width:426px) {
+      display: none;
+    }
+  }
+
   .MuiPagination-root {
     margin: 10px 4.5vw;
   }

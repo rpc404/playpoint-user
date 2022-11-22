@@ -101,7 +101,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <Stack spacing={2}>
+      <Stack spacing={2} className="pagination__container">
         <Pagination count={10} shape="rounded" className="pagination"/>
       </Stack>
 
