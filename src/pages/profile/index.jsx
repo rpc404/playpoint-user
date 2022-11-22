@@ -12,7 +12,6 @@ export default function Profile() {
   const [userProfile, setUserProfile] =  React.useState([]);
   const userID = JSON.parse(localStorage.getItem('rpcUserData')).userPublicAddress  || ""
   React.useEffect(()=>{
-    // console.log(userID)
     if(userID){
       getUserPredictions(userID).then(res=>{
         if(res.data.data){
