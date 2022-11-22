@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Helmet } from "react-helmet";
-import UserHistory from "../../mocks/UserHistory.json";
+// import UserHistory from "../../mocks/UserHistory.json";
 import { getUserPredictions } from "../../api/Prediction";
 
 export default function Profile() {

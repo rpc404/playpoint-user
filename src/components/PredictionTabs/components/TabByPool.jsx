@@ -106,19 +106,20 @@ const PoolType = ({
     predictedBy: "",
     amount: 0,
     questionaireId: "",
-    // questionType: ,
+    fixtureId: "",
   };
 
   const handleRadioChange = (question, answer) => {
     _predictionData.answers[question] = answer;
   };
 
-  const handlePredction = async () => {
+  const handlePrediction = async () => {
     const userData = JSON.parse(localStorage.getItem("rpcUserData"));
     _predictionData.predictedBy = userData.rpcAccountAddress || "";
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id
-    // console.log(_predictionData)
+    _predictionData.fixtureId = questionaire.questionaires[0].fixtureId
+
     await setPrediction(_predictionData)
     toast("Predicted Successfully!");
   };
@@ -254,7 +255,7 @@ const PoolType = ({
           </div>
           {/* 
           @note button needs to be disabled after */}
-          <Button onClick={() => handlePredction()}>Predict</Button>
+          <Button onClick={() => handlePrediction()}>Predict</Button>
         </div>
       </div>
     </>

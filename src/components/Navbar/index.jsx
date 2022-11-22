@@ -11,10 +11,29 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./styles/style.css";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
+import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
+import { handleRPCWalletLogin } from "../../utils/RPC";
+import { toast } from "react-toastify";
 
-export default function Navbar({ rpcAPI }) {
+export default function Navbar() {
   const navigate = useNavigate();
-  const { rpcData, handleLogin, handleLogout } = rpcAPI;
+  const [{ userPublicAddress, isWalletConnected }, dispatchRPCData] =
+    useRPCContext();
+
+  /**
+   * @dev User wallet authentication
+   */
+  const handleLogin = async () => {
+    const data = await handleRPCWalletLogin();
+    await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+    toast("Wallet Connected!");
+  };
+
+  const handleLogout = () =>
+    {dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
+    toast.error("Wallet Disconnected!");
+  }
 
   /**
    * @dev NavbarSM Devices drawer utils
@@ -41,6 +60,16 @@ export default function Navbar({ rpcAPI }) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      {isWalletConnected && (
+        <List>
+          <ListItem disablePadding onClick={() => navigate("/profile")}>
+            <ListItemButton className="drawerListItem">
+              <i className="ri-user-line"></i>
+              <ListItemText primary="Profile" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      )}
       <List>
         <ListItem disablePadding>
           <ListItemButton className="drawerListItem">
@@ -60,18 +89,28 @@ export default function Navbar({ rpcAPI }) {
       </List>
       <Divider />
       <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton className="drawerListItem">
-            <i className="ri-fingerprint-line"></i>
-            <ListItemText primary="Login / Register" />
-          </ListItemButton>
-        </ListItem>
-      </List>
+      {!isWalletConnected ? (
+        <List>
+          <ListItem disablePadding onClick={() => handleLogin()}>
+            <ListItemButton className="drawerListItem">
+              <i className="ri-fingerprint-line"></i>
+              <ListItemText primary="Login / Register" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      ) : (
+        <List>
+          <ListItem disablePadding onClick={() => handleLogout()}>
+            <ListItemButton className="drawerListItem">
+              <i className="ri-logout-box-line"></i>
+              <ListItemText primary="Logout" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      )}
       <Divider />
     </Box>
   );
-
   return (
     <div className="navbar__container">
       <div
@@ -96,7 +135,7 @@ export default function Navbar({ rpcAPI }) {
           <div
             onClick={(e) => {
               e.stopPropagation();
-              navigate("/");
+              navigate("/marketplace");
             }}
           >
             Marketplace
@@ -104,23 +143,23 @@ export default function Navbar({ rpcAPI }) {
         </div>
       </div>
       <div className="navbar__authentication">
-        {rpcData?.rpcAccountAddress === "" ? (
+        {isWalletConnected === false ? (
           <Button onClick={() => handleLogin()}>
             <i className="ri-fingerprint-line"></i> Login / Register
           </Button>
-          // handleLogin()
         ) : (
           <>
             <Button
               onClick={(e) => {
-                  e.stopPropagation();
-                  navigate("/profile");
+                e.stopPropagation();
+                navigate("/profile");
               }}
             >
               <i className="ri-user-line"></i>{" "}
-              {rpcData?.rpcAccountAddress.substring(0, 12) +
-                "..." +
-                rpcData?.rpcAccountAddress.slice(-8)}
+              {isWalletConnected === true &&
+                userPublicAddress.substring(0, 12) +
+                  "..." +
+                  userPublicAddress.slice(-8)}
             </Button>
             <Button onClick={() => handleLogout()}>
               <i className="ri-logout-box-line"></i> Logout
@@ -128,6 +167,7 @@ export default function Navbar({ rpcAPI }) {
           </>
         )}
       </div>
+
       {window.innerWidth < 576 && (
         <div className="drawer">
           <div onClick={toggleDrawer("right", true)}>

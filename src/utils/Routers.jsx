@@ -10,27 +10,24 @@ import socketIO from "socket.io-client";
 const socket = socketIO.connect(import.meta.env.VITE_SOCKET_URL);
 
 export default function PageRouters() {
-  const [activeFixtureBackground, setActiveFixtureBackground] =
-    React.useState("");
-
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route
         path="/"
         element={
-          <Home setActiveFixtureBackground={setActiveFixtureBackground} />
+          <Home />
         }
       />
-       <Route
+      <Route
         path="/profile"
         element={
-          <Profile setActiveFixtureBackground={setActiveFixtureBackground} />
+          <Profile />
         }
       />
       <Route
         path="fixture"
-        element={<Fixture activeFixtureBackground={activeFixtureBackground} />}
+        element={<Fixture />}
       />
       <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
     </Routes>

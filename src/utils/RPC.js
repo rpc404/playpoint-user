@@ -1,21 +1,19 @@
 const { ethereum } = window;
 
-export const handleRPCLogin = async (dispatch) => {
+export const handleRPCWalletLogin = async () => {
   try {
     if (typeof ethereum !== "undefined") {
-      console.log("MetaMask is installed!");
-
       const userAddress = await ethereum.request({
         method: "eth_requestAccounts",
       });
 
       if (ethereum.isMetaMask)
-        console.log("Other EVM Compatible Wallets not detected!");
-      else console.log("Other EVM Compatible wallets maybe installed!");
+        console.log("Metamask Says: Other EVM Compatible Wallets not detected!");
+      else console.log("Metamask Says: Other EVM Compatible wallets maybe installed!");
 
       const tempRpcData = {
-        rpcAccountAddress: userAddress[0],
-        isWalletSet: true,
+        userPublicAddress: userAddress[0],
+        isWalletConnected: true,
       };
 
       const currentDate = new Date();
@@ -23,9 +21,9 @@ export const handleRPCLogin = async (dispatch) => {
 
       localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
       localStorage.setItem("isRPCUserAuthenticated", true);
-      localStorage.setItem("rpcExpiresAt", currentDate);
+      localStorage.setItem("rpcUserExpiresAt", currentDate);
 
-      dispatch(tempRpcData);
+      return tempRpcData;
     } else alert("Metamask is not installed!");
   } catch (error) {
     console.error(error);
