@@ -12,19 +12,21 @@ export default function FixtureCard({
   handleModalOpen,
   group,
   marketplaceSlug,
+  fixtures
 }) {
   const navigate = useNavigate();
   const getFixtureId = (a, b) => {
     return a + "_vs_" + b;
   };
 
-  const [fixtures, setFixtures] = React.useState([]);
+  // const [fixtures, setFixtures] = React.useState([]);
 
   React.useEffect(() => {
-    (async () => {
-      const fixtures = await getFixtures(marketplaceSlug);
-      setFixtures(fixtures?.data?.fixtures);
-    })();
+    console.log(fixtures)
+    // (async () => {
+    //   const fixtures = await getFixtures(marketplaceSlug);
+    //   setFixtures(fixtures?.data?.fixtures);
+    // })();
   }, []);
 
   /**

@@ -83,10 +83,11 @@ export default function Predict({ socket }) {
       setQuestionaires(response.data.data);
     })();
   }, []);
+  
   return (
     <div className="prediction__container">
       <Helmet>
-        <title>Playpoint | Prediction | Playpoint</title>
+        <title>Playpoint | Prediction |  Playpoint</title>
       </Helmet>
 
       <div className="main__container">

@@ -2,11 +2,14 @@
   .main__container {
     display: flex;
     align-items: flex-start;
-
+    @media (max-width: 576px) {
+     flex-direction: column-reverse;
+    }
     .recentPredictions {
       width: 23vw;
       @media (max-width: 576px) {
-        display: none;
+       width: 90%;
+       margin: auto;
       }
 
       h3 {
@@ -163,6 +166,9 @@
         height: 81vh;
         overflow-y: scroll;
         padding-bottom: 20px;
+        @media (max-width: 576px) {
+          height: 75vh;
+         }
 
         .graphData {
           margin: 3vh auto;
