@@ -1,7 +1,8 @@
 .fixtures__container h1 {
   font-size: 3.8em;
   padding: 80px 5vw;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
+          box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
   color: #fff;
 }
 @media (max-width: 576px) {
@@ -37,8 +38,12 @@
   font-weight: 500;
   margin-bottom: 10px;
   font-size: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 5px;
 }
 @media (max-width: 576px) {
@@ -49,22 +54,33 @@
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item {
   font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   color: #5a5a5a;
   border-bottom: 0.5px solid #9a9a9a;
   padding: 15px 0;
   position: relative;
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__location {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
   left: 50%;
   top: 50%;
   gap: 5px;
-  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
 }
 @media (max-width: 576px) {
   .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__location {
@@ -72,27 +88,43 @@
   }
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
-  justify-content: right;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
 }
 @media (max-width: 576px) {
   .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails {
     gap: 8px;
     text-transform: capitalize;
-    flex: 1;
-    justify-content: left;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
   }
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .teamName {
   font-weight: 500;
   color: #2a2a2a;
   font-size: 17px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 6.5vw;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
 }
 @media (max-width: 576px) {
@@ -104,9 +136,15 @@
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .home__Image,
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .Away__Image {
   width: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .home__Image img,
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .Away__Image img {
@@ -158,14 +196,19 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
   background: #fff;
   padding: 20px 30px;
   border-radius: 16px;
 }
 .fixtures__container .quickViewModal__container .container .item .closeBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: red;
   text-transform: capitalize;
   padding: 0;
@@ -174,19 +217,31 @@
   font-size: 20px;
 }
 .fixtures__container .quickViewModal__container .container .item .info__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .fixtures__container .quickViewModal__container .container .item .info__container span {
   color: #7a7a7a;
 }
 .fixtures__container .quickViewModal__container .container .item .topBar {
   margin-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .fixtures__container .quickViewModal__container .container .item .topBar img {
   width: 50px;
@@ -197,9 +252,15 @@
   padding: 10px 0 25px 0;
 }
 .fixtures__container .quickViewModal__container .container .item .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 18px;
 }
 .fixtures__container .quickViewModal__container .container .item .actions .MuiButton-root {
@@ -209,10 +270,19 @@
   gap: 5px;
 }
 .fixtures__container .noFixture__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 0 5vw;
   text-align: center;
 }
@@ -226,4 +296,4 @@
   .fixtures__container .noFixture__container img {
     width: 85vw;
   }
-}/*# sourceMappingURL=style.css.map */
+}
