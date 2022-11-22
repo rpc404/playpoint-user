@@ -16,7 +16,7 @@
     z-index: -1;
 
     @media (max-width: 576px) {
-     height: 450px;
+      height: 450px;
     }
   }
 
@@ -28,7 +28,6 @@
     margin: 0 auto;
     flex-wrap: wrap;
     gap: 10px;
-
 
     .summaryItem {
       display: flex;
@@ -91,6 +90,10 @@
   .history__container {
     margin: 0 5vw;
     margin-top: 20px;
+
+    @media screen and (max-width: 426px) {
+      display: none;
+    }
 
     .titles {
       display: flex;
@@ -183,7 +186,83 @@
     }
   }
 
+  .css-1p5q5e5-MuiStack-root {
+    @media screen and (max-width: 426px) {
+      display: none;
+    }
+  }
+
   .MuiPagination-root {
     margin: 10px 4.5vw;
+  }
+  .mobhistory_container {
+    @media screen and (min-width: 425px) {
+      display: none;
+    }
+    .card {
+      display: grid;
+      grid-template-areas:
+        "id id ."
+        "amount amount result"
+        "winlose winlose match"
+        "date date date";
+
+      grid-auto-columns: minmax(0, 1fr);
+      grid-auto-flow: column;
+      background-color: #efefef;
+      border-radius: 5px;
+      width: 90%;
+      margin: 1em auto;
+      padding: 0.5em;
+      gap: 15px;
+      position: relative;
+      box-shadow: rgba(99, 99, 99, 0.421) 0px 2px 8px 0px;
+      margin-bottom: 2em;
+
+      .id__container {
+        grid-area: id;
+        background-color: #6060604d;
+        padding: .3em;
+        border-radius: 3px;
+        width: fit-content;
+        .id {
+          font-size: .9em;
+          em {
+            color: #3a791c;
+          }
+        }
+      }
+
+      .amount {
+        grid-area: amount;
+      }
+      .result {
+        grid-area: result;
+      }
+      .win-lose {
+        grid-area: winlose;
+      }
+      .match {
+        grid-area: match;
+      }
+      .date {
+        grid-area: date;
+        color: #0007;
+        text-align: center;
+        font-size: .8em;
+      }
+
+      .winlose {
+        position: absolute;
+        width: 100px;
+        background-color: rgb(236, 236, 236);
+        right: 20px;
+        top: -7px;
+        text-align: center;
+        padding: 0.3em;
+        border-radius: 3px;
+        box-shadow: rgba(52, 52, 52, 0.392) 0px 2px 8px 0px;
+      }
+    }
   }
 }
