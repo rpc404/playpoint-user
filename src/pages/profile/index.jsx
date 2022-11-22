@@ -7,9 +7,10 @@ import { Helmet } from "react-helmet";
 // import UserHistory from "../../mocks/UserHistory.json";
 import { getUserPredictions } from "../../api/Prediction";
 
+
 export default function Profile() {
   const [userProfile, setUserProfile] =  React.useState([]);
-  const userID = JSON.parse(localStorage.getItem('rpcUserData')).rpcAccountAddress  || ""
+  const userID = JSON.parse(localStorage.getItem('rpcUserData')).userPublicAddress  || ""
   React.useEffect(()=>{
     if(userID){
       getUserPredictions(userID).then(res=>{
@@ -92,7 +93,7 @@ export default function Profile() {
               <p>
                 <b>{data?.match?.home || "-"}</b> VS <b>{data?.match?.away || "-"}</b>
               </p>
-              <p>{data.created_at}</p>
+              <p>{Date(data.created_at)}</p>
             </div>
           ))}
         </div>

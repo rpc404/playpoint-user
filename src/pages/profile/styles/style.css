@@ -15,6 +15,11 @@
   top: -10vh;
   z-index: -1;
 }
+@media (max-width: 576px) {
+  .profile__container .blob1 {
+    height: 450px;
+  }
+}
 .profile__container .summary__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -27,6 +32,9 @@
           justify-content: space-between;
   max-width: 55vw;
   margin: 0 auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
 }
 .profile__container .summary__container .summaryItem {
   display: -webkit-box;
