@@ -275,6 +275,7 @@ export default function Fixture() {
                   group="all"
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
@@ -292,6 +293,7 @@ export default function Fixture() {
                   group="Group A"
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
@@ -309,6 +311,7 @@ export default function Fixture() {
                   marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
@@ -326,6 +329,7 @@ export default function Fixture() {
                   marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
@@ -343,6 +347,7 @@ export default function Fixture() {
                   marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
@@ -360,6 +365,7 @@ export default function Fixture() {
                   marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
@@ -377,6 +383,7 @@ export default function Fixture() {
                   marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
@@ -394,6 +401,7 @@ export default function Fixture() {
                   marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
@@ -411,6 +419,7 @@ export default function Fixture() {
                   marketplaceSlug={marketplaceSlug}
                   data={data}
                   key={index}
+                  fixtures={fixtures}
                 />
               );
             })}
