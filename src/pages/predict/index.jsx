@@ -26,7 +26,13 @@ export default function Predict({ socket }) {
   const getCountryFlag = (country) => {
     let _url = "";
     allFlags.map((flag, key) => {
-      if (flag.name === country || flag.name === "United States" || flag.name === "USA" || flag.name === "South Korea" || flag.name === "Korea Public") {
+      if (
+        flag.name === country ||
+        flag.name === "United States" ||
+        flag.name === "USA" ||
+        flag.name === "South Korea" ||
+        flag.name === "Korea Public"
+      ) {
         _url = flag.image;
       }
     });
@@ -92,7 +98,7 @@ export default function Predict({ socket }) {
           <div className={`prediction__items ${activeOS}`}>
             {predictions.length >= 1 &&
               predictions.map((data, index) => {
-                return (
+                data?.fixtureId === fixtureId && (
                   <div className="predictedCard__container" key={index}>
                     <div>
                       <div className="details">
@@ -104,7 +110,7 @@ export default function Predict({ socket }) {
                         {/* <p>{console.log()}</p> */}
                       </div>
                       <p>
-                        {data.predictedBy} predicted on {fixture?.HomeTeam} vs{" "}
+                        {data?.predictedBy} predicted on {fixture?.HomeTeam} vs{" "}
                         {fixture?.AwayTeam}.
                       </p>
                       <div className="info">
@@ -112,11 +118,7 @@ export default function Predict({ socket }) {
                           ${data?.amount}~{(data?.amount / 0.015).toFixed(2)}{" "}
                           PPTT
                         </p>
-                        <p>
-                          {moment(data?.created_at).format(
-                            "MMMM Do YYYY, h:mm:ss a"
-                          )}
-                        </p>
+                        <p>{moment(data?.created_at).format("lll")}</p>
                       </div>
                     </div>
                   </div>
@@ -164,7 +166,7 @@ export default function Predict({ socket }) {
           </div>
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
-            <LineChart
+            {/* <LineChart
               className="graphData"
               width="90%"
               height={window.innerWidth >= 576 ? 350 : 200}
@@ -176,7 +178,7 @@ export default function Predict({ socket }) {
                   }
                 />
               }
-            />
+            /> */}
             <div className="eventDetails">
               <p>
                 <i className="ri-calendar-todo-line"></i> Event Details:{" "}

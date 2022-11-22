@@ -109,7 +109,7 @@ const PoolType = ({
     predictedBy: "",
     amount: 0,
     questionaireId: "",
-    // questionType: ,
+    fixtureId: "",
   };
 
   const handleRadioChange = (question, answer) => {
@@ -134,6 +134,10 @@ const PoolType = ({
     _predictionData.predictedBy = userData.rpcAccountAddress || "";
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id
+    _predictionData.fixtureId = questionaire.questionaires[0].fixtureId
+
+    await setPrediction(_predictionData)
+    toast("Predicted Successfully!");
    
     if(validation(_predictionData.answers)){
       setPredicting(true);
@@ -144,7 +148,6 @@ const PoolType = ({
       .finally(()=>setPredicting(false))
     }
     return toast.error("Enter All Answers")
-   
   };
   return (
     <>
@@ -278,7 +281,7 @@ const PoolType = ({
           </div>
           {/* 
           @note button needs to be disabled after */}
-          <Button onClick={() => handlePredction()} disabled={predicting}>
+<Button onClick={() => handlePredction()} disabled={predicting}>
             {
               predicting ? <img src={loader} alt="loading" /> : "Predict"
             }

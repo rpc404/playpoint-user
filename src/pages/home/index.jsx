@@ -4,7 +4,7 @@ import "./styles/style.css";
 import MarketplaceCard from "../../components/MarketplaceCard";
 import { getMarketplaces } from "../../api/Marketplace";
 
-export default function Home({ setActiveFixtureBackground }) {
+export default function Home({ }) {
   const [marketplaceItems, setMarketplaceItems] = React.useState([]);
 
   React.useEffect(() => {
@@ -20,13 +20,7 @@ export default function Home({ setActiveFixtureBackground }) {
       <div className="marketplace__items">
         {marketplaceItems.length >= 1 ? (
           marketplaceItems.map((marketplace, index) => {
-            return (
-              <MarketplaceCard
-                setActiveFixtureBackground={setActiveFixtureBackground}
-                marketplace={marketplace}
-                key={index}
-              />
-            );
+            return <MarketplaceCard marketplace={marketplace} key={index} />;
           })
         ) : (
           <>
@@ -117,13 +111,7 @@ export default function Home({ setActiveFixtureBackground }) {
       <div className="marketplace__items">
         {marketplaceItems.length >= 1 ? (
           marketplaceItems.map((marketplace, index) => {
-            return (
-              <MarketplaceCard
-                setActiveFixtureBackground={setActiveFixtureBackground}
-                marketplace={marketplace}
-                key={index}
-              />
-            );
+            return <MarketplaceCard marketplace={marketplace} key={index} />;
           })
         ) : (
           <>
