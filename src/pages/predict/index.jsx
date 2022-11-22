@@ -27,14 +27,11 @@ export default function Predict({ socket }) {
   const getCountryFlag = (country) => {
     let _url = "";
     allFlags.map((flag, key) => {
-      if (
-        flag.name === country ||
-        flag.name === "United States" ||
-        flag.name === "USA" ||
-        flag.name === "South Korea" ||
-        flag.name === "Korea Public"
-      ) {
+      if (flag.name === country) {
         _url = flag.image;
+      } else if (country === "USA") {
+        _url =
+          "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/US.svg";
       }
     });
     return _url;
@@ -83,11 +80,11 @@ export default function Predict({ socket }) {
       setQuestionaires(response.data.data);
     })();
   }, []);
-  
+
   return (
     <div className="prediction__container">
       <Helmet>
-        <title>Playpoint | Prediction |  Playpoint</title>
+        <title>Playpoint | Prediction | Playpoint</title>
       </Helmet>
 
       <div className="main__container">
@@ -168,7 +165,7 @@ export default function Predict({ socket }) {
           </div>
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
-            {/* <LineChart
+            <LineChart
               className="graphData"
               width="90%"
               height={window.innerWidth >= 576 ? 350 : 200}
@@ -180,7 +177,7 @@ export default function Predict({ socket }) {
                   }
                 />
               }
-            /> */}
+            />
             <div className="eventDetails">
               <p>
                 <i className="ri-calendar-todo-line"></i> Event Details:{" "}

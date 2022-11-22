@@ -20,10 +20,14 @@ export const RPCReducer = (state, action) => {
         ...state,
         userPublicAddress: action.payload.userPublicAddress,
         isWalletConnected: true,
-      }
+      };
 
     //   @note disconnect wallet
     case ACTIONS.WALLET_DISCONNECT:
-      return {...initialRPCState};
+      localStorage.removeItem("isRPCUserAuthenticated");
+      localStorage.removeItem("rpcUserData");
+      localStorage.removeItem("rpcUserExpiresAt");
+
+      return { ...initialRPCState };
   }
 };
