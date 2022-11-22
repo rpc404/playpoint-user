@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/style.css";
 import { Button } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
@@ -10,6 +10,8 @@ import moment from "moment";
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
+  const [history, setHistory] = useState([]);
+  const [editMode, setEditMode] = useState(false);
   const userID =
     JSON.parse(localStorage.getItem("rpcUserData")).userPublicAddress || "";
   React.useEffect(() => {
@@ -17,10 +19,16 @@ export default function Profile() {
       getUserPredictions(userID).then((res) => {
         if (res.data.data) {
           setUserProfile(res.data.data);
+          setHistory(res.data.data.slice(0, 10));
         }
       });
     }
   }, []);
+
+  const handlePageClick = (ev) => {
+    const page = ev.target.innerHTML.split("<span")[0];
+    setHistory(userProfile.slice((page - 1) * 10, page * 10));
+  };
   return (
     <div className="profile__container">
       <Helmet>
@@ -57,6 +65,23 @@ export default function Profile() {
           alt=""
           loading="lazy"
         />
+        <div>
+          {editMode ? (
+            <div>
+              <input value={"@username"} />
+              <Button onClick={() => setEditMode(!editMode)}>
+              <i class="ri-send-plane-fill"></i>
+              </Button>
+            </div>
+          ) : (
+            <div style={{ display: "flex" }}>
+              <h2>@UserName</h2>
+              <Button onClick={() => setEditMode(!editMode)}>
+                <i className="ri-pencil-line"></i>
+              </Button>
+            </div>
+          )}
+        </div>
         <Button>
           <i className="ri-add-box-line"></i> Add Money
         </Button>
@@ -73,7 +98,7 @@ export default function Profile() {
         </div>
 
         <div className="history__items">
-          {userProfile.map((data, index) => (
+          {history.map((data, index) => (
             <div className="history__item" key={index}>
               <p>{data._id.substring(4, 15)}</p>
               <p className={data.result}>
@@ -102,11 +127,16 @@ export default function Profile() {
       </div>
 
       <Stack spacing={2}>
-        <Pagination count={10} shape="rounded" className="pagination"/>
+        <Pagination
+          count={userProfile.length / 10}
+          shape="rounded"
+          className="pagination"
+          onClick={(e) => handlePageClick(e)}
+        />
       </Stack>
 
       <div className="mobhistory_container">
-        {userProfile.map((data, i) => {
+        {history.map((data, i) => {
           return (
             <div className="card" key={i}>
               <div className="id__container">
