@@ -85,6 +85,41 @@
       color: #fff;
       padding: 2px 10px;
     }
+    .userdetails__container {
+      .userdetails {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1.5em;
+        fieldset {
+          display: flex;
+          font-size: 1.2em;
+          border: none;
+          gap: 15px;
+          
+          input {
+            padding: .5em;
+            border-radius: 5px;
+            border: 1px solid #6B5CE7;
+
+            &:focus {
+              outline: none;
+            }
+          }
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: .5em;
+            i{
+              font-size: 1.1em;
+            }
+          }
+        }
+
+ 
+      }
+    }
   }
 
   .history__container {
@@ -193,7 +228,7 @@
   }
 
   .pagination__container {
-    @media screen and (max-width:426px) {
+    @media screen and (max-width: 426px) {
       display: none;
     }
   }
@@ -228,11 +263,11 @@
       .id__container {
         grid-area: id;
         background-color: #6060604d;
-        padding: .3em;
+        padding: 0.3em;
         border-radius: 3px;
         width: fit-content;
         .id {
-          font-size: .9em;
+          font-size: 0.9em;
           em {
             color: #3a791c;
           }
@@ -255,7 +290,7 @@
         grid-area: date;
         color: #0007;
         text-align: center;
-        font-size: .8em;
+        font-size: 0.8em;
       }
 
       .winlose {
