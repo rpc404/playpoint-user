@@ -6,27 +6,28 @@ import Stack from "@mui/material/Stack";
 import { Helmet } from "react-helmet";
 // import UserHistory from "../../mocks/UserHistory.json";
 import { getUserPredictions } from "../../api/Prediction";
-
+import moment from "moment";
 
 export default function Profile() {
-  const [userProfile, setUserProfile] =  React.useState([]);
-  const userID = JSON.parse(localStorage.getItem('rpcUserData')).userPublicAddress  || ""
-  React.useEffect(()=>{
-    if(userID){
-      getUserPredictions(userID).then(res=>{
-        if(res.data.data){
-          setUserProfile(res.data.data)
+  const [userProfile, setUserProfile] = React.useState([]);
+  const userID =
+    JSON.parse(localStorage.getItem("rpcUserData")).userPublicAddress || "";
+  React.useEffect(() => {
+    if (userID) {
+      getUserPredictions(userID).then((res) => {
+        if (res.data.data) {
+          setUserProfile(res.data.data);
         }
-      })
+      });
     }
-  },[])
+  }, []);
   return (
     <div className="profile__container">
       <Helmet>
         <title>Profile | Playpoint</title>
       </Helmet>
       <div className="blob1"></div>
-      <div className="summary__container"  >
+      <div className="summary__container">
         <div className="summaryItem">
           <i className="ri-money-dollar-circle-line"></i>
           <div>
@@ -74,7 +75,7 @@ export default function Profile() {
         <div className="history__items">
           {userProfile.map((data, index) => (
             <div className="history__item" key={index}>
-              <p>{data._id.substring(4,15)}</p>
+              <p>{data._id.substring(4, 15)}</p>
               <p className={data.result}>
                 <span>{data.result || "-"}</span>
               </p>
@@ -91,7 +92,8 @@ export default function Profile() {
                 )}
               </p>
               <p>
-                <b>{data?.match?.home || "-"}</b> VS <b>{data?.match?.away || "-"}</b>
+                <b>{data?.match?.home || "-"}</b> VS{" "}
+                <b>{data?.match?.away || "-"}</b>
               </p>
               <p>{Date(data.created_at)}</p>
             </div>
@@ -102,6 +104,47 @@ export default function Profile() {
       <Stack spacing={2}>
         <Pagination count={10} shape="rounded" />
       </Stack>
+
+      <div className="mobhistory_container">
+        {userProfile.map((data, i) => {
+          console.log(data);
+          return (
+            <div className="card" key={i}>
+              <div className="id__container">
+                <p className="id">
+                  ID: <em>{data._id.substring(4, 15)}</em>
+                </p>
+              </div>
+              <p className="amount">
+                {` Amount: $${data.amount}~${data.amount} PPTT`}
+              </p>
+              <p className="result">Result:{data.result || "--"}</p>
+              <p className="win-lose">
+                win/lose amount:{" "}
+                {data.result === "win" || data.result === "lose" ? (
+                  <>
+                    ${data.resultAmount}~{data.resultAmount * 0.015} PPTT
+                  </>
+                ) : (
+                  <>{"-"}</>
+                )}
+              </p>
+              <p className="match">
+                Match: <b>{data?.match?.home || "-"}</b> VS{" "}
+                <b>{data?.match?.away || "-"}</b>
+              </p>
+              <p className="date">
+                Date:{moment(data?.created_at).format("lll")}
+              </p>
+              {data.result && (
+                <div className="winlose">
+                  <p>win/lose</p>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
