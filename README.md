@@ -12,4 +12,4 @@ Follow the steps in order to run the project on your local system.
  4. `yarn run dev`
 
 ### Security
-If you find any security issues, I suggest you to raise an issue and mail at theboringschool.org@gmail.com. Any contribution is appreciated, Thanks in advance and Happy Hacking. 
+If you find any security issues, I suggest you to raise an issue and mail at theboringschool.org@gmail.com. Any contribution is appreciated, Thanks in advance and Happy Hacking.

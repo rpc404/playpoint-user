@@ -12,7 +12,6 @@ import "./styles/style.css";
 import { toast } from "react-toastify";
 import loader from "../../../helpers/loading.gif";
 
-
 /**
  * @dev utils for slider
  */
@@ -70,7 +69,7 @@ const PoolType = ({
 
   const [predictionCount, setPredictionCount] = React.useState(1);
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
-  const [predicting,setPredicting] = React.useState(false)
+  const [predicting, setPredicting] = React.useState(false);
 
   const userData = JSON.parse(localStorage.getItem("rpcUserData"));
 
@@ -120,33 +119,36 @@ const PoolType = ({
 
   const validation = (answers) => {
     let _ = false;
-    for (let index = 0; index <  questionaire.tempQuestionaire[0]?.questionaires.questions.length; index++) {
-      if(answers.hasOwnProperty(index)){
+    for (
+      let index = 0;
+      index < questionaire.tempQuestionaire[0]?.questionaires.questions.length;
+      index++
+    ) {
+      if (answers.hasOwnProperty(index)) {
         _ = true;
-      
-      }else{
+      } else {
         _ = false;
       }
     }
     return _;
-  }
+  };
 
   const handlePredction = async () => {
-    
     _predictionData.predictedBy = userData.userPublicAddress || "";
     _predictionData.amount = userPrediction?.activeAmount;
-    _predictionData.questionaireId = questionaire.questionaires[0]._id
-    _predictionData.fixtureId = questionaire.questionaires[0].fixtureId
-   
-    if(validation(_predictionData.answers)){
+    _predictionData.questionaireId = questionaire.questionaires[0]._id;
+    _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
+
+    if (validation(_predictionData.answers)) {
       setPredicting(true);
-     return await setPrediction(_predictionData).then(()=>{
-      toast("Predicted Successfully!")
-      _predictionData.answers={};
-    }).catch(err=>console.log(err))
-      .finally(()=>setPredicting(false))
-    }
-    return toast.error("Enter All Answers")
+      return await setPrediction(_predictionData)
+        .then(() => {
+          toast("Predicted Successfully!");
+          _predictionData.answers = {};
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setPredicting(false));
+    } else return toast.error("Enter All Answers!");
   };
   return (
     <>
@@ -280,13 +282,15 @@ const PoolType = ({
           </div>
           {/* 
           @note button needs to be disabled after */}
-          { userData ? 
-      <Button onClick={() => handlePredction()} disabled={predicting}>
-            {
-              predicting ? <img src={loader} alt="loading" /> : "Predict"
-            }
-          </Button> : <Button className="login-btn" onClick={()=>handleLogin()}>Login Now to Predict!  </Button>
-}
+          {userData ? (
+            <Button onClick={() => handlePredction()} disabled={predicting}>
+              {predicting ? <img src={loader} alt="loading" /> : "Predict"}
+            </Button>
+          ) : (
+            <Button className="login-btn" onClick={() => handleLogin()}>
+              Login Now to Predict!{" "}
+            </Button>
+          )}
         </div>
       </div>
     </>
