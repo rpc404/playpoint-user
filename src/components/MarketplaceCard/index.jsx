@@ -1,10 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getMarketplaceStat } from "../../api/Marketplace";
 
 export default function MarketplaceCard({
   marketplace,
   setActiveFixtureBackground,
 }) {
+
+  const [stat,setStat] = React.useState({});
+  React.useEffect(()=>{
+    getMarketplaceStat(marketplace.marketplaceSlug).then(res=>setStat(res.data.response))
+    
+  },[])
   const navigate = useNavigate();
   const { marketplaceCoverImage, marketplaceName, marketplaceSlug } =
     marketplace;
@@ -37,19 +44,19 @@ export default function MarketplaceCard({
         </span>
         <div className="info">
           <p>
-            0 <br />
+            {stat.totalQuestionaires} <br />
             <span className="flex">
               <i className="ri-chat-poll-line"></i> Questions
             </span>
           </p>
           <p>
-            0 <br />
+            {stat.totalFixtures} <br />
             <span className="flex">
               <i className="ri-bubble-chart-line"></i> Fixtures
             </span>
           </p>
           <p>
-            0 <br />
+            {stat.totalPredictions} <br />
             <span className="flex">
               <i className="ri-bar-chart-grouped-line"></i> Predictions
             </span>
