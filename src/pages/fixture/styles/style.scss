@@ -246,3 +246,41 @@
     }
   }
 }
+
+.skeleton__container {
+  display: flex;
+  .tabSkeleton {
+    display: flex;
+    gap: 10px;
+  }
+}
+.featureSkeleton {
+  margin-bottom: 3em;
+  padding-bottom: .5em;
+  border-bottom:1px solid #9A9A9A;
+  padding: .5em;
+  overflow: hidden;
+  .skeleton {
+    display: flex;
+    gap: 5px;
+  }
+  .featuresSkeleton {
+    .features__container {
+      display: flex;
+      justify-content: space-between;
+      .features {
+        display: flex;
+        gap: 5em;
+        div {
+          display: flex;
+          gap: 15px;
+        }
+    
+      }
+      .view {
+        display: flex;
+        gap: 15px;
+      }
+    }
+  }
+}
