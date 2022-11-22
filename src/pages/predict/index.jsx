@@ -9,6 +9,7 @@ import { getFixutreById } from "../../api/Fixture";
 import allFlags from "../../helpers/CountryFlags.json";
 import {
   getAllPredictions,
+  getAllPredictionsByFixture,
   getQuestionaireByFixtureId,
 } from "../../api/Prediction";
 import moment from "moment";
@@ -62,7 +63,7 @@ export default function Predict({ socket }) {
     })();
 
     (async () => {
-      const response = await getAllPredictions();
+      const response = await getAllPredictionsByFixture(fixtureId);
       setPredictions(response.data.data.reverse());
 
       let lineChartData = [];
@@ -98,7 +99,7 @@ export default function Predict({ socket }) {
           <div className={`prediction__items ${activeOS}`}>
             {predictions.length >= 1 &&
               predictions.map((data, index) => {
-                data?.fixtureId === fixtureId && (
+                return (
                   <div className="predictedCard__container" key={index}>
                     <div>
                       <div className="details">
