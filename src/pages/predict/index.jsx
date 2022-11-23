@@ -109,7 +109,8 @@ export default function Predict({ socket }) {
                         {/* <p>{console.log()}</p> */}
                       </div>
                       <p>
-                        {data?.predictedBy} predicted on {fixture?.HomeTeam} vs{" "}
+                        {
+                        data?.user[0]? <a href="#">{data?.user[0].username}</a> : data?.predictedBy} predicted on {fixture?.HomeTeam} vs{" "}
                         {fixture?.AwayTeam}.
                       </p>
                       <div className="info">
