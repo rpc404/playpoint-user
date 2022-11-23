@@ -16,10 +16,9 @@ export default function Profile() {
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
 
-  const [{ userPublicAddress, username }, dispatchRPCData] =
-    useRPCContext();
+  const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
   const [_username, setUsername] = useState("");
-  
+
   React.useEffect(() => {
     if (userPublicAddress) {
       getUserPredictions(userPublicAddress).then((res) => {
@@ -29,16 +28,28 @@ export default function Profile() {
         }
       });
     }
-    if(username){
-      setUsername(username)
+    if (username) {
+      setUsername(username);
     }
   }, []);
 
-  const handleUpdate = async() => {
-    await setProfile({data:{username:_username,userPublicAddress}}).then(res=>console.log(res))
-    dispatchRPCData({type:ACTIONS.UPDATE_USERNAME,payload:{username:_username}})
-    setEditMode(false)
-  }
+  const handleUpdate = async () => {
+    await setProfile({ data: { username: _username, userPublicAddress } }).then(
+      (res) => {
+        const rpcUserData = {
+          isWalletConnected: true,
+          userPublicAddress: userPublicAddress,
+          username: _username,
+        };
+        localStorage.setItem("rpcUserData", JSON.stringify(rpcUserData));
+      }
+    );
+    dispatchRPCData({
+      type: ACTIONS.UPDATE_USERNAME,
+      payload: { username: _username },
+    });
+    setEditMode(false);
+  };
 
   const handlePageClick = (ev) => {
     const page = ev.target.innerHTML.split("<span")[0];
