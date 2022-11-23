@@ -6,12 +6,12 @@ export default function MarketplaceCard({
   marketplace,
   setActiveFixtureBackground,
 }) {
-
-  const [stat,setStat] = React.useState({});
-  React.useEffect(()=>{
-    getMarketplaceStat(marketplace.marketplaceSlug).then(res=>setStat(res.data.response))
-    
-  },[])
+  const [stat, setStat] = React.useState({});
+  React.useEffect(() => {
+    getMarketplaceStat(marketplace.marketplaceSlug).then((res) =>
+      setStat(res.data.response)
+    );
+  }, []);
   const navigate = useNavigate();
   const { marketplaceCoverImage, marketplaceName, marketplaceSlug } =
     marketplace;
@@ -28,13 +28,12 @@ export default function MarketplaceCard({
       onClick={() => {
         navigate(`/fixture`, {
           state: {
-            marketplaceSlug
-          }
+            marketplaceSlug,
+          },
         });
         setActiveFixtureBackground(marketplaceCoverImage);
       }}
     >
-   
       <div className="coverImage" style={styles}></div>
       <span className="marketplaceDetails">
         <span className="marketplaceName">

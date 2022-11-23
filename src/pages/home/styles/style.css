@@ -6,16 +6,15 @@
   width: 100%;
 }
 .home__container .home__mainTitle {
-  padding: 40px 3vw 35px 3vw;
-  text-decoration: underline;
+  padding: 20px 2vw 20px 2vw;
 }
 .home__container .marketingBanners__container {
-  margin: 50px 0;
-  padding-bottom: 80px;
+  margin: 20px 0;
+  padding-bottom: 50px;
   margin-bottom: 0;
 }
 .home__container .marketingBanners__container h1 {
-  padding: 0 3vw 25px 3vw;
+  padding: 0 3vw 15px 3vw;
   text-align: center;
 }
 .home__container .marketingBanners__container .marketingBanners__items {
@@ -23,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 3vw;
+  padding: 0 2vw;
   flex-wrap: wrap;
 }
 @media (max-width: 576px) {
@@ -86,14 +85,13 @@
   line-height: 1.5;
 }
 .home__container .marketplace__items {
-  padding: 0 3vw;
+  padding: 0 2vw;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 45px;
+  gap: 35px;
   flex-direction: row;
-  margin-bottom: 20px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
 }
 @media (max-width: 576px) {
   .home__container .marketplace__items {
@@ -103,8 +101,8 @@
 .home__container .marketplace__items .marketplaceCard__container {
   flex: 1 1 0;
   text-decoration: none;
-  max-width: 21vw;
-  min-width: 21vw;
+  max-width: 18vw;
+  min-width: 17vw;
   color: #000;
   border-radius: 16px;
   overflow: hidden;
