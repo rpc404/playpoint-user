@@ -69,14 +69,16 @@ export default function Fixture() {
 
       {modalOpen && <QuickView handleModalClose={setModalOpen} />}
 
-      <h1
-        style={{
-          background: `url("https://ik.imagekit.io/domsan/image_L63diTKkM.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669019260350") no-repeat center center`,
-          backgroundSize: "cover",
-        }}
+      <div className="fixtureBanner__container">
+        <video autoPlay muted loop playsInline width="100%">
+          <source src="https://ik.imagekit.io/domsan/FIFA_World_Cup__2022___Family_Reunion___adidas__idg6VunF.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1669230918084"/>
+        </video>
+        <h1
       >
         Fixtures
       </h1>
+      </div>
+
 
       {loading ? (
         [0, 1].map((i) => {

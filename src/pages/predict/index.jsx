@@ -118,7 +118,7 @@ export default function Predict({ socket }) {
                           ${data?.amount}~{(data?.amount / 0.015).toFixed(2)}{" "}
                           PPTT
                         </p>
-                        <p>{moment(data?.created_at).format("lll")}</p>
+                        <p>{moment(data?.created_at).format("LT")}</p>
                       </div>
                     </div>
                   </div>
