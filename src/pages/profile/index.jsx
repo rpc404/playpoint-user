@@ -96,9 +96,9 @@ export default function Profile() {
             <div className="userdetails">
               <fieldset>
                 <input
-                  value={_username}
+                 value={_username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="username"
+                  placeholder={username}
                 />
                 <Button onClick={() => handleUpdate()}>
                   <i className="ri-send-plane-fill"></i>
@@ -108,7 +108,7 @@ export default function Profile() {
           ) : (
             <div className="userdetails">
               <fieldset>
-                <h2>@{_username}</h2>
+                <h2>@{username}</h2>
                 <Button onClick={() => setEditMode(!editMode)}>
                   <i className="ri-pencil-line"></i>
                 </Button>
