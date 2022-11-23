@@ -108,6 +108,7 @@ const PoolType = ({
     amount: 0,
     questionaireId: "",
     fixtureId: "",
+    marketplaceSlug:""
   };
 
   const handleRadioChange = (question, answer) => {
@@ -135,6 +136,7 @@ const PoolType = ({
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id;
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
+    _predictionData.marketplaceSlug = questionaire.tempQuestionaire[0].marketplaceSlug
 
     if (validation(_predictionData.answers)) {
       setPredicting(true);
