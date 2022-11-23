@@ -1,17 +1,10 @@
 .prediction__container .main__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
 }
 .prediction__container .main__container .recentPredictions {
@@ -37,12 +30,8 @@
   height: 77vh;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
   gap: 8px;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding: 7px 1.5vw 10px 1.5vw;
@@ -52,16 +41,10 @@
   cursor: pointer;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-top: 5px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info p:first-child {
   color: #2ecc71;
@@ -82,15 +65,9 @@
   line-height: 1.5;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 5px;
 }
@@ -107,9 +84,7 @@
   font-size: 12px;
 }
 .prediction__container .main__container .predictionTable {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   border-left: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   border-right: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   overflow-y: hidden;
@@ -117,41 +92,24 @@
 .prediction__container .main__container .predictionTable .predictionTable__topBar {
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding: 10px 1vw 10px 1vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   background: #f1f2f6;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 5px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 5px;
   font-weight: 500;
   font-size: 18px;
@@ -175,20 +133,14 @@
   }
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 15px;
   font-size: 14px;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div {
     margin-top: 8px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     font-size: 12px;
   }
@@ -197,10 +149,7 @@
   color: rgba(0, 0, 0, 0.4);
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   height: 81vh;
   overflow-y: scroll;
   padding-bottom: 20px;
@@ -218,33 +167,20 @@
   margin-top: 40px;
   background: #f1f2f6;
   padding: 10px 1vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   font-size: 14px;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     gap: 8px;
   }
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails p {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 5px;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container .MuiTab-root {
@@ -260,28 +196,18 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 10px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   font-size: 15px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar div,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar div,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .MuiBox-root .topBar div,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar .MuiButton-root,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar .MuiButton-root,
@@ -310,23 +236,15 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .top,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top p:first-child,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top p:first-child,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .top p:first-child,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .top p:first-child {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   font-weight: 500;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top p:last-child,
@@ -339,13 +257,9 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .answers,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .answers,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .answers {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-top: 5px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 15px;
   color: #6a6a6a;
 }
@@ -353,12 +267,8 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .answers .label,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem .answers .label,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .questionItem .answers .label {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   font-size: 14px;
   gap: 8px;
 }
@@ -373,13 +283,9 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount {
   border-top: 0.5px solid rgba(0, 0, 0, 0.0666666667);
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
   padding-top: 10px;
   gap: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 @media (max-width: 576px) {
@@ -387,10 +293,7 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     gap: 15px;
   }
 }
@@ -398,18 +301,14 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount div,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount div,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount div {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
+  flex: 1 1 0;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount div,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount div,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount div,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount div {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    flex: 1;
   }
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .top,
@@ -417,15 +316,9 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .top,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .top {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .top,
@@ -480,12 +373,8 @@
   margin-bottom: 15px;
 }
 .prediction__container .main__container .leaderboards .leaderboardItemsTitle {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding-bottom: 10px;
   font-size: 14px;
@@ -493,15 +382,9 @@
   margin: 0 8px;
 }
 .prediction__container .main__container .leaderboards .leaderboardItemsTitle p {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex: 1 1 0;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 2px;
 }
 .prediction__container .main__container .leaderboards .leaderboardItems {
@@ -515,15 +398,9 @@
 }
 .prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container {
   background: #f1f2f6;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 8px;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
 }
@@ -532,7 +409,5 @@
   cursor: pointer;
 }
 .prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
-}
+  flex: 1 1 0;
+}/*# sourceMappingURL=style.css.map */

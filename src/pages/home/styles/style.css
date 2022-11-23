@@ -20,18 +20,11 @@
 }
 .home__container .marketingBanners__container .marketingBanners__items {
   margin-top: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   padding: 0 3vw;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 @media (max-width: 576px) {
   .home__container .marketingBanners__container .marketingBanners__items {
@@ -46,16 +39,9 @@
   padding: 25px;
   transition: 0.3s all ease-in-out;
   -webkit-transition: 0.3s all ease-in-out;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 @media (max-width: 576px) {
   .home__container .marketingBanners__container .marketingBanners__items .marketingBanners__item {
@@ -101,33 +87,21 @@
 }
 .home__container .marketplace__items {
   padding: 0 3vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
   gap: 45px;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   margin-bottom: 20px;
   padding-bottom: 50px;
 }
 @media (max-width: 576px) {
   .home__container .marketplace__items {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
 }
 .home__container .marketplace__items .marketplaceCard__container {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
+  flex: 1 1 0;
   text-decoration: none;
   max-width: 21vw;
   min-width: 21vw;
@@ -139,7 +113,6 @@
   -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  -webkit-transition: 0.3s all ease-in-out;
   transition: 0.3s all ease-in-out;
 }
 @media (max-width: 576px) {
@@ -149,8 +122,7 @@
   }
 }
 .home__container .marketplace__items .marketplaceCard__container:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+  transform: scale(1.02);
   box-shadow: 4px 6px 10px 8px rgba(124, 30, 255, 0.09);
   -webkit-box-shadow: 4px 6px 10px 8px rgba(124, 30, 255, 0.09);
   -moz-box-shadow: 4px 6px 10px 8px rgba(124, 30, 255, 0.09);
@@ -163,51 +135,28 @@
   padding: 8px;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   margin-bottom: 3px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 5px;
 }
 .home__container .marketplace__items .marketplaceCard__container .marketplaceDetails .info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding-bottom: 10px;
 }
 .home__container .marketplace__items .marketplaceCard__container .marketplaceDetails .info p {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
+  flex: 1 1 0;
   font-size: 14px;
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .home__container .marketplace__items .marketplaceCard__container .marketplaceDetails .info p .flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 5px;
   font-size: 13px;
   margin-top: 3px;
-}
+}/*# sourceMappingURL=style.css.map */

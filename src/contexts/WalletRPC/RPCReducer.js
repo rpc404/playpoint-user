@@ -3,6 +3,7 @@ const { ethereum } = window;
 export const ACTIONS = {
   WALLET_CONNECT: "wallet-connect",
   WALLET_DISCONNECT: "wallet-disconnect",
+  UPDATE_USERNAME:"update-profile"
 };
 
 export const initialRPCState = {
@@ -31,5 +32,11 @@ export const RPCReducer = (state, action) => {
       localStorage.removeItem("rpcUserExpiresAt");
 
       return { ...initialRPCState };
+
+    case ACTIONS.UPDATE_USERNAME:
+      return{
+        ...state,
+        username: action.payload.username
+      }
   }
 };
