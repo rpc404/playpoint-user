@@ -200,7 +200,7 @@
 .profile__container .MuiPagination-root {
   margin: 10px 4.5vw;
 }
-@media screen and (min-width: 425px) {
+@media screen and (min-width: 426px) {
   .profile__container .mobhistory_container {
     display: none;
   }

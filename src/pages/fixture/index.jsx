@@ -10,7 +10,7 @@ import QuickView from "../../components/QuickView";
 import { useLocation } from "react-router-dom";
 import "./styles/style.css";
 import { getFixtures } from "../../api/Fixture";
-import { Skeleton, Typography } from "@mui/material";
+import { Skeleton } from "@mui/material";
 
 export default function Fixture() {
   let params = useLocation();

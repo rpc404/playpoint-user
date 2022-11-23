@@ -36,6 +36,7 @@ export default function FixtureCard({
     var games = [];
 
     fixtures.forEach((data) => {
+      console.log(data?.DateUtc)
       if (Moment(data?.DateUtc).format("LL") === date) {
         games.push(data);
       }
