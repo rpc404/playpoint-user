@@ -106,7 +106,7 @@ export default function Predict({ socket }) {
         setPredictions(newPrediction);
     });
 
-  },[predictions])
+  },[])
   return (
     <div className="prediction__container">
       <Helmet>
