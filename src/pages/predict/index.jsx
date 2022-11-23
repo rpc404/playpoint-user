@@ -66,7 +66,8 @@ export default function Predict({ socket }) {
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
-      setPredictions(response.data.data.reverse());
+      sessionStorage.setItem('predictions', JSON.stringify(response.data.data.reverse()))
+      setPredictions(response.data.data);
 
       let lineChartData = [];
 
@@ -95,10 +96,14 @@ export default function Predict({ socket }) {
     pusher.connection.bind("connected", function () {
       console.log("Weboscket Connected");
     });
-    console.log(predictions)
     const predictionChannel = pusher.subscribe("prediction-channel");
     predictionChannel.bind("new-prediction",(data)=>{
-        setPredictions([data.data[0],...predictions]);
+      const _predictions = JSON.parse(sessionStorage.getItem('predictions'))
+
+      const newPrediction = [data.data[0], ..._predictions]
+      
+      sessionStorage.setItem('predictions', newPrediction)
+        setPredictions(newPrediction);
     });
 
   },[predictions])
