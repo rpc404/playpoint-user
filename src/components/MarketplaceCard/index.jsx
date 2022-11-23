@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getMarketplaceStat } from "../../api/Marketplace";
 
 export default function MarketplaceCard({
-  marketplace,
-  setActiveFixtureBackground,
+  marketplace
 }) {
   const [stat, setStat] = React.useState({});
   React.useEffect(() => {
@@ -31,7 +30,6 @@ export default function MarketplaceCard({
             marketplaceSlug,
           },
         });
-        setActiveFixtureBackground(marketplaceCoverImage);
       }}
     >
       <div className="coverImage" style={styles}></div>

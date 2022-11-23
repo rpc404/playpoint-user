@@ -19,7 +19,7 @@ export default function SetFixtureGamedates({ setGameDates, marketplaceSlug }) {
 
     (async () => {
       let fixtures = await getFixtures(marketplaceSlug);
-      fixtures = fixtures?.data?.fixtures;
+      fixtures = fixtures?.data?.fixtures.reverse();
 
       fixtures.forEach((data) => {
         dates.push(Moment(data.DateUtc).format("LL"));
