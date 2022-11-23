@@ -7,25 +7,38 @@ import { Helmet } from "react-helmet";
 // import UserHistory from "../../mocks/UserHistory.json";
 import { getUserPredictions } from "../../api/Prediction";
 import moment from "moment";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
+import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
+import { setProfile } from "../../api/Profile";
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
-  const [username, setUsername] = useState("");
 
-  const userID =
-    JSON.parse(localStorage.getItem("rpcUserData")).userPublicAddress || "";
+  const [{ userPublicAddress, username }, dispatchRPCData] =
+    useRPCContext();
+  const [_username, setUsername] = useState("");
+  
   React.useEffect(() => {
-    if (userID) {
-      getUserPredictions(userID).then((res) => {
+    if (userPublicAddress) {
+      getUserPredictions(userPublicAddress).then((res) => {
         if (res.data.data) {
           setUserProfile(res.data.data);
           setHistory(res.data.data.slice(0, 10));
         }
       });
     }
+    if(username){
+      setUsername(username)
+    }
   }, []);
+
+  const handleUpdate = async() => {
+    await setProfile({data:{username:_username,userPublicAddress}}).then(res=>console.log(res))
+    dispatchRPCData({type:ACTIONS.UPDATE_USERNAME,payload:{username:_username}})
+    setEditMode(false)
+  }
 
   const handlePageClick = (ev) => {
     const page = ev.target.innerHTML.split("<span")[0];
@@ -72,19 +85,19 @@ export default function Profile() {
             <div className="userdetails">
               <fieldset>
                 <input
-                  value={username}
+                  value={_username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="username"
                 />
-                <Button onClick={() => setEditMode(!editMode)}>
-                  <i class="ri-send-plane-fill"></i>
+                <Button onClick={() => handleUpdate()}>
+                  <i className="ri-send-plane-fill"></i>
                 </Button>
               </fieldset>
             </div>
           ) : (
             <div className="userdetails">
               <fieldset>
-                <h2>{username}</h2>
+                <h2>@{_username}</h2>
                 <Button onClick={() => setEditMode(!editMode)}>
                   <i className="ri-pencil-line"></i>
                 </Button>

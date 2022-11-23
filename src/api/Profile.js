@@ -5,4 +5,4 @@ export const setProfile = ({data}) => {
       import.meta.env.VITE_API_URI + `api/v1/profile`,
       data
     );
-  };
+};
