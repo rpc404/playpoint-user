@@ -83,6 +83,16 @@
   border-radius: 10px;
   font-size: 12px;
 }
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div p a {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-decoration: none;
+  background-color: rgba(0, 201, 167, 0.1);
+  padding: 0.2em;
+  color: #00c9a7;
+  border-radius: 2px;
+}
 .prediction__container .main__container .predictionTable {
   flex: 1;
   border-left: 0.5px solid rgba(0, 0, 0, 0.0666666667);
