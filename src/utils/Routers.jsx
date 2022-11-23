@@ -6,8 +6,8 @@ import NotFound from "../pages/404";
 import Home from "../pages/home";
 import Profile from "../pages/profile";
 
-import socketIO from "socket.io-client";
-const socket = socketIO.connect(import.meta.env.VITE_SOCKET_URL);
+// import socketIO from "socket.io-client";
+// const socket = socketIO.connect(import.meta.env.VITE_SOCKET_URL);
 
 export default function PageRouters() {
   return (
@@ -29,7 +29,7 @@ export default function PageRouters() {
         path="fixture"
         element={<Fixture />}
       />
-      <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
+      <Route path="predict/:fixtureId" element={<Predict />} />
     </Routes>
   );
 }

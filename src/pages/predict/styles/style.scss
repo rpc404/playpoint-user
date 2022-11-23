@@ -74,6 +74,7 @@
               width: 100%;
               margin-bottom: 5px;
 
+
               .MuiButton-root {
                 text-transform: capitalize;
                 padding: 0;
@@ -86,6 +87,18 @@
                 padding: 1px 15px;
                 border-radius: 10px;
                 font-size: 12px;
+              }
+            }
+            p{
+              // display: grid;
+
+              a{
+                width: fit-content;
+                text-decoration: none;
+                background-color: rgba(0,201,167,.1);
+                padding: .2em;
+                color: #00c9a7;
+                border-radius: 2px;
               }
             }
           }

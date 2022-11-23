@@ -79,7 +79,7 @@ export default function FixtureCard({
                       )
                     );
                   })}
-                  <div className="gameTime">{moment(data?.DateUtc).calendar()}</div>
+                  <div className="gameTime">{moment(data?.DateUtc).format('LT')}</div>
                   {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||

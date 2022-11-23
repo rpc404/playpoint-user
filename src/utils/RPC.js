@@ -1,3 +1,5 @@
+import { setProfile } from "../api/Profile";
+
 const { ethereum } = window;
 
 export const handleRPCWalletLogin = async () => {
@@ -14,15 +16,18 @@ export const handleRPCWalletLogin = async () => {
       const tempRpcData = {
         userPublicAddress: userAddress[0],
         isWalletConnected: true,
+        username:""
       };
-
+      if(userAddress[0]){
+        await setProfile({data:tempRpcData}).then(res=>{
+          tempRpcData.username = res.data.profile.username
+        })
+      }
       const currentDate = new Date();
       currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
-
       localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
       localStorage.setItem("isRPCUserAuthenticated", true);
       localStorage.setItem("rpcUserExpiresAt", currentDate);
-
       return tempRpcData;
     } else alert("Metamask is not installed!");
   } catch (error) {
