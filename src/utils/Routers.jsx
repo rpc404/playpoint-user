@@ -9,7 +9,7 @@ import Profile from "../pages/profile";
 // import socketIO from "socket.io-client";
 // const socket = socketIO.connect(import.meta.env.VITE_SOCKET_URL);
 
-export default function PageRouters() {
+export default function PageRouters({socket}) {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
@@ -29,7 +29,7 @@ export default function PageRouters() {
         path="fixture"
         element={<Fixture />}
       />
-      <Route path="predict/:fixtureId" element={<Predict />} />
+      <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
     </Routes>
   );
 }

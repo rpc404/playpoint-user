@@ -14,6 +14,9 @@ import {
 } from "../../api/Prediction";
 import moment from "moment";
 import { toast } from "react-toastify";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
+import Pusher from "pusher-js";
+
 
 export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
@@ -23,6 +26,8 @@ export default function Predict({ socket }) {
   const [predictions, setPredictions] = React.useState([]);
   const [questionaires, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
+
+  const [{userPublicAddress},dispatchRPCData] = useRPCContext()
 
   const getCountryFlag = (country) => {
     let _url = "";
@@ -81,6 +86,22 @@ export default function Predict({ socket }) {
     })();
   }, []);
 
+  React.useEffect(()=>{
+    // Enable pusher logging - don't include this in production
+    // Pusher.logToConsole = true;
+    const pusher = new Pusher("2142cda6d39765cba2a9", {
+      cluster: "ap2",
+    });
+    pusher.connection.bind("connected", function () {
+      console.log("Weboscket Connected");
+    });
+    console.log(predictions)
+    const predictionChannel = pusher.subscribe("prediction-channel");
+    predictionChannel.bind("new-prediction",(data)=>{
+        setPredictions([data.data[0],...predictions]);
+    });
+
+  },[predictions])
   return (
     <div className="prediction__container">
       <Helmet>
