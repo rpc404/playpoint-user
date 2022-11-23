@@ -102,7 +102,7 @@ export default function Predict({ socket }) {
 
       const newPrediction = [data.data[0], ..._predictions]
       
-      sessionStorage.setItem('predictions', newPrediction)
+      sessionStorage.setItem('predictions', JSON.stringify(newPrediction))
         setPredictions(newPrediction);
     });
 
