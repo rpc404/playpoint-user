@@ -78,23 +78,15 @@
         text-align: center;
         justify-content: center;
         gap: 8px;
-        // background: #6b5ce7;
-        // backdrop-filter: blur(3px);
-        // -webkit-backdrop-filter: blur(3px);
-        // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         padding: 12px 19px 12px 15px;
-        // border-radius: 12px;
         border-right: 1px solid #6b5ce7;
-        // color: #fff;
         &:nth-child(3) {
           border: none;
         }
 
         i {
           font-size: 25px;
-          // background: #6c5ce7;
           color: #6b5ce7;
-          // padding: 10px;
           border-radius: 12px;
         }
 
@@ -142,43 +134,28 @@
           }
           button {
             background-color: #fff;
-            // border-radius: 50%;
             border: 1px solid #6b5ce7;
-            // font-size: 1.3em;
-            // height: 45px;
-            // width: 35px;
             padding: 0.5em;
             transition: background 1s ease-in-out;
 
             i {
               color: #6b5ce7;
-              // font-size: 1.2em;
             }
-            // &:hover {
-            //   background-color: #6b5ce7;
-            //   i {
-            //     color: #fff;
-            //   }
-            // }
           }
         }
       }
     }
     .accountbtn {
       font-size: 1.3em;
-      // background-color: #fff;
       color: #0009;
-      // border: 1px solid rgb(216, 216, 216);
-      // box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-      //   rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
       padding: 0.5em 0.5em;
       display: flex;
       flex-direction: column;
       position: relative;
       width: 200px;
       text-align: center;
+      background-color: #f2f4f6;
       &:hover {
-        // background-color: #f2f4f6;
         cursor: pointer;
         &::before {
           display: inline-block;
