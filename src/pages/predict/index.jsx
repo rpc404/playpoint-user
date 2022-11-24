@@ -26,6 +26,8 @@ export default function Predict({ socket }) {
   const [predictions, setPredictions] = React.useState([]);
   const [questionaires, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
+  // const [volume,setVolume] = React.useState(0)
+  let volume = 0;
 
   const [{userPublicAddress},dispatchRPCData] = useRPCContext()
 
@@ -123,6 +125,7 @@ export default function Predict({ socket }) {
           <div className={`prediction__items ${activeOS}`}>
             {predictions.length >= 1 &&
               predictions.map((data, index) => {
+                volume+=(data?.amount / 0.015);
                 return (
                   <div className="predictedCard__container" key={index}>
                     <div>
@@ -182,7 +185,7 @@ export default function Predict({ socket }) {
               {/* @note this needs to be resolved */}
               <div>
                 <p>24h Volume</p>
-                <p> PPTT</p>
+                <p>{volume.toFixed(2)} PPTT</p>
               </div>
               <div>
                 <p>Total Predictions</p>
