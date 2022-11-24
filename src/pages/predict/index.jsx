@@ -17,7 +17,6 @@ import { toast } from "react-toastify";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import Pusher from "pusher-js";
 
-
 export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
   const [fixture, setFixture] = React.useState({});
@@ -29,7 +28,7 @@ export default function Predict({ socket }) {
   // const [volume,setVolume] = React.useState(0)
   let volume = 0;
 
-  const [{userPublicAddress},dispatchRPCData] = useRPCContext()
+  const [{ userPublicAddress }, dispatchRPCData] = useRPCContext();
 
   const getCountryFlag = (country) => {
     let _url = "";
@@ -39,6 +38,10 @@ export default function Predict({ socket }) {
       } else if (country === "USA") {
         _url =
           "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/US.svg";
+      } else if(country === "South Korea"){
+        _url = "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg"
+      }else if(country === "Korea Republic"){
+        _url = "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg"
       }
     });
     return _url;
@@ -89,7 +92,7 @@ export default function Predict({ socket }) {
     })();
   }, []);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;
     const pusher = new Pusher("2142cda6d39765cba2a9", {
@@ -98,6 +101,7 @@ export default function Predict({ socket }) {
     pusher.connection.bind("connected", function () {
       console.log("Weboscket Connected");
     });
+    console.log(predictions)
     const predictionChannel = pusher.subscribe("prediction-channel");
     predictionChannel.bind("new-prediction",(data)=>{
       const _predictions = JSON.parse(sessionStorage.getItem('predictions'))
@@ -108,7 +112,7 @@ export default function Predict({ socket }) {
         setPredictions(newPrediction);
     });
 
-  },[])
+  },[predictions])
   return (
     <div className="prediction__container">
       <Helmet>
@@ -138,9 +142,14 @@ export default function Predict({ socket }) {
                         {/* <p>{console.log()}</p> */}
                       </div>
                       <p>
-                        {
-                        data?.user[0]? <a href="#" className="details__username">{data?.user[0].username}</a> :  data?.predictedBy} predicted on {fixture?.HomeTeam} vs{" "}
-                        {fixture?.AwayTeam}.
+                        {data?.user[0] ? (
+                          <a href="#" className="details__username">
+                            {data?.user[0].username}
+                          </a>
+                        ) : (
+                          data?.predictedBy
+                        )}{" "}
+                        predicted on {fixture?.HomeTeam} vs {fixture?.AwayTeam}.
                       </p>
                       <div className="info">
                         <p>
