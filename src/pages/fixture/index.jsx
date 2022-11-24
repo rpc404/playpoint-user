@@ -10,7 +10,7 @@ import QuickView from "../../components/QuickView";
 import { useLocation } from "react-router-dom";
 import "./styles/style.css";
 import { getFixtures } from "../../api/Fixture";
-import { Skeleton, Typography } from "@mui/material";
+import { Skeleton } from "@mui/material";
 
 export default function Fixture() {
   let params = useLocation();
@@ -69,17 +69,19 @@ export default function Fixture() {
 
       {modalOpen && <QuickView handleModalClose={setModalOpen} />}
 
-      <h1
-        style={{
-          background: `url("https://ik.imagekit.io/domsan/image_L63diTKkM.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669019260350") no-repeat center center`,
-          backgroundSize: "cover",
-        }}
+      <div className="fixtureBanner__container">
+        <video autoPlay muted loop playsInline width="100%">
+          <source src="https://ik.imagekit.io/domsan/FIFA_World_Cup__2022___Family_Reunion___adidas__idg6VunF.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1669230918084"/>
+        </video>
+        <h1
       >
         Fixtures
       </h1>
+      </div>
+
 
       {loading ? (
-        [0, 1].map((data, i) => {
+        [0, 1].map((i) => {
           return (
             <Box sx={{ width: "100%" }} key={i}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -200,7 +202,7 @@ export default function Fixture() {
             value={groupValue}
             index={0}
           >
-            {gameDates.all.reverse().map((data, index) => {
+            {gameDates.all.map((data, index) => {
               return (
                 <FixtureCard
                   marketplaceSlug={marketplaceSlug}
@@ -218,7 +220,7 @@ export default function Fixture() {
             value={groupValue}
             index={1}
           >
-            {gameDates.groupA.reverse().map((data, index) => {
+            {gameDates.groupA.map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -236,7 +238,7 @@ export default function Fixture() {
             value={groupValue}
             index={2}
           >
-            {gameDates?.groupB?.reverse().map((data, index) => {
+            {gameDates?.groupB.map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -254,7 +256,7 @@ export default function Fixture() {
             value={groupValue}
             index={3}
           >
-            {gameDates?.groupC?.reverse().map((data, index) => {
+            {gameDates?.groupC.map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -272,7 +274,7 @@ export default function Fixture() {
             value={groupValue}
             index={4}
           >
-            {gameDates?.groupD?.reverse().map((data, index) => {
+            {gameDates?.groupD.map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -290,7 +292,7 @@ export default function Fixture() {
             value={groupValue}
             index={5}
           >
-            {gameDates?.groupE?.reverse().map((data, index) => {
+            {gameDates?.groupE.map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -308,7 +310,7 @@ export default function Fixture() {
             value={groupValue}
             index={6}
           >
-            {gameDates?.groupF?.reverse().map((data, index) => {
+            {gameDates?.groupF.map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -326,7 +328,7 @@ export default function Fixture() {
             value={groupValue}
             index={7}
           >
-            {gameDates?.groupG?.reverse().map((data, index) => {
+            {gameDates?.groupG.map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
@@ -344,7 +346,7 @@ export default function Fixture() {
             value={groupValue}
             index={8}
           >
-            {gameDates?.groupH?.reverse().map((data, index) => {
+            {gameDates?.groupH.map((data, index) => {
               return (
                 <FixtureCard
                   handleModalOpen={handleModalOpen}
