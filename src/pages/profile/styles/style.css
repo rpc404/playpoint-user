@@ -1,4 +1,5 @@
 .profile__container {
+  margin-top: 121px;
   position: relative;
   padding-top: 1.5vh;
 }
@@ -10,7 +11,7 @@
   height: 270px;
   position: absolute;
   border-radius: 0 0 250px 250px;
-  top: -10vh;
+  top: -121px;
   z-index: -1;
 }
 @media (max-width: 576px) {
@@ -18,50 +19,36 @@
     height: 450px;
   }
 }
-.profile__container .summary__container {
+.profile__container .userData__container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 55vw;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.profile__container .summary__container .summaryItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(162, 155, 254, 0.5490196078);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  padding: 12px 19px 12px 15px;
-  border-radius: 12px;
-  color: #fff;
-}
-.profile__container .summary__container .summaryItem i {
-  font-size: 25px;
-  background: #6c5ce7;
-  padding: 10px;
-  border-radius: 12px;
-}
-.profile__container .summary__container .summaryItem p {
-  font-size: 14px;
-  font-weight: 600;
-}
-.profile__container .summary__container .summaryItem h3 {
-  font-weight: 400;
-}
-.profile__container .userData {
-  display: flex;
-  justify-content: center;
   z-index: 1;
   margin-top: 3vh;
+  align-items: center;
+  max-width: 700px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 1em;
+  gap: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 0.2em;
+  padding: 1em;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  margin-bottom: 3vh;
+}
+@media screen and (min-width: 426px) {
+  .profile__container .userData__container {
+    margin: 0 auto;
+  }
+}
+.profile__container .userData__container .userData {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  flex: 1;
+  gap: 5px;
 }
-.profile__container .userData img {
+.profile__container .userData__container .userData img {
   width: 150px;
   height: 150px;
   -o-object-fit: cover;
@@ -69,7 +56,40 @@
   border-radius: 50%;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
-.profile__container .userData .MuiButton-root {
+.profile__container .userData__container .summary__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.profile__container .userData__container .summary__container .summaryItem {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 8px;
+  background: #6b5ce7;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 12px 19px 12px 15px;
+  border-radius: 12px;
+  color: #fff;
+}
+.profile__container .userData__container .summary__container .summaryItem i {
+  font-size: 25px;
+  background: #6c5ce7;
+  padding: 10px;
+  border-radius: 12px;
+}
+.profile__container .userData__container .summary__container .summaryItem p {
+  font-size: 14px;
+  font-weight: 600;
+}
+.profile__container .userData__container .summary__container .summaryItem h3 {
+  font-weight: 400;
+}
+.profile__container .userData__container .MuiButton-root {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -78,33 +98,53 @@
   color: #fff;
   padding: 2px 10px;
 }
-.profile__container .userData .userdetails__container .userdetails {
+.profile__container .userData__container .userdetails__container .userdetails {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.5em;
 }
-.profile__container .userData .userdetails__container .userdetails fieldset {
+.profile__container .userData__container .userdetails__container .userdetails fieldset {
   display: flex;
   font-size: 1.2em;
   border: none;
   gap: 15px;
 }
-.profile__container .userData .userdetails__container .userdetails fieldset input {
+.profile__container .userData__container .userdetails__container .userdetails fieldset input {
   padding: 0.5em;
   border-radius: 5px;
-  border: 1px solid #6B5CE7;
+  border: 1px solid #6b5ce7;
 }
-.profile__container .userData .userdetails__container .userdetails fieldset input:focus {
+.profile__container .userData__container .userdetails__container .userdetails fieldset input:focus {
   outline: none;
 }
-.profile__container .userData .userdetails__container .userdetails fieldset button {
+.profile__container .userData__container .userdetails__container .userdetails fieldset button {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5em;
 }
-.profile__container .userData .userdetails__container .userdetails fieldset button i {
+.profile__container .userData__container .userdetails__container .userdetails fieldset button i {
+  font-size: 1.1em;
+}
+.profile__container .userData__container .accountbtn {
+  font-size: 1.1em;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgb(216, 216, 216);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.profile__container .userData__container .accountbtn:hover {
+  background-color: #f2f4f6;
+}
+.profile__container .userData__container .MuiButton-root {
+  gap: 0;
+}
+.profile__container .userData__container .addMoneyBtn {
+  padding: 0.5em;
+  margin-top: 0.2em;
   font-size: 1.1em;
 }
 .profile__container .history__container {
@@ -199,7 +239,7 @@
 .profile__container .MuiPagination-root {
   margin: 10px 4.5vw;
 }
-@media screen and (min-width: 425px) {
+@media screen and (min-width: 426px) {
   .profile__container .mobhistory_container {
     display: none;
   }

@@ -10,6 +10,7 @@ import moment from "moment";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { setProfile } from "../../api/Profile";
+import { toast } from "react-toastify";
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
@@ -18,6 +19,7 @@ export default function Profile() {
 
   const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
   const [_username, setUsername] = useState("");
+  console.log(userPublicAddress);
 
   React.useEffect(() => {
     if (userPublicAddress) {
@@ -61,64 +63,83 @@ export default function Profile() {
         <title>Profile | Playpoint</title>
       </Helmet>
       <div className="blob1"></div>
-      <div className="summary__container">
-        <div className="summaryItem">
-          <i className="ri-money-dollar-circle-line"></i>
-          <div>
-            <p>Your money in pool</p>
-            <h3>6676.00 PPTT</h3>
-          </div>
-        </div>
-        <div className="summaryItem">
-          <i className="ri-bar-chart-grouped-line"></i>
-          <div>
-            <p>Winnings of all time</p>
-            <h3>5896.00 PPTT</h3>
-          </div>
-        </div>
-        <div className="summaryItem">
-          <i className="ri-wallet-3-line"></i>
-          <div>
-            <p>Your balance</p>
-            <h3>589658.00 PPTT</h3>
-          </div>
-        </div>
-      </div>
 
-      <div className="userData">
-        <img
-          src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
-          alt=""
-          loading="lazy"
-        />
-        <div className="userdetails__container">
-          {editMode ? (
-            <div className="userdetails">
-              <fieldset>
-                <input
-                 value={_username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder={username}
-                />
-                <Button onClick={() => handleUpdate()}>
-                  <i className="ri-send-plane-fill"></i>
-                </Button>
-              </fieldset>
-            </div>
-          ) : (
-            <div className="userdetails">
-              <fieldset>
-                <h2>@{username}</h2>
-                <Button onClick={() => setEditMode(!editMode)}>
-                  <i className="ri-pencil-line"></i>
-                </Button>
-              </fieldset>
-            </div>
-          )}
+      <div className="userData__container">
+        <div className="userData">
+          <img
+            src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
+            alt=""
+            loading="lazy"
+          />
+          <div className="userdetails__container">
+            {editMode ? (
+              <div className="userdetails">
+                <fieldset>
+                  <input
+                    value={_username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder={username}
+                  />
+                  <Button onClick={() => handleUpdate()}>
+                    <i className="ri-send-plane-fill"></i>
+                  </Button>
+                </fieldset>
+              </div>
+            ) : (
+              <div className="userdetails">
+                <fieldset>
+                  <h2>@{username}</h2>
+                  <Button onClick={() => setEditMode(!editMode)}>
+                    <i className="ri-pencil-line"></i>
+                  </Button>
+                </fieldset>
+              </div>
+            )}
+          </div>
+          <Button
+            className="accountbtn"
+            onClick={() => {
+              navigator.clipboard.writeText(userPublicAddress),
+                toast("Account number copied!");
+            }}
+          >
+            <p>Account</p>
+            <p>
+              {`${userPublicAddress}`.substring(1, 5) +
+                `...` +
+                `${userPublicAddress}`.substring(
+                  userPublicAddress.length - 5
+                )}{" "}
+              <i className="ri-file-copy-line"></i>
+            </p>
+          </Button>
+          <Button className="addMoneyBtn">
+            <i className="ri-add-box-line"></i> Add Money
+          </Button>
         </div>
-        <Button>
-          <i className="ri-add-box-line"></i> Add Money
-        </Button>
+        <div className="summary__container">
+          <div className="summaryItem">
+            <i className="ri-money-dollar-circle-line"></i>
+            <div>
+              <p>Your money in pool</p>
+              <h3>6676.00 PPTT</h3>
+            </div>
+          </div>
+          <div className="summaryItem">
+            <i className="ri-bar-chart-grouped-line"></i>
+            <div>
+              <p>Winnings of all time</p>
+              <h3>5896.00 PPTT</h3>
+            </div>
+          </div>
+          <div className="summaryItem">
+            <i className="ri-wallet-3-line"></i>
+            <div>
+              <p>Your balance</p>
+              <h3>589658.00 PPTT</h3>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="history__container">

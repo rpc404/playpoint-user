@@ -73,6 +73,8 @@ const PoolType = ({
   const [predictionCount, setPredictionCount] = React.useState(1);
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
   const [predicting, setPredicting] = React.useState(false);
+  const [clicked,setClicked] = React.useState(false)
+  console.log(clicked);
 
   // const userData = JSON.parse(localStorage.getItem("rpcUserData"));
   const [{userPublicAddress, isWalletConnected}, dispatchRPCData] = useRPCContext();
@@ -143,6 +145,7 @@ const PoolType = ({
       return await setPrediction(_predictionData)
         .then(() => {
           toast("Predicted Successfully!");
+          console.log(_predictionData.answers)
           _predictionData.answers = {};
         })
         .catch((err) => console.log(err))
@@ -289,7 +292,7 @@ const PoolType = ({
           {/* 
           @note button needs to be disabled after */}
           {isWalletConnected ? (
-            <Button onClick={() => handlePrediction()} disabled={predicting}>
+            <Button onClick={() => {handlePrediction(),setClicked(true)}} disabled={predicting}>
               {predicting ? <img src={loader} alt="loading" /> : "Predict"}
             </Button>
           ) : (
