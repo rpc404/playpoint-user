@@ -33,7 +33,7 @@ export default function FixtureCard({
         <i className="ri-calendar-line"></i> {data}
       </Typography>
 
-      {getGamesByDate(data).map((data, index) => {
+      {getGamesByDate(data).reverse().map((data, index) => {
         if (group === "all") {
           return (
             <div className="gameDetails__item" key={index}>
