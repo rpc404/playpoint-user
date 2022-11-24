@@ -10,6 +10,7 @@ import moment from "moment";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { setProfile } from "../../api/Profile";
+import { toast } from "react-toastify";
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
@@ -18,6 +19,7 @@ export default function Profile() {
 
   const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
   const [_username, setUsername] = useState("");
+  console.log(userPublicAddress);
 
   React.useEffect(() => {
     if (userPublicAddress) {
@@ -61,29 +63,6 @@ export default function Profile() {
         <title>Profile | Playpoint</title>
       </Helmet>
       <div className="blob1"></div>
-      {/* <div className="summary__container">
-        <div className="summaryItem">
-          <i className="ri-money-dollar-circle-line"></i>
-          <div>
-            <p>Your money in pool</p>
-            <h3>6676.00 PPTT</h3>
-          </div>
-        </div>
-        <div className="summaryItem">
-          <i className="ri-bar-chart-grouped-line"></i>
-          <div>
-            <p>Winnings of all time</p>
-            <h3>5896.00 PPTT</h3>
-          </div>
-        </div>
-        <div className="summaryItem">
-          <i className="ri-wallet-3-line"></i>
-          <div>
-            <p>Your balance</p>
-            <h3>589658.00 PPTT</h3>
-          </div>
-        </div>
-      </div> */}
 
       <div className="userData__container">
         <div className="userData">
@@ -117,13 +96,21 @@ export default function Profile() {
               </div>
             )}
           </div>
-          <Button className="accountbtn">
+          <Button
+            className="accountbtn"
+            onClick={() => {
+              navigator.clipboard.writeText(userPublicAddress),
+                toast("Account number copied!");
+            }}
+          >
             <p>Account</p>
             <p>
-              {`0x305f7a0bEF7896619B2bf028C94DF89BA6A7c59C`.substring(1, 5) +
+              {`${userPublicAddress}`.substring(1, 5) +
                 `...` +
-                `0x305f7a0bEF7896619B2bf028C94DF89BA6A7c59C`.substring(37)}{" "}
-              <i className="ri-file-copy-line"></i>{" "}
+                `${userPublicAddress}`.substring(
+                  userPublicAddress.length - 5
+                )}{" "}
+              <i className="ri-file-copy-line"></i>
             </p>
           </Button>
           <Button className="addMoneyBtn">
