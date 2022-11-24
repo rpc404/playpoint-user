@@ -1,33 +1,16 @@
 import { Button, Typography } from "@mui/material";
 import React from "react";
 import CountryFlags from "../../helpers/CountryFlags.json";
-// import WorldcupFixtures from "../../helpers/WorldcupFixtures.json";
-import Moment from "moment";
 import { useNavigate } from "react-router-dom";
-import { getFixtures } from "../../api/Fixture";
 import moment from "moment";
 
 export default function FixtureCard({
   data,
   handleModalOpen,
   group,
-  marketplaceSlug,
-  fixtures
+  fixtures,
 }) {
   const navigate = useNavigate();
-  const getFixtureId = (a, b) => {
-    return a + "_vs_" + b;
-  };
-
-  // const [fixtures, setFixtures] = React.useState([]);
-
-  React.useEffect(() => {
-    console.log(fixtures)
-    // (async () => {
-    //   const fixtures = await getFixtures(marketplaceSlug);
-    //   setFixtures(fixtures?.data?.fixtures);
-    // })();
-  }, []);
 
   /**
    * @dev only list games according to dates
@@ -36,8 +19,7 @@ export default function FixtureCard({
     var games = [];
 
     fixtures.forEach((data) => {
-      console.log(data?.DateUtc)
-      if (Moment(data?.DateUtc).format("LL") === date) {
+      if (moment(data?.DateUtc).format("LL") === date) {
         games.push(data);
       }
     });
@@ -79,7 +61,9 @@ export default function FixtureCard({
                       )
                     );
                   })}
-                  <div className="gameTime">{moment(data?.DateUtc).format('LT')}</div>
+                  <div className="gameTime">
+                    {moment(data?.DateUtc).format("LT")}
+                  </div>
                   {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||
@@ -122,7 +106,7 @@ export default function FixtureCard({
                       )
                     );
                   })}
-                  <div className="gameTime">{data?.DateUtc}</div>
+                  <div className="gameTime">{moment(data?.DateUtc).format("LT")}</div>
                   {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||
@@ -187,7 +171,7 @@ export default function FixtureCard({
                       )
                     );
                   })}
-                  <div className="gameTime">{data?.DateUtc}</div>
+                  <div className="gameTime">{moment(data?.DateUtc).format("LT")}</div>
                   {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||
@@ -230,7 +214,7 @@ export default function FixtureCard({
                       )
                     );
                   })}
-                  <div className="gameTime">{data?.DateUtc}</div>
+                  <div className="gameTime">{moment(data?.DateUtc).format("LT")}</div>
                   {CountryFlags.map((country, i) => {
                     return (
                       (country.name === data?.AwayTeam ||

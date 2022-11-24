@@ -14,6 +14,9 @@ import {
 } from "../../api/Prediction";
 import moment from "moment";
 import { toast } from "react-toastify";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
+import Pusher from "pusher-js";
+
 
 export default function Predict({ socket }) {
   const [activeOS, setActiveOS] = React.useState("");
@@ -23,6 +26,10 @@ export default function Predict({ socket }) {
   const [predictions, setPredictions] = React.useState([]);
   const [questionaires, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
+  // const [volume,setVolume] = React.useState(0)
+  let volume = 0;
+
+  const [{userPublicAddress},dispatchRPCData] = useRPCContext()
 
   const getCountryFlag = (country) => {
     let _url = "";
@@ -61,7 +68,8 @@ export default function Predict({ socket }) {
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
-      setPredictions(response.data.data.reverse());
+      sessionStorage.setItem('predictions', JSON.stringify(response.data.data.reverse()))
+      setPredictions(response.data.data);
 
       let lineChartData = [];
 
@@ -81,6 +89,26 @@ export default function Predict({ socket }) {
     })();
   }, []);
 
+  React.useEffect(()=>{
+    // Enable pusher logging - don't include this in production
+    // Pusher.logToConsole = true;
+    const pusher = new Pusher("2142cda6d39765cba2a9", {
+      cluster: "ap2",
+    });
+    pusher.connection.bind("connected", function () {
+      console.log("Weboscket Connected");
+    });
+    const predictionChannel = pusher.subscribe("prediction-channel");
+    predictionChannel.bind("new-prediction",(data)=>{
+      const _predictions = JSON.parse(sessionStorage.getItem('predictions'))
+
+      const newPrediction = [data.data[0], ..._predictions]
+      
+      sessionStorage.setItem('predictions', JSON.stringify(newPrediction))
+        setPredictions(newPrediction);
+    });
+
+  },[])
   return (
     <div className="prediction__container">
       <Helmet>
@@ -97,6 +125,7 @@ export default function Predict({ socket }) {
           <div className={`prediction__items ${activeOS}`}>
             {predictions.length >= 1 &&
               predictions.map((data, index) => {
+                volume+=(data?.amount / 0.015);
                 return (
                   <div className="predictedCard__container" key={index}>
                     <div>
@@ -118,7 +147,7 @@ export default function Predict({ socket }) {
                           ${data?.amount}~{(data?.amount / 0.015).toFixed(2)}{" "}
                           PPTT
                         </p>
-                        <p>{moment(data?.created_at).format("lll")}</p>
+                        <p>{moment(data?.created_at).format("LT")}</p>
                       </div>
                     </div>
                   </div>
@@ -156,7 +185,7 @@ export default function Predict({ socket }) {
               {/* @note this needs to be resolved */}
               <div>
                 <p>24h Volume</p>
-                <p> PPTT</p>
+                <p>{volume.toFixed(2)} PPTT</p>
               </div>
               <div>
                 <p>Total Predictions</p>

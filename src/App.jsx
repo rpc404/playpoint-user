@@ -7,6 +7,9 @@ import PageRouters from "./utils/Routers";
 
 export default function App() {
   const [, dispatchRPCData] = useRPCContext();
+
+  const [channel, setChannel] = React.useState({});
+
   React.useEffect(() => {
     (async () => {
       const expiryDate = new Date(localStorage.getItem("rpcUserExpiresAt"));
@@ -21,13 +24,14 @@ export default function App() {
         });
       }
     })();
+
   }, [dispatchRPCData]);
   
   return (
     <>
       <Topbar />
       <Navbar />
-      <PageRouters />
+      <PageRouters socket={channel} />
     </>
   );
 }

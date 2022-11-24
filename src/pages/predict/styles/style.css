@@ -35,6 +35,8 @@
   gap: 8px;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding: 7px 1.5vw 10px 1.5vw;
+  -webkit-animation: ease-in-out;
+          animation: ease-in-out;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container:hover {
   background: #f1f2f6;
