@@ -22,13 +22,14 @@
 
   .userData__container {
     display: flex;
+    flex-direction: column;
     z-index: 1;
     margin-top: 3vh;
     align-items: center;
-    max-width: 700px;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 1em;
+    // width: 40vw;
     gap: 10px;
     background-color: #fff;
     border-radius: 5px;
@@ -42,24 +43,32 @@
       margin: 0 auto;
     }
 
+    @media screen and (min-width:900px) {
+      width: 40vw;
+    }
+
     .userData {
       display: flex;
       flex-direction: column;
       align-items: center;
       flex: 1;
       gap: 5px;
+      position: relative;
+      margin-top: 3em;
       img {
         width: 150px;
         height: 150px;
         object-fit: cover;
         border-radius: 50%;
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        position: absolute;
+        top: -160px;
       }
     }
 
     .summary__container {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 10px;
       flex: 1;
       .summaryItem {
@@ -68,18 +77,23 @@
         text-align: center;
         justify-content: center;
         gap: 8px;
-        background: #6b5ce7;
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        // background: #6b5ce7;
+        // backdrop-filter: blur(3px);
+        // -webkit-backdrop-filter: blur(3px);
+        // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         padding: 12px 19px 12px 15px;
-        border-radius: 12px;
-        color: #fff;
+        // border-radius: 12px;
+        border-right: 1px solid #6b5ce7;
+        // color: #fff;
+        &:nth-child(3){
+          border: none;
+        }
 
         i {
           font-size: 25px;
-          background: #6c5ce7;
-          padding: 10px;
+          // background: #6c5ce7;
+          color: #6b5ce7;
+          // padding: 10px;
           border-radius: 12px;
         }
 
@@ -111,7 +125,8 @@
         margin-bottom: 0.5em;
         fieldset {
           display: flex;
-          font-size: 1.2em;
+          align-items: center;
+          font-size: 1.3em;
           border: none;
           gap: 15px;
 
@@ -125,30 +140,43 @@
             }
           }
           button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #fff;
+            // border-radius: 50%;
+            border: 1px solid #6b5ce7;
+            // font-size: 1.3em;
+            // height: 45px;
+            // width: 35px;
             padding: 0.5em;
-            // margin-bottom: 1em;
+            transition: background 1s ease-in-out;
+
             i {
-              font-size: 1.1em;
+              color: #6b5ce7;
+              // font-size: 1.2em;
+              
             }
+            // &:hover {
+            //   background-color: #6b5ce7;
+            //   i {
+            //     color: #fff;
+            //   }
+            // }
           }
         }
       }
     }
     .accountbtn {
-      font-size: 1.1em;
-      background-color: #fff;
+      font-size: 1.3em;
+      // background-color: #fff;
       color: #0009;
-      border: 1px solid rgb(216, 216, 216);
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-        rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-      // padding: 0.5em;
+      // border: 1px solid rgb(216, 216, 216);
+      // box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+      //   rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+      padding: .7em .5em;
       display: flex;
       flex-direction: column;
       &:hover {
         background-color: #f2f4f6;
+        cursor: pointer;
       }
     }
     .MuiButton-root {

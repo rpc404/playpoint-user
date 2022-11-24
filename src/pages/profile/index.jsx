@@ -90,20 +90,19 @@ export default function Profile() {
                 <fieldset>
                   <h2>@{username}</h2>
                   <Button onClick={() => setEditMode(!editMode)}>
-                    <i className="ri-pencil-line"></i>
+                  <i className="ri-pencil-fill"></i>
                   </Button>
                 </fieldset>
               </div>
             )}
           </div>
-          <Button
+          <p
             className="accountbtn"
             onClick={() => {
               navigator.clipboard.writeText(userPublicAddress),
                 toast("Account number copied!");
             }}
           >
-            <p>Account</p>
             <p>
               {`${userPublicAddress}`.substring(1, 5) +
                 `...` +
@@ -112,10 +111,7 @@ export default function Profile() {
                 )}{" "}
               <i className="ri-file-copy-line"></i>
             </p>
-          </Button>
-          <Button className="addMoneyBtn">
-            <i className="ri-add-box-line"></i> Add Money
-          </Button>
+          </p>
         </div>
         <div className="summary__container">
           <div className="summaryItem">
@@ -140,6 +136,9 @@ export default function Profile() {
             </div>
           </div>
         </div>
+        <Button className="addMoneyBtn">
+            <i className="ri-add-box-line"></i> Add Money
+          </Button>
       </div>
 
       <div className="history__container">
