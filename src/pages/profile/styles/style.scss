@@ -39,11 +39,11 @@
       rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     margin-bottom: 3vh;
 
-    @media screen and (min-width:426px) {
+    @media screen and (min-width: 426px) {
       margin: 0 auto;
     }
 
-    @media screen and (min-width:900px) {
+    @media screen and (min-width: 900px) {
       width: 40vw;
     }
 
@@ -71,6 +71,7 @@
       flex-wrap: wrap;
       gap: 10px;
       flex: 1;
+      margin-top: 1em;
       .summaryItem {
         display: flex;
         align-items: center;
@@ -85,7 +86,7 @@
         // border-radius: 12px;
         border-right: 1px solid #6b5ce7;
         // color: #fff;
-        &:nth-child(3){
+        &:nth-child(3) {
           border: none;
         }
 
@@ -152,7 +153,6 @@
             i {
               color: #6b5ce7;
               // font-size: 1.2em;
-              
             }
             // &:hover {
             //   background-color: #6b5ce7;
@@ -171,14 +171,59 @@
       // border: 1px solid rgb(216, 216, 216);
       // box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
       //   rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-      padding: .7em .5em;
+      padding: 0.5em 0.5em;
       display: flex;
       flex-direction: column;
+      position: relative;
+      width: 200px;
+      text-align: center;
       &:hover {
-        background-color: #f2f4f6;
+        // background-color: #f2f4f6;
         cursor: pointer;
+        &::before {
+          display: inline-block;
+        }
+        &::after {
+          display: inline-block;
+        }
+      }
+      &::before {
+        content: attr(data-title);
+        position: absolute;
+        display: none;
+        z-index: 5;
+        animation-name: slide;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        background-color: rgba($color: #000000, $alpha: 1.0);
+        padding: .2em;
+        color: #fff;
+      }
+      &::after {
+        position: absolute;
+        z-index: 1;
+        display: none;
+        width: 0;
+        height: 0;
+        border: 5px solid transparent;
+        content: "";
+        bottom: calc(100% - 11px);
+        left: 50%;
+        animation-name: slide;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        border-bottom-color: rgba($color: #000000, $alpha: 0.8);
       }
     }
+    @keyframes slide {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(40px);
+      }
+    }
+
     .MuiButton-root {
       gap: 0;
     }
