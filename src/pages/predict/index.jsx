@@ -101,18 +101,17 @@ export default function Predict({ socket }) {
     pusher.connection.bind("connected", function () {
       console.log("Weboscket Connected");
     });
-    console.log(predictions)
     const predictionChannel = pusher.subscribe("prediction-channel");
     predictionChannel.bind("new-prediction",(data)=>{
-      const _predictions = JSON.parse(sessionStorage.getItem('predictions'))
-
-      const newPrediction = [data.data[0], ..._predictions]
-      
-      sessionStorage.setItem('predictions', JSON.stringify(newPrediction))
+      const _predictions = JSON.parse(sessionStorage.getItem('predictions')) ||[];
+      if(data.data[0].fixtureId == fixtureId){
+        const newPrediction = [data.data[0], ..._predictions]
+        sessionStorage.setItem('predictions', JSON.stringify(newPrediction))
         setPredictions(newPrediction);
+      }
     });
 
-  },[predictions])
+  },[])
   return (
     <div className="prediction__container">
       <Helmet>
