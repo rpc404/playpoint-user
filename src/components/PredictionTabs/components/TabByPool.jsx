@@ -145,7 +145,6 @@ const PoolType = ({
       return await setPrediction(_predictionData)
         .then(() => {
           toast("Predicted Successfully!");
-          console.log(_predictionData.answers)
           _predictionData.answers = {};
         })
         .catch((err) => console.log(err))

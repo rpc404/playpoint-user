@@ -36,7 +36,7 @@ export default function Navbar() {
   }
 
   /**
-   * @dev NavbarSM Devices drawer utils
+   * @dev NavbarSM Devices drawer utilsLogin
    */
   const [navSMState, setnavSMState] = React.useState({
     right: false,
