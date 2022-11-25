@@ -70,6 +70,7 @@
   flex-wrap: wrap;
   gap: 10px;
   flex: 1;
+  margin-top: 1em;
 }
 .profile__container .userData__container .summary__container .summaryItem {
   display: flex;
@@ -137,13 +138,70 @@
 .profile__container .userData__container .accountbtn {
   font-size: 1.3em;
   color: rgba(0, 0, 0, 0.6);
-  padding: 0.7em 0.5em;
-  display: flex;
-  flex-direction: column;
+  padding: 0.5em 0.5em;
+  position: relative;
+  width: 200px;
+  text-align: center;
+  background-color: #f2f4f6;
 }
 .profile__container .userData__container .accountbtn:hover {
-  background-color: #f2f4f6;
   cursor: pointer;
+}
+.profile__container .userData__container .accountbtn:hover::before {
+  display: inline-block;
+}
+.profile__container .userData__container .accountbtn:hover::after {
+  display: inline-block;
+}
+.profile__container .userData__container .accountbtn::before {
+  content: attr(data-title);
+  position: absolute;
+  display: none;
+  z-index: 5;
+  width: 200px;
+  left: 0;
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  background-color: black;
+  color: #fff;
+}
+.profile__container .userData__container .accountbtn::after {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  content: "";
+  bottom: calc(100% - 11px);
+  left: 50%;
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+}
+@-webkit-keyframes slide {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(40px);
+  }
+}
+@keyframes slide {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(40px);
+  }
 }
 .profile__container .userData__container .MuiButton-root {
   gap: 0;
