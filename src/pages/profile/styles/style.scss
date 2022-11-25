@@ -149,8 +149,6 @@
       font-size: 1.3em;
       color: #0009;
       padding: 0.5em 0.5em;
-      display: flex;
-      flex-direction: column;
       position: relative;
       width: 200px;
       text-align: center;
@@ -169,11 +167,12 @@
         position: absolute;
         display: none;
         z-index: 5;
+        width: 200px;
+        left: 0;
         animation-name: slide;
-        animation-duration: 2s;
+        animation-duration: .5s;
         animation-fill-mode: forwards;
         background-color: rgba($color: #000000, $alpha: 1.0);
-        padding: .2em;
         color: #fff;
       }
       &::after {
@@ -187,7 +186,7 @@
         bottom: calc(100% - 11px);
         left: 50%;
         animation-name: slide;
-        animation-duration: 2s;
+        animation-duration: .5s;
         animation-fill-mode: forwards;
         border-bottom-color: rgba($color: #000000, $alpha: 0.8);
       }
