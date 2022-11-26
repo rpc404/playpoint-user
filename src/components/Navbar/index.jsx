@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [{ userPublicAddress, isWalletConnected, username }, dispatchRPCData] =
+  const [{ isWalletConnected, username }, dispatchRPCData] =
     useRPCContext();
 
   /**

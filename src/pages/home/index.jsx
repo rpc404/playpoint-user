@@ -2,15 +2,27 @@ import React from "react";
 import { Skeleton, Stack } from "@mui/material";
 import "./styles/style.css";
 import MarketplaceCard from "../../components/MarketplaceCard";
-import { getMarketplaces } from "../../api/Marketplace";
+import { getMarketplaces, getMarketplaceStat } from "../../api/Marketplace";
+import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
+import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 
-export default function Home({ }) {
-  const [marketplaceItems, setMarketplaceItems] = React.useState([]);
+export default function Home() {
+  const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     (async () => {
-      const res = await getMarketplaces();
-      setMarketplaceItems(res.data.marketplaces);
+      if (marketplaces.length === 0) {
+        let res = await getMarketplaces();
+        res = res.data.marketplaces;
+
+        dispatchMarketplaceData({
+          type: ACTIONS.SET_ALL_MARKETPLACE,
+          payload: res,
+        });
+
+      }
+      setLoading(false);
     })();
   }, []);
 
@@ -18,8 +30,8 @@ export default function Home({ }) {
     <div className="home__container">
       <h1 className="home__mainTitle">Active Marketplaces</h1>
       <div className="marketplace__items">
-        {marketplaceItems.length >= 1 ? (
-          marketplaceItems.map((marketplace, index) => {
+        {marketplaces && marketplaces.length >= 1 && !loading ? (
+          marketplaces.map((marketplace, index) => {
             return <MarketplaceCard marketplace={marketplace} key={index} />;
           })
         ) : (
@@ -109,19 +121,19 @@ export default function Home({ }) {
       <h1 className="home__mainTitle">Active Marketplaces</h1>
 
       <div className="marketplace__items">
-        {marketplaceItems.length >= 1 ? (
-          marketplaceItems.map((marketplace, index) => {
+        {marketplaces && marketplaces.length >= 1 && !loading ? (
+          marketplaces.map((marketplace, index) => {
             return <MarketplaceCard marketplace={marketplace} key={index} />;
           })
         ) : (
           <>
-            {[0, 1, 2, 3, 4, 5, 6, 7].map((data) => {
+            {[0, 1, 2, 3, 4].map((data) => {
               return (
                 <Stack key={data}>
                   <Skeleton
                     animation="wave"
                     variant="rectangular"
-                    width={window.innerWidth < 576 ? "80vw" : "20vw"}
+                    width={window.innerWidth < 576 ? "80vw" : "17vw"}
                     height={"20vh"}
                   />
                   <div
