@@ -8,24 +8,27 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { RPCProvider } from "./contexts/WalletRPC/RPCContext";
 import { MarketplaceProvider } from "./contexts/Marketplace/MarketplaceContext";
+import { FixtureProvider } from "./contexts/Fixture/FixtureContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <RPCProvider>
       <MarketplaceProvider>
-        <App />
-        <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+        <FixtureProvider>
+          <App />
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </FixtureProvider>
       </MarketplaceProvider>
     </RPCProvider>
   </BrowserRouter>
