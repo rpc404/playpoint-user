@@ -186,7 +186,7 @@ const PoolType = ({
           ))}
         </div>
       </div>
-
+      { isWalletConnected &&
       <div className="questionaires">
         {!questionaire.loading &&
           questionaire.tempQuestionaire[0]?.questionaires.questions.map(
@@ -259,7 +259,7 @@ const PoolType = ({
             )
           )}
       </div>
-
+}
       <div className="predictionAmount">
         {/* <div>
           <h4>Prediction Count:</h4>

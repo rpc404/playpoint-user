@@ -29,7 +29,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 1em;
-    // width: 40vw;
     gap: 10px;
     background-color: #fff;
     border-radius: 5px;
@@ -40,12 +39,14 @@
     margin-bottom: 3vh;
 
     @media screen and (min-width: 426px) {
-      margin: 0 auto;
+      margin: 0 2.5em;
     }
 
     @media screen and (min-width: 900px) {
-      width: 40vw;
+      width: 50vw;
+      margin: 0 auto;
     }
+
 
     .userData {
       display: flex;
@@ -72,6 +73,9 @@
       gap: 10px;
       flex: 1;
       margin-top: 1em;
+      align-items: center;
+      justify-content: center;
+
       .summaryItem {
         display: flex;
         align-items: center;
@@ -79,7 +83,12 @@
         justify-content: center;
         gap: 8px;
         padding: 12px 19px 12px 15px;
-        border-right: 1px solid #6b5ce7;
+        border-bottom: 1px solid #6b5ce7;
+
+        @media screen and (min-width:426px) {
+          border-right: 1px solid #6b5ce7;
+          border-bottom: none;
+        }
         &:nth-child(3) {
           border: none;
         }
@@ -172,9 +181,9 @@
         width: 200px;
         left: 0;
         animation-name: slide;
-        animation-duration: .5s;
+        animation-duration: 0.5s;
         animation-fill-mode: forwards;
-        background-color: rgba($color: #000000, $alpha: 1.0);
+        background-color: rgba($color: #000000, $alpha: 1);
         color: #fff;
       }
       &::after {
@@ -188,7 +197,7 @@
         bottom: calc(100% - 11px);
         left: 50%;
         animation-name: slide;
-        animation-duration: .5s;
+        animation-duration: 0.5s;
         animation-fill-mode: forwards;
         border-bottom-color: rgba($color: #000000, $alpha: 0.8);
       }
