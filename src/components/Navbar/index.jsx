@@ -15,25 +15,45 @@ import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { handleRPCWalletLogin } from "../../utils/RPC";
 import { toast } from "react-toastify";
+import { ethers } from "ethers";
+import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [{ isWalletConnected, username }, dispatchRPCData] =
-    useRPCContext();
+  const [{ isWalletConnected, username }, dispatchRPCData] = useRPCContext();
 
   /**
    * @dev User wallet authentication
    */
   const handleLogin = async () => {
-    const data = await handleRPCWalletLogin();
+    const resData = await handleRPCWalletLogin();
+
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const contract = new ethers.Contract(
+      "0x53d168578974822bCAa95106C7d5a906BF100948",
+      ERC20BasicAPI,
+      provider
+    );
+
+    const ethBalance = await provider.getBalance(resData.userPublicAddress);
+    const PPTTBalance = await contract.balanceOf(resData.userPublicAddress);
+
+    const data = {
+      ...resData,
+      userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
+      userETHBalance: ethers.utils.formatEther(ethBalance),
+    };
+
+    localStorage.setItem("rpcUserData", JSON.stringify(data));
+
     await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
     toast("Wallet Connected!");
   };
 
-  const handleLogout = () =>
-    {dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
+  const handleLogout = () => {
+    dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
     toast.error("Wallet Disconnected!");
-  }
+  };
 
   /**
    * @dev NavbarSM Devices drawer utilsLogin
@@ -156,11 +176,7 @@ export default function Navbar() {
               }}
             >
               <i className="ri-user-line"></i>{" "}
-              {/* {isWalletConnected === true &&
-                userPublicAddress.substring(0, 12) +
-                  "..." +
-                  userPublicAddress.slice(-8)} */}
-                  {isWalletConnected===true && <span>{username}</span>}
+              {isWalletConnected === true && <span>{username}</span>}
             </Button>
             <Button onClick={() => handleLogout()}>
               <i className="ri-logout-box-line"></i> Logout

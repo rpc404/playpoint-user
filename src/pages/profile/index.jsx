@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Helmet } from "react-helmet";
-// import UserHistory from "../../mocks/UserHistory.json";
 import { getUserPredictions } from "../../api/Prediction";
 import moment from "moment";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
@@ -17,9 +16,8 @@ export default function Profile() {
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
 
-  const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
+  const [{ userPublicAddress, username, userPPTTBalance }, dispatchRPCData] = useRPCContext();
   const [_username, setUsername] = useState("");
-  console.log(userPublicAddress);
 
   React.useEffect(() => {
     if (userPublicAddress) {
@@ -105,10 +103,10 @@ export default function Profile() {
             }}
           >
             <p>
-              {`${userPublicAddress}`.substring(1, 5) +
+              {`${userPublicAddress}`.substring(0, 15) +
                 `...` +
                 `${userPublicAddress}`.substring(
-                  userPublicAddress.length - 5
+                  userPublicAddress.length - 3
                 )}{" "}
               <i className="ri-file-copy-line"></i>
             </p>
@@ -134,7 +132,7 @@ export default function Profile() {
             <i className="ri-wallet-3-line"></i>
             <div>
               <p>Your balance</p>
-              <h3>589658.00 PPTT</h3>
+              <h3>{userPPTTBalance} PPTT</h3>
             </div>
           </div>
         </div>

@@ -114,7 +114,6 @@
 .profile__container .userData__container .userdetails__container .userdetails fieldset {
   display: flex;
   align-items: center;
-  font-size: 1.3em;
   border: none;
   gap: 15px;
 }
@@ -131,16 +130,16 @@
   border: 1px solid #6b5ce7;
   padding: 0.5em;
   transition: background 1s ease-in-out;
+  padding: 0;
 }
 .profile__container .userData__container .userdetails__container .userdetails fieldset button i {
   color: #6b5ce7;
+  font-size: 22px;
 }
 .profile__container .userData__container .accountbtn {
-  font-size: 1.3em;
   color: rgba(0, 0, 0, 0.6);
   padding: 0.5em 0.5em;
   position: relative;
-  width: 200px;
   text-align: center;
   background-color: #f2f4f6;
 }
