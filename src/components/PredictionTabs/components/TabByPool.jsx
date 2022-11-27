@@ -142,6 +142,7 @@ const PoolType = ({
         .then(() => {
           toast("Predicted Successfully!");
           _predictionData.answers = {};
+          window.location.reload()
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
