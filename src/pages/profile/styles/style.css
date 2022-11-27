@@ -38,12 +38,13 @@
 }
 @media screen and (min-width: 426px) {
   .profile__container .userData__container {
-    margin: 0 auto;
+    margin: 0 2.5em;
   }
 }
 @media screen and (min-width: 900px) {
   .profile__container .userData__container {
-    width: 40vw;
+    width: 50vw;
+    margin: 0 auto;
   }
 }
 .profile__container .userData__container .userData {
@@ -71,6 +72,8 @@
   gap: 10px;
   flex: 1;
   margin-top: 1em;
+  align-items: center;
+  justify-content: center;
 }
 .profile__container .userData__container .summary__container .summaryItem {
   display: flex;
@@ -79,7 +82,13 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 19px 12px 15px;
-  border-right: 1px solid #6b5ce7;
+  border-bottom: 1px solid #6b5ce7;
+}
+@media screen and (min-width: 426px) {
+  .profile__container .userData__container .summary__container .summaryItem {
+    border-right: 1px solid #6b5ce7;
+    border-bottom: none;
+  }
 }
 .profile__container .userData__container .summary__container .summaryItem:nth-child(3) {
   border: none;
