@@ -49,6 +49,25 @@
     align-items: center;
     gap: 15px;
 
+    .balance {
+      color: rgba(254, 254, 254, 0.7);
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.2s all ease-in-out;
+      font-weight: 400;
+      font-size: 15px;display: flex;
+      align-items: center;
+      gap: 5px;
+
+      img{
+        width: 10px;
+      }
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
     .MuiButton-root {
       color: #fff;
       display: flex;

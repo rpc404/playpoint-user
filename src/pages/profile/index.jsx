@@ -16,7 +16,7 @@ export default function Profile() {
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
 
-  const [{ userPublicAddress, username, userPPTTBalance }, dispatchRPCData] = useRPCContext();
+  const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
   const [_username, setUsername] = useState("");
 
   React.useEffect(() => {
@@ -27,8 +27,7 @@ export default function Profile() {
           setHistory(res.data.data.slice(0, 10));
         }
       });
-    }
-    if (username) {
+    } else if (username) {
       setUsername(username);
     }
   }, []);
@@ -55,6 +54,7 @@ export default function Profile() {
     const page = ev.target.innerHTML.split("<span")[0];
     setHistory(userProfile.slice((page - 1) * 10, page * 10));
   };
+
   return (
     <div className="profile__container">
       <Helmet>
@@ -102,14 +102,14 @@ export default function Profile() {
                 toast("Account number copied!");
             }}
           >
-            <p>
+            <span>
               {`${userPublicAddress}`.substring(0, 15) +
                 `...` +
                 `${userPublicAddress}`.substring(
                   userPublicAddress.length - 3
                 )}{" "}
               <i className="ri-file-copy-line"></i>
-            </p>
+            </span>
             {/* <p className="copy">Copy to clipboard</p> */}
           </p>
         </div>
@@ -126,13 +126,6 @@ export default function Profile() {
             <div>
               <p>Winnings of all time</p>
               <h3>5896.00 PPTT</h3>
-            </div>
-          </div>
-          <div className="summaryItem">
-            <i className="ri-wallet-3-line"></i>
-            <div>
-              <p>Your balance</p>
-              <h3>{userPPTTBalance} PPTT</h3>
             </div>
           </div>
         </div>
@@ -174,7 +167,7 @@ export default function Profile() {
                 <b>{data?.match?.home || "-"}</b> VS{" "}
                 <b>{data?.match?.away || "-"}</b>
               </p>
-              <p>{Date(data.created_at)}</p>
+              <p>{moment(data.created_at).format("LL")}</p>
             </div>
           ))}
         </div>
@@ -217,7 +210,7 @@ export default function Profile() {
                 <b>{data?.match?.away || "-"}</b>
               </p>
               <p className="date">
-                Date:{moment(data?.created_at).format("lll")}
+                Date:{moment(data?.created_at).format("LT")}
               </p>
               {data.result && (
                 <div className="winlose">

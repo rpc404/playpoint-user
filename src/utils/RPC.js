@@ -35,3 +35,6 @@ export const handleRPCWalletLogin = async () => {
     console.error(error);
   }
 };
+
+export const getPPTTBalance = async (userAddress) => {
+}

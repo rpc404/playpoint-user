@@ -20,7 +20,33 @@ import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [{ isWalletConnected, username }, dispatchRPCData] = useRPCContext();
+  const [{ isWalletConnected, username, userPublicAddress }, dispatchRPCData] =
+    useRPCContext();
+  const [balance, setBalance] = React.useState({
+    ethBalance: 0,
+    ppttBalance: 0,
+  });
+
+  React.useEffect(() => {
+    if (isWalletConnected) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const contract = new ethers.Contract(
+        "0x53d168578974822bCAa95106C7d5a906BF100948",
+        ERC20BasicAPI,
+        provider
+      );
+
+      (async () => {
+        const ethBalance = await provider.getBalance(userPublicAddress);
+        const PPTTBalance = await contract.balanceOf(userPublicAddress);
+
+        setBalance({
+          ethBalance: ethers.utils.formatEther(ethBalance),
+          ppttBalance: ethers.utils.formatEther(PPTTBalance),
+        });
+      })();
+    }
+  }, [isWalletConnected]);
 
   /**
    * @dev User wallet authentication
@@ -44,7 +70,7 @@ export default function Navbar() {
       userETHBalance: ethers.utils.formatEther(ethBalance),
     };
 
-    localStorage.setItem("rpcUserData", JSON.stringify(data));
+    localStorage.setItem("rpcUserData", JSON.stringify(resData));
 
     await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
     toast("Wallet Connected!");
@@ -169,6 +195,28 @@ export default function Navbar() {
           </Button>
         ) : (
           <>
+            <div
+              className="balance"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open("https://sepolia.etherscan.io/token/0x53d168578974822bcaa95106c7d5a906bf100948", '_blank');
+              }}
+            >
+              <img
+                src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
+                alt="ethereum"
+                loading="lazy"
+              />
+              <p>{parseFloat(balance.ppttBalance)} PPTT</p>
+            </div>
+            <div className="balance">
+              <img
+                src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/3a0ba/eth-diamond-rainbow.webp"
+                alt="ethereum"
+                loading="lazy"
+              />
+              <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
+            </div>
             <Button
               onClick={(e) => {
                 e.stopPropagation();
