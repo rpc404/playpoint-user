@@ -5,8 +5,18 @@
     <link rel="icon" href="https://ik.imagekit.io/lexworld/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playpoint | Prediction Pool Platform</title>
+    <script>
+      function disableClick() {
+        document.onclick = function (event) {
+          if (event.button == 2) {
+            alert("Right Click Message");
+            return false;
+          }
+        };
+      }
+    </script>
   </head>
-  <body>
+  <body onLoad="disableClick()">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

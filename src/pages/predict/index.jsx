@@ -219,7 +219,7 @@ export default function Predict({ socket }) {
             <div className="eventDetails">
               <p>
                 <i className="ri-calendar-todo-line"></i> Event Details:{" "}
-                {fixture.DateUtc}
+                {moment(fixture.DateUtc).format('LL')}
               </p>
               <p>
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}

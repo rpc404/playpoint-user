@@ -24,9 +24,8 @@ export default function App() {
         });
       }
     })();
-
   }, [dispatchRPCData]);
-  
+
   return (
     <>
       <Topbar />
