@@ -81,7 +81,7 @@ export default function Fixture() {
           <source src="https://ik.imagekit.io/domsan/FIFA_World_Cup__2022___Family_Reunion___adidas__idg6VunF.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1669230918084" />
           Browser unsupported for videos.
         </video>
-        <h1>Fixtures</h1>
+        <h1><span>Fixture</span>{marketplaceSlug}</h1>
       </div>
 
       {loading ? (

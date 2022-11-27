@@ -27,233 +27,167 @@ export default function FixtureCard({
     return games;
   };
 
+  const gameTime = (data) => {
+    return (
+      <div className="gameTime">
+        {data.closed === "closed" ? (
+          <>
+            {data.HomeTeamScore} : {data.AwayTeamScore}
+          </>
+        ) : (
+          moment(data?.DateUtc).format("LT")
+        )}
+      </div>
+    );
+  };
+
+  const HomeTeamFlag = (d, c, i) => {
+    return (
+      (c.name === d?.HomeTeam ||
+        (c.name === "United States" && d?.HomeTeam === "USA") ||
+        (c.name === "South Korea" && d?.HomeTeam === "Korea Republic")) && (
+        <img
+          src={c.image}
+          alt={c.name}
+          key={i}
+          loading="lazy"
+          className="home__Image"
+        />
+      )
+    );
+  };
+
+  const AwayTeamFlag = (d, c, i) => {
+    return (
+      (c.name === d?.AwayTeam ||
+        (c.name === "United States" && d?.AwayTeam === "USA") ||
+        (c.name === "South Korea" && d?.AwayTeam === "Korea Republic")) && (
+        <img
+          src={c?.image}
+          alt={c.name}
+          key={i}
+          loading="lazy"
+          className="Away__Image"
+        />
+      )
+    );
+  };
+
   return (
     <div className="fixtureCard__container">
       <Typography component={"span"} variant={"h3"}>
         <i className="ri-calendar-line"></i> {data}
       </Typography>
 
-      {getGamesByDate(data).reverse().map((data, index) => {
-        if (group === "all") {
-          return (
-            <div className="gameDetails__item" key={index}>
-              {window.innerWidth > 576 ? (
-                <div
-                  onClick={() => navigate(`/predict/${data?._id}`)}
-                  className="gameDetails__teamDetails"
-                  style={{ cursor: "pointer" }}
-                >
-                  <div className="teamName">{data?.HomeTeam}</div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data?.HomeTeam ||
-                        (country.name === "United States" &&
-                          data?.HomeTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data?.HomeTeam === "Korea Republic")) && (
-                        <img
-                          src={country.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="home__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="gameTime">
-                    {moment(data?.DateUtc).format("LT")}
+      {getGamesByDate(data)
+        .reverse()
+        .map((data, index) => {
+          if (group === "all") {
+            return (
+              <div className="gameDetails__item" key={index}>
+                {window.innerWidth > 576 ? (
+                  <div
+                    onClick={() => navigate(`/predict/${data?._id}`)}
+                    className="gameDetails__teamDetails"
+                    style={{ cursor: "pointer" }}
+                  >
+                    <div className="teamName">{data?.HomeTeam}</div>
+                    {CountryFlags.map((country, i) => {
+                      return HomeTeamFlag(data, country, i);
+                    })}
+                    {gameTime(data)}
+                    {CountryFlags.map((country, i) => {
+                      return AwayTeamFlag(data, country, i);
+                    })}
+                    <div className="teamName">{data?.AwayTeam}</div>
                   </div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data?.AwayTeam ||
-                        (country.name === "United States" &&
-                          data?.AwayTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data?.AwayTeam === "Korea Republic")) && (
-                        <img
-                          src={country?.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="Away__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="teamName">{data?.AwayTeam}</div>
+                ) : (
+                  <Button
+                    className="gameDetails__teamDetails"
+                    onClick={() => navigate(`/predict/${data?._id}`)}
+                  >
+                    <div className="teamName">{data?.HomeTeam}</div>
+                    {CountryFlags.map((country, i) => {
+                      return HomeTeamFlag(data, country, i);
+                    })}
+                    {gameTime(data)}
+                    {CountryFlags.map((country, i) => {
+                      return AwayTeamFlag(data, country, i);
+                    })}
+                    <div className="teamName">{data?.AwayTeam}</div>
+                  </Button>
+                )}
+
+                <div className="gameDetails__location">
+                  <i className="ri-map-pin-2-line"></i> {data?.Location}
                 </div>
-              ) : (
-                <Button
-                  className="gameDetails__teamDetails"
-                  onClick={() => navigate(`/predict/${data?._id}`)}
-                >
-                  <div className="teamName">{data?.HomeTeam}</div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data?.HomeTeam ||
-                        (country.name === "United States" &&
-                          data?.HomeTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data?.HomeTeam === "Korea Republic")) && (
-                        <img
-                          src={country.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="home__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="gameTime">{moment(data?.DateUtc).format("LT")}</div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data?.AwayTeam ||
-                        (country.name === "United States" &&
-                          data?.AwayTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data?.AwayTeam === "Korea Republic")) && (
-                        <img
-                          src={country?.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="Away__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="teamName">{data?.AwayTeam}</div>
-                </Button>
-              )}
 
-              <div className="gameDetails__location">
-                <i className="ri-map-pin-2-line"></i> {data?.Location}
-              </div>
-
-              <div className="gameDetails__action">
-                <Button
-                  className="quickView"
-                  onClick={() => handleModalOpen(data)}
-                >
-                  Quick View
-                </Button>
-                <Button>
-                  <i className="ri-arrow-right-line"></i>
-                </Button>
-              </div>
-            </div>
-          );
-        } else if (data?.Group === group)
-          return (
-            <div className="gameDetails__item" key={index}>
-              {window.innerWidth > 576 ? (
-                <div
-                  className="gameDetails__teamDetails"
-                  onClick={() => navigate(`/predict/${data?._id}`)}
-                >
-                  <div className="teamName">{data?.HomeTeam}</div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data?.HomeTeam ||
-                        (country.name === "United States" &&
-                          data?.HomeTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data?.HomeTeam === "Korea Republic")) && (
-                        <img
-                          src={country.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="home__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="gameTime">{moment(data?.DateUtc).format("LT")}</div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data?.AwayTeam ||
-                        (country.name === "United States" &&
-                          data?.AwayTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data?.AwayTeam === "Korea Republic")) && (
-                        <img
-                          src={country?.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="Away__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="teamName">{data?.AwayTeam}</div>
+                <div className="gameDetails__action">
+                  <Button
+                    className="quickView"
+                    onClick={() => handleModalOpen(data)}
+                  >
+                    Quick View
+                  </Button>
+                  <Button>
+                    <i className="ri-arrow-right-line"></i>
+                  </Button>
                 </div>
-              ) : (
-                <Button
-                  className="gameDetails__teamDetails"
-                  onClick={() => navigate(`/predict/${data._id}`)}
-                >
-                  <div className="teamName">{data?.HomeTeam}</div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data?.HomeTeam ||
-                        (country.name === "United States" &&
-                          data?.HomeTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data?.HomeTeam === "Korea Republic")) && (
-                        <img
-                          src={country.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="home__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="gameTime">{moment(data?.DateUtc).format("LT")}</div>
-                  {CountryFlags.map((country, i) => {
-                    return (
-                      (country.name === data?.AwayTeam ||
-                        (country.name === "United States" &&
-                          data?.AwayTeam === "USA") ||
-                        (country.name === "South Korea" &&
-                          data?.AwayTeam === "Korea Republic")) && (
-                        <img
-                          src={country?.image}
-                          alt={country.name}
-                          key={i}
-                          loading="lazy"
-                          className="Away__Image"
-                        />
-                      )
-                    );
-                  })}
-                  <div className="teamName">{data?.AwayTeam}</div>
-                </Button>
-              )}
-
-              <div className="gameDetails__location">
-                <i className="ri-map-pin-2-line"></i> {data?.Location}
               </div>
+            );
+          } else if (data?.Group === group)
+            return (
+              <div className="gameDetails__item" key={index}>
+                {window.innerWidth > 576 ? (
+                  <div
+                    className="gameDetails__teamDetails"
+                    onClick={() => navigate(`/predict/${data?._id}`)}
+                  >
+                    <div className="teamName">{data?.HomeTeam}</div>
+                    {CountryFlags.map((country, i) => {
+                      return HomeTeamFlag(data, country, i);
+                    })}
+                    {gameTime(data)}
+                    {CountryFlags.map((country, i) => {
+                      return AwayTeamFlag(data, country, i);
+                    })}
+                    <div className="teamName">{data?.AwayTeam}</div>
+                  </div>
+                ) : (
+                  <Button
+                    className="gameDetails__teamDetails"
+                    onClick={() => navigate(`/predict/${data._id}`)}
+                  >
+                    <div className="teamName">{data?.HomeTeam}</div>
+                    {CountryFlags.map((country, i) => {
+                      return HomeTeamFlag(data, country, i);
+                    })}
+                    {gameTime(data)}
+                    {CountryFlags.map((country, i) => {
+                      return AwayTeamFlag(data, country, i);
+                    })}
+                    <div className="teamName">{data?.AwayTeam}</div>
+                  </Button>
+                )}
 
-              <div className="gameDetails__action">
-                <Button
-                  className="quickView"
-                  onClick={() => handleModalOpen(data)}
-                >
-                  Quick View
-                </Button>
-                <Button>
-                  <i className="ri-arrow-right-line"></i>
-                </Button>
+                <div className="gameDetails__location">
+                  <i className="ri-map-pin-2-line"></i> {data?.Location}
+                </div>
+
+                <div className="gameDetails__action">
+                  <Button
+                    className="quickView"
+                    onClick={() => handleModalOpen(data)}
+                  >
+                    Quick View
+                  </Button>
+                  <Button>
+                    <i className="ri-arrow-right-line"></i>
+                  </Button>
+                </div>
               </div>
-            </div>
-          );
-      })}
+            );
+        })}
     </div>
   );
 }
