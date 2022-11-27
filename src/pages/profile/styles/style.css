@@ -4,7 +4,7 @@
   padding-top: 1.5vh;
 }
 .profile__container .blob1 {
-  background: url("https://ik.imagekit.io/domsan/Screen_Shot_2022-09-08_at_20.10.25_Fwn3-6res.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662647143911") no-repeat fixed center center;
+  background: url("https://ik.imagekit.io/domsan/Screen_Shot_2022-09-08_at_20.10.25_Fwn3-6res.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662647143911") no-repeat center center;
   background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(33, 33, 33, 0.3);
   width: 100vw;
