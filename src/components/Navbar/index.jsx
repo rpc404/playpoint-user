@@ -26,6 +26,7 @@ export default function Navbar() {
     ethBalance: 0,
     ppttBalance: 0,
   });
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     if (isWalletConnected) {
@@ -52,6 +53,7 @@ export default function Navbar() {
    * @dev User wallet authentication
    */
   const handleLogin = async () => {
+    setLoading(true);
     const resData = await handleRPCWalletLogin();
 
     const provider = new ethers.providers.Web3Provider(ethereum);
@@ -74,6 +76,7 @@ export default function Navbar() {
 
     await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
     toast("Wallet Connected!");
+    setLoading(false);
   };
 
   const handleLogout = () => {
@@ -137,7 +140,7 @@ export default function Navbar() {
       <Divider />
       {!isWalletConnected ? (
         <List>
-          <ListItem disablePadding onClick={() => handleLogin()}>
+          <ListItem disabled={loading} disablePadding onClick={() => handleLogin()}>
             <ListItemButton className="drawerListItem">
               <i className="ri-fingerprint-line"></i>
               <ListItemText primary="Login / Register" />
@@ -190,7 +193,7 @@ export default function Navbar() {
       </div>
       <div className="navbar__authentication">
         {isWalletConnected === false ? (
-          <Button onClick={() => handleLogin()}>
+          <Button disabled={loading} onClick={() => handleLogin()}>
             <i className="ri-fingerprint-line"></i> Login / Register
           </Button>
         ) : (
