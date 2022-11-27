@@ -8,27 +8,24 @@ import { useParams } from "react-router-dom";
 import { getFixutreById } from "../../api/Fixture";
 import allFlags from "../../helpers/CountryFlags.json";
 import {
-  getAllPredictions,
   getAllPredictionsByFixture,
   getQuestionaireByFixtureId,
 } from "../../api/Prediction";
 import moment from "moment";
 import { toast } from "react-toastify";
-import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import Pusher from "pusher-js";
+import Leaderboards from "../../components/Leaderboards/Leaderboards";
 
-export default function Predict({ socket }) {
-  const [activeOS, setActiveOS] = React.useState("");
+export default function Predict() {
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
   const { fixtureId } = useParams();
   const [predictions, setPredictions] = React.useState([]);
-  const [questionaires, setQuestionaires] = React.useState([]);
+  const [, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
-  // const [volume,setVolume] = React.useState(0)
-  let volume = 0;
+  const [activeOS, setActiveOS] = React.useState("");
 
-  const [{ userPublicAddress }, dispatchRPCData] = useRPCContext();
+  let volume = 0;
 
   const getCountryFlag = (country) => {
     let _url = "";
@@ -38,22 +35,16 @@ export default function Predict({ socket }) {
       } else if (country === "USA") {
         _url =
           "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/US.svg";
-      } else if(country === "South Korea"){
-        _url = "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg"
-      }else if(country === "Korea Republic"){
-        _url = "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg"
+      } else if (country === "South Korea") {
+        _url =
+          "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg";
+      } else if (country === "Korea Republic") {
+        _url =
+          "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg";
       }
     });
     return _url;
   };
-
-  // const poolVolume = async (p) => {
-  //   let Volume = 0;
-  //   await p.map((prediction) => {
-  //     Volume += prediction.amount;
-  //   });
-  //   return Volume;
-  // };
 
   React.useEffect(() => {
     // Windows
@@ -62,7 +53,6 @@ export default function Predict({ socket }) {
     else if (navigator.appVersion.indexOf("Mac") != -1) setActiveOS("macOS");
     // Linux and other
     else setActiveOS("otherOS");
-
     // Fetch fixtures
     (async () => {
       const response = await getFixutreById(fixtureId);
@@ -71,7 +61,10 @@ export default function Predict({ socket }) {
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
-      sessionStorage.setItem('predictions', JSON.stringify(response.data.data.reverse()))
+      sessionStorage.setItem(
+        "predictions",
+        JSON.stringify(response.data.data.reverse())
+      );
       setPredictions(response.data.data);
 
       let lineChartData = [];
@@ -102,16 +95,16 @@ export default function Predict({ socket }) {
       console.log("Weboscket Connected");
     });
     const predictionChannel = pusher.subscribe("prediction-channel");
-    predictionChannel.bind("new-prediction",(data)=>{
-      const _predictions = JSON.parse(sessionStorage.getItem('predictions')) ||[];
-      if(data.data[0].fixtureId == fixtureId){
-        const newPrediction = [data.data[0], ..._predictions]
-        sessionStorage.setItem('predictions', JSON.stringify(newPrediction))
+    predictionChannel.bind("new-prediction", (data) => {
+      const _predictions =
+        JSON.parse(sessionStorage.getItem("predictions")) || [];
+      if (data.data[0].fixtureId == fixtureId) {
+        const newPrediction = [data.data[0], ..._predictions];
+        sessionStorage.setItem("predictions", JSON.stringify(newPrediction));
         setPredictions(newPrediction);
       }
     });
-
-  },[])
+  }, []);
   return (
     <div className="prediction__container">
       <Helmet>
@@ -128,7 +121,7 @@ export default function Predict({ socket }) {
           <div className={`prediction__items ${activeOS}`}>
             {predictions.length >= 1 &&
               predictions.map((data, index) => {
-                volume+=(data?.amount / 0.015);
+                volume += data?.amount / 0.015;
                 return (
                   <div className="predictedCard__container" key={index}>
                     <div>
@@ -219,7 +212,7 @@ export default function Predict({ socket }) {
             <div className="eventDetails">
               <p>
                 <i className="ri-calendar-todo-line"></i> Event Details:{" "}
-                {moment(fixture.DateUtc).format('LL')}
+                {moment(fixture.DateUtc).format("LL")}
               </p>
               <p>
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
@@ -249,8 +242,8 @@ export default function Predict({ socket }) {
               Volume<i className="ri-money-dollar-circle-line"></i>
             </p>
           </div>
-          <div className={`leaderboardItems ${activeOS}`}>
-            {/* {fixture[0].length >=1 && fixture.map((data) => {
+          {fixture && <Leaderboards />}{" "}
+          {/* {fixture[0].length >=1 && fixture.map((data) => {
               return (
                 <div className="leaderboardItem__container" key={data}>
                   <p>AUS/QTR</p>
@@ -259,7 +252,6 @@ export default function Predict({ socket }) {
                 </div>
               );
             })} */}
-          </div>
         </div>
       </div>
     </div>
