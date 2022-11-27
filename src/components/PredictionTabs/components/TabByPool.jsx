@@ -4,9 +4,7 @@ import {
   getQuestionaireByFixtureId,
   setPrediction,
 } from "../../../api/Prediction";
-// import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-// import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import "./styles/style.css";
 import { toast } from "react-toastify";
@@ -74,10 +72,8 @@ const PoolType = ({
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
   const [predicting, setPredicting] = React.useState(false);
   const [clicked,setClicked] = React.useState(false)
-  console.log(clicked);
 
-  // const userData = JSON.parse(localStorage.getItem("rpcUserData"));
-  const [{userPublicAddress, isWalletConnected}, dispatchRPCData] = useRPCContext();
+  const [{userPublicAddress, isWalletConnected, userPPTTBalance}, dispatchRPCData] = useRPCContext();
 
   React.useEffect(() => {
     setTotalPredictionPrice(userPrediction.activeAmount * predictionCount);
@@ -190,7 +186,7 @@ const PoolType = ({
           ))}
         </div>
       </div>
-
+      { isWalletConnected &&
       <div className="questionaires">
         {!questionaire.loading &&
           questionaire.tempQuestionaire[0]?.questionaires.questions.map(
@@ -263,7 +259,7 @@ const PoolType = ({
             )
           )}
       </div>
-
+}
       <div className="predictionAmount">
         {/* <div>
           <h4>Prediction Count:</h4>
@@ -286,7 +282,7 @@ const PoolType = ({
           <div className="top">
             <h4>Total Amount: ${totalPredictionPrice}</h4>
             {/* @note must get balance from user wallet balance */}
-            <h4>Available: $10</h4>
+            <h4>Available: {userPPTTBalance} PPTT</h4>
           </div>
           {/* 
           @note button needs to be disabled after */}

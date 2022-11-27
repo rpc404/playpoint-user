@@ -9,6 +9,7 @@ export const handleRPCWalletLogin = async () => {
         method: "eth_requestAccounts",
       });
 
+
       if (ethereum.isMetaMask)
         console.log("Metamask Says: Other EVM Compatible Wallets not detected!");
       else console.log("Metamask Says: Other EVM Compatible wallets maybe installed!");

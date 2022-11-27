@@ -2,6 +2,7 @@ import { Skeleton } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getMarketplaceStat } from "../../api/Marketplace";
+import Pusher from "pusher-js";
 
 export default function MarketplaceCard({ marketplace }) {
   const [stat, setStat] = React.useState({});
@@ -12,6 +13,23 @@ export default function MarketplaceCard({ marketplace }) {
       setStat(res.data.response)
     );
     setLoading(false);
+  }, []);
+
+  React.useEffect(() => {
+    // Enable pusher logging - don't include this in production
+    // Pusher.logToConsole = true;
+    const pusher = new Pusher("2142cda6d39765cba2a9", {
+      cluster: "ap2",
+    });
+
+    const predictionChannel = pusher.subscribe("prediction-channel");
+    predictionChannel.bind("new-prediction", (data) => {
+      if (data.data[0].marketplaceSlug == marketplaceSlug) {
+        getMarketplaceStat(marketplace.marketplaceSlug).then((res) =>
+          setStat(res.data.response)
+        );
+      }
+    });
   }, []);
 
   const navigate = useNavigate();
