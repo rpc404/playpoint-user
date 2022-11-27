@@ -199,7 +199,27 @@ export default function Navbar() {
               className="balance"
               onClick={(e) => {
                 e.stopPropagation();
-                window.open("https://sepolia.etherscan.io/token/0x53d168578974822bcaa95106c7d5a906bf100948", '_blank');
+                ethereum
+                  .request({
+                    method: "wallet_watchAsset",
+                    params: {
+                      type: "ERC20",
+                      options: {
+                        address: "0x53d168578974822bCAa95106C7d5a906BF100948",
+                        symbol: "PPTT",
+                        decimals: 18,
+                        image: "https://ik.imagekit.io/lexworld/Logo.png",
+                      },
+                    },
+                  })
+                  .then((success) => {
+                    if (success) {
+                      toast("PPTT successfully added to wallet!");
+                    } else {
+                      throw new Error("Something went wrong.");
+                    }
+                  })
+                  .catch(console.error);
               }}
             >
               <img
