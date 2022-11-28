@@ -88,7 +88,7 @@ export default function Predict() {
   React.useEffect(() => {
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;
-    const pusher = new Pusher("2142cda6d39765cba2a9", {
+    const pusher = new Pusher("e6640b48a82cccbb13d0", {
       cluster: "ap2",
     });
     pusher.connection.bind("connected", function () {
