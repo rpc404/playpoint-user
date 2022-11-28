@@ -30,7 +30,7 @@ export default function FixtureCard({
   const gameTime = (data) => {
     return (
       <div className="gameTime">
-        {data.closed === "closed" ? (
+        {data.status[0]?.status === "closed" ? (
           <>
             {data.HomeTeamScore} : {data.AwayTeamScore}
           </>
@@ -82,6 +82,7 @@ export default function FixtureCard({
       {getGamesByDate(data)
         .reverse()
         .map((data, index) => {
+         { console.log(data) }
           if (group === "all") {
             return (
               <div className="gameDetails__item" key={index}>
