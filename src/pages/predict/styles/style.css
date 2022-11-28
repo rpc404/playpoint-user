@@ -422,4 +422,14 @@
 }
 .prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p {
   flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p img {
+  height: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
 }/*# sourceMappingURL=style.css.map */

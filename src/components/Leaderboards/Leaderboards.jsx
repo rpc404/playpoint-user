@@ -7,7 +7,7 @@ import {
 } from "../../api/Leaderboards";
 
 import allFlags from "../../helpers/CountryFlags.json";
-
+import { getCountryFlag } from "../../pages/predict";
 
 export default function Leaderboards() {
   const navigate = useNavigate();
@@ -15,18 +15,17 @@ export default function Leaderboards() {
   const [loading, setLoading] = React.useState(true);
   const [leaderboards, setLeaderboards] = React.useState([]);
 
-
   const getCountryShortName = (country) => {
     let name = "";
     allFlags.map((flag, key) => {
       if (flag.name === country) {
         name = flag.code;
       } else if (country === "USA") {
-        name =
-          "USA";
+        name = "USA";
       } else if (country === "South Korea" || country === "Korea Republic") {
-        name =
-          "KR";
+        name = "KR";
+      } else if  (country === "England"){
+        name = "ENG"
       }
     });
     return name;
@@ -46,7 +45,7 @@ export default function Leaderboards() {
       if (marketplaceSlug !== "") {
         const data = await getLeaderboardByMarketplaceSlug(marketplaceSlug);
         let _leaderboard = data.data.leaderboard;
-        console.log(_leaderboard)
+        console.log(_leaderboard);
         setLeaderboards(_leaderboard);
         setLoading(false);
       } else {
@@ -61,9 +60,28 @@ export default function Leaderboards() {
       {leaderboards.length >= 1 &&
         leaderboards.map((leaderboard, key) => {
           return (
-            <div className="leaderboardItem__container" key={key} onClick={()=>{navigate(`/predict/${leaderboard.fixture._id}`); window.location.reload()} }>
+            <div
+              className="leaderboardItem__container"
+              key={key}
+              onClick={() => {
+                navigate(`/predict/${leaderboard.fixture._id}`);
+                window.location.reload();
+              }}
+            >
               <p>
-                {getCountryShortName(leaderboard.fixture.HomeTeam)}/{getCountryShortName(leaderboard.fixture.AwayTeam)}
+                {getCountryShortName(leaderboard.fixture.HomeTeam)}
+                <img
+                  src={getCountryFlag(leaderboard.fixture.HomeTeam)}
+                  loading="lazy"
+                  alt=""
+                />
+                <span>vs</span> 
+                <img
+                  src={getCountryFlag(leaderboard.fixture.AwayTeam)}
+                  loading="lazy"
+                  alt=""
+                />
+                {getCountryShortName(leaderboard.fixture.AwayTeam)}
               </p>
               <p>{leaderboard.userCount}</p>
               <p>{leaderboard.volume}</p>
@@ -71,15 +89,17 @@ export default function Leaderboards() {
           );
         })}
       {loading &&
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, index) => {
-          return (
-            <div className="leaderboardItem__container" key={index}>
-              <Skeleton width={70} height={30} />
-              <Skeleton width={70} height={30} />
-              <Skeleton width={70} height={30} />
-            </div>
-          );
-        })}
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(
+          (_, index) => {
+            return (
+              <div className="leaderboardItem__container" key={index}>
+                <Skeleton width={70} height={30} />
+                <Skeleton width={70} height={30} />
+                <Skeleton width={70} height={30} />
+              </div>
+            );
+          }
+        )}
     </div>
   );
 }
