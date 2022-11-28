@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Helmet } from "react-helmet";
-// import UserHistory from "../../mocks/UserHistory.json";
 import { getUserPredictions } from "../../api/Prediction";
 import moment from "moment";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
@@ -19,7 +18,6 @@ export default function Profile() {
 
   const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
   const [_username, setUsername] = useState("");
-  console.log(userPublicAddress);
 
   React.useEffect(() => {
     if (userPublicAddress) {
@@ -29,8 +27,7 @@ export default function Profile() {
           setHistory(res.data.data.slice(0, 10));
         }
       });
-    }
-    if (username) {
+    } else if (username) {
       setUsername(username);
     }
   }, []);
@@ -57,6 +54,7 @@ export default function Profile() {
     const page = ev.target.innerHTML.split("<span")[0];
     setHistory(userProfile.slice((page - 1) * 10, page * 10));
   };
+
   return (
     <div className="profile__container">
       <Helmet>
@@ -104,14 +102,15 @@ export default function Profile() {
                 toast("Account number copied!");
             }}
           >
-            <p>
-              {`${userPublicAddress}`.substring(1, 5) +
+            <>
+              {`${userPublicAddress}`.substring(0, 15) +
                 `...` +
                 `${userPublicAddress}`.substring(
-                  userPublicAddress.length - 5
+                  userPublicAddress.length - 3
                 )}{" "}
               <i className="ri-file-copy-line"></i>
-            </p>
+
+            </>
             {/* <p className="copy">Copy to clipboard</p> */}
           </p>
         </div>
@@ -128,13 +127,6 @@ export default function Profile() {
             <div>
               <p>Winnings of all time</p>
               <h3>5896.00 PPTT</h3>
-            </div>
-          </div>
-          <div className="summaryItem">
-            <i className="ri-wallet-3-line"></i>
-            <div>
-              <p>Your balance</p>
-              <h3>589658.00 PPTT</h3>
             </div>
           </div>
         </div>
@@ -176,7 +168,7 @@ export default function Profile() {
                 <b>{data?.match?.home || "-"}</b> VS{" "}
                 <b>{data?.match?.away || "-"}</b>
               </p>
-              <p>{Date(data.created_at)}</p>
+              <p>{moment(data.created_at).format("LL")}</p>
             </div>
           ))}
         </div>
@@ -219,7 +211,7 @@ export default function Profile() {
                 <b>{data?.match?.away || "-"}</b>
               </p>
               <p className="date">
-                Date:{moment(data?.created_at).format("lll")}
+                Date:{moment(data?.created_at).format("LT")}
               </p>
               {data.result && (
                 <div className="winlose">

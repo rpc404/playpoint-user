@@ -47,6 +47,7 @@ export default function MarketplaceCard({ marketplace }) {
     <div
       className="marketplaceCard__container"
       onClick={() => {
+        sessionStorage.setItem("marketplaceSlug", marketplaceSlug);
         navigate(`/fixture`, {
           state: {
             marketplaceSlug,

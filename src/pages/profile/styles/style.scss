@@ -5,7 +5,7 @@
 
   .blob1 {
     background: url("https://ik.imagekit.io/domsan/Screen_Shot_2022-09-08_at_20.10.25_Fwn3-6res.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662647143911")
-      no-repeat fixed center center;
+      no-repeat center center;
     background-size: cover;
     box-shadow: inset 0 0 0 2000px rgba(33, 33, 33, 0.3);
     width: 100vw;
@@ -29,7 +29,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 1em;
-    // width: 40vw;
     gap: 10px;
     background-color: #fff;
     border-radius: 5px;
@@ -40,12 +39,14 @@
     margin-bottom: 3vh;
 
     @media screen and (min-width: 426px) {
-      margin: 0 auto;
+      margin: 0 2.5em;
     }
 
     @media screen and (min-width: 900px) {
-      width: 40vw;
+      width: 50vw;
+      margin: 0 auto;
     }
+
 
     .userData {
       display: flex;
@@ -72,6 +73,9 @@
       gap: 10px;
       flex: 1;
       margin-top: 1em;
+      align-items: center;
+      justify-content: center;
+
       .summaryItem {
         display: flex;
         align-items: center;
@@ -79,7 +83,12 @@
         justify-content: center;
         gap: 8px;
         padding: 12px 19px 12px 15px;
-        border-right: 1px solid #6b5ce7;
+        border-bottom: 1px solid #6b5ce7;
+
+        @media screen and (min-width:426px) {
+          border-right: 1px solid #6b5ce7;
+          border-bottom: none;
+        }
         &:nth-child(3) {
           border: none;
         }
@@ -119,7 +128,7 @@
         fieldset {
           display: flex;
           align-items: center;
-          font-size: 1.3em;
+          // font-size: 1.3em;
           border: none;
           gap: 15px;
 
@@ -137,20 +146,22 @@
             border: 1px solid #6b5ce7;
             padding: 0.5em;
             transition: background 1s ease-in-out;
+            padding: 0;
 
             i {
               color: #6b5ce7;
+              font-size: 22px;
             }
           }
         }
       }
     }
     .accountbtn {
-      font-size: 1.3em;
+      // font-size: 1.3em;
       color: #0009;
       padding: 0.5em 0.5em;
       position: relative;
-      width: 200px;
+      // width: 200px;
       text-align: center;
       background-color: #f2f4f6;
       &:hover {
@@ -170,9 +181,9 @@
         width: 200px;
         left: 0;
         animation-name: slide;
-        animation-duration: .5s;
+        animation-duration: 0.5s;
         animation-fill-mode: forwards;
-        background-color: rgba($color: #000000, $alpha: 1.0);
+        background-color: rgba($color: #000000, $alpha: 1);
         color: #fff;
       }
       &::after {
@@ -186,7 +197,7 @@
         bottom: calc(100% - 11px);
         left: 50%;
         animation-name: slide;
-        animation-duration: .5s;
+        animation-duration: 0.5s;
         animation-fill-mode: forwards;
         border-bottom-color: rgba($color: #000000, $alpha: 0.8);
       }

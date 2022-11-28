@@ -3,7 +3,7 @@ const { ethereum } = window;
 export const ACTIONS = {
   WALLET_CONNECT: "wallet-connect",
   WALLET_DISCONNECT: "wallet-disconnect",
-  UPDATE_USERNAME:"update-profile"
+  UPDATE_USERNAME: "update-profile",
 };
 
 export const initialRPCState = {
@@ -11,7 +11,7 @@ export const initialRPCState = {
   isWalletConnected: false,
   userPPTTBalance: 0,
   userETHBalance: 0,
-  username:""
+  username: "",
 };
 
 export const RPCReducer = (state, action) => {
@@ -22,7 +22,9 @@ export const RPCReducer = (state, action) => {
         ...state,
         userPublicAddress: action.payload.userPublicAddress,
         isWalletConnected: true,
-        username:action.payload.username,
+        username: action.payload.username,
+        userPPTTBalance: action.payload.userPPTTBalance,
+        userETHBalance: action.payload.userETHBalance,
       };
 
     //   @note disconnect wallet
@@ -34,9 +36,9 @@ export const RPCReducer = (state, action) => {
       return { ...initialRPCState };
 
     case ACTIONS.UPDATE_USERNAME:
-      return{
+      return {
         ...state,
-        username: action.payload.username
-      }
+        username: action.payload.username,
+      };
   }
 };

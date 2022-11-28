@@ -4,9 +4,7 @@ import {
   getQuestionaireByFixtureId,
   setPrediction,
 } from "../../../api/Prediction";
-// import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-// import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import "./styles/style.css";
 import { toast } from "react-toastify";
@@ -14,6 +12,8 @@ import loader from "../../../helpers/loading.gif";
 import { handleRPCWalletLogin } from "../../../utils/RPC";
 import { useRPCContext } from "../../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../../contexts/WalletRPC/RPCReducer";
+import { ethers } from "ethers";
+import ERC20BasicAPI from "../../../utils/ERC20BasicABI.json";
 
 /**
  * @dev utils for slider
@@ -73,11 +73,28 @@ const PoolType = ({
   const [predictionCount, setPredictionCount] = React.useState(1);
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
   const [predicting, setPredicting] = React.useState(false);
-  const [clicked,setClicked] = React.useState(false)
-  console.log(clicked);
+  const [, setClicked] = React.useState(false);
+  const [balance, setBalance] = React.useState(0);
 
-  // const userData = JSON.parse(localStorage.getItem("rpcUserData"));
-  const [{userPublicAddress, isWalletConnected}, dispatchRPCData] = useRPCContext();
+  const [{ userPublicAddress, isWalletConnected }, dispatchRPCData] =
+    useRPCContext();
+
+  React.useEffect(() => {
+    if (isWalletConnected) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const contract = new ethers.Contract(
+        "0x53d168578974822bCAa95106C7d5a906BF100948",
+        ERC20BasicAPI,
+        provider
+      );
+
+      (async () => {
+        const PPTTBalance = await contract.balanceOf(userPublicAddress);
+
+        setBalance(ethers.utils.formatEther(PPTTBalance));
+      })();
+    }
+  }, [isWalletConnected]);
 
   React.useEffect(() => {
     setTotalPredictionPrice(userPrediction.activeAmount * predictionCount);
@@ -110,7 +127,7 @@ const PoolType = ({
     amount: 0,
     questionaireId: "",
     fixtureId: "",
-    marketplaceSlug:""
+    marketplaceSlug: "",
   };
 
   const handleRadioChange = (question, answer) => {
@@ -138,7 +155,8 @@ const PoolType = ({
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id;
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
-    _predictionData.marketplaceSlug = questionaire.tempQuestionaire[0].marketplaceSlug
+    _predictionData.marketplaceSlug =
+      questionaire.tempQuestionaire[0].marketplaceSlug;
 
     if (validation(_predictionData.answers)) {
       setPredicting(true);
@@ -146,6 +164,7 @@ const PoolType = ({
         .then(() => {
           toast("Predicted Successfully!");
           _predictionData.answers = {};
+          window.location.reload()
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
@@ -190,7 +209,7 @@ const PoolType = ({
           ))}
         </div>
       </div>
-      { isWalletConnected &&
+
       <div className="questionaires">
         {!questionaire.loading &&
           questionaire.tempQuestionaire[0]?.questionaires.questions.map(
@@ -263,7 +282,7 @@ const PoolType = ({
             )
           )}
       </div>
-}
+
       <div className="predictionAmount">
         {/* <div>
           <h4>Prediction Count:</h4>
@@ -286,12 +305,17 @@ const PoolType = ({
           <div className="top">
             <h4>Total Amount: ${totalPredictionPrice}</h4>
             {/* @note must get balance from user wallet balance */}
-            <h4>Available: $10</h4>
+            <h4>Available: {parseFloat(balance).toFixed(2)} PPTT</h4>
           </div>
           {/* 
           @note button needs to be disabled after */}
           {isWalletConnected ? (
-            <Button onClick={() => {handlePrediction(),setClicked(true)}} disabled={predicting}>
+            <Button
+              onClick={() => {
+                handlePrediction(), setClicked(true);
+              }}
+              disabled={predicting}
+            >
               {predicting ? <img src={loader} alt="loading" /> : "Predict"}
             </Button>
           ) : (
