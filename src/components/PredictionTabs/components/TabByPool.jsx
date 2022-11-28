@@ -50,6 +50,7 @@ const PoolType = ({
   setUserPrediction,
   poolSize,
   fixtureId,
+  status
 }) => {
   const handleActiveAmount = (amount) => {
     setUserPrediction({
@@ -310,7 +311,14 @@ const PoolType = ({
           </div>
           {/* 
           @note button needs to be disabled after */}
-          {isWalletConnected ? (
+          {
+            (status && status==="closed") ?  
+            <Button
+            disabled={true}
+            className="closed-btn"
+          >Prediction Closed </Button>
+          :
+          isWalletConnected ? (
             <Button
               onClick={() => {
                 handlePrediction(), setClicked(true);

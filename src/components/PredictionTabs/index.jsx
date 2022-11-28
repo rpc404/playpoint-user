@@ -3,7 +3,7 @@ import * as React from "react";
 import { a11yProps, TabPanel } from "./components/MuiTabsHelpers";
 import PoolType from "./components/TabByPool";
 
-export default function PredictionTabs({ poolSize, setPoolSize, fixtureId }) {
+export default function PredictionTabs({ poolSize, setPoolSize, fixtureId, status }) {
   const [value, setValue] = React.useState(0);
   const [userPrediction, setUserPrediction] = React.useState({
     activeAmount: 5,
@@ -48,6 +48,7 @@ export default function PredictionTabs({ poolSize, setPoolSize, fixtureId }) {
           fixtureId={fixtureId}
           setUserPrediction={setUserPrediction}
           userPrediction={userPrediction}
+          status={status}
         />
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -56,6 +57,7 @@ export default function PredictionTabs({ poolSize, setPoolSize, fixtureId }) {
           fixtureId={fixtureId}
           setUserPrediction={setUserPrediction}
           userPrediction={userPrediction}
+          status={status}
         />
       </TabPanel>
       {/* <TabPanel value={value} index={2}>

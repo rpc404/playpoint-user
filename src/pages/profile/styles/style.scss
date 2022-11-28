@@ -84,13 +84,11 @@
         gap: 8px;
         padding: 12px 19px 12px 15px;
         border-bottom: 1px solid #6b5ce7;
-
         @media screen and (min-width:426px) {
-          border-right: 1px solid #6b5ce7;
           border-bottom: none;
         }
-        &:nth-child(3) {
-          border: none;
+        &:nth-child(1) {
+          border-right: 1px solid #6b5ce7;
         }
 
         i {

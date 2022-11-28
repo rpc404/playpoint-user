@@ -7,7 +7,21 @@ import {
 } from "../../api/Leaderboards";
 
 import allFlags from "../../helpers/CountryFlags.json";
-
+export const getCountryShortName = (country) => {
+  let name = "";
+  allFlags.map((flag, key) => {
+    if (flag.name === country) {
+      name = flag.code;
+    } else if (country === "USA") {
+      name =
+        "USA";
+    } else if (country === "South Korea" || country === "Korea Republic") {
+      name =
+        "KR";
+    }
+  });
+  return name;
+};
 
 export default function Leaderboards() {
   const navigate = useNavigate();
@@ -16,21 +30,7 @@ export default function Leaderboards() {
   const [leaderboards, setLeaderboards] = React.useState([]);
 
 
-  const getCountryShortName = (country) => {
-    let name = "";
-    allFlags.map((flag, key) => {
-      if (flag.name === country) {
-        name = flag.code;
-      } else if (country === "USA") {
-        name =
-          "USA";
-      } else if (country === "South Korea" || country === "Korea Republic") {
-        name =
-          "KR";
-      }
-    });
-    return name;
-  };
+  
 
   React.useEffect(() => {
     // Windows
@@ -46,7 +46,6 @@ export default function Leaderboards() {
       if (marketplaceSlug !== "") {
         const data = await getLeaderboardByMarketplaceSlug(marketplaceSlug);
         let _leaderboard = data.data.leaderboard;
-        console.log(_leaderboard)
         setLeaderboards(_leaderboard);
         setLoading(false);
       } else {

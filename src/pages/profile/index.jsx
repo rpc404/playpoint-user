@@ -10,6 +10,7 @@ import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { setProfile } from "../../api/Profile";
 import { toast } from "react-toastify";
+import { getCountryShortName } from "../../components/Leaderboards/Leaderboards";
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
@@ -23,6 +24,7 @@ export default function Profile() {
     if (userPublicAddress) {
       getUserPredictions(userPublicAddress).then((res) => {
         if (res.data.data) {
+          console.log(res.data.data)
           setUserProfile(res.data.data);
           setHistory(res.data.data.slice(0, 10));
         }
@@ -30,7 +32,7 @@ export default function Profile() {
     } else if (username) {
       setUsername(username);
     }
-  }, []);
+  }, [userPublicAddress]);
 
   const handleUpdate = async () => {
     await setProfile({ data: { username: _username, userPublicAddress } }).then(
@@ -165,8 +167,8 @@ export default function Profile() {
                 )}
               </p>
               <p>
-                <b>{data?.match?.home || "-"}</b> VS{" "}
-                <b>{data?.match?.away || "-"}</b>
+                <b>{getCountryShortName(data?.fixtureId?.HomeTeam) || "-"}</b> VS{" "}
+                <b>{getCountryShortName(data?.fixtureId?.AwayTeam) || "-"}</b>
               </p>
               <p>{moment(data.created_at).format("LL")}</p>
             </div>
@@ -176,7 +178,7 @@ export default function Profile() {
 
       <Stack spacing={2}>
         <Pagination
-          count={userProfile.length / 10}
+          count={parseInt(userProfile.length / 10)}
           shape="rounded"
           className="pagination"
           onClick={(e) => handlePageClick(e)}
@@ -207,8 +209,8 @@ export default function Profile() {
                 )}
               </p>
               <p className="match">
-                Match: <b>{data?.match?.home || "-"}</b> VS{" "}
-                <b>{data?.match?.away || "-"}</b>
+                Match: <b>{data?.fixtureId?.HomeTeam || "-"}</b> VS{" "}
+                <b>{data?.fixtureId?.AwayTeam || "-"}</b>
               </p>
               <p className="date">
                 Date:{moment(data?.created_at).format("LT")}
