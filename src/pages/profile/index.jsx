@@ -102,14 +102,15 @@ export default function Profile() {
                 toast("Account number copied!");
             }}
           >
-            <span>
+            <>
               {`${userPublicAddress}`.substring(0, 15) +
                 `...` +
                 `${userPublicAddress}`.substring(
                   userPublicAddress.length - 3
                 )}{" "}
               <i className="ri-file-copy-line"></i>
-            </span>
+
+            </>
             {/* <p className="copy">Copy to clipboard</p> */}
           </p>
         </div>
