@@ -164,7 +164,7 @@ const PoolType = ({
         .then(() => {
           toast("Predicted Successfully!");
           _predictionData.answers = {};
-          window.location.reload()
+          window.location.reload();
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
@@ -209,49 +209,49 @@ const PoolType = ({
           ))}
         </div>
       </div>
-
-      <div className="questionaires">
-        {!questionaire.loading &&
-          questionaire.tempQuestionaire[0]?.questionaires.questions.map(
-            (q, index) => (
-              <div className="questionItem" key={index}>
-                <div className="top">
-                  <p>
-                    {index + 1}. {q}
-                  </p>
-                  <p>
-                    {
-                      questionaire.tempQuestionaire[0]?.questionaires.points[
-                        index
-                      ]
-                    }{" "}
-                    Points
-                  </p>
-                </div>
-                <div className="answers">
-                  {questionaire.tempQuestionaire[0]?.questionaires.answers[
-                    index
-                  ]
-                    .split(",")
-                    .map((q, i) =>
-                      q !== "input" ? (
-                        <FormControl key={i} className="row-radio">
-                          <RadioGroup
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                          >
-                            <div className="label" key={i}>
-                              <input
-                                type="radio"
-                                name="answer-options"
-                                value={q}
-                                onChange={(e) =>
-                                  handleRadioChange(index, e.target.value)
-                                }
-                                className="custom-radio"
-                              />
-                              <label className="custom-label">{q}</label>
-                              {/* <FormControlLabel
+      {isWalletConnected && (
+        <div className="questionaires">
+          {!questionaire.loading &&
+            questionaire.tempQuestionaire[0]?.questionaires.questions.map(
+              (q, index) => (
+                <div className="questionItem" key={index}>
+                  <div className="top">
+                    <p>
+                      {index + 1}. {q}
+                    </p>
+                    <p>
+                      {
+                        questionaire.tempQuestionaire[0]?.questionaires.points[
+                          index
+                        ]
+                      }{" "}
+                      Points
+                    </p>
+                  </div>
+                  <div className="answers">
+                    {questionaire.tempQuestionaire[0]?.questionaires.answers[
+                      index
+                    ]
+                      .split(",")
+                      .map((q, i) =>
+                        q !== "input" ? (
+                          <FormControl key={i} className="row-radio">
+                            <RadioGroup
+                              row
+                              aria-labelledby="demo-row-radio-buttons-group-label"
+                            >
+                              <div className="label" key={i}>
+                                <input
+                                  type="radio"
+                                  name="answer-options"
+                                  value={q}
+                                  onChange={(e) =>
+                                    handleRadioChange(index, e.target.value)
+                                  }
+                                  className="custom-radio"
+                                />
+                                <label className="custom-label">{q}</label>
+                                {/* <FormControlLabel
                                 value={i}
                                 control={<Radio />}
                                 label={q}
@@ -260,28 +260,29 @@ const PoolType = ({
                                   handleRadioChange(index, e.target.value)
                                 }
                               /> */}
-                            </div>
-                          </RadioGroup>
-                        </FormControl>
-                      ) : q === "input" ? (
-                        <div key={i}>
-                          <input
-                            style={{ padding: "5px 10px" }}
-                            type="text"
-                            value={_predictionData.answers[index]}
-                            placeholder={"Your Answer..."}
-                            onChange={(e) =>
-                              handleRadioChange(index, e.target.value)
-                            }
-                          />
-                        </div>
-                      ) : null
-                    )}
+                              </div>
+                            </RadioGroup>
+                          </FormControl>
+                        ) : q === "input" ? (
+                          <div key={i}>
+                            <input
+                              style={{ padding: "5px 10px" }}
+                              type="text"
+                              value={_predictionData.answers[index]}
+                              placeholder={"Your Answer..."}
+                              onChange={(e) =>
+                                handleRadioChange(index, e.target.value)
+                              }
+                            />
+                          </div>
+                        ) : null
+                      )}
+                  </div>
                 </div>
-              </div>
-            )
-          )}
-      </div>
+              )
+            )}
+        </div>
+      )}
 
       <div className="predictionAmount">
         {/* <div>
