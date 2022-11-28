@@ -164,7 +164,7 @@ export default function Predict() {
           <div className="predictionTable__topBar">
             <div className="predictionTable__competitor">
               <div>
-                <p>{fixture.HomeTeam}</p>
+                <p>{fixture?.HomeTeam}</p>
                 <img
                   src={getCountryFlag(fixture.HomeTeam)}
                   alt=""

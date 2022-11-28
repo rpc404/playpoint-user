@@ -18,7 +18,7 @@ export default function MarketplaceCard({ marketplace }) {
   React.useEffect(() => {
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;
-    const pusher = new Pusher("2142cda6d39765cba2a9", {
+    const pusher = new Pusher("4dd831b4f90804d6ebf4", {
       cluster: "ap2",
     });
 
