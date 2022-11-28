@@ -2,12 +2,18 @@
   h1 {
     font-size: 3.8em;
     padding: 150px 2vw;
-    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2);
     color: #fff;
+
+    span{
+      font-size: .5em;
+      color: rgba(245, 245, 245, 0.667);
+      display: block;
+    }
 
     @media (max-width: 576px) {
       font-size: 1.5em;
-      padding: 50px 5vw;
+      padding: 90px 5vw;
     }
   }
 

@@ -47,6 +47,23 @@
   align-items: center;
   gap: 15px;
 }
+.navbar__container .navbar__authentication .balance {
+  color: rgba(254, 254, 254, 0.7);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s all ease-in-out;
+  font-weight: 400;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.navbar__container .navbar__authentication .balance img {
+  width: 10px;
+}
+.navbar__container .navbar__authentication .balance:hover {
+  color: #fff;
+}
 .navbar__container .navbar__authentication .MuiButton-root {
   color: #fff;
   display: flex;

@@ -20,12 +20,40 @@ import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [{ isWalletConnected, username }, dispatchRPCData] = useRPCContext();
+  const [{ isWalletConnected, username, userPublicAddress }, dispatchRPCData] =
+    useRPCContext();
+  const [balance, setBalance] = React.useState({
+    ethBalance: 0,
+    ppttBalance: 0,
+  });
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isWalletConnected) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const contract = new ethers.Contract(
+        "0x53d168578974822bCAa95106C7d5a906BF100948",
+        ERC20BasicAPI,
+        provider
+      );
+
+      (async () => {
+        const ethBalance = await provider.getBalance(userPublicAddress);
+        const PPTTBalance = await contract.balanceOf(userPublicAddress);
+
+        setBalance({
+          ethBalance: ethers.utils.formatEther(ethBalance),
+          ppttBalance: ethers.utils.formatEther(PPTTBalance),
+        });
+      })();
+    }
+  }, [isWalletConnected]);
 
   /**
    * @dev User wallet authentication
    */
   const handleLogin = async () => {
+    setLoading(true);
     const resData = await handleRPCWalletLogin();
 
     const provider = new ethers.providers.Web3Provider(ethereum);
@@ -44,10 +72,11 @@ export default function Navbar() {
       userETHBalance: ethers.utils.formatEther(ethBalance),
     };
 
-    localStorage.setItem("rpcUserData", JSON.stringify(data));
+    localStorage.setItem("rpcUserData", JSON.stringify(resData));
 
     await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
     toast("Wallet Connected!");
+    setLoading(false);
   };
 
   const handleLogout = () => {
@@ -111,7 +140,7 @@ export default function Navbar() {
       <Divider />
       {!isWalletConnected ? (
         <List>
-          <ListItem disablePadding onClick={() => handleLogin()}>
+          <ListItem disabled={loading} disablePadding onClick={() => handleLogin()}>
             <ListItemButton className="drawerListItem">
               <i className="ri-fingerprint-line"></i>
               <ListItemText primary="Login / Register" />
@@ -164,11 +193,53 @@ export default function Navbar() {
       </div>
       <div className="navbar__authentication">
         {isWalletConnected === false ? (
-          <Button onClick={() => handleLogin()}>
+          <Button disabled={loading} onClick={() => handleLogin()}>
             <i className="ri-fingerprint-line"></i> Login / Register
           </Button>
         ) : (
           <>
+            <div
+              className="balance"
+              onClick={(e) => {
+                e.stopPropagation();
+                ethereum
+                  .request({
+                    method: "wallet_watchAsset",
+                    params: {
+                      type: "ERC20",
+                      options: {
+                        address: "0x53d168578974822bCAa95106C7d5a906BF100948",
+                        symbol: "PPTT",
+                        decimals: 18,
+                        image: "https://ik.imagekit.io/lexworld/Logo.png",
+                      },
+                    },
+                  })
+                  .then((success) => {
+                    if (success) {
+                      toast("PPTT successfully added to wallet!");
+                    } else {
+                      throw new Error("Something went wrong.");
+                    }
+                  })
+                  .catch(console.error);
+              }}
+            >
+              <img
+                src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
+                alt="ethereum"
+                loading="lazy"
+              />
+              <p>{parseFloat(balance.ppttBalance)} PPTT</p>
+            </div>
+            <div className="balance">
+              <img
+                src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/3a0ba/eth-diamond-rainbow.webp"
+                alt="ethereum"
+                loading="lazy"
+              />
+              <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
+            </div>
             <Button
               onClick={(e) => {
                 e.stopPropagation();
