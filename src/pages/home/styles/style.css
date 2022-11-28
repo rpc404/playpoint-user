@@ -93,6 +93,22 @@
   flex-direction: row;
   padding-bottom: 40px;
 }
+.home__container .marketplace__items .skeleton__container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+@media screen and (min-width: 576px) {
+  .home__container .marketplace__items .skeleton__container {
+    justify-content: space-evenly;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .home__container .marketplace__items .skeleton__container {
+    justify-content: space-between;
+  }
+}
 @media (max-width: 576px) {
   .home__container .marketplace__items {
     justify-content: center;

@@ -46,13 +46,16 @@ export default function Leaderboards() {
             </div>
           );
         })}
-      {loading && (
-        <div className="leaderboardItem__container">
-          <Skeleton width={70} height={30} />
-          <Skeleton width={70} height={30} />
-          <Skeleton width={70} height={30} />
-        </div>
-      )}
+      {loading &&
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, index) => {
+          return (
+            <div className="leaderboardItem__container" key={index}>
+              <Skeleton width={70} height={30} />
+              <Skeleton width={70} height={30} />
+              <Skeleton width={70} height={30} />
+            </div>
+          );
+        })}
     </div>
   );
 }
