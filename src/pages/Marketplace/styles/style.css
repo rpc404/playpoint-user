@@ -28,6 +28,11 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+@media screen and (min-width: 1440px) {
+  .marketplace__items #skeleton__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 .marketplace__items #skeleton__container .stack {
   width: 90vw;
 }
@@ -39,6 +44,11 @@
 @media screen and (min-width: 1025px) {
   .marketplace__items #skeleton__container .stack {
     width: 28vw;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .marketplace__items #skeleton__container .stack {
+    width: 20vw;
   }
 }
 .marketplace__items #skeleton__container .stack .inner__skeletons {
