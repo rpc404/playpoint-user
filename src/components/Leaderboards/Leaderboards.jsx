@@ -71,13 +71,13 @@ export default function Leaderboards() {
               <p>
                 {getCountryShortName(leaderboard.fixture.HomeTeam)}
                 <img
-                  src={getCountryFlag(leaderboard.fixture.HomeTeam)}
+                  src={getCountryShortName(leaderboard.fixture.HomeTeam)}
                   loading="lazy"
                   alt=""
                 />
                 <span>vs</span> 
                 <img
-                  src={getCountryFlag(leaderboard.fixture.AwayTeam)}
+                  src={getCountryShortName(leaderboard.fixture.AwayTeam)}
                   loading="lazy"
                   alt=""
                 />

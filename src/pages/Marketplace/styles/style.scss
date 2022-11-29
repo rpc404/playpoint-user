@@ -28,6 +28,10 @@
     @media screen and (min-width:1440px) {
       grid-template-columns: repeat(4,1fr);
     }
+
+    @media screen and (min-width:1700px) {
+      grid-template-columns: repeat(5,1fr);
+    }
     
     .stack {
       width: 90vw;
@@ -42,6 +46,9 @@
 
       @media screen and (min-width:1440px) {
         width: 20vw;
+      }
+      @media screen and (min-width:1700px) {
+        width: 17vw;
       }
 
       .inner__skeletons {
