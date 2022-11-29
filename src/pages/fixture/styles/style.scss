@@ -99,7 +99,7 @@
           .gameDetails__teamDetails {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 5px;
             justify-content: left;
 
             @media (max-width: 576px) {
@@ -118,6 +118,7 @@
               width: 6.5vw;
               justify-content: center;
               text-align: center;
+              flex: 1;
 
               @media (max-width: 576px) {
                 font-size: 14px;
@@ -141,7 +142,8 @@
               border: 1px solid #9a9a9a;
               padding: 3px;
               font-size: 14px;
-              width: 70px;
+              // width: 70px;
+              // flex: 1;
               text-align: center;
             }
           }
