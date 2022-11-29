@@ -19,7 +19,6 @@ const MarketPlace = () => {
   // const results = fuse.search(query);
   // const fixtureName = results.map((result) => result.item.marketplaceName);
 
-
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
@@ -38,12 +37,15 @@ const MarketPlace = () => {
   return (
     <div className="marketplace__container">
       <div className="searchfield">
-        <input
-          type="text"
-          placeholder="search marketplace"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
+        <div className="search__container">
+          <i className="ri-search-line icon"></i>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <span>Search Fixtures</span>
+        </div>
       </div>
       <div className="marketplace__items">
         {marketplaces && marketplaces.length >= 1 && !loading ? (
