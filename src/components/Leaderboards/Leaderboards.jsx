@@ -7,7 +7,25 @@ import {
 } from "../../api/Leaderboards";
 
 import allFlags from "../../helpers/CountryFlags.json";
+<<<<<<< HEAD
 import { getCountryFlag } from "../../pages/predict";
+=======
+export const getCountryShortName = (country) => {
+  let name = "";
+  allFlags.map((flag, key) => {
+    if (flag.name === country) {
+      name = flag.code;
+    } else if (country === "USA") {
+      name =
+        "USA";
+    } else if (country === "South Korea" || country === "Korea Republic") {
+      name =
+        "KR";
+    }
+  });
+  return name;
+};
+>>>>>>> bd6bb7acd798e8fef1e5c45b456c337b9df12039
 
 export default function Leaderboards() {
   const navigate = useNavigate();
@@ -15,6 +33,7 @@ export default function Leaderboards() {
   const [loading, setLoading] = React.useState(true);
   const [leaderboards, setLeaderboards] = React.useState([]);
 
+<<<<<<< HEAD
   const getCountryShortName = (country) => {
     let name = "";
     allFlags.map((flag, key) => {
@@ -30,6 +49,10 @@ export default function Leaderboards() {
     });
     return name;
   };
+=======
+
+  
+>>>>>>> bd6bb7acd798e8fef1e5c45b456c337b9df12039
 
   React.useEffect(() => {
     // Windows
@@ -45,7 +68,10 @@ export default function Leaderboards() {
       if (marketplaceSlug !== "") {
         const data = await getLeaderboardByMarketplaceSlug(marketplaceSlug);
         let _leaderboard = data.data.leaderboard;
+<<<<<<< HEAD
         console.log(_leaderboard);
+=======
+>>>>>>> bd6bb7acd798e8fef1e5c45b456c337b9df12039
         setLeaderboards(_leaderboard);
         setLoading(false);
       } else {

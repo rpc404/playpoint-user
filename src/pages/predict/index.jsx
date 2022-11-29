@@ -43,6 +43,7 @@ export default function Predict() {
   const [, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
   const [activeOS, setActiveOS] = React.useState("");
+  const [status,setStatus] = React.useState(false)
 
   let volume = 0;
 
@@ -56,7 +57,9 @@ export default function Predict() {
     // Fetch fixtures
     (async () => {
       const response = await getFixutreById(fixtureId);
+      console.log(response)
       setFixture(response.data?.fixture);
+      setStatus(response.data?.status)
     })();
 
     (async () => {
@@ -163,6 +166,7 @@ export default function Predict() {
         <div className="predictionTable">
           <div className="predictionTable__topBar">
             <div className="predictionTable__competitor">
+              { console.log(fixture) }
               <div>
                 <p>{fixture?.HomeTeam}</p>
                 <img
@@ -222,6 +226,7 @@ export default function Predict() {
               poolSize={poolSize}
               fixtureId={fixtureId}
               setPoolSize={setPoolSize}
+              status={status}
             />
           </div>
         </div>
