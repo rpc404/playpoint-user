@@ -125,6 +125,23 @@
     flex-direction: row;
     padding-bottom: 40px;
 
+    .skeleton__container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;  
+
+      @media screen and (min-width:576px) {
+        justify-content: space-evenly;
+      }
+
+      @media screen and (min-width:1024px) {
+        justify-content: space-between;
+      }
+
+    }
+
+
     @media (max-width: 576px) {
       justify-content: center;
     }

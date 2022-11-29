@@ -60,22 +60,46 @@ export default function Leaderboards() {
       {leaderboards.length >= 1 &&
         leaderboards.map((leaderboard, key) => {
           return (
-            <div className="leaderboardItem__container" key={key} onClick={()=>{navigate(`/predict/${leaderboard.fixture._id}`); window.location.reload()} }>
+            <div
+              className="leaderboardItem__container"
+              key={key}
+              onClick={() => {
+                navigate(`/predict/${leaderboard.fixture._id}`);
+                window.location.reload();
+              }}
+            >
               <p>
-                {getCountryShortName(leaderboard.fixture.HomeTeam)}/{getCountryShortName(leaderboard.fixture.AwayTeam)}
+                {getCountryShortName(leaderboard.fixture.HomeTeam)}
+                <img
+                  src={getCountryShortName(leaderboard.fixture.HomeTeam)}
+                  loading="lazy"
+                  alt=""
+                />
+                <span>vs</span> 
+                <img
+                  src={getCountryShortName(leaderboard.fixture.AwayTeam)}
+                  loading="lazy"
+                  alt=""
+                />
+                {getCountryShortName(leaderboard.fixture.AwayTeam)}
               </p>
               <p>{leaderboard.userCount}</p>
               <p>{leaderboard.volume}</p>
             </div>
           );
         })}
-      {loading && (
-        <div className="leaderboardItem__container">
-          <Skeleton width={70} height={30} />
-          <Skeleton width={70} height={30} />
-          <Skeleton width={70} height={30} />
-        </div>
-      )}
+      {loading &&
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(
+          (_, index) => {
+            return (
+              <div className="leaderboardItem__container" key={index}>
+                <Skeleton width={70} height={30} />
+                <Skeleton width={70} height={30} />
+                <Skeleton width={70} height={30} />
+              </div>
+            );
+          }
+        )}
     </div>
   );
 }

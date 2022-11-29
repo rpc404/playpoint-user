@@ -35,15 +35,16 @@ export default function Home() {
             return <MarketplaceCard marketplace={marketplace} key={index} />;
           })
         ) : (
-          <>
+          <div className="skeleton__container">
             {[0, 1, 2, 3, 4].map((data) => {
               return (
                 <Stack key={data}>
                   <Skeleton
                     animation="wave"
                     variant="rectangular"
-                    width={window.innerWidth < 576 ? "80vw" : "17vw"}
+                    // width={window.innerWidth < 576 ? "80vw" : "17vw"}
                     height={"16vh"}
+                    className="skeleton"
                   />
                   <div
                     style={{
@@ -67,7 +68,7 @@ export default function Home() {
                 </Stack>
               );
             })}
-          </>
+          </div>
         )}
       </div>
       <div className="divider"></div>

@@ -1,0 +1,129 @@
+.marketplace__container {
+  margin-top: 2em;
+}
+.marketplace__items {
+  display: grid;
+  gap: 35px;
+
+  @media screen and (min-width: 576px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #skeleton__container {
+    display: grid;
+    gap: 35px;
+
+    @media screen and (min-width: 576px) {
+      width: 100%;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 1025px) {
+      // grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    @media screen and (min-width:1440px) {
+      grid-template-columns: repeat(4,1fr);
+    }
+
+    @media screen and (min-width:1700px) {
+      grid-template-columns: repeat(5,1fr);
+    }
+    
+    .stack {
+      width: 90vw;
+
+      @media screen and (min-width: 576px) {
+        width: 40vw;
+      }
+
+      @media screen and (min-width: 1025px) {
+        width: 28vw;
+      }
+
+      @media screen and (min-width:1440px) {
+        width: 20vw;
+      }
+      @media screen and (min-width:1700px) {
+        width: 17vw;
+      }
+
+      .inner__skeletons {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+
+  .marketplaceCard__container {
+    text-decoration: none;
+    color: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+
+    @media (max-width: 576px) {
+      max-width: 85vw;
+      min-width: 85vw;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 4px 6px 10px 8px rgba(124, 30, 255, 0.09);
+      -webkit-box-shadow: 4px 6px 10px 8px rgba(124, 30, 255, 0.09);
+      -moz-box-shadow: 4px 6px 10px 8px rgba(124, 30, 255, 0.09);
+    }
+
+    .coverImage {
+      height: 130px;
+    }
+
+    .marketplaceDetails {
+      h4 {
+        font-weight: 500;
+        padding: 8px;
+        border-bottom: 0.5px solid #0001;
+        margin-bottom: 3px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        padding-bottom: 10px;
+
+        p {
+          flex: 1 1 0;
+          font-size: 14px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .flex {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            margin-top: 3px;
+          }
+        }
+      }
+    }
+  }
+}

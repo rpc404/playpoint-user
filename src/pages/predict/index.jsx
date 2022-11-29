@@ -16,6 +16,25 @@ import { toast } from "react-toastify";
 import Pusher from "pusher-js";
 import Leaderboards from "../../components/Leaderboards/Leaderboards";
 
+export const getCountryFlag = (country) => {
+  let _url = "";
+  allFlags.map((flag, key) => {
+    if (flag.name === country) {
+      _url = flag.image;
+    } else if (country === "USA") {
+      _url =
+        "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/US.svg";
+    } else if (country === "South Korea") {
+      _url =
+        "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg";
+    } else if (country === "Korea Republic") {
+      _url =
+        "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg";
+    }
+  });
+  return _url;
+};
+
 export default function Predict() {
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
@@ -27,25 +46,6 @@ export default function Predict() {
   const [status,setStatus] = React.useState(false)
 
   let volume = 0;
-
-  const getCountryFlag = (country) => {
-    let _url = "";
-    allFlags.map((flag, key) => {
-      if (flag.name === country) {
-        _url = flag.image;
-      } else if (country === "USA") {
-        _url =
-          "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/US.svg";
-      } else if (country === "South Korea") {
-        _url =
-          "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg";
-      } else if (country === "Korea Republic") {
-        _url =
-          "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg";
-      }
-    });
-    return _url;
-  };
 
   React.useEffect(() => {
     // Windows
