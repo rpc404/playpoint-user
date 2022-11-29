@@ -4,13 +4,21 @@ import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceCon
 import { getMarketplaces, getMarketplaceStat } from "../../api/Marketplace";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import { Skeleton, Stack } from "@mui/material";
+import Fuse from "fuse.js";
 import "./styles/style.css";
 
 const MarketPlace = () => {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
+  const [query, setQuery] = React.useState("");
 
-  console.log(marketplaces);
+  const fuse = new Fuse(marketplaces, {
+    keys: ["marketplaceName"],
+  });
+
+  // const results = fuse.search(query);
+  // const fixtureName = results.map((result) => result.item.marketplaceName);
+
 
   React.useEffect(() => {
     (async () => {
@@ -29,6 +37,14 @@ const MarketPlace = () => {
 
   return (
     <div className="marketplace__container">
+      <div className="searchfield">
+        <input
+          type="text"
+          placeholder="search marketplace"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </div>
       <div className="marketplace__items">
         {marketplaces && marketplaces.length >= 1 && !loading ? (
           marketplaces.map((marketplace, index) => {

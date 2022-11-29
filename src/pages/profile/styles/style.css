@@ -88,9 +88,9 @@
   .profile__container .userData__container .summary__container .summaryItem {
     border-bottom: none;
   }
-}
-.profile__container .userData__container .summary__container .summaryItem:nth-child(1) {
-  border-right: 1px solid #6b5ce7;
+  .profile__container .userData__container .summary__container .summaryItem:nth-child(1) {
+    border-right: 1px solid #6b5ce7;
+  }
 }
 .profile__container .userData__container .summary__container .summaryItem i {
   font-size: 25px;

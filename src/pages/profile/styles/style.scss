@@ -86,9 +86,9 @@
         border-bottom: 1px solid #6b5ce7;
         @media screen and (min-width:426px) {
           border-bottom: none;
-        }
-        &:nth-child(1) {
-          border-right: 1px solid #6b5ce7;
+          &:nth-child(1) {
+            border-right: 1px solid #6b5ce7;
+          }
         }
 
         i {
