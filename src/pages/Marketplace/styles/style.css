@@ -11,12 +11,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: 3px solid #014AD1;
+  border: 2px solid #BBC4CF;
   border-radius: 5px;
 }
 .marketplace__container .searchfield .search__container .icon {
   padding: 0.5em;
   color: #BBC4CF;
+  border-right: 1px solid;
 }
 .marketplace__container .searchfield .search__container input {
   font-size: 1.1em;
@@ -26,13 +27,13 @@
 .marketplace__container .searchfield .search__container input:focus {
   outline: none;
 }
-.marketplace__container .searchfield .search__container input:not(:focus):valid ~ span {
+.marketplace__container .searchfield .search__container input:not(:focus):valid ~ label {
   transform: translateY(0px);
 }
-.marketplace__container .searchfield .search__container input:focus ~ span {
+.marketplace__container .searchfield .search__container input:focus ~ label {
   transform: translateY(-14px);
 }
-.marketplace__container .searchfield .search__container span {
+.marketplace__container .searchfield .search__container label {
   transition: 0.3s ease-in-out;
   position: absolute;
   left: 42px;

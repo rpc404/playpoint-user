@@ -11,11 +11,13 @@
       position: relative;
       display: flex;
       align-items: center;
-      border: 3px solid #014AD1;
+      border: 2px solid #BBC4CF;
+      // 014AD1
       border-radius: 5px;
       .icon {
         padding: .5em;
         color: #BBC4CF;
+        border-right: 1px solid;
       }
 
       input {
@@ -25,14 +27,14 @@
         &:focus {
           outline: none;
         }
-        &:not(:focus):valid ~ span {
+        &:not(:focus):valid ~ label {
           transform: translateY(0px);
         }
-        &:focus ~ span {
+        &:focus ~ label {
           transform: translateY(-14px);
         }
       }
-      span {
+      label {
         transition: .3s ease-in-out;
         position: absolute;
         left: 42px;

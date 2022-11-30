@@ -120,7 +120,7 @@ export default function Navbar() {
         </List>
       )}
       <List>
-        <ListItem disablePadding>
+        <ListItem disablePadding onClick={() => navigate("/leaderboards")}>
           <ListItemButton className="drawerListItem">
             <i className="ri-bar-chart-grouped-line"></i>
             <ListItemText primary="Leaderboards" />
@@ -129,7 +129,7 @@ export default function Navbar() {
       </List>
       <Divider />
       <List>
-        <ListItem disablePadding>
+        <ListItem disablePadding onClick={() => navigate("/marketplace")}>
           <ListItemButton className="drawerListItem">
             <i className="ri-football-line"></i>
             <ListItemText primary="Marketplaces" />
@@ -140,7 +140,11 @@ export default function Navbar() {
       <Divider />
       {!isWalletConnected ? (
         <List>
-          <ListItem disabled={loading} disablePadding onClick={() => handleLogin()}>
+          <ListItem
+            disabled={loading}
+            disablePadding
+            onClick={() => handleLogin()}
+          >
             <ListItemButton className="drawerListItem">
               <i className="ri-fingerprint-line"></i>
               <ListItemText primary="Login / Register" />

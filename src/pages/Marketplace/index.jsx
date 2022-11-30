@@ -10,20 +10,39 @@ import "./styles/style.css";
 const MarketPlace = () => {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
-  const [query, setQuery] = React.useState("");
+  const [searchFixture, setSearchedFixture] = React.useState(marketplaces);
 
-  const fuse = new Fuse(marketplaces, {
-    keys: ["marketplaceName"],
-  });
-
-  // const results = fuse.search(query);
-  // const fixtureName = results.map((result) => result.item.marketplaceName);
+  const handleSearch = (query) => {
+    if (!query) {
+      setSearchedFixture(marketplaces);
+      return;
+    } else {
+      const fuse = new Fuse(searchFixture, {
+        keys: ["marketplaceName", "marketplaceSlug"],
+        includeScore: true,
+      });
+      const results = fuse.search(query);
+      console.log(results);
+      const finalResult = [];
+      if (results.length) {
+        results.forEach((result) => {
+          finalResult.push(result.item);
+        });
+        // console.log(finalResult);
+        setSearchedFixture(finalResult);
+      } else {
+        setSearchedFixture([]);
+      }
+    }
+  };
+  console.log(searchFixture)
 
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
         let res = await getMarketplaces();
         res = res.data.marketplaces;
+        setSearchedFixture(res);
 
         dispatchMarketplaceData({
           type: ACTIONS.SET_ALL_MARKETPLACE,
@@ -39,17 +58,16 @@ const MarketPlace = () => {
       <div className="searchfield">
         <div className="search__container">
           <i className="ri-search-line icon"></i>
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <span>Search Fixtures</span>
+          <input type="text" onChange={(e) => handleSearch(e.target.value)} />
+          <label>Search Fixtures</label>
         </div>
       </div>
       <div className="marketplace__items">
-        {marketplaces && marketplaces.length >= 1 && !loading ? (
-          marketplaces.map((marketplace, index) => {
+        {marketplaces &&
+        marketplaces.length >= 1 &&
+        !loading &&
+        searchFixture ? (
+          searchFixture.map((marketplace, index) => {
             return <MarketplaceCard marketplace={marketplace} key={index} />;
           })
         ) : (
