@@ -11,12 +11,12 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: 2px solid #BBC4CF;
+  border: 2px solid #bbc4cf;
   border-radius: 5px;
 }
 .marketplace__container .searchfield .search__container .icon {
   padding: 0.5em;
-  color: #BBC4CF;
+  color: #bbc4cf;
   border-right: 1px solid;
 }
 .marketplace__container .searchfield .search__container input {
@@ -37,7 +37,7 @@
   transition: 0.3s ease-in-out;
   position: absolute;
   left: 42px;
-  color: #BBC4CF;
+  color: #bbc4cf;
 }
 .marketplace__container .marketplace__items {
   display: grid;

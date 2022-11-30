@@ -11,12 +11,12 @@
       position: relative;
       display: flex;
       align-items: center;
-      border: 2px solid #BBC4CF;
+      border: 2px solid #bbc4cf;
       // 014AD1
       border-radius: 5px;
       .icon {
-        padding: .5em;
-        color: #BBC4CF;
+        padding: 0.5em;
+        color: #bbc4cf;
         border-right: 1px solid;
       }
 
@@ -35,15 +35,12 @@
         }
       }
       label {
-        transition: .3s ease-in-out;
+        transition: 0.3s ease-in-out;
         position: absolute;
         left: 42px;
-        color: #BBC4CF;
+        color: #bbc4cf;
       }
     }
-
-
-
   }
 
   .marketplace__items {
@@ -51,7 +48,7 @@
     gap: 35px;
 
     @media screen and (min-width: 576px) {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       width: 90%;
       margin: 0 auto;
     }

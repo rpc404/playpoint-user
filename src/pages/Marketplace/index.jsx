@@ -12,12 +12,14 @@ const MarketPlace = () => {
   const [loading, setLoading] = React.useState(true);
   const [searchFixture, setSearchedFixture] = React.useState(marketplaces);
 
+  console.log(marketplaces);
+
   const handleSearch = (query) => {
     if (!query) {
       setSearchedFixture(marketplaces);
       return;
     } else {
-      const fuse = new Fuse(searchFixture, {
+      const fuse = new Fuse(marketplaces, {
         keys: ["marketplaceName", "marketplaceSlug"],
         includeScore: true,
       });
@@ -35,13 +37,18 @@ const MarketPlace = () => {
       }
     }
   };
-  console.log(searchFixture)
+  console.log(searchFixture);
+
+  // React.useEffect(() => {
+    //   sessionStorage.removeItem("marketplaceSlug");
+  // }, []);
 
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
         let res = await getMarketplaces();
         res = res.data.marketplaces;
+        console.log(res);
         setSearchedFixture(res);
 
         dispatchMarketplaceData({
@@ -66,12 +73,12 @@ const MarketPlace = () => {
         {marketplaces &&
         marketplaces.length >= 1 &&
         !loading &&
-        searchFixture ? (
+        searchFixture && searchFixture.length >=1 ? (
           searchFixture.map((marketplace, index) => {
-            return <MarketplaceCard marketplace={marketplace} key={index} />;
+            return <MarketplaceCard marketplace={marketplace} key={index} query = {searchFixture}/>;
           })
         ) : (
-          <div id="skeleton__container">
+          <div id="skeleton__container" className="skeleton__container">
             {[0, 1, 2, 3, 4].map((skeleton) => {
               return (
                 <Stack key={skeleton} className="stack">

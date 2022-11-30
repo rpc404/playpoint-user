@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { getMarketplaceStat } from "../../api/Marketplace";
 import Pusher from "pusher-js";
 
-export default function MarketplaceCard({ marketplace }) {
+export default function MarketplaceCard({ marketplace, query }) {
   const [stat, setStat] = React.useState({});
   const [loading, setLoading] = React.useState(true);
+  console.log(marketplace.marketplaceSlug,stat);
 
   React.useEffect(() => {
     getMarketplaceStat(marketplace.marketplaceSlug).then((res) =>
@@ -14,6 +15,16 @@ export default function MarketplaceCard({ marketplace }) {
     );
     setLoading(false);
   }, []);
+
+  React.useEffect(() => {
+    if (query) {
+      // setLoading(true);
+      getMarketplaceStat(marketplace.marketplaceSlug).then((res) => {
+        setStat(res.data.response);
+      });
+    }
+    setLoading(false);
+  }, [query]);
 
   React.useEffect(() => {
     // Enable pusher logging - don't include this in production
@@ -38,9 +49,7 @@ export default function MarketplaceCard({ marketplace }) {
     marketplace;
 
   const styles = {
-    background: `url(${marketplaceCoverImage?.url}) no-repeat`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+    background: `url(${marketplaceCoverImage?.url}) center /cover no-repeat`,
   };
 
   return (
@@ -62,7 +71,7 @@ export default function MarketplaceCard({ marketplace }) {
             <i className="ri-football-line"></i> {marketplaceName}
           </h4>
         </span>
-        {!loading ? (
+        {!loading && Object.keys(stat).length >= 1 ? (
           <div className="info">
             <p>
               {stat.totalQuestionaires} <br />
