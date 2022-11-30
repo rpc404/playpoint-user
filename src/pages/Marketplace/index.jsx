@@ -11,8 +11,13 @@ const MarketPlace = () => {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
   const [searchFixture, setSearchedFixture] = React.useState(marketplaces);
+  const [stat, setStat] = React.useState({});
 
-  console.log(marketplaces);
+  React.useEffect(() => {
+    getMarketplaceStat(marketplaces.marketplaceSlug).then((res) => {
+      setStat(res.data.response);
+    });
+  }, []);
 
   const handleSearch = (query) => {
     if (!query) {
@@ -20,7 +25,13 @@ const MarketPlace = () => {
       return;
     } else {
       const fuse = new Fuse(marketplaces, {
-        keys: ["marketplaceName", "marketplaceSlug"],
+        keys: [
+          "marketplaceName",
+          "marketplaceSlug",
+          "totalQuestionaires",
+          "totalFixture",
+          "totalPredictions",
+        ],
         includeScore: true,
       });
       const results = fuse.search(query);
@@ -30,7 +41,6 @@ const MarketPlace = () => {
         results.forEach((result) => {
           finalResult.push(result.item);
         });
-        // console.log(finalResult);
         setSearchedFixture(finalResult);
       } else {
         setSearchedFixture([]);
@@ -40,7 +50,7 @@ const MarketPlace = () => {
   console.log(searchFixture);
 
   // React.useEffect(() => {
-    //   sessionStorage.removeItem("marketplaceSlug");
+  //   sessionStorage.removeItem("marketplaceSlug");
   // }, []);
 
   React.useEffect(() => {
@@ -65,17 +75,27 @@ const MarketPlace = () => {
       <div className="searchfield">
         <div className="search__container">
           <i className="ri-search-line icon"></i>
-          <input type="text" onChange={(e) => handleSearch(e.target.value)} />
-          <label>Search Fixtures</label>
+          <input
+            type="search"
+            onChange={(e) => handleSearch(e.target.value)}
+            placeholder="search Fixtures"
+          />
         </div>
       </div>
       <div className="marketplace__items">
         {marketplaces &&
         marketplaces.length >= 1 &&
         !loading &&
-        searchFixture && searchFixture.length >=1 ? (
+        searchFixture &&
+        searchFixture.length >= 1 ? (
           searchFixture.map((marketplace, index) => {
-            return <MarketplaceCard marketplace={marketplace} key={index} query = {searchFixture}/>;
+            return (
+              <MarketplaceCard
+                marketplace={marketplace}
+                key={index}
+                query={searchFixture}
+              />
+            );
           })
         ) : (
           <div id="skeleton__container" className="skeleton__container">

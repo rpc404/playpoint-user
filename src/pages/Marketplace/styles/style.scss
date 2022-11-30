@@ -11,34 +11,26 @@
       position: relative;
       display: flex;
       align-items: center;
-      border: 2px solid #bbc4cf;
-      // 014AD1
+      color: #bbc4cf;
+      border: 3px solid currentColor;
       border-radius: 5px;
+
       .icon {
         padding: 0.5em;
-        color: #bbc4cf;
         border-right: 1px solid;
+        // color: #bbc4cf;
       }
 
-      input {
+      input[type="search"] {
         font-size: 1.1em;
         padding: 0.7em;
         border: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #0009;
         &:focus {
           outline: none;
         }
-        &:not(:focus):valid ~ label {
-          transform: translateY(0px);
-        }
-        &:focus ~ label {
-          transform: translateY(-14px);
-        }
-      }
-      label {
-        transition: 0.3s ease-in-out;
-        position: absolute;
-        left: 42px;
-        color: #bbc4cf;
       }
     }
   }

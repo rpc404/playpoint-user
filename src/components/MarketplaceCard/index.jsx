@@ -7,7 +7,7 @@ import Pusher from "pusher-js";
 export default function MarketplaceCard({ marketplace, query }) {
   const [stat, setStat] = React.useState({});
   const [loading, setLoading] = React.useState(true);
-  console.log(marketplace.marketplaceSlug,stat);
+  // console.log(marketplace.marketplaceSlug,stat);
 
   React.useEffect(() => {
     getMarketplaceStat(marketplace.marketplaceSlug).then((res) =>
