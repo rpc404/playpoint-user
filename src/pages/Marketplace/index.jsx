@@ -11,13 +11,6 @@ const MarketPlace = () => {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
   const [searchFixture, setSearchedFixture] = React.useState(marketplaces);
-  const [stat, setStat] = React.useState({});
-
-  React.useEffect(() => {
-    getMarketplaceStat(marketplaces.marketplaceSlug).then((res) => {
-      setStat(res.data.response);
-    });
-  }, []);
 
   const handleSearch = (query) => {
     if (!query) {
@@ -28,14 +21,10 @@ const MarketPlace = () => {
         keys: [
           "marketplaceName",
           "marketplaceSlug",
-          "totalQuestionaires",
-          "totalFixture",
-          "totalPredictions",
         ],
         includeScore: true,
       });
       const results = fuse.search(query);
-      console.log(results);
       const finalResult = [];
       if (results.length) {
         results.forEach((result) => {
@@ -47,18 +36,12 @@ const MarketPlace = () => {
       }
     }
   };
-  console.log(searchFixture);
-
-  // React.useEffect(() => {
-  //   sessionStorage.removeItem("marketplaceSlug");
-  // }, []);
 
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
         let res = await getMarketplaces();
         res = res.data.marketplaces;
-        console.log(res);
         setSearchedFixture(res);
 
         dispatchMarketplaceData({

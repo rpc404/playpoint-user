@@ -82,7 +82,6 @@ export default function FixtureCard({
       {getGamesByDate(data)
         .reverse()
         .map((data, index) => {
-         { console.log(data) }
           if (group === "all") {
             return (
               <div className="gameDetails__item" key={index}>

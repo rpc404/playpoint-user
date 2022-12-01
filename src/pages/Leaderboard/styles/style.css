@@ -1,0 +1,42 @@
+.leaderboard__container {
+  margin: 1em 0;
+}
+.leaderboard__container .divider {
+  background: rgb(255, 91, 91);
+  background: linear-gradient(140deg, rgb(255, 91, 91) 0%, rgb(255, 163, 57) 20%, rgb(130, 255, 66) 40%, rgb(27, 255, 222) 62%, rgb(14, 234, 238) 81%, rgb(34, 172, 255) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff5b5b",endColorstr="#22acff",GradientType=1);
+  height: 3px;
+  width: 100%;
+}
+.leaderboard__container .searchinfo {
+  width: 90%;
+  margin: 0 auto;
+}
+.leaderboard__container .searchinfo p {
+  text-align: right;
+  padding: 0 0.5em;
+  color: rgba(0, 0, 0, 0.6);
+}
+.leaderboard__container .filterarea {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 1.5em auto;
+  gap: 10px;
+}
+.leaderboard__container .filterarea select {
+  padding: 0.4em;
+}
+@media screen and (min-width: 769px) {
+  .leaderboard__container .filterarea select {
+    width: 25%;
+    font-size: 1.1em;
+    padding: 0.5em;
+  }
+}
+@media screen and (min-width: 426px) {
+  .leaderboard__container .filterarea {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}/*# sourceMappingURL=style.css.map */

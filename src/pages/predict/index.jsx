@@ -57,7 +57,6 @@ export default function Predict() {
     // Fetch fixtures
     (async () => {
       const response = await getFixutreById(fixtureId);
-      console.log(response)
       setFixture(response.data?.fixture);
       setStatus(response.data?.status)
     })();
@@ -134,7 +133,6 @@ export default function Predict() {
                         >
                           View Answer
                         </Button>
-                        {/* <p>{console.log()}</p> */}
                       </div>
                       <p>
                         {data?.user[0] ? (
@@ -166,7 +164,6 @@ export default function Predict() {
         <div className="predictionTable">
           <div className="predictionTable__topBar">
             <div className="predictionTable__competitor">
-              { console.log(fixture) }
               <div>
                 <p>{fixture?.HomeTeam}</p>
                 <img
