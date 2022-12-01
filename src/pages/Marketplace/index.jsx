@@ -16,6 +16,7 @@ const MarketPlace = () => {
     keys: ["marketplaceName"],
   });
 
+
   // const results = fuse.search(query);
   // const fixtureName = results.map((result) => result.item.marketplaceName);
 

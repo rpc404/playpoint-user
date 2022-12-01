@@ -68,8 +68,9 @@ export default function Predict() {
         "predictions",
         JSON.stringify(response.data.data.reverse())
       );
+      console.log(response.data)
       setPredictions(response.data.data);
-
+``
       let lineChartData = [];
 
       response.data.data.map((prediction, key) => {
@@ -166,7 +167,6 @@ export default function Predict() {
         <div className="predictionTable">
           <div className="predictionTable__topBar">
             <div className="predictionTable__competitor">
-              { console.log(fixture) }
               <div>
                 <p>{fixture?.HomeTeam}</p>
                 <img

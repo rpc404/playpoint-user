@@ -114,6 +114,8 @@ const PoolType = ({
         );
       });
 
+    
+
       setQuestionaire({
         questionaires: allQuestionairesByFixtureId.data.questionaire,
         tempQuestionaire: tempQ,
@@ -161,11 +163,11 @@ const PoolType = ({
 
     if (validation(_predictionData.answers)) {
       setPredicting(true);
+      console.log(_predictionData)
       return await setPrediction(_predictionData)
         .then(() => {
           toast("Predicted Successfully!");
-          _predictionData.answers = {};
-          window.location.reload();
+          setTimeout(()=>window.location.reload(),2000)
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
