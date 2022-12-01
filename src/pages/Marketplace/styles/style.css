@@ -7,11 +7,27 @@
   justify-content: center;
   margin: 1.5em 0;
 }
-.marketplace__container .searchfield input {
-  font-size: 1.1em;
-  padding: 0.2em;
+.marketplace__container .searchfield .search__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #bbc4cf;
+  border: 3px solid currentColor;
+  border-radius: 5px;
 }
-.marketplace__container .searchfield input:focus {
+.marketplace__container .searchfield .search__container .icon {
+  padding: 0.5em;
+  border-right: 1px solid;
+}
+.marketplace__container .searchfield .search__container input[type=search] {
+  font-size: 1.1em;
+  padding: 0.7em;
+  border: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: rgba(0, 0, 0, 0.6);
+}
+.marketplace__container .searchfield .search__container input[type=search]:focus {
   outline: none;
 }
 .marketplace__container .marketplace__items {

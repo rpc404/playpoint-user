@@ -5,14 +5,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin: 1.5em 0;
 
-    input {
-      font-size: 1.1em;
-      padding: .2em;
-      &:focus {
-        outline: none;
+    .search__container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: #bbc4cf;
+      border: 3px solid currentColor;
+      border-radius: 5px;
+
+      .icon {
+        padding: 0.5em;
+        border-right: 1px solid;
+        // color: #bbc4cf;
+      }
+
+      input[type="search"] {
+        font-size: 1.1em;
+        padding: 0.7em;
+        border: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #0009;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
