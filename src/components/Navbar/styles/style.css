@@ -76,6 +76,11 @@
     display: none;
   }
 }
+@media screen and (min-width: 576px) {
+  .navbar__container .drawer {
+    display: none;
+  }
+}
 .navbar__container .drawer i {
   font-size: 22px;
 }
