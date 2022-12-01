@@ -37,9 +37,9 @@
     width: 90%;
     margin: 0 auto;
     p {
-        text-align: right;
-        padding: 0 .5em;
-        color: #0009;
+      text-align: right;
+      padding: 0 0.5em;
+      color: #0009;
     }
   }
   .filterarea {
@@ -51,6 +51,11 @@
 
     select {
       padding: 0.4em;
+      color: #0009;
+      background-color: #fff9;
+      &:focus {
+        outline: none;
+      }
       @media screen and (min-width: 769px) {
         width: 25%;
         font-size: 1.1em;

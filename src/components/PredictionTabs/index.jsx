@@ -6,7 +6,7 @@ import PoolType from "./components/TabByPool";
 export default function PredictionTabs({ poolSize, setPoolSize, fixtureId, status }) {
   const [value, setValue] = React.useState(0);
   const [userPrediction, setUserPrediction] = React.useState({
-    activeAmount: 5,
+    activeAmount: 10,
     activeQuestionaire: 4,
   });
 
@@ -32,11 +32,11 @@ export default function PredictionTabs({ poolSize, setPoolSize, fixtureId, statu
             onClick={() => setPoolSize("unlimited")}
             {...a11yProps(0)}
           />
-          <Tab
+          {/* <Tab
             label="Duo (2)"
             onClick={() => setPoolSize("duo")}
             {...a11yProps(1)}
-          />
+          /> */}
           {/* <Tab label="Trio (3)" {...a11yProps(2)} /> */}
           {/* <Tab label="Nonet (9)" {...a11yProps(3)} /> */}
         </Tabs>
@@ -51,7 +51,7 @@ export default function PredictionTabs({ poolSize, setPoolSize, fixtureId, statu
           status={status}
         />
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      {/* <TabPanel value={value} index={1}>
         <PoolType
           poolSize={poolSize}
           fixtureId={fixtureId}
@@ -59,7 +59,7 @@ export default function PredictionTabs({ poolSize, setPoolSize, fixtureId, statu
           userPrediction={userPrediction}
           status={status}
         />
-      </TabPanel>
+      </TabPanel> */}
       {/* <TabPanel value={value} index={2}>
         Item Two
       </TabPanel>

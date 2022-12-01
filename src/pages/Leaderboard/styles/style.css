@@ -26,6 +26,11 @@
 }
 .leaderboard__container .filterarea select {
   padding: 0.4em;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.leaderboard__container .filterarea select:focus {
+  outline: none;
 }
 @media screen and (min-width: 769px) {
   .leaderboard__container .filterarea select {

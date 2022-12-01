@@ -183,7 +183,7 @@ const PoolType = ({
       <div className="topBar">
         <div>
           <div>Price:</div>
-          {[5, 20, 50].map((amount) => (
+          {[10].map((amount) => (
             <Button
               key={amount}
               className={userPrediction.activeAmount === amount ? "active" : ""}
