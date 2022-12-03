@@ -121,7 +121,7 @@ export default function Home() {
 
       <div className="divider"></div>
 
-      <footer>
+      {/* <footer>
         <p>
           Copyright © 2023 PPTT. All rights reserved.
           <br />
@@ -136,7 +136,7 @@ export default function Home() {
           .
         </p>
       </footer>
-      <div className="divider"></div>
+      <div className="divider"></div> */}
     </div>
   );
 }
