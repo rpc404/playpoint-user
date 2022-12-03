@@ -1,25 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif!important;
-    z-index: 0;
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif !important;
+  z-index: 0;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 *::-webkit-scrollbar {
   display: none;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-body{
+body {
   overflow-x: hidden;
+}
+
+.divider {
+  background: rgb(255, 91, 91);
+  background: -moz-linear-gradient(
+    140deg,
+    rgba(255, 91, 91, 1) 0%,
+    rgba(255, 163, 57, 1) 20%,
+    rgba(130, 255, 66, 1) 40%,
+    rgba(27, 255, 222, 1) 62%,
+    rgba(14, 234, 238, 1) 81%,
+    rgba(34, 172, 255, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    140deg,
+    rgba(255, 91, 91, 1) 0%,
+    rgba(255, 163, 57, 1) 20%,
+    rgba(130, 255, 66, 1) 40%,
+    rgba(27, 255, 222, 1) 62%,
+    rgba(14, 234, 238, 1) 81%,
+    rgba(34, 172, 255, 1) 100%
+  );
+  background: linear-gradient(
+    140deg,
+    rgba(255, 91, 91, 1) 0%,
+    rgba(255, 163, 57, 1) 20%,
+    rgba(130, 255, 66, 1) 40%,
+    rgba(27, 255, 222, 1) 62%,
+    rgba(14, 234, 238, 1) 81%,
+    rgba(34, 172, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff5b5b",endColorstr="#22acff",GradientType=1);
+  height: 3px;
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+  margin: 30px 0;
+  line-height: 1.5;
+}
+
+footer a{
+  color: #2ecc71;
+  text-decoration: none;
+  font-weight: 600;
 }

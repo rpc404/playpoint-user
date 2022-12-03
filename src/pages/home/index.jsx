@@ -20,7 +20,6 @@ export default function Home() {
           type: ACTIONS.SET_ALL_MARKETPLACE,
           payload: res,
         });
-
       }
       setLoading(false);
     })();
@@ -162,6 +161,23 @@ export default function Home() {
           </>
         )}
       </div>
+
+      <footer>
+        <p>
+          Copyright © 2023 PPTT. All rights reserved.
+          <br />
+          Proudly powered by{" "}
+          <a href="https://theboringschool.org/" target="_blank">
+            The Boring School
+          </a>{" "}
+          & Supported by{" "}
+          <a href="https://codewithsudeep.com/" target="_blank">
+            CodewithSudeep
+          </a>
+          .
+        </p>
+      </footer>
+      <div className="divider"></div>
     </div>
   );
 }

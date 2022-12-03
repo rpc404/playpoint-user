@@ -1,53 +1,44 @@
 .leaderboard__container {
   margin: 1em 0;
-  .divider {
-    background: rgb(255, 91, 91);
-    background: -moz-linear-gradient(
-      140deg,
-      rgba(255, 91, 91, 1) 0%,
-      rgba(255, 163, 57, 1) 20%,
-      rgba(130, 255, 66, 1) 40%,
-      rgba(27, 255, 222, 1) 62%,
-      rgba(14, 234, 238, 1) 81%,
-      rgba(34, 172, 255, 1) 100%
-    );
-    background: -webkit-linear-gradient(
-      140deg,
-      rgba(255, 91, 91, 1) 0%,
-      rgba(255, 163, 57, 1) 20%,
-      rgba(130, 255, 66, 1) 40%,
-      rgba(27, 255, 222, 1) 62%,
-      rgba(14, 234, 238, 1) 81%,
-      rgba(34, 172, 255, 1) 100%
-    );
-    background: linear-gradient(
-      140deg,
-      rgba(255, 91, 91, 1) 0%,
-      rgba(255, 163, 57, 1) 20%,
-      rgba(130, 255, 66, 1) 40%,
-      rgba(27, 255, 222, 1) 62%,
-      rgba(14, 234, 238, 1) 81%,
-      rgba(34, 172, 255, 1) 100%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff5b5b",endColorstr="#22acff",GradientType=1);
-    height: 3px;
-    width: 100%;
-  }
-  .searchinfo {
-    width: 90%;
-    margin: 0 auto;
-    p {
-      text-align: right;
-      padding: 0 0.5em;
-      color: #0009;
-    }
-  }
+
   .filterarea {
     display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 1.5em auto;
-    gap: 10px;
+    align-items: center;
+    margin: 1.5em 2vw;
+    justify-content: space-between;
+
+    .search__container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbc4cf;
+      border: 1px solid currentColor;
+      border-radius: 16px;
+      width: 20vw;
+      margin: 0 auto;
+
+      .icon {
+        padding: 0.5em;
+        border-right: 1px solid;
+      }
+
+      input[type="input"] {
+        font-size: 1.1em;
+        padding: 0.7em;
+        border: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #0009;
+        width: 90%;
+        &:focus {
+          outline: none;
+        }
+        &::-webkit-search-cancel-button {
+          cursor: pointer;
+          padding: 0.1em;
+        }
+      }
+    }
 
     select {
       padding: 0.4em;
@@ -57,15 +48,10 @@
         outline: none;
       }
       @media screen and (min-width: 769px) {
-        width: 25%;
+        width: 20vw;
         font-size: 1.1em;
         padding: 0.5em;
       }
-    }
-
-    @media screen and (min-width: 426px) {
-      flex-direction: row;
-      justify-content: flex-end;
     }
   }
 }
