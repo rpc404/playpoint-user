@@ -28,3 +28,8 @@ export const getAllPredictionsByFixture = (f_id) => {
   return axios.get(import.meta.env.VITE_API_URI + `api/v1/prediction?fixtureid=${f_id}`);
 }
 
+export const getPredictionById = (pid) => {
+  return axios.get(import.meta.env.VITE_API_URI + `api/v1/predictionbyid/${pid}`);
+}
+
+

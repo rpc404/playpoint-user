@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { LineChart, LineSeries } from "reaviz";
 import PredictionTabs from "../../components/PredictionTabs";
 import "./styles/style.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getFixutreById } from "../../api/Fixture";
 import allFlags from "../../helpers/CountryFlags.json";
 import {
@@ -45,6 +45,8 @@ export default function Predict() {
   const [activeOS, setActiveOS] = React.useState("");
   const [status,setStatus] = React.useState(false)
 
+  const navigate = useNavigate();
+
   let volume = 0;
 
   React.useEffect(() => {
@@ -69,9 +71,7 @@ export default function Predict() {
       );
       console.log(response.data)
       setPredictions(response.data.data);
-``
       let lineChartData = [];
-
       response.data.data.map((prediction, key) => {
         lineChartData.push({
           key: new Date(prediction.created_at),
@@ -124,13 +124,13 @@ export default function Predict() {
           <div className={`prediction__items ${activeOS}`}>
             {predictions.length >= 1 &&
               predictions.map((data, index) => {
-                volume += data?.amount / 0.015;
+                volume += data?.amount / 0.02;
                 return (
                   <div className="predictedCard__container" key={index}>
                     <div>
                       <div className="details">
                         <Button
-                          onClick={() => toast("This is under maintainance!")}
+                          onClick={() => navigate(`/prediction/${data._id}`)}
                         >
                           View Answer
                         </Button>
@@ -147,7 +147,7 @@ export default function Predict() {
                       </p>
                       <div className="info">
                         <p>
-                          ${data?.amount}~{(data?.amount / 0.015).toFixed(2)}{" "}
+                          ${data?.amount}~{(data?.amount / 0.02).toFixed(2)}{" "}
                           PPTT
                         </p>
                         <p>{moment(data?.created_at).format("LT")}</p>
