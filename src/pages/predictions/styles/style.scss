@@ -1,0 +1,36 @@
+.userprediction_container{
+    margin: 2em auto;
+    .container{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        img{
+            width: 10vw;
+            border: 1px solid rgba(108, 107, 107, 0.334);
+        }
+        .answers_area{
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.125);
+            .questions{
+                margin-top: 1.2em;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                justify-content: space-around;
+            .question_answer{
+                h4{
+                display: flex;
+                gap: 10px;
+                span{
+                    color: rgb(100, 163, 100);
+                }
+            }
+            }
+            }
+        }
+    }
+    .other_prediction{
+        width: 90%;
+        margin: auto;
+    }
+}
