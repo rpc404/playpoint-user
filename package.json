@@ -24,7 +24,7 @@
     "react-identicons": "1.2.5",
     "react-router-dom": "6.4.4",
     "react-toastify": "^9.1.1",
-    "reaviz": "13.3.0",
+    "reaviz": "13.3.2",
     "remixicon": "2.5.0",
     "socket.io-client": "4.5.4"
   },
