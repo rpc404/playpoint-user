@@ -14,6 +14,7 @@ import { useRPCContext } from "../../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../../contexts/WalletRPC/RPCReducer";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../../utils/ERC20BasicABI.json";
+import BetaFactoryAPI from "../../../utils/BetaFactoryABI.json";
 
 /**
  * @dev utils for slider
@@ -50,7 +51,7 @@ const PoolType = ({
   setUserPrediction,
   poolSize,
   fixtureId,
-  status
+  status,
 }) => {
   const handleActiveAmount = (amount) => {
     setUserPrediction({
@@ -161,11 +162,41 @@ const PoolType = ({
 
     if (validation(_predictionData.answers)) {
       setPredicting(true);
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const PPTTContract = new ethers.Contract(
+        "0x53d168578974822bCAa95106C7d5a906BF100948", // Sepolia PPTT Token Address
+        ERC20BasicAPI,
+        provider
+      ).connect(provider.getSigner());
+
+      // transfer prediction pool
+      await PPTTContract.transfer(
+        "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // wallet address
+        (_predictionData.amount * 1e18).toString()
+      );
+      const PredictionContract = new ethers.Contract(
+        "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1",
+        BetaFactoryAPI,
+        provider
+      ).connect(provider.getSigner());
+
+      // console.log(ethers.utils.parseEther(_predictionData.amount.toString()), _predictionData.amount)
+
+      const PPTTBalance = await PPTTContract.balanceOf(_predictionData.predictedBy);
+      if(PPTTBalance < _predictionData.amount){
+        return toast("Insufficient PPTT");
+      }
+      // console.log(contract)
+     await PredictionContract.setPrediction(
+        JSON.stringify(_predictionData.answers),
+        _predictionData.questionaireId,
+        _predictionData.predictedBy,
+        (_predictionData.amount * 1e18).toString()
+      );
       return await setPrediction(_predictionData)
         .then(() => {
           toast("Predicted Successfully!");
-          _predictionData.answers = {};
-          window.location.reload();
+          setTimeout(()=>window.location.reload(),2000)
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
@@ -311,14 +342,11 @@ const PoolType = ({
           </div>
           {/* 
           @note button needs to be disabled after */}
-          {
-            (status && status==="closed") ?  
-            <Button
-            disabled={true}
-            className="closed-btn"
-          >Prediction Closed </Button>
-          :
-          isWalletConnected ? (
+          {status && status === "closed" ? (
+            <Button disabled={true} className="closed-btn">
+              Prediction Closed{" "}
+            </Button>
+          ) : isWalletConnected ? (
             <Button
               onClick={() => {
                 handlePrediction(), setClicked(true);
