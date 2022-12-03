@@ -5,6 +5,12 @@
     margin: 15px 2vw;
     justify-content: space-between;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
     .search__container {
       display: flex;
       align-items: center;
@@ -14,6 +20,10 @@
       border-radius: 16px;
       width: 20vw;
       margin: 0 auto;
+
+      @media (max-width: 976px) {
+        width: 80vw;
+      }
 
       .icon {
         padding: 0.5em;
@@ -28,6 +38,7 @@
         border: 1px solid transparent;
         color: #0009;
         width: 90%;
+
         &:focus {
           outline: none;
         }
@@ -42,6 +53,11 @@
       padding: 0.4em;
       color: #0009;
       background-color: #fff9;
+
+      @media screen and (max-width: 976px) {
+        display: none;
+      }
+
       &:focus {
         outline: none;
       }

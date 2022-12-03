@@ -34,8 +34,8 @@ export default function FixtureTable() {
             <TableCell>Rank</TableCell>
             <TableCell>Fixture</TableCell>
             <TableCell align="center">Marketplace</TableCell>
-            <TableCell align="center">Most Active User</TableCell>
-            <TableCell align="center">Game Information</TableCell>
+            <TableCell className="mostActiveUser" align="center">Most Active User</TableCell>
+            <TableCell className="gameInformation" align="center">Game Information</TableCell>
             <TableCell align="center">Total Users</TableCell>
             <TableCell align="center">Total Volume</TableCell>
           </TableRow>
@@ -52,7 +52,7 @@ export default function FixtureTable() {
               <TableCell>
                 <div className="fixtureContent">
                   <div className="homeTeam">
-                    Brazil{" "}
+                    BZL{" "}
                     <img
                       src="https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BR.svg"
                       loading="lazy"
@@ -66,14 +66,14 @@ export default function FixtureTable() {
                       loading="lazy"
                       alt=""
                     />{" "}
-                    Argentina
+                    AGA
                   </div>
                 </div>
               </TableCell>
               <TableCell align="center">
                 <Link to="/fixture">Fifa Worldcup</Link>
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" className="mostActiveUser">
                 <div className="userContent">
                   <img
                     src="https://avatars.githubusercontent.com/u/102910615?v=4"
@@ -82,7 +82,7 @@ export default function FixtureTable() {
                   <Link to="/profile">jckamaicha</Link>
                 </div>
               </TableCell>
-              <TableCell align="center">21:45 PM, 20th Nov 2022</TableCell>
+              <TableCell className="gameInformation" align="center">21:45 PM, 20th Nov 2022</TableCell>
               <TableCell align="center">{row.carbs}</TableCell>
               <TableCell align="center">{row.protein}</TableCell>
             </TableRow>
