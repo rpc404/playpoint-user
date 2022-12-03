@@ -1,0 +1,118 @@
+main.leaderboardMain__container {
+  margin: 10px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+main.leaderboardMain__container h2 {
+  margin-bottom: 20px;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container {
+  flex: 1;
+  padding: 10px 0;
+  padding-left: 2vw;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableRow-root {
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableRow-root:hover {
+  background: rgba(82, 82, 82, 0.067);
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root {
+  padding: 12px 16px;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root a {
+  text-decoration: none;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .fixtureContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .fixtureContent .homeTeam,
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .fixtureContent .awayTeam {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .fixtureContent img {
+  height: 30px;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .userContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .userContent img {
+  width: 30px;
+}
+main.leaderboardMain__container .usersLeaderboard__container {
+  border-left: 0.5px solid rgba(0, 0, 0, 0.1333333333);
+  padding: 10px 0;
+  padding-left: 20px;
+  padding-right: 2vw;
+  height: 79vh;
+  overflow-y: scroll;
+}
+main.leaderboardMain__container .usersLeaderboard__container a {
+  text-decoration: none;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser img {
+  width: 13vw;
+  height: 13vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser h4 {
+  font-weight: 500;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser a {
+  color: #6d6f71;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser .gameDetails {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 14px;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser .gameDetails p {
+  font-weight: 500;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h2 {
+  margin-bottom: 3px;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 {
+  font-weight: 500;
+  font-size: 16px;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User .gameDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: align-start;
+  font-size: 14px;
+  margin-top: 5px;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,37 +1,4 @@
 .home__container {
-  .divider {
-    background: rgb(255, 91, 91);
-    background: -moz-linear-gradient(
-      140deg,
-      rgba(255, 91, 91, 1) 0%,
-      rgba(255, 163, 57, 1) 20%,
-      rgba(130, 255, 66, 1) 40%,
-      rgba(27, 255, 222, 1) 62%,
-      rgba(14, 234, 238, 1) 81%,
-      rgba(34, 172, 255, 1) 100%
-    );
-    background: -webkit-linear-gradient(
-      140deg,
-      rgba(255, 91, 91, 1) 0%,
-      rgba(255, 163, 57, 1) 20%,
-      rgba(130, 255, 66, 1) 40%,
-      rgba(27, 255, 222, 1) 62%,
-      rgba(14, 234, 238, 1) 81%,
-      rgba(34, 172, 255, 1) 100%
-    );
-    background: linear-gradient(
-      140deg,
-      rgba(255, 91, 91, 1) 0%,
-      rgba(255, 163, 57, 1) 20%,
-      rgba(130, 255, 66, 1) 40%,
-      rgba(27, 255, 222, 1) 62%,
-      rgba(14, 234, 238, 1) 81%,
-      rgba(34, 172, 255, 1) 100%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff5b5b",endColorstr="#22acff",GradientType=1);
-    height: 3px;
-    width: 100%;
-  }
   .home__mainTitle {
     padding: 20px 2vw 20px 2vw;
   }

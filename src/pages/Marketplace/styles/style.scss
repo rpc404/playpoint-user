@@ -12,8 +12,8 @@
       align-items: center;
       justify-content: center;
       color: #bbc4cf;
-      border: 3px solid currentColor;
-      border-radius: 25px;
+      border: 1px solid currentColor;
+      border-radius: 16px;
       width: 90%;
       margin: 0 auto;
 
@@ -34,7 +34,7 @@
         border-right: 1px solid;
       }
 
-      input[type="search"] {
+      input[type="input"] {
         font-size: 1.1em;
         padding: 0.7em;
         border: none;

@@ -12,8 +12,8 @@
   align-items: center;
   justify-content: center;
   color: #bbc4cf;
-  border: 3px solid currentColor;
-  border-radius: 25px;
+  border: 1px solid currentColor;
+  border-radius: 16px;
   width: 90%;
   margin: 0 auto;
 }
@@ -36,7 +36,7 @@
   padding: 0.5em;
   border-right: 1px solid;
 }
-.marketplace__container .searchfield .search__container input[type=search] {
+.marketplace__container .searchfield .search__container input[type=input] {
   font-size: 1.1em;
   padding: 0.7em;
   border: none;
@@ -45,10 +45,10 @@
   color: rgba(0, 0, 0, 0.6);
   width: 90%;
 }
-.marketplace__container .searchfield .search__container input[type=search]:focus {
+.marketplace__container .searchfield .search__container input[type=input]:focus {
   outline: none;
 }
-.marketplace__container .searchfield .search__container input[type=search]::-webkit-search-cancel-button {
+.marketplace__container .searchfield .search__container input[type=input]::-webkit-search-cancel-button {
   cursor: pointer;
   padding: 0.1em;
 }

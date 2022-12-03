@@ -66,7 +66,7 @@ export default function Profile() {
       <div className="userData__container">
         <div className="userData">
           <img
-            src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
+            src="https://ik.imagekit.io/domsan/TBC_p7nKZl0xP.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662802554283"
             alt=""
             loading="lazy"
           />
@@ -79,6 +79,22 @@ export default function Profile() {
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder={username}
                   />
+                  <p
+                    className="accountbtn"
+                    onClick={() => {
+                      navigator.clipboard.writeText(userPublicAddress),
+                        toast("Account number copied!");
+                    }}
+                  >
+                    <>
+                      {`${userPublicAddress}`.substring(0, 15) +
+                        `...` +
+                        `${userPublicAddress}`.substring(
+                          userPublicAddress.length - 3
+                        )}{" "}
+                      <i className="ri-file-copy-line"></i>
+                    </>
+                  </p>
                   <Button onClick={() => handleUpdate()}>
                     <i className="ri-send-plane-fill"></i>
                   </Button>
@@ -88,6 +104,22 @@ export default function Profile() {
               <div className="userdetails">
                 <fieldset>
                   <h2>@{username}</h2>
+                  <p
+                    className="accountbtn"
+                    onClick={() => {
+                      navigator.clipboard.writeText(userPublicAddress),
+                        toast("Account number copied!");
+                    }}
+                  >
+                    <>
+                      {`${userPublicAddress}`.substring(0, 15) +
+                        `...` +
+                        `${userPublicAddress}`.substring(
+                          userPublicAddress.length - 3
+                        )}{" "}
+                      <i className="ri-file-copy-line"></i>
+                    </>
+                  </p>
                   <Button onClick={() => setEditMode(!editMode)}>
                     <i className="ri-pencil-fill"></i>
                   </Button>
@@ -95,24 +127,6 @@ export default function Profile() {
               </div>
             )}
           </div>
-          <p
-            className="accountbtn"
-            data-title="Copy to Clipboard"
-            onClick={() => {
-              navigator.clipboard.writeText(userPublicAddress),
-                toast("Account number copied!");
-            }}
-          >
-            <>
-              {`${userPublicAddress}`.substring(0, 15) +
-                `...` +
-                `${userPublicAddress}`.substring(
-                  userPublicAddress.length - 3
-                )}{" "}
-              <i className="ri-file-copy-line"></i>
-            </>
-            {/* <p className="copy">Copy to clipboard</p> */}
-          </p>
         </div>
         <div className="summary__container">
           <div className="summaryItem">
@@ -129,10 +143,10 @@ export default function Profile() {
               <h3>5896.00 PPTT</h3>
             </div>
           </div>
+          <Button className="addMoneyBtn">
+            <i className="ri-add-box-line"></i> Add Money
+          </Button>
         </div>
-        <Button className="addMoneyBtn">
-          <i className="ri-add-box-line"></i> Add Money
-        </Button>
       </div>
 
       <div className="history__container">

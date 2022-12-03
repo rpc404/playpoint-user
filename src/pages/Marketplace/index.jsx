@@ -59,9 +59,9 @@ const MarketPlace = () => {
         <div className="search__container">
           <i className="ri-search-line icon"></i>
           <input
-            type="search"
+            type="input"
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="search Fixtures"
+            placeholder="Search Fixtures..."
           />
         </div>
       </div>

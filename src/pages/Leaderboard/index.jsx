@@ -1,8 +1,12 @@
+import { Pagination } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   getAllLeaderboards,
   getLeaderboardByMarketplaceSlug,
 } from "../../api/Leaderboards";
+import FixtureTable from "../../components/FixtureTable";
+import LeaderboardMain from "../../components/LeaderboardMain";
 import "./styles/style.css";
 
 const Leaderboard = () => {
@@ -36,22 +40,21 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboard__container">
-      <div className="searchinfo">
-        <p>Search by marketplaces and fixtures</p>
-      </div>
       <div className="filterarea">
+        <h1>Leaderboards</h1>
+        <div className="search__container">
+          <i className="ri-search-line icon"></i>
+          <input type="input" placeholder="Search Fixtures..." />
+        </div>
         <select name="" id="">
-          <option value="">Select marketplace</option>
+          <option value="">Select Marketplace</option>
           <option value="">Fifa World Cup</option>
           <option value="">Premiere League</option>
         </select>
-        <select name="" id="">
-          <option value="">Japan vs Brazil</option>
-          <option value="">Argentina vs urugay</option>
-        </select>
       </div>
       <div className="divider"></div>
-      
+
+      <LeaderboardMain/>
     </div>
   );
 };
