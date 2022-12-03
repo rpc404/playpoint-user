@@ -1,0 +1,251 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "BetaFactoryWallet",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "PPTTToken",
+		"outputs": [
+			{
+				"internalType": "contract ERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_points",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_predictionId",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "_isPaid",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_rewardAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "_initialRewardSetup",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "predictionRecordCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "predictionRecords",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "answers",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "questionaireId",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_restoreAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "restorePPTTtoFactoryWallet",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "rewardRecordCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "rewardRecords",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "points",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "predictionId",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "isPaid",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "rewardAmount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_points",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_predictionId",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "_isPaid",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_rewardAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "rewardUser",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_answers",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_questionaireId",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "setPrediction",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]

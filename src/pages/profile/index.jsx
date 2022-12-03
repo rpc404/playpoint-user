@@ -24,7 +24,6 @@ export default function Profile() {
     if (userPublicAddress) {
       getUserPredictions(userPublicAddress).then((res) => {
         if (res.data.data) {
-          console.log(res.data.data)
           setUserProfile(res.data.data);
           setHistory(res.data.data.slice(0, 10));
         }
@@ -111,7 +110,6 @@ export default function Profile() {
                   userPublicAddress.length - 3
                 )}{" "}
               <i className="ri-file-copy-line"></i>
-
             </>
             {/* <p className="copy">Copy to clipboard</p> */}
           </p>
@@ -167,7 +165,8 @@ export default function Profile() {
                 )}
               </p>
               <p>
-                <b>{getCountryShortName(data?.fixtureId?.HomeTeam) || "-"}</b> VS{" "}
+                <b>{getCountryShortName(data?.fixtureId?.HomeTeam) || "-"}</b>{" "}
+                VS{" "}
                 <b>{getCountryShortName(data?.fixtureId?.AwayTeam) || "-"}</b>
               </p>
               <p>{moment(data.created_at).format("LL")}</p>

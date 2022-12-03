@@ -82,6 +82,9 @@
   }
 
   .drawer {
+    @media screen and (min-width:576px) {
+      display: none;
+    }
     i {
       font-size: 22px;
     }

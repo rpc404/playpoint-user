@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { setProfile } from "../api/Profile";
 
 const { ethereum } = window;
