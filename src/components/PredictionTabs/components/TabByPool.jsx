@@ -172,7 +172,7 @@ const PoolType = ({
       // transfer prediction pool
       await PPTTContract.transfer(
         "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // wallet address
-        (_predictionData.amount * 1e18).toString()
+        ((_predictionData.amount/0.02) * 1e18).toString()
       );
       const PredictionContract = new ethers.Contract(
         "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1",
