@@ -117,7 +117,19 @@ export default function Home() {
         </div>
       </div> */}
 
-      <LeaderboardMain/>
+      <div className="chart_container">
+        <iframe
+          height="700px"
+          width="100%"
+          id="geckoterminal-embed"
+          title="GeckoTerminal Embed"
+          src="https://www.geckoterminal.com/arbitrum/pools/0x96e764a471d63bb97f85e2ef5b5b5c81599ef52a?embed=1&info=0&swaps=1"
+          frameBorder="0"
+          allow="clipboard-write"
+          allowFullScreen
+        ></iframe>
+      </div>
+      <LeaderboardMain />
 
       <div className="divider"></div>
 

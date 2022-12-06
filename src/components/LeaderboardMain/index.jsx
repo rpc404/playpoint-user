@@ -1,15 +1,25 @@
 import { Pagination } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import { getAllLeaderboards, getLeaderboardByMarketplaceSlug } from "../../api/Leaderboards";
 import FixtureTable from "../FixtureTable";
 import "./styles/style.css";
 
 export default function LeaderboardMain() {
+
+  const [leaderboards,setLeaderboards] = React.useState([])
+  const [loading, setLoading] = React.useState(true)
+
+  React.useEffect(() => {
+      getLeaderboardByMarketplaceSlug("fifa-worldcup").then(res=>setLeaderboards(res.data.leaderboard))
+      setLoading(false);
+    },[]);
+  
   return (
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
         <h2>📈 Top Ranked Fixtures</h2>
-        <FixtureTable />
+        <FixtureTable leaderboard={leaderboards} />
         <Pagination style={{ marginTop: 15 }} count={10} />
       </div>
 
