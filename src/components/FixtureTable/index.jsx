@@ -17,8 +17,8 @@ export default function FixtureTable({ leaderboard }) {
             <TableCell>Rank</TableCell>
             <TableCell>Fixture</TableCell>
             <TableCell align="center">Marketplace</TableCell>
-            <TableCell align="center">Most Active User</TableCell>
-            <TableCell align="center">Game Information</TableCell>
+            <TableCell className="mostActiveUser" align="center">Most Active User</TableCell>
+            <TableCell className="gameInformation" align="center">Game Information</TableCell>
             <TableCell align="center">Total Users</TableCell>
             <TableCell align="center">Total Volume</TableCell>
           </TableRow>

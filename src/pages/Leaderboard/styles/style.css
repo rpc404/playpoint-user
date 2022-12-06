@@ -4,6 +4,13 @@
   margin: 15px 2vw;
   justify-content: space-between;
 }
+@media (max-width: 768px) {
+  .leaderboard__container .filterarea {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
 .leaderboard__container .filterarea .search__container {
   display: flex;
   align-items: center;
@@ -13,6 +20,11 @@
   border-radius: 16px;
   width: 20vw;
   margin: 0 auto;
+}
+@media (max-width: 976px) {
+  .leaderboard__container .filterarea .search__container {
+    width: 80vw;
+  }
 }
 .leaderboard__container .filterarea .search__container .icon {
   padding: 0.5em;
@@ -38,6 +50,11 @@
   padding: 0.4em;
   color: rgba(0, 0, 0, 0.6);
   background-color: rgba(255, 255, 255, 0.6);
+}
+@media screen and (max-width: 976px) {
+  .leaderboard__container .filterarea select {
+    display: none;
+  }
 }
 .leaderboard__container .filterarea select:focus {
   outline: none;

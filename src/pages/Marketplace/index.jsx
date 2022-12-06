@@ -61,7 +61,7 @@ const MarketPlace = () => {
           <input
             type="input"
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Search Fixtures..."
+            placeholder="Search Marketplaces..."
           />
         </div>
       </div>
