@@ -117,9 +117,47 @@ export default function Home() {
         </div>
       </div> */}
 
-      <LeaderboardMain/>
-
+      <LeaderboardMain />
       <div className="divider"></div>
+      <div className="footer__container">
+        <div className="footer">
+          <div className="playpoint">
+            <div className="intro">
+              <img
+                src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
+                alt=""
+              />
+
+              <h1>Playpoint</h1>
+            </div>
+          </div>
+
+          <div className="links">
+            <div className="left">
+              <a href="#">Marketplaces</a>
+              <a href="#">Fixtures</a>
+              <a href="#">Wallet</a>
+              <a href="#">Launch App</a>
+            </div>
+          </div>
+          <div className="social">
+            <div className="text">
+              <p>Connect with us at :</p>
+            </div>
+            <div className="icons">
+              <a href="#">
+                <i class="ri-github-fill"></i>
+              </a>
+              <a href="#">
+                <i class="ri-discord-fill"></i>
+              </a>
+              <a href="#">
+                <i class="ri-telegram-fill"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* <footer>
         <p>
