@@ -260,7 +260,6 @@ export default function Navbar() {
         )}
       </div>
 
-      {window.innerWidth < 576 && (
         <div className="drawer">
           <div onClick={toggleDrawer("right", true)}>
             <i className="ri-menu-3-line"></i>
@@ -273,7 +272,6 @@ export default function Navbar() {
             {list("right")}
           </Drawer>
         </div>
-      )}
     </div>
   );
 }
