@@ -15,7 +15,7 @@ export default function FixtureTable({ leaderboard }) {
         <TableHead>
           <TableRow>
             <TableCell>Rank</TableCell>
-            <TableCell>Fixture</TableCell>
+            <TableCell align="center">Fixture</TableCell>
             <TableCell align="center">Marketplace</TableCell>
             <TableCell className="mostActiveUser" align="center">Most Active User</TableCell>
             <TableCell className="gameInformation" align="center">Game Information</TableCell>
@@ -32,7 +32,7 @@ export default function FixtureTable({ leaderboard }) {
               <TableCell component="th" scope="row">
                 {i + 1}
               </TableCell>
-              <TableCell>
+              <TableCell align="center">
                 <div className="fixtureContent">
                   <div className="homeTeam">
                     {row.fixture.HomeTeam}
