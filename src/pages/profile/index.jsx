@@ -66,7 +66,7 @@ export default function Profile() {
       <div className="userData__container">
         <div className="userData">
           <img
-            src="https://ik.imagekit.io/domsan/TBC_p7nKZl0xP.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662802554283"
+            src={`https://robohash.org/${username}`}
             alt=""
             loading="lazy"
           />
