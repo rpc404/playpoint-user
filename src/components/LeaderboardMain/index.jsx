@@ -14,12 +14,13 @@ export default function LeaderboardMain() {
       getLeaderboardByMarketplaceSlug("fifa-worldcup").then(res=>setLeaderboards(res.data.leaderboard))
       setLoading(false);
     },[]);
-  
+
+
   return (
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
         <h2>📈 Top Ranked Fixtures</h2>
-        <FixtureTable leaderboard={leaderboards} />
+        <FixtureTable leaderboard={leaderboards}/>
         <Pagination style={{ marginTop: 15 }} count={10} />
       </div>
 

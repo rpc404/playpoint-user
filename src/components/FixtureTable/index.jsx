@@ -6,9 +6,46 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import CountryFlags from "../../helpers/CountryFlags.json";
 import { Link } from "react-router-dom";
 
 export default function FixtureTable({ leaderboard }) {
+
+  const HomeTeamFlag = (d, c, i) => {
+    return (
+      (c.name === d?.HomeTeam ||
+        (c.name === "United States" && d?.HomeTeam === "USA") ||
+        (c.name === "South Korea" && d?.HomeTeam === "Korea Republic")) && (
+        <img
+          src={c.image}
+          alt={c.name}
+          key={i}
+          loading="lazy"
+          className="home__Image"
+          style={{flex:"1",alignItems:"center"}}
+
+        />
+      )
+    );
+  };
+
+  const AwayTeamFlag = (d, c, i) => {
+    return (
+      (c.name === d?.AwayTeam ||
+        (c.name === "United States" && d?.AwayTeam === "USA") ||
+        (c.name === "South Korea" && d?.AwayTeam === "Korea Republic")) && (
+        <img
+          src={c?.image}
+          alt={c.name}
+          key={i}
+          loading="lazy"
+          className="Away__Image"
+          style={{flex:"1"}}
+        />
+      )
+    );
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -17,62 +54,67 @@ export default function FixtureTable({ leaderboard }) {
             <TableCell>Rank</TableCell>
             <TableCell>Fixture</TableCell>
             <TableCell align="center">Marketplace</TableCell>
-            <TableCell className="mostActiveUser" align="center">Most Active User</TableCell>
-            <TableCell className="gameInformation" align="center">Game Information</TableCell>
+            <TableCell className="mostActiveUser" align="center">
+              Most Active User
+            </TableCell>
+            <TableCell className="gameInformation" align="center">
+              Game Information
+            </TableCell>
             <TableCell align="center">Total Users</TableCell>
-            <TableCell align="center">Total Volume</TableCell>
+            <TableCell align="center">Total Volume(PPTT)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {leaderboard.map((row, i) => (
-            <TableRow
-              key={i}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {i + 1}
-              </TableCell>
-              <TableCell>
-                <div className="fixtureContent">
-                  <div className="homeTeam">
-                    {row.fixture.HomeTeam}
-                    <img
-                      src="https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BR.svg"
-                      loading="lazy"
-                      alt=""
-                    />{" "}
+          {leaderboard.map((row, i) => {
+            return (
+              <TableRow
+                key={i}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {i + 1}
+                </TableCell>
+                <TableCell>
+                  <div className="fixtureContent" style={{display:"flex"}}>
+                    <div className="homeTeam" style={{flex:"1",alignItems:"center"}}>
+                      {row.fixture.HomeTeam}
+                    </div>
+                      {CountryFlags.map((country, index) => {
+                        return HomeTeamFlag(row.fixture, country, index);
+                      })}
+                    <p >vs</p>
+                      {CountryFlags.map((country, index) => {
+                        return AwayTeamFlag(row.fixture, country, index);
+                      })}
+                    <div className="awayTeam" style={{flex:"1"}}>
+                      {row.fixture.AwayTeam}
+                    </div>
                   </div>
-                  <p>vs</p>
-                  <div className="awayTeam">
-                    <img
-                      src="https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AR.svg"
-                      loading="lazy"
-                      alt=""
-                    />
-                    {row.fixture.AwayTeam}
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell align="center">
-                <Link to="/fixture">Fifa Worldcup</Link>
-              </TableCell>
-              <TableCell align="center">
-              {row.topuser[0]?.name ? 
-                <div className="userContent">
-                  <img
-                    src={`https://robohash.org/${
-                      row.topuser[0]?.name || "_0"
-                    }`}
-                    loading="lazy"
-                  />
-                  <Link to="/profile">{row.topuser[0]?.name}</Link>
-                </div> : "-" }
-              </TableCell>
-              <TableCell align="center">{row.fixture.DateUtc}</TableCell>
-              <TableCell align="center">{row.userCount}</TableCell>
-              <TableCell align="center">{row.volume}</TableCell>
-            </TableRow>
-          ))}
+                </TableCell>
+                <TableCell align="center">
+                  <Link to="/fixture">Fifa Worldcup</Link>
+                </TableCell>
+                <TableCell align="center">
+                  {row.topuser[0]?.name ? (
+                    <div className="userContent">
+                      <img
+                        src={`https://robohash.org/${
+                          row.topuser[0]?.name || "_0"
+                        }`}
+                        loading="lazy"
+                      />
+                      <Link to="/profile">{row.topuser[0]?.name}</Link>
+                    </div>
+                  ) : (
+                    "-"
+                  )}
+                </TableCell>
+                <TableCell align="center">{row.fixture.DateUtc}</TableCell>
+                <TableCell align="center">{row.userCount}</TableCell>
+                <TableCell align="center">{row.volume/0.02}</TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </TableContainer>
