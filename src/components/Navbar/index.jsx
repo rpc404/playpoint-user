@@ -198,7 +198,7 @@ export default function Navbar() {
       <div className="navbar__authentication">
         {isWalletConnected === false ? (
           <Button disabled={loading} onClick={() => handleLogin()}>
-            <i className="ri-fingerprint-line"></i> Login / Register
+            <i className="ri-fingerprint-line"></i> Connect Wallet
           </Button>
         ) : (
           <>
