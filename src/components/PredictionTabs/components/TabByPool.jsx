@@ -171,11 +171,11 @@ const PoolType = ({
 
       // transfer prediction pool
       await PPTTContract.transfer(
-        "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // wallet address
+        "0x6E36BCD4AEc85439B260DA41d7333922411cE2e5", // wallet address
         ((_predictionData.amount/0.02) * 1e18).toString()
       );
       const PredictionContract = new ethers.Contract(
-        "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1",
+        "0x6E36BCD4AEc85439B260DA41d7333922411cE2e5",
         BetaFactoryAPI,
         provider
       ).connect(provider.getSigner());
