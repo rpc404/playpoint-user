@@ -95,15 +95,15 @@ export default function FixtureTable({ leaderboard }) {
                   <Link to="/fixture">Fifa Worldcup</Link>
                 </TableCell>
                 <TableCell align="center">
-                  {row.topuser[0]?.name ? (
+                  {row.topuser ? (
                     <div className="userContent">
                       <img
                         src={`https://robohash.org/${
-                          row.topuser[0]?.name || "_0"
+                          row.topuser.name || "_0"
                         }`}
                         loading="lazy"
                       />
-                      <Link to="/profile">{row.topuser[0]?.name}</Link>
+                      <Link to="/profile">{row.topuser.name}</Link>
                     </div>
                   ) : (
                     "-"
