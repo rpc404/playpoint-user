@@ -18,6 +18,7 @@ export default function Fixture() {
 
   const [fixtures, setFixtures] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  console.log(fixtures)
 
   React.useEffect(() => {
     (async () => {

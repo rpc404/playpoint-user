@@ -10,6 +10,7 @@ import LeaderboardMain from "../../components/LeaderboardMain";
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
+  console.log(marketplaces)
 
   React.useEffect(() => {
     (async () => {
