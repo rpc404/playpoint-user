@@ -52,7 +52,7 @@ export default function FixtureTable({ leaderboard }) {
         <TableHead>
           <TableRow>
             <TableCell>Rank</TableCell>
-            <TableCell>Fixture</TableCell>
+            <TableCell align="center">Fixture</TableCell>
             <TableCell align="center">Marketplace</TableCell>
             <TableCell className="mostActiveUser" align="center">
               Most Active User
