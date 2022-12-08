@@ -1,26 +1,32 @@
 import { Pagination } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { getAllLeaderboards, getLeaderboardByMarketplaceSlug } from "../../api/Leaderboards";
+import {
+  getAllLeaderboards,
+  getLeaderboardByMarketplaceSlug,
+} from "../../api/Leaderboards";
 import FixtureTable from "../FixtureTable";
 import "./styles/style.css";
 
 export default function LeaderboardMain() {
-
-  const [leaderboards,setLeaderboards] = React.useState([])
-  const [loading, setLoading] = React.useState(true)
+  const [leaderboards, setLeaderboards] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [topRanked, setTopRanked] = React.useState([]);
 
   React.useEffect(() => {
-      getLeaderboardByMarketplaceSlug("fifa-worldcup").then(res=>setLeaderboards(res.data.leaderboard))
-      setLoading(false);
-    },[]);
-
+    getLeaderboardByMarketplaceSlug("fifa-worldcup").then((res) => {
+      setTopRanked(res.data.topranked);
+      setLeaderboards(res.data.leaderboard);
+      console.log(res.data)
+    });
+    setLoading(false);
+  }, []);
 
   return (
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
         <h2>📈 Top Ranked Fixtures</h2>
-        <FixtureTable leaderboard={leaderboards}/>
+        <FixtureTable leaderboard={leaderboards} />
         <Pagination style={{ marginTop: 15 }} count={10} />
       </div>
 
@@ -31,87 +37,65 @@ export default function LeaderboardMain() {
           <div className="topUser">
             <div className="user__avatar">
               <img
-                src="https://avatars.githubusercontent.com/u/102910615?v=4"
+                src={`https://robohash.org/${topRanked[0]?.username || "_0"}`}
                 loading="lazy"
               />
             </div>
             <div className="user__info">
               <h1>🥇1st Place</h1>
               <h4>
-                <Link to="/">Jessica, 0xb05c64...119e37</Link>
+                <Link to={`/profile/@${topRanked[0]?.username}`}>
+                  {topRanked[0]?.username},{" "}
+                  {String(topRanked[0]?.wallet).substring(0, 5)}...
+                  {String(topRanked[0]?.wallet).substring(10, 16)}
+                </Link>
               </h4>
             </div>
             <div className="gameDetails">
               <div>
-                <p>Wins</p>
-                <span>12</span>
+                <p>Points</p>
+                <span>{topRanked[0]?.points}</span>
               </div>
+             
               <div>
-                <p>Games</p>
-                <span>12</span>
-              </div>
-              <div>
-                <p>Volume</p>
-                <span>12</span>
+                <p>Amount</p>
+                <span>{topRanked[0]?.amount} PPTT</span>
               </div>
             </div>
           </div>
-
-          <div className="top3User">
-            <div className="user__avatar">
-              <img
-                src="https://avatars.githubusercontent.com/u/102910615?v=4"
-                loading="lazy"
-              />
-            </div>
-            <div className="user__info">
-              <h4>
-                <Link to="/">🥈Jessica, 0xb05...9e37</Link>
-              </h4>
-              <div className="gameDetails">
-                <div>
-                  <p>Wins</p>
-                  <span>12</span>
+          {topRanked.map((user, i) => {
+            if (i > 0 && i < 4) {
+              return (
+                <div className="top3User">
+                  <div className="user__avatar">
+                    <img
+                      src={`https://robohash.org/${user?.username || "_0"}`}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="user__info">
+                    <h4>
+                      <Link to={`/profile/@${user?.username}`}>
+                        {user?.username}, {String(user?.wallet).substring(0, 5)}
+                        ...{String(user?.wallet).substring(10, 16)}
+                      </Link>
+                    </h4>
+                    <div className="gameDetails">
+                      <div>
+                        <p>Points</p>
+                        <span>{user?.points}</span>
+                      </div>
+                    
+                      <div>
+                        <p>Amount</p>
+                        <span>{user?.amount} PPTT</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p>Games</p>
-                  <span>12</span>
-                </div>
-                <div>
-                  <p>Volume</p>
-                  <span>12</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="top3User">
-            <div className="user__avatar">
-              <img
-                src="https://avatars.githubusercontent.com/u/102910615?v=4"
-                loading="lazy"
-              />
-            </div>
-            <div className="user__info">
-              <h4>
-                <Link to="/">🥉 Jessica, 0xb05...9e37</Link>
-              </h4>
-              <div className="gameDetails">
-                <div>
-                  <p>Wins</p>
-                  <span>12</span>
-                </div>
-                <div>
-                  <p>Games</p>
-                  <span>12</span>
-                </div>
-                <div>
-                  <p>Volume</p>
-                  <span>12</span>
-                </div>
-              </div>
-            </div>
-          </div>
+              );
+            }
+          })}
         </div>
       </div>
     </main>
