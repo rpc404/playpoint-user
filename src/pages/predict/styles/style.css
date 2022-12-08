@@ -236,6 +236,16 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar .MuiButton-root.active {
   color: #3498db;
 }
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .prediction_rule,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .prediction_rule,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .prediction_rule,
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .questionaires .prediction_rule {
+  margin: 0.3em 0;
+  text-align: center;
+  padding: 0.5em 0;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6);
+}
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .questionaires .questionItem,
