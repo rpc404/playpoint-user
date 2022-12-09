@@ -9,7 +9,8 @@ import Paper from "@mui/material/Paper";
 import CountryFlags from "../../helpers/CountryFlags.json";
 import { Link } from "react-router-dom";
 
-export default function FixtureTable({ leaderboard }) {
+export default function FixtureTable({ leaderboard, currPage }) {
+
   const HomeTeamFlag = (d, c, i) => {
     return (
       (c.name === d?.HomeTeam ||
@@ -43,6 +44,7 @@ export default function FixtureTable({ leaderboard }) {
       )
     );
   };
+
 
   return (
     <TableContainer component={Paper}>
