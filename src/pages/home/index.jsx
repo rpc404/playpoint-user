@@ -118,7 +118,7 @@ export default function Home() {
         </div>
       </div> */}
 
-      <div className="chart_container">
+      {/* <div className="chart_container">
         <iframe
           height="700px"
           width="100%"
@@ -129,7 +129,7 @@ export default function Home() {
           allow="clipboard-write"
           allowFullScreen
         ></iframe>
-      </div>
+      </div> */}
       <LeaderboardMain />
 
       <div className="divider"></div>

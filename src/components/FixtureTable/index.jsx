@@ -10,7 +10,6 @@ import CountryFlags from "../../helpers/CountryFlags.json";
 import { Link } from "react-router-dom";
 
 export default function FixtureTable({ leaderboard }) {
-
   const HomeTeamFlag = (d, c, i) => {
     return (
       (c.name === d?.HomeTeam ||
@@ -22,8 +21,7 @@ export default function FixtureTable({ leaderboard }) {
           key={i}
           loading="lazy"
           className="home__Image"
-          style={{flex:"1",alignItems:"center"}}
-
+          style={{ flex: "1", alignItems: "center" }}
         />
       )
     );
@@ -40,7 +38,7 @@ export default function FixtureTable({ leaderboard }) {
           key={i}
           loading="lazy"
           className="Away__Image"
-          style={{flex:"1"}}
+          style={{ flex: "1" }}
         />
       )
     );
@@ -75,18 +73,21 @@ export default function FixtureTable({ leaderboard }) {
                   {i + 1}
                 </TableCell>
                 <TableCell>
-                  <div className="fixtureContent" style={{display:"flex"}}>
-                    <div className="homeTeam" style={{flex:"1",alignItems:"center"}}>
+                  <div className="fixtureContent" style={{ display: "flex" }}>
+                    <div
+                      className="homeTeam"
+                      style={{ flex: "1", alignItems: "center" }}
+                    >
                       {row.fixture.HomeTeam}
                     </div>
-                      {CountryFlags.map((country, index) => {
-                        return HomeTeamFlag(row.fixture, country, index);
-                      })}
-                    <p >vs</p>
-                      {CountryFlags.map((country, index) => {
-                        return AwayTeamFlag(row.fixture, country, index);
-                      })}
-                    <div className="awayTeam" style={{flex:"1"}}>
+                    {CountryFlags.map((country, index) => {
+                      return HomeTeamFlag(row.fixture, country, index);
+                    })}
+                    <p>vs</p>
+                    {CountryFlags.map((country, index) => {
+                      return AwayTeamFlag(row.fixture, country, index);
+                    })}
+                    <div className="awayTeam" style={{ flex: "1" }}>
                       {row.fixture.AwayTeam}
                     </div>
                   </div>
@@ -96,11 +97,12 @@ export default function FixtureTable({ leaderboard }) {
                 </TableCell>
                 <TableCell align="center">
                   {row.topuser ? (
-                    <div className="userContent">
+                    <div
+                      className="userContent"
+                      style={{ display: "flex", justifyContent: "flex-start",paddingLeft:"50px" }}
+                    >
                       <img
-                        src={`https://robohash.org/${
-                          row.topuser.name || "_0"
-                        }`}
+                        src={`https://robohash.org/${row.topuser.name || "_0"}`}
                         loading="lazy"
                       />
                       <Link to="/profile">{row.topuser.name}</Link>
@@ -111,7 +113,7 @@ export default function FixtureTable({ leaderboard }) {
                 </TableCell>
                 <TableCell align="center">{row.fixture.DateUtc}</TableCell>
                 <TableCell align="center">{row.userCount}</TableCell>
-                <TableCell align="center">{row.volume/0.02}</TableCell>
+                <TableCell align="center">{row.volume / 0.02}</TableCell>
               </TableRow>
             );
           })}
