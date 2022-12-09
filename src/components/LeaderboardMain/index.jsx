@@ -12,12 +12,12 @@ export default function LeaderboardMain() {
   const [leaderboards, setLeaderboards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [topRanked, setTopRanked] = React.useState([]);
+  const [currPage, setCurrPage] = React.useState(1)
 
   React.useEffect(() => {
     getLeaderboardByMarketplaceSlug("fifa-worldcup").then((res) => {
       setTopRanked(res.data.topranked);
       setLeaderboards(res.data.leaderboard);
-      console.log(res.data)
     });
     setLoading(false);
   }, []);
@@ -26,13 +26,12 @@ export default function LeaderboardMain() {
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
         <h2>📈 Top Ranked Fixtures</h2>
-        <FixtureTable leaderboard={leaderboards} />
-        <Pagination style={{ marginTop: 15 }} count={10} />
+        <FixtureTable leaderboard={leaderboards} currPage={currPage} />
+        <Pagination style={{ marginTop: 15 }} count={Math.ceil(leaderboards.length/10)} onChange={e=>setCurrPage(e.target.innerText)} variant="outlined" hideNextButton hidePrevButton />
       </div>
 
       <div className="usersLeaderboard__container">
         <h2>⛹️ Top Ranked Users</h2>
-
         <div className="topThreeUsers">
           <div className="topUser">
             <div className="user__avatar">

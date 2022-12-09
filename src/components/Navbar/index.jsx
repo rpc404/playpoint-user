@@ -55,7 +55,6 @@ export default function Navbar() {
   const handleLogin = async () => {
     setLoading(true);
     const resData = await handleRPCWalletLogin();
-
     const provider = new ethers.providers.Web3Provider(ethereum);
     const contract = new ethers.Contract(
       "0x53d168578974822bCAa95106C7d5a906BF100948",
