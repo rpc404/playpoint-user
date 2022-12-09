@@ -243,6 +243,7 @@ const PoolType = ({
       </div>
       {isWalletConnected && (
         <div className="questionaires">
+          <p className="prediction_rule">Prediction questions are applicable for first 90 minutes of match time only</p>
           {!questionaire.loading &&
             questionaire.tempQuestionaire[0]?.questionaires.questions.map(
               (q, index) => (
