@@ -22,8 +22,7 @@ export default function FixtureTable({ leaderboard, currPage }) {
           key={i}
           loading="lazy"
           className="home__Image"
-          style={{flex:"1",alignItems:"center"}}
-
+          style={{ flex: "1", alignItems: "center" }}
         />
       )
     );
@@ -40,7 +39,7 @@ export default function FixtureTable({ leaderboard, currPage }) {
           key={i}
           loading="lazy"
           className="Away__Image"
-          style={{flex:"1"}}
+          style={{ flex: "1" }}
         />
       )
     );
@@ -67,56 +66,58 @@ export default function FixtureTable({ leaderboard, currPage }) {
         </TableHead>
         <TableBody>
           {leaderboard.map((row, i) => {
-            if(i<(currPage*10) && i>((currPage-1)*10)){
-              return (
-                <TableRow
-                  key={i}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {i + 1}
-                  </TableCell>
-                  <TableCell>
-                    <div className="fixtureContent" style={{display:"flex"}}>
-                      <div className="homeTeam" style={{flex:"1",alignItems:"center"}}>
-                        {row.fixture.HomeTeam}
-                      </div>
-                        {CountryFlags.map((country, index) => {
-                          return HomeTeamFlag(row.fixture, country, index);
-                        })}
-                      <p >vs</p>
-                        {CountryFlags.map((country, index) => {
-                          return AwayTeamFlag(row.fixture, country, index);
-                        })}
-                      <div className="awayTeam" style={{flex:"1"}}>
-                        {row.fixture.AwayTeam}
-                      </div>
+            return (
+              <TableRow
+                key={i}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {i + 1}
+                </TableCell>
+                <TableCell>
+                  <div className="fixtureContent" style={{ display: "flex" }}>
+                    <div
+                      className="homeTeam"
+                      style={{ flex: "1", alignItems: "center" }}
+                    >
+                      {row.fixture.HomeTeam}
                     </div>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Link to="/fixture">Fifa Worldcup</Link>
-                  </TableCell>
-                  <TableCell align="center">
-                    {row.topuser ? (
-                      <div className="userContent">
-                        <img
-                          src={`https://robohash.org/${
-                            row.topuser.name || "_0"
-                          }`}
-                          loading="lazy"
-                        />
-                        <Link to="/profile">{row.topuser.name}</Link>
-                      </div>
-                    ) : (
-                      "-"
-                    )}
-                  </TableCell>
-                  <TableCell align="center">{row.fixture.DateUtc}</TableCell>
-                  <TableCell align="center">{row.userCount}</TableCell>
-                  <TableCell align="center">{row.volume/0.02}</TableCell>
-                </TableRow>
-              );
-            }
+                    {CountryFlags.map((country, index) => {
+                      return HomeTeamFlag(row.fixture, country, index);
+                    })}
+                    <p>vs</p>
+                    {CountryFlags.map((country, index) => {
+                      return AwayTeamFlag(row.fixture, country, index);
+                    })}
+                    <div className="awayTeam" style={{ flex: "1" }}>
+                      {row.fixture.AwayTeam}
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell align="center">
+                  <Link to="/fixture">Fifa Worldcup</Link>
+                </TableCell>
+                <TableCell align="center">
+                  {row.topuser ? (
+                    <div
+                      className="userContent"
+                      style={{ display: "flex", justifyContent: "flex-start",paddingLeft:"50px" }}
+                    >
+                      <img
+                        src={`https://robohash.org/${row.topuser.name || "_0"}`}
+                        loading="lazy"
+                      />
+                      <Link to="/profile">{row.topuser.name}</Link>
+                    </div>
+                  ) : (
+                    "-"
+                  )}
+                </TableCell>
+                <TableCell align="center">{row.fixture.DateUtc}</TableCell>
+                <TableCell align="center">{row.userCount}</TableCell>
+                <TableCell align="center">{row.volume / 0.02}</TableCell>
+              </TableRow>
+            );
           })}
         </TableBody>
       </Table>

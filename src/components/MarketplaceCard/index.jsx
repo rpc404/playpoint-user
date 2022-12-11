@@ -73,12 +73,12 @@ export default function MarketplaceCard({ marketplace, query }) {
         </span>
         {!loading && Object.keys(stat).length >= 1 ? (
           <div className="info">
-            <p>
+            {/* <p>
               {stat.totalQuestionaires} <br />
               <span className="flex">
                 <i className="ri-chat-poll-line"></i> Questions
               </span>
-            </p>
+            </p> */}
             <p>
               {stat.totalFixtures} <br />
               <span className="flex">
@@ -88,7 +88,7 @@ export default function MarketplaceCard({ marketplace, query }) {
             <p>
               {stat.totalPredictions} <br />
               <span className="flex">
-                <i className="ri-bar-chart-grouped-line"></i> Predictions
+                <i className="ri-bar-chart-grouped-line"></i> Total entries
               </span>
             </p>
           </div>
