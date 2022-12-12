@@ -9,12 +9,14 @@ import { ToastContainer } from "react-toastify";
 import { RPCProvider } from "./contexts/WalletRPC/RPCContext";
 import { MarketplaceProvider } from "./contexts/Marketplace/MarketplaceContext";
 import { FixtureProvider } from "./contexts/Fixture/FixtureContext";
+import { PredictionsProvider } from "./contexts/Predictions/PredictionsContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <RPCProvider>
       <MarketplaceProvider>
         <FixtureProvider>
+          <PredictionsProvider>
           <App />
           <ToastContainer
             position="top-center"
@@ -28,6 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             pauseOnHover
             theme="light"
           />
+          </PredictionsProvider>
         </FixtureProvider>
       </MarketplaceProvider>
     </RPCProvider>

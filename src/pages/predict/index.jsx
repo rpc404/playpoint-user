@@ -12,9 +12,9 @@ import {
   getQuestionaireByFixtureId,
 } from "../../api/Prediction";
 import moment from "moment";
-import { toast } from "react-toastify";
 import Pusher from "pusher-js";
 import Leaderboards from "../../components/Leaderboards/Leaderboards";
+import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 
 export const getCountryFlag = (country) => {
   let _url = "";
@@ -35,19 +35,61 @@ export const getCountryFlag = (country) => {
   return _url;
 };
 
+
+
+
 export default function Predict() {
+
+
+  const calculateTimeLeft = (eventTime) => {
+    let duration = moment(eventTime).diff(moment.now(),"seconds");
+    let seconds ="";
+    let minutes = "";
+    let hours = "";
+    let days = "";
+    if(duration => 60){
+      minutes = Math.floor(duration/60);
+      seconds = duration%60;
+    }
+    if(minutes=>60){
+      hours = Math.floor(minutes/60)
+      minutes = minutes%60;
+    }
+    if(hours=>24){
+      days = Math.floor(hours/24)
+      hours = hours%24;
+    }
+
+    return <div className="timeOut">
+          {days>0 && <div className="block"><h2>{days}</h2><span>Days</span></div>}
+          {hours>0 && <div className="block"><h2>{hours}</h2><span>Hours</span></div>}
+          {minutes>0 && <div className="block"><h2>{minutes}</h2><span>Minutes</span></div>}
+          {seconds>=0 && <div className="block"><h2>{seconds}</h2><span>Seconds</span></div>}
+
+    </div>;
+  }
+
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
   const { fixtureId } = useParams();
-  const [predictions, setPredictions] = React.useState([]);
   const [, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
   const [activeOS, setActiveOS] = React.useState("");
   const [status,setStatus] = React.useState(false)
+  const [{predictions}, dispatchPredictionsData] = usePredictionsContext()
+  const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft(fixture.DateUtc));
 
   const navigate = useNavigate();
 
   let volume = 0;
+
+
+  React.useEffect(() => {
+      setTimeout(() => {
+          setTimeLeft(calculateTimeLeft(fixture.DateUtc));
+      },1000);
+  });
+
 
   React.useEffect(() => {
     // Windows
@@ -60,26 +102,27 @@ export default function Predict() {
     (async () => {
       const response = await getFixutreById(fixtureId);
       setFixture(response.data?.fixture);
+      console.log(response)
       setStatus(response.data?.status)
     })();
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
+     
       sessionStorage.setItem(
         "predictions",
         JSON.stringify(response.data.data.reverse())
       );
-      console.log(response.data)
-      setPredictions(response.data.data);
-      let lineChartData = [];
-      response.data.data.map((prediction, key) => {
-        lineChartData.push({
-          key: new Date(prediction.created_at),
-          data: prediction.amount,
-        });
-      });
+      dispatchPredictionsData({type:"set-predictions", payload: response.data.data})
+      // let lineChartData = [];
+      // response.data.data.map((prediction, key) => {
+      //   lineChartData.push({
+      //     key: new Date(prediction.created_at),
+      //     data: prediction.amount,
+      //   });
+      // });
 
-      setLineChartData(lineChartData);
+      // setLineChartData(lineChartData);
     })();
 
     (async () => {
@@ -104,10 +147,11 @@ export default function Predict() {
       if (data.data[0].fixtureId == fixtureId) {
         const newPrediction = [data.data[0], ..._predictions];
         sessionStorage.setItem("predictions", JSON.stringify(newPrediction));
-        setPredictions(newPrediction);
+        dispatchPredictionsData({type:"set-predictions", payload: newPrediction})
       }
     });
   }, []);
+
   return (
     <div className="prediction__container">
       <Helmet>
@@ -198,7 +242,23 @@ export default function Predict() {
           </div>
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
-            <LineChart
+            <div>
+             {timeLeft}
+             <div className="fixture_detail">
+              <p>
+                <i className="ri-map-pin-line"></i>
+                <span>Stadium: </span>
+                {fixture.Location}
+                </p>
+                <p>
+                <i class="ri-bar-chart-2-line"></i>
+                <span>Match Number: </span>
+              {fixture.MatchNumber}
+                </p>
+             </div>
+             
+            </div>
+            {/* <LineChart
               className="graphData"
               width="90%"
               height={window.innerWidth >= 576 ? 350 : 200}
@@ -210,7 +270,7 @@ export default function Predict() {
                   }
                 />
               }
-            />
+            /> */}
             <div className="eventDetails">
               <p>
                 <i className="ri-calendar-todo-line"></i> Event Details:{" "}
