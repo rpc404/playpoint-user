@@ -3,13 +3,13 @@
     display: flex;
     align-items: flex-start;
     @media (max-width: 576px) {
-     flex-direction: column-reverse;
+      flex-direction: column-reverse;
     }
     .recentPredictions {
       width: 23vw;
       @media (max-width: 576px) {
-       width: 90%;
-       margin: auto;
+        width: 90%;
+        margin: auto;
       }
 
       h3 {
@@ -23,7 +23,7 @@
         height: 83vh;
         overflow-y: scroll;
 
-        &.windowsOS{
+        &.windowsOS {
           height: 77vh;
         }
 
@@ -75,7 +75,6 @@
               width: 100%;
               margin-bottom: 5px;
 
-
               .MuiButton-root {
                 text-transform: capitalize;
                 padding: 0;
@@ -90,14 +89,14 @@
                 font-size: 12px;
               }
             }
-            p{
+            p {
               // display: grid;
 
-              a{
+              a {
                 width: fit-content;
                 text-decoration: none;
-                background-color: rgba(0,201,167,.1);
-                padding: .2em;
+                background-color: rgba(0, 201, 167, 0.1);
+                padding: 0.2em;
                 color: #00c9a7;
                 border-radius: 2px;
               }
@@ -182,27 +181,42 @@
         padding-bottom: 20px;
         @media (max-width: 576px) {
           height: 75vh;
-         }
-         .timeOut{
+        }
+        .timeOut {
           display: flex;
           gap: 10px;
           margin: 1em auto;
           justify-content: center;
-          .block{
+          .block {
             text-align: center;
             padding: 10px;
             border-radius: 5px;
             border: 0.5px solid rgba(80, 79, 79, 0.335);
-            span{
+            span {
               color: #4e4d4d;
             }
           }
-         }
-         .fixture_detail{
+        }
+        .fixture_detail {
           display: flex;
           gap: 20px;
           justify-content: center;
-         }
+        }
+        .fixture_results {
+          display: flex;
+          justify-content: center;
+          gap: 45px;
+          margin: 20px auto;
+          .teams_score {
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            background: linear-gradient(#0debc648, #2dacde48);
+            p{
+              color: #4e4d4d;
+            }
+          }
+        }
         .graphData {
           margin: 3vh auto;
           padding: 0 2.5vw;
@@ -268,9 +282,9 @@
 
             .questionaires {
               .prediction_rule {
-                margin: .3em 0;
+                margin: 0.3em 0;
                 text-align: center;
-                padding: .5em 0;
+                padding: 0.5em 0;
                 font-style: italic;
                 color: #0009;
               }
@@ -407,7 +421,7 @@
         overflow-y: scroll;
         padding-bottom: 10px;
 
-        &.windowsOS{
+        &.windowsOS {
           height: 77vh;
         }
 
@@ -430,12 +444,11 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
-             img {
+            img {
               height: 30px;
               object-fit: cover;
               border-radius: 50%;
-             } 
-
+            }
           }
         }
       }

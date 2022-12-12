@@ -191,6 +191,21 @@
   gap: 20px;
   justify-content: center;
 }
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results {
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+  margin: 20px auto;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results .teams_score {
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  background: linear-gradient(rgba(13, 235, 198, 0.2823529412), rgba(45, 172, 222, 0.2823529412));
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results .teams_score p {
+  color: #4e4d4d;
+}
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .graphData {
   margin: 3vh auto;
   padding: 0 2.5vw;
