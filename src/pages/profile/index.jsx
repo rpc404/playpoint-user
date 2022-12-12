@@ -11,24 +11,26 @@ import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { setProfile } from "../../api/Profile";
 import { toast } from "react-toastify";
 import { getCountryShortName } from "../../components/Leaderboards/Leaderboards";
+import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
+import { getuserResults } from "../../api/Results";
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
-
   const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
-  const [_username, setUsername] = useState("");
+  const [ {results, woat} , dispatchPredictionsData] = usePredictionsContext();
+  const [_username, setUsername] = useState(username);
+ 
 
   React.useEffect(() => {
     if (userPublicAddress) {
-      getUserPredictions(userPublicAddress).then((res) => {
-        if (res.data.data) {
-          setUserProfile(res.data.data);
-          setHistory(res.data.data.slice(0, 10));
-        }
-      });
-    } else if (username) {
+      (async () => {
+        const res = await getuserResults(userPublicAddress);
+        dispatchPredictionsData({ type: "get-results", payload: res.data });
+      })();
+    }
+    if (username) {
       setUsername(username);
     }
   }, [userPublicAddress]);
@@ -52,7 +54,7 @@ export default function Profile() {
   };
 
   const handlePageClick = (ev) => {
-    const page = ev.target.innerHTML.split("<span")[0];
+    const page = ev.target.innerText;
     setHistory(userProfile.slice((page - 1) * 10, page * 10));
   };
 
@@ -65,11 +67,7 @@ export default function Profile() {
 
       <div className="userData__container">
         <div className="userData">
-          <img
-            src={`https://robohash.org/${username}`}
-            alt=""
-            loading="lazy"
-          />
+          <img src={`https://robohash.org/${username}`} alt="" loading="lazy" />
           <div className="userdetails__container">
             {editMode ? (
               <div className="userdetails">
@@ -133,14 +131,14 @@ export default function Profile() {
             <i className="ri-money-dollar-circle-line"></i>
             <div>
               <p>Your money in pool</p>
-              <h3>6676.00 PPTT</h3>
+              <h3>500 PPTT</h3>
             </div>
           </div>
           <div className="summaryItem">
             <i className="ri-bar-chart-grouped-line"></i>
             <div>
               <p>Winnings of all time</p>
-              <h3>5896.00 PPTT</h3>
+              <h3>{woat} PPTT</h3>
             </div>
           </div>
           <Button className="addMoneyBtn">
@@ -152,27 +150,28 @@ export default function Profile() {
       <div className="history__container">
         <div className="titles">
           <p>ID</p>
-          <p>Result</p>
+          <p>Points</p>
           <p>amount</p>
           <p>win/lose amount</p>
           <p>match</p>
           <p>date/time</p>
         </div>
-
+                          { console.log(results)}
         <div className="history__items">
-          {history.map((data, index) => (
-            <div className="history__item" key={index}>
+          {results.map((data, index) => {
+            data.result = (data.predictionId.amount / 0.02) < data.rewardAmount ? "win" : "loose";
+            return <div className="history__item" key={index}>
               <p>{data._id.substring(4, 15)}</p>
               <p className={data.result}>
-                <span>{data.result || "-"}</span>
+                <span>{data.points || "-"}</span>
               </p>
               <p>
-                ${data.amount}~{data.amount} PPTT
+                {data.predictionId.amount / 0.02} PPTT
               </p>
               <p className={data.result}>
                 {data.result === "win" || data.result === "lose" ? (
                   <>
-                    ${data.resultAmount}~{data.resultAmount * 0.015} PPTT
+                   {data.rewardAmount} PPTT ~ ${data.rewardAmount * 0.02 }
                   </>
                 ) : (
                   <>{"-"}</>
@@ -185,7 +184,7 @@ export default function Profile() {
               </p>
               <p>{moment(data.created_at).format("LL")}</p>
             </div>
-          ))}
+            })}
         </div>
       </div>
 
