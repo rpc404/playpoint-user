@@ -55,7 +55,7 @@ export default function Leaderboards() {
       }
     })();
   }, []);
-  console.log(leaderboards)
+  // console.log(leaderboards)
   return (
     <div className={`leaderboardItems ${activeOS}`}>
       {leaderboards.length >= 1 &&
