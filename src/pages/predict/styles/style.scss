@@ -183,7 +183,26 @@
         @media (max-width: 576px) {
           height: 75vh;
          }
-
+         .timeOut{
+          display: flex;
+          gap: 10px;
+          margin: 1em auto;
+          justify-content: center;
+          .block{
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            border: 0.5px solid rgba(80, 79, 79, 0.335);
+            span{
+              color: #4e4d4d;
+            }
+          }
+         }
+         .fixture_detail{
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+         }
         .graphData {
           margin: 3vh auto;
           padding: 0 2.5vw;
