@@ -71,6 +71,21 @@
   gap: 5px;
   text-transform: capitalize;
 }
+.navbar__container .navbar__authentication .buyButton {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: 36.5px;
+  letter-spacing: 0.39998px;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
 @media (max-width: 576px) {
   .navbar__container .navbar__authentication {
     display: none;

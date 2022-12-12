@@ -252,6 +252,9 @@ export default function Navbar() {
               <i className="ri-user-line"></i>{" "}
               {isWalletConnected === true && <span>{username}</span>}
             </Button>
+            <button className="buyButton">
+              <i className="ri-coin-fill"></i> Buy PPTT
+            </button>
             <Button onClick={() => handleLogout()}>
               <i className="ri-logout-box-line"></i> Logout
             </Button>
@@ -259,18 +262,18 @@ export default function Navbar() {
         )}
       </div>
 
-        <div className="drawer">
-          <div onClick={toggleDrawer("right", true)}>
-            <i className="ri-menu-3-line"></i>
-          </div>
-          <Drawer
-            anchor={"right"}
-            open={navSMState["right"]}
-            onClose={toggleDrawer("right", false)}
-          >
-            {list("right")}
-          </Drawer>
+      <div className="drawer">
+        <div onClick={toggleDrawer("right", true)}>
+          <i className="ri-menu-3-line"></i>
         </div>
+        <Drawer
+          anchor={"right"}
+          open={navSMState["right"]}
+          onClose={toggleDrawer("right", false)}
+        >
+          {list("right")}
+        </Drawer>
+      </div>
     </div>
   );
 }
