@@ -194,6 +194,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
       <div className="navbar__authentication">
         {isWalletConnected === false ? (
           <Button disabled={loading} onClick={() => handleLogin()}>
@@ -258,6 +259,7 @@ export default function Navbar() {
             <Button onClick={() => handleLogout()}>
               <i className="ri-logout-box-line"></i> Logout
             </Button>
+           
           </>
         )}
       </div>

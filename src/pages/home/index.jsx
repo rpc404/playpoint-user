@@ -6,11 +6,12 @@ import { getMarketplaces, getMarketplaceStat } from "../../api/Marketplace";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
+import Hero from "../../components/Hero";
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
-  console.log(marketplaces)
+  console.log(marketplaces);
 
   React.useEffect(() => {
     (async () => {
@@ -29,6 +30,8 @@ export default function Home() {
 
   return (
     <div className="home__container">
+      <div className="divider"></div>
+      <Hero />
       <h1 className="home__mainTitle">Active Marketplaces</h1>
       <div className="marketplace__items">
         {marketplaces && marketplaces.length >= 1 && !loading ? (
