@@ -114,6 +114,7 @@ export default function Predict() {
         JSON.stringify(response.data.data.reverse())
       );
       dispatchPredictionsData({type:"set-predictions", payload: response.data.data})
+      
       // let lineChartData = [];
       // response.data.data.map((prediction, key) => {
       //   lineChartData.push({
@@ -155,7 +156,7 @@ export default function Predict() {
   return (
     <div className="prediction__container">
       <Helmet>
-        <title>Playpoint | Prediction | Playpoint</title>
+        <title>{fixture.HomeTeam +" - "+ fixture.AwayTeam } |Playpoint | Prediction | </title>
       </Helmet>
 
       <div className="main__container">
@@ -243,7 +244,17 @@ export default function Predict() {
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <div>
-             {timeLeft}
+             {(status && status!=="closed") ? timeLeft : 
+             <div className="fixture_results">
+             <div className="teams_score">
+               <h2>{fixture.HomeTeamScore}</h2>
+               <p>{fixture.HomeTeam}</p>
+             </div>
+             <div className="teams_score">
+               <h2>{fixture.AwayTeamScore}</h2>
+               <p>{fixture.AwayTeam}</p>
+             </div>
+          </div> }
              <div className="fixture_detail">
               <p>
                 <i className="ri-map-pin-line"></i>
@@ -251,7 +262,7 @@ export default function Predict() {
                 {fixture.Location}
                 </p>
                 <p>
-                <i class="ri-bar-chart-2-line"></i>
+                <i className="ri-bar-chart-2-line"></i>
                 <span>Match Number: </span>
               {fixture.MatchNumber}
                 </p>
