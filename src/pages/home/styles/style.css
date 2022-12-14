@@ -195,16 +195,12 @@
 }
 .home__container .footer__container .footer .links {
   display: flex;
-  gap: 5vw;
+  flex-direction: column;
+  gap: 1.6vh;
 }
 .home__container .footer__container .footer .links a {
   text-decoration: none;
   color: #fff;
-}
-.home__container .footer__container .footer .links .left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6vh;
 }
 .home__container .footer__container .footer .social {
   display: flex;

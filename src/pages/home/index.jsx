@@ -133,12 +133,10 @@ export default function Home() {
           </div>
 
           <div className="links">
-            <div className="left">
-              <a href="#">Marketplaces</a>
-              <a href="#">Fixtures</a>
-              <a href="#">Wallet</a>
-              <a href="#">Launch App</a>
-            </div>
+            <a href="#">Marketplaces</a>
+            <a href="#">Fixtures</a>
+            <a href="#">Wallet</a>
+            <a href="#">Launch App</a>
           </div>
           <div className="social">
             <div className="text">
