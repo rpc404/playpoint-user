@@ -121,21 +121,45 @@ export default function Home() {
         </div>
       </div> */}
 
-      {/* <div className="chart_container">
-        <iframe
-          height="700px"
-          width="100%"
-          id="geckoterminal-embed"
-          title="GeckoTerminal Embed"
-          src="https://www.geckoterminal.com/arbitrum/pools/0x96e764a471d63bb97f85e2ef5b5b5c81599ef52a?embed=1&info=0&swaps=1"
-          frameBorder="0"
-          allow="clipboard-write"
-          allowFullScreen
-        ></iframe>
-      </div> */}
       <LeaderboardMain />
-
       <div className="divider"></div>
+      <div className="footer__container">
+        <div className="footer">
+          <div className="playpoint">
+            <div className="intro">
+              <img
+                src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
+                alt=""
+              />
+
+              <h1>Playpoint</h1>
+            </div>
+          </div>
+
+          <div className="links">
+            <a href="#">Marketplaces</a>
+            <a href="#">Fixtures</a>
+            <a href="#">Wallet</a>
+            <a href="#">Launch App</a>
+          </div>
+          <div className="social">
+            <div className="text">
+              <p>Connect with us at :</p>
+            </div>
+            <div className="icons">
+              <a href="#">
+                <i class="ri-github-fill"></i>
+              </a>
+              <a href="#">
+                <i class="ri-discord-fill"></i>
+              </a>
+              <a href="#">
+                <i class="ri-telegram-fill"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* <footer>
         <p>
