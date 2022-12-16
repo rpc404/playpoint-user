@@ -4,52 +4,85 @@
   width: 100%;
   padding: 5em 0;
   .hero {
-
-    // display: flex;
-    // justify-content: space-between;
     margin: 0 auto;
     width: 90%;
 
-    @media screen and (min-width:769px) {
+
+    @media screen and (min-width: 769px) {
       display: flex;
       justify-content: space-between;
       gap: 20px;
     }
     .heroContent {
-      // width: 50%;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 50px;
-      @media screen and (min-width:769px) {
-        width: 50%;
+
+      @media screen and (min-width: 426px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
       }
+
       h1 {
-        font-size: 5em;
+        font-size: 3em;
+        text-align: center;
+        padding: 0.5em 0;
         font-weight: 800;
         background: linear-gradient(#0debc6, #2dabde);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+
+        @media screen and (min-width: 1441px) {
+          font-size: 4em;
+          text-align: left;
+        }
       }
       .card {
         background-color: #0d1016;
         border-radius: 20px;
-        padding: 2em;
+        padding: 1.5em;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        width: 100%;
+        max-width: 700px;
+
+        @media screen and (min-width: 1441px) {
+          max-width: 950px;
+        }
+
+        a {
+          text-decoration: none;
+          color: #fff;
+          width: fit-content;
+          padding: 0.2rem 0;
+          margin: 0.2rem 0;
+          transition: all 0.5s ease;
+          display: flex;
+          height: 20px;
+          align-items: center;
+          text-underline-offset: 5px;
+          &:hover {
+            color: #fff9;
+            text-decoration: underline;
+          }
+        }
 
         p {
           &:nth-child(1) {
             font-size: 1.2em;
+            color: #fff9;
+          }
+          &:last-child {
+            color: #fff9;
+            font-style: italic;
           }
           font-size: 1.2em;
         }
         h2 {
           font-size: 2.4em;
+          font-weight: 500;
         }
         .beginButton {
           width: fit-content;
@@ -66,6 +99,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          margin: 0.2em 0;
           transition: all 2s ease;
           background: linear-gradient(rgb(0, 0, 0), rgba(60, 59, 59, 0.35));
           position: relative;
@@ -96,20 +130,47 @@
     .heroImage {
       background: none;
       position: relative;
+      margin: 1em 0;
+      @media screen and (min-width: 426px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media screen and (min-width: 769px) and (max-width: 1025px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       img {
         width: 100%;
+        object-fit: cover;
       }
       .blob {
         position: absolute;
-        bottom: -50px;
-        left: 0;
-        fill: #2dabde;
+        bottom: -20px;
+        left: -0px;
         width: 300px;
+        max-width: 300px;
         height: 300px;
-        background: linear-gradient(#0debc669, #2dabde96);
+        // max-height: 300px;
+        // background: linear-gradient(#0debc669, #2dabde96);
+        background-image: linear-gradient(
+          to right top,
+          #33a3eb,
+          #00a8e3,
+          #00abd7,
+          #00adca,
+          #00aebb,
+          #00b3b8,
+          #00b8b4,
+          #02bdaf,
+          #00c8b6,
+          #00d4bc,
+          #00dfc2,
+          #0cebc7
+        );
         border-radius: 24% 76% 35% 65%/ 27% 36% 64% 73%;
         z-index: -1;
-        
       }
     }
   }

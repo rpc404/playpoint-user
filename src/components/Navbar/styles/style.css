@@ -45,7 +45,7 @@
 .navbar__container .navbar__authentication {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 .navbar__container .navbar__authentication .balance {
   color: rgba(254, 254, 254, 0.7);
