@@ -187,17 +187,20 @@
       width: 80%;
       margin: auto;
       padding: 3vh 0;
-      display: flex;
-      justify-content: space-around;
+      @media screen and (min-width:769px) {
+        display: flex;
+        justify-content: space-between;
+      }
       .playpoint {
-        width: 40%;
         display: flex;
         flex-direction: column;
+        flex: 1;
         gap: 2vh;
         .intro {
           display: flex;
           align-items: center;
           gap: 15px;
+        
 
           img {
             height: 70px;
@@ -205,31 +208,46 @@
           }
         }
       }
-      .links {
+      .links__container {
         display: flex;
-        flex-direction: column;
-        gap: 1.6vh;
+        margin: 1em 0;
+        @media screen and (min-width:769px) {
+          flex: 1;
+          justify-content: center;
+        }
+        .links {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
         a {
           text-decoration: none;
           color: #fff;
+          display: flex;
         }
       }
       .social {
         display: flex;
         flex-direction: column;
-        gap: 1vw;
-        // align-items: flex-end;
+        gap: 20px;
+        flex: 1;
+        @media screen and (min-width:769px) {
+          align-items: center;
+          margin-top: 1em;
+        }
 
         .icons {
           font-size: 2rem;
           display: flex;
           gap: 1vw;
+
           a {
             cursor: pointer;
             text-decoration: none;
             color: white;
+            transition: .4s ease;
             &:hover {
-              font-size: 2.4rem;
+              transform: scale(1.2);
             }
           }
         }

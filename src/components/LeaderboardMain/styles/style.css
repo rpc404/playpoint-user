@@ -207,4 +207,10 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.MuiPagination-ul li button {
+  color: #fff;
+  background-color: #000;
+  font-size: 1.2em;
 }/*# sourceMappingURL=style.css.map */

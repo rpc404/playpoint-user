@@ -225,3 +225,13 @@ main.leaderboardMain__container {
     }
   }
 }
+
+.MuiPagination-ul {
+  li {
+    button {
+      color: #fff;
+      background-color: #000;
+      font-size: 1.2em;
+    }
+  }
+}
