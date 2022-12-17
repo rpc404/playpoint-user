@@ -13,6 +13,9 @@ main.leaderboardMain__container .fixturesLeaderboard__container {
   padding: 10px 0;
   padding-left: 2vw;
 }
+main.leaderboardMain__container .fixturesLeaderboard__container h2 {
+  color: #fff;
+}
 @media (max-width: 968px) {
   main.leaderboardMain__container .fixturesLeaderboard__container {
     padding: 20px 0;
@@ -83,6 +86,9 @@ main.leaderboardMain__container .usersLeaderboard__container {
   height: 79vh;
   overflow-y: scroll;
 }
+main.leaderboardMain__container .usersLeaderboard__container h2 {
+  color: #fff;
+}
 @media (max-width: 968px) {
   main.leaderboardMain__container .usersLeaderboard__container {
     height: auto;
@@ -92,10 +98,14 @@ main.leaderboardMain__container .usersLeaderboard__container {
 main.leaderboardMain__container .usersLeaderboard__container a {
   text-decoration: none;
 }
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers {
+  color: #fff;
+}
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser {
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 15px;
   margin-bottom: 15px;
+  color: #fff;
 }
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser img {
   width: 13vw;
@@ -146,6 +156,7 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
   align-items: flex-start;
   gap: 8px;
   margin-bottom: 15px;
+  color: #fff;
 }
 @media (max-width: 968px) {
   main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User {
@@ -171,6 +182,9 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 {
   font-weight: 500;
   font-size: 16px;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 a {
+  color: rgba(255, 255, 255, 0.6);
 }
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User .gameDetails {
   display: flex;

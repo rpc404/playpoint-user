@@ -4,6 +4,9 @@
   margin: 15px 2vw;
   justify-content: space-between;
 }
+.leaderboard__container .filterarea h1 {
+  color: #fff;
+}
 @media (max-width: 768px) {
   .leaderboard__container .filterarea {
     flex-direction: column;

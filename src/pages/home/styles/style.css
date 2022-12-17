@@ -1,5 +1,6 @@
 .home__container .home__mainTitle {
   padding: 20px 2vw 20px 2vw;
+  color: #fff;
 }
 .home__container .marketingBanners__container {
   margin: 20px 0;
@@ -112,10 +113,10 @@
   text-decoration: none;
   max-width: 18vw;
   min-width: 17vw;
-  color: #000;
+  color: #fff;
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  border: 1px solid rgb(65, 65, 65);
   box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);

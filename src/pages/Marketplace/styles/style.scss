@@ -1,5 +1,5 @@
 .marketplace__container {
-  margin-top: 2em;
+  margin: 2em 0;
 
   .searchfield {
     display: flex;
@@ -40,7 +40,7 @@
         border: none;
         background-color: transparent;
         border: 1px solid transparent;
-        color: #0009;
+        color: #fff9;
         width: 90%;
         &:focus {
           outline: none;
@@ -116,15 +116,16 @@
 
     .marketplaceCard__container {
       text-decoration: none;
-      color: #000;
+      color: #fff;
+      background: transparent;
       border-radius: 16px;
       overflow: hidden;
-      background: #fff;
       box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
       -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
       -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
       cursor: pointer;
       transition: 0.3s all ease-in-out;
+      border: 1px solid rgb(65, 65, 65);
 
       @media (max-width: 576px) {
         max-width: 85vw;

@@ -1,20 +1,76 @@
 .hero__container {
-  // height: 90vh;
-  background-color: #000;
   width: 100%;
   padding: 5em 0;
+  overflow: hidden;
+
   .hero {
     margin: 0 auto;
     width: 90%;
+    padding: 0.2em;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4.5px);
+    -webkit-backdrop-filter: blur(4.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 10;
+    position: relative;
 
+    .blob1 {
+      position: absolute;
+      right: -150px;
+      top: -50px;
+      width: 300px;
+      max-width: 300px;
+      height: 300px;
+      background: linear-gradient(#0debc669, #2dabde96);
+      mix-blend-mode: color-dodge;
+      opacity: 0.8;
+      border-radius: 24% 66% 45% 55%/ 30% 46% 44% 43%;
+      z-index: -99;
+      animation: breathe 2s ease infinite alternate;
+    }
+
+    .blob {
+      position: absolute;
+      bottom: -50px;
+      left: -150px;
+      width: 300px;
+      max-width: 300px;
+      height: 300px;
+      background: linear-gradient(#0debc669, #2dabde96);
+      mix-blend-mode: color-dodge;
+      opacity: 0.8;
+      border-radius: 24% 76% 35% 65%/ 27% 36% 64% 73%;
+      z-index: -99;
+      animation: breathe 2s ease infinite alternate;
+
+      @keyframes breathe {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    @media screen and (min-width: 426px) {
+      padding: 1em 2em;
+    }
+
+    @media screen and (min-width: 1441px) {
+      padding: 1em 3em;
+    }
 
     @media screen and (min-width: 769px) {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
     }
     .heroContent {
       color: #fff;
+      // animation: slideInFromBottom .2s ease forwards;
 
       @media screen and (min-width: 426px) {
         display: flex;
@@ -39,7 +95,8 @@
         }
       }
       .card {
-        background-color: #0d1016;
+        // background-color: #0d1016;
+        // background-color: #1c1835;
         border-radius: 20px;
         padding: 1.5em;
         display: flex;
@@ -47,6 +104,16 @@
         gap: 10px;
         width: 100%;
         max-width: 700px;
+        animation: slideInFromBottom 400ms ease forwards;
+
+        @keyframes slideInFromBottom {
+          0% {
+            transform: translateY(100%);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
 
         @media screen and (min-width: 1441px) {
           max-width: 950px;
@@ -91,7 +158,6 @@
           border: none;
           cursor: pointer;
           border-radius: 3px;
-          box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.8);
           background: none;
           color: #fff;
           outline: none;
@@ -144,33 +210,6 @@
       img {
         width: 100%;
         object-fit: cover;
-      }
-      .blob {
-        position: absolute;
-        bottom: -20px;
-        left: -0px;
-        width: 300px;
-        max-width: 300px;
-        height: 300px;
-        // max-height: 300px;
-        // background: linear-gradient(#0debc669, #2dabde96);
-        background-image: linear-gradient(
-          to right top,
-          #33a3eb,
-          #00a8e3,
-          #00abd7,
-          #00adca,
-          #00aebb,
-          #00b3b8,
-          #00b8b4,
-          #02bdaf,
-          #00c8b6,
-          #00d4bc,
-          #00dfc2,
-          #0cebc7
-        );
-        border-radius: 24% 76% 35% 65%/ 27% 36% 64% 73%;
-        z-index: -1;
       }
     }
   }
