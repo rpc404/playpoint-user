@@ -66,7 +66,7 @@ export default function FixtureTable({ leaderboard, currPage }) {
         </TableHead>
         <TableBody>
           {leaderboard.map((row, i) => {
-            return (i < currPage*10 && i > (currPage-1)*10) &&
+            return (i < currPage*10 && i >= (currPage-1)*10) &&
              (
               <TableRow
                 key={i}

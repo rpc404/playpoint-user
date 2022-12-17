@@ -16,6 +16,15 @@ import { ethers } from "ethers";
 import ERC20BasicAPI from "../../../utils/ERC20BasicABI.json";
 import BetaFactoryAPI from "../../../utils/BetaFactoryABI.json";
 
+const _predictionData = {
+  answers: {},
+  predictedBy: "",
+  amount: 0,
+  questionaireId: "",
+  fixtureId: "",
+  marketplaceSlug: "",
+};
+
 /**
  * @dev utils for slider
  */
@@ -123,14 +132,7 @@ const PoolType = ({
     })();
   }, [userPrediction]);
 
-  const _predictionData = {
-    answers: {},
-    predictedBy: "",
-    amount: 0,
-    questionaireId: "",
-    fixtureId: "",
-    marketplaceSlug: "",
-  };
+
 
   const handleRadioChange = (question, answer) => {
     _predictionData.answers[question] = answer;
@@ -153,12 +155,14 @@ const PoolType = ({
   };
 
   const handlePrediction = async () => {
+    console.log(_predictionData.answers);
     _predictionData.predictedBy = userPublicAddress;
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id;
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
     _predictionData.marketplaceSlug =
       questionaire.tempQuestionaire[0].marketplaceSlug;
+      
 
     if (validation(_predictionData.answers)) {
       setPredicting(true);
@@ -193,6 +197,7 @@ const PoolType = ({
         _predictionData.predictedBy,
         (_predictionData.amount * 1e18).toString()
       );
+
       return await setPrediction(_predictionData)
         .then(() => {
           toast("Predicted Successfully!");
