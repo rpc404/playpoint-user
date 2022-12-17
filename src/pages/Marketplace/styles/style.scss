@@ -1,5 +1,7 @@
 .marketplace__container {
   margin: 2em 0;
+  overflow: hidden;
+  height: calc(100vh - 11.4em);
 
   .searchfield {
     display: flex;
