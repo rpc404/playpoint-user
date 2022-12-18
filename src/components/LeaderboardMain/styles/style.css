@@ -17,7 +17,10 @@ main.leaderboardMain__container .fixturesLeaderboard__container h2 {
   color: #fff;
 }
 main.leaderboardMain__container .fixturesLeaderboard__container .MuiPaper-root {
-  color: #fff;
+  background-color: transparent;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiPaper-root table thead tbody tr th {
+  color: #fff !important;
 }
 @media (max-width: 968px) {
   main.leaderboardMain__container .fixturesLeaderboard__container {
@@ -216,4 +219,11 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
   color: #fff;
   background-color: #000;
   font-size: 1.2em;
+}
+
+.MuiTableCell-root {
+  color: #fff !important;
+}
+.MuiTableCell-root a {
+  color: rgba(255, 255, 255, 0.855);
 }/*# sourceMappingURL=style.css.map */

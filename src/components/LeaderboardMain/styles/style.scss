@@ -19,9 +19,19 @@ main.leaderboardMain__container {
     }
 
     .MuiPaper-root {
-      // color: rgba(0, 0, 0, 0.87);
-      color: #fff;
-      // background-color: transparent;
+      background-color: transparent;
+
+      table {
+        thead {
+          tbody {
+            tr {
+              th {
+                color: #fff !important;
+              }
+            }
+          }
+        }
+      }
     }
 
     @media (max-width: 968px) {
@@ -33,7 +43,6 @@ main.leaderboardMain__container {
     .MuiTableRow-root {
       transition: 0.3s all ease-in-out;
       cursor: pointer;
-
 
       &:hover {
         background: rgba(82, 82, 82, 0.067);
@@ -138,12 +147,12 @@ main.leaderboardMain__container {
 
         h4 {
           font-weight: 500;
-          
+
           @media screen and (max-width: 968px) {
             font-size: 20px;
           }
         }
-        
+
         a {
           color: #6d6f71;
         }
@@ -242,3 +251,12 @@ main.leaderboardMain__container {
     }
   }
 }
+
+.MuiTableCell-root {
+   color: #fff !important; 
+
+   a {
+    color: rgba(255, 255, 255, 0.855);
+   }
+}
+
