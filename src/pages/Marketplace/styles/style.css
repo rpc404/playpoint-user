@@ -1,7 +1,11 @@
 .marketplace__container {
   margin: 2em 0;
   overflow: hidden;
-  height: calc(100vh - 11.4em);
+}
+@media screen and (min-width: 1441px) {
+  .marketplace__container {
+    height: calc(100vh - 11.4em);
+  }
 }
 .marketplace__container .searchfield {
   display: flex;

@@ -18,6 +18,12 @@ main.leaderboardMain__container {
       color: #fff;
     }
 
+    .MuiPaper-root {
+      // color: rgba(0, 0, 0, 0.87);
+      color: #fff;
+      // background-color: transparent;
+    }
+
     @media (max-width: 968px) {
       padding: 20px 0;
       overflow-x: scroll;
@@ -27,6 +33,7 @@ main.leaderboardMain__container {
     .MuiTableRow-root {
       transition: 0.3s all ease-in-out;
       cursor: pointer;
+
 
       &:hover {
         background: rgba(82, 82, 82, 0.067);

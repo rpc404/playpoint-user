@@ -1,7 +1,9 @@
 .marketplace__container {
   margin: 2em 0;
   overflow: hidden;
-  height: calc(100vh - 11.4em);
+  @media screen and (min-width: 1441px) {
+    height: calc(100vh - 11.4em);
+  }
 
   .searchfield {
     display: flex;
@@ -19,17 +21,16 @@
       width: 90%;
       margin: 0 auto;
 
-      @media screen and (min-width:426px) {
+      @media screen and (min-width: 426px) {
         width: 50%;
       }
-      @media screen and (min-width:769px) {
+      @media screen and (min-width: 769px) {
         width: 40%;
       }
 
-      @media screen and (min-width:1441px) {
+      @media screen and (min-width: 1441px) {
         width: 30%;
       }
-
 
       .icon {
         padding: 0.5em;
@@ -49,7 +50,7 @@
         }
         &::-webkit-search-cancel-button {
           cursor: pointer;
-          padding: .1em;
+          padding: 0.1em;
         }
       }
     }

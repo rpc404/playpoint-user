@@ -12,7 +12,7 @@ export default function LeaderboardMain() {
   const [leaderboards, setLeaderboards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [topRanked, setTopRanked] = React.useState([]);
-  const [currPage, setCurrPage] = React.useState(1)
+  const [currPage, setCurrPage] = React.useState(1);
 
   React.useEffect(() => {
     getLeaderboardByMarketplaceSlug("fifa-worldcup").then((res) => {
@@ -26,8 +26,16 @@ export default function LeaderboardMain() {
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
         <h2>📈 Top Ranked Fixtures</h2>
+        
         <FixtureTable leaderboard={leaderboards} currPage={currPage} />
-        <Pagination style={{ marginTop: 15 }} count={Math.ceil(leaderboards.length/10)} onChange={e=>setCurrPage(e.target.innerText)} variant="outlined" hideNextButton hidePrevButton />
+        <Pagination
+          style={{ marginTop: 15 }}
+          count={Math.ceil(leaderboards.length / 10)}
+          onChange={(e) => setCurrPage(e.target.innerText)}
+          variant="outlined"
+          hideNextButton
+          hidePrevButton
+        />
       </div>
 
       <div className="usersLeaderboard__container">
@@ -55,7 +63,7 @@ export default function LeaderboardMain() {
                 <p>Points</p>
                 <span>{topRanked[0]?.points}</span>
               </div>
-             
+
               <div>
                 <p>Amount</p>
                 <span>{topRanked[0]?.amount} PPTT</span>
@@ -84,7 +92,7 @@ export default function LeaderboardMain() {
                         <p>Points</p>
                         <span>{user?.points}</span>
                       </div>
-                    
+
                       <div>
                         <p>Amount</p>
                         <span>{user?.amount} PPTT</span>

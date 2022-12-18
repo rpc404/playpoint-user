@@ -16,6 +16,9 @@ main.leaderboardMain__container .fixturesLeaderboard__container {
 main.leaderboardMain__container .fixturesLeaderboard__container h2 {
   color: #fff;
 }
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiPaper-root {
+  color: #fff;
+}
 @media (max-width: 968px) {
   main.leaderboardMain__container .fixturesLeaderboard__container {
     padding: 20px 0;

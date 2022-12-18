@@ -8,12 +8,13 @@
   width: 90%;
   padding: 0.2em;
   border-radius: 5px;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.8);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4.5px);
-  -webkit-backdrop-filter: blur(4.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.7px);
+  -webkit-backdrop-filter: blur(3.7px);
+  border: 1px solid rgba(255, 255, 255, 0.29);
   z-index: 10;
   position: relative;
 }
@@ -27,10 +28,10 @@
   background: linear-gradient(rgba(13, 235, 198, 0.4117647059), rgba(45, 171, 222, 0.5882352941));
   mix-blend-mode: color-dodge;
   opacity: 0.8;
-  border-radius: 24% 66% 45% 55%/30% 46% 44% 43%;
+  border-radius: 24% 76% 35% 65%/27% 36% 64% 73%;
   z-index: -99;
-  -webkit-animation: breathe 2s ease infinite alternate;
-          animation: breathe 2s ease infinite alternate;
+  -webkit-animation: breathe 3.5s ease infinite alternate;
+          animation: breathe 3.5s ease infinite alternate;
 }
 .hero__container .hero .blob {
   position: absolute;
@@ -44,8 +45,8 @@
   opacity: 0.8;
   border-radius: 24% 76% 35% 65%/27% 36% 64% 73%;
   z-index: -99;
-  -webkit-animation: breathe 2s ease infinite alternate;
-          animation: breathe 2s ease infinite alternate;
+  -webkit-animation: breathe 3.5s ease infinite alternate;
+          animation: breathe 3.5s ease infinite alternate;
 }
 @-webkit-keyframes breathe {
   0% {
