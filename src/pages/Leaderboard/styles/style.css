@@ -4,6 +4,9 @@
   margin: 15px 2vw;
   justify-content: space-between;
 }
+.leaderboard__container .filterarea h1 {
+  color: #fff;
+}
 @media (max-width: 768px) {
   .leaderboard__container .filterarea {
     flex-direction: column;
@@ -36,7 +39,7 @@
   border: none;
   background-color: transparent;
   border: 1px solid transparent;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   width: 90%;
 }
 .leaderboard__container .filterarea .search__container input[type=input]:focus {

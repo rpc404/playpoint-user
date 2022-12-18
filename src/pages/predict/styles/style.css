@@ -21,6 +21,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: 500;
+  color: #fff;
 }
 .prediction__container .main__container .recentPredictions .prediction__items {
   height: 83vh;
@@ -39,7 +40,7 @@
           animation: ease-in-out;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container:hover {
-  background: #f1f2f6;
+  background: rgba(27, 27, 27, 0.4862745098);
   cursor: pointer;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info {
@@ -52,7 +53,7 @@
   color: #2ecc71;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container .info p:last-child {
-  color: rgba(0, 0, 0, 0.5333333333);
+  color: rgba(255, 255, 255, 0.5333333333);
   font-size: 14px;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container canvas {
@@ -80,10 +81,13 @@
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details p {
   background: #000;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.6);
   padding: 1px 15px;
   border-radius: 10px;
   font-size: 12px;
+}
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div p {
+  color: #fff;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div p a {
   width: -webkit-fit-content;
@@ -176,6 +180,7 @@
   gap: 10px;
   margin: 1em auto;
   justify-content: center;
+  color: #fff;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .timeOut .block {
   text-align: center;
@@ -190,6 +195,7 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  color: #fff;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results {
   display: flex;
@@ -255,6 +261,7 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar div {
   display: flex;
   align-items: center;
+  color: #fff;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar .MuiButton-root,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root .topBar .MuiButton-root,
@@ -262,7 +269,6 @@
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .MuiBox-root .topBar .MuiButton-root {
   padding: 0 10px;
   min-width: 0;
-  color: #3a3a3a;
   font-weight: 500;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root .topBar .MuiButton-root.active,
@@ -279,7 +285,7 @@
   text-align: center;
   padding: 0.5em 0;
   font-style: italic;
-  color: rgba(0, 0, 0, 0.6);
+  color: #fff;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem,
@@ -288,6 +294,7 @@
   border-top: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding: 10px 5px;
   font-size: 15px;
+  color: #fff;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .questionaires .questionItem .top,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .questionaires .questionItem .top,
@@ -344,6 +351,7 @@
   padding-top: 10px;
   gap: 25px;
   display: flex;
+  color: #fff;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount,
@@ -428,6 +436,7 @@
   font-weight: 500;
   margin: 10px 8px;
   margin-bottom: 15px;
+  color: #fff;
 }
 .prediction__container .main__container .leaderboards .leaderboardItemsTitle {
   display: flex;
@@ -437,6 +446,7 @@
   font-size: 14px;
   font-weight: 500;
   margin: 0 8px;
+  color: #fff;
 }
 .prediction__container .main__container .leaderboards .leaderboardItemsTitle p {
   flex: 1 1 0;

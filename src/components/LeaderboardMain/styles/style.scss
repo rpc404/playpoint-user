@@ -14,6 +14,16 @@ main.leaderboardMain__container {
     padding: 10px 0;
     padding-left: 2vw;
 
+    h2 {
+      color: #fff;
+    }
+
+    .MuiPaper-root {
+      // color: rgba(0, 0, 0, 0.87);
+      color: #fff;
+      // background-color: transparent;
+    }
+
     @media (max-width: 968px) {
       padding: 20px 0;
       overflow-x: scroll;
@@ -23,6 +33,7 @@ main.leaderboardMain__container {
     .MuiTableRow-root {
       transition: 0.3s all ease-in-out;
       cursor: pointer;
+
 
       &:hover {
         background: rgba(82, 82, 82, 0.067);
@@ -89,6 +100,10 @@ main.leaderboardMain__container {
     height: 79vh;
     overflow-y: scroll;
 
+    h2 {
+      color: #fff;
+    }
+
     @media (max-width: 968px) {
       height: auto;
       border-bottom: 1px solid #0002;
@@ -99,10 +114,13 @@ main.leaderboardMain__container {
     }
 
     .topThreeUsers {
+      color: #fff;
       .topUser {
         border-bottom: 0.5px solid #0003;
         padding-bottom: 15px;
         margin-bottom: 15px;
+
+        color: #fff;
 
         img {
           width: 13vw;
@@ -120,12 +138,12 @@ main.leaderboardMain__container {
 
         h4 {
           font-weight: 500;
-
+          
           @media screen and (max-width: 968px) {
             font-size: 20px;
           }
         }
-
+        
         a {
           color: #6d6f71;
         }
@@ -155,6 +173,7 @@ main.leaderboardMain__container {
         align-items: flex-start;
         gap: 8px;
         margin-bottom: 15px;
+        color: #fff;
 
         @media (max-width: 968px) {
           gap: 15px;
@@ -174,11 +193,16 @@ main.leaderboardMain__container {
 
         h2 {
           margin-bottom: 3px;
+          // color: #fff;
         }
 
         h4 {
           font-weight: 500;
           font-size: 16px;
+
+          a {
+            color: #fff9;
+          }
         }
 
         .gameDetails {
@@ -205,6 +229,16 @@ main.leaderboardMain__container {
       border-left: none;
       padding-left: 0;
       padding-right: 0;
+    }
+  }
+}
+
+.MuiPagination-ul {
+  li {
+    button {
+      color: #fff;
+      background-color: #000;
+      font-size: 1.2em;
     }
   }
 }

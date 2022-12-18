@@ -1,5 +1,11 @@
 .marketplace__container {
-  margin-top: 2em;
+  margin: 2em 0;
+  overflow: hidden;
+}
+@media screen and (min-width: 1441px) {
+  .marketplace__container {
+    height: calc(100vh - 11.4em);
+  }
 }
 .marketplace__container .searchfield {
   display: flex;
@@ -42,7 +48,7 @@
   border: none;
   background-color: transparent;
   border: 1px solid transparent;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   width: 90%;
 }
 .marketplace__container .searchfield .search__container input[type=input]:focus {
@@ -122,15 +128,16 @@
 }
 .marketplace__container .marketplace__items .marketplaceCard__container {
   text-decoration: none;
-  color: #000;
+  color: #fff;
+  background: transparent;
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
   box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: 0.3s all ease-in-out;
+  border: 1px solid rgb(65, 65, 65);
 }
 @media (max-width: 576px) {
   .marketplace__container .marketplace__items .marketplaceCard__container {

@@ -47,7 +47,7 @@
   .navbar__authentication {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 
     .balance {
       color: rgba(254, 254, 254, 0.7);
@@ -55,11 +55,12 @@
       text-decoration: none;
       transition: 0.2s all ease-in-out;
       font-weight: 400;
-      font-size: 15px;display: flex;
+      font-size: 15px;
+      display: flex;
       align-items: center;
       gap: 5px;
 
-      img{
+      img {
         width: 10px;
       }
 
@@ -76,20 +77,35 @@
       text-transform: capitalize;
     }
 
+    .buyButton {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      height: 36.5px;
+      letter-spacing: 0.39998px;
+      width: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
     @media (max-width: 576px) {
       display: none;
     }
   }
 
   .drawer {
-    @media screen and (min-width:576px) {
+    @media screen and (min-width: 576px) {
       display: none;
     }
     i {
       font-size: 22px;
     }
     .drawerListItem {
-      gap: 5px!important;
+      gap: 5px !important;
     }
   }
 }

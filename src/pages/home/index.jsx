@@ -6,11 +6,13 @@ import { getMarketplaces, getMarketplaceStat } from "../../api/Marketplace";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
+import Hero from "../../components/Hero";
+import Footer from "../../components/Footer"
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
-  console.log(marketplaces)
+  console.log(marketplaces);
 
   React.useEffect(() => {
     (async () => {
@@ -29,6 +31,8 @@ export default function Home() {
 
   return (
     <div className="home__container">
+      <div className="divider"></div>
+      <Hero />
       <h1 className="home__mainTitle">Active Marketplaces</h1>
       <div className="marketplace__items">
         {marketplaces && marketplaces.length >= 1 && !loading ? (
@@ -120,43 +124,7 @@ export default function Home() {
 
       <LeaderboardMain />
       <div className="divider"></div>
-      <div className="footer__container">
-        <div className="footer">
-          <div className="playpoint">
-            <div className="intro">
-              <img
-                src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
-                alt=""
-              />
-
-              <h1>Playpoint</h1>
-            </div>
-          </div>
-
-          <div className="links">
-            <a href="#">Marketplaces</a>
-            <a href="#">Fixtures</a>
-            <a href="#">Wallet</a>
-            <a href="#">Launch App</a>
-          </div>
-          <div className="social">
-            <div className="text">
-              <p>Connect with us at :</p>
-            </div>
-            <div className="icons">
-              <a href="#">
-                <i class="ri-github-fill"></i>
-              </a>
-              <a href="#">
-                <i class="ri-discord-fill"></i>
-              </a>
-              <a href="#">
-                <i class="ri-telegram-fill"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Footer />
 
       {/* <footer>
         <p>

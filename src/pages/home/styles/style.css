@@ -1,5 +1,6 @@
 .home__container .home__mainTitle {
   padding: 20px 2vw 20px 2vw;
+  color: #fff;
 }
 .home__container .marketingBanners__container {
   margin: 20px 0;
@@ -112,10 +113,10 @@
   text-decoration: none;
   max-width: 18vw;
   min-width: 17vw;
-  color: #000;
+  color: #fff;
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  border: 1px solid rgb(65, 65, 65);
   box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
@@ -175,13 +176,17 @@
   width: 80%;
   margin: auto;
   padding: 3vh 0;
-  display: flex;
-  justify-content: space-around;
+}
+@media screen and (min-width: 769px) {
+  .home__container .footer__container .footer {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .home__container .footer__container .footer .playpoint {
-  width: 40%;
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 2vh;
 }
 .home__container .footer__container .footer .playpoint .intro {
@@ -193,19 +198,37 @@
   height: 70px;
   width: 70px;
 }
-.home__container .footer__container .footer .links {
+.home__container .footer__container .footer .links__container {
+  display: flex;
+  margin: 1em 0;
+}
+@media screen and (min-width: 769px) {
+  .home__container .footer__container .footer .links__container {
+    flex: 1;
+    justify-content: center;
+  }
+}
+.home__container .footer__container .footer .links__container .links {
   display: flex;
   flex-direction: column;
-  gap: 1.6vh;
+  gap: 20px;
 }
-.home__container .footer__container .footer .links a {
+.home__container .footer__container .footer .links__container a {
   text-decoration: none;
   color: #fff;
+  display: flex;
 }
 .home__container .footer__container .footer .social {
   display: flex;
   flex-direction: column;
-  gap: 1vw;
+  gap: 20px;
+  flex: 1;
+}
+@media screen and (min-width: 769px) {
+  .home__container .footer__container .footer .social {
+    align-items: center;
+    margin-top: 1em;
+  }
 }
 .home__container .footer__container .footer .social .icons {
   font-size: 2rem;
@@ -216,7 +239,8 @@
   cursor: pointer;
   text-decoration: none;
   color: white;
+  transition: 0.4s ease;
 }
 .home__container .footer__container .footer .social .icons a:hover {
-  font-size: 2.4rem;
+  transform: scale(1.2);
 }/*# sourceMappingURL=style.css.map */

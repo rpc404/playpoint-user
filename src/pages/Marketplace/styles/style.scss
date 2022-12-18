@@ -1,5 +1,9 @@
 .marketplace__container {
-  margin-top: 2em;
+  margin: 2em 0;
+  overflow: hidden;
+  @media screen and (min-width: 1441px) {
+    height: calc(100vh - 11.4em);
+  }
 
   .searchfield {
     display: flex;
@@ -17,17 +21,16 @@
       width: 90%;
       margin: 0 auto;
 
-      @media screen and (min-width:426px) {
+      @media screen and (min-width: 426px) {
         width: 50%;
       }
-      @media screen and (min-width:769px) {
+      @media screen and (min-width: 769px) {
         width: 40%;
       }
 
-      @media screen and (min-width:1441px) {
+      @media screen and (min-width: 1441px) {
         width: 30%;
       }
-
 
       .icon {
         padding: 0.5em;
@@ -40,14 +43,14 @@
         border: none;
         background-color: transparent;
         border: 1px solid transparent;
-        color: #0009;
+        color: #fff9;
         width: 90%;
         &:focus {
           outline: none;
         }
         &::-webkit-search-cancel-button {
           cursor: pointer;
-          padding: .1em;
+          padding: 0.1em;
         }
       }
     }
@@ -116,15 +119,16 @@
 
     .marketplaceCard__container {
       text-decoration: none;
-      color: #000;
+      color: #fff;
+      background: transparent;
       border-radius: 16px;
       overflow: hidden;
-      background: #fff;
       box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
       -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
       -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
       cursor: pointer;
       transition: 0.3s all ease-in-out;
+      border: 1px solid rgb(65, 65, 65);
 
       @media (max-width: 576px) {
         max-width: 85vw;

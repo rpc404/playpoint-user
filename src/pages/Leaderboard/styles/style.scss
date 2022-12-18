@@ -5,6 +5,10 @@
     margin: 15px 2vw;
     justify-content: space-between;
 
+    h1 {
+      color: #fff;
+    }
+
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: center;
@@ -36,7 +40,7 @@
         border: none;
         background-color: transparent;
         border: 1px solid transparent;
-        color: #0009;
+        color: #fff9;
         width: 90%;
 
         &:focus {
