@@ -49,6 +49,7 @@
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container {
   padding: 25px 0;
+  color: #fff;
 }
 @media (max-width: 576px) {
   .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container {
@@ -87,6 +88,7 @@
   top: 50%;
   gap: 5px;
   transform: translate3d(-50%, -50%, 0);
+  color: rgba(255, 255, 255, 0.6);
 }
 @media (max-width: 576px) {
   .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__location {
@@ -109,7 +111,7 @@
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails .teamName {
   font-weight: 500;
-  color: #2a2a2a;
+  color: #fff;
   font-size: 17px;
   display: flex;
   align-items: center;
@@ -149,7 +151,7 @@
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root {
   text-transform: capitalize;
   padding: 1px 5px;
-  color: #000;
+  color: #fff;
 }
 @media (max-width: 576px) {
   .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__action .MuiButton-root {
