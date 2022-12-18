@@ -66,44 +66,6 @@
   position: absolute;
   top: -160px;
 }
-.profile__container .userData__container .summary__container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  flex: 1;
-  padding-bottom: 1em;
-  align-items: center;
-  justify-content: center;
-}
-.profile__container .userData__container .summary__container .summaryItem {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 5px 10px 5px 10px;
-  border-bottom: 1px solid #6b5ce7;
-}
-@media screen and (min-width: 426px) {
-  .profile__container .userData__container .summary__container .summaryItem {
-    border-bottom: none;
-  }
-  .profile__container .userData__container .summary__container .summaryItem:nth-child(1) {
-    border-right: 1px solid #6b5ce7;
-  }
-}
-.profile__container .userData__container .summary__container .summaryItem i {
-  font-size: 25px;
-  color: #6b5ce7;
-  border-radius: 12px;
-}
-.profile__container .userData__container .summary__container .summaryItem p {
-  font-size: 14px;
-  font-weight: 600;
-}
-.profile__container .userData__container .summary__container .summaryItem h3 {
-  font-weight: 400;
-}
 .profile__container .userData__container .MuiButton-root {
   display: flex;
   align-items: center;
@@ -204,9 +166,51 @@
   margin-top: 0.2em;
   font-size: 1.1em;
 }
+.profile__container .summary__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 1;
+  padding-bottom: 1em;
+  align-items: center;
+  justify-content: center;
+}
+.profile__container .summary__container .summaryItem {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px 10px 5px 10px;
+  border-bottom: 1px solid #6b5ce7;
+}
+@media screen and (min-width: 426px) {
+  .profile__container .summary__container .summaryItem {
+    border-bottom: none;
+  }
+  .profile__container .summary__container .summaryItem:nth-child(1) {
+    border-right: 1px solid #6b5ce7;
+  }
+}
+.profile__container .summary__container .summaryItem i {
+  font-size: 25px;
+  color: #6b5ce7;
+  border-radius: 12px;
+}
+.profile__container .summary__container .summaryItem p {
+  font-size: 14px;
+  font-weight: 600;
+}
+.profile__container .summary__container .summaryItem h3 {
+  font-weight: 400;
+}
 .profile__container .history__container {
   margin: 0 5vw;
   margin-top: 20px;
+}
+.profile__container .history__container .profile-menus__container .Mui-selected {
+  color: #ffffff;
+  background: #333;
 }
 @media screen and (max-width: 426px) {
   .profile__container .history__container {
@@ -272,11 +276,11 @@
   border-radius: 2px;
   color: #e74c3c;
 }
-.profile__container .history__container .history__items .history__item p:nth-child(4).win {
+.profile__container .history__container .history__items .history__item p:nth-child(3).win {
   color: #2ecc71;
   font-weight: 500;
 }
-.profile__container .history__container .history__items .history__item p:nth-child(4).lose {
+.profile__container .history__container .history__items .history__item p:nth-child(3).lose {
   color: #e74c3c;
 }
 .profile__container .history__container .history__items .history__item:nth-child(2n) {
