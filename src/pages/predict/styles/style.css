@@ -186,16 +186,21 @@
   text-align: center;
   padding: 10px;
   border-radius: 5px;
-  border: 0.5px solid rgba(80, 79, 79, 0.335);
+  border: 0.5px solid rgba(168, 168, 168, 0.335);
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .timeOut .block span {
-  color: #4e4d4d;
+  color: rgba(255, 255, 255, 0.6);
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_detail {
   display: flex;
   gap: 20px;
   justify-content: center;
+  align-items: center;
   color: #fff;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_detail p {
+  display: flex;
+  gap: 5px;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results {
   display: flex;

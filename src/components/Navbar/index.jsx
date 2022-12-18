@@ -259,12 +259,11 @@ export default function Navbar() {
             <Button onClick={() => handleLogout()}>
               <i className="ri-logout-box-line"></i> Logout
             </Button>
-           
           </>
         )}
       </div>
 
-      <div className="drawer">
+      <div className="drawer" style={{backgroundColor:"#000"}}>
         <div onClick={toggleDrawer("right", true)}>
           <i className="ri-menu-3-line"></i>
         </div>
@@ -272,6 +271,7 @@ export default function Navbar() {
           anchor={"right"}
           open={navSMState["right"]}
           onClose={toggleDrawer("right", false)}
+          // style={{ backgroundColor: "#1c1b1b" }}
         >
           {list("right")}
         </Drawer>
