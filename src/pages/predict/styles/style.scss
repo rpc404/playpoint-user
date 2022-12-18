@@ -197,9 +197,9 @@
             text-align: center;
             padding: 10px;
             border-radius: 5px;
-            border: 0.5px solid rgba(80, 79, 79, 0.335);
+            border: 0.5px solid rgba(168, 168, 168, 0.335);
             span {
-              color: #4e4d4d;
+              color: #fff9;
             }
           }
         }
@@ -207,7 +207,13 @@
           display: flex;
           gap: 20px;
           justify-content: center;
+          align-items: center;
           color: #fff;
+          p {
+            display: flex;
+            gap: 5px;
+          }
+
         }
         .fixture_results {
           display: flex;
