@@ -288,4 +288,8 @@
 .featureSkeleton .featuresSkeleton .features__container .view {
   display: flex;
   gap: 15px;
+}
+
+.MuiButtonBase-root {
+  color: rgba(255, 255, 255, 0.776) !important;
 }/*# sourceMappingURL=style.css.map */
