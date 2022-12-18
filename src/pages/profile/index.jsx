@@ -13,20 +13,58 @@ import { toast } from "react-toastify";
 import { getCountryShortName } from "../../components/Leaderboards/Leaderboards";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import { getuserResults } from "../../api/Results";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box>{children}</Box>}
+    </div>
+  );
+}
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    "aria-controls": `vertical-tabpanel-${index}`,
+  };
+}
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
-  const [ {results, woat} , dispatchPredictionsData] = usePredictionsContext();
+  const [{ results, woat }, dispatchPredictionsData] = usePredictionsContext();
   const [_username, setUsername] = useState(username);
- 
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   React.useEffect(() => {
     if (userPublicAddress) {
       (async () => {
         const res = await getuserResults(userPublicAddress);
+        console.log(res);
         dispatchPredictionsData({ type: "get-results", payload: res.data });
       })();
     }
@@ -125,7 +163,12 @@ export default function Profile() {
               </div>
             )}
           </div>
+          <Button className="addMoneyBtn">
+            <i className="ri-add-box-line"></i> Add Money
+          </Button>
         </div>
+      </div>
+     
         <div className="summary__container">
           <div className="summaryItem">
             <i className="ri-money-dollar-circle-line"></i>
@@ -141,64 +184,127 @@ export default function Profile() {
               <h3>{woat} PPTT</h3>
             </div>
           </div>
-          <Button className="addMoneyBtn">
-            <i className="ri-add-box-line"></i> Add Money
-          </Button>
         </div>
-      </div>
-
       <div className="history__container">
-        <div className="titles">
-          <p>ID</p>
-          <p>Points</p>
-          <p>amount</p>
-          <p>win/lose amount</p>
-          <p>match</p>
-          <p>date/time</p>
-        </div>
-                          { console.log(results)}
-        <div className="history__items">
-          {results.map((data, index) => {
-            data.result = (data.predictionId.amount / 0.02) < data.rewardAmount ? "win" : "loose";
-            return <div className="history__item" key={index}>
-              <p>{data._id.substring(4, 15)}</p>
-              <p className={data.result}>
-                <span>{data.points || "-"}</span>
-              </p>
-              <p>
-                {data.predictionId.amount / 0.02} PPTT
-              </p>
-              <p className={data.result}>
-                {data.result === "win" || data.result === "lose" ? (
-                  <>
-                   {data.rewardAmount} PPTT ~ ${data.rewardAmount * 0.02 }
-                  </>
-                ) : (
-                  <>{"-"}</>
-                )}
-              </p>
-              <p>
-                <b>{getCountryShortName(data?.fixtureId?.HomeTeam) || "-"}</b>{" "}
-                VS{" "}
-                <b>{getCountryShortName(data?.fixtureId?.AwayTeam) || "-"}</b>
-              </p>
-              <p>{moment(data.created_at).format("LL")}</p>
-            </div>
-            })}
+        <div className="profile-menus__container">
+          <Box
+            sx={{
+              flexGrow: 2,
+              bgcolor: "background.paper",
+              display: "flex",
+              height: 254,
+              gap: "12px",
+            }}
+          >
+            <Tabs
+              orientation="vertical"
+              variant="scrollable"
+              value={value}
+              onChange={handleChange}
+              aria-label="Profile Menu"
+              sx={{ borderRight: 1, borderColor: "divider" }}
+            >
+              <Tab label="Settled Predictions" {...a11yProps(0)} />
+              <Tab label="Unsettled Predictions" {...a11yProps(1)} />
+              <Tab label="Duo Challenges" {...a11yProps(2)} />
+              <Tab label="Trio Challenges" {...a11yProps(3)} />
+              <Tab label="All Transcations" {...a11yProps(4)} />
+              <Tab label="Extra" {...a11yProps(5)} />
+            </Tabs>
+            <TabPanel
+              value={value}
+              index={0}
+              style={{ flex: 1, marginTop: "1em" }}
+            >
+              <div>
+                <p style={{ textAlign: "center", padding: "10px" }}>
+                  <em>
+                    Settled Predictions are those predictions for which either
+                    you're rewarded or lose.
+                  </em>
+                </p>
+                <div className="titles">
+                  <p>ID</p>
+                  <p>Points</p>
+                  {/* <p>amount</p> */}
+                  <p>win/lose amount</p>
+                  <p>match</p>
+                  <p>date/time</p>
+                </div>
+                <div className="history__items">
+                  {results.map((data, index) => {
+                    data.result =
+                      data.predictionId.amount / 0.02 < data.rewardAmount
+                        ? "win"
+                        : "lose";
+                    return (
+                      <div className="history__item" key={index}>
+                        <p>{data._id.substring(4, 15)}</p>
+                        <p className={data.result}>
+                          <span>{data.points || "0"}</span>
+                        </p>
+                        {/* <p>{data.predictionId.amount / 0.02} PPTT</p> */}
+                        <p className={data.result}>
+                          {data.result === "win" ? (
+                            <>
+                              {data.rewardAmount} PPTT ~ $
+                              {data.rewardAmount * 0.02}
+                            </>
+                          ) : (
+                            <>
+                              <>
+                                {data.predictionId.amount / 0.02} PPTT ~ $
+                                {data.predictionId.amount}
+                              </>
+                            </>
+                          )}
+                        </p>
+                        <p>
+                          <b>
+                            {getCountryShortName(
+                              data?.predictionId?.fixtureId?.HomeTeam
+                            ) || "-"}
+                          </b>{" "}
+                          VS{" "}
+                          <b>
+                            {getCountryShortName(
+                              data?.predictionId?.fixtureId?.AwayTeam
+                            ) || "-"}
+                          </b>
+                        </p>
+                        <p>{moment(data.created_at).format("LL")}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+                <Stack spacing={2}>
+                  <Pagination
+                    count={Math.floor(results.length / 10)}
+                    shape="rounded"
+                    className="pagination"
+                    onClick={(e) => handlePageClick(e)}
+                    hideNextButton
+                    hidePrevButton
+                  />
+                </Stack>
+              </div>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              Item Two
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              Item Three
+            </TabPanel>
+          </Box>
         </div>
       </div>
-
-      <Stack spacing={2}>
-        <Pagination
-          count={parseInt(userProfile.length / 10)}
-          shape="rounded"
-          className="pagination"
-          onClick={(e) => handlePageClick(e)}
-        />
-      </Stack>
 
       <div className="mobhistory_container">
-        {history.map((data, i) => {
+        {results.map((data, i) => {
+          data.result =
+            data.predictionId.amount / 0.02 < data.rewardAmount
+              ? "win"
+              : "lose";
           return (
             <div className="card" key={i}>
               <div className="id__container">
@@ -207,14 +313,14 @@ export default function Profile() {
                 </p>
               </div>
               <p className="amount">
-                {` Amount: $${data.amount}~${data.amount} PPTT`}
+                {` Amount: $${data.predictionId.amount}~${data.predictionId.amount} PPTT`}
               </p>
               <p className="result">Result:{data.result || "--"}</p>
               <p className="win-lose">
                 win/lose amount:{" "}
                 {data.result === "win" || data.result === "lose" ? (
                   <>
-                    ${data.resultAmount}~{data.resultAmount * 0.015} PPTT
+                    ${data.rewardAmount}~{data.rewardAmount * 0.02} PPTT
                   </>
                 ) : (
                   <>{"-"}</>
@@ -228,8 +334,8 @@ export default function Profile() {
                 Date:{moment(data?.created_at).format("LT")}
               </p>
               {data.result && (
-                <div className="winlose">
-                  <p>win/lose</p>
+                <div className={`winlose`}>
+                  <p className={data.result}>{data.result}</p>
                 </div>
               )}
             </div>
