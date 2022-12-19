@@ -33,6 +33,7 @@ export default function Home() {
     <div className="home__container">
       <div className="divider"></div>
       <Hero />
+      <div className="divider"></div>
       <h1 className="home__mainTitle">Active Marketplaces</h1>
       <div className="marketplace__items">
         {marketplaces && marketplaces.length >= 1 && !loading ? (
