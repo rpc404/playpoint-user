@@ -19,6 +19,15 @@ main.leaderboardMain__container .fixturesLeaderboard__container {
   padding: 10px 0;
   padding-left: 2vw;
 }
+main.leaderboardMain__container .fixturesLeaderboard__container .leaderboardskeleton__container .stack {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 0.5em;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .leaderboardskeleton__container .stack .MuiSkeleton-root {
+  padding: 0.2em;
+}
 main.leaderboardMain__container .fixturesLeaderboard__container h2 {
   color: #fff;
 }
