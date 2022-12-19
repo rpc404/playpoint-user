@@ -112,7 +112,7 @@
   align-items: center;
   justify-content: space-between;
   color: #fff;
-  background-color: rgba(56, 56, 56, 0.609);
+  background-color: rgba(56, 56, 56, 0.763);
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar {
@@ -154,6 +154,9 @@
   align-items: center;
   gap: 15px;
   font-size: 14px;
+  /* & > div > p:last-child {
+    color: #fff;
+  } */
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div {
@@ -162,8 +165,11 @@
     font-size: 12px;
   }
 }
-.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo > div > p:last-child {
-  color: rgba(0, 0, 0, 0.4);
+.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div p {
+  padding: 0.1em 0;
+}
+.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div p:last-child {
+  color: rgba(255, 255, 255, 0.912);
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer {
   flex-direction: column;

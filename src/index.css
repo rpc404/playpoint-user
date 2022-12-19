@@ -22,7 +22,7 @@
 
 body {
   overflow-x: hidden;
-   background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to right top,
     #000000,
     #150d11,
@@ -36,7 +36,9 @@ body {
     #232442,
     #201e3b,
     #1c1835
-  ); 
+  ); */ 
+ /* background-color: #191919; */
+   background-color: #1B2430; 
   /* background-color: #1B1A06; */
 
    /* background-color: 	#1c1835; */

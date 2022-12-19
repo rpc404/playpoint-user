@@ -1,9 +1,10 @@
 main.leaderboardMain__container {
-  margin: 10px 0;
+  margin: 2em auto;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
+  width: 95%;
   @media screen and (min-width: 1441px) {
     height: calc(100vh - 13.5em);
   }
@@ -22,7 +23,13 @@ main.leaderboardMain__container {
     }
 
     .MuiPaper-root {
-      background-color: #242323e6;
+      // background-color: #242323e6;
+      // border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(3.7px);
+
 
       table {
         thead {
@@ -108,12 +115,15 @@ main.leaderboardMain__container {
   }
 
   .usersLeaderboard__container {
-    border-left: 0.5px solid #0002;
-    padding: 10px 0;
-    padding-left: 20px;
-    padding-right: 2vw;
-    height: 79vh;
+    // border-left: 0.5px solid #0002;
+    padding: 2vw;
     overflow-y: scroll;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(3.7px);
+
 
     h2 {
       color: #fff;
@@ -131,7 +141,7 @@ main.leaderboardMain__container {
     .topThreeUsers {
       color: #fff;
       .topUser {
-        border-bottom: 0.5px solid #0003;
+        border-bottom: 0.5px solid rgba(171, 171, 171, 0.2);
         padding-bottom: 15px;
         margin-bottom: 15px;
 

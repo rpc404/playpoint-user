@@ -123,9 +123,7 @@
         align-items: center;
         justify-content: space-between;
         color: #fff;
-        background-color: rgba(56, 56, 56, 0.609);
-
-
+        background-color: rgba(56, 56, 56, 0.763);
 
         @media (max-width: 576px) {
           flex-direction: column;
@@ -173,11 +171,18 @@
               display: flex;
               font-size: 12px;
             }
+
+            p {
+              padding: .1em 0;
+              &:last-child {
+                color: rgba(255, 255, 255, 0.912);
+              }
+            }
           }
 
-          & > div > p:last-child {
-            color: #0006;
-          }
+          /* & > div > p:last-child {
+            color: #fff;
+          } */
         }
       }
 
