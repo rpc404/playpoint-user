@@ -141,6 +141,7 @@
   border: 1px solid #9a9a9a;
   padding: 3px;
   font-size: 14px;
+  color: #fff;
   text-align: center;
 }
 @media (max-width: 576px) {

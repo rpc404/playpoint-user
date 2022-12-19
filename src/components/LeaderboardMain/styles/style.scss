@@ -4,6 +4,9 @@ main.leaderboardMain__container {
   align-items: flex-start;
   gap: 20px;
   flex-wrap: wrap;
+  @media screen and (min-width: 1441px) {
+    height: calc(100vh - 13.5em);
+  }
 
   h2 {
     margin-bottom: 20px;
@@ -19,12 +22,15 @@ main.leaderboardMain__container {
     }
 
     .MuiPaper-root {
-      background-color: transparent;
+      background-color: #242323e6;
 
       table {
         thead {
           tbody {
             tr {
+              &:hover {
+                background-color: none !important;
+              }
               th {
                 color: #fff !important;
               }
@@ -246,17 +252,16 @@ main.leaderboardMain__container {
   li {
     button {
       color: #fff;
-      background-color: #000;
+      background-color: rgba(75, 75, 75, 0.806);
       font-size: 1.2em;
     }
   }
 }
 
 .MuiTableCell-root {
-   color: #fff !important; 
+  color: #fff !important;
 
-   a {
+  a {
     color: rgba(255, 255, 255, 0.855);
-   }
+  }
 }
-
