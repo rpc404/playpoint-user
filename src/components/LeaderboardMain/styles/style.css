@@ -5,6 +5,11 @@ main.leaderboardMain__container {
   gap: 20px;
   flex-wrap: wrap;
 }
+@media screen and (min-width: 1441px) {
+  main.leaderboardMain__container {
+    height: calc(100vh - 13.5em);
+  }
+}
 main.leaderboardMain__container h2 {
   margin-bottom: 20px;
 }
@@ -17,7 +22,10 @@ main.leaderboardMain__container .fixturesLeaderboard__container h2 {
   color: #fff;
 }
 main.leaderboardMain__container .fixturesLeaderboard__container .MuiPaper-root {
-  background-color: transparent;
+  background-color: rgba(36, 35, 35, 0.9019607843);
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .MuiPaper-root table thead tbody tr:hover {
+  background-color: none !important;
 }
 main.leaderboardMain__container .fixturesLeaderboard__container .MuiPaper-root table thead tbody tr th {
   color: #fff !important;
@@ -217,7 +225,7 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
 
 .MuiPagination-ul li button {
   color: #fff;
-  background-color: #000;
+  background-color: rgba(75, 75, 75, 0.806);
   font-size: 1.2em;
 }
 

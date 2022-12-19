@@ -14,7 +14,7 @@ const Hero = () => {
           <div className="card">
             <Typography>Introduction!</Typography>
             <Typography variant="h2" component={"h2"}>
-              Begin playing and Earning today!
+              Start playing and Earning today!
             </Typography>
             <Typography>
               Playpoint is an online prediction pool platform based on real-time
@@ -42,6 +42,7 @@ const Hero = () => {
           <img
           src="https://89devs.com/img/solidity/sepolia_dolphin.png"
             alt="playpoint_logo"
+            loading="lazy"
           />
           <p>Currently we are testing on sepolia testnet.</p>
         </div>
@@ -49,6 +50,7 @@ const Hero = () => {
           <img
             src="https://assets-global.website-files.com/6364e65656ab107e465325d2/637ea09ce69ec8d049fb871e_nt4Cn4mhAnXmPqN4XNw7P3C8w59Mi18UQsJr0Kv-OWU.svg"
             alt="playpoint_logo"
+            loading="lazy"
           />
           <p>We are available in Arbitrum</p>
         </div>{" "}
