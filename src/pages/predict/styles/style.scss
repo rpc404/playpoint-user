@@ -122,8 +122,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: #f1f2f6;
-        // color: #fff;
+        color: #fff;
+        background-color: rgba(56, 56, 56, 0.609);
+
+
 
         @media (max-width: 576px) {
           flex-direction: column;
@@ -224,7 +226,8 @@
             text-align: center;
             padding: 5px;
             border-radius: 5px;
-            background: linear-gradient(#0debc648, #2dacde48);
+            background-color: #fff;
+
             p{
               color: #4e4d4d;
             }
@@ -237,12 +240,13 @@
 
         .eventDetails {
           margin-top: 40px;
-          background: #f1f2f6;
+          color: #fff;
           padding: 10px 1vw;
           display: flex;
           align-items: center;
           justify-content: space-between;
           font-size: 14px;
+          background-color: rgba(56, 56, 56, 0.609);
 
           @media (max-width: 576px) {
             flex-direction: column;

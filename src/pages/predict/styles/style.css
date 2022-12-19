@@ -111,7 +111,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #f1f2f6;
+  color: #fff;
+  background-color: rgba(56, 56, 56, 0.609);
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar {
@@ -212,7 +213,7 @@
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  background: linear-gradient(rgba(13, 235, 198, 0.2823529412), rgba(45, 172, 222, 0.2823529412));
+  background-color: #fff;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results .teams_score p {
   color: #4e4d4d;
@@ -223,12 +224,13 @@
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails {
   margin-top: 40px;
-  background: #f1f2f6;
+  color: #fff;
   padding: 10px 1vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 14px;
+  background-color: rgba(56, 56, 56, 0.609);
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails {
