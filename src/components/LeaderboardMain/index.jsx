@@ -26,8 +26,12 @@ export default function LeaderboardMain() {
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
         <h2>📈 Top Ranked Fixtures</h2>
-        
-        <FixtureTable leaderboard={leaderboards} currPage={currPage} />
+
+        <FixtureTable
+          leaderboard={leaderboards}
+          currPage={currPage}
+          loading={loading}
+        />
         <Pagination
           style={{ marginTop: 15 }}
           count={Math.ceil(leaderboards.length / 10)}

@@ -1,9 +1,10 @@
 main.leaderboardMain__container {
-  margin: 10px 0;
+  margin: 2em auto;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
+  width: 95%;
 }
 @media screen and (min-width: 1441px) {
   main.leaderboardMain__container {
@@ -18,11 +19,24 @@ main.leaderboardMain__container .fixturesLeaderboard__container {
   padding: 10px 0;
   padding-left: 2vw;
 }
+main.leaderboardMain__container .fixturesLeaderboard__container .leaderboardskeleton__container .stack {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 0.5em;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container .leaderboardskeleton__container .stack .MuiSkeleton-root {
+  padding: 0.2em;
+  background-color: rgba(203, 203, 203, 0.11) !important;
+}
 main.leaderboardMain__container .fixturesLeaderboard__container h2 {
   color: #fff;
 }
 main.leaderboardMain__container .fixturesLeaderboard__container .MuiPaper-root {
-  background-color: rgba(36, 35, 35, 0.9019607843);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(3.7px);
 }
 main.leaderboardMain__container .fixturesLeaderboard__container .MuiPaper-root table thead tbody tr:hover {
   background-color: none !important;
@@ -93,12 +107,13 @@ main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-ro
   width: 30px;
 }
 main.leaderboardMain__container .usersLeaderboard__container {
-  border-left: 0.5px solid rgba(0, 0, 0, 0.1333333333);
-  padding: 10px 0;
-  padding-left: 20px;
-  padding-right: 2vw;
-  height: 79vh;
+  padding: 2vw;
   overflow-y: scroll;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(3.7px);
 }
 main.leaderboardMain__container .usersLeaderboard__container h2 {
   color: #fff;
@@ -116,7 +131,7 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers {
   color: #fff;
 }
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser {
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 0.5px solid rgba(171, 171, 171, 0.2);
   padding-bottom: 15px;
   margin-bottom: 15px;
   color: #fff;
@@ -234,4 +249,9 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
 }
 .MuiTableCell-root a {
   color: rgba(255, 255, 255, 0.855);
+}
+
+.MuiSkeleton-root {
+  padding: 0.2em;
+  background-color: rgba(203, 203, 203, 0.178) !important;
 }/*# sourceMappingURL=style.css.map */
