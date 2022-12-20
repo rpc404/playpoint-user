@@ -101,4 +101,8 @@
 }
 .navbar__container .drawer .drawerListItem {
   gap: 5px !important;
+}
+
+.MuiDrawer-paper {
+  background-color: #151515 !important;
 }/*# sourceMappingURL=style.css.map */

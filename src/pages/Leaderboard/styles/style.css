@@ -52,7 +52,8 @@
 .leaderboard__container .filterarea select {
   padding: 0.4em;
   color: rgba(0, 0, 0, 0.6);
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: #fff;
+  cursor: pointer;
 }
 @media screen and (max-width: 976px) {
   .leaderboard__container .filterarea select {

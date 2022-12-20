@@ -94,6 +94,10 @@
           border: none;
           gap: 15px;
 
+          h2 {
+            color: #000;
+          }
+
           input {
             padding: 0.5em;
             border-radius: 5px;
@@ -108,7 +112,8 @@
             border: 1px solid #6b5ce7;
             padding: 0.5em;
             transition: background 1s ease-in-out;
-            padding: 0;
+            padding: 0 .2em;
+
 
             i {
               color: #6b5ce7;
@@ -130,9 +135,6 @@
       &:hover {
         cursor: pointer;
         &::before {
-          display: inline-block;
-        }
-        &::after {
           display: inline-block;
         }
       }
@@ -185,6 +187,7 @@
     padding-bottom: 1em;
     align-items: center;
     justify-content: center;
+    margin-top: 1em;
 
     .summaryItem {
       display: flex;
@@ -224,6 +227,12 @@
     margin-top: 20px;
 
     .profile-menus__container{
+      .MuiBox-root {
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(3.7px);
+      }
       .Mui-selected {
         color: #ffffff;
         background: #2f3542;
@@ -260,9 +269,11 @@
         padding: 10px 0;
         text-transform: capitalize;
         cursor: pointer;
-        color: #f2f4f6;
-        &:hover {
-          background: #b2b4b6;
+
+        &:nth-child(even) {
+          p {
+            color: #000;
+          }
         }
 
         p {
@@ -311,6 +322,14 @@
             &.lose {
               color: #e74c3c;
             }
+          }
+        }
+
+        &:nth-child(2n) {
+          background: #f0f0f0;
+
+          &:hover {
+            background: #ced6e0;
           }
         }
       }
@@ -403,3 +422,6 @@
     }
   }
 }
+
+
+

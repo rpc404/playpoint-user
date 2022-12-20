@@ -26,8 +26,12 @@ export default function LeaderboardMain() {
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
         <h2>📈 Top Ranked Fixtures</h2>
-        
-        <FixtureTable leaderboard={leaderboards} currPage={currPage} />
+
+        <FixtureTable
+          leaderboard={leaderboards}
+          currPage={currPage}
+          loading={loading}
+        />
         <Pagination
           style={{ marginTop: 15 }}
           count={Math.ceil(leaderboards.length / 10)}
@@ -73,7 +77,7 @@ export default function LeaderboardMain() {
           {topRanked.map((user, i) => {
             if (i > 0 && i < 4) {
               return (
-                <div className="top3User">
+                <div className="top3User" key={i}>
                   <div className="user__avatar">
                     <img
                       src={`https://robohash.org/${user?.username || "_0"}`}

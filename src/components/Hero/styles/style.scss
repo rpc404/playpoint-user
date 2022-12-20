@@ -1,60 +1,72 @@
 .hero__container {
-  width: 100%;
-  padding: 5em 0;
   overflow: hidden;
+  position: relative;
+  @media screen and (min-width: 1025px) {
+    display: flex;
+    padding: 5vw;
+    gap: 20px;
+  
 
-  .hero {
-    margin: 0 auto;
-    width: 90%;
+
+  }
+
+  .blob1 {
+    position: absolute;
+    right: -150px;
+    top: -50px;
+    width: 300px;
+    max-width: 300px;
+    height: 300px;
+    background: linear-gradient(#0debc669, #2dabde96);
+    mix-blend-mode: color-dodge;
+    opacity: 0.8;
+    border-radius: 24% 76% 35% 65%/ 27% 36% 64% 73%;
+    z-index: -99;
+    animation: breathe 3.5s ease infinite alternate;
+    filter: blur(80px);
+  }
+
+  .blob {
+    position: absolute;
+    bottom: -40px;
+    left: -200px;
+    width: 300px;
+    max-width: 300px;
+    height: 300px;
+    background: linear-gradient(#0debc669, #2dabde96);
+    mix-blend-mode: color-dodge;
+    opacity: 0.8;
+    border-radius: 24% 76% 35% 65%/ 27% 36% 64% 73%;
+    z-index: -99;
+    animation: breathe 3.5s ease infinite alternate;
+    filter: blur(80px);
+    @keyframes breathe {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .heroIntroduction {
+    @media screen and (max-width: 1025px) {
+      margin: 2em auto;
+      width: 90%;
+    }
     padding: 0.2em;
     border-radius: 5px;
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.7px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(3.7px);
-    border: 1px solid rgba(255, 255, 255, 0.29);
-    z-index: 10;
-    position: relative;
+    z-index: 9;
 
-    .blob1 {
-      position: absolute;
-      right: -150px;
-      top: -50px;
-      width: 300px;
-      max-width: 300px;
-      height: 300px;
-      background: linear-gradient(#0debc669, #2dabde96);
-      mix-blend-mode: color-dodge;
-      opacity: 0.8;
-      border-radius: 24% 76% 35% 65%/ 27% 36% 64% 73%;
-      z-index: -99;
-      animation: breathe 3.5s ease infinite alternate;
-    }
-
-    .blob {
-      position: absolute;
-      bottom: -50px;
-      left: -150px;
-      width: 300px;
-      max-width: 300px;
-      height: 300px;
-      background: linear-gradient(#0debc669, #2dabde96);
-      mix-blend-mode: color-dodge;
-      opacity: 0.8;
-      border-radius: 24% 76% 35% 65%/ 27% 36% 64% 73%;
-      z-index: -99;
-      animation: breathe 3.5s ease infinite alternate;
-
-      @keyframes breathe {
-        0% {
-          transform: scale(1);
-        }
-        100% {
-          transform: scale(1.05);
-        }
-      }
+    @media screen and (min-width:1025px) {
+      width: 80%;
+      margin: auto;
     }
 
     @media screen and (min-width: 426px) {
@@ -71,7 +83,7 @@
     }
     .heroContent {
       color: #fff;
-      // animation: slideInFromBottom .2s ease forwards;
+      /* // animation: slideInFromBottom .2s ease forwards; */
 
       @media screen and (min-width: 426px) {
         display: flex;
@@ -96,15 +108,13 @@
         }
       }
       .card {
-        // background-color: #0d1016;
-        // background-color: #1c1835;
         border-radius: 20px;
         padding: 1.5em;
         display: flex;
         flex-direction: column;
         gap: 10px;
         width: 100%;
-        max-width: 700px;
+        /* max-width: 700px; */
         animation: slideInFromBottom 400ms ease forwards;
 
         @keyframes slideInFromBottom {
@@ -116,9 +126,9 @@
           }
         }
 
-        @media screen and (min-width: 1441px) {
+        /* @media screen and (min-width: 1441px) {
           max-width: 950px;
-        }
+        } */
 
         a {
           text-decoration: none;
@@ -214,4 +224,84 @@
       }
     }
   }
+  .hero {
+    // width: 500px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(3.7px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding:2em 2em;
+
+    @media screen and (max-width:1025px) {
+      width: 90%;
+      margin: 2em auto;
+    }
+    
+    .pptt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(3.7px);
+      padding: 15px 25px;
+      transition: .3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+      }
+
+      @media screen and (min-width:1441px) {
+        width: 400px;
+      }
+      
+      img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+      }
+      p{
+        color: #fff;
+        font-size: 1.1em;
+      }
+    }
+    .arbt {
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(3.7px);
+      padding: 15px 25px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+      transition: .3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      img {
+        height: 50px;
+        width: 50px;
+      }
+      p {
+        font-size: 1.2em;
+      }
+    }
+  }
 }
+
+

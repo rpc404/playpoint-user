@@ -56,8 +56,8 @@
     select {
       padding: 0.4em;
       color: #0009;
-      background-color: #fff9;
-
+      background-color: #fff;
+      cursor: pointer;
       @media screen and (max-width: 976px) {
         display: none;
       }

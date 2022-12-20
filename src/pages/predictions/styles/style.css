@@ -1,18 +1,41 @@
 .userprediction_container {
   margin: 2em auto;
+  height: calc(100vh - 11.4em);
 }
 .userprediction_container .container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+.userprediction_container .container .profile_area h3 a {
+  color: #fff;
+  text-decoration: none;
+}
+.userprediction_container .container .profile_area p {
+  color: rgba(255, 255, 255, 0.929);
+}
 .userprediction_container .container img {
   width: 10vw;
   border: 1px solid rgba(108, 107, 107, 0.334);
 }
 .userprediction_container .container .answers_area {
-  padding: 5px;
+  padding: 15px;
   background-color: rgba(255, 255, 255, 0.125);
+  color: rgba(255, 255, 255, 0.79);
+  margin-bottom: 2em;
+}
+.userprediction_container .container .answers_area h1 {
+  color: #fff;
+}
+.userprediction_container .container .answers_area h4 {
+  padding: 0.4em 0;
+  color: #fff;
+}
+.userprediction_container .container .answers_area p {
+  color: rgba(255, 255, 255, 0.902);
+}
+.userprediction_container .container .answers_area .btn_area button {
+  color: #fff !important;
 }
 .userprediction_container .container .answers_area .questions {
   margin-top: 1.2em;
@@ -31,4 +54,6 @@
 .userprediction_container .other_prediction {
   width: 90%;
   margin: auto;
+  color: #fff;
+  padding: 0.5em 0;
 }/*# sourceMappingURL=style.css.map */

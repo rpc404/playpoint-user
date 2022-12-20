@@ -17,11 +17,15 @@
   }
 }
 .prediction__container .main__container .recentPredictions h3 {
-  padding: 0 1.5vw;
-  margin-top: 10px;
+  padding: 0.8em 1.5vw;
+  text-align: center;
   margin-bottom: 10px;
   font-weight: 500;
   color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(3.7px);
 }
 .prediction__container .main__container .recentPredictions .prediction__items {
   height: 83vh;
@@ -111,7 +115,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #f1f2f6;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(3.7px);
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar {
@@ -153,6 +161,9 @@
   align-items: center;
   gap: 15px;
   font-size: 14px;
+  /* & > div > p:last-child {
+    color: #fff;
+  } */
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div {
@@ -161,8 +172,11 @@
     font-size: 12px;
   }
 }
-.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo > div > p:last-child {
-  color: rgba(0, 0, 0, 0.4);
+.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div p {
+  padding: 0.1em 0;
+}
+.prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div p:last-child {
+  color: rgba(255, 255, 255, 0.912);
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer {
   flex-direction: column;
@@ -186,16 +200,21 @@
   text-align: center;
   padding: 10px;
   border-radius: 5px;
-  border: 0.5px solid rgba(80, 79, 79, 0.335);
+  border: 0.5px solid rgba(168, 168, 168, 0.335);
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .timeOut .block span {
-  color: #4e4d4d;
+  color: rgba(255, 255, 255, 0.6);
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_detail {
   display: flex;
   gap: 20px;
   justify-content: center;
+  align-items: center;
   color: #fff;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_detail p {
+  display: flex;
+  gap: 5px;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results {
   display: flex;
@@ -207,7 +226,7 @@
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  background: linear-gradient(rgba(13, 235, 198, 0.2823529412), rgba(45, 172, 222, 0.2823529412));
+  background-color: #fff;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results .teams_score p {
   color: #4e4d4d;
@@ -218,12 +237,16 @@
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails {
   margin-top: 40px;
-  background: #f1f2f6;
-  padding: 10px 1vw;
+  color: #fff;
+  padding: 16px 1vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(3.7px);
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .eventDetails {
@@ -434,9 +457,14 @@
 }
 .prediction__container .main__container .leaderboards .leaderboardsTitle {
   font-weight: 500;
-  margin: 10px 8px;
+  padding: 0.8em;
+  text-align: center;
   margin-bottom: 15px;
   color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(3.7px);
 }
 .prediction__container .main__container .leaderboards .leaderboardItemsTitle {
   display: flex;

@@ -1,16 +1,51 @@
 .userprediction_container{
     margin: 2em auto;
+    height: calc(100vh - 11.4em);
     .container{
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+
+        .profile_area {
+            h3 {
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+            p {
+                color: rgba(255, 255, 255, 0.929);
+            }
+        }
         img{
             width: 10vw;
             border: 1px solid rgba(108, 107, 107, 0.334);
         }
         .answers_area{
-            padding: 5px;
+            padding: 15px;
             background-color: rgba(255, 255, 255, 0.125);
+            color: rgba(255, 255, 255, 0.79);
+            margin-bottom: 2em;
+
+            h1 {
+                color: #fff;
+            }
+
+            h4 {
+               padding: .4em 0;
+                color: #fff;
+            }
+
+            p {
+                color: rgba(255, 255, 255, 0.902);
+            }
+
+            .btn_area {
+               button {
+                color: #fff !important;
+               }
+            }
+
             .questions{
                 margin-top: 1.2em;
                 display: flex;
@@ -32,5 +67,7 @@
     .other_prediction{
         width: 90%;
         margin: auto;
+        color: #fff;
+        padding: .5em 0;
     }
 }

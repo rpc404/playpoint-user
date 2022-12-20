@@ -89,6 +89,9 @@
   border: none;
   gap: 15px;
 }
+.profile__container .userData__container .userdetails__container .userdetails fieldset h2 {
+  color: #000;
+}
 .profile__container .userData__container .userdetails__container .userdetails fieldset input {
   padding: 0.5em;
   border-radius: 5px;
@@ -102,7 +105,7 @@
   border: 1px solid #6b5ce7;
   padding: 0.5em;
   transition: background 1s ease-in-out;
-  padding: 0;
+  padding: 0 0.2em;
 }
 .profile__container .userData__container .userdetails__container .userdetails fieldset button i {
   color: #6b5ce7;
@@ -119,9 +122,6 @@
   cursor: pointer;
 }
 .profile__container .userData__container .accountbtn:hover::before {
-  display: inline-block;
-}
-.profile__container .userData__container .accountbtn:hover::after {
   display: inline-block;
 }
 .profile__container .userData__container .accountbtn::before {
@@ -174,6 +174,7 @@
   padding-bottom: 1em;
   align-items: center;
   justify-content: center;
+  margin-top: 1em;
 }
 .profile__container .summary__container .summaryItem {
   display: flex;
@@ -207,6 +208,12 @@
 .profile__container .history__container {
   margin: 0 5vw;
   margin-top: 20px;
+}
+.profile__container .history__container .profile-menus__container .MuiBox-root {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(3.7px);
 }
 .profile__container .history__container .profile-menus__container .Mui-selected {
   color: #ffffff;
@@ -242,10 +249,9 @@
   padding: 10px 0;
   text-transform: capitalize;
   cursor: pointer;
-  color: #f2f4f6;
 }
-.profile__container .history__container .history__items .history__item:hover {
-  background: #b2b4b6;
+.profile__container .history__container .history__items .history__item:nth-child(even) p {
+  color: #000;
 }
 .profile__container .history__container .history__items .history__item p {
   flex: 1 1 0;
@@ -283,6 +289,12 @@
 }
 .profile__container .history__container .history__items .history__item p:nth-child(3).lose {
   color: #e74c3c;
+}
+.profile__container .history__container .history__items .history__item:nth-child(2n) {
+  background: #f0f0f0;
+}
+.profile__container .history__container .history__items .history__item:nth-child(2n):hover {
+  background: #ced6e0;
 }
 @media screen and (max-width: 426px) {
   .profile__container .css-1p5q5e5-MuiStack-root {
