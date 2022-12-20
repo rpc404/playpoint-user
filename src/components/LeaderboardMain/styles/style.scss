@@ -23,11 +23,13 @@ main.leaderboardMain__container {
         display: flex;
         flex-direction: row;
         gap: 10px;
-        padding: .5em;
+        padding: 0.5em;
 
         .MuiSkeleton-root {
-          padding: .2em;
+          padding: 0.2em;
+          background-color: rgba(203, 203, 203, 0.11) !important;
         }
+
       }
     }
 
@@ -42,7 +44,6 @@ main.leaderboardMain__container {
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(3.7px);
-
 
       table {
         thead {
@@ -136,7 +137,6 @@ main.leaderboardMain__container {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(3.7px);
-
 
     h2 {
       color: #fff;
@@ -287,4 +287,9 @@ main.leaderboardMain__container {
   a {
     color: rgba(255, 255, 255, 0.855);
   }
+}
+
+.MuiSkeleton-root {
+  padding: 0.2em;
+  background-color: rgba(203, 203, 203, 0.178) !important;
 }

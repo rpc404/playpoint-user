@@ -27,6 +27,7 @@ main.leaderboardMain__container .fixturesLeaderboard__container .leaderboardskel
 }
 main.leaderboardMain__container .fixturesLeaderboard__container .leaderboardskeleton__container .stack .MuiSkeleton-root {
   padding: 0.2em;
+  background-color: rgba(203, 203, 203, 0.11) !important;
 }
 main.leaderboardMain__container .fixturesLeaderboard__container h2 {
   color: #fff;
@@ -248,4 +249,9 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
 }
 .MuiTableCell-root a {
   color: rgba(255, 255, 255, 0.855);
+}
+
+.MuiSkeleton-root {
+  padding: 0.2em;
+  background-color: rgba(203, 203, 203, 0.178) !important;
 }/*# sourceMappingURL=style.css.map */

@@ -14,11 +14,15 @@
       }
 
       h3 {
-        padding: 0 1.5vw;
-        margin-top: 10px;
+        padding: .8em 1.5vw;
+        text-align: center;
         margin-bottom: 10px;
         font-weight: 500;
         color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(3.7px);
       }
 
       .prediction__items {
@@ -123,7 +127,10 @@
         align-items: center;
         justify-content: space-between;
         color: #fff;
-        background-color: rgba(56, 56, 56, 0.763);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(3.7px);
 
         @media (max-width: 576px) {
           flex-direction: column;
@@ -246,12 +253,16 @@
         .eventDetails {
           margin-top: 40px;
           color: #fff;
-          padding: 10px 1vw;
+          padding: 16px 1vw;
           display: flex;
           align-items: center;
           justify-content: space-between;
           font-size: 14px;
-          background-color: rgba(56, 56, 56, 0.609);
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(3.7px);
+
 
           @media (max-width: 576px) {
             flex-direction: column;
@@ -422,10 +433,16 @@
 
       .leaderboardsTitle {
         font-weight: 500;
-        margin: 10px 8px;
+        padding: .8em;
+        text-align: center;
         margin-bottom: 15px;
         color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(3.7px);
       }
+
 
       .leaderboardItemsTitle {
         display: flex;
