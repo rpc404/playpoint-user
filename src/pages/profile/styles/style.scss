@@ -67,47 +67,7 @@
       }
     }
 
-    .summary__container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      flex: 1;
-      padding-bottom: 1em;
-      align-items: center;
-      justify-content: center;
 
-      .summaryItem {
-        display: flex;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 5px 10px 5px 10px;
-        border-bottom: 1px solid #6b5ce7;
-
-        @media screen and (min-width: 426px) {
-          border-bottom: none;
-          &:nth-child(1) {
-            border-right: 1px solid #6b5ce7;
-          }
-        }
-
-        i {
-          font-size: 25px;
-          color: #6b5ce7;
-          border-radius: 12px;
-        }
-
-        p {
-          font-size: 14px;
-          font-weight: 600;
-        }
-
-        h3 {
-          font-weight: 400;
-        }
-      }
-    }
 
     .MuiButton-root {
       display: flex;
@@ -217,14 +177,61 @@
     }
   }
 
+  .summary__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex: 1;
+    padding-bottom: 1em;
+    align-items: center;
+    justify-content: center;
+
+    .summaryItem {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 5px 10px 5px 10px;
+      border-bottom: 1px solid #6b5ce7;
+
+      @media screen and (min-width: 426px) {
+        border-bottom: none;
+        &:nth-child(1) {
+          border-right: 1px solid #6b5ce7;
+        }
+      }
+
+      i {
+        font-size: 25px;
+        color: #6b5ce7;
+        border-radius: 12px;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      h3 {
+        font-weight: 400;
+      }
+    }
+  }
+  
   .history__container {
     margin: 0 5vw;
     margin-top: 20px;
 
+    .profile-menus__container{
+      .Mui-selected {
+        color: #ffffff;
+        background: #333;
+    }
+    }
     @media screen and (max-width: 426px) {
       display: none;
     }
-
     .titles {
       display: flex;
       align-items: center;
@@ -296,7 +303,7 @@
               }
             }
           }
-          &:nth-child(4) {
+          &:nth-child(3) {
             &.win {
               color: #2ecc71;
               font-weight: 500;
