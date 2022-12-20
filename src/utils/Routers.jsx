@@ -7,8 +7,8 @@ import Home from "../pages/home";
 import Profile from "../pages/profile";
 import MarketPlace from "../pages/Marketplace";
 import Leaderboards from "../pages/Leaderboard/index";
-import Prediction from "../pages/predictions/index"
-
+import Prediction from "../pages/predictions/index";
+import Transaction from "../pages/transaction/index";
 // import socketIO from "socket.io-client";
 // const socket = socketIO.connect(import.meta.env.VITE_SOCKET_URL);
 
@@ -22,7 +22,8 @@ export default function PageRouters({ socket }) {
       <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
       <Route path="marketplace" element={<MarketPlace />} />
       <Route path="leaderboards" element={<Leaderboards />} />
-      <Route path="prediction/:pid" element={<Prediction  />} />
+      <Route path="prediction/:pid" element={<Prediction />} />
+      <Route path="transaction" element={<Transaction />} />
     </Routes>
   );
 }
