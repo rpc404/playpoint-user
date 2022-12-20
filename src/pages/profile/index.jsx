@@ -190,7 +190,7 @@ export default function Profile() {
           <Box
             sx={{
               flexGrow: 2,
-              bgcolor: "background.paper",
+              bgcolor: "none",
               display: "flex",
               height: 254,
               gap: "12px",
@@ -202,7 +202,8 @@ export default function Profile() {
               value={value}
               onChange={handleChange}
               aria-label="Profile Menu"
-              sx={{ borderRight: 1, borderColor: "divider" }}
+              textColor="white"
+              sx={{ borderRight: 1, borderColor: "divider", color:"white" }}
             >
               <Tab label="Settled Predictions" {...a11yProps(0)} />
               <Tab label="Unsettled Predictions" {...a11yProps(1)} />
@@ -217,7 +218,7 @@ export default function Profile() {
               style={{ flex: 1, marginTop: "1em" }}
             >
               <div>
-                <p style={{ textAlign: "center", padding: "10px" }}>
+                <p style={{ textAlign: "center", padding: "10px", color:"#fff" }}>
                   <em>
                     Settled Predictions are those predictions for which either
                     you're rewarded or lose.
@@ -226,10 +227,10 @@ export default function Profile() {
                 <div className="titles">
                   <p>ID</p>
                   <p>Points</p>
-                  {/* <p>amount</p> */}
                   <p>win/lose amount</p>
                   <p>match</p>
                   <p>date/time</p>
+                  <p>Transaction</p>
                 </div>
                 <div className="history__items">
                   {results.map((data, index) => {
@@ -273,6 +274,7 @@ export default function Profile() {
                           </b>
                         </p>
                         <p>{moment(data.created_at).format("LL")}</p>
+                        <p>{data?.txnhash}</p>
                       </div>
                     );
                   })}

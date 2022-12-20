@@ -217,7 +217,7 @@
 }
 .profile__container .history__container .profile-menus__container .Mui-selected {
   color: #ffffff;
-  background: #333;
+  background: #2f3542;
 }
 @media screen and (max-width: 426px) {
   .profile__container .history__container {
