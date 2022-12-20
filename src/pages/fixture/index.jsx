@@ -7,18 +7,18 @@ import { Helmet } from "react-helmet";
 import SetFixtureGamedates from "../../utils/SetFixtureGamedates";
 import { a11yProps, TabPanel } from "../../components/TabPanel";
 import QuickView from "../../components/QuickView";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./styles/style.css";
 import { getFixtures } from "../../api/Fixture";
 import { Skeleton } from "@mui/material";
 
 export default function Fixture() {
-  let params = useLocation();
-  const marketplaceSlug = params.state.marketplaceSlug;
+  let params = useParams();
+  const marketplaceSlug = params.slug;
 
   const [fixtures, setFixtures] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  console.log(fixtures)
+
 
   React.useEffect(() => {
     (async () => {

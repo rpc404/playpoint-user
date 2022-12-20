@@ -18,7 +18,7 @@ export default function PageRouters({ socket }) {
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="fixture" element={<Fixture />} />
+      <Route path="fixture/:slug" element={<Fixture />} />
       <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
       <Route path="marketplace" element={<MarketPlace />} />
       <Route path="leaderboards" element={<Leaderboards />} />
