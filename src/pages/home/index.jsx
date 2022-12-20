@@ -12,7 +12,9 @@ import Footer from "../../components/Footer"
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
+  
   console.log(marketplaces);
+
 
   React.useEffect(() => {
     (async () => {
@@ -35,7 +37,7 @@ export default function Home() {
       <Hero />
       <div className="divider"></div>
       <h1 className="home__mainTitle">Active Marketplaces</h1>
-      <div className="marketplace__items">
+      <div className="marketplace__items" id="marketplace__items">
         {marketplaces && marketplaces.length >= 1 && !loading ? (
           marketplaces.map((marketplace, index) => {
             return <MarketplaceCard marketplace={marketplace} key={index} />;

@@ -43,28 +43,23 @@
 }
 @media screen and (min-width: 900px) {
   .profile__container .userData__container {
-    width: 35vw;
+    width: 50vw;
     margin: 0 auto;
   }
 }
 .profile__container .userData__container .userData {
   display: flex;
-  flex-direction: column;
   align-items: center;
   flex: 1;
   gap: 5px;
   position: relative;
-  margin-top: 3em;
 }
 .profile__container .userData__container .userData img {
   width: 150px;
   height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  position: absolute;
-  top: -160px;
+  border: 1px solid rgb(114, 114, 114);
 }
 .profile__container .userData__container .MuiButton-root {
   display: flex;
@@ -86,6 +81,7 @@
 .profile__container .userData__container .userdetails__container .userdetails fieldset {
   display: flex;
   align-items: center;
+  flex-direction: column;
   border: none;
   gap: 15px;
 }
@@ -175,6 +171,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 1em;
+  color: #fff;
 }
 .profile__container .summary__container .summaryItem {
   display: flex;

@@ -19,6 +19,7 @@
         margin-bottom: 10px;
         font-weight: 500;
         color: #fff;
+        height: 60px;
         background: rgba(255, 255, 255, 0.08);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px);
@@ -131,6 +132,7 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(3.7px);
+        height: 60px;
 
         @media (max-width: 576px) {
           flex-direction: column;
@@ -433,7 +435,7 @@
 
       .leaderboardsTitle {
         font-weight: 500;
-        padding: .8em;
+        // padding: .8em;
         text-align: center;
         margin-bottom: 15px;
         color: #fff;
@@ -441,6 +443,10 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(3.7px);
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
 
