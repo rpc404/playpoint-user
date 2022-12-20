@@ -1,0 +1,138 @@
+.main__container {
+  background-color: #fff;
+  width: 100%;
+}
+.main__container .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  background-color: rgba(255, 255, 255, 0.918) !important;
+  width: 90%;
+  margin: 0 auto;
+}
+.main__container .wrapper .options__container {
+  display: flex;
+  flex-direction: column;
+  gap: 6vh;
+}
+.main__container .wrapper .options__container .profile {
+  display: flex;
+  align-items: center;
+}
+.main__container .wrapper .options__container .profile img {
+  height: 100px;
+  width: 100px;
+}
+.main__container .wrapper .options__container .options {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+.main__container .wrapper .options__container .options .links a {
+  text-decoration: none;
+  color: black;
+  margin: 3px 7px;
+  transition: 0.3s all ease-in-out;
+}
+.main__container .wrapper .options__container .options .links a:hover {
+  color: rgb(37, 255, 37);
+}
+.main__container .wrapper .transaction__container {
+  display: flex;
+  flex-direction: column;
+  gap: 6vh;
+}
+.main__container .wrapper .transaction__container .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main__container .wrapper .transaction__container .button {
+  display: flex;
+  gap: 1.6vw;
+  align-items: center;
+}
+.main__container .wrapper .transaction__container .button i {
+  font-size: 1.6rem;
+}
+.main__container .wrapper .transaction__container .button a {
+  text-decoration: none;
+  color: black;
+}
+.main__container .wrapper .transaction__container .button .search {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+.main__container .wrapper .transaction__container .button .search input {
+  font-size: 1rem;
+  opacity: 0.6;
+  padding: 5px 3px;
+}
+.main__container .wrapper .transaction__container .button .search a {
+  text-decoration: none;
+  color: black;
+}
+.main__container .wrapper .transaction__container .links {
+  display: flex;
+  gap: 2vw;
+}
+.main__container .wrapper .transaction__container .links a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+.main__container .wrapper .transaction__container .statement .latest {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8vh;
+}
+.main__container .wrapper .transaction__container .statement .latest .details {
+  display: flex;
+  justify-content: space-between;
+}
+.main__container .wrapper .transaction__container .statement .latest .details .left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+}
+.main__container .wrapper .transaction__container .statement .latest .details .left .left_top {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+.main__container .wrapper .transaction__container .statement .latest .details .left .left_buttom {
+  padding-left: 25px;
+}
+.main__container .wrapper .transaction__container .statement .latest .details .left .left_buttom p {
+  opacity: 0.5;
+}
+.main__container .wrapper .balance__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.main__container .wrapper .balance__container .top {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+.main__container .wrapper .balance__container .top img {
+  height: 100px;
+  width: 100px;
+}
+.main__container .wrapper .balance__container .top p {
+  opacity: 0.4;
+}
+.main__container .wrapper .balance__container .invoice {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+.main__container .wrapper .balance__container .invoice .balance {
+  display: flex;
+  gap: 1vw;
+}
+.main__container .wrapper .balance__container .chart img {
+  height: 200px;
+  width: 200px;
+}/*# sourceMappingURL=style.css.map */

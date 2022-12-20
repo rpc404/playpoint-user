@@ -1,0 +1,153 @@
+.main__container {
+  background-color: #fff;
+  width: 100%;
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    // display: flex;
+    // justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.918) !important;
+    width: 90%;
+    margin: 0 auto;
+
+    .options__container {
+      display: flex;
+      flex-direction: column;
+      gap: 6vh;
+      .profile {
+        display: flex;
+        align-items: center;
+        img {
+          height: 100px;
+          width: 100px;
+        }
+      }
+      .options {
+        display: flex;
+        flex-direction: column;
+
+        gap: 4vh;
+        .links {
+          a {
+            text-decoration: none;
+            color: black;
+            margin: 3px 7px;
+            transition: 0.3s all ease-in-out;
+            &:hover {
+              color: rgb(37, 255, 37);
+            }
+          }
+        }
+      }
+    }
+
+    .transaction__container {
+      display: flex;
+      flex-direction: column;
+      gap: 6vh;
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .button {
+        display: flex;
+        gap: 1.6vw;
+        align-items: center;
+        i {
+          font-size: 1.6rem;
+        }
+        a {
+          text-decoration: none;
+          color: black;
+        }
+        .search {
+          display: flex;
+          gap: 2px;
+          align-items: center;
+          input {
+            font-size: 1rem;
+            opacity: 0.6;
+            padding: 5px 3px;
+          }
+          a {
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+      .links {
+        display: flex;
+        gap: 2vw;
+        a {
+          text-decoration: none;
+          color: black;
+          font-weight: 600;
+        }
+      }
+      .statement {
+        .latest {
+          display: flex;
+          flex-direction: column;
+          gap: 2.8vh;
+          .details {
+            display: flex;
+            justify-content: space-between;
+
+            .left {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5vh;
+              // align-items: center;
+              // justify-content: center;
+              .left_top {
+                display: flex;
+                align-items: center;
+                gap: 1vw;
+              }
+              .left_buttom {
+                padding-left: 25px;
+                p {
+                  opacity: 0.5;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .balance__container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .top {
+        display: flex;
+        flex-direction: column;
+        gap: 4vh;
+        img {
+          height: 100px;
+          width: 100px;
+        }
+        p {
+          opacity: 0.4;
+        }
+      }
+      .invoice {
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+        .balance {
+          display: flex;
+          gap: 1vw;
+        }
+      }
+      .chart {
+        img {
+          height: 200px;
+          width: 200px;
+        }
+      }
+    }
+  }
+}
