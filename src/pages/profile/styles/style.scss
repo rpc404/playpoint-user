@@ -226,7 +226,7 @@
     .profile-menus__container{
       .Mui-selected {
         color: #ffffff;
-        background: #333;
+        background: #2f3542;
     }
     }
     @media screen and (max-width: 426px) {
@@ -260,9 +260,9 @@
         padding: 10px 0;
         text-transform: capitalize;
         cursor: pointer;
-
+        color: #f2f4f6;
         &:hover {
-          background: #ced6e0;
+          background: #b2b4b6;
         }
 
         p {
@@ -311,14 +311,6 @@
             &.lose {
               color: #e74c3c;
             }
-          }
-        }
-
-        &:nth-child(2n) {
-          background: #f1f2f6;
-
-          &:hover {
-            background: #ced6e0;
           }
         }
       }

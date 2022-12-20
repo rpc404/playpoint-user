@@ -210,7 +210,7 @@
 }
 .profile__container .history__container .profile-menus__container .Mui-selected {
   color: #ffffff;
-  background: #333;
+  background: #2f3542;
 }
 @media screen and (max-width: 426px) {
   .profile__container .history__container {
@@ -242,9 +242,10 @@
   padding: 10px 0;
   text-transform: capitalize;
   cursor: pointer;
+  color: #f2f4f6;
 }
 .profile__container .history__container .history__items .history__item:hover {
-  background: #ced6e0;
+  background: #b2b4b6;
 }
 .profile__container .history__container .history__items .history__item p {
   flex: 1 1 0;
@@ -282,12 +283,6 @@
 }
 .profile__container .history__container .history__items .history__item p:nth-child(3).lose {
   color: #e74c3c;
-}
-.profile__container .history__container .history__items .history__item:nth-child(2n) {
-  background: #f1f2f6;
-}
-.profile__container .history__container .history__items .history__item:nth-child(2n):hover {
-  background: #ced6e0;
 }
 @media screen and (max-width: 426px) {
   .profile__container .css-1p5q5e5-MuiStack-root {
