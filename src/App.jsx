@@ -12,6 +12,7 @@ export default function App() {
 
   React.useEffect(() => {
     (async () => {
+     
       const expiryDate = new Date(localStorage.getItem("rpcUserExpiresAt"));
       if (
         localStorage.getItem("isRPCUserAuthenticated") &&
