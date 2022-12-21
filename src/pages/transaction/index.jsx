@@ -38,7 +38,7 @@ export default function Transaction() {
   }
 
   return (
-    <div className="main__container">
+    <div className="transaction__container">
       <div className="wrapper">
         <div className="options__container">
           <div className="profile">
