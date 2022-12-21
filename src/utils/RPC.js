@@ -3,6 +3,11 @@ import { setProfile } from "../api/Profile";
 
 const { ethereum } = window;
 
+if(typeof ethereum==="undefined"){
+    alert("Metamask in not installed. Redirecting....");
+    window.location.href = "https://m.playpoint.ai";
+}
+
 export const handleRPCWalletLogin = async () => {
   try {
     await ethereum.request({
