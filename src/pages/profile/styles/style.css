@@ -50,7 +50,6 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  flex-wrap: wrap;
   align-items: center;
   flex: 1;
   gap: 5px;
@@ -58,6 +57,7 @@
 }
 @media screen and (max-width: 425px) {
   .profile__container .userData__container .userData {
+    flex-wrap: wrap;
     width: 100%;
   }
 }

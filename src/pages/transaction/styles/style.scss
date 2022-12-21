@@ -1,11 +1,9 @@
 .main__container {
   // background-color: #fff;
-  width: 100%;
+  // width: 100%;
   padding: 3vw;
 
   .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
     background-color: rgba(255, 255, 255, 0.918) !important;
     width: 90%;
     margin: 0 auto;
@@ -16,6 +14,11 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(15px);
     padding: 0.8em;
+
+    @media screen and (min-width: 426px) {
+      display: grid;
+      grid-template-columns: 1fr 4fr 1fr;
+    }
 
     .options__container {
       display: flex;
@@ -35,14 +38,20 @@
 
         gap: 4vh;
         .links {
+          display: flex;
+          align-items: center;
+          width: fit-content;
+          color: #000;
+          gap: 5px;
+          cursor: pointer;
           a {
             text-decoration: none;
             color: black;
             margin: 3px 7px;
             transition: 0.3s all ease-in-out;
-            &:hover {
-              color: rgb(37, 255, 37);
-            }
+          }
+          &:hover {
+            color: rgba(50, 146, 50, 0.681);
           }
         }
       }
@@ -56,6 +65,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media screen and (max-width: 425px) {
+          flex-direction: column;
+        }
       }
       .button {
         display: flex;
@@ -70,21 +83,31 @@
         }
         .search {
           display: flex;
-          gap: 2px;
           align-items: center;
+          padding: 0.4em;
+          gap: 2px;
+          background: #f8f8f8;
+          border-radius: 5px;
+          border: 1px solid #bbc4cf;
           input {
             font-size: 1rem;
             opacity: 0.6;
             padding: 5px 3px;
+            border: none;
+            outline: none;
+            background: transparent;
           }
-          a {
-            text-decoration: none;
-            color: black;
+          i {
+            padding-left: 0.3em;
+            border-left: 1px solid #bbc4cf;
+            color: #bbc4cf;
+            cursor: pointer;
           }
         }
       }
       .links {
         display: flex;
+        align-items: center;
         gap: 2vw;
         a {
           text-decoration: none;

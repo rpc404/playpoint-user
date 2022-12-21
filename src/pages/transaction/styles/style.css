@@ -1,10 +1,7 @@
 .main__container {
-  width: 100%;
   padding: 3vw;
 }
 .main__container .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
   background-color: rgba(255, 255, 255, 0.918) !important;
   width: 90%;
   margin: 0 auto;
@@ -15,6 +12,12 @@
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(15px);
   padding: 0.8em;
+}
+@media screen and (min-width: 426px) {
+  .main__container .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
 }
 .main__container .wrapper .options__container {
   display: flex;
@@ -34,14 +37,24 @@
   flex-direction: column;
   gap: 4vh;
 }
+.main__container .wrapper .options__container .options .links {
+  display: flex;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #000;
+  gap: 5px;
+  cursor: pointer;
+}
 .main__container .wrapper .options__container .options .links a {
   text-decoration: none;
   color: black;
   margin: 3px 7px;
   transition: 0.3s all ease-in-out;
 }
-.main__container .wrapper .options__container .options .links a:hover {
-  color: rgb(37, 255, 37);
+.main__container .wrapper .options__container .options .links:hover {
+  color: rgba(50, 146, 50, 0.681);
 }
 .main__container .wrapper .transaction__container {
   display: flex;
@@ -52,6 +65,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+@media screen and (max-width: 425px) {
+  .main__container .wrapper .transaction__container .top {
+    flex-direction: column;
+  }
 }
 .main__container .wrapper .transaction__container .button {
   display: flex;
@@ -67,20 +85,30 @@
 }
 .main__container .wrapper .transaction__container .button .search {
   display: flex;
-  gap: 2px;
   align-items: center;
+  padding: 0.4em;
+  gap: 2px;
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #bbc4cf;
 }
 .main__container .wrapper .transaction__container .button .search input {
   font-size: 1rem;
   opacity: 0.6;
   padding: 5px 3px;
+  border: none;
+  outline: none;
+  background: transparent;
 }
-.main__container .wrapper .transaction__container .button .search a {
-  text-decoration: none;
-  color: black;
+.main__container .wrapper .transaction__container .button .search i {
+  padding-left: 0.3em;
+  border-left: 1px solid #bbc4cf;
+  color: #bbc4cf;
+  cursor: pointer;
 }
 .main__container .wrapper .transaction__container .links {
   display: flex;
+  align-items: center;
   gap: 2vw;
 }
 .main__container .wrapper .transaction__container .links a {

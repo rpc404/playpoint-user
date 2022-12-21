@@ -116,13 +116,15 @@ const PoolType = ({
       const allQuestionairesByFixtureId = await getQuestionaireByFixtureId(
         fixtureId
       );
-      let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
-        return (
-          q.questionaireType === userPrediction.activeQuestionaire &&
-          q.poolType === poolSize &&
-          q.questionairePrice === userPrediction.activeAmount
-        );
-      });
+      let tempQ =  allQuestionairesByFixtureId.data.questionaire;
+      console.log(tempQ)
+      // let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
+      //   return (
+      //     q.questionaireType === userPrediction.activeQuestionaire &&
+      //     q.poolType === poolSize &&
+      //     q.questionairePrice === userPrediction.activeAmount
+      //   );
+      // });
 
       setQuestionaire({
         questionaires: allQuestionairesByFixtureId.data.questionaire,
@@ -249,6 +251,7 @@ const PoolType = ({
       </div>
       {isWalletConnected && (
         <div className="questionaires">
+         
           <p className="prediction_rule">Prediction questions are applicable for first 90 minutes of match time only</p>
           {!questionaire.loading &&
             questionaire.tempQuestionaire[0]?.questionaires.questions.map(
