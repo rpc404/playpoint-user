@@ -15,6 +15,7 @@ import moment from "moment";
 import Pusher from "pusher-js";
 import Leaderboards from "../../components/Leaderboards/Leaderboards";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
+import clubFlags from "../../helpers/EPLFlags.json";
 
 export const getCountryFlag = (country) => {
   let _url = "";
@@ -39,6 +40,36 @@ export const getCountryFlag = (country) => {
 
 
 export default function Predict() {
+
+  const HomeTeamFlag = (team) => {
+    return clubFlags.map((club, i) => {
+      if (club.name === team) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="home__Image"
+          />
+        );
+      }
+    });
+  };
+
+  const AwayTeamFlag = (team) => {
+    return clubFlags.map((club, i) => {
+      if (club.name === team) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="Away__Image"
+          />
+        );
+      }
+    });
+  };
 
 
   const calculateTimeLeft = (eventTime) => {
@@ -212,19 +243,21 @@ export default function Predict() {
             <div className="predictionTable__competitor">
               <div>
                 <p>{fixture?.HomeTeam}</p>
-                <img
+                {HomeTeamFlag(fixture.HomeTeam)}
+                {/* <img
                   src={getCountryFlag(fixture.HomeTeam)}
                   alt=""
                   loading="lazy"
-                />
+                /> */}
               </div>
               <span>vs</span>
               <div>
-                <img
+                {AwayTeamFlag(fixture.AwayTeam)}
+                {/* <img
                   src={getCountryFlag(fixture.AwayTeam)}
                   alt=""
                   loading="lazy"
-                />
+                /> */}
                 <p>{fixture.AwayTeam}</p>
               </div>
             </div>
