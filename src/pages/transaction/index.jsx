@@ -1,6 +1,42 @@
 import React from "react";
 import "./styles/style.css";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+
 export default function Transaction() {
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  };
+
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      "aria-controls": `simple-tabpanel-${index}`,
+    };
+  }
+
   return (
     <div className="main__container">
       <div className="wrapper">
@@ -15,24 +51,24 @@ export default function Transaction() {
           </div>
           <div className="options">
             <div className="links">
-              <i class="ri-arrow-left-right-line"></i>
-              <a href="#">Transactions</a>
+              <i className="ri-arrow-left-right-line"></i>
+              Transactions
             </div>
             <div className="links">
-              <i class="ri-money-dollar-circle-line"></i>
-              <a href="#">Payments</a>
+              <i className="ri-money-dollar-circle-line"></i>
+              Payments
             </div>
             <div className="links">
-              <i class="ri-bank-card-2-line"></i>
-              <a href="#">Cards</a>
+              <i className="ri-bank-card-2-line"></i>
+              Cards
             </div>
             <div className="links">
-              <i class="ri-account-circle-line"></i>
-              <a href="#">Account</a>
+              <i className="ri-account-circle-line"></i>
+              Account
             </div>
             <div className="links">
-              <i class="ri-user-settings-line"></i>
-              <a href="#">Administration</a>
+              <i className="ri-user-settings-line"></i>
+              Administration
             </div>
           </div>
         </div>
@@ -44,18 +80,24 @@ export default function Transaction() {
             <div className="button">
               <div className="search">
                 <input type="text" placeholder="Search.." />
-                <a href="#">
-                  <i class="ri-search-line"></i>
-                </a>
+                <i className="ri-search-line"></i>
               </div>
               <a href="#">
-                <i class="ri-notification-3-line"></i>
+                <i className="ri-notification-3-line"></i>
               </a>{" "}
             </div>
           </div>
           <div className="links">
-            <a href="#">History</a>
-            <a href="#">Upcoming</a>
+            {/* <a href="#">History</a>
+            <a href="#">Upcoming</a> */}
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab label="Item One" {...a11yProps(0)} />
+              <Tab label="Item Two" {...a11yProps(1)} />
+            </Tabs>
           </div>
           <div className="statement">
             <div className="latest">
@@ -63,7 +105,7 @@ export default function Transaction() {
               <div className="details">
                 <div className="left">
                   <div className="left_top">
-                    <i class="ri-arrow-left-right-line"></i>
+                    <i className="ri-arrow-left-right-line"></i>
                     <h3>Amazon Support</h3>
                   </div>
                   <div className="left_buttom">
@@ -72,13 +114,13 @@ export default function Transaction() {
                 </div>
 
                 <p>Success</p>
-                <i class="ri-link-m"></i>
+                <i className="ri-link-m"></i>
                 <h3>-$2,430.50</h3>
               </div>
               <div className="details">
                 <div className="left">
                   <div className="left_top">
-                    <i class="ri-arrow-left-right-line"></i>
+                    <i className="ri-arrow-left-right-line"></i>
                     <h3>Amazon Support</h3>
                   </div>
                   <div className="left_buttom">
@@ -87,7 +129,7 @@ export default function Transaction() {
                 </div>
 
                 <p>Success</p>
-                <i class="ri-link-m"></i>
+                <i className="ri-link-m"></i>
                 <h3>-$2,430.50</h3>
               </div>
             </div>
@@ -98,7 +140,7 @@ export default function Transaction() {
               <div className="details">
                 <div className="left">
                   <div className="left_top">
-                    <i class="ri-arrow-left-right-line"></i>
+                    <i className="ri-arrow-left-right-line"></i>
                     <h3>Amazon Support</h3>
                   </div>
                   <div className="left_buttom">
@@ -107,13 +149,13 @@ export default function Transaction() {
                 </div>
 
                 <p>Success</p>
-                <i class="ri-link-m"></i>
+                <i className="ri-link-m"></i>
                 <h3>-$2,430.50</h3>
               </div>
               <div className="details">
                 <div className="left">
                   <div className="left_top">
-                    <i class="ri-arrow-left-right-line"></i>
+                    <i className="ri-arrow-left-right-line"></i>
                     <h3>Riktriz</h3>
                   </div>
                   <div className="left_buttom">
@@ -122,7 +164,7 @@ export default function Transaction() {
                 </div>
 
                 <p>Success</p>
-                <i class="ri-link-m"></i>
+                <i className="ri-link-m"></i>
                 <h3>+$2,430.50</h3>
               </div>
             </div>
@@ -142,12 +184,12 @@ export default function Transaction() {
             <div className="invoice">
               <p>Balance</p>
               <div className="balance">
-                <i class="ri-wallet-line"></i>
+                <i className="ri-wallet-line"></i>
                 <h4>$69,999</h4>
               </div>
               <p>Invoice</p>
               <div className="balance">
-                <i class="ri-booklet-line"></i>
+                <i className="ri-booklet-line"></i>
                 <h4>8HXR-HA4A-RAG3</h4>
               </div>
             </div>

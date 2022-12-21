@@ -102,7 +102,6 @@ export default function Predict() {
     (async () => {
       const response = await getFixutreById(fixtureId);
       setFixture(response.data?.fixture);
-      console.log(response)
       setStatus(response.data?.status)
     })();
 
@@ -126,10 +125,11 @@ export default function Predict() {
       // setLineChartData(lineChartData);
     })();
 
-    (async () => {
-      const response = await getQuestionaireByFixtureId(fixtureId);
-      setQuestionaires(response.data.data);
-    })();
+    // (async () => {
+    //   const response = await getQuestionaireByFixtureId(fixtureId);
+    //   console.log(response.data);
+    //   setQuestionaires(response.data.questionaire);
+    // })();
   }, []);
 
   React.useEffect(() => {
