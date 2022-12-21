@@ -263,7 +263,7 @@ export default function Navbar() {
         )}
       </div>
 
-      <div className="drawer" style={{backgroundColor:"#000"}}>
+      <div className="drawer" style={{ backgroundColor: "#000" }}>
         <div onClick={toggleDrawer("right", true)}>
           <i className="ri-menu-3-line"></i>
         </div>

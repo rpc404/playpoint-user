@@ -1,15 +1,21 @@
 .main__container {
-  background-color: #fff;
+  // background-color: #fff;
   width: 100%;
+  padding: 3vw;
 
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    // display: flex;
-    // justify-content: space-between;
     background-color: rgba(255, 255, 255, 0.918) !important;
     width: 90%;
     margin: 0 auto;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(78, 78, 78, 0.18);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 0.8em;
 
     .options__container {
       display: flex;

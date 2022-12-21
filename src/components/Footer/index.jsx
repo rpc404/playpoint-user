@@ -42,13 +42,13 @@ const index = () => {
           </div>
           <div className="icons">
             <a href="#" className="icon">
-              <i class="ri-github-fill"></i>
+              <i className="ri-github-fill"></i>
             </a>
             <a href="#" className="icon">
-              <i class="ri-discord-fill"></i>
+              <i className="ri-discord-fill"></i>
             </a>
             <a href="#" className="icon">
-              <i class="ri-telegram-fill"></i>
+              <i className="ri-telegram-fill"></i>
             </a>
           </div>
         </div>

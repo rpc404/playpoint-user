@@ -2,8 +2,10 @@ import React from "react";
 import "./styles/style.css";
 import hero from "../../images/new.png";
 import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate()
   return (
     <div className="hero__container">
       <div className="blob"></div>
@@ -12,14 +14,16 @@ const Hero = () => {
         <div className="heroContent">
           <h1>Predict & Win</h1>
           <div className="card">
-            <Typography>Introduction!</Typography>
-            <Typography variant="h2" component={"h2"}>
+            {/* <Typography>Introduction!</Typography> */}
+            {/* <Typography variant="h2" component={"h2"}>
               Start playing and Earning today!
-            </Typography>
-            <Typography>
+            </Typography> */}
+            <Typography className="introduction">
               Playpoint is an online prediction pool platform based on real-time
               sporting events, supported by decentralized blockchain networks.
             </Typography>
+            <p>We are introducing duo and trio pools soon.</p>
+            <Typography className="visit">Visit active marketplaces to take part in our prediction pool.</Typography>
             <a
               target={"_blank"}
               href="https://docs.playpoint.ai/"
@@ -27,7 +31,7 @@ const Hero = () => {
             >
               Learn more
             </a>
-            <div className="beginButton" tabIndex="0" role="button">
+            <div className="beginButton" tabIndex="0" role="button" onClick={() => navigate("marketplace")}>
               Begin
             </div>
             <p>Be the next winner!</p>

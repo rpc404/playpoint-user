@@ -155,8 +155,8 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                           display: "flex",
                           gap: "15px",
                           flexDirection: "row",
-                          alignItems:"center",
-                          justifyContent:"center"
+                          alignItems: "center",
+                          justifyContent: "center",
                         }}
                       >
                         <Skeleton
@@ -191,7 +191,7 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                         />
                       </Stack>
                     </TableCell>{" "}
-                    <TableCell align="center" >
+                    <TableCell align="center">
                       <Skeleton
                         animation="wave"
                         variant="rectangular"

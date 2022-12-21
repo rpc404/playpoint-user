@@ -59,9 +59,11 @@
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(3.7px);
+    // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(78, 78, 78, 0.18);
+    backdrop-filter: blur(5px);
+    // -webkit-backdrop-filter: blur(15px);
+
     z-index: 9;
 
     @media screen and (min-width:1025px) {
@@ -95,7 +97,8 @@
       h1 {
         font-size: 3em;
         text-align: center;
-        padding: 0.5em 0;
+        padding: 0.5em 0 0 0;
+        padding-left: .3em;
         font-weight: 800;
         background: linear-gradient(#0debc6, #2dabde);
         background-clip: text;
@@ -115,20 +118,30 @@
         gap: 10px;
         width: 100%;
         /* max-width: 700px; */
-        animation: slideInFromBottom 400ms ease forwards;
+        // animation: slideInFromBottom 400ms ease forwards;
+        animation: fadeIn 3s ease forwards;
 
-        @keyframes slideInFromBottom {
+        @keyframes fadeIn {
           0% {
-            transform: translateY(100%);
+            opacity: 0;
           }
           100% {
-            transform: translateY(0);
+            opacity: 1;
           }
         }
+        // @keyframes slideInFromBottom {
+        //   0% {
+        //     transform: translateY(100%);
+        //   }
+        //   100% {
+        //     transform: translateY(0);
+        //   }
+        // }
 
         /* @media screen and (min-width: 1441px) {
           max-width: 950px;
         } */
+
 
         a {
           text-decoration: none;
@@ -150,13 +163,18 @@
         p {
           &:nth-child(1) {
             font-size: 1.2em;
-            color: #fff9;
+            color: rgba(255, 255, 255, 0.9);
           }
+          
           &:last-child {
             color: #fff9;
             font-style: italic;
           }
           font-size: 1.2em;
+        }
+        .visit {
+          color: #fff9;
+          font-style: italic;
         }
         h2 {
           font-size: 2.4em;
@@ -228,7 +246,8 @@
     // width: 500px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(78, 78, 78, 0.18);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(3.7px);
     display: flex;
