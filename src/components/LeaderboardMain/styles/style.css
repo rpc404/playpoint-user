@@ -173,7 +173,7 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
   main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser .gameDetails {
     margin-top: 15px;
     font-size: 14px;
-    justify-content: left;
+    justify-content: space-around;
     gap: 20px;
   }
 }

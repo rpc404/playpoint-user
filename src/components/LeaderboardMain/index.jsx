@@ -77,7 +77,7 @@ export default function LeaderboardMain() {
           {topRanked.map((user, i) => {
             if (i > 0 && i < 4) {
               return (
-                <div className="top3User">
+                <div className="top3User" key={i}>
                   <div className="user__avatar">
                     <img
                       src={`https://robohash.org/${user?.username || "_0"}`}

@@ -26,7 +26,6 @@
   margin-top: 3vh;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   margin: 0 1em;
   gap: 10px;
   background-color: #fff;
@@ -44,11 +43,13 @@
 @media screen and (min-width: 900px) {
   .profile__container .userData__container {
     width: 50vw;
-    margin: 0 auto;
+    margin: 2.5em auto;
   }
 }
 .profile__container .userData__container .userData {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
   flex: 1;
   gap: 5px;
@@ -59,7 +60,7 @@
   height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 1px solid rgb(114, 114, 114);
+  border-radius: 50%;
 }
 .profile__container .userData__container .MuiButton-root {
   display: flex;
@@ -75,6 +76,7 @@
 .profile__container .userData__container .userdetails__container .userdetails {
   display: flex;
   align-items: center;
+  flex-direction: column;
   gap: 10px;
   margin-bottom: 0.5em;
 }
@@ -113,6 +115,14 @@
   position: relative;
   text-align: center;
   background-color: #f2f4f6;
+}
+.profile__container .userData__container .accountbtn div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile__container .userData__container .accountbtn .address {
+  display: flex;
 }
 .profile__container .userData__container .accountbtn:hover {
   cursor: pointer;
@@ -164,7 +174,7 @@
 }
 .profile__container .summary__container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
   flex: 1;
   padding-bottom: 1em;
@@ -180,15 +190,7 @@
   justify-content: center;
   gap: 8px;
   padding: 5px 10px 5px 10px;
-  border-bottom: 1px solid #6b5ce7;
-}
-@media screen and (min-width: 426px) {
-  .profile__container .summary__container .summaryItem {
-    border-bottom: none;
-  }
-  .profile__container .summary__container .summaryItem:nth-child(1) {
-    border-right: 1px solid #6b5ce7;
-  }
+  color: #000;
 }
 .profile__container .summary__container .summaryItem i {
   font-size: 25px;
@@ -202,6 +204,34 @@
 .profile__container .summary__container .summaryItem h3 {
   font-weight: 400;
 }
+.profile__container .balance__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profile__container .balance__container .balance__wrapper {
+  display: flex;
+  background: rgba(0, 0, 0, 0.88);
+  border-radius: 6px;
+  color: #fff;
+  padding: 0.4em;
+  gap: 5px;
+}
+.profile__container .balance__container .balance__wrapper .balance {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-right: 0.8em;
+}
+.profile__container .balance__container .balance__wrapper .balance:nth-child(1) {
+  border-right: 1px solid;
+}
+.profile__container .balance__container .balance__wrapper .balance img {
+  width: 30px;
+  height: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 .profile__container .history__container {
   margin: 0 5vw;
   margin-top: 20px;
@@ -214,7 +244,7 @@
 }
 .profile__container .history__container .profile-menus__container .Mui-selected {
   color: #ffffff;
-  background: #333;
+  background: #2f3542;
 }
 @media screen and (max-width: 426px) {
   .profile__container .history__container {

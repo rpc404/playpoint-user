@@ -19,6 +19,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -109,12 +110,13 @@ export default function Profile() {
           <div className="userdetails__container">
             {editMode ? (
               <div className="userdetails">
-                <fieldset>
-                  <input
-                    value={_username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder={username}
-                  />
+                {/* <fieldset> */}
+                <input
+                  value={_username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder={username}
+                />
+                <div style={{ display: "flex", gap: "10px" }}>
                   <p
                     className="accountbtn"
                     onClick={() => {
@@ -122,24 +124,26 @@ export default function Profile() {
                         toast("Account number copied!");
                     }}
                   >
-                    <>
+                    <div className="address">
                       {`${userPublicAddress}`.substring(0, 15) +
                         `...` +
                         `${userPublicAddress}`.substring(
                           userPublicAddress.length - 3
                         )}{" "}
                       <i className="ri-file-copy-line"></i>
-                    </>
+                    </div>
                   </p>
                   <Button onClick={() => handleUpdate()}>
                     <i className="ri-send-plane-fill"></i>
                   </Button>
-                </fieldset>
+                </div>
+                {/* </fieldset> */}
               </div>
             ) : (
               <div className="userdetails">
-                <fieldset>
-                  <h2>@{username}</h2>
+                {/* <fieldset> */}
+                <h2>@{username}</h2>
+                <div style={{ display: "flex", gap: "15px",flexDirection:"column" }}>
                   <p
                     className="accountbtn"
                     onClick={() => {
@@ -147,50 +151,101 @@ export default function Profile() {
                         toast("Account number copied!");
                     }}
                   >
-                    <>
+                    <div>
                       {`${userPublicAddress}`.substring(0, 15) +
                         `...` +
                         `${userPublicAddress}`.substring(
                           userPublicAddress.length - 3
                         )}{" "}
                       <i className="ri-file-copy-line"></i>
-                    </>
+                    </div>
                   </p>
-                  <Button onClick={() => setEditMode(!editMode)}>
-                    <i className="ri-pencil-fill"></i>
+                  <Button onClick={() => setEditMode(!editMode)} style={{padding:".3em"}}>
+                    Edit Profile
+                    {/* <i className="ri-pencil-fill"></i> */}
                   </Button>
-                </fieldset>
+                </div>
+
+                {/* </fieldset> */}
               </div>
             )}
           </div>
-          <Button className="addMoneyBtn">
-            <i className="ri-add-box-line"></i> Add Money
-          </Button>
+          <div className="summary__container">
+            <div className="summaryItem">
+              <i className="ri-money-dollar-circle-line"></i>
+              <div>
+                <p>Your money in pool</p>
+                <h3>500 PPTT</h3>
+              </div>
+            </div>
+            <div className="summaryItem">
+              <i className="ri-bar-chart-grouped-line"></i>
+              <div>
+                <p>Winnings of all time</p>
+                <h3>{woat} PPTT</h3>
+              </div>
+            </div>
+          </div>
+          <div className="balance__container">
+            <div className="balance__wrapper">
+              <div
+                className="balance"
+                // onClick={(e) => {
+                //   e.stopPropagation();
+                //   ethereum
+                //     .request({
+                //       method: "wallet_watchAsset",
+                //       params: {
+                //         type: "ERC20",
+                //         options: {
+                //           address: "0x53d168578974822bCAa95106C7d5a906BF100948",
+                //           symbol: "PPTT",
+                //           decimals: 18,
+                //           image: "https://ik.imagekit.io/lexworld/Logo.png",
+                //         },
+                //       },
+                //     })
+                //     .then((success) => {
+                //       if (success) {
+                //         toast("PPTT successfully added to wallet!");
+                //       } else {
+                //         throw new Error("Something went wrong.");
+                //       }
+                //     })
+                //     .catch(console.error);
+                // }}
+              >
+                <img
+                  src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
+                  alt="ethereum"
+                  loading="lazy"
+                />
+                {/* <p>{parseFloat(balance.ppttBalance)} PPTT</p> */}
+                <p>440 PPTT</p>
+              </div>
+              <div className="balance">
+                <img
+                  src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/3a0ba/eth-diamond-rainbow.webp"
+                  alt="ethereum"
+                  loading="lazy"
+                />
+                {/* <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p> */}
+                <p>0.10 ETH</p>
+              </div>
+            </div>
+            <Button className="addMoneyBtn">
+              <i className="ri-add-box-line"></i> Add Money
+            </Button>
+          </div>
         </div>
       </div>
-     
-        <div className="summary__container">
-          <div className="summaryItem">
-            <i className="ri-money-dollar-circle-line"></i>
-            <div>
-              <p>Your money in pool</p>
-              <h3>500 PPTT</h3>
-            </div>
-          </div>
-          <div className="summaryItem">
-            <i className="ri-bar-chart-grouped-line"></i>
-            <div>
-              <p>Winnings of all time</p>
-              <h3>{woat} PPTT</h3>
-            </div>
-          </div>
-        </div>
+
       <div className="history__container">
         <div className="profile-menus__container">
           <Box
             sx={{
               flexGrow: 2,
-              bgcolor: "background.paper",
+              bgcolor: "none",
               display: "flex",
               height: 254,
               gap: "12px",
@@ -202,7 +257,8 @@ export default function Profile() {
               value={value}
               onChange={handleChange}
               aria-label="Profile Menu"
-              sx={{ borderRight: 1, borderColor: "divider" }}
+              textColor="white"
+              sx={{ borderRight: 1, borderColor: "divider", color: "white" }}
             >
               <Tab label="Settled Predictions" {...a11yProps(0)} />
               <Tab label="Unsettled Predictions" {...a11yProps(1)} />
@@ -217,7 +273,13 @@ export default function Profile() {
               style={{ flex: 1, marginTop: "1em" }}
             >
               <div>
-                <p style={{ textAlign: "center", padding: "10px" }}>
+                <p
+                  style={{
+                    textAlign: "center",
+                    padding: "10px",
+                    color: "#fff",
+                  }}
+                >
                   <em>
                     Settled Predictions are those predictions for which either
                     you're rewarded or lose.
@@ -226,10 +288,10 @@ export default function Profile() {
                 <div className="titles">
                   <p>ID</p>
                   <p>Points</p>
-                  {/* <p>amount</p> */}
                   <p>win/lose amount</p>
                   <p>match</p>
                   <p>date/time</p>
+                  <p>Transaction</p>
                 </div>
                 <div className="history__items">
                   {results.map((data, index) => {
@@ -273,6 +335,7 @@ export default function Profile() {
                           </b>
                         </p>
                         <p>{moment(data.created_at).format("LL")}</p>
+                        <p>{data?.txnhash}</p>
                       </div>
                     );
                   })}

@@ -27,7 +27,7 @@
     margin-top: 3vh;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     margin: 0 1em;
     gap: 10px;
     background-color: #fff;
@@ -44,11 +44,13 @@
 
     @media screen and (min-width: 900px) {
       width: 50vw;
-      margin: 0 auto;
+      margin: 2.5em auto;
     }
 
     .userData {
       display: flex;
+      width: 100%;
+      justify-content: space-between;
       // flex-direction: column;
       align-items: center;
       flex: 1;
@@ -60,11 +62,10 @@
         width: 150px;
         height: 150px;
         object-fit: cover;
-        border: 1px solid rgb(114, 114, 114);
+        border-radius: 50%;
+        // border: 1px solid rgb(114, 114, 114);
       }
     }
-
-
 
     .MuiButton-root {
       display: flex;
@@ -82,6 +83,7 @@
       .userdetails {
         display: flex;
         align-items: center;
+        flex-direction: column;
         gap: 10px;
         margin-bottom: 0.5em;
         fieldset {
@@ -110,8 +112,7 @@
             border: 1px solid #6b5ce7;
             padding: 0.5em;
             transition: background 1s ease-in-out;
-            padding: 0 .2em;
-
+            padding: 0 0.2em;
 
             i {
               color: #6b5ce7;
@@ -130,6 +131,16 @@
       // width: 200px;
       text-align: center;
       background-color: #f2f4f6;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .address {
+        display: flex;
+      }
       &:hover {
         cursor: pointer;
         &::before {
@@ -179,7 +190,8 @@
 
   .summary__container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    // flex-wrap: wrap;
     gap: 10px;
     flex: 1;
     padding-bottom: 1em;
@@ -193,16 +205,18 @@
       align-items: center;
       text-align: center;
       justify-content: center;
+      // flex-direction: column;
       gap: 8px;
       padding: 5px 10px 5px 10px;
-      border-bottom: 1px solid #6b5ce7;
+      // border-bottom: 1px solid #6b5ce7;
+      color: #000;
 
-      @media screen and (min-width: 426px) {
-        border-bottom: none;
-        &:nth-child(1) {
-          border-right: 1px solid #6b5ce7;
-        }
-      }
+      // @media screen and (min-width: 426px) {
+      //   border-bottom: none;
+      //   &:nth-child(1) {
+      //     border-right: 1px solid #6b5ce7;
+      //   }
+      // }
 
       i {
         font-size: 25px;
@@ -220,12 +234,44 @@
       }
     }
   }
-  
+
+  .balance__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .balance__wrapper {
+      display: flex;
+      background: rgb(0 0 0 / 88%);
+      border-radius: 6px;
+      color: #fff;
+      padding: 0.4em;
+      gap: 5px;
+      // flex-direction: column;
+      .balance {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding-right: .8em;
+        // padding: .1em;
+        &:nth-child(1){
+        
+          border-right: 1px solid;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+          object-fit: contain;
+        }
+      }
+
+    }
+  }
+
   .history__container {
     margin: 0 5vw;
     margin-top: 20px;
 
-    .profile-menus__container{
+    .profile-menus__container {
       .MuiBox-root {
         background: rgba(255, 255, 255, 0.08);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -234,8 +280,8 @@
       }
       .Mui-selected {
         color: #ffffff;
-        background: #333;
-    }
+        background: #2f3542;
+      }
     }
     @media screen and (max-width: 426px) {
       display: none;
@@ -274,10 +320,6 @@
             color: #000;
           }
         }
-
-        // &:hover {
-        //   background: #ced6e0;
-        // }
 
         p {
           flex: 1 1 0;

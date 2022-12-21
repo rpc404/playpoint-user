@@ -165,15 +165,16 @@
             font-size: 1.2em;
             color: rgba(255, 255, 255, 0.9);
           }
-          &:nth-child(2) {
-            color: #fff9;
-            font-style: italic;
-          }
+          
           &:last-child {
             color: #fff9;
             font-style: italic;
           }
           font-size: 1.2em;
+        }
+        .visit {
+          color: #fff9;
+          font-style: italic;
         }
         h2 {
           font-size: 2.4em;

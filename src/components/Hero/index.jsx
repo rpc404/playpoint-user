@@ -22,7 +22,8 @@ const Hero = () => {
               Playpoint is an online prediction pool platform based on real-time
               sporting events, supported by decentralized blockchain networks.
             </Typography>
-            <Typography>Visit active marketplaces to take part in our prediction pool.</Typography>
+            <p>We are introducing duo and trio pools soon.</p>
+            <Typography className="visit">Visit active marketplaces to take part in our prediction pool.</Typography>
             <a
               target={"_blank"}
               href="https://docs.playpoint.ai/"

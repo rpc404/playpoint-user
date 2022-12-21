@@ -45,7 +45,15 @@ export default function MarketplaceCard({ marketplace, query }) {
 
   const navigate = useNavigate();
 
-  const { marketplaceCoverImage, marketplaceName, marketplaceSlug } =
+  const navHandler = (marketplaceSlug) =>{
+        sessionStorage.setItem("marketplaceSlug", marketplaceSlug);
+        navigate(`/fixture/${marketplaceSlug}`, {
+          state: {
+            marketplaceSlug,
+          },
+        });
+  }
+  const { marketplaceCoverImage, marketplaceName, marketplaceSlug, closed } =
     marketplace;
 
   const styles = {
@@ -56,12 +64,8 @@ export default function MarketplaceCard({ marketplace, query }) {
     <div
       className="marketplaceCard__container"
       onClick={() => {
-        sessionStorage.setItem("marketplaceSlug", marketplaceSlug);
-        navigate(`/fixture`, {
-          state: {
-            marketplaceSlug,
-          },
-        });
+        closed ? alert("markeplace closed") :
+        navHandler(marketplaceSlug)
       }}
     >
       <div className="coverImage" style={styles}></div>

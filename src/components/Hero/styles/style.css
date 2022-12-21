@@ -179,11 +179,11 @@
   font-size: 1.2em;
   color: rgba(255, 255, 255, 0.9);
 }
-.hero__container .heroIntroduction .heroContent .card p:nth-child(2) {
+.hero__container .heroIntroduction .heroContent .card p:last-child {
   color: rgba(255, 255, 255, 0.6);
   font-style: italic;
 }
-.hero__container .heroIntroduction .heroContent .card p:last-child {
+.hero__container .heroIntroduction .heroContent .card .visit {
   color: rgba(255, 255, 255, 0.6);
   font-style: italic;
 }

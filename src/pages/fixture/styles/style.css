@@ -208,6 +208,11 @@
 .fixtures__container .quickViewModal__container .container .item .info__container span {
   color: #7a7a7a;
 }
+.fixtures__container .quickViewModal__container .container .item .info__container button {
+  background: #000;
+  color: #fff;
+  text-transform: capitalize;
+}
 .fixtures__container .quickViewModal__container .container .item .topBar {
   margin-top: 5px;
   display: flex;

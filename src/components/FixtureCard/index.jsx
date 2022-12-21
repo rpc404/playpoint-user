@@ -3,6 +3,7 @@ import React from "react";
 import CountryFlags from "../../helpers/CountryFlags.json";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import clubFlags from "../../helpers/EPLFlags.json";
 
 export default function FixtureCard({
   data,
@@ -41,36 +42,34 @@ export default function FixtureCard({
     );
   };
 
-  const HomeTeamFlag = (d, c, i) => {
-    return (
-      (c.name === d?.HomeTeam ||
-        (c.name === "United States" && d?.HomeTeam === "USA") ||
-        (c.name === "South Korea" && d?.HomeTeam === "Korea Republic")) && (
-        <img
-          src={c.image}
-          alt={c.name}
-          key={i}
-          loading="lazy"
-          className="home__Image"
-        />
-      )
-    );
+  const HomeTeamFlag = (team) => {
+    return clubFlags.map((club, i) => {
+      if (club.name === team) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="home__Image"
+          />
+        );
+      }
+    });
   };
 
-  const AwayTeamFlag = (d, c, i) => {
-    return (
-      (c.name === d?.AwayTeam ||
-        (c.name === "United States" && d?.AwayTeam === "USA") ||
-        (c.name === "South Korea" && d?.AwayTeam === "Korea Republic")) && (
-        <img
-          src={c?.image}
-          alt={c.name}
-          key={i}
-          loading="lazy"
-          className="Away__Image"
-        />
-      )
-    );
+  const AwayTeamFlag = (team) => {
+    return clubFlags.map((club, i) => {
+      if (club.name === team) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="Away__Image"
+          />
+        );
+      }
+    });
   };
 
   return (
@@ -82,7 +81,6 @@ export default function FixtureCard({
       {getGamesByDate(data)
         .reverse()
         .map((data, index) => {
-      
           if (group === "all") {
             return (
               <div className="gameDetails__item" key={index}>
@@ -93,13 +91,10 @@ export default function FixtureCard({
                     style={{ cursor: "pointer" }}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {CountryFlags.map((country, i) => {
-                      return HomeTeamFlag(data, country, i);
-                    })}
+
+                    {HomeTeamFlag(data.HomeTeam)}
                     {gameTime(data)}
-                    {CountryFlags.map((country, i) => {
-                      return AwayTeamFlag(data, country, i);
-                    })}
+                    {AwayTeamFlag(data.AwayTeam)}
                     <div className="teamName">{data?.AwayTeam}</div>
                   </div>
                 ) : (
@@ -108,13 +103,9 @@ export default function FixtureCard({
                     onClick={() => navigate(`/predict/${data?._id}`)}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {CountryFlags.map((country, i) => {
-                      return HomeTeamFlag(data, country, i);
-                    })}
+                    {HomeTeamFlag(data.HomeTeam)}
                     {gameTime(data)}
-                    {CountryFlags.map((country, i) => {
-                      return AwayTeamFlag(data, country, i);
-                    })}
+                    {AwayTeamFlag(data.AwayTeam)}
                     <div className="teamName">{data?.AwayTeam}</div>
                   </Button>
                 )}
@@ -145,13 +136,16 @@ export default function FixtureCard({
                     onClick={() => navigate(`/predict/${data?._id}`)}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {CountryFlags.map((country, i) => {
+                    {/* {CountryFlags.map((country, i) => {
                       return HomeTeamFlag(data, country, i);
                     })}
                     {gameTime(data)}
                     {CountryFlags.map((country, i) => {
                       return AwayTeamFlag(data, country, i);
-                    })}
+                    })} */}
+                    {HomeTeamFlag(data.HomeTeam)}
+                    {gameTime(data)}
+                    {AwayTeamFlag(data.AwayTeam)}
                     <div className="teamName">{data?.AwayTeam}</div>
                   </div>
                 ) : (
