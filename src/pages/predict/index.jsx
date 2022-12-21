@@ -36,11 +36,7 @@ export const getCountryFlag = (country) => {
   return _url;
 };
 
-
-
-
 export default function Predict() {
-
   const HomeTeamFlag = (team) => {
     return clubFlags.map((club, i) => {
       if (club.name === team) {
@@ -71,34 +67,54 @@ export default function Predict() {
     });
   };
 
-
   const calculateTimeLeft = (eventTime) => {
-    let duration = moment(eventTime).diff(moment.now(),"seconds");
-    let seconds ="";
+    let duration = moment(eventTime).diff(moment.now(), "seconds");
+    let seconds = "";
     let minutes = "";
     let hours = "";
     let days = "";
-    if(duration => 60){
-      minutes = Math.floor(duration/60);
-      seconds = duration%60;
+    if ((duration) => 60) {
+      minutes = Math.floor(duration / 60);
+      seconds = duration % 60;
     }
-    if(minutes=>60){
-      hours = Math.floor(minutes/60)
-      minutes = minutes%60;
+    if ((minutes) => 60) {
+      hours = Math.floor(minutes / 60);
+      minutes = minutes % 60;
     }
-    if(hours=>24){
-      days = Math.floor(hours/24)
-      hours = hours%24;
+    if ((hours) => 24) {
+      days = Math.floor(hours / 24);
+      hours = hours % 24;
     }
 
-    return <div className="timeOut">
-          {days>0 && <div className="block"><h2>{days}</h2><span>Days</span></div>}
-          {hours>0 && <div className="block"><h2>{hours}</h2><span>Hours</span></div>}
-          {minutes>0 && <div className="block"><h2>{minutes}</h2><span>Minutes</span></div>}
-          {seconds>=0 && <div className="block"><h2>{seconds}</h2><span>Seconds</span></div>}
-
-    </div>;
-  }
+    return (
+      <div className="timeOut">
+        {days > 0 && (
+          <div className="block">
+            <h2>{days}</h2>
+            <span>Days</span>
+          </div>
+        )}
+        {hours > 0 && (
+          <div className="block">
+            <h2>{hours}</h2>
+            <span>Hours</span>
+          </div>
+        )}
+        {minutes > 0 && (
+          <div className="block">
+            <h2>{minutes}</h2>
+            <span>Minutes</span>
+          </div>
+        )}
+        {seconds >= 0 && (
+          <div className="block">
+            <h2>{seconds}</h2>
+            <span>Seconds</span>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
@@ -106,21 +122,22 @@ export default function Predict() {
   const [, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
   const [activeOS, setActiveOS] = React.useState("");
-  const [status,setStatus] = React.useState(false)
-  const [{predictions}, dispatchPredictionsData] = usePredictionsContext()
-  const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft(fixture.DateUtc));
+  const [status, setStatus] = React.useState(false);
+  const [{ predictions }, dispatchPredictionsData] = usePredictionsContext();
+  const [timeLeft, setTimeLeft] = React.useState(
+    calculateTimeLeft(fixture.DateUtc)
+  );
 
   const navigate = useNavigate();
+  // console.log(predictions)
 
   let volume = 0;
 
-
   React.useEffect(() => {
-      setTimeout(() => {
-          setTimeLeft(calculateTimeLeft(fixture.DateUtc));
-      },1000);
+    setTimeout(() => {
+      setTimeLeft(calculateTimeLeft(fixture.DateUtc));
+    }, 1000);
   });
-
 
   React.useEffect(() => {
     // Windows
@@ -133,18 +150,21 @@ export default function Predict() {
     (async () => {
       const response = await getFixutreById(fixtureId);
       setFixture(response.data?.fixture);
-      setStatus(response.data?.status)
+      setStatus(response.data?.status);
     })();
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
-     
+
       sessionStorage.setItem(
         "predictions",
         JSON.stringify(response.data.data.reverse())
       );
-      dispatchPredictionsData({type:"set-predictions", payload: response.data.data})
-      
+      dispatchPredictionsData({
+        type: "set-predictions",
+        payload: response.data.data,
+      });
+
       // let lineChartData = [];
       // response.data.data.map((prediction, key) => {
       //   lineChartData.push({
@@ -179,7 +199,10 @@ export default function Predict() {
       if (data.data[0].fixtureId == fixtureId) {
         const newPrediction = [data.data[0], ..._predictions];
         sessionStorage.setItem("predictions", JSON.stringify(newPrediction));
-        dispatchPredictionsData({type:"set-predictions", payload: newPrediction})
+        dispatchPredictionsData({
+          type: "set-predictions",
+          payload: newPrediction,
+        });
       }
     });
   }, []);
@@ -187,7 +210,10 @@ export default function Predict() {
   return (
     <div className="prediction__container">
       <Helmet>
-        <title>{fixture.HomeTeam +" - "+ fixture.AwayTeam } |Playpoint | Prediction | </title>
+        <title>
+          {fixture.HomeTeam + " - " + fixture.AwayTeam} |Playpoint | Prediction
+          |{" "}
+        </title>
       </Helmet>
 
       <div className="main__container">
@@ -198,7 +224,7 @@ export default function Predict() {
           <h3>Active Predictions</h3>
 
           <div className={`prediction__items ${activeOS}`}>
-            {predictions.length >= 1 &&
+            {predictions.length >= 1 ? (
               predictions.map((data, index) => {
                 volume += data?.amount / 0.02;
                 return (
@@ -231,7 +257,12 @@ export default function Predict() {
                     </div>
                   </div>
                 );
-              })}
+              })
+            ) : (
+              <div className="predictedCard__container">
+                <p style={{color:"#fff"}}>No Predictions available.Be the first one to predict.</p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -277,30 +308,32 @@ export default function Predict() {
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <div>
-             {(status && status!=="closed") ? timeLeft : 
-             <div className="fixture_results">
-             <div className="teams_score">
-               <h2>{fixture.HomeTeamScore}</h2>
-               <p>{fixture.HomeTeam}</p>
-             </div>
-             <div className="teams_score">
-               <h2>{fixture.AwayTeamScore}</h2>
-               <p>{fixture.AwayTeam}</p>
-             </div>
-          </div> }
-             <div className="fixture_detail">
-              <p>
-                <i className="ri-map-pin-line"></i>
-                <span>Stadium: </span>
-                {fixture.Location}
+              {status && status !== "closed" ? (
+                timeLeft
+              ) : (
+                <div className="fixture_results">
+                  <div className="teams_score">
+                    <h2>{fixture.HomeTeamScore}</h2>
+                    <p>{fixture.HomeTeam}</p>
+                  </div>
+                  <div className="teams_score">
+                    <h2>{fixture.AwayTeamScore}</h2>
+                    <p>{fixture.AwayTeam}</p>
+                  </div>
+                </div>
+              )}
+              <div className="fixture_detail">
+                <p>
+                  <i className="ri-map-pin-line"></i>
+                  <span>Stadium: </span>
+                  {fixture.Location}
                 </p>
                 <p>
-                <i className="ri-bar-chart-2-line"></i>
-                <span>Match Number: </span>
-              {fixture.MatchNumber}
+                  <i className="ri-bar-chart-2-line"></i>
+                  <span>Match Number: </span>
+                  {fixture.MatchNumber}
                 </p>
-             </div>
-             
+              </div>
             </div>
             {/* <LineChart
               className="graphData"
