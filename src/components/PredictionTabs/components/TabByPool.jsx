@@ -15,15 +15,7 @@ import { ACTIONS } from "../../../contexts/WalletRPC/RPCReducer";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../../utils/ERC20BasicABI.json";
 import BetaFactoryAPI from "../../../utils/BetaFactoryABI.json";
-
-const _predictionData = {
-  answers: {},
-  predictedBy: "",
-  amount: 0,
-  questionaireId: "",
-  fixtureId: "",
-  marketplaceSlug: "",
-};
+import TextField from "@mui/material/TextField";
 
 /**
  * @dev utils for slider
@@ -62,6 +54,14 @@ const PoolType = ({
   fixtureId,
   status,
 }) => {
+  const _predictionData = {
+    answers: {},
+    predictedBy: "",
+    amount: 0,
+    questionaireId: "",
+    fixtureId: "",
+    marketplaceSlug: "",
+  };
   const handleActiveAmount = (amount) => {
     setUserPrediction({
       ...userPrediction,
@@ -116,8 +116,8 @@ const PoolType = ({
       const allQuestionairesByFixtureId = await getQuestionaireByFixtureId(
         fixtureId
       );
-      let tempQ =  allQuestionairesByFixtureId.data.questionaire;
-      console.log(tempQ)
+      let tempQ = allQuestionairesByFixtureId.data.questionaire;
+      console.log(tempQ);
       // let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
       //   return (
       //     q.questionaireType === userPrediction.activeQuestionaire &&
@@ -133,8 +133,6 @@ const PoolType = ({
       });
     })();
   }, [userPrediction]);
-
-
 
   const handleRadioChange = (question, answer) => {
     _predictionData.answers[question] = answer;
@@ -164,7 +162,6 @@ const PoolType = ({
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
     _predictionData.marketplaceSlug =
       questionaire.tempQuestionaire[0].marketplaceSlug;
-      
 
     if (validation(_predictionData.answers)) {
       setPredicting(true);
@@ -178,7 +175,7 @@ const PoolType = ({
       // transfer prediction pool
       await PPTTContract.transfer(
         "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // wallet address
-        ((_predictionData.amount/0.02) * 1e18).toString()
+        ((_predictionData.amount / 0.02) * 1e18).toString()
       );
 
       const PredictionContract = new ethers.Contract(
@@ -189,12 +186,14 @@ const PoolType = ({
 
       // console.log(ethers.utils.parseEther(_predictionData.amount.toString()), _predictionData.amount)
 
-      const PPTTBalance = await PPTTContract.balanceOf(_predictionData.predictedBy);
-      if(PPTTBalance < _predictionData.amount){
+      const PPTTBalance = await PPTTContract.balanceOf(
+        _predictionData.predictedBy
+      );
+      if (PPTTBalance < _predictionData.amount) {
         return toast("Insufficient PPTT");
       }
       // console.log(contract)
-     await PredictionContract.setPrediction(
+      await PredictionContract.setPrediction(
         JSON.stringify(_predictionData.answers),
         _predictionData.questionaireId,
         _predictionData.predictedBy,
@@ -204,7 +203,7 @@ const PoolType = ({
       return await setPrediction(_predictionData)
         .then(() => {
           toast("Predicted Successfully!");
-          setTimeout(()=>window.location.reload(),2000)
+          setTimeout(() => window.location.reload(), 2000);
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
@@ -251,8 +250,10 @@ const PoolType = ({
       </div>
       {isWalletConnected && (
         <div className="questionaires">
-         
-          <p className="prediction_rule">Prediction questions are applicable for first 90 minutes of match time only</p>
+          <p className="prediction_rule">
+            Prediction questions are applicable for first 90 minutes of match
+            time only
+          </p>
           {!questionaire.loading &&
             questionaire.tempQuestionaire[0]?.questionaires.questions.map(
               (q, index) => (
@@ -307,7 +308,7 @@ const PoolType = ({
                           </FormControl>
                         ) : q === "input" ? (
                           <div key={i}>
-                            <input
+                            {/* <input
                               style={{ padding: "5px 10px" }}
                               type="text"
                               value={_predictionData.answers[index]}
@@ -315,6 +316,21 @@ const PoolType = ({
                               onChange={(e) =>
                                 handleRadioChange(index, e.target.value)
                               }
+                            /> */}
+                            <TextField
+                              style={{
+                                padding: "3px 6px",
+                                background: "#fff",
+                              }}
+                              type="text"
+                              placeholder="Your Answer"
+                              value={_predictionData.answers[index]}
+                              onChange={(e) =>
+                                handleRadioChange(index, e.target.value)
+                              }
+                              id="filled-basic"
+                              // label="Filled"
+                              variant="standard"
                             />
                           </div>
                         ) : null

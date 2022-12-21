@@ -2,6 +2,11 @@
   display: flex;
   align-items: flex-start;
 }
+@media screen and (min-width: 1441px) {
+  .prediction__container .main__container {
+    overflow-y: hidden;
+  }
+}
 @media (max-width: 576px) {
   .prediction__container .main__container {
     flex-direction: column-reverse;

@@ -13,11 +13,9 @@ export const getCountryShortName = (country) => {
     if (flag.name === country) {
       name = flag.code;
     } else if (country === "USA") {
-      name =
-        "USA";
+      name = "USA";
     } else if (country === "South Korea" || country === "Korea Republic") {
-      name =
-        "KR";
+      name = "KR";
     }
   });
   return name;
@@ -29,8 +27,6 @@ export default function Leaderboards() {
   const [loading, setLoading] = React.useState(true);
   const [leaderboards, setLeaderboards] = React.useState([]);
 
-
-  
 
   React.useEffect(() => {
     // Windows
@@ -58,7 +54,7 @@ export default function Leaderboards() {
   // console.log(leaderboards)
   return (
     <div className={`leaderboardItems ${activeOS}`}>
-      {leaderboards.length >= 1 &&
+      {leaderboards.length >= 1 && !loading ? (
         leaderboards.map((leaderboard, key) => {
           return (
             <div
@@ -76,7 +72,7 @@ export default function Leaderboards() {
                   loading="lazy"
                   alt=""
                 />
-                <span>vs</span> 
+                <span>vs</span>
                 <img
                   src={getCountryShortName(leaderboard.fixture.AwayTeam)}
                   loading="lazy"
@@ -88,8 +84,13 @@ export default function Leaderboards() {
               <p>{leaderboard.volume}</p>
             </div>
           );
-        })}
-      {loading &&
+        })
+      ) : (
+        <div className="leaderboardItem__container">
+          <p style={{ color: "#fff" }}>Leaderboard Not Available!</p>
+        </div>
+      )}
+      {loading && leaderboards.length < 1 ? (
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(
           (_, index) => {
             return (
@@ -100,7 +101,12 @@ export default function Leaderboards() {
               </div>
             );
           }
-        )}
+        )
+      ) : (
+        <div className="leaderboardItem__container">
+          <p>Leaderboard Not Available.</p>
+        </div>
+      )}
     </div>
   );
 }

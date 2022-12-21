@@ -2,7 +2,10 @@
   .main__container {
     display: flex;
     align-items: flex-start;
-    // height: calc(100vh - 7.4em);
+    @media screen and (min-width: 1441px) {
+      overflow-y: hidden;
+    }
+
     @media (max-width: 576px) {
       flex-direction: column-reverse;
     }
@@ -14,7 +17,7 @@
       }
 
       h3 {
-        padding: .8em 1.5vw;
+        padding: 0.8em 1.5vw;
         text-align: center;
         margin-bottom: 10px;
         font-weight: 500;
@@ -29,7 +32,6 @@
       .prediction__items {
         height: 83vh;
         overflow-y: scroll;
-
 
         &.windowsOS {
           height: 77vh;
@@ -95,7 +97,6 @@
                 padding: 1px 15px;
                 border-radius: 10px;
                 font-size: 12px;
-
               }
             }
             p {
@@ -182,7 +183,7 @@
             }
 
             p {
-              padding: .1em 0;
+              padding: 0.1em 0;
               &:last-child {
                 color: rgba(255, 255, 255, 0.912);
               }
@@ -229,7 +230,6 @@
             display: flex;
             gap: 5px;
           }
-
         }
         .fixture_results {
           display: flex;
@@ -242,7 +242,7 @@
             border-radius: 5px;
             background-color: #fff;
 
-            p{
+            p {
               color: #4e4d4d;
             }
           }
@@ -264,7 +264,6 @@
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(3.7px);
-
 
           @media (max-width: 576px) {
             flex-direction: column;
@@ -448,7 +447,6 @@
         align-items: center;
         justify-content: center;
       }
-
 
       .leaderboardItemsTitle {
         display: flex;
