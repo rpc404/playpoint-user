@@ -55,7 +55,7 @@ const PoolType = ({
   status,
 }) => {
   const _predictionData = {
-    answers: {},
+    answers:{},
     predictedBy: "",
     amount: 0,
     questionaireId: "",
@@ -117,7 +117,6 @@ const PoolType = ({
         fixtureId
       );
       let tempQ = allQuestionairesByFixtureId.data.questionaire;
-      console.log(tempQ);
       // let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
       //   return (
       //     q.questionaireType === userPrediction.activeQuestionaire &&
@@ -135,7 +134,7 @@ const PoolType = ({
   }, [userPrediction]);
 
   const handleRadioChange = (question, answer) => {
-    _predictionData.answers[question] = answer;
+    sessionStorage.setItem('answers'+question, JSON.stringify(answer))
   };
 
   const validation = (answers) => {
@@ -155,14 +154,18 @@ const PoolType = ({
   };
 
   const handlePrediction = async () => {
-    console.log(_predictionData.answers);
+    const answer0 = sessionStorage.getItem('answer0')
+    const answer1 = sessionStorage.getItem('answer1')
+    const answer2 = sessionStorage.getItem('answer2')
+    const answer3 = sessionStorage.getItem('answer3')
+   _predictionData.answers = [{0:answer0},{1:answer1},{2: answer2},{3:answer3}];
     _predictionData.predictedBy = userPublicAddress;
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id;
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
     _predictionData.marketplaceSlug =
       questionaire.tempQuestionaire[0].marketplaceSlug;
-
+    console.log(_predictionData.answers);
     if (validation(_predictionData.answers)) {
       setPredicting(true);
       const provider = new ethers.providers.Web3Provider(ethereum);
@@ -326,7 +329,7 @@ const PoolType = ({
                               placeholder="Your Answer"
                               value={_predictionData.answers[index]}
                               onChange={(e) =>
-                                handleRadioChange(index, e.target.value)
+                                handleRadioChange(index, e.target.value,_predictionData)
                               }
                               id="filled-basic"
                               // label="Filled"
