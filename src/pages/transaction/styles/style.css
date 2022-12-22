@@ -1,86 +1,98 @@
-.transaction__container .wrapper {
-  background-color: rgba(255, 255, 255, 0.918) !important;
-  width: 90%;
-  margin: 0 auto;
-  border-radius: 5px;
+.transaction__wrapper {
+  /* padding: 3vw; */
+  color: #fff;
+}
+.transaction__wrapper .wrapper {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(78, 78, 78, 0.18);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(15px);
   padding: 0.8em;
+  width: 90%;
+  margin: 2em auto;
 }
 @media screen and (min-width: 426px) {
-  .transaction__container .wrapper {
+  .transaction__wrapper .wrapper {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
   }
 }
-.transaction__container .wrapper .options__container {
+.transaction__wrapper .wrapper .options__container {
   display: flex;
   flex-direction: column;
-  gap: 6vh;
+  gap: 1.5em;
 }
-.transaction__container .wrapper .options__container .profile {
+.transaction__wrapper .wrapper .options__container .profile {
   display: flex;
   align-items: center;
 }
-.transaction__container .wrapper .options__container .profile img {
+@media screen and (max-width: 425px) {
+  .transaction__wrapper .wrapper .options__container .profile {
+    border-bottom: 1px solid rgb(115, 115, 115);
+    padding-bottom: 1em;
+  }
+}
+.transaction__wrapper .wrapper .options__container .profile img {
   height: 100px;
   width: 100px;
 }
-.transaction__container .wrapper .options__container .options {
+.transaction__wrapper .wrapper .options__container .options {
   display: flex;
   flex-direction: column;
-  gap: 4vh;
+  /* gap: 4vh; */
+  gap: 20px;
 }
-.transaction__container .wrapper .options__container .options .links {
+.transaction__wrapper .wrapper .options__container .options .links {
   display: flex;
   align-items: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  color: #000;
+  /* color: #000; */
   gap: 5px;
   cursor: pointer;
 }
-.transaction__container .wrapper .options__container .options .links a {
+.transaction__wrapper .wrapper .options__container .options .links a {
   text-decoration: none;
   color: black;
   margin: 3px 7px;
   transition: 0.3s all ease-in-out;
 }
-.transaction__container .wrapper .options__container .options .links:hover {
+.transaction__wrapper .wrapper .options__container .options .links:hover {
   color: rgba(50, 146, 50, 0.681);
 }
-.transaction__container .wrapper .transaction__container {
+.transaction__wrapper .wrapper .transaction__container {
   display: flex;
   flex-direction: column;
-  gap: 6vh;
+  margin-top: 1em;
 }
-.transaction__container .wrapper .transaction__container .top {
+.transaction__wrapper .wrapper .transaction__container .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+.transaction__wrapper .wrapper .transaction__container .top h1 {
+  padding: 0.5em 0;
+}
 @media screen and (max-width: 425px) {
-  .transaction__container .wrapper .transaction__container .top {
+  .transaction__wrapper .wrapper .transaction__container .top {
     flex-direction: column;
   }
 }
-.transaction__container .wrapper .transaction__container .button {
+.transaction__wrapper .wrapper .transaction__container .button {
   display: flex;
   gap: 1.6vw;
   align-items: center;
 }
-.transaction__container .wrapper .transaction__container .button i {
+.transaction__wrapper .wrapper .transaction__container .button i {
   font-size: 1.6rem;
 }
-.transaction__container .wrapper .transaction__container .button a {
+.transaction__wrapper .wrapper .transaction__container .button a {
   text-decoration: none;
   color: black;
 }
-.transaction__container .wrapper .transaction__container .button .search {
+.transaction__wrapper .wrapper .transaction__container .button .search {
   display: flex;
   align-items: center;
   padding: 0.4em;
@@ -89,7 +101,7 @@
   border-radius: 5px;
   border: 1px solid #bbc4cf;
 }
-.transaction__container .wrapper .transaction__container .button .search input {
+.transaction__wrapper .wrapper .transaction__container .button .search input {
   font-size: 1rem;
   opacity: 0.6;
   padding: 5px 3px;
@@ -97,73 +109,93 @@
   outline: none;
   background: transparent;
 }
-.transaction__container .wrapper .transaction__container .button .search i {
+.transaction__wrapper .wrapper .transaction__container .button .search i {
   padding-left: 0.3em;
   border-left: 1px solid #bbc4cf;
   color: #bbc4cf;
   cursor: pointer;
 }
-.transaction__container .wrapper .transaction__container .links {
+.transaction__wrapper .wrapper .transaction__container .links {
   display: flex;
   align-items: center;
   gap: 2vw;
+  padding: 1em 0;
 }
-.transaction__container .wrapper .transaction__container .links a {
+.transaction__wrapper .wrapper .transaction__container .links a {
   text-decoration: none;
   color: black;
   font-weight: 600;
 }
-.transaction__container .wrapper .transaction__container .statement .latest {
+.transaction__wrapper .wrapper .transaction__container .statement .latest {
   display: flex;
   flex-direction: column;
   gap: 2.8vh;
+  margin-top: 1em;
 }
-.transaction__container .wrapper .transaction__container .statement .latest .details {
+.transaction__wrapper .wrapper .transaction__container .statement .latest .details {
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgb(115, 115, 115);
+  padding-bottom: 20px;
 }
-.transaction__container .wrapper .transaction__container .statement .latest .details .left {
+.transaction__wrapper .wrapper .transaction__container .statement .latest .details .left {
   display: flex;
   flex-direction: column;
   gap: 0.5vh;
 }
-.transaction__container .wrapper .transaction__container .statement .latest .details .left .left_top {
+.transaction__wrapper .wrapper .transaction__container .statement .latest .details .left .left_top {
   display: flex;
   align-items: center;
   gap: 1vw;
 }
-.transaction__container .wrapper .transaction__container .statement .latest .details .left .left_buttom {
+.transaction__wrapper .wrapper .transaction__container .statement .latest .details .left .left_buttom {
   padding-left: 25px;
 }
-.transaction__container .wrapper .transaction__container .statement .latest .details .left .left_buttom p {
+.transaction__wrapper .wrapper .transaction__container .statement .latest .details .left .left_buttom p {
   opacity: 0.5;
 }
-.transaction__container .wrapper .balance__container {
+.transaction__wrapper .wrapper .balance__container {
   display: flex;
   justify-content: flex-end;
 }
-.transaction__container .wrapper .balance__container .top {
+@media screen and (max-width: 425px) {
+  .transaction__wrapper .wrapper .balance__container {
+    justify-content: center;
+    width: 100%;
+  }
+}
+.transaction__wrapper .wrapper .balance__container .top {
   display: flex;
   flex-direction: column;
   gap: 4vh;
 }
-.transaction__container .wrapper .balance__container .top img {
+@media screen and (max-width: 425px) {
+  .transaction__wrapper .wrapper .balance__container .top {
+    width: 100%;
+    padding: 1em;
+  }
+}
+.transaction__wrapper .wrapper .balance__container .top img {
   height: 100px;
   width: 100px;
 }
-.transaction__container .wrapper .balance__container .top p {
+.transaction__wrapper .wrapper .balance__container .top p {
   opacity: 0.4;
 }
-.transaction__container .wrapper .balance__container .invoice {
+.transaction__wrapper .wrapper .balance__container .invoice {
   display: flex;
   flex-direction: column;
   gap: 1vh;
 }
-.transaction__container .wrapper .balance__container .invoice .balance {
+.transaction__wrapper .wrapper .balance__container .invoice .balance {
   display: flex;
   gap: 1vw;
 }
-.transaction__container .wrapper .balance__container .chart img {
+.transaction__wrapper .wrapper .balance__container .chart img {
   height: 200px;
   width: 200px;
+}
+
+g g g rect:hover {
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */

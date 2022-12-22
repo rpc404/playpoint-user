@@ -1,32 +1,35 @@
-.transaction__container {
+.transaction__wrapper {
   // background-color: #fff;
   // width: 100%;
-  // padding: 3vw;
+  /* padding: 3vw; */
+  color: #fff;
 
   .wrapper {
-    background-color: rgba(255, 255, 255, 0.918) !important;
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 5px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(78, 78, 78, 0.18);
+    box-shadow: 0 4px 30px rgb(78 78 78 / 18%);
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(15px);
     padding: 0.8em;
+    width: 90%;
+    margin: 2em auto;
 
     @media screen and (min-width: 426px) {
       display: grid;
-      grid-template-columns: 1fr 4fr 1fr;
+      grid-template-columns: 1fr 3fr 1fr;
     }
 
     .options__container {
       display: flex;
       flex-direction: column;
-      gap: 6vh;
+      gap: 1.5em;
       .profile {
         display: flex;
         align-items: center;
+        @media screen and (max-width: 425px) {
+          border-bottom: 1px solid rgb(115, 115, 115);
+          padding-bottom: 1em;
+        }
         img {
           height: 100px;
           width: 100px;
@@ -35,13 +38,13 @@
       .options {
         display: flex;
         flex-direction: column;
-
-        gap: 4vh;
+        /* gap: 4vh; */
+        gap: 20px;
         .links {
           display: flex;
           align-items: center;
           width: fit-content;
-          color: #000;
+          /* color: #000; */
           gap: 5px;
           cursor: pointer;
           a {
@@ -60,11 +63,15 @@
     .transaction__container {
       display: flex;
       flex-direction: column;
-      gap: 6vh;
+      margin-top: 1em;
       .top {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        h1 {
+          padding: 0.5em 0;
+        }
 
         @media screen and (max-width: 425px) {
           flex-direction: column;
@@ -109,6 +116,7 @@
         display: flex;
         align-items: center;
         gap: 2vw;
+        padding: 1em 0;
         a {
           text-decoration: none;
           color: black;
@@ -120,9 +128,12 @@
           display: flex;
           flex-direction: column;
           gap: 2.8vh;
+          margin-top: 1em;
           .details {
             display: flex;
             justify-content: space-between;
+            border-bottom: 1px solid rgb(115, 115, 115);
+            padding-bottom: 20px;
 
             .left {
               display: flex;
@@ -149,10 +160,19 @@
     .balance__container {
       display: flex;
       justify-content: flex-end;
+      @media screen and (max-width: 425px) {
+        justify-content: center;
+        width: 100%;
+      }
       .top {
         display: flex;
         flex-direction: column;
         gap: 4vh;
+
+        @media screen and (max-width: 425px) {
+          width: 100%;
+          padding: 1em;
+        }
         img {
           height: 100px;
           width: 100px;
@@ -174,6 +194,18 @@
         img {
           height: 200px;
           width: 200px;
+        }
+      }
+    }
+  }
+}
+
+g {
+  g {
+    g {
+      rect {
+        &:hover {
+          color: #fff;
         }
       }
     }

@@ -2,43 +2,57 @@ import React from "react";
 import "./styles/style.css";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import propTypes from "prop-types";
+import { Typography, Box } from "@mui/material";
+import { BarChart } from "reaviz";
 
-export default function Transaction() {
-  function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-
-  TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-  };
-
-  function a11yProps(index) {
-    return {
-      id: `simple-tab-${index}`,
-      "aria-controls": `simple-tabpanel-${index}`,
-    };
-  }
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
   return (
-    <div className="transaction__container">
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography variant="div">{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: propTypes.node,
+  index: propTypes.number.isRequired,
+  value: propTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+export default function Transaction() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const data = [
+    { key: 'Jan', data: 14 },
+    { key: 'Feb', data: 5 },
+    { key: 'Apr', data: 18 }
+  ];
+
+  return (
+    <div className="transaction__wrapper">
       <div className="wrapper">
         <div className="options__container">
           <div className="profile">
@@ -82,9 +96,9 @@ export default function Transaction() {
                 <input type="text" placeholder="Search.." />
                 <i className="ri-search-line"></i>
               </div>
-              <a href="#">
-                <i className="ri-notification-3-line"></i>
-              </a>{" "}
+              <i className="ri-notification-3-line"></i>
+              {/* <a href="#"> */}
+              {/* </a>{" "} */}
             </div>
           </div>
           <div className="links">
@@ -95,80 +109,86 @@ export default function Transaction() {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="Item One" {...a11yProps(0)} />
-              <Tab label="Item Two" {...a11yProps(1)} />
+              <Tab label="History" {...a11yProps(0)} sx={{ color: "#000" }} />
+              <Tab label="Upcoming" {...a11yProps(1)} />
             </Tabs>
           </div>
-          <div className="statement">
-            <div className="latest">
-              <p>19 Dec, 2022 </p>
-              <div className="details">
-                <div className="left">
-                  <div className="left_top">
-                    <i className="ri-arrow-left-right-line"></i>
-                    <h3>Amazon Support</h3>
-                  </div>
-                  <div className="left_buttom">
-                    <p>9 Dec, 2022 at 7:08 PM</p>
-                  </div>
-                </div>
 
-                <p>Success</p>
-                <i className="ri-link-m"></i>
-                <h3>-$2,430.50</h3>
-              </div>
-              <div className="details">
-                <div className="left">
-                  <div className="left_top">
-                    <i className="ri-arrow-left-right-line"></i>
-                    <h3>Amazon Support</h3>
+          <TabPanel value={value} index={0}>
+            <div className="statement">
+              <div className="latest">
+                <p>19 Dec, 2022 </p>
+                <div className="details">
+                  <div className="left">
+                    <div className="left_top">
+                      <i className="ri-arrow-left-right-line"></i>
+                      <h3>Amazon Support</h3>
+                    </div>
+                    <div className="left_buttom">
+                      <p>9 Dec, 2022 at 7:08 PM</p>
+                    </div>
                   </div>
-                  <div className="left_buttom">
-                    <p>9 Dec, 2022 at 7:08 PM</p>
-                  </div>
-                </div>
 
-                <p>Success</p>
-                <i className="ri-link-m"></i>
-                <h3>-$2,430.50</h3>
-              </div>
-            </div>
-          </div>
-          <div className="statement">
-            <div className="latest">
-              <p>2 Dec, 2022 </p>
-              <div className="details">
-                <div className="left">
-                  <div className="left_top">
-                    <i className="ri-arrow-left-right-line"></i>
-                    <h3>Amazon Support</h3>
-                  </div>
-                  <div className="left_buttom">
-                    <p>2 Dec, 2022 at 8:08 PM</p>
-                  </div>
+                  <p>Success</p>
+                  <i className="ri-link-m"></i>
+                  <h3>-$2,430.50</h3>
                 </div>
+                <div className="details">
+                  <div className="left">
+                    <div className="left_top">
+                      <i className="ri-arrow-left-right-line"></i>
+                      <h3>Amazon Support</h3>
+                    </div>
+                    <div className="left_buttom">
+                      <p>9 Dec, 2022 at 7:08 PM</p>
+                    </div>
+                  </div>
 
-                <p>Success</p>
-                <i className="ri-link-m"></i>
-                <h3>-$2,430.50</h3>
-              </div>
-              <div className="details">
-                <div className="left">
-                  <div className="left_top">
-                    <i className="ri-arrow-left-right-line"></i>
-                    <h3>Riktriz</h3>
-                  </div>
-                  <div className="left_buttom">
-                    <p>2 Dec, 2022 at 8:08 PM</p>
-                  </div>
+                  <p>Success</p>
+                  <i className="ri-link-m"></i>
+                  <h3>-$2,430.50</h3>
                 </div>
-
-                <p>Success</p>
-                <i className="ri-link-m"></i>
-                <h3>+$2,430.50</h3>
               </div>
             </div>
-          </div>
+            <div className="statement">
+              <div className="latest">
+                <p>2 Dec, 2022 </p>
+                <div className="details">
+                  <div className="left">
+                    <div className="left_top">
+                      <i className="ri-arrow-left-right-line"></i>
+                      <h3>Amazon Support</h3>
+                    </div>
+                    <div className="left_buttom">
+                      <p>2 Dec, 2022 at 8:08 PM</p>
+                    </div>
+                  </div>
+
+                  <p>Success</p>
+                  <i className="ri-link-m"></i>
+                  <h3>-$2,430.50</h3>
+                </div>
+                <div className="details">
+                  <div className="left">
+                    <div className="left_top">
+                      <i className="ri-arrow-left-right-line"></i>
+                      <h3>Riktriz</h3>
+                    </div>
+                    <div className="left_buttom">
+                      <p>2 Dec, 2022 at 8:08 PM</p>
+                    </div>
+                  </div>
+
+                  <p>Success</p>
+                  <i className="ri-link-m"></i>
+                  <h3>+$2,430.50</h3>
+                </div>
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            UpComing
+          </TabPanel>
         </div>
         <div className="balance__container">
           <div className="top">
@@ -194,10 +214,11 @@ export default function Transaction() {
               </div>
             </div>
             <div className="chart">
-              <img
+              {/* <img
                 src="https://lh6.googleusercontent.com/uHU7F0Eq21xjQgotgkOKjjfJnQ4cf049OkJtM0M6NeajnsWfa3P_zrOSpAvp6ynpOSO8cwzeGDOc0YF-mEK7X7njEUGrvg_1r7tOI0TRPh-AshZ6wP98E0AWbETSBhMruDWp3vta"
                 alt=""
-              />
+              /> */}
+              <BarChart width={150} height={150} data={data}/>
             </div>
           </div>
         </div>
