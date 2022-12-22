@@ -60,7 +60,7 @@
   transition: 0.3s all ease-in-out;
 }
 .transaction__wrapper .wrapper .options__container .options .links:hover {
-  color: rgba(50, 146, 50, 0.681);
+  color: rgb(34, 186, 34);
 }
 .transaction__wrapper .wrapper .transaction__container {
   display: flex;
@@ -130,13 +130,27 @@
   display: flex;
   flex-direction: column;
   gap: 2.8vh;
-  margin-top: 1em;
+  margin: 1em 0;
 }
 .transaction__wrapper .wrapper .transaction__container .statement .latest .details {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid rgb(115, 115, 115);
   padding-bottom: 20px;
+}
+@media screen and (max-width: 425px) {
+  .transaction__wrapper .wrapper .transaction__container .statement .latest .details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}
+.transaction__wrapper .wrapper .transaction__container .statement .latest .details .right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 .transaction__wrapper .wrapper .transaction__container .statement .latest .details .left {
   display: flex;
@@ -154,9 +168,13 @@
 .transaction__wrapper .wrapper .transaction__container .statement .latest .details .left .left_buttom p {
   opacity: 0.5;
 }
+.transaction__wrapper .wrapper .transaction__container .statement .latest .details .success {
+  color: rgb(34, 186, 34);
+}
 .transaction__wrapper .wrapper .balance__container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (max-width: 425px) {
   .transaction__wrapper .wrapper .balance__container {
@@ -167,7 +185,7 @@
 .transaction__wrapper .wrapper .balance__container .top {
   display: flex;
   flex-direction: column;
-  gap: 4vh;
+  gap: 1.5em;
 }
 @media screen and (max-width: 425px) {
   .transaction__wrapper .wrapper .balance__container .top {
@@ -189,13 +207,18 @@
 }
 .transaction__wrapper .wrapper .balance__container .invoice .balance {
   display: flex;
-  gap: 1vw;
+  flex-direction: column;
+  gap: 10px;
+}
+.transaction__wrapper .wrapper .balance__container .invoice .balance .amount {
+  display: flex;
+  gap: 8px;
 }
 .transaction__wrapper .wrapper .balance__container .chart img {
   height: 200px;
   width: 200px;
 }
 
-g g g rect:hover {
-  color: #fff;
+.MuiBox-root {
+  padding: 0 20px !important;
 }/*# sourceMappingURL=style.css.map */

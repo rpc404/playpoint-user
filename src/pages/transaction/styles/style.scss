@@ -54,7 +54,7 @@
             transition: 0.3s all ease-in-out;
           }
           &:hover {
-            color: rgba(50, 146, 50, 0.681);
+           color: rgb(34, 186, 34);
           }
         }
       }
@@ -128,12 +128,26 @@
           display: flex;
           flex-direction: column;
           gap: 2.8vh;
-          margin-top: 1em;
+          margin: 1em 0;
           .details {
+
+            @media screen and (max-width:425px) {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              align-items: flex-start;
+            }
             display: flex;
             justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid rgb(115, 115, 115);
             padding-bottom: 20px;
+
+            .right {
+              display: flex;
+              gap: 10px;
+              align-items: center;
+            }
 
             .left {
               display: flex;
@@ -141,6 +155,9 @@
               gap: 0.5vh;
               // align-items: center;
               // justify-content: center;
+
+
+              
               .left_top {
                 display: flex;
                 align-items: center;
@@ -153,13 +170,17 @@
                 }
               }
             }
+            .success {
+                color: rgb(34, 186, 34);
+              }
           }
         }
       }
     }
     .balance__container {
       display: flex;
-      justify-content: flex-end;
+     justify-content: center;
+     align-items: center;
       @media screen and (max-width: 425px) {
         justify-content: center;
         width: 100%;
@@ -167,7 +188,7 @@
       .top {
         display: flex;
         flex-direction: column;
-        gap: 4vh;
+        gap: 1.5em;
 
         @media screen and (max-width: 425px) {
           width: 100%;
@@ -187,7 +208,13 @@
         gap: 1vh;
         .balance {
           display: flex;
-          gap: 1vw;
+          flex-direction: column;
+          gap: 10px;
+          .amount {
+            display: flex;
+            gap: 8px;
+
+          }
         }
       }
       .chart {
@@ -200,14 +227,6 @@
   }
 }
 
-g {
-  g {
-    g {
-      rect {
-        &:hover {
-          color: #fff;
-        }
-      }
-    }
-  }
+.MuiBox-root {
+  padding: 0 20px !important;
 }
