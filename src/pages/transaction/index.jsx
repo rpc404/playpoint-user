@@ -46,9 +46,9 @@ export default function Transaction() {
   };
 
   const data = [
-    { key: 'Jan', data: 14 },
-    { key: 'Feb', data: 5 },
-    { key: 'Apr', data: 18 }
+    { key: "Jan", data: 14 },
+    { key: "Feb", data: 5 },
+    { key: "Apr", data: 18 },
   ];
 
   return (
@@ -97,13 +97,9 @@ export default function Transaction() {
                 <i className="ri-search-line"></i>
               </div>
               <i className="ri-notification-3-line"></i>
-              {/* <a href="#"> */}
-              {/* </a>{" "} */}
             </div>
           </div>
           <div className="links">
-            {/* <a href="#">History</a>
-            <a href="#">Upcoming</a> */}
             <Tabs
               value={value}
               onChange={handleChange}
@@ -122,31 +118,35 @@ export default function Transaction() {
                   <div className="left">
                     <div className="left_top">
                       <i className="ri-arrow-left-right-line"></i>
-                      <h3>Amazon Support</h3>
+                      <h3>Playpoint Support</h3>
                     </div>
                     <div className="left_buttom">
                       <p>9 Dec, 2022 at 7:08 PM</p>
                     </div>
                   </div>
 
-                  <p>Success</p>
-                  <i className="ri-link-m"></i>
-                  <h3>-$2,430.50</h3>
+                  <p className="success">Success</p>
+                  <div className="right">
+                    <i className="ri-link-m"></i>
+                    <h3>-$2,430.50</h3>
+                  </div>
                 </div>
                 <div className="details">
                   <div className="left">
                     <div className="left_top">
                       <i className="ri-arrow-left-right-line"></i>
-                      <h3>Amazon Support</h3>
+                      <h3>Playpoint Support</h3>
                     </div>
                     <div className="left_buttom">
                       <p>9 Dec, 2022 at 7:08 PM</p>
                     </div>
                   </div>
 
-                  <p>Success</p>
-                  <i className="ri-link-m"></i>
-                  <h3>-$2,430.50</h3>
+                  <p className="success">Success</p>
+                  <div className="right">
+                    <i className="ri-link-m"></i>
+                    <h3>-$2,430.50</h3>
+                  </div>
                 </div>
               </div>
             </div>
@@ -157,31 +157,35 @@ export default function Transaction() {
                   <div className="left">
                     <div className="left_top">
                       <i className="ri-arrow-left-right-line"></i>
-                      <h3>Amazon Support</h3>
+                      <h3>Playpoint Support</h3>
                     </div>
                     <div className="left_buttom">
                       <p>2 Dec, 2022 at 8:08 PM</p>
                     </div>
                   </div>
 
-                  <p>Success</p>
-                  <i className="ri-link-m"></i>
-                  <h3>-$2,430.50</h3>
+                  <p className="success">Success</p>
+                  <div className="right">
+                    <i className="ri-link-m"></i>
+                    <h3>-$2,430.50</h3>
+                  </div>
                 </div>
                 <div className="details">
                   <div className="left">
                     <div className="left_top">
                       <i className="ri-arrow-left-right-line"></i>
-                      <h3>Riktriz</h3>
+                      <h3>Playpoint Support</h3>
                     </div>
                     <div className="left_buttom">
                       <p>2 Dec, 2022 at 8:08 PM</p>
                     </div>
                   </div>
 
-                  <p>Success</p>
-                  <i className="ri-link-m"></i>
-                  <h3>+$2,430.50</h3>
+                  <p className="success">Success</p>
+                  <div className="right">
+                    <i className="ri-link-m"></i>
+                    <h3>+$2,430.50</h3>
+                  </div>
                 </div>
               </div>
             </div>
@@ -196,29 +200,29 @@ export default function Transaction() {
               src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
               alt=""
             />
-            <h3>Amazon Support</h3>
+            <h3>Playpoint Support</h3>
             <div className="mid">
               <h2>-$2,430.50</h2>
               <p>19 Dec, 2022 at 7:08 PM</p>
             </div>
             <div className="invoice">
-              <p>Balance</p>
               <div className="balance">
-                <i className="ri-wallet-line"></i>
-                <h4>$69,999</h4>
+                <p>Balance</p>
+                <div className="amount">
+                  <i className="ri-wallet-line"></i>
+                  <h4>$69,999</h4>
+                </div>
               </div>
-              <p>Invoice</p>
               <div className="balance">
-                <i className="ri-booklet-line"></i>
-                <h4>8HXR-HA4A-RAG3</h4>
+                <p>Invoice</p>
+                <div className="amount">
+                  <i className="ri-booklet-line"></i>
+                  <h4>8HXR-HA4A-RAG3</h4>
+                </div>
               </div>
             </div>
             <div className="chart">
-              {/* <img
-                src="https://lh6.googleusercontent.com/uHU7F0Eq21xjQgotgkOKjjfJnQ4cf049OkJtM0M6NeajnsWfa3P_zrOSpAvp6ynpOSO8cwzeGDOc0YF-mEK7X7njEUGrvg_1r7tOI0TRPh-AshZ6wP98E0AWbETSBhMruDWp3vta"
-                alt=""
-              /> */}
-              <BarChart width={150} height={150} data={data}/>
+              <BarChart width={150} height={150} data={data} />
             </div>
           </div>
         </div>
