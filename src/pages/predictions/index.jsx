@@ -19,6 +19,8 @@ const Prediction = () => {
       }
     });
   }, []);
+  console.log(predictionData);
+
   return (
     <div className="userprediction_container">
       {predictionData.user && (

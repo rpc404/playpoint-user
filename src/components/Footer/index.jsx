@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Button, InputBase } from "@mui/material";
 import React from "react";
 
 const index = () => {
@@ -36,9 +36,20 @@ const index = () => {
         </div>
         <div className="social">
           <div className="text">
-            <p>
-              <strong>Connect with us</strong>
-            </p>
+            <h3>
+              <strong>Join Our Newsletter</strong>
+            </h3>
+            <Typography>
+              Stay up to date with our news, blog posts, and announcements by
+              subscribing to our Newsletter.
+            </Typography>
+            <div className="subscribe">
+              <InputBase
+                sx={{ backgroundColor: "#fff", padding: "0 .2em" }}
+                placeholder="Enter Your Email"
+              />
+              <button>Subscribe</button>
+            </div>
           </div>
           <div className="icons">
             <a href="#" className="icon">
@@ -52,6 +63,16 @@ const index = () => {
             </a>
           </div>
         </div>
+      </div>
+      <div className="copyright">
+        <div className="copy">
+          <Typography>&copy; Copyright Playpoint.AI, 2022</Typography>
+          <Typography>Privacy Policy</Typography>
+          <Typography>Terms of Use</Typography>
+        </div>
+        <Typography>
+          Built with <i className="ri-heart-line"></i> by Playpoint.Ai{" "}
+        </Typography>
       </div>
     </div>
   );
