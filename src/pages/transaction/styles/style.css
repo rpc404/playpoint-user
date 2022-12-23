@@ -52,12 +52,12 @@
   /* color: #000; */
   gap: 5px;
   cursor: pointer;
+  transition: 0.5s ease;
 }
 .transaction__wrapper .wrapper .options__container .options .links a {
   text-decoration: none;
   color: black;
   margin: 3px 7px;
-  transition: 0.3s all ease-in-out;
 }
 .transaction__wrapper .wrapper .options__container .options .links:hover {
   color: rgb(34, 186, 34);
