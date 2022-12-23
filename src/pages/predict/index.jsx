@@ -16,6 +16,9 @@ import Pusher from "pusher-js";
 import Leaderboards from "../../components/Leaderboards/Leaderboards";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import clubFlags from "../../helpers/EPLFlags.json";
+import CarabaoClubFlags from "../../helpers/EFLFlags.json";
+import { useLocation } from "react-router-dom";
+
 
 export const getCountryFlag = (country) => {
   let _url = "";
@@ -37,34 +40,66 @@ export const getCountryFlag = (country) => {
 };
 
 export default function Predict() {
+  const {state} = useLocation()
+
   const HomeTeamFlag = (team) => {
-    return clubFlags.map((club, i) => {
-      if (club.name === team) {
-        return (
-          <img
-            src={club.image_url}
-            alt={club.name}
-            key={i}
-            className="home__Image"
-          />
-        );
-      }
-    });
+    if (state.marketplaceSlug === "English-Football-League397") {
+      return clubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (state.marketplaceSlug === "Carabao-Cup237") {
+      return CarabaoClubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    }
   };
 
   const AwayTeamFlag = (team) => {
-    return clubFlags.map((club, i) => {
-      if (club.name === team) {
-        return (
-          <img
-            src={club.image_url}
-            alt={club.name}
-            key={i}
-            className="Away__Image"
-          />
-        );
-      }
-    });
+    if (state.marketplaceSlug === "English-Football-League397") {
+      return clubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (state.marketplaceSlug === "Carabao-Cup237") {
+      return CarabaoClubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    }
   };
 
   const calculateTimeLeft = (eventTime) => {
