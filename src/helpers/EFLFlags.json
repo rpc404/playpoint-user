@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Arsenal",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t3.png"
+    },
+    {
+        "name": "Aston Villa",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t7.png"
+    },
+    {
+        "name": "Bournemouth",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t91.png"
+    },
+    {
+        "name": "Brentford",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t94.png"
+    },
+    {
+        "name": "Brighton",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t36.png"
+    },
+    {
+        "name": "Chelsea",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t8.png"
+    },
+    {
+        "name": "Crystal Palace",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t31.png"
+    },
+    {
+        "name": "Everton",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t11.png"
+    },
+    {
+        "name": "Fulham",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t54.png"
+    },
+    {
+        "name": "Leeds",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t2.png"
+    },
+    {
+        "name": "Leicester",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t13.png"
+    },
+    {
+        "name": "Liverpool",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t14.png"
+    },
+    {
+        "name": "Man City",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t43.png"
+    },
+    {
+        "name": "Man Utd",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t1.png"
+    },
+    {
+        "name": "Newcastle",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t4.png"
+    },
+    {
+        "name": "Nottingham Forest",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t17.png"
+    },
+    {
+        "name": "Southampton",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t20.png"
+    },
+    {
+        "name": " Tottenham Hotspur",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t6.png"
+    },
+    {
+        "name": "West Ham",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t21.png"
+    },
+    {
+        "name": "Wolves",
+        "image_url": "https://resources.premierleague.com/premierleague/badges/70/t39.png"
+    }
+]
