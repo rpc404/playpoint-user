@@ -1,5 +1,6 @@
 import React from "react";
-import "./styles/style.css";
+// import "./styles/style.css";
+import "../../dest/components/Hero/styles/style.css"
 import hero from "../../images/new.png";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";

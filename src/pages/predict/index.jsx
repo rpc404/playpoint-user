@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet";
 import { Button } from "@mui/material";
 import { LineChart, LineSeries } from "reaviz";
 import PredictionTabs from "../../components/PredictionTabs";
-import "./styles/style.css";
+// import "./styles/style.css";
+import "../../dest/pages/predict/styles/style.css"
 import { useNavigate, useParams } from "react-router-dom";
 import { getFixutreById } from "../../api/Fixture";
 import allFlags from "../../helpers/CountryFlags.json";

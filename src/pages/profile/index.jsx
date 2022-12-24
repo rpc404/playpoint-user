@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./styles/style.css";
+// import "./styles/style.css";
+import "../../dest/pages/profile/styles/style.css"
 import { Button } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";

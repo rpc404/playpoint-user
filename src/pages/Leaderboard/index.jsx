@@ -7,7 +7,8 @@ import {
 } from "../../api/Leaderboards";
 import FixtureTable from "../../components/FixtureTable";
 import LeaderboardMain from "../../components/LeaderboardMain";
-import "./styles/style.css";
+// import "./styles/style.css";
+import "../../dest/pages/Leaderboard/styles/style.css"
 
 const Leaderboard = () => {
   const [activeOS, setActiveOS] = React.useState("");

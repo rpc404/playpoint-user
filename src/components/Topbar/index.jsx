@@ -1,7 +1,8 @@
 import React from "react";
 import WorldcupFixtures from "../../helpers/WorldcupFixtures.json";
 import CountryFlags from "../../helpers/CountryFlags.json";
-import "./styles/style.css";
+// import "./styles/style.css";
+import "../../dest/components/Topbar/styles/style.css"
 
 export default function Topbar() {
   const [flags, setFlags] = React.useState([]);

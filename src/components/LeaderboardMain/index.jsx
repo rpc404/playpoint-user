@@ -6,7 +6,8 @@ import {
   getLeaderboardByMarketplaceSlug,
 } from "../../api/Leaderboards";
 import FixtureTable from "../FixtureTable";
-import "./styles/style.css";
+// import "./styles/style.css";
+import "../../dest/components/LeaderboardMain/styles/style.css"
 
 export default function LeaderboardMain() {
   const [leaderboards, setLeaderboards] = React.useState([]);
