@@ -1,5 +1,6 @@
 import React from "react";
-import "./styles/style.css";
+// import "./styles/style.css";
+import "../../dest/pages/transaction/styles/style.css"
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import propTypes from "prop-types";

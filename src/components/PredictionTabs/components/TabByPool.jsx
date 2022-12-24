@@ -6,7 +6,8 @@ import {
 } from "../../../api/Prediction";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControl from "@mui/material/FormControl";
-import "./styles/style.css";
+// import "./styles/style.css";
+import "../../../dest/components/PredictionTabs/components/styles/style.css"
 import { toast } from "react-toastify";
 import loader from "../../../helpers/loading.gif";
 import { handleRPCWalletLogin } from "../../../utils/RPC";
