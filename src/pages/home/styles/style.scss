@@ -223,7 +223,11 @@
           flex-direction: column;
           gap: 20px;
           a {
-            color: rgba(255, 255, 255, 0.797);
+            color: rgba(254, 254, 254, 0.7);
+            transition: 0.2s all ease-in-out;
+            &:hover {
+              color: #fff;
+            }
           }
         }
         a {
@@ -265,9 +269,8 @@
               }
 
               &:active {
-                transform: scale(.98);
+                transform: scale(0.98);
               }
-
             }
           }
 
@@ -306,17 +309,17 @@
       justify-content: space-between;
       border-top: 1px solid rgba(126, 126, 126, 0.692);
 
-      @media screen and (max-width:425px) {
+      @media screen and (max-width: 425px) {
         flex-direction: column;
       }
 
       div {
         display: flex;
         gap: 15px;
-        @media screen and (max-width:425px) {
+        @media screen and (max-width: 425px) {
           flex-direction: column;
         }
-        padding-bottom: .5em;
+        padding-bottom: 0.5em;
 
         p {
           &:nth-child(2),
