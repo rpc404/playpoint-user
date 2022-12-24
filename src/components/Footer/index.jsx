@@ -52,7 +52,7 @@ const index = () => {
             </div>
           </div>
           <div className="icons">
-            <a href="#" className="icon">
+            <a href="https://github.com/L1Playpoint" className="icon">
               <i className="ri-github-fill"></i>
             </a>
             <a href="#" className="icon">
@@ -60,6 +60,9 @@ const index = () => {
             </a>
             <a href="#" className="icon">
               <i className="ri-telegram-fill"></i>
+            </a>
+            <a href="https://twitter.com/PlaypointP2E">
+              <i class="ri-twitter-fill"></i>
             </a>
           </div>
         </div>
