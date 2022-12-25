@@ -1,8 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-// import "./styles/style.css";
-import "../../dest/pages/404/styles/style.css"
+import "./styles/style.css";
 
 export default function NotFound() {
     const navigate = useNavigate();

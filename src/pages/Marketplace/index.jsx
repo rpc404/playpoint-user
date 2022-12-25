@@ -5,8 +5,7 @@ import { getMarketplaces, getMarketplaceStat } from "../../api/Marketplace";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import { Skeleton, Stack } from "@mui/material";
 import Fuse from "fuse.js";
-// import "./styles/style.css";
-import "../../dest/pages/Marketplace/styles/style.css"
+import "./styles/style.css";
 
 const MarketPlace = () => {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();

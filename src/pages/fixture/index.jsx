@@ -8,10 +8,9 @@ import SetFixtureGamedates from "../../utils/SetFixtureGamedates";
 import { a11yProps, TabPanel } from "../../components/TabPanel";
 import QuickView from "../../components/QuickView";
 import { useLocation, useParams } from "react-router-dom";
-// import "./styles/style.css";
+import "./styles/style.css";
 import { getFixtures } from "../../api/Fixture";
 import { Skeleton } from "@mui/material";
-import "../../dest/pages/fixture/styles/style.css"
 
 export default function Fixture() {
   let params = useParams();

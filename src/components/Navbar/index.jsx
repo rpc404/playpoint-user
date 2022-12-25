@@ -10,8 +10,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-// import "./styles/style.css";
-import "../../dest/components/Navbar/styles/style.css"
+import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { handleRPCWalletLogin } from "../../utils/RPC";

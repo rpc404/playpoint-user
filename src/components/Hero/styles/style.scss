@@ -64,7 +64,6 @@
     backdrop-filter: blur(5px);
     // -webkit-backdrop-filter: blur(15px);
 
-    z-index: 9;
 
     @media screen and (min-width:1025px) {
       width: 80%;
@@ -261,6 +260,8 @@
       margin: 2em auto;
     }
     
+
+     
     .pptt {
       display: flex;
       align-items: center;
