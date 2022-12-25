@@ -1,7 +1,6 @@
 import React from "react";
 import { Skeleton, Stack } from "@mui/material";
-// import "./styles/style.css";
-import "../../dest/pages/home/styles/style.css"
+import "./styles/style.css";
 import MarketplaceCard from "../../components/MarketplaceCard";
 import { getMarketplaces, getMarketplaceStat } from "../../api/Marketplace";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";

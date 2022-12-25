@@ -3,8 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getPredictionById } from "../../api/Prediction";
-// import "./styles/style.css";
-import "../../dest/pages/predictions/styles/style.css"
+import "./styles/style.css";
 
 const Prediction = () => {
   const { pid } = useParams();
