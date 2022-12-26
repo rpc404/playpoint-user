@@ -3,13 +3,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getPredictionById } from "../../api/Prediction";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import "./styles/style.css";
 
 const Prediction = () => {
   const { pid } = useParams();
   const [predictionData, setPredictionData] = React.useState([]);
   const [questions, setquestions] = React.useState([]);
-
+  const [userPredictions, setUsePredictions] = React.useState([]);
+  const [{userPublicAddress},] = useRPCContext();
   React.useEffect(() => {
     getPredictionById(pid).then((res) => {
       if (res.data.data) {
@@ -19,6 +21,17 @@ const Prediction = () => {
       }
     });
   }, []);
+
+  React.useEffect(()=>{
+    let allp = JSON.parse(sessionStorage.getItem('predictions'));
+    allp = allp.filter(prediction=>{
+      console.log(userPublicAddress)
+      if(prediction.predictedBy===userPublicAddress){
+        return prediction
+      }
+    })
+    setUsePredictions(allp);
+  },[userPublicAddress])
   return (
     <div className="userprediction_container">
       {predictionData.user && (
@@ -51,7 +64,6 @@ const Prediction = () => {
             <div>
                 <span>Pool: {questions.poolType}</span>
                 <span>Price: {questions.questionairePrice}</span>
-
             </div>
             <h1>Questions & Answers</h1>
             <div className="questions">
@@ -75,7 +87,22 @@ const Prediction = () => {
       )}
       <div className="divider"></div>
       <div className="other_prediction">
-        <h2>Other Active Predictions</h2>
+        <h2>Your Predictions in same pool</h2>
+        <div>
+        {console.log(userPredictions)}
+              {
+                userPredictions.map((_pr)=>{
+                  return <div>
+                    <h4>{_pr.created_at}</h4>
+                    <div>
+                        {
+                          Array(_pr.answers).map(e=>console.log(e[0]))
+                        }
+                    </div>
+                  </div>
+                })
+              }
+        </div>
       </div>
     </div>
   );
