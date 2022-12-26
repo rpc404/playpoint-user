@@ -276,7 +276,7 @@ const PoolType = ({
                     </p>
                   </div>
                   <div className="answers">
-                    {console.log(questionaire.tempQuestionaire[0]?.questionaires.answers[index])}
+                    {/* {console.log(questionaire.tempQuestionaire[0]?.questionaires.answers[index])} */}
                     {questionaire.tempQuestionaire[0]?.questionaires.answers[index]
                       .split(",")
                       .map((q, i) =>

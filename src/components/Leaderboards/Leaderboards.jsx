@@ -8,6 +8,7 @@ import {
 
 import allFlags from "../../helpers/CountryFlags.json";
 export const getCountryShortName = (country) => {
+  if(sessionStorage.getItem("marketplaceSlug")!="fifa-worldcup") return country;
   let name = "";
   allFlags.map((flag, key) => {
     if (flag.name === country) {
@@ -43,18 +44,19 @@ export default function Leaderboards() {
         const data = await getLeaderboardByMarketplaceSlug(marketplaceSlug);
         let _leaderboard = data.data.leaderboard;
         setLeaderboards(_leaderboard);
+       
         setLoading(false);
       } else {
         const data = await getAllLeaderboards();
         setLeaderboards(data.data.leaderboards);
         setLoading(false);
+        
       }
     })();
   }, []);
-  // console.log(leaderboards)
   return (
     <div className={`leaderboardItems ${activeOS}`}>
-      {leaderboards.length >= 1 && !loading ? (
+      {leaderboards.length > 0 && !loading ? (
         leaderboards.map((leaderboard, key) => {
           return (
             <div
@@ -62,7 +64,7 @@ export default function Leaderboards() {
               key={key}
               onClick={() => {
                 navigate(`/predict/${leaderboard.fixture._id}`);
-                window.location.reload();
+                
               }}
             >
               <p>
@@ -90,7 +92,7 @@ export default function Leaderboards() {
           <p style={{ color: "#fff" }}>Leaderboard Not Available!</p>
         </div>
       )}
-      {loading && leaderboards.length < 1 ? (
+      {loading && leaderboards.length < 1 && (
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(
           (_, index) => {
             return (
@@ -102,10 +104,6 @@ export default function Leaderboards() {
             );
           }
         )
-      ) : (
-        <div className="leaderboardItem__container">
-          <p>Leaderboard Not Available.</p>
-        </div>
       )}
     </div>
   );

@@ -106,7 +106,7 @@ export default function Predict() {
             <span>Minutes</span>
           </div>
         )}
-        {seconds >= 0 && (
+        {seconds > 0 && (
           <div className="block">
             <h2>{seconds}</h2>
             <span>Seconds</span>
