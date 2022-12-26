@@ -19,7 +19,7 @@ export default function Home() {
       if (marketplaces.length === 0) {
         let res = await getMarketplaces();
         res = res.data.marketplaces;
-
+        console.log(res)
         dispatchMarketplaceData({
           type: ACTIONS.SET_ALL_MARKETPLACE,
           payload: res,
@@ -39,7 +39,7 @@ export default function Home() {
         {marketplaces && marketplaces.length >= 1 && !loading ? (
           marketplaces.reverse().map((marketplace, index) => {
             if(!marketplace.closed)
-              return <MarketplaceCard marketplace={marketplace} key={index} />;
+              return <MarketplaceCard marketplace={marketplace} key={index} totalFixtures={ marketplace.fixtures.length } totalPredictions={marketplace.prediction.length} />;
           })
         ) : (
           <div className="skeleton__container">
