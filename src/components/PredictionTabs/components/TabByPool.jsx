@@ -16,6 +16,7 @@ import { ethers } from "ethers";
 import ERC20BasicAPI from "../../../utils/ERC20BasicABI.json";
 import BetaFactoryAPI from "../../../utils/BetaFactoryABI.json";
 import TextField from "@mui/material/TextField";
+import index from "../../Footer";
 
 /**
  * @dev utils for slider
@@ -55,7 +56,7 @@ const PoolType = ({
   status,
 }) => {
   const _predictionData = {
-    answers:{},
+    answers: {},
     predictedBy: "",
     amount: 0,
     questionaireId: "",
@@ -134,7 +135,7 @@ const PoolType = ({
   }, [userPrediction]);
 
   const handleRadioChange = (question, answer) => {
-    sessionStorage.setItem('answer'+question, JSON.stringify(answer))
+    sessionStorage.setItem("answer" + question, String(answer));
   };
 
   const validation = (answers) => {
@@ -154,18 +155,23 @@ const PoolType = ({
   };
 
   const handlePrediction = async () => {
-    const answer0 =JSON.parse(sessionStorage.getItem('answer0'))
-    const answer1 =JSON.parse(sessionStorage.getItem('answer1'))
-    const answer2 =JSON.parse(sessionStorage.getItem('answer2'))
-    const answer3 =JSON.parse(sessionStorage.getItem('answer3'))
-   _predictionData.answers = {0:answer0,1:answer1,2:answer2 ,3:answer3};
+    const answer0 = String(sessionStorage.getItem("answer0"));
+    const answer1 = String(sessionStorage.getItem("answer1"));
+    const answer2 = String(sessionStorage.getItem("answer2"));
+    const answer3 = String(sessionStorage.getItem("answer3"));
+    _predictionData.answers = {
+      0: answer0,
+      1: answer1,
+      2: answer2,
+      3: answer3,
+    };
     _predictionData.predictedBy = userPublicAddress;
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id;
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
     _predictionData.marketplaceSlug =
       questionaire.tempQuestionaire[0].marketplaceSlug;
-   
+
     if (validation(_predictionData.answers)) {
       setPredicting(true);
       const provider = new ethers.providers.Web3Provider(ethereum);
@@ -206,8 +212,7 @@ const PoolType = ({
       return await setPrediction(_predictionData)
         .then(() => {
           toast("Predicted Successfully!");
-        
-          // setTimeout(() => window.location.reload(), 2000);
+          setTimeout(() => window.location.reload(), 2000);
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
@@ -276,8 +281,14 @@ const PoolType = ({
                     </p>
                   </div>
                   <div className="answers">
-                    {console.log(questionaire.tempQuestionaire[0]?.questionaires.answers[index])}
-                    {questionaire.tempQuestionaire[0]?.questionaires.answers[index]
+                    {getAnswer(
+                      questionaire.tempQuestionaire[0]?.questionaires.answers[
+                        index
+                      ],
+                      handleRadioChange,
+                      index,
+                    )}
+                    {/* {questionaire.tempQuestionaire[0]?.questionaires.answers[index]
                       .split(",")
                       .map((q, i) =>
                         q !== "input" ? (
@@ -297,15 +308,6 @@ const PoolType = ({
                                   className="custom-radio"
                                 />
                                 <label className="custom-label">{q}</label>
-                                {/* <FormControlLabel
-                                value={i}
-                                control={<Radio />}
-                                label={q}
-                                // onChange={() => handleRadioChange(index, 1)}
-                                onChange={(e) =>
-                                  handleRadioChange(index, e.target.value)
-                                }
-                              /> */}
                               </div>
                             </RadioGroup>
                           </FormControl>
@@ -328,7 +330,7 @@ const PoolType = ({
                             />
                           </div>
                         ) : null
-                      )}
+                      )} */}
                   </div>
                 </div>
               )
@@ -386,7 +388,95 @@ const PoolType = ({
   );
 };
 
-const getAnswer = (index)=>{
-  return JSON.parse(sessionStorage.getItem("answer"+index));
+const getAnswer = (prop, handleRadioChange, index) => {
+  if (prop.startsWith("radio")) {
+    const tags = String(prop.split("@")[1]).split(",");
+    return (
+      <div><p><em>*choose one</em></p>
+      <div className="row-radio">
+        
+        {tags.map((tag, _index) => (
+          <div className="wrapper" key={_index}>    
+            <label className="custom-label">{tag}</label>
+            <input
+              type="radio"
+              name={"q_" + index}
+              className="custom-radio"
+              value={tag.trim()}
+              onChange={(e) => handleRadioChange(index, e.target.value)}
+            />
+          </div>
+        ))}
+      </div>
+      </div>
+    );
+  }
+  if (prop.startsWith("scoreof2")) {
+    const teams = String(prop.split("@")[1]).split(",");
+    return (
+      <div>
+        <p>
+          <em>*Enter Scores of both team</em>
+        </p>
+      <div className="row-input">
+        {teams.map((tag, _index) => (
+          <div className="wrapper" key={_index}>
+            <label className="custom-label">{tag}</label>
+            <input
+              type="number"
+              className="custom-input"
+              required
+              name={"q_" + index}
+              onChange={(e) => handleScoreChange(_index, tag,index, e.target.value)}
+            />
+          </div>
+        ))}
+      </div>
+      </div>
+    );
+  }
+  if (prop.startsWith("number")) {
+    return (
+      <div>
+        <p>
+          <em>*Enter any number</em>
+        </p>
+      <div className="row-input">
+          <div className="wrapper" >
+            <input
+              type="number"
+              className="custom-input"
+              required
+              name={"q_" + index}
+              onChange={(e) => handleRadioChange(index, e.target.value)}
+            />
+          </div>
+       
+      </div>
+      </div>
+    );
+  }
+};
+
+const handleScoreChange = (sample, tag, answerNo, value) =>{
+  value ? sessionStorage.setItem(answerNo+"answer"+sample,tag+value) : sessionStorage.removeItem(answerNo+"answer"+sample);
+  if(sample==1){
+    let _prev =  sessionStorage.getItem(answerNo+"answer"+(sample-1));
+    if(_prev) {
+      _prev += "-" + (tag+value) 
+      sessionStorage.setItem("answer"+answerNo,_prev);
+    } 
+  }
+  if(sample==0){
+    let _prev =  sessionStorage.getItem(answerNo+"answer"+(sample+1));
+    if(_prev) {
+      _prev = (tag+value) +"-" +_prev;
+      sessionStorage.setItem("answer"+answerNo,_prev);
+    }else{
+      sessionStorage.setItem("answer"+answerNo,tag+value);
+    }
+  }
+  
 }
+
 export default PoolType;
