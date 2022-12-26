@@ -134,7 +134,7 @@ const PoolType = ({
   }, [userPrediction]);
 
   const handleRadioChange = (question, answer) => {
-    sessionStorage.setItem('answers'+question, JSON.stringify(answer))
+    sessionStorage.setItem('answer'+question, JSON.stringify(answer))
   };
 
   const validation = (answers) => {
@@ -154,18 +154,18 @@ const PoolType = ({
   };
 
   const handlePrediction = async () => {
-    const answer0 = sessionStorage.getItem('answer0')
-    const answer1 = sessionStorage.getItem('answer1')
-    const answer2 = sessionStorage.getItem('answer2')
-    const answer3 = sessionStorage.getItem('answer3')
-   _predictionData.answers = [{0:answer0},{1:answer1},{2: answer2},{3:answer3}];
+    const answer0 =JSON.parse(sessionStorage.getItem('answer0'))
+    const answer1 =JSON.parse(sessionStorage.getItem('answer1'))
+    const answer2 =JSON.parse(sessionStorage.getItem('answer2'))
+    const answer3 =JSON.parse(sessionStorage.getItem('answer3'))
+   _predictionData.answers = {0:answer0,1:answer1,2:answer2 ,3:answer3};
     _predictionData.predictedBy = userPublicAddress;
     _predictionData.amount = userPrediction?.activeAmount;
     _predictionData.questionaireId = questionaire.questionaires[0]._id;
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
     _predictionData.marketplaceSlug =
       questionaire.tempQuestionaire[0].marketplaceSlug;
-    console.log(_predictionData.answers);
+   
     if (validation(_predictionData.answers)) {
       setPredicting(true);
       const provider = new ethers.providers.Web3Provider(ethereum);
@@ -206,7 +206,8 @@ const PoolType = ({
       return await setPrediction(_predictionData)
         .then(() => {
           toast("Predicted Successfully!");
-          setTimeout(() => window.location.reload(), 2000);
+        
+          // setTimeout(() => window.location.reload(), 2000);
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
@@ -275,9 +276,8 @@ const PoolType = ({
                     </p>
                   </div>
                   <div className="answers">
-                    {questionaire.tempQuestionaire[0]?.questionaires.answers[
-                      index
-                    ]
+                    {console.log(questionaire.tempQuestionaire[0]?.questionaires.answers[index])}
+                    {questionaire.tempQuestionaire[0]?.questionaires.answers[index]
                       .split(",")
                       .map((q, i) =>
                         q !== "input" ? (
@@ -311,15 +311,6 @@ const PoolType = ({
                           </FormControl>
                         ) : q === "input" ? (
                           <div key={i}>
-                            {/* <input
-                              style={{ padding: "5px 10px" }}
-                              type="text"
-                              value={_predictionData.answers[index]}
-                              placeholder={"Your Answer..."}
-                              onChange={(e) =>
-                                handleRadioChange(index, e.target.value)
-                              }
-                            /> */}
                             <TextField
                               style={{
                                 padding: "3px 6px",
@@ -395,4 +386,7 @@ const PoolType = ({
   );
 };
 
+const getAnswer = (index)=>{
+  return JSON.parse(sessionStorage.getItem("answer"+index));
+}
 export default PoolType;
