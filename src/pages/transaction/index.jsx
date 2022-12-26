@@ -48,7 +48,7 @@ export default function Transaction() {
   const data = [
     { key: "Jan", data: 14 },
     { key: "Feb", data: 5 },
-    { key: "Apr", data: 18 },
+    { key: "Mar", data: 18 },
   ];
 
   return (

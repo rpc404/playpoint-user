@@ -1,11 +1,11 @@
 export const ACTIONS = {
   SET_ALL_MARKETPLACE: "set-all-marrketplace",
-  SET_MARKETPLACE_STAT: "set-marketplace-stat"
+  SET_MARKETPLACE_STAT: "set-marketplace-stat",
 };
 
 export const initialMarketplaceState = {
   marketplaces: [],
-  marketplaceStats: []
+  marketplaceStats: [],
 };
 
 export const MarketplaceReducer = (state, action) => {
@@ -19,7 +19,7 @@ export const MarketplaceReducer = (state, action) => {
     case ACTIONS.SET_MARKETPLACE_STAT:
       return {
         ...state,
-        marketplaceStats: action.payload
-      }
+        marketplaceStats: action.payload,
+      };
   }
 };

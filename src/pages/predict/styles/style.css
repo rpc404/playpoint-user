@@ -10,6 +10,7 @@
 @media (max-width: 576px) {
   .prediction__container .main__container {
     flex-direction: column-reverse;
+    overflow: hidden;
   }
 }
 .prediction__container .main__container .recentPredictions {
@@ -111,9 +112,15 @@
 }
 .prediction__container .main__container .predictionTable {
   flex: 1;
-  border-left: 0.5px solid rgba(0, 0, 0, 0.0666666667);
-  border-right: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  border-left: 0.5px solid rgba(255, 255, 255, 0.074);
+  border-right: 0.5px solid rgba(255, 255, 255, 0.074);
   overflow-y: hidden;
+}
+@media screen and (max-width: 425px) {
+  .prediction__container .main__container .predictionTable {
+    border: none;
+    width: 100%;
+  }
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar {
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
@@ -127,6 +134,11 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(3.7px);
   height: 60px;
+}
+@media screen and (max-width: 425px) {
+  .prediction__container .main__container .predictionTable .predictionTable__topBar {
+    height: auto;
+  }
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar {
@@ -219,6 +231,11 @@
   align-items: center;
   color: #fff;
 }
+@media screen and (max-width: 425px) {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_detail {
+    flex-direction: column;
+  }
+}
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_detail p {
   display: flex;
   gap: 5px;
@@ -268,6 +285,12 @@
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container .MuiTab-root {
   text-transform: capitalize;
+}
+@media screen and (max-width: 425px) {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container .MuiBox-root {
+    overflow: hidden;
+    padding: 0 0 !important;
+  }
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .MuiBox-root,
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .MuiBox-root,

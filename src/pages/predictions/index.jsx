@@ -22,6 +22,7 @@ const Prediction = () => {
     });
   }, []);
 
+
   React.useEffect(()=>{
     let allp = JSON.parse(sessionStorage.getItem('predictions'));
     allp = allp.filter(prediction=>{
@@ -32,6 +33,7 @@ const Prediction = () => {
     })
     setUsePredictions(allp);
   },[userPublicAddress])
+
   return (
     <div className="userprediction_container">
       {predictionData.user && (

@@ -138,6 +138,11 @@ main.leaderboardMain__container {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(3.7px);
 
+    @media screen and (max-width:425px) {
+      width: 90%;
+      margin: 1em auto;
+    }
+
     h2 {
       color: #fff;
     }

@@ -190,7 +190,7 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                           height={30}
                         />
                       </Stack>
-                    </TableCell>{" "}
+                    </TableCell>
                     <TableCell align="center">
                       <Skeleton
                         animation="wave"
@@ -198,7 +198,7 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                         width={60}
                         height={30}
                       />
-                    </TableCell>{" "}
+                    </TableCell>
                     <TableCell align="center">
                       <Skeleton
                         animation="wave"
@@ -206,7 +206,7 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                         width={60}
                         height={30}
                       />
-                    </TableCell>{" "}
+                    </TableCell>
                     <TableCell align="center">
                       <Skeleton
                         animation="wave"
@@ -214,7 +214,7 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                         width={100}
                         height={30}
                       />
-                    </TableCell>{" "}
+                    </TableCell>
                     <TableCell align="center">
                       <Skeleton
                         animation="wave"
@@ -222,7 +222,7 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                         width={40}
                         height={30}
                       />
-                    </TableCell>{" "}
+                    </TableCell>
                     <TableCell align="center">
                       <Skeleton
                         animation="wave"

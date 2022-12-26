@@ -3,19 +3,20 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getMarketplaceStat } from "../../api/Marketplace";
 import Pusher from "pusher-js";
+import { toast } from "react-toastify";
 
 export default function MarketplaceCard({ marketplace, totalFixtures, totalPredictions }) {
   // console.log(marketplace.marketplaceSlug,stat);
   const navigate = useNavigate();
 
-  const navHandler = (marketplaceSlug) =>{
-        sessionStorage.setItem("marketplaceSlug", marketplaceSlug);
-        navigate(`/fixture/${marketplaceSlug}`, {
-          state: {
-            marketplaceSlug,
-          },
-        });
-  }
+  const navHandler = (marketplaceSlug) => {
+    sessionStorage.setItem("marketplaceSlug", marketplaceSlug);
+    navigate(`/fixture/${marketplaceSlug}`, {
+      state: {
+        marketplaceSlug,
+      },
+    });
+  };
   const { marketplaceCoverImage, marketplaceName, marketplaceSlug, closed } =
     marketplace;
 
@@ -27,8 +28,9 @@ export default function MarketplaceCard({ marketplace, totalFixtures, totalPredi
     <div
       className="marketplaceCard__container"
       onClick={() => {
-        closed ? alert("markeplace closed") :
-        navHandler(marketplaceSlug)
+        closed ? toast("Marketplace Closed")  : navHandler(marketplaceSlug);
+        // closed ? alert("markeplace closed") :
+          // navHandler(marketplaceSlug);
       }}
     >
       <div className="coverImage" style={styles}></div>
