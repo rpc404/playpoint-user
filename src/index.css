@@ -20,6 +20,10 @@
   scrollbar-width: none; /* Firefox */
 }
 
+html {
+  background-image: url("./images/static.webp");
+}
+
 body {
   overflow-x: hidden;
   /* background-image: linear-gradient(
@@ -37,9 +41,9 @@ body {
     #201e3b,
     #1c1835
   ); */
-    background-color: #1B2531; 
+  background-color: #1b2531;
   /* background-color: #0F0D0E; */
-  /*background-color: hsl(50, 10%, 10%); */ 
+  /*background-color: hsl(50, 10%, 10%); */
   /* background-color: #181919; */
   /*background-color: #0F0E0E; */
   /*  background: linear-gradient(rgb(32, 32, 33),rgb(50, 50, 51)); */
