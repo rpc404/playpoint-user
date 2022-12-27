@@ -1,4 +1,4 @@
-import { Button, Slider } from "@mui/material";
+import { Button, FormControlLabel, Slider } from "@mui/material";
 import React from "react";
 import {
   getQuestionaireByFixtureId,
@@ -16,13 +16,14 @@ import { ethers } from "ethers";
 import ERC20BasicAPI from "../../../utils/ERC20BasicABI.json";
 import BetaFactoryAPI from "../../../utils/BetaFactoryABI.json";
 import TextField from "@mui/material/TextField";
-import index from "../../Footer";
+// import index from "../../Footer";
+import Checkbox from "@mui/material/Checkbox";
 
 /**
  * @dev utils for slider
  */
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value} Slots open`;
 }
 
 const marks = [
@@ -55,6 +56,7 @@ const PoolType = ({
   fixtureId,
   status,
 }) => {
+  const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const _predictionData = {
     answers: {},
     predictedBy: "",
@@ -87,6 +89,12 @@ const PoolType = ({
   const [predicting, setPredicting] = React.useState(false);
   const [, setClicked] = React.useState(false);
   const [balance, setBalance] = React.useState(0);
+  const [duoMode, setDuoMode] = React.useState(false);
+  const [trioMode, setTrioMode] = React.useState(false);
+  const [duoSlots, setduoSlots] = React.useState(0);
+  const [trioSlots, settrioSlots] = React.useState(0);
+  const [duoAmount, setDuoAmount] = React.useState(0);
+  const [trioAmount, settrioAmount] = React.useState(0);
 
   const [{ userPublicAddress, isWalletConnected }, dispatchRPCData] =
     useRPCContext();
@@ -113,6 +121,14 @@ const PoolType = ({
   }, [userPrediction.activeAmount, predictionCount]);
 
   React.useEffect(() => {
+    duoSlots > 0 && setDuoAmount(userPrediction.activeAmount * duoSlots);
+  }, [duoSlots]);
+
+  React.useEffect(() => {
+    trioSlots > 0 && settrioAmount(userPrediction.activeAmount * trioSlots);
+  }, [trioSlots]);
+
+  React.useEffect(() => {
     (async () => {
       const allQuestionairesByFixtureId = await getQuestionaireByFixtureId(
         fixtureId
@@ -133,6 +149,11 @@ const PoolType = ({
       });
     })();
   }, [userPrediction]);
+
+  React.useEffect(() => {
+    !duoMode && setDuoAmount(0);
+    !trioMode && settrioAmount(0);
+  }, [duoMode, trioMode]);
 
   const handleRadioChange = (question, answer) => {
     sessionStorage.setItem("answer" + question, String(answer));
@@ -210,9 +231,24 @@ const PoolType = ({
       );
 
       return await setPrediction(_predictionData)
-        .then(() => {
+        .then((res) => {
+          console.log(res.data);
           toast("Predicted Successfully!");
-          setTimeout(() => window.location.reload(), 2000);
+          toast("Creating Chalenges",{
+            theme:"dark",
+            type:"info"
+          });
+          const duochallenegedata = {
+            fixtureId:data.fixtureId,
+            predictionId:data.id,
+            type: "duo",
+            amount:duoAmount,
+            slot:duoSlots,
+            txnhash:"sfdfsd",
+            status:"active",
+          };
+          console.log(duochallenegedata)
+          // setTimeout(() => window.location.reload(), 2000);
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
@@ -286,79 +322,94 @@ const PoolType = ({
                         index
                       ],
                       handleRadioChange,
-                      index,
+                      index
                     )}
-                    {/* {questionaire.tempQuestionaire[0]?.questionaires.answers[index]
-                      .split(",")
-                      .map((q, i) =>
-                        q !== "input" ? (
-                          <FormControl key={i} className="row-radio">
-                            <RadioGroup
-                              row
-                              aria-labelledby="demo-row-radio-buttons-group-label"
-                            >
-                              <div className="label" key={i}>
-                                <input
-                                  type="radio"
-                                  name="answer-options"
-                                  value={q}
-                                  onChange={(e) =>
-                                    handleRadioChange(index, e.target.value)
-                                  }
-                                  className="custom-radio"
-                                />
-                                <label className="custom-label">{q}</label>
-                              </div>
-                            </RadioGroup>
-                          </FormControl>
-                        ) : q === "input" ? (
-                          <div key={i}>
-                            <TextField
-                              style={{
-                                padding: "3px 6px",
-                                background: "#fff",
-                              }}
-                              type="text"
-                              placeholder="Your Answer"
-                              value={_predictionData.answers[index]}
-                              onChange={(e) =>
-                                handleRadioChange(index, e.target.value,_predictionData)
-                              }
-                              id="filled-basic"
-                              // label="Filled"
-                              variant="standard"
-                            />
-                          </div>
-                        ) : null
-                      )} */}
                   </div>
                 </div>
               )
             )}
         </div>
       )}
-
+      <div className="challenges">
+        <FormControlLabel
+          control={
+            <Checkbox
+              onChange={() => setDuoMode(!duoMode)}
+            />
+          }
+          label="Open for Duo"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              onChange={() => setTrioMode(!trioMode)}
+            />
+          }
+          label="Open for Trio"
+        />
+        {duoMode && (
+          <div className="slots">
+            <h4>Drag to make your duo slots open</h4>
+            <Slider
+              aria-label="Custom marks"
+              defaultValue={1}
+              getAriaValueText={(value) => valuetext(value)}
+              step={1}
+              valueLabelDisplay="on"
+              marks={marks}
+              max={10}
+              min={1}
+              onChange={(e, value) => {
+                setduoSlots(value);
+              }}
+            />
+          </div>
+        )}
+        {trioMode && (
+          <div className="slots">
+            <h4>Make your Trio Slots Open</h4>
+            <Slider
+              aria-label="Custom marks"
+              defaultValue={1}
+              getAriaValueText={valuetext}
+              step={1}
+              valueLabelDisplay="on"
+              marks={marks}
+              max={10}
+              min={1}
+              onChange={(e, value) => {
+                settrioSlots(value);
+              }}
+            />
+          </div>
+        )}
+      </div>
       <div className="predictionAmount">
-        {/* <div>
-          <h4>Prediction Count:</h4>
-          <Slider
-            aria-label="Custom marks"
-            defaultValue={1}
-            getAriaValueText={valuetext}
-            step={1}
-            valueLabelDisplay="auto"
-            marks={marks}
-            max={5}
-            min={1}
-            onChange={(e, value) => {
-              setPredictionCount(value);
-            }}
-          />
-        </div> */}
-
         <div>
           <div className="top">
-            <h4>Total Amount: ${totalPredictionPrice}</h4>
+            <div>
+              <h4>Pool Entry: {totalPredictionPrice / 0.02}PPTT</h4>
+              {duoAmount > 0 && (
+                <h4>
+                  Duo Entry: {duoSlots} slots x{" "}
+                  {userPrediction.activeAmount / 0.02} = {duoAmount / 0.02}PPTT
+                </h4>
+              )}
+              {trioAmount > 0 && (
+                <h4>
+                  Trio Entry: {trioSlots} slots x{" "}
+                  {userPrediction.activeAmount / 0.02} = {trioAmount / 0.02}PPTT
+                </h4>
+              )}
+              {
+                <h4>
+                  PPTT to pay:{" "}
+                  {(trioAmount + duoAmount + userPrediction.activeAmount) /
+                    0.02}
+                  PPTT
+                </h4>
+              }
+            </div>
             {/* @note must get balance from user wallet balance */}
             <h4>Available: {parseFloat(balance).toFixed(2)} PPTT</h4>
           </div>
@@ -392,22 +443,24 @@ const getAnswer = (prop, handleRadioChange, index) => {
   if (prop.startsWith("radio")) {
     const tags = String(prop.split("@")[1]).split(",");
     return (
-      <div><p><em>*choose one</em></p>
-      <div className="row-radio">
-        
-        {tags.map((tag, _index) => (
-          <div className="wrapper" key={_index}>    
-            <label className="custom-label">{tag}</label>
-            <input
-              type="radio"
-              name={"q_" + index}
-              className="custom-radio"
-              value={tag.trim()}
-              onChange={(e) => handleRadioChange(index, e.target.value)}
-            />
-          </div>
-        ))}
-      </div>
+      <div>
+        <p>
+          <em>*choose one</em>
+        </p>
+        <div className="row-radio">
+          {tags.map((tag, _index) => (
+            <div className="wrapper" key={_index}>
+              <label className="custom-label">{tag}</label>
+              <input
+                type="radio"
+                name={"q_" + index}
+                className="custom-radio"
+                value={tag.trim()}
+                onChange={(e) => handleRadioChange(index, e.target.value)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -418,20 +471,22 @@ const getAnswer = (prop, handleRadioChange, index) => {
         <p>
           <em>*Enter Scores of both team</em>
         </p>
-      <div className="row-input">
-        {teams.map((tag, _index) => (
-          <div className="wrapper" key={_index}>
-            <label className="custom-label">{tag}</label>
-            <input
-              type="number"
-              className="custom-input"
-              required
-              name={"q_" + index}
-              onChange={(e) => handleScoreChange(_index, tag,index, e.target.value)}
-            />
-          </div>
-        ))}
-      </div>
+        <div className="row-input">
+          {teams.map((tag, _index) => (
+            <div className="wrapper" key={_index}>
+              <label className="custom-label">{tag}</label>
+              <input
+                type="number"
+                className="custom-input"
+                required
+                name={"q_" + index}
+                onChange={(e) =>
+                  handleScoreChange(_index, tag, index, e.target.value)
+                }
+              />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -441,8 +496,8 @@ const getAnswer = (prop, handleRadioChange, index) => {
         <p>
           <em>*Enter any number</em>
         </p>
-      <div className="row-input">
-          <div className="wrapper" >
+        <div className="row-input">
+          <div className="wrapper">
             <input
               type="number"
               className="custom-input"
@@ -451,32 +506,32 @@ const getAnswer = (prop, handleRadioChange, index) => {
               onChange={(e) => handleRadioChange(index, e.target.value)}
             />
           </div>
-       
-      </div>
+        </div>
       </div>
     );
   }
 };
 
-const handleScoreChange = (sample, tag, answerNo, value) =>{
-  value ? sessionStorage.setItem(answerNo+"answer"+sample,tag+value) : sessionStorage.removeItem(answerNo+"answer"+sample);
-  if(sample==1){
-    let _prev =  sessionStorage.getItem(answerNo+"answer"+(sample-1));
-    if(_prev) {
-      _prev += "-" + (tag+value) 
-      sessionStorage.setItem("answer"+answerNo,_prev);
-    } 
-  }
-  if(sample==0){
-    let _prev =  sessionStorage.getItem(answerNo+"answer"+(sample+1));
-    if(_prev) {
-      _prev = (tag+value) +"-" +_prev;
-      sessionStorage.setItem("answer"+answerNo,_prev);
-    }else{
-      sessionStorage.setItem("answer"+answerNo,tag+value);
+const handleScoreChange = (sample, tag, answerNo, value) => {
+  value
+    ? sessionStorage.setItem(answerNo + "answer" + sample, tag + value)
+    : sessionStorage.removeItem(answerNo + "answer" + sample);
+  if (sample == 1) {
+    let _prev = sessionStorage.getItem(answerNo + "answer" + (sample - 1));
+    if (_prev) {
+      _prev += "-" + (tag + value);
+      sessionStorage.setItem("answer" + answerNo, _prev);
     }
   }
-  
-}
+  if (sample == 0) {
+    let _prev = sessionStorage.getItem(answerNo + "answer" + (sample + 1));
+    if (_prev) {
+      _prev = tag + value + "-" + _prev;
+      sessionStorage.setItem("answer" + answerNo, _prev);
+    } else {
+      sessionStorage.setItem("answer" + answerNo, tag + value);
+    }
+  }
+};
 
 export default PoolType;

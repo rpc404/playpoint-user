@@ -45,4 +45,11 @@
 
 .closed-btn {
   background-color: rgba(208, 87, 87, 0.912) !important;
+}
+
+.challenges .MuiFormControlLabel-label {
+  color: #fffff3;
+}
+.challenges .slots h4 {
+  color: #fffff3;
 }/*# sourceMappingURL=style.css.map */
