@@ -9,6 +9,8 @@ import Paper from "@mui/material/Paper";
 import CountryFlags from "../../helpers/CountryFlags.json";
 import { Link } from "react-router-dom";
 import { Skeleton, Stack } from "@mui/material";
+import moment from "moment";
+import { formatNumber } from "../../utils/NumberFomatter";
 
 export default function FixtureTable({ leaderboard, currPage, loading }) {
   const HomeTeamFlag = (d, c, i) => {
@@ -125,10 +127,10 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                         )}
                       </TableCell>
                       <TableCell align="center">
-                        {row.fixture.DateUtc}
+                        {moment(row.fixture.DateUtc).format("LL")}
                       </TableCell>
-                      <TableCell align="center">{row.userCount}</TableCell>
-                      <TableCell align="center">{row.volume / 0.02}</TableCell>
+                      <TableCell align="center">{formatNumber(row.userCount)}</TableCell>
+                      <TableCell align="center">{formatNumber(row.volume / 0.02)}</TableCell>
                     </TableRow>
                   )
                 );
