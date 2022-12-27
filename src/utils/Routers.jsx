@@ -9,21 +9,24 @@ import MarketPlace from "../pages/Marketplace";
 import Leaderboards from "../pages/Leaderboard/index";
 import Prediction from "../pages/predictions/index";
 import Transaction from "../pages/transaction/index";
-// import socketIO from "socket.io-client";
-// const socket = socketIO.connect(import.meta.env.VITE_SOCKET_URL);
+import PrivacyPolicy from "../pages/privacyPolicy";
+import TermsAndConditions from "../pages/termsAndConditions";
 
 export default function PageRouters({ socket }) {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="profile" element={<Profile />} />
       <Route path="fixture/:slug" element={<Fixture />} />
       <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
       <Route path="marketplace" element={<MarketPlace />} />
       <Route path="leaderboards" element={<Leaderboards />} />
       <Route path="prediction/:pid" element={<Prediction />} />
       <Route path="transaction" element={<Transaction />} />
+      <Route path="privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="terms-conditions" element={<TermsAndConditions />} />
+
     </Routes>
   );
 }
