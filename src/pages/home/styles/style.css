@@ -116,7 +116,7 @@
   color: #fff;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgb(65, 65, 65);
+  border: 0.5px solid rgba(65, 65, 65, 0.439);
   box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
@@ -198,8 +198,8 @@
   gap: 15px;
 }
 .home__container .footer__container .footer .playpoint .intro img {
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
 }
 .home__container .footer__container .footer .links__container {
   display: flex;
@@ -253,13 +253,12 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border: 1px solid #0debc6;
+  border: 1px solid rgba(13, 235, 198, 0.4745098039);
   background: linear-gradient(rgb(0, 0, 0), rgba(60, 59, 59, 0.35));
   color: #fff;
   transition: 0.4s ease;
 }
 .home__container .footer__container .footer .social .text .subscribe button:hover {
-  border: 1px solid #fff;
   background-color: #0debc6;
 }
 .home__container .footer__container .footer .social .text .subscribe button:active {

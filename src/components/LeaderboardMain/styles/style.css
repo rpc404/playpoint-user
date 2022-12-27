@@ -1,23 +1,18 @@
 main.leaderboardMain__container {
   margin: 2em auto;
   display: flex;
-  align-items: flex-start;
   gap: 30px;
   flex-wrap: wrap;
+  align-items: flex-start;
   width: 95%;
-}
-@media screen and (min-width: 1441px) {
-  main.leaderboardMain__container {
-    height: calc(100vh - 13.5em);
-  }
-}
-main.leaderboardMain__container h2 {
-  margin-bottom: 20px;
 }
 main.leaderboardMain__container .fixturesLeaderboard__container {
   flex: 1;
   padding: 10px 0;
   padding-left: 2vw;
+}
+main.leaderboardMain__container .fixturesLeaderboard__container h2 {
+  margin-bottom: 20px;
 }
 main.leaderboardMain__container .fixturesLeaderboard__container .leaderboardskeleton__container .stack {
   display: flex;
@@ -107,13 +102,15 @@ main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-ro
   width: 30px;
 }
 main.leaderboardMain__container .usersLeaderboard__container {
-  padding: 2vw;
+  padding: 20px;
+  padding-bottom: 0;
   overflow-y: scroll;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(3.7px);
+  margin-top: 56px;
 }
 @media screen and (max-width: 425px) {
   main.leaderboardMain__container .usersLeaderboard__container {
@@ -143,8 +140,10 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
   color: #fff;
 }
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser img {
-  width: 13vw;
-  height: 13vw;
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
   overflow: hidden;
@@ -211,9 +210,6 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
     height: 50px;
   }
 }
-main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h2 {
-  margin-bottom: 3px;
-}
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 {
   font-weight: 500;
   font-size: 16px;
@@ -221,12 +217,14 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 a {
   color: rgba(255, 255, 255, 0.6);
 }
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User .user__info {
+  width: 100%;
+}
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User .gameDetails {
   display: flex;
   justify-content: space-between;
-  align-items: align-start;
   font-size: 14px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 @media (max-width: 968px) {
   main.leaderboardMain__container {

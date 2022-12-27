@@ -4,7 +4,7 @@
 
   @media screen and (min-width: 1025px) {
     display: flex;
-    padding: 50px 5vw;
+    padding: 60px 5vw;
     gap: 40px;
   }
 
@@ -12,9 +12,9 @@
     position: absolute;
     right: -150px;
     top: -50px;
-    width: 300px;
-    max-width: 300px;
-    height: 300px;
+    width: 400px;
+    max-width: 400px;
+    height: 400px;
     background: linear-gradient(#0debc669, #2dabde96);
     mix-blend-mode: color-dodge;
     opacity: 0.8;
@@ -28,9 +28,9 @@
     position: absolute;
     bottom: -40px;
     left: -200px;
-    width: 300px;
-    max-width: 300px;
-    height: 300px;
+    width: 400px;
+    max-width: 400px;
+    height: 400px;
     background: linear-gradient(#0debc669, #2dabde96);
     mix-blend-mode: color-dodge;
     opacity: 0.8;

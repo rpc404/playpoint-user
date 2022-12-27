@@ -5,7 +5,7 @@
 @media screen and (min-width: 1025px) {
   .hero__container {
     display: flex;
-    padding: 50px 5vw;
+    padding: 60px 5vw;
     gap: 40px;
   }
 }
@@ -13,9 +13,9 @@
   position: absolute;
   right: -150px;
   top: -50px;
-  width: 300px;
-  max-width: 300px;
-  height: 300px;
+  width: 400px;
+  max-width: 400px;
+  height: 400px;
   background: linear-gradient(rgba(13, 235, 198, 0.4117647059), rgba(45, 171, 222, 0.5882352941));
   mix-blend-mode: color-dodge;
   opacity: 0.8;
@@ -29,9 +29,9 @@
   position: absolute;
   bottom: -40px;
   left: -200px;
-  width: 300px;
-  max-width: 300px;
-  height: 300px;
+  width: 400px;
+  max-width: 400px;
+  height: 400px;
   background: linear-gradient(rgba(13, 235, 198, 0.4117647059), rgba(45, 171, 222, 0.5882352941));
   mix-blend-mode: color-dodge;
   opacity: 0.8;

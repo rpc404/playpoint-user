@@ -60,7 +60,11 @@ const Hero = () => {
             alt="playpoint_logo"
             loading="lazy"
           />
-          <p>Playpoint is using the <span>Sepolia testnet</span> to test platform to identify and <span>fix issues</span> before a product is launched.</p>
+          <p>
+            Playpoint is using the <span>Sepolia testnet</span> to test platform
+            to identify and <span>fix issues</span> before a product is
+            launched.
+          </p>
         </div>
       </div>
     </div>

@@ -1,22 +1,19 @@
 main.leaderboardMain__container {
   margin: 2em auto;
   display: flex;
-  align-items: flex-start;
   gap: 30px;
   flex-wrap: wrap;
+  align-items: flex-start;
   width: 95%;
-  @media screen and (min-width: 1441px) {
-    height: calc(100vh - 13.5em);
-  }
-
-  h2 {
-    margin-bottom: 20px;
-  }
 
   .fixturesLeaderboard__container {
     flex: 1;
     padding: 10px 0;
     padding-left: 2vw;
+
+    h2 {
+      margin-bottom: 20px;
+    }
 
     .leaderboardskeleton__container {
       .stack {
@@ -29,7 +26,6 @@ main.leaderboardMain__container {
           padding: 0.2em;
           background-color: rgba(203, 203, 203, 0.11) !important;
         }
-
       }
     }
 
@@ -129,16 +125,16 @@ main.leaderboardMain__container {
   }
 
   .usersLeaderboard__container {
-    // border-left: 0.5px solid #0002;
-    padding: 2vw;
+    padding: 20px;
+    padding-bottom: 0;
     overflow-y: scroll;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(3.7px);
-
-    @media screen and (max-width:425px) {
+    margin-top: 56px;
+    @media screen and (max-width: 425px) {
       width: 90%;
       margin: 1em auto;
     }
@@ -166,8 +162,10 @@ main.leaderboardMain__container {
         color: #fff;
 
         img {
-          width: 13vw;
-          height: 13vw;
+          width: 200px;
+          height: 200px;
+          display: block;
+          margin: 0 auto;
           object-fit: cover;
           overflow: hidden;
           margin-bottom: 10px;
@@ -234,11 +232,6 @@ main.leaderboardMain__container {
           }
         }
 
-        h2 {
-          margin-bottom: 3px;
-          // color: #fff;
-        }
-
         h4 {
           font-weight: 500;
           font-size: 16px;
@@ -248,12 +241,15 @@ main.leaderboardMain__container {
           }
         }
 
+        .user__info{
+          width: 100%;
+        }
+
         .gameDetails {
           display: flex;
           justify-content: space-between;
-          align-items: align-start;
           font-size: 14px;
-          margin-top: 5px;
+          margin-top: 10px;
         }
       }
     }

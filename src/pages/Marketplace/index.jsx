@@ -1,7 +1,7 @@
 import React from "react";
 import MarketplaceCard from "../../components/MarketplaceCard";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
-import { getMarketplaces, getMarketplaceStat } from "../../api/Marketplace";
+import { getMarketplaces } from "../../api/Marketplace";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import { Skeleton, Stack } from "@mui/material";
 import Fuse from "fuse.js";
