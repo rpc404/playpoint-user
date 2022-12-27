@@ -12,7 +12,6 @@ export default function App() {
 
   React.useEffect(() => {
     (async () => {
-     
       const expiryDate = new Date(localStorage.getItem("rpcUserExpiresAt"));
       if (
         localStorage.getItem("isRPCUserAuthenticated") &&
@@ -32,6 +31,21 @@ export default function App() {
       <Topbar />
       <Navbar />
       <PageRouters socket={channel} />
+
+      <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+      </div>
     </>
   );
 }
