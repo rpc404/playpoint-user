@@ -204,7 +204,7 @@ const PoolType = ({
 
       // transfer prediction pool
       await PPTTContract.transfer(
-        "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // wallet address
+        "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
         ((_predictionData.amount / 0.02) * 1e18).toString()
       );
 
@@ -236,8 +236,10 @@ const PoolType = ({
           toast("Predicted Successfully!");
           toast("Creating Chalenges",{
             theme:"dark",
-            type:"info"
+            type:"info",
+            delay:200,
           });
+
           const duochallenegedata = {
             fixtureId:data.fixtureId,
             predictionId:data.id,
@@ -247,8 +249,10 @@ const PoolType = ({
             txnhash:"sfdfsd",
             status:"active",
           };
+          
           console.log(duochallenegedata)
-          // setTimeout(() => window.location.reload(), 2000);
+          _predictionData.answers = {};
+          setTimeout(() => window.location.reload(), 2000);
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
