@@ -22,31 +22,7 @@
 
 body {
   overflow-x: hidden;
-  /* background-image: linear-gradient(
-    to right top,
-    #000000,
-    #150d11,
-    #21171f,
-    #2a1f2e,
-    #30293f,
-    #2f2b44,
-    #2e2d4a,
-    #2b304f,
-    #272a48,
-    #232442,
-    #201e3b,
-    #1c1835
-  ); */
-  background-color: #1b2531;
-  /* background-color: #0F0D0E; */
-  /*background-color: hsl(50, 10%, 10%); */
-  /* background-color: #181919; */
-  /*background-color: #0F0E0E; */
-  /*  background: linear-gradient(rgb(32, 32, 33),rgb(50, 50, 51)); */
-  /* background-color: #1B1A06; */
-
-  /* background-color: 	#1c1835; */
-  /* background-color: #1F1F27; */
+  background-color: #000;
 }
 
 .divider {
