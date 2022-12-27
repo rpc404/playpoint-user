@@ -1,5 +1,4 @@
 import React from "react";
-import WorldcupFixtures from "../../helpers/WorldcupFixtures.json";
 import CountryFlags from "../../helpers/CountryFlags.json";
 import "./styles/style.css";
 
