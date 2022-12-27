@@ -8,14 +8,8 @@ export default function Topbar() {
 
   React.useEffect(() => {
     var tempFlags = [];
-    for (let c = 0; c < WorldcupFixtures.length; c++) {
-      for (let f = 0; f < CountryFlags.length; f++)
-        if (
-          CountryFlags[f].name === WorldcupFixtures[c].HomeTeam ||
-          CountryFlags[f].name === WorldcupFixtures[c].AwayTeam
-        )
-          tempFlags.push(CountryFlags[f]);
-    }
+    for (let f = 0; f < CountryFlags.length; f++)
+      tempFlags.push(CountryFlags[f]);
 
     setFlags([...new Set(tempFlags)]);
   }, []);
@@ -26,14 +20,7 @@ export default function Topbar() {
       </div>
       <div className="imgContainers">
         {flags.map((d, i) => {
-          return (
-            <img
-              src={d.image}
-              alt={d.name}
-              key={i}
-              loading="lazy"
-            />
-          );
+          return <img src={d.image} alt={d.name} key={i} loading="lazy" />;
         })}
       </div>
     </div>
