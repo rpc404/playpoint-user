@@ -67,11 +67,11 @@ const index = () => {
       </div>
       <div className="copyright">
         <div className="copy">
-          <Typography>&copy; Copyright Playpoint.AI, 2022</Typography>
+          <Typography>Copyright &copy; Playpoint Labs, 2022. All Rights Reserved</Typography>
           <Typography>Privacy Policy</Typography>
           <Typography>Terms of Use</Typography>
         </div>
-        <Typography>Built with ❤️ by Playpoint.Ai </Typography>
+        <Typography>Built with ❤️ by Playpoint Labs, in collab with CodewithSudeep & Jcka Labs. </Typography>
       </div>
     </div>
   );

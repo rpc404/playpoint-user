@@ -176,6 +176,14 @@ export default function Navbar() {
         <h3>Playpoint</h3>
 
         <div className="navLinks">
+        <div
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open("https://docs.playpoint.ai/");
+            }}
+          >
+            Documentation
+          </div>
           <div
             onClick={(e) => {
               e.stopPropagation();
