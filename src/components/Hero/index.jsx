@@ -1,9 +1,8 @@
 import React from "react";
 import "./styles/style.css";
-// import hero from "../../images/new.png";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import sports from "../../images/new.png";
+// import sports from "../../images/new.png";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -11,104 +10,62 @@ const Hero = () => {
     <div className="hero__container">
       <div className="blob"></div>
       <div className="blob1"></div>
-      {/* <div className="heroIntroduction">
+      <div className="heroIntroduction">
+        <div className="heroImage">
+          <img
+            src="https://ik.imagekit.io/domsan/Screenshot_from_2022-12-27_18-11-33_7RvpCg-AN.png?ik-sdk-version=javascript-1.4.3&updatedAt=1672144045460"
+            alt="hero Image"
+          />
+        </div>
         <div className="heroContent">
           <h1>Predict & Win</h1>
           <div className="card">
             <Typography className="introduction">
-              Playpoint is an online prediction pool platform based on real-time
-              sporting events, supported by decentralized blockchain networks.
+              Playpoint is an online platform for{" "}
+              <span>predicting sporting events</span>
+              using blockchain technology. It includes a marketplace, vendor
+              showcase, prediction hub, and various prediction pools.
             </Typography>
-            <p>We are introducing duo and trio pools soon.</p>
-            <Typography className="visit">Visit active marketplaces to take part in our prediction pool.</Typography>
-            <a
-              target={"_blank"}
-              href="https://docs.playpoint.ai/"
-              title="docs.playpoint.ai"
-            >
-              Learn more
-            </a>
-            <div className="beginButton" tabIndex="0" role="button" onClick={() => navigate("marketplace")}>
-              Begin
+            <p className="introduction">
+              <span>"Duo"</span> and <span>"trio"</span> pools are new
+              prediction pools that involve predicting the{" "}
+              <span>outcomes of two or three events</span>, respectively. It's
+              not clear how these pools will be structured or how they differ
+              from <span>other prediction pools</span> offered by Playpoint.
+            </p>
+            <div className="actions">
+              <div
+                className="beginButton"
+                tabIndex="0"
+                role="button"
+                onClick={() => navigate("marketplace")}
+              >
+                🏁 Predict Now
+              </div>
+
+              <a
+                target={"_blank"}
+                href="https://docs.playpoint.ai/"
+                title="docs.playpoint.ai"
+              >
+                📖 Learn more
+              </a>
             </div>
-            <p>Be the next winner!</p>
           </div>
-        </div>
-        <div className="heroImage">
-          <img src={hero} alt="hero Image" />
         </div>
       </div>
       <div className="hero">
         <div className="pptt">
           <img
-          src="https://89devs.com/img/solidity/sepolia_dolphin.png"
+            src="https://ik.imagekit.io/domsan/Screenshot_from_2022-12-27_18-31-10_SoOnCL3-K.png?ik-sdk-version=javascript-1.4.3&updatedAt=1672145184223"
             alt="playpoint_logo"
             loading="lazy"
           />
-          <p>Currently we are testing on sepolia testnet.</p>
-        </div>
-        <div className="arbt">
-          <img
-            src="https://assets-global.website-files.com/6364e65656ab107e465325d2/637ea09ce69ec8d049fb871e_nt4Cn4mhAnXmPqN4XNw7P3C8w59Mi18UQsJr0Kv-OWU.svg"
-            alt="playpoint_logo"
-            loading="lazy"
-          />
-          <p>We are available in Arbitrum</p>
-        </div>{" "}
-      </div> */}
-      <div className="heroSection">
-        <Typography component={"h1"} variant="h1">
-          Your one and only prediction platform
-        </Typography>
-        <Typography component={"h3"} variant="h3">
-          Predict & Win
-        </Typography>
-        <div className="buttons">
-          <button onClick={() => navigate("Marketplace")}> Get Started</button>
-          <button
-            onClick={() => window.open("https://docs.playpoint.ai/", "_blank")}
-          >
-            Learn More
-          </button>
-        </div>
-        <div className="img_container">
-          <img src={sports} alt="sports" />
-        </div>
-      </div>
-
-      {/* <div className="story__container">
-        <div className="story">
-          <Typography component={"p"} variant="h3">
-            Playpoint is an online prediction pool platform based on real-time
-            sporting events, supported by decentralized blockchain networks.
-          </Typography>
-        </div>
-      </div> */}
-      <div className="card__container">
-        {/* <div className="card1">
-          <Typography component={"h3"} variant="h3">
-            Our Story.
-          </Typography>
-          <Typography component={"p"} variant="p">
-            Playpoint is an online prediction pool platform based on real-time
-            sporting events, supported by decentralized blockchain networks.
-          </Typography>
-        </div> */}
-        <div className="card2">
-        <img
-          src="https://89devs.com/img/solidity/sepolia_dolphin.png"
-            alt="playpoint_logo"
-            loading="lazy"
-          />
-          <p>Currently we are testing on sepolia testnet.</p>
-        </div>
-        <div className="card3">
-        <img
-            src="https://assets-global.website-files.com/6364e65656ab107e465325d2/637ea09ce69ec8d049fb871e_nt4Cn4mhAnXmPqN4XNw7P3C8w59Mi18UQsJr0Kv-OWU.svg"
-            alt="playpoint_logo"
-            loading="lazy"
-          />
-          <p>We are available in Arbitrum</p>
+          <p>
+            Playpoint is using the <span>Sepolia testnet</span> to test platform
+            to identify and <span>fix issues</span> before a product is
+            launched.
+          </p>
         </div>
       </div>
     </div>

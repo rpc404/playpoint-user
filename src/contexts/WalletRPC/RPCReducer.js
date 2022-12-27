@@ -4,6 +4,7 @@ export const ACTIONS = {
   WALLET_CONNECT: "wallet-connect",
   WALLET_DISCONNECT: "wallet-disconnect",
   UPDATE_USERNAME: "update-profile",
+  GET_WALLET:"get-wallet"
 };
 
 export const initialRPCState = {

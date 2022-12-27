@@ -15,11 +15,9 @@ const index = () => {
             <h1>Playpoint</h1>
           </div>
           <Typography>
-            Playpoint is an online prediction pool platform based on real-time
-            sporting events, supported by decentralized blockchain networks. Its
-            primary networks comprises a logical Marketplace, a virtual Showcase
-            vendor, a prediction Questionnaires hub, and variant prediction
-            Pools.
+            Playpoint is an online platform for predicting sporting events using
+            blockchain technology. It includes a marketplace, vendor showcase,
+            prediction hub, and various prediction pools.
           </Typography>
         </div>
 
@@ -45,7 +43,7 @@ const index = () => {
             </Typography>
             <div className="subscribe">
               <InputBase
-                sx={{ backgroundColor: "#fff", padding: "0 .2em" }}
+                sx={{ backgroundColor: "#fff", padding: "0 .6em" }}
                 placeholder="Enter Your Email"
               />
               <button>Subscribe</button>
@@ -73,9 +71,7 @@ const index = () => {
           <Typography>Privacy Policy</Typography>
           <Typography>Terms of Use</Typography>
         </div>
-        <Typography>
-          Built with <i className="ri-heart-line"></i> by Playpoint.Ai{" "}
-        </Typography>
+        <Typography>Built with ❤️ by Playpoint.Ai </Typography>
       </div>
     </div>
   );

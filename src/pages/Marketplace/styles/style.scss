@@ -128,7 +128,7 @@
       -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
       cursor: pointer;
       transition: 0.3s all ease-in-out;
-      border: 1px solid rgb(65, 65, 65);
+      border: .5px solid rgba(65, 65, 65, 0.439);
 
       @media (max-width: 576px) {
         max-width: 85vw;

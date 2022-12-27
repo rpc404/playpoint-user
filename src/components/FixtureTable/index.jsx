@@ -52,8 +52,8 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Rank</TableCell>
-            <TableCell align="center">Fixture</TableCell>
+            <TableCell align="center">Rank</TableCell>
+            <TableCell>Fixture</TableCell>
             <TableCell align="center">Marketplace</TableCell>
             <TableCell className="mostActiveUser" align="center">
               Most Active User
@@ -75,8 +75,8 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                       key={i}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <TableCell component="th" scope="row">
-                        {i + 1}
+                      <TableCell component="th" scope="row" align="center">
+                        #{i + 1}
                       </TableCell>
                       <TableCell>
                         <div

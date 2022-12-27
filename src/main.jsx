@@ -10,6 +10,9 @@ import { RPCProvider } from "./contexts/WalletRPC/RPCContext";
 import { MarketplaceProvider } from "./contexts/Marketplace/MarketplaceContext";
 import { FixtureProvider } from "./contexts/Fixture/FixtureContext";
 import { PredictionsProvider } from "./contexts/Predictions/PredictionsContext";
+import { inject } from "@vercel/analytics";
+
+inject();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -17,19 +20,19 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <MarketplaceProvider>
         <FixtureProvider>
           <PredictionsProvider>
-          <App />
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
+            <App />
+            <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
           </PredictionsProvider>
         </FixtureProvider>
       </MarketplaceProvider>

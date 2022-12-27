@@ -1,10 +1,41 @@
 .row-radio{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    .wrapper{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
     .custom-label{
-        font-size: 20px;
+        font-size: 17px;
+        color: rgb(125, 134, 143);
     }
     .custom-radio{
         height: 20px;
         width: 20px;
+    }
+}
+.row-input{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+
+    .wrapper{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .custom-input{
+        width: 5vw;
+        padding: 2px;
+        font-size: 17px;
+        border: none;
+        outline: none;
+    }
+    .custom-label{
+        font-size: 17px;
+        color: rgb(125, 134, 143);
     }
 }
 .login-btn{
