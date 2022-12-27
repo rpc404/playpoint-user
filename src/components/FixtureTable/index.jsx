@@ -45,8 +45,6 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
     );
   };
 
-  console.log(loading);
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

@@ -60,7 +60,7 @@ const index = () => {
               <i className="ri-telegram-fill"></i>
             </a>
             <a href="https://twitter.com/PlaypointP2E">
-              <i class="ri-twitter-fill"></i>
+              <i className="ri-twitter-fill"></i>
             </a>
           </div>
         </div>
