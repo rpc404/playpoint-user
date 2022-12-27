@@ -62,6 +62,10 @@
     gap: 35px;
     padding: 20px 45px;
 
+    @media (max-width: 576px){
+      flex-direction: column;
+    }
+
     @media screen and (min-width: 769px) {
       display: flex;
       justify-content: space-between;
@@ -106,6 +110,10 @@
         @media screen and (min-width: 1441px) {
           font-size: 4em;
           text-align: left;
+        }
+
+        @media (max-width: 576px){
+          font-size: 2em;
         }
       }
       .card {
@@ -173,6 +181,10 @@
         width: 350px;
         object-fit: contain;
         border-radius: 10px;
+
+        @media (max-width: 576px){
+          width: 80vw;
+        }
       }
     }
   }
