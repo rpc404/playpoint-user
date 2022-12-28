@@ -17,6 +17,12 @@
     }
   }
 
+  .MuiBox-root {
+    @media screen and (max-width:425px) {
+      padding: 0 !important;
+    }
+  }
+
   h2 {
     padding: 10px 2vw;
   }
