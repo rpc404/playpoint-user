@@ -301,6 +301,9 @@
   text-transform: capitalize;
   cursor: pointer;
 }
+.profile__container .history__container .history__items .history__item:nth-child(odd) p {
+  color: rgba(255, 255, 255, 0.66);
+}
 .profile__container .history__container .history__items .history__item:nth-child(even) p {
   color: #000;
 }
