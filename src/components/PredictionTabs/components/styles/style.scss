@@ -2,6 +2,7 @@
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    
     .wrapper{
         display: flex;
         align-items: center;
@@ -43,4 +44,14 @@
 }
 .closed-btn{
     background-color: rgba(208, 87, 87, 0.912) !important;
+}
+.challenges{
+ .MuiFormControlLabel-label{
+    color: #fffff3;
+ }   
+ .slots{
+    h4{
+        color: #fffff3;
+    }
+ }
 }
