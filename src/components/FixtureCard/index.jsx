@@ -31,7 +31,7 @@ export default function FixtureCard({
     return games;
   };
 
-  console.log(marketplaceSlug)
+  // console.log(marketplaceSlug)
 
   const gameTime = (data) => {
     return (
@@ -91,6 +91,7 @@ export default function FixtureCard({
   };
 
   const AwayTeamFlag = (team) => {
+    console.log("teams",team)
     if (marketplaceSlug === "English-Football-League397") {
       return clubFlags.map((club, i) => {
         if (club.name === team) {
@@ -119,6 +120,8 @@ export default function FixtureCard({
       });
     }else if (marketplaceSlug === "premiere-league") {
       return EPLFlags.map((club,i) => {
+        // console.log(club.name);
+        club.name === team && console.log(team)
         if(club.name === team) {
           return (
             <img
@@ -158,7 +161,6 @@ export default function FixtureCard({
                     style={{ cursor: "pointer" }}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {console.log(data.HomeTeam)}
                     {HomeTeamFlag(data.HomeTeam)}
                     {gameTime(data)}
                     {AwayTeamFlag(data.AwayTeam)}

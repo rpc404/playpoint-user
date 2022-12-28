@@ -44,7 +44,7 @@
   }
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container {
-  height: 60vh;
+  height: 70vh;
   overflow-y: scroll;
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container {

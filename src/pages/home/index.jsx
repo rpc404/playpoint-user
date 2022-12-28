@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="home__container">
-      <div className="divider"></div>
+      {/* <div className="divider"></div> */}
       <Hero />
       <div className="divider"></div>
       <h1 className="home__mainTitle">Active Marketplaces</h1>

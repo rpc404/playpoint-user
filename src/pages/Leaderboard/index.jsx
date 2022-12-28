@@ -49,7 +49,7 @@ const Leaderboard = () => {
           <option value="">Premiere League</option>
         </select>
       </div>
-      <div className="divider"></div>
+      {/* <div className="divider"></div> */}
 
       <LeaderboardMain/>
     </div>
