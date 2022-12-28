@@ -56,4 +56,12 @@
   margin: auto;
   color: #fff;
   padding: 0.5em 0;
+}
+
+.custom-paper .MuiDialog-paper {
+  background-color: #202020 !important;
+  color: #fff;
+}
+.custom-paper .selected {
+  background-color: green;
 }/*# sourceMappingURL=style.css.map */

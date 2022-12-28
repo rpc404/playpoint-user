@@ -287,7 +287,7 @@ const PoolType = ({
             }
             return x;
           }
-          const _ppttAmount = toFixed((_predictionData.amount / 0.02) * 10 ** 18)
+          const _ppttAmount = _predictionData.amount > 10 ? toFixed((_predictionData.amount / 0.02) * 10 ** 18) : ((_predictionData.amount/0.02) * 1e18).toString();
           console.log(_ppttAmount);
           // transfer prediction pool
           await PPTTContract.transfer(
