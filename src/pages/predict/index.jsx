@@ -397,12 +397,16 @@ export default function Predict() {
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
+            {
+              status && status !=="closed" &&
+            
             <PredictionTabs
               poolSize={poolSize}
               fixtureId={fixtureId}
               setPoolSize={setPoolSize}
               status={status}
             />
+}
           </div>
         </div>
 
