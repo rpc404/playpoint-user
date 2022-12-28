@@ -87,7 +87,6 @@
   left: 50%;
   top: 50%;
   gap: 5px;
-  transform: translate3d(-50%, -50%, 0);
   color: rgba(255, 255, 255, 0.6);
 }
 @media (max-width: 576px) {
@@ -100,6 +99,7 @@
   align-items: center;
   gap: 5px;
   justify-content: left;
+  flex: 0 1 600px;
 }
 @media (max-width: 576px) {
   .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container .gameDetails__item .gameDetails__teamDetails {

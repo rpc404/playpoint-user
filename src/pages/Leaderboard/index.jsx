@@ -1,11 +1,8 @@
-import { Pagination } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   getAllLeaderboards,
   getLeaderboardByMarketplaceSlug,
 } from "../../api/Leaderboards";
-import FixtureTable from "../../components/FixtureTable";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import "./styles/style.css";
 

@@ -5,6 +5,7 @@ import {
   getAllLeaderboards,
   getLeaderboardByMarketplaceSlug,
 } from "../../api/Leaderboards";
+import { formatNumber } from "../../utils/NumberFomatter";
 import FixtureTable from "../FixtureTable";
 import "./styles/style.css";
 
@@ -65,12 +66,12 @@ export default function LeaderboardMain() {
             <div className="gameDetails">
               <div>
                 <p>Points</p>
-                <span>{topRanked[0]?.points}</span>
+                <span>{formatNumber(topRanked[0]?.points)}</span>
               </div>
 
               <div>
                 <p>Amount</p>
-                <span>{topRanked[0]?.amount} PPTT</span>
+                <span>{formatNumber(topRanked[0]?.amount)} PPTT</span>
               </div>
             </div>
           </div>
@@ -94,12 +95,12 @@ export default function LeaderboardMain() {
                     <div className="gameDetails">
                       <div>
                         <p>Points</p>
-                        <span>{user?.points}</span>
+                        <span>{formatNumber(user?.points)}</span>
                       </div>
 
                       <div>
                         <p>Amount</p>
-                        <span>{user?.amount} PPTT</span>
+                        <span>{formatNumber(user?.amount)} PPTT</span>
                       </div>
                     </div>
                   </div>

@@ -186,44 +186,7 @@
       }
     }
   }
-  // .story__container {
-  //   background-color: #FFFEFE;
-  //   color: #000;
-  //   margin-top: 3em;
-  //   .story {
-  //     width: 80%;
-  //     margin: 1em auto;
-  //     padding: 2vw;
-  //     h1 {
-  //       font-weight: 700;
-  //       width: fit-content;
-  //       background-clip: text;
-  //       background: linear-gradient(#0debc6, #2dabde);
-  //       -webkit-background-clip: text;
-  //       -webkit-text-fill-color: transparent;
-  //       position: relative;
-
-  //       &::before {
-  //         content: "";
-  //         position: absolute;
-  //         top: 90%;
-  //         width: 100%;
-  //         left: 0;
-  //         height: 3px;
-  //         z-index: -1;
-  //         background: linear-gradient(#0debc6, #2dabde);
-  //       }
-  //     }
-  //     p{
-  //       font-size: 2.3em;
-  //       margin: 1em 0;
-  //       color: #010001;
-  //       line-height: 1.3;
-  //       font-weight: 500;
-  //     }
-  //   }
-  // }
-
+  
   .heroIntroduction {
     @media screen and (max-width: 1025px) {
       margin: 2em auto;
@@ -237,6 +200,10 @@
     align-items: center;
     gap: 35px;
     padding: 20px 45px;
+
+    @media (max-width: 576px){
+      flex-direction: column;
+    }
 
     @media screen and (min-width: 769px) {
       display: flex;
@@ -282,6 +249,10 @@
         @media screen and (min-width: 1441px) {
           font-size: 4em;
           text-align: left;
+        }
+
+        @media (max-width: 576px){
+          font-size: 2em;
         }
       }
       .card {
@@ -349,6 +320,10 @@
         width: 350px;
         object-fit: contain;
         border-radius: 10px;
+
+        @media (max-width: 576px){
+          width: 80vw;
+        }
       }
     }
   }

@@ -1,5 +1,6 @@
 import { Typography, Button, InputBase } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const index = () => {
   return (
@@ -60,18 +61,18 @@ const index = () => {
               <i className="ri-telegram-fill"></i>
             </a>
             <a href="https://twitter.com/PlaypointP2E">
-              <i class="ri-twitter-fill"></i>
+              <i className="ri-twitter-fill"></i>
             </a>
           </div>
         </div>
       </div>
       <div className="copyright">
         <div className="copy">
-          <Typography>&copy; Copyright Playpoint.AI, 2022</Typography>
-          <Typography>Privacy Policy</Typography>
-          <Typography>Terms of Use</Typography>
+          <Typography>Copyright &copy; Playpoint Labs, 2022. All Rights Reserved</Typography>
+          <Link to="privacy-policy">Privacy Policy</Link>
+          <Link to="terms-conditions">Terms & Conditions</Link>
         </div>
-        <Typography>Built with ❤️ by Playpoint.Ai </Typography>
+        <Typography>Built with ❤️ by Playpoint Labs, in collab with CodewithSudeep & Jcka Labs. </Typography>
       </div>
     </div>
   );

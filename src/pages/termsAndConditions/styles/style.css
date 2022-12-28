@@ -1,0 +1,27 @@
+.termsAndConditions__container {
+  color: #fff;
+  margin: 50px 3vw;
+  font-size: 20px;
+  max-width: 40vw;
+  line-height: 1.5;
+}
+@media (max-width: 992px) {
+  .termsAndConditions__container {
+    max-width: 80vw;
+  }
+}
+.termsAndConditions__container h3 {
+  margin-bottom: 20px;
+}
+.termsAndConditions__container p {
+  color: rgba(255, 255, 255, 0.6);
+}
+.termsAndConditions__container ol {
+  margin-left: 20px;
+}
+.termsAndConditions__container ol li {
+  margin-bottom: 20px;
+}
+.termsAndConditions__container ol li span {
+  color: #fff;
+}/*# sourceMappingURL=style.css.map */

@@ -92,7 +92,7 @@
             left: 50%;
             top: 50%;
             gap: 5px;
-            transform: translate3d(-50%, -50%, 0);
+            // transform: translate3d(-50%, -50%, 0);
             color: #fff9;
 
             @media (max-width: 576px) {
@@ -105,6 +105,7 @@
             align-items: center;
             gap: 5px;
             justify-content: left;
+            flex: 0 1 600px;
 
             @media (max-width: 576px) {
               gap: 8px;
@@ -123,6 +124,8 @@
               justify-content: center;
               text-align: center;
               flex: 1;
+
+
 
               @media (max-width: 576px) {
                 font-size: 14px;

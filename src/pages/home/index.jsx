@@ -18,7 +18,6 @@ export default function Home() {
       if (marketplaces.length === 0) {
         let res = await getMarketplaces();
         res = res.data.marketplaces;
-        console.log(res);
         dispatchMarketplaceData({
           type: ACTIONS.SET_ALL_MARKETPLACE,
           payload: res,
@@ -26,6 +25,7 @@ export default function Home() {
       }
       setLoading(false);
     })();
+    window.scrollTo(0, 0);
   }, []);
 
   return (

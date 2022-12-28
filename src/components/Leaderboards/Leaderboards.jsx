@@ -7,6 +7,7 @@ import {
 } from "../../api/Leaderboards";
 
 import allFlags from "../../helpers/CountryFlags.json";
+import { formatNumber } from "../../utils/NumberFomatter";
 export const getCountryShortName = (country) => {
   if (sessionStorage.getItem("marketplaceSlug") != "fifa-worldcup")
     return country;
@@ -80,8 +81,8 @@ export default function Leaderboards() {
                 />
                 {getCountryShortName(leaderboard.fixture.AwayTeam)}
               </p>
-              <p>{leaderboard.userCount}</p>
-              <p>{leaderboard.volume}</p>
+              <p>{formatNumber(leaderboard.userCount)}</p>
+              <p>{formatNumber(leaderboard.volume)}</p>
             </div>
           );
         })

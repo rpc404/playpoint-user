@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import clubFlags from "../../helpers/EPLFlags.json";
 import CarabaoClubFlags from "../../helpers/EFLFlags.json";
+import EPLFlags from "../../helpers/EPLFlags.json"
 
 export default function FixtureCard({
   data,
@@ -29,6 +30,8 @@ export default function FixtureCard({
 
     return games;
   };
+
+  console.log(marketplaceSlug)
 
   const gameTime = (data) => {
     return (
@@ -71,6 +74,19 @@ export default function FixtureCard({
           );
         }
       });
+    }else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club,i) => {
+        if(club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      })
     }
   };
 
@@ -101,6 +117,19 @@ export default function FixtureCard({
           );
         }
       });
+    }else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club,i) => {
+        if(club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      })
     }
   };
 
@@ -129,7 +158,7 @@ export default function FixtureCard({
                     style={{ cursor: "pointer" }}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-
+                    {console.log(data.HomeTeam)}
                     {HomeTeamFlag(data.HomeTeam)}
                     {gameTime(data)}
                     {AwayTeamFlag(data.AwayTeam)}
