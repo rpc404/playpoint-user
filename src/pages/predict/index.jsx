@@ -375,19 +375,6 @@ export default function Predict() {
                 </p>
               </div>
             </div>
-            {/* <LineChart
-              className="graphData"
-              width="90%"
-              height={window.innerWidth >= 576 ? 350 : 200}
-              data={lineChartData}
-              series={
-                <LineSeries
-                  colorScheme={(_data, _index, active) =>
-                    active ? "#2ecc71" : "#2ecc71"
-                  }
-                />
-              }
-            /> */}
             <div className="eventDetails">
               <p>
                 <i className="ri-calendar-todo-line"></i> Event Details:{" "}
@@ -398,7 +385,7 @@ export default function Predict() {
               </p>
             </div>
             {
-              status && status !=="closed" &&
+              status !=="closed" &&
             
             <PredictionTabs
               poolSize={poolSize}
