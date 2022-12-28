@@ -261,9 +261,6 @@
 .home__container .footer__container .footer .social .text .subscribe button:hover {
   background-color: #0debc6;
 }
-.home__container .footer__container .footer .social .text .subscribe button:active {
-  transform: scale(0.98);
-}
 .home__container .footer__container .footer .social .text p {
   color: rgba(255, 255, 255, 0.797);
   line-height: 1.5;

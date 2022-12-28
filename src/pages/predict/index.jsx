@@ -19,7 +19,6 @@ import clubFlags from "../../helpers/EPLFlags.json";
 import CarabaoClubFlags from "../../helpers/EFLFlags.json";
 import { useLocation } from "react-router-dom";
 
-
 export const getCountryFlag = (country) => {
   let _url = "";
   allFlags.map((flag, key) => {
@@ -40,7 +39,7 @@ export const getCountryFlag = (country) => {
 };
 
 export default function Predict() {
-  const {state} = useLocation()
+  const { state } = useLocation();
 
   const HomeTeamFlag = (team) => {
     if (state.marketplaceSlug === "English-Football-League397") {
@@ -263,7 +262,11 @@ export default function Predict() {
               predictions.map((data, index) => {
                 volume += data?.amount / 0.02;
                 return (
-                  <div className="predictedCard__container" key={index}>
+                  <div
+                    className="predictedCard__container"
+                    key={index}
+                    onClick={() => navigate(`/prediction/${data._id}`)}
+                  >
                     <div>
                       <div className="details">
                         <Button
@@ -295,7 +298,9 @@ export default function Predict() {
               })
             ) : (
               <div className="predictedCard__container">
-                <p style={{color:"#fff"}}>No Predictions available.Be the first one to predict.</p>
+                <p style={{ color: "#fff" }}>
+                  No Predictions available.Be the first one to predict.
+                </p>
               </div>
             )}
           </div>
