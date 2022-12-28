@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 import SetFixtureGamedates from "../../utils/SetFixtureGamedates";
 import { a11yProps, TabPanel } from "../../components/TabPanel";
 import QuickView from "../../components/QuickView";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./styles/style.css";
 import { getFixtures } from "../../api/Fixture";
 import { Skeleton } from "@mui/material";
@@ -18,7 +18,6 @@ export default function Fixture() {
 
   const [fixtures, setFixtures] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-
 
   React.useEffect(() => {
     (async () => {
@@ -69,22 +68,6 @@ export default function Fixture() {
       />
 
       {modalOpen && <QuickView handleModalClose={setModalOpen} />}
-
-      {/* <div className="fixtureBanner__container">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          width="100%"
-          poster="https://ik.imagekit.io/domsan/image_L63diTKkM.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669019260350"
-        >
-          <source src="https://ik.imagekit.io/domsan/FIFA_World_Cup__2022___Family_Reunion___adidas__idg6VunF.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1669230918084" />
-          Browser unsupported for videos.
-        </video>
-        <h1><span>Fixture</span>{marketplaceSlug}</h1>
-      </div> */}
-      {/* <div className="divider"></div> */}
 
       {loading ? (
         [0, 1].map((i) => {

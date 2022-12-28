@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import clubFlags from "../../helpers/EPLFlags.json";
 import CarabaoClubFlags from "../../helpers/EFLFlags.json";
-import EPLFlags from "../../helpers/EPLFlags.json"
+import EPLFlags from "../../helpers/EPLFlags.json";
 
 export default function FixtureCard({
   data,
@@ -74,9 +74,12 @@ export default function FixtureCard({
           );
         }
       });
-    }else if (marketplaceSlug === "premiere-league") {
-      return EPLFlags.map((club,i) => {
-        if(club.name === team) {
+    } else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club, i) => {
+        if (
+          club.name.replace(" ", "").toLowerCase().trim() ===
+          team.replace(" ", "").toLowerCase().trim()
+        ) {
           return (
             <img
               src={club.image_url}
@@ -86,12 +89,11 @@ export default function FixtureCard({
             />
           );
         }
-      })
+      });
     }
   };
 
   const AwayTeamFlag = (team) => {
-    console.log("teams",team)
     if (marketplaceSlug === "English-Football-League397") {
       return clubFlags.map((club, i) => {
         if (club.name === team) {
@@ -118,11 +120,12 @@ export default function FixtureCard({
           );
         }
       });
-    }else if (marketplaceSlug === "premiere-league") {
-      return EPLFlags.map((club,i) => {
-        // console.log(club.name);
-        club.name === team && console.log(team)
-        if(club.name === team) {
+    } else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club, i) => {
+        if (
+          club.name.replace(" ", "").toLowerCase().trim() ===
+          team.replace(" ", "").toLowerCase().trim()
+        ) {
           return (
             <img
               src={club.image_url}
@@ -132,7 +135,7 @@ export default function FixtureCard({
             />
           );
         }
-      })
+      });
     }
   };
 
@@ -172,8 +175,8 @@ export default function FixtureCard({
                     onClick={() =>
                       navigate(`/predict/${data?._id}`, {
                         state: {
-                          marketplaceSlug
-                        }
+                          marketplaceSlug,
+                        },
                       })
                     }
                   >
