@@ -18,6 +18,7 @@ import BetaFactoryAPI from "../../../utils/BetaFactoryABI.json";
 import TextField from "@mui/material/TextField";
 // import index from "../../Footer";
 import Checkbox from "@mui/material/Checkbox";
+import { mkaeDuo } from "../../../api/Challenge";
 
 /**
  * @dev utils for slider
@@ -133,6 +134,7 @@ const PoolType = ({
       const allQuestionairesByFixtureId = await getQuestionaireByFixtureId(
         fixtureId
       );
+      console.log(allQuestionairesByFixtureId)
       let tempQ = allQuestionairesByFixtureId.data.questionaire;
       // let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
       //   return (
@@ -202,11 +204,18 @@ const PoolType = ({
         provider
       ).connect(provider.getSigner());
 
-      // transfer prediction pool
-      await PPTTContract.transfer(
-        "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
-        ((_predictionData.amount / 0.02) * 1e18).toString()
+      const PPTTBalance = await PPTTContract.balanceOf(
+        _predictionData.predictedBy
       );
+      if (PPTTBalance < _predictionData.amount) {
+        return toast("Insufficient PPTT");
+      }
+
+      // // transfer prediction pool
+      // await PPTTContract.transfer(
+      //   "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
+      //   ((_predictionData.amount / 0.02) * 1e18).toString()
+      // );
 
       const PredictionContract = new ethers.Contract(
         "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1",
@@ -215,44 +224,86 @@ const PoolType = ({
       ).connect(provider.getSigner());
 
       // console.log(ethers.utils.parseEther(_predictionData.amount.toString()), _predictionData.amount)
-
-      const PPTTBalance = await PPTTContract.balanceOf(
-        _predictionData.predictedBy
-      );
-      if (PPTTBalance < _predictionData.amount) {
-        return toast("Insufficient PPTT");
-      }
-      // console.log(contract)
-      await PredictionContract.setPrediction(
-        JSON.stringify(_predictionData.answers),
-        _predictionData.questionaireId,
-        _predictionData.predictedBy,
-        (_predictionData.amount * 1e18).toString()
-      );
-
+      console.log(duoAmount,trioAmount)
       return await setPrediction(_predictionData)
-        .then((res) => {
+        .then(async (res) => {
           console.log(res.data);
+          const data = res.data.prediction[0];
+          if (duoAmount > 0 || trioAmount > 0) {
+            toast("Creating Chalenges", {
+              theme: "dark",
+              type: "info",
+              delay: 200,
+            });
+            // const _data = [];
+            let _amount = 0;
+            if (duoAmount > 0) {
+              const duochallenegedata = {
+                fixtureId: data.fixtureId,
+                predictionId: data._id,
+                type: "duo",
+                amount: (duoAmount/duoSlots),
+                slot: duoSlots,
+                status: "active",
+              };
+              /**
+               * @dev call API to create DUO challenge
+               */
+              const _challenegeResult = await mkaeDuo(duochallenegedata);
+              console.log(_challenegeResult);
+              // _data.push(duochallenegedata);
+              _amount += duoAmount;
+            }
+            if (trioAmount > 0) {
+              const triochallenegedata = {
+                fixtureId: data.fixtureId,
+                predictionId: data._id,
+                type: "trio",
+                amount: trioAmount,
+                slot: trioSlots,
+                status: "active",
+              };
+              // _data.push(triochallenegedata);
+              const _challenegeResult = await mkaeDuo(triochallenegedata);
+              console.log(_challenegeResult);
+              _amount += trioAmount;
+            }
+            _predictionData.amount += _amount;
+          }
+          function toFixed(x) {
+            if (Math.abs(x) < 1.0) {
+              var e = parseInt(x.toString().split("e-")[1]);
+              if (e) {
+                x *= Math.pow(10, e - 1);
+                x = "0." + new Array(e).join("0") + x.toString().substring(2);
+              }
+            } else {
+              var e = parseInt(x.toString().split("+")[1]);
+              if (e > 20) {
+                e -= 20;
+                x /= Math.pow(10, e);
+                x += new Array(e + 1).join("0");
+              }
+            }
+            return x;
+          }
+          const _ppttAmount = toFixed((_predictionData.amount / 0.02) * 10 ** 18)
+          console.log(_ppttAmount);
+          // transfer prediction pool
+          await PPTTContract.transfer(
+            "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
+            _ppttAmount
+          );
+          // console.log(contract)
+          await PredictionContract.setPrediction(
+            JSON.stringify(_predictionData.answers),
+            _predictionData.questionaireId,
+            _predictionData.predictedBy,
+            (_predictionData.amount * 1e18).toString()
+          );
           toast("Predicted Successfully!");
-          toast("Creating Chalenges",{
-            theme:"dark",
-            type:"info",
-            delay:200,
-          });
-
-          const duochallenegedata = {
-            fixtureId:data.fixtureId,
-            predictionId:data.id,
-            type: "duo",
-            amount:duoAmount,
-            slot:duoSlots,
-            txnhash:"sfdfsd",
-            status:"active",
-          };
-          
-          console.log(duochallenegedata)
           _predictionData.answers = {};
-          setTimeout(() => window.location.reload(), 2000);
+          // setTimeout(() => window.location.reload(), 2000);
         })
         .catch((err) => console.log(err))
         .finally(() => setPredicting(false));
@@ -298,13 +349,14 @@ const PoolType = ({
         </div>
       </div>
       {isWalletConnected && (
+        <>
         <div className="questionaires">
           <p className="prediction_rule">
             Prediction questions are applicable for first 90 minutes of match
             time only
           </p>
-          {!questionaire.loading &&
-            questionaire.tempQuestionaire[0]?.questionaires.questions.map(
+         
+          {questionaire.tempQuestionaire[0]?.questionaires.questions.map(
               (q, index) => (
                 <div className="questionItem" key={index}>
                   <div className="top">
@@ -333,22 +385,15 @@ const PoolType = ({
               )
             )}
         </div>
-      )}
-      <div className="challenges">
+        {
+          questionaire.tempQuestionaire.length > 0 &&
+        <div className="challenges">
         <FormControlLabel
-          control={
-            <Checkbox
-              onChange={() => setDuoMode(!duoMode)}
-            />
-          }
+          control={<Checkbox onChange={() => setDuoMode(!duoMode)} />}
           label="Open for Duo"
         />
         <FormControlLabel
-          control={
-            <Checkbox
-              onChange={() => setTrioMode(!trioMode)}
-            />
-          }
+          control={<Checkbox onChange={() => setTrioMode(!trioMode)} />}
           label="Open for Trio"
         />
         {duoMode && (
@@ -388,6 +433,10 @@ const PoolType = ({
           </div>
         )}
       </div>
+        }
+        </>
+      )}
+     
       <div className="predictionAmount">
         <div>
           <div className="top">

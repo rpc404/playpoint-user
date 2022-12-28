@@ -26,13 +26,19 @@ const Prediction = () => {
   React.useEffect(()=>{
     let allp = JSON.parse(sessionStorage.getItem('predictions'));
     allp = allp.filter(prediction=>{
-      console.log(userPublicAddress)
-      if(prediction.predictedBy===userPublicAddress){
+      if(prediction.predictedBy===userPublicAddress && prediction._id!==pid){
         return prediction
       }
     })
     setUsePredictions(allp);
   },[userPublicAddress])
+
+  /**
+   * @dev function to join duo challenge
+   */
+  const joinChallenge = (challenge) => {
+      console.log(challenge)
+  }
 
   return (
     <div className="userprediction_container">
@@ -82,7 +88,21 @@ const Prediction = () => {
               })}
             </div>
             <div className="btn_area" style={{marginTop:"20px"}}>
-            <Button variant="outlined" color="secondary" onClick={()=>toast("Under Maintainance")}>Challenge {predictionData.user[0].username}</Button>
+              {
+                predictionData.challenges.map((challenges,key)=>{
+                  return <div style={{border:"0.4px solid white", display:"flex", gap:"10px", padding:"10px", alignItems:"center", justifyContent:"space-between"}}>
+                    <p>Pool Type: {challenges.type}</p>
+                    <p>Total Slot: {challenges.slot}</p>
+                    <p>Pool Entry Amount: {challenges.amount/0.02}PPTT</p>
+                    <p>
+                      {
+                        challenges.participants.length < challenges.slot ? <Button variant="outlined" color="secondary" onClick={()=>joinChallenge(challenges)}>Join Duo</Button> : <p>All Slots Full </p>
+                      }
+                    </p>
+                  </div>
+                })
+              }
+
             </div>
           </div>
         </div>
@@ -90,16 +110,21 @@ const Prediction = () => {
       <div className="divider"></div>
       <div className="other_prediction">
         <h2>Your Predictions in same pool</h2>
-        <div>
-        {console.log(userPredictions)}
+        <div style={{display:"flex", gap:"20px"}}>
               {
-                userPredictions.map((_pr)=>{
-                  return <div>
-                    <h4>{_pr.created_at}</h4>
+                userPredictions.map((_pr,k)=>{
+                  return <div style={{border:"0.2px solid white",padding:"10px"}} key={k}>
                     <div>
-                        {
-                          Array(_pr.answers).map(e=>console.log(e[0]))
-                        }
+                    {questions?.questionaires?.questions.map((question, key) => {
+                return (
+                  <div className="question_answer" key={key}>
+                    <h4>
+                      Q{key + 1}. {question} 
+                    </h4>
+                    <p>Answer: {_pr.answers[key]}</p>
+                  </div>
+                );
+              })}
                     </div>
                   </div>
                 })
