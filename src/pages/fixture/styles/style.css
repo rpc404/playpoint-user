@@ -15,6 +15,11 @@
     padding: 90px 5vw;
   }
 }
+@media screen and (max-width: 425px) {
+  .fixtures__container .MuiBox-root {
+    padding: 0 !important;
+  }
+}
 .fixtures__container h2 {
   padding: 10px 2vw;
 }

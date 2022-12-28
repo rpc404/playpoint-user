@@ -18,7 +18,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-
+import { ethers } from "ethers";
+import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,10 +53,16 @@ export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
   const [history, setHistory] = useState([]);
   const [editMode, setEditMode] = useState(false);
-  const [{ userPublicAddress, username }, dispatchRPCData] = useRPCContext();
+  const [{ userPublicAddress, username, isWalletConnected }, dispatchRPCData] =
+    useRPCContext();
   const [{ results, woat }, dispatchPredictionsData] = usePredictionsContext();
   const [_username, setUsername] = useState(username);
   const [value, setValue] = React.useState(0);
+
+  const [balance, setBalance] = React.useState({
+    ethBalance: 0,
+    ppttBalance: 0,
+  });
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -73,6 +80,26 @@ export default function Profile() {
       setUsername(username);
     }
   }, [userPublicAddress]);
+
+  React.useEffect(() => {
+    if (isWalletConnected) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const contract = new ethers.Contract(
+        "0x53d168578974822bCAa95106C7d5a906BF100948",
+        ERC20BasicAPI,
+        provider
+      );
+      (async () => {
+        const ethBalance = await provider.getBalance(userPublicAddress);
+        const PPTTBalance = await contract.balanceOf(userPublicAddress);
+
+        setBalance({
+          ethBalance: ethers.utils.formatEther(ethBalance),
+          ppttBalance: ethers.utils.formatEther(PPTTBalance),
+        });
+      })();
+    }
+  }, [isWalletConnected]);
 
   const handleUpdate = async () => {
     await setProfile({ data: { username: _username, userPublicAddress } }).then(
@@ -110,7 +137,6 @@ export default function Profile() {
           <div className="userdetails__container">
             {editMode ? (
               <div className="userdetails">
-                {/* <fieldset> */}
                 <input
                   value={_username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -124,26 +150,30 @@ export default function Profile() {
                         toast("Account number copied!");
                     }}
                   >
-                    <div className="address">
+                    {/* <div className="address"> */}
                       {`${userPublicAddress}`.substring(0, 15) +
                         `...` +
                         `${userPublicAddress}`.substring(
                           userPublicAddress.length - 3
                         )}{" "}
                       <i className="ri-file-copy-line"></i>
-                    </div>
+                    {/* </div> */}
                   </p>
                   <Button onClick={() => handleUpdate()}>
                     <i className="ri-send-plane-fill"></i>
                   </Button>
                 </div>
-                {/* </fieldset> */}
               </div>
             ) : (
               <div className="userdetails">
-                {/* <fieldset> */}
                 <h2>@{username}</h2>
-                <div style={{ display: "flex", gap: "15px",flexDirection:"column" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "15px",
+                    flexDirection: "column",
+                  }}
+                >
                   <p
                     className="accountbtn"
                     onClick={() => {
@@ -151,22 +181,21 @@ export default function Profile() {
                         toast("Account number copied!");
                     }}
                   >
-                    <div>
                       {`${userPublicAddress}`.substring(0, 15) +
                         `...` +
                         `${userPublicAddress}`.substring(
                           userPublicAddress.length - 3
                         )}{" "}
                       <i className="ri-file-copy-line"></i>
-                    </div>
                   </p>
-                  <Button onClick={() => setEditMode(!editMode)} style={{padding:".3em"}}>
+                  <Button
+                    onClick={() => setEditMode(!editMode)}
+                    style={{ padding: ".3em" }}
+                  >
+                    <i className="ri-pencil-fill"></i> &nbsp;
                     Edit Profile
-                    {/* <i className="ri-pencil-fill"></i> */}
                   </Button>
                 </div>
-
-                {/* </fieldset> */}
               </div>
             )}
           </div>
@@ -188,40 +217,13 @@ export default function Profile() {
           </div>
           <div className="balance__container">
             <div className="balance__wrapper">
-              <div
-                className="balance"
-                // onClick={(e) => {
-                //   e.stopPropagation();
-                //   ethereum
-                //     .request({
-                //       method: "wallet_watchAsset",
-                //       params: {
-                //         type: "ERC20",
-                //         options: {
-                //           address: "0x53d168578974822bCAa95106C7d5a906BF100948",
-                //           symbol: "PPTT",
-                //           decimals: 18,
-                //           image: "https://ik.imagekit.io/lexworld/Logo.png",
-                //         },
-                //       },
-                //     })
-                //     .then((success) => {
-                //       if (success) {
-                //         toast("PPTT successfully added to wallet!");
-                //       } else {
-                //         throw new Error("Something went wrong.");
-                //       }
-                //     })
-                //     .catch(console.error);
-                // }}
-              >
+              <div className="balance">
                 <img
                   src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
                   alt="ethereum"
                   loading="lazy"
                 />
-                {/* <p>{parseFloat(balance.ppttBalance)} PPTT</p> */}
-                <p>440 PPTT</p>
+                <p>{parseFloat(balance.ppttBalance)} PPTT</p>
               </div>
               <div className="balance">
                 <img
@@ -229,8 +231,7 @@ export default function Profile() {
                   alt="ethereum"
                   loading="lazy"
                 />
-                {/* <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p> */}
-                <p>0.10 ETH</p>
+                <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
               </div>
             </div>
             <Button className="addMoneyBtn">
@@ -257,7 +258,7 @@ export default function Profile() {
               value={value}
               onChange={handleChange}
               aria-label="Profile Menu"
-              textColor="white"
+              // textColor="white"
               sx={{ borderRight: 1, borderColor: "divider", color: "white" }}
             >
               <Tab label="Settled Predictions" {...a11yProps(0)} />
