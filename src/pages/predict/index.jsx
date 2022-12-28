@@ -269,15 +269,13 @@ export default function Predict() {
                   >
                     <div>
                       <div className="details">
-                        <Button
-                          onClick={() => navigate(`/prediction/${data._id}`)}
-                        >
+                        <Button>
                           View Answer
                         </Button>
                       </div>
                       <p>
                         {data?.user[0] ? (
-                          <a href="#" className="details__username">
+                          <a href={"/user-profile/"+data?.user[0].username} className="details__username">
                             {data?.user[0].username}
                           </a>
                         ) : (
@@ -315,20 +313,10 @@ export default function Predict() {
               <div>
                 <p>{fixture?.HomeTeam}</p>
                 {HomeTeamFlag(fixture.HomeTeam)}
-                {/* <img
-                  src={getCountryFlag(fixture.HomeTeam)}
-                  alt=""
-                  loading="lazy"
-                /> */}
               </div>
               <span>vs</span>
               <div>
                 {AwayTeamFlag(fixture.AwayTeam)}
-                {/* <img
-                  src={getCountryFlag(fixture.AwayTeam)}
-                  alt=""
-                  loading="lazy"
-                /> */}
                 <p>{fixture.AwayTeam}</p>
               </div>
             </div>
@@ -348,7 +336,8 @@ export default function Predict() {
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <div>
-              {status && status !== "closed" ? (
+             
+              {!status || status !== "closed" ? (
                 timeLeft
               ) : (
                 <div className="fixture_results">
@@ -375,19 +364,6 @@ export default function Predict() {
                 </p>
               </div>
             </div>
-            {/* <LineChart
-              className="graphData"
-              width="90%"
-              height={window.innerWidth >= 576 ? 350 : 200}
-              data={lineChartData}
-              series={
-                <LineSeries
-                  colorScheme={(_data, _index, active) =>
-                    active ? "#2ecc71" : "#2ecc71"
-                  }
-                />
-              }
-            /> */}
             <div className="eventDetails">
               <p>
                 <i className="ri-calendar-todo-line"></i> Event Details:{" "}
@@ -397,12 +373,16 @@ export default function Predict() {
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
+            {
+              status !=="closed" &&
+            
             <PredictionTabs
               poolSize={poolSize}
               fixtureId={fixtureId}
               setPoolSize={setPoolSize}
               status={status}
             />
+}
           </div>
         </div>
 
