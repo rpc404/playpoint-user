@@ -17,16 +17,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 import "./styles/style.css";
+import { mkaeDuo } from "../../api/Challenge";
 
 const Prediction = () => {
   const { pid } = useParams();
   const [predictionData, setPredictionData] = React.useState([]);
   const [questions, setquestions] = React.useState([]);
   const [userPredictions, setUsePredictions] = React.useState([]);
-  const [{ userPublicAddress }] = useRPCContext();
+  const [loading, setloading] = React.useState(true);
+  const [initData] = useRPCContext();
   const [currChallenege, setCurrChallenge] = React.useState([]);
   const [activePredition, setActivePrediction] = React.useState("");
-  const [loading, setloading] = React.useState(true);
+  const { userPublicAddress, userPPTTBalance, userETHBalance } = initData;
+
   React.useEffect(() => {
     getPredictionById(pid).then((res) => {
       if (res.data.data) {
@@ -66,8 +69,26 @@ const Prediction = () => {
   };
 
   const setParticipant = (prediction) => {
-    console.log(prediction);
     setActivePrediction(prediction._id);
+  };
+
+  const _joinChallenge = async () => {
+    toast("Challenging..", {
+      type: "info",
+    });
+    const data = {
+      predictionId: currChallenege.predictionId,
+      participants: {
+        prediction: activePredition,
+        txnhash: "scdsds",
+      },
+    };
+    const res = await mkaeDuo(data);
+    if (res.status == 201) {
+      setCurrChallenge(res.data.challenge);
+      toast("Challenge Created", { type: "success" });
+      handleClose();
+    }
   };
 
   return (
@@ -375,7 +396,27 @@ const Prediction = () => {
                 );
               })}
             </div>
-            <div>Payment Section</div>
+            <div>
+              <div>
+                {activePredition && (
+                  <div>
+                    <h4>Selected Entry</h4>
+                    <hr />
+                    <p>Entry ID: {activePredition}</p>
+                    <p>
+                      Challenge Entry Amount: {currChallenege.amount / 0.02}PPTT
+                    </p>
+                    <p>
+                      Available Assets: {parseFloat(userETHBalance).toFixed(2)}{" "}
+                      ETH {parseFloat(userPPTTBalance).toFixed(2)} PPTT
+                    </p>
+                    <Button variant="outlined" onClick={() => _joinChallenge()}>
+                      Challenge
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </Dialog>
       )}
