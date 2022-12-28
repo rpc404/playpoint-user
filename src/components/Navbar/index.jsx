@@ -109,10 +109,10 @@ export default function Navbar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       {isWalletConnected && (
-        <>
+        <div className="userData__container">
           <List>
             <ListItem disablePadding>
-              <div className="userData">
+              <div className="navUserData">
                 <img
                   src={`https://robohash.org/${username}`}
                   alt=""
@@ -170,7 +170,7 @@ export default function Navbar() {
               </ListItemButton>
             </ListItem>
           </List>
-        </>
+        </div>
       )}
       {isWalletConnected && <Divider />}
       <List>
