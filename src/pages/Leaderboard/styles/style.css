@@ -55,6 +55,9 @@
   background-color: #fff;
   cursor: pointer;
 }
+.leaderboard__container .filterarea select option {
+  color: rgba(0, 0, 0, 0.6);
+}
 @media screen and (max-width: 976px) {
   .leaderboard__container .filterarea select {
     display: none;

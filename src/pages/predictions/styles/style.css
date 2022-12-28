@@ -51,11 +51,36 @@
 .userprediction_container .container .answers_area .questions .question_answer h4 span {
   color: rgb(100, 163, 100);
 }
-.userprediction_container .other_prediction {
+.userprediction_container .other_prediction__container {
   width: 90%;
-  margin: auto;
+  margin: 1em auto;
   color: #fff;
   padding: 0.5em 0;
+}
+.userprediction_container .other_prediction__container h2 {
+  margin-bottom: 1em;
+}
+.userprediction_container .other_prediction__container .otherpredictions {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.userprediction_container .other_prediction__container .otherpredictions .otherpredictions_box {
+  border: 0.2px solid white;
+  padding: 10px;
+}
+
+.skeleton__container__predictions {
+  margin: 2em auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.otherpredictionskeleton__container .otherpredictions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .custom-paper .MuiDialog-paper {

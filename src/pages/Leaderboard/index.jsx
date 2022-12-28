@@ -5,11 +5,15 @@ import {
 } from "../../api/Leaderboards";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import "./styles/style.css";
+import { getMarketplaces } from "../../api/Marketplace";
+import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 
 const Leaderboard = () => {
   const [activeOS, setActiveOS] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [leaderboards, setLeaderboards] = React.useState([]);
+  const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
+  const [marketplace, setMarketplace] = React.useState([]);
 
   React.useEffect(() => {
     // Windows
@@ -35,6 +39,25 @@ const Leaderboard = () => {
     })();
   }, []);
 
+  React.useEffect(() => {
+    (async () => {
+      if (marketplaces.length === 0) {
+        let res = await getMarketplaces();
+        console.log(res);
+        res = res.data.marketplaces;
+        setMarketplace(res);
+
+        dispatchMarketplaceData({
+          type: ACTIONS.SET_ALL_MARKETPLACE,
+          payload: res,
+        });
+      }
+      setLoading(false);
+    })();
+  }, []);
+
+  console.log(marketplace);
+
   return (
     <div className="leaderboard__container">
       <div className="filterarea">
@@ -45,13 +68,18 @@ const Leaderboard = () => {
         </div>
         <select name="" id="">
           <option value="">Select Marketplace</option>
-          <option value="">Fifa World Cup</option>
-          <option value="">Premiere League</option>
+          {marketplace.map((marketplace, i) => {
+            return (
+              <option value={`${marketplace.maketplaceName}`} key={i}>
+                {marketplace.maketplaceName}
+              </option>
+            );
+          })}
         </select>
       </div>
       {/* <div className="divider"></div> */}
 
-      <LeaderboardMain/>
+      <LeaderboardMain />
     </div>
   );
 };
