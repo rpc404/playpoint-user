@@ -71,3 +71,12 @@
         padding: .5em 0;
     }
 }
+.custom-paper{
+    .MuiDialog-paper{
+        background-color: #202020 !important;
+        color: #fff;
+    }
+    .selected{
+        background-color: green ;
+    }
+}

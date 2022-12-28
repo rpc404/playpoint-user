@@ -45,6 +45,14 @@ export default function Navbar() {
           ethBalance: ethers.utils.formatEther(ethBalance),
           ppttBalance: ethers.utils.formatEther(PPTTBalance),
         });
+
+        const data = {
+          isWalletConnected, username, userPublicAddress,
+          userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
+          userETHBalance: ethers.utils.formatEther(ethBalance),
+        };
+
+        await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
       })();
     }
   }, [isWalletConnected]);
