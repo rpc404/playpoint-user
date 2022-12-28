@@ -2,6 +2,7 @@ import React from "react";
 import "./styles/style.css";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+// import sports from "../../images/new.png";
 
 const Hero = () => {
   const navigate = useNavigate();

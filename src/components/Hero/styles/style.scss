@@ -48,6 +48,145 @@
     }
   }
 
+  .heroSection {
+    margin: 0 auto;
+
+    @media screen and (min-width: 769px) {
+      width: 70%;
+    }
+    h1,
+    h3 {
+      font-weight: 800;
+      background: linear-gradient(#0debc6, #2dabde);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-top: 1em;
+      @media screen and (min-width: 769px) {
+        font-size: 5rem;
+      }
+      @media screen and (min-width: 1025px) {
+        font-size: 6em;
+        margin-top: 0;
+      }
+    }
+
+    h3 {
+      padding: 0.5em 0;
+      font-size: 1.8em;
+      @media screen and (min-width: 769px) {
+        font-size: 3em;
+      }
+    }
+
+    .buttons {
+      margin: 1em 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+      button {
+        cursor: pointer;
+        border: none;
+        padding: 0.9em 1em;
+        font-size: 1.1em;
+        border-radius: 16px;
+        transition: 0.3s ease;
+        &:nth-child(1) {
+          background-color: black;
+          color: #fff;
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+    .img_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1em 2em;
+      img {
+        // width: 50%;
+
+        object-fit: cover;
+        margin-top: 1em;
+      }
+    }
+  }
+
+  .card__container {
+    width: 90%;
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    color: rgb(0, 0, 0);
+
+    @media screen and (min-width: 769px) {
+      flex-direction: row;
+    }
+    // color: rgba(216, 216, 216, 0.605);
+    // .card1 {
+    //   border-radius: 20px;
+    //   padding: 1.5em;
+    //   display: flex;
+    //   flex-direction: column;
+    //   background-color: rgba(255, 255, 255, 0.197);
+    //   gap: 10px;
+    //   flex: 1;
+    // }
+    .card2 {
+      border-radius: 5px;
+      padding: 1.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.141);
+      gap: 10px;
+      flex: 1;
+      img {
+        height: 150px;
+        object-fit: contain;
+      }
+      p {
+        line-height: 1.3;
+        font-size: 1.4em;
+        text-align: center;
+      }
+    }
+    .card3 {
+      border-radius: 5px;
+      padding: 1.5em;
+      p {
+        text-align: center;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.141);
+      gap: 10px;
+      flex: 1;
+
+      p {
+        line-height: 1.3;
+        font-size: 1.4em;
+      }
+
+      img {
+        height: 150px;
+        object-fit: contain;
+      }
+    }
+  }
+  
   .heroIntroduction {
     @media screen and (max-width: 1025px) {
       margin: 2em auto;
