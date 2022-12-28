@@ -1,82 +1,114 @@
-.userprediction_container{
-    margin: 2em auto;
-    height: calc(100vh - 11.4em);
-    .container{
+.userprediction_container {
+  margin: 2em auto;
+  height: calc(100vh - 11.4em);
+  .container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .profile_area {
+      h3 {
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+      p {
+        color: rgba(255, 255, 255, 0.929);
+      }
+    }
+    img {
+      width: 10vw;
+      border: 1px solid rgba(108, 107, 107, 0.334);
+    }
+    .answers_area {
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.125);
+      color: rgba(255, 255, 255, 0.79);
+      margin-bottom: 2em;
+
+      h1 {
+        color: #fff;
+      }
+
+      h4 {
+        padding: 0.4em 0;
+        color: #fff;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.902);
+      }
+
+      .btn_area {
+        button {
+          color: #fff !important;
+        }
+      }
+
+      .questions {
+        margin-top: 1.2em;
         display: flex;
+        flex-direction: column;
+        gap: 15px;
         justify-content: space-around;
-        flex-wrap: wrap;
-
-        .profile_area {
-            h3 {
-                a {
-                    color: #fff;
-                    text-decoration: none;
-                }
+        .question_answer {
+          h4 {
+            display: flex;
+            gap: 10px;
+            span {
+              color: rgb(100, 163, 100);
             }
-            p {
-                color: rgba(255, 255, 255, 0.929);
-            }
+          }
         }
-        img{
-            width: 10vw;
-            border: 1px solid rgba(108, 107, 107, 0.334);
-        }
-        .answers_area{
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.125);
-            color: rgba(255, 255, 255, 0.79);
-            margin-bottom: 2em;
+      }
+    }
+  }
+  .other_prediction__container {
+    width: 90%;
+    margin: 1em auto;
+    color: #fff;
+    padding: .5em 0;
 
-            h1 {
-                color: #fff;
-            }
+    h2 {
+        margin-bottom: 1em;
+    }
+    .otherpredictions {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2,1fr);
 
-            h4 {
-               padding: .4em 0;
-                color: #fff;
-            }
-
-            p {
-                color: rgba(255, 255, 255, 0.902);
-            }
-
-            .btn_area {
-               button {
-                color: #fff !important;
-               }
-            }
-
-            .questions{
-                margin-top: 1.2em;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                justify-content: space-around;
-            .question_answer{
-                h4{
-                display: flex;
-                gap: 10px;
-                span{
-                    color: rgb(100, 163, 100);
-                }
-            }
-            }
-            }
+        .otherpredictions_box {
+           border: .2px solid white;
+            padding: 10px;
+            
         }
     }
-    .other_prediction{
-        width: 90%;
-        margin: auto;
-        color: #fff;
-        padding: .5em 0;
+  }
+}
+
+.skeleton__container {
+  margin: 2em auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+
+}
+.otherpredictionskeleton__container {
+    .otherpredictions {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 20px;
     }
 }
-.custom-paper{
-    .MuiDialog-paper{
-        background-color: #202020 !important;
-        color: #fff;
-    }
-    .selected{
-        background-color: green ;
-    }
+  
+
+.custom-paper {
+  .MuiDialog-paper {
+    background-color: #202020 !important;
+    color: #fff;
+  }
+  .selected {
+    background-color: green;
+  }
 }
