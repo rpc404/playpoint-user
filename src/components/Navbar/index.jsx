@@ -164,6 +164,7 @@ export default function Navbar() {
     </Box>
   );
   return (
+    <>
     <div className="navbar__container">
       <div
         onClick={(e) => {
@@ -285,5 +286,8 @@ export default function Navbar() {
         </Drawer>
       </div>
     </div>
+    <div className="divider"></div>
+    </>
+    
   );
 }

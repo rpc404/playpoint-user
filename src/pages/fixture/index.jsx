@@ -70,7 +70,7 @@ export default function Fixture() {
 
       {modalOpen && <QuickView handleModalClose={setModalOpen} />}
 
-      <div className="fixtureBanner__container">
+      {/* <div className="fixtureBanner__container">
         <video
           autoPlay
           muted
@@ -83,7 +83,8 @@ export default function Fixture() {
           Browser unsupported for videos.
         </video>
         <h1><span>Fixture</span>{marketplaceSlug}</h1>
-      </div>
+      </div> */}
+      {/* <div className="divider"></div> */}
 
       {loading ? (
         [0, 1].map((i) => {
