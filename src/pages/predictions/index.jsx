@@ -189,7 +189,7 @@ const Prediction = () => {
             </div>
           </div>
         ) : (
-          <div className="skeleton__container">
+          <div className="skeleton__container__predictions">
             <div className="profile_area">
               <Stack spacing={1}>
                 <Skeleton variant="rectangular" width={200} height={100} />
