@@ -234,7 +234,7 @@ export default function Profile() {
                 <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
               </div>
             </div>
-            <Button className="addMoneyBtn">
+            <Button className="addMoneyBtn" onClick={() => window.open("https://app.playpoint.ai/","_blank")}>
               <i className="ri-add-box-line"></i> Add Money
             </Button>
           </div>

@@ -91,6 +91,9 @@
     display: none;
   }
 }
+.navbar__container .drawer .MuiDivider-root {
+  border-color: rgba(164, 164, 164, 0.887) !important;
+}
 @media screen and (min-width: 576px) {
   .navbar__container .drawer {
     display: none;
@@ -105,4 +108,46 @@
 
 .MuiDrawer-paper {
   background-color: #151515 !important;
+}
+
+.userData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.userData img {
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  text-align: center;
+}
+.userData p {
+  color: rgba(255, 255, 255, 0.776);
+}
+.userData h2 {
+  color: rgba(255, 255, 255, 0.776);
+}
+.userData .balance__wrapper {
+  display: flex;
+  gap: 20px;
+}
+.userData .balance__wrapper .balance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.userData .balance__wrapper .balance img {
+  height: 25px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.userData .MuiButton-root {
+  display: flex;
+  gap: 5px;
+  outline: 1px solid #fff !important;
+}
+
+.MuiDivider-root {
+  border-color: rgba(164, 164, 164, 0.887) !important;
 }/*# sourceMappingURL=style.css.map */
