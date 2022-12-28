@@ -172,7 +172,7 @@ export default function Navbar() {
           </List>
         </>
       )}
-      <Divider />
+      {isWalletConnected && <Divider />}
       <List>
         <ListItem disablePadding onClick={() => navigate("/leaderboards")}>
           <ListItemButton className="drawerListItem">
