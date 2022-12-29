@@ -1,0 +1,103 @@
+.prediction__items__dialog {
+  height: 90vh;
+  overflow-y: scroll;
+}
+@media screen and (max-width: 426px) {
+  .prediction__items__dialog.false {
+    display: none;
+  }
+}
+.prediction__items__dialog.windowsOS {
+  height: 77vh;
+}
+.prediction__items__dialog .predictedCard__container {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
+  padding: 7px 1.5vw 10px 1.5vw;
+  -webkit-animation: ease-in-out;
+          animation: ease-in-out;
+  margin-bottom: 0.3em;
+  box-shadow: 0px 2px 1px -1px rgba(255, 255, 255, 0.3019607843);
+}
+.prediction__items__dialog .predictedCard__container:hover {
+  background: rgba(27, 27, 27, 0.4862745098);
+  cursor: pointer;
+}
+.prediction__items__dialog .predictedCard__container .info {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  justify-content: space-between;
+}
+.prediction__items__dialog .predictedCard__container .info p:first-child {
+  color: #2ecc71;
+}
+.prediction__items__dialog .predictedCard__container .info p:last-child {
+  color: rgba(255, 255, 255, 0.5333333333);
+  font-size: 14px;
+}
+.prediction__items__dialog .predictedCard__container canvas {
+  margin-top: 6px;
+}
+.prediction__items__dialog .predictedCard__container div {
+  width: 100%;
+}
+.prediction__items__dialog .predictedCard__container div p {
+  font-size: 14px;
+  color: #3a3a3a;
+  line-height: 1.5;
+}
+.prediction__items__dialog .predictedCard__container div .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.prediction__items__dialog .predictedCard__container div .details .MuiButton-root {
+  text-transform: capitalize;
+  padding: 0;
+  color: #3498db;
+}
+.prediction__items__dialog .predictedCard__container div .details p {
+  background: #000;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 1px 15px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+.prediction__items__dialog .predictedCard__container div p {
+  color: #fff;
+}
+.prediction__items__dialog .predictedCard__container div p a {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-decoration: none;
+  background-color: rgba(0, 201, 167, 0.1);
+  padding: 0.2em;
+  color: #00c9a7;
+  border-radius: 2px;
+}
+.prediction__items__dialog .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  gap: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.prediction__items__dialog .details .custom-chip {
+  padding: 0 15px;
+}
+.prediction__items__dialog .details p {
+  background: #000;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 1px 15px;
+  border-radius: 10px;
+  font-size: 12px;
+}/*# sourceMappingURL=style.css.map */
