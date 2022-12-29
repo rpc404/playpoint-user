@@ -224,7 +224,7 @@ const PoolType = ({
       ).connect(provider.getSigner());
 
       // console.log(ethers.utils.parseEther(_predictionData.amount.toString()), _predictionData.amount)
-      console.log(duoAmount,trioAmount)
+      // console.log(duoAmount,trioAmount)
       return await setPrediction(_predictionData)
         .then(async (res) => {
           console.log(res.data);
