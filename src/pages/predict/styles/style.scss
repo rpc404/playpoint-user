@@ -33,6 +33,9 @@
       .prediction__items {
         height: 83vh;
         overflow-y: scroll;
+        @media screen and (max-width:425px) {
+          display: none;
+        }
 
         &.windowsOS {
           height: 77vh;
@@ -527,3 +530,6 @@
     }
   }
 }
+
+
+
