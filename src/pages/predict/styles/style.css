@@ -87,13 +87,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   margin-bottom: 5px;
+  gap: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
-.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details .MuiButton-root {
-  text-transform: capitalize;
-  padding: 0;
-  color: #3498db;
+.prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details .custom-chip {
+  padding: 0 15px;
 }
 .prediction__container .main__container .recentPredictions .prediction__items .predictedCard__container div .details p {
   background: #000;
@@ -553,4 +554,8 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
+}
+
+.MuiPaper-root header {
+  background-color: #000 !important;
 }/*# sourceMappingURL=style.css.map */
