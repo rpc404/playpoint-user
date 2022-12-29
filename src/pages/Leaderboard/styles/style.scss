@@ -58,6 +58,11 @@
       color: #0009;
       background-color: #fff;
       cursor: pointer;
+
+      option {
+        color: #0009;
+      }
+
       @media screen and (max-width: 976px) {
         display: none;
       }

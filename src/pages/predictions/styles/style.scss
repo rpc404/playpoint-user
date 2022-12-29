@@ -1,82 +1,209 @@
-.userprediction_container{
-    margin: 2em auto;
-    height: calc(100vh - 11.4em);
-    .container{
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
+.userprediction_container {
+  margin: 2em auto;
+  height: calc(100vh - 11.4em);
+  .container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 
-        .profile_area {
-            h3 {
-                a {
-                    color: #fff;
-                    text-decoration: none;
-                }
-            }
-            p {
-                color: rgba(255, 255, 255, 0.929);
-            }
+    .profile_area {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 1em 0;
+      h3 {
+        a {
+          color: #fff;
+          text-decoration: none;
         }
-        img{
-            width: 10vw;
-            border: 1px solid rgba(108, 107, 107, 0.334);
-        }
-        .answers_area{
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.125);
-            color: rgba(255, 255, 255, 0.79);
-            margin-bottom: 2em;
-
-            h1 {
-                color: #fff;
-            }
-
-            h4 {
-               padding: .4em 0;
-                color: #fff;
-            }
-
-            p {
-                color: rgba(255, 255, 255, 0.902);
-            }
-
-            .btn_area {
-               button {
-                color: #fff !important;
-               }
-            }
-
-            .questions{
-                margin-top: 1.2em;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                justify-content: space-around;
-            .question_answer{
-                h4{
-                display: flex;
-                gap: 10px;
-                span{
-                    color: rgb(100, 163, 100);
-                }
-            }
-            }
-            }
-        }
+      }
+      p {
+        color: rgba(255, 255, 255, 0.929);
+      }
     }
-    .other_prediction{
+    img {
+
+      
+      // width: 10vw;
+      border: 1px solid rgba(108, 107, 107, 0.334);
+    }
+    .answers_area {
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.125);
+      color: rgba(255, 255, 255, 0.79);
+      margin-bottom: 2em;
+
+      @media screen and (max-width:426px) {
         width: 90%;
-        margin: auto;
+        margin: 1em auto 2em;
+      }
+
+      h1 {
         color: #fff;
-        padding: .5em 0;
+      }
+
+      h4 {
+        padding: 0.4em 0;
+        color: #fff;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.902);
+      }
+
+      .btn_area {
+        margin-top: 20px;
+
+        .pool_info {
+          @media screen and (min-width: 426px) {
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+          }
+          border: 0.4px solid #fff;
+          display: grid;
+          grid-template-areas: "poolType slot" "amount amount" "challange challange";
+          gap: 10px;
+          padding: 10px;
+
+          p {
+            &:nth-child(1) {
+              grid-area: poolType;
+            }
+            &:nth-child(2) {
+              grid-area: slot;
+            }
+            &:nth-child(3) {
+              grid-area: amount;
+            }
+            &:nth-child(4) {
+              grid-area: challange;
+            }
+          }
+        }
+        button {
+          color: #fff !important;
+        }
+      }
+
+      .questions {
+        margin-top: 1.2em;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: space-around;
+        .question_answer {
+          h4 {
+            display: flex;
+            gap: 10px;
+            span {
+              color: rgb(100, 163, 100);
+            }
+          }
+        }
+      }
     }
+  }
+  .other_prediction__container {
+    width: 90%;
+    margin: 1em auto;
+    color: #fff;
+    padding: 0.5em 0;
+
+    h2 {
+      margin-bottom: 1em;
+    }
+    .otherpredictions {
+      @media screen and (min-width: 426px) {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .otherpredictions_box {
+        border: 0.2px solid white;
+        padding: 10px;
+      }
+    }
+  }
 }
-.custom-paper{
-    .MuiDialog-paper{
-        background-color: #202020 !important;
-        color: #fff;
+
+.skeleton__container__predictions {
+  margin: 2em auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.otherpredictionskeleton__container {
+  .otherpredictions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+.custom-paper {
+  .MuiDialog-paper {
+    background-color: #202020 !important;
+    color: #fff;
+  }
+  .selected {
+    background-color: green;
+  }
+}
+
+.dialog__title {
+  // padding: 20px 10px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.predictions__container {
+  max-height: 95vh;
+
+  @media screen and (min-width: 426px) {
+    display: grid;
+    grid-template-columns: 6fr 2fr;
+  }
+
+  .predictions {
+    @media screen and (min-width: 426px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
-    .selected{
-        background-color: green ;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 20px;
+    position: relative;
+
+    .floatingButton__container {
+      position: absolute;
+      top: 45%;
+      right: -10px;
+
+      @media screen and (min-width: 426px) {
+        display: none;
+      }
     }
+  }
+}
+
+.activePrediction__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media screen and (max-width: 426px) {
+    display: none;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.93);
+    span {
+      color: rgba(255, 255, 255, 0.763);
+    }
+  }
 }

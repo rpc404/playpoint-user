@@ -117,15 +117,70 @@ export default function Navbar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       {isWalletConnected && (
-        <List>
-          <ListItem disablePadding onClick={() => navigate("/profile")}>
-            <ListItemButton className="drawerListItem">
-              <i className="ri-user-line"></i>
-              <ListItemText primary="Profile" />
-            </ListItemButton>
-          </ListItem>
-        </List>
+        <div className="userData__container">
+          <List>
+            <ListItem disablePadding>
+              <div className="navUserData">
+                <img
+                  src={`https://robohash.org/${username}`}
+                  alt=""
+                  loading="lazy"
+                />
+                <p
+                  className="accountbtn"
+                  onClick={() => {
+                    navigator.clipboard.writeText(userPublicAddress),
+                      toast("Account number copied!");
+                  }}
+                >
+                  {`${userPublicAddress}`.substring(0, 15) +
+                    `...` +
+                    `${userPublicAddress}`.substring(
+                      userPublicAddress.length - 3
+                    )}{" "}
+                  <i className="ri-file-copy-line"></i>
+                </p>
+                <h2>@{username}</h2>
+                <div className="balance__wrapper">
+                  <div className="balance">
+                    <img
+                      src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
+                      alt="ethereum"
+                      loading="lazy"
+                    />
+                    <p>{parseFloat(balance.ppttBalance)} PPTT</p>
+                  </div>
+                  <div className="balance">
+                    <img
+                      src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/3a0ba/eth-diamond-rainbow.webp"
+                      alt="ethereum"
+                      loading="lazy"
+                    />
+                    <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
+                  </div>
+                </div>
+                <Button
+                  className="addMoneyBtn"
+                  onClick={() =>
+                    window.open("https://app.playpoint.ai/", "_blank")
+                  }
+                >
+                  <i className="ri-add-box-line"></i> Add Money
+                </Button>
+              </div>
+            </ListItem>
+          </List>
+          <List>
+            <ListItem disablePadding onClick={() => navigate("/profile")}>
+              <ListItemButton className="drawerListItem">
+                <i className="ri-user-line"></i>
+                <ListItemText primary="Profile" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </div>
       )}
+      {isWalletConnected && <Divider />}
       <List>
         <ListItem disablePadding onClick={() => navigate("/leaderboards")}>
           <ListItemButton className="drawerListItem">
@@ -143,7 +198,6 @@ export default function Navbar() {
           </ListItemButton>
         </ListItem>
       </List>
-      <Divider />
       <Divider />
       {!isWalletConnected ? (
         <List>
@@ -173,129 +227,131 @@ export default function Navbar() {
   );
   return (
     <>
-    <div className="navbar__container">
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
-          navigate("/");
-        }}
-        className="logo__container"
-      >
-        <img src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580" />
-        <h3>Playpoint</h3>
-
-        <div className="navLinks">
+      <div className="navbar__container">
         <div
-            onClick={(e) => {
-              e.stopPropagation();
-              window.open("https://docs.playpoint.ai/");
-            }}
-          >
-            Documentation
-          </div>
-          <div
-            onClick={(e) => {
-              e.stopPropagation();
-              navigate("/leaderboards");
-            }}
-          >
-            Leaderboards
-          </div>
-          <div
-            onClick={(e) => {
-              e.stopPropagation();
-              navigate("/marketplace");
-            }}
-          >
-            Marketplace
-          </div>
-        </div>
-      </div>
-
-      <div className="navbar__authentication">
-        <button onClick={() => window.open("https://app.playpoint.ai/")} className="buyButton">
-          <i className="ri-coin-fill"></i> Buy PPTT
-        </button>
-        {isWalletConnected === false ? (
-          <Button disabled={loading} onClick={() => handleLogin()}>
-            👛 Connect Wallet
-          </Button>
-        ) : (
-          <>
-            <div
-              className="balance"
-              onClick={(e) => {
-                e.stopPropagation();
-                ethereum
-                  .request({
-                    method: "wallet_watchAsset",
-                    params: {
-                      type: "ERC20",
-                      options: {
-                        address: "0x53d168578974822bCAa95106C7d5a906BF100948",
-                        symbol: "PPTT",
-                        decimals: 18,
-                        image: "https://ik.imagekit.io/lexworld/Logo.png",
-                      },
-                    },
-                  })
-                  .then((success) => {
-                    if (success) {
-                      toast("PPTT successfully added to wallet!");
-                    } else {
-                      throw new Error("Something went wrong.");
-                    }
-                  })
-                  .catch(console.error);
-              }}
-            >
-              <img
-                src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
-                alt="ethereum"
-                loading="lazy"
-              />
-              <p>{parseFloat(balance.ppttBalance)} PPTT</p>
-            </div>
-            <div className="balance">
-              <img
-                src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/3a0ba/eth-diamond-rainbow.webp"
-                alt="ethereum"
-                loading="lazy"
-              />
-              <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
-            </div>
-            <Button
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate("/profile");
-              }}
-            >
-              <i className="ri-user-line"></i>{" "}
-              {isWalletConnected === true && <span>{username}</span>}
-            </Button>
-            <Button onClick={() => handleLogout()}>
-              <i className="ri-logout-box-line"></i> Logout
-            </Button>
-          </>
-        )}
-      </div>
-
-      <div className="drawer" style={{ backgroundColor: "#000" }}>
-        <div onClick={toggleDrawer("right", true)}>
-          <i className="ri-menu-3-line"></i>
-        </div>
-        <Drawer
-          anchor={"right"}
-          open={navSMState["right"]}
-          onClose={toggleDrawer("right", false)}
-          // style={{ backgroundColor: "#1c1b1b" }}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate("/");
+          }}
+          className="logo__container"
         >
-          {list("right")}
-        </Drawer>
+          <img src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580" />
+          <h3>Playpoint</h3>
+
+          <div className="navLinks">
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open("https://docs.playpoint.ai/");
+              }}
+            >
+              Documentation
+            </div>
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/leaderboards");
+              }}
+            >
+              Leaderboards
+            </div>
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/marketplace");
+              }}
+            >
+              Marketplace
+            </div>
+          </div>
+        </div>
+
+        <div className="navbar__authentication">
+          <button
+            onClick={() => window.open("https://app.playpoint.ai/")}
+            className="buyButton"
+          >
+            <i className="ri-coin-fill"></i> Buy PPTT
+          </button>
+          {isWalletConnected === false ? (
+            <Button disabled={loading} onClick={() => handleLogin()}>
+              👛 Connect Wallet
+            </Button>
+          ) : (
+            <>
+              <div
+                className="balance"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  ethereum
+                    .request({
+                      method: "wallet_watchAsset",
+                      params: {
+                        type: "ERC20",
+                        options: {
+                          address: "0x53d168578974822bCAa95106C7d5a906BF100948",
+                          symbol: "PPTT",
+                          decimals: 18,
+                          image: "https://ik.imagekit.io/lexworld/Logo.png",
+                        },
+                      },
+                    })
+                    .then((success) => {
+                      if (success) {
+                        toast("PPTT successfully added to wallet!");
+                      } else {
+                        throw new Error("Something went wrong.");
+                      }
+                    })
+                    .catch(console.error);
+                }}
+              >
+                <img
+                  src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
+                  alt="ethereum"
+                  loading="lazy"
+                />
+                <p>{parseFloat(balance.ppttBalance)} PPTT</p>
+              </div>
+              <div className="balance">
+                <img
+                  src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/3a0ba/eth-diamond-rainbow.webp"
+                  alt="ethereum"
+                  loading="lazy"
+                />
+                <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
+              </div>
+              <Button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate("/profile");
+                }}
+              >
+                <i className="ri-user-line"></i>{" "}
+                {isWalletConnected === true && <span>{username}</span>}
+              </Button>
+              <Button onClick={() => handleLogout()}>
+                <i className="ri-logout-box-line"></i> Logout
+              </Button>
+            </>
+          )}
+        </div>
+
+        <div className="drawer">
+          <div onClick={toggleDrawer("right", true)}>
+            <i className="ri-menu-3-line"></i>
+          </div>
+          <Drawer
+            anchor={"right"}
+            open={navSMState["right"]}
+            onClose={toggleDrawer("right", false)}
+            // style={{ backgroundColor: "#1c1b1b" }}
+          >
+            {list("right")}
+          </Drawer>
+        </div>
       </div>
-    </div>
-    <div className="divider"></div>
+      <div className="divider"></div>
     </>
-    
   );
 }

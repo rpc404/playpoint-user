@@ -17,7 +17,18 @@ import Leaderboards from "../../components/Leaderboards/Leaderboards";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import clubFlags from "../../helpers/EPLFlags.json";
 import CarabaoClubFlags from "../../helpers/EFLFlags.json";
+import EPLFlags from "../../helpers/EPLFlags.json";
 import { useLocation } from "react-router-dom";
+import Dialog from "@mui/material/Dialog";
+import ListItemText from "@mui/material/ListItemText";
+import ListItem from "@mui/material/ListItem";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Slide from "@mui/material/Slide";
 
 export const getCountryFlag = (country) => {
   let _url = "";
@@ -38,11 +49,29 @@ export const getCountryFlag = (country) => {
   return _url;
 };
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 export default function Predict() {
   const { state } = useLocation();
 
+  const { marketplaceSlug } = state;
+
+  const [open, setOpen] = React.useState(false);
+  const [currentMode, setCurrentMode] = React.useState("");
+
+  const handleClickOpen = (mode) => {
+    setOpen(true);
+    setCurrentMode(mode);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const HomeTeamFlag = (team) => {
-    if (state.marketplaceSlug === "English-Football-League397") {
+    if (marketplaceSlug === "English-Football-League397") {
       return clubFlags.map((club, i) => {
         if (club.name === team) {
           return (
@@ -55,7 +84,7 @@ export default function Predict() {
           );
         }
       });
-    } else if (state.marketplaceSlug === "Carabao-Cup237") {
+    } else if (marketplaceSlug === "Carabao-Cup237") {
       return CarabaoClubFlags.map((club, i) => {
         if (club.name === team) {
           return (
@@ -72,7 +101,7 @@ export default function Predict() {
   };
 
   const AwayTeamFlag = (team) => {
-    if (state.marketplaceSlug === "English-Football-League397") {
+    if (marketplaceSlug === "English-Football-League397") {
       return clubFlags.map((club, i) => {
         if (club.name === team) {
           return (
@@ -85,7 +114,7 @@ export default function Predict() {
           );
         }
       });
-    } else if (state.marketplaceSlug === "Carabao-Cup237") {
+    } else if (marketplaceSlug === "Carabao-Cup237") {
       return CarabaoClubFlags.map((club, i) => {
         if (club.name === team) {
           return (
@@ -255,55 +284,25 @@ export default function Predict() {
          * @note Recent Predictions
          */}
         <div className="recentPredictions">
-          <h3>Active Predictions</h3>
+          {window.innerWidth <= 425 ? (
+            <>
+              <h3 onClick={() => handleClickOpen("prediction")}>
+                Active Predictions
+              </h3>
+              <h3 onClick={() => handleClickOpen("leaderboard")}>
+                View Leaderboards
+              </h3>
+            </>
+          ) : (
+            <h3>Active Predictions</h3>
+          )}
 
-          <div className={`prediction__items ${activeOS}`}>
-            {predictions.length >= 1 ? (
-              predictions.map((data, index) => {
-                volume += data?.amount / 0.02;
-                return (
-                  <div
-                    className="predictedCard__container"
-                    key={index}
-                    onClick={() => navigate(`/prediction/${data._id}`)}
-                  >
-                    <div>
-                      <div className="details">
-                        <Button>
-                          View Answer
-                        </Button>
-                      </div>
-                      <p>
-                        {data?.user[0] ? (
-                          <a href={"/user-profile/"+data?.user[0].username} className="details__username">
-                            {data?.user[0].username}
-                          </a>
-                        ) : (
-                          data?.predictedBy
-                        )}{" "}
-                        predicted on {fixture?.HomeTeam} vs {fixture?.AwayTeam}.
-                      </p>
-                      <div className="info">
-                        <p>
-                          ${data?.amount}~{(data?.amount / 0.02).toFixed(2)}{" "}
-                          PPTT
-                        </p>
-                        <p>{moment(data?.created_at).format("LT")}</p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div className="predictedCard__container">
-                <p style={{ color: "#fff" }}>
-                  No Predictions available.Be the first one to predict.
-                </p>
-              </div>
-            )}
-          </div>
+          <PredictionItems
+            predictions={predictions}
+            activeOS={activeOS}
+            fixture={fixture}
+          />
         </div>
-
         {/*
          * @note Prediction Tabs
          */}
@@ -312,7 +311,7 @@ export default function Predict() {
             <div className="predictionTable__competitor">
               <div>
                 <p>{fixture?.HomeTeam}</p>
-                {HomeTeamFlag(fixture.HomeTeam)}
+                {HomeTeamFlag(fixture?.HomeTeam)}
               </div>
               <span>vs</span>
               <div>
@@ -336,7 +335,6 @@ export default function Predict() {
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <div>
-             
               {!status || status !== "closed" ? (
                 timeLeft
               ) : (
@@ -373,47 +371,153 @@ export default function Predict() {
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
-            {
-              status !=="closed" &&
-            
-            <PredictionTabs
-              poolSize={poolSize}
-              fixtureId={fixtureId}
-              setPoolSize={setPoolSize}
-              status={status}
-            />
-}
+            {status !== "closed" && (
+              <PredictionTabs
+                poolSize={poolSize}
+                fixtureId={fixtureId}
+                setPoolSize={setPoolSize}
+                status={status}
+              />
+            )}
           </div>
         </div>
-
         {/*
          * @note Leaderboards Predictions
          */}
-        <div className="leaderboards">
-          <h3 className="leaderboardsTitle">Leaderboards</h3>
-          <div className="leaderboardItemsTitle">
-            <p>
-              Game<i className="ri-game-line"></i>
-            </p>
-            <p>
-              Users<i className="ri-magic-line"></i>
-            </p>
-            <p>
-              Volume<i className="ri-money-dollar-circle-line"></i>
-            </p>
-          </div>
-          {fixture && <Leaderboards />}{" "}
-          {/* {fixture[0].length >=1 && fixture.map((data) => {
-              return (
-                <div className="leaderboardItem__container" key={data}>
-                  <p>AUS/QTR</p>
-                  <p>123k</p>
-                  <p>$432k</p>
-                </div>
-              );
-            })} */}
-        </div>
+
+        <LeaderBoardList fixture={fixture} />
+
+        {/**
+         *  @ Dialog for active predictions in mobile view
+         */}
+        {window.innerWidth <= 425 && (
+          <Dialog
+            fullScreen
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Transition}
+          >
+            <AppBar sx={{ position: "relative" }}>
+              <Toolbar>
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  onClick={handleClose}
+                  aria-label="close"
+                >
+                  X
+                </IconButton>
+                {currentMode === "prediction" && (
+                  <Typography
+                    sx={{ ml: 2, flex: 1 }}
+                    variant="h6"
+                    component="div"
+                  >
+                    Active Predictions
+                  </Typography>
+                )}
+                {currentMode === "leaderboard" && (
+                  <Typography
+                    sx={{ ml: 2, flex: 1 }}
+                    variant="h6"
+                    component="div"
+                  >
+                    Leaderboards
+                  </Typography>
+                )}
+              </Toolbar>
+            </AppBar>
+            {currentMode === "prediction" && (
+              <PredictionItems
+                predictions={predictions}
+                activeOS={activeOS}
+                fixture={fixture}
+              />
+            )}
+            {currentMode === "leaderboard" && <LeaderBoardList />}
+          </Dialog>
+        )}
       </div>
     </div>
   );
 }
+
+const PredictionItems = ({ predictions, activeOS, fixture }) => {
+  let volume = 0;
+  return (
+    <div className={`prediction__items ${activeOS}`}>
+      {predictions.length >= 1 ? (
+        predictions.map((data, index) => {
+          volume += data?.amount / 0.02;
+          return (
+            <div
+              className="predictedCard__container"
+              key={index}
+              onClick={() => navigate(`/prediction/${data._id}`)}
+            >
+              <div>
+                <div className="details">
+                  <Button>View Answer</Button>
+                </div>
+                <p>
+                  {data?.user[0] ? (
+                    <a
+                      href={"/user-profile/" + data?.user[0].username}
+                      className="details__username"
+                    >
+                      {data?.user[0].username}
+                    </a>
+                  ) : (
+                    data?.predictedBy
+                  )}{" "}
+                  predicted on {fixture?.HomeTeam} vs {fixture?.AwayTeam}.
+                </p>
+                <div className="info">
+                  <p>
+                    ${data?.amount}~{(data?.amount / 0.02).toFixed(2)} PPTT
+                  </p>
+                  <p>{moment(data?.created_at).format("LT")}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <div className="predictedCard__container">
+          <p style={{ color: "#fff" }}>
+            No Predictions available.Be the first one to predict.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const LeaderBoardList = ({ fixture }) => {
+  return (
+    <div className="leaderboards">
+      <h3 className="leaderboardsTitle">Leaderboards</h3>
+      <div className="leaderboardItemsTitle">
+        <p>
+          Game<i className="ri-game-line"></i>
+        </p>
+        <p>
+          Users<i className="ri-magic-line"></i>
+        </p>
+        <p>
+          Volume<i className="ri-money-dollar-circle-line"></i>
+        </p>
+      </div>
+      {fixture && <Leaderboards />}{" "}
+      {/* {fixture[0].length >=1 && fixture.map((data) => {
+        return (
+          <div className="leaderboardItem__container" key={data}>
+            <p>AUS/QTR</p>
+            <p>123k</p>
+            <p>$432k</p>
+          </div>
+        );
+      })} */}
+    </div>
+  );
+};
