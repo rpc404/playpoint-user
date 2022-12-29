@@ -316,7 +316,7 @@ export default function Profile() {
                           ) : (
                             <>
                               <>
-                                {data.predictionId.amount / 0.02} PPTT ~ $
+                                {parseFloat((data.predictionId.amount / 0.02)- data.rewardAmount).toFixed(2)} PPTT ~ $
                                 {data.predictionId.amount}
                               </>
                             </>
@@ -336,7 +336,9 @@ export default function Profile() {
                           </b>
                         </p>
                         <p>{moment(data.created_at).format("LL")}</p>
-                        <p>{data?.txnhash}</p>
+                        <p>
+                          <a href={`https://sepolia.etherscan.io/tx/${data.txnhash}`} target='_blank'>View</a>
+                        </p>
                       </div>
                     );
                   })}

@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Chalenges = () => {
+const Challenges = () => {
+
+    
   return (
     <div>index</div>
   )
 }
 
-export default index
+export default Challenges

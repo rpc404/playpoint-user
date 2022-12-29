@@ -36,7 +36,7 @@ export default function Home() {
       <h1 className="home__mainTitle">Active Marketplaces</h1>
       <div className="marketplace__items" id="marketplace__items">
         {marketplaces && marketplaces.length >= 1 && !loading ? (
-          marketplaces.reverse().map((marketplace, index) => {
+          marketplaces.map((marketplace, index) => {
             if (!marketplace.closed)
               return (
                 <MarketplaceCard

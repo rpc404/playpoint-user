@@ -11,13 +11,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Slide from "@mui/material/Slide";
 import { Skeleton, Stack } from "@mui/material";
+import { ethers } from "ethers";
+import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 import "./styles/style.css";
-import { mkaeDuo } from "../../api/Challenge";
+import { getChallenge, mkaeDuo } from "../../api/Challenge";
 
 const Prediction = () => {
   const { pid } = useParams();
@@ -30,16 +32,30 @@ const Prediction = () => {
   const [activePredition, setActivePrediction] = React.useState("");
   const { userPublicAddress, userPPTTBalance, userETHBalance } = initData;
   const [floatingButton, ShowFloatingButton] = React.useState(false);
+  const [mode, setMode] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const [challengeStat, setCStat] = React.useState({});
+
 
   React.useEffect(() => {
-    getPredictionById(pid).then((res) => {
-      if (res.data.data) {
-        setPredictionData(res.data.data[0]);
-        setquestions(res.data.data[1]);
-        setloading(false);
-      }
-    });
-  }, []);
+    if(!open){
+      getPredictionById(pid).then((res) => {
+        if (res.data.data) {
+          console.log(res.data.data)
+          setPredictionData(res.data.data[0]);
+          setquestions(res.data.data[1]);
+          setloading(false);
+        }
+      });
+    }
+  }, [open, mode]);
+
+  React.useEffect(()=>{
+    if(mode=="watch-challenge"){
+      getChallenge(currChallenege).then(res=>setCStat(res.data))
+      
+    }
+  },[mode])
 
   React.useEffect(() => {
     setloading(true);
@@ -59,12 +75,17 @@ const Prediction = () => {
   /**
    * @dev function to join duo challenge
    */
-  const joinChallenge = (challenge) => {
+  const joinChallenge = (challenge, _mode) => {
     setCurrChallenge(challenge);
+    setMode(_mode);
     setOpen(true);
   };
+  const watchChallenge = (_mode,id) => {
+    setMode(_mode);
+    setOpen(true);
+    setCurrChallenge(id)
+  };
 
-  const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen(false);
   };
@@ -77,16 +98,31 @@ const Prediction = () => {
     toast("Challenging..", {
       type: "info",
     });
+    const provider = new ethers.providers.Web3Provider(ethereum);
+      const PPTTContract = new ethers.Contract(
+        "0x53d168578974822bCAa95106C7d5a906BF100948", // Sepolia PPTT Token Address
+        ERC20BasicAPI,
+        provider
+      ).connect(provider.getSigner());
+
+    const _ppttAmount = currChallenege.amount > 10 ? toFixed((currChallenege.amount / 0.02) * 10 ** 18) : ((currChallenege.amount/0.02) * 1e18).toString();
+    console.log(_ppttAmount);
+    // transfer prediction pool
+    const txn = await PPTTContract.transfer(
+      "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
+      _ppttAmount
+    );
+    
     const data = {
       predictionId: currChallenege.predictionId,
+      type:currChallenege.type,
       participants: {
         prediction: activePredition,
-        txnhash: "scdsds",
+        txnhash: txn.hash,
       },
     };
     const res = await mkaeDuo(data);
     if (res.status == 201) {
-      setCurrChallenge(res.data.challenge);
       toast("Challenge Created", { type: "success" });
       handleClose();
     }
@@ -154,24 +190,33 @@ const Prediction = () => {
                       <p>Total Slot: {challenges.slot}</p>
                       <p>Pool Entry Amount: {challenges.amount / 0.02}PPTT</p>
                       <p>
-                        {challenges.participants.length < challenges.slot ? (
-                          predictionData.predictedBy !== userPublicAddress ? (
+                        { predictionData.predictedBy !== userPublicAddress ? 
+                          challenges.participants.length < challenges.slot ? (
                             <Button
                               variant="outlined"
                               color="secondary"
-                              onClick={() => joinChallenge(challenges)}
+                              onClick={() =>
+                                joinChallenge(challenges, "challenge")
+                              }
                             >
                               Challenge {challenges.participants.length} of{" "}
                               {challenges.slot}
                             </Button>
-                          ) : (
-                            <Button variant="outlined" color="error">
-                              Close
-                            </Button>
+                          ) : 
+                          (
+                            <p>All Slots Full </p>
                           )
-                        ) : (
-                          <p>All Slots Full </p>
-                        )}
+                         :
+                        (
+                          <Button
+                            variant="outlined"
+                            color="error"
+                            onClick={() => watchChallenge("watch-challenge",challenges._id)}
+                          >
+                            View Challenge
+                          </Button>
+                        ) 
+                        }
                       </p>
                     </div>
                   );
@@ -325,90 +370,137 @@ const Prediction = () => {
               >
                 X
               </IconButton>
-              <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                {predictionData.user &&
-                  "Challenge " +
-                    predictionData?.user[0]?.username +
-                    "-" +
-                    currChallenege.type}
-              </Typography>
+              {mode == "challenge" && (
+                <Typography
+                  sx={{ ml: 2, flex: 1 }}
+                  variant="h6"
+                  component="div"
+                >
+                  {predictionData.user &&
+                    "Challenge " +
+                      predictionData?.user[0]?.username +
+                      "-" +
+                      currChallenege.type}
+                </Typography>
+              )}
+              {mode == "watch-challenge" && (
+                <Typography
+                  sx={{ ml: 2, flex: 1 }}
+                  variant="h6"
+                  component="div"
+                >
+                  Your Challenge Pools
+                </Typography>
+              )}
             </Toolbar>
           </AppBar>
-          <h2 className="dialog__title">
-            Select your entry to challenge {predictionData?.user[0]?.username}
-          </h2>
-          <div className="predictions__container">
-            <div
-              className="predictions"
-              onClick={() => ShowFloatingButton(true)}
-            >
-              {userPredictions.map((_pr, k) => {
-                return (
-                  <div
-                    style={{
-                      border: "0.2px solid white",
-                      padding: "10px",
-                      cursor: "pointer",
-                    }}
-                    key={k}
-                    onClick={() => setParticipant(_pr)}
-                    className={activePredition == _pr._id ? "selected" : ""}
-                  >
-                    <div>
-                      {questions?.questionaires?.questions.map(
-                        (question, key) => {
-                          return (
-                            <div
-                              className="question_answer"
-                              key={key}
-                              style={{ margin: "1.2em 0" }}
-                            >
-                              <h4>
-                                Q{key + 1}. {question}
-                              </h4>
-                              <p>Answer: {_pr.answers[key]}</p>
-                            </div>
-                          );
-                        }
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-              {floatingButton && (
-                <div className="floatingButton__container">
-                  <Button variant="contained">Challange</Button>
-                </div>
-              )}
-            </div>
+          {mode == "challenge" && (
             <div>
-              <div>
-                {activePredition && (
-                  <div className="activePrediction__container">
-                    <h4>Selected Entry</h4>
-                    <hr />
-                    <p>
-                      Entry ID: <span>{activePredition}</span>{" "}
-                    </p>
-                    <p>
-                      Challenge Entry Amount:{" "}
-                      <span>{currChallenege.amount / 0.02}PPTT</span>
-                    </p>
-                    <p>
-                      Available Assets:{" "}
-                      <span>
-                        {parseFloat(userETHBalance).toFixed(2)} ETH{" "}
-                        {parseFloat(userPPTTBalance).toFixed(2)} PPTT
-                      </span>
-                    </p>
-                    <Button variant="outlined" onClick={() => _joinChallenge()}>
-                      Challenge
-                    </Button>
+              <h2 className="dialog__title">
+                Select your entry to challenge{" "}
+                {predictionData?.user[0]?.username}
+              </h2>
+              <div className="predictions__container">
+                <div
+                  className="predictions"
+                  onClick={() => ShowFloatingButton(true)}
+                >
+                  {userPredictions.map((_pr, k) => {
+                    return (
+                      <div
+                        style={{
+                          border: "0.2px solid white",
+                          padding: "10px",
+                          cursor: "pointer",
+                        }}
+                        key={k}
+                        onClick={() => setParticipant(_pr)}
+                        className={activePredition == _pr._id ? "selected" : ""}
+                      >
+                        <div>
+                          {questions?.questionaires?.questions.map(
+                            (question, key) => {
+                              return (
+                                <div
+                                  className="question_answer"
+                                  key={key}
+                                  style={{ margin: "1.2em 0" }}
+                                >
+                                  <h4>
+                                    Q{key + 1}. {question}
+                                  </h4>
+                                  <p>Answer: {_pr.answers[key]}</p>
+                                </div>
+                              );
+                            }
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                  {floatingButton && (
+                    <div className="floatingButton__container">
+                      <Button variant="contained">Challange</Button>
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <div>
+                    {activePredition && (
+                      <div className="activePrediction__container">
+                        <h4>Selected Entry</h4>
+                        <hr />
+                        <p>
+                          Entry ID: <span>{activePredition}</span>{" "}
+                        </p>
+                        <p>
+                          Challenge Entry Amount:{" "}
+                          <span>{currChallenege.amount / 0.02}PPTT</span>
+                        </p>
+                        <p>
+                          Available Assets:{" "}
+                          <span>
+                            {parseFloat(userETHBalance).toFixed(2)} ETH{" "}
+                            {parseFloat(userPPTTBalance).toFixed(2)} PPTT
+                          </span>
+                        </p>
+                        <Button
+                          variant="outlined"
+                          onClick={() => _joinChallenge()}
+                        >
+                          Challenge
+                        </Button>
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
             </div>
-          </div>
+          )}
+          {
+           ( mode=="watch-challenge" && challengeStat) && (
+              <div>
+                <div>
+                  <p>No of slots: {challengeStat.slot}</p>
+                  <p>Entry type: {challengeStat.type}</p>
+                  <p>Pool status: {challengeStat.status}</p>
+                </div>
+                <div>
+                  {
+                    Array(challengeStat.slot,0).map((res,key)=>{
+                      return <div>
+                        <h2>Slot {key+1}</h2>
+                        {challengeStat.participants[key] && (
+                          challengeStat.participants[key].txnhash
+                        )}
+                      </div>
+                    })
+                  }
+                </div>
+              </div>
+            )
+          }
+          {console.log(challengeStat)}
         </Dialog>
       )}
     </>
