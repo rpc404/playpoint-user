@@ -33,7 +33,7 @@
       .prediction__items {
         height: 83vh;
         overflow-y: scroll;
-        @media screen and (max-width:425px) {
+        @media screen and (max-width: 425px) {
           display: none;
         }
 
@@ -125,12 +125,10 @@
       border-right: 0.5px solid rgba(255, 255, 255, 0.074);
       overflow-y: hidden;
       // color: #fff;
-      @media screen and (max-width:425px) {
+      @media screen and (max-width: 425px) {
         border: none;
         width: 100%;
       }
-
-
 
       .predictionTable__topBar {
         border-bottom: 0.5px solid #0001;
@@ -144,7 +142,7 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(3.7px);
         height: 60px;
-        @media screen and (max-width:425px) {
+        @media screen and (max-width: 425px) {
           height: auto;
         }
 
@@ -239,7 +237,7 @@
           justify-content: center;
           align-items: center;
           color: #fff;
-          @media screen and (max-width:425px) {
+          @media screen and (max-width: 425px) {
             flex-direction: column;
           }
           p {
@@ -296,14 +294,13 @@
         .predictionTabs__container {
           .MuiTab-root {
             text-transform: capitalize;
-
           }
 
           .MuiBox-root {
-            @media  screen and (max-width:425px) {
-                overflow: hidden;
+            @media screen and (max-width: 425px) {
+              overflow: hidden;
               padding: 0 0 !important;
-              }
+            }
           }
 
           #simple-tabpanel-0,
@@ -531,9 +528,9 @@
   }
 }
 
-.MuiPaper-root {
-  header {
-    background-color: #000 !important;
-  }
-}
 
+.dialog__title {
+  // padding: 20px 10px;
+  text-align: center !important;
+  padding: 20px 0;
+}

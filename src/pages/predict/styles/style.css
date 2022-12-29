@@ -553,4 +553,9 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
+}
+
+.dialog__title {
+  text-align: center !important;
+  padding: 20px 0;
 }/*# sourceMappingURL=style.css.map */

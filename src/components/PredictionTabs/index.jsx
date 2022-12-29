@@ -33,7 +33,7 @@ function PredictionTabs({ poolSize, setPoolSize, fixtureId, status }) {
             {...a11yProps(0)}
           />
 
-          <Tab
+          {/* <Tab
             label="Duo (2)"
             onClick={() => setPoolSize("duo")}
             {...a11yProps(1)}
@@ -42,7 +42,7 @@ function PredictionTabs({ poolSize, setPoolSize, fixtureId, status }) {
             label="Trio (3)"
             onClick={() => setPoolSize("trio")}
             {...a11yProps(2)}
-          />
+          /> */}
           {/* <Tab label="Nonet (9)" {...a11yProps(3)} /> */}
         </Tabs>
       </Box>

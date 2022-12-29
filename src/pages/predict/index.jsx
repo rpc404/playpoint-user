@@ -20,10 +20,6 @@ import CarabaoClubFlags from "../../helpers/EFLFlags.json";
 import EPLFlags from "../../helpers/EPLFlags.json";
 import { useLocation } from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
-import ListItemText from "@mui/material/ListItemText";
-import ListItem from "@mui/material/ListItem";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -302,6 +298,7 @@ export default function Predict() {
             predictions={predictions}
             activeOS={activeOS}
             fixture={fixture}
+            open = {open}
           />
         </div>
         {/*
@@ -397,8 +394,9 @@ export default function Predict() {
             open={open}
             onClose={handleClose}
             TransitionComponent={Transition}
+            className="custom-paper"
           >
-            <AppBar sx={{ position: "relative" }}>
+            <AppBar sx={{ position: "relative",background:"#000" }}>
               <Toolbar>
                 <IconButton
                   edge="start"

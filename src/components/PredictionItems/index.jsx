@@ -2,12 +2,13 @@ import { Button } from "@mui/material";
 import moment from "moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./styles/style.css";
 
-const PredictionItems = ({ predictions, activeOS, fixture }) => {
-    const navigate = useNavigate()
+const PredictionItems = ({ predictions, activeOS, fixture ,open}) => {
+  const navigate = useNavigate();
   let volume = 0;
   return (
-    <div className={`prediction__items ${activeOS}`}>
+    <div className={`prediction__items__dialog ${open}  ${activeOS}`}>
       {predictions.length >= 1 ? (
         predictions.map((data, index) => {
           volume += data?.amount / 0.02;
@@ -55,4 +56,4 @@ const PredictionItems = ({ predictions, activeOS, fixture }) => {
   );
 };
 
-export default PredictionItems
+export default PredictionItems;
