@@ -29,6 +29,7 @@ const Prediction = () => {
   const [currChallenege, setCurrChallenge] = React.useState([]);
   const [activePredition, setActivePrediction] = React.useState("");
   const { userPublicAddress, userPPTTBalance, userETHBalance } = initData;
+  const [floatingButton, ShowFloatingButton] = React.useState(false);
 
   React.useEffect(() => {
     getPredictionById(pid).then((res) => {
@@ -143,20 +144,10 @@ const Prediction = () => {
                   );
                 })}
               </div>
-              <div className="btn_area" style={{ marginTop: "20px" }}>
+              <div className="btn_area">
                 {predictionData.challenges.map((challenges, key) => {
                   return (
-                    <div
-                      style={{
-                        border: "0.4px solid white",
-                        display: "flex",
-                        gap: "10px",
-                        padding: "10px",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                      }}
-                      key={key}
-                    >
+                    <div className="pool_info" key={key}>
                       <p>
                         Pool Type: {String(challenges.type).toLocaleUpperCase()}
                       </p>
@@ -343,24 +334,13 @@ const Prediction = () => {
               </Typography>
             </Toolbar>
           </AppBar>
-          <h2 style={{ padding: "20px" }}>
+          <h2 className="dialog__title">
             Select your entry to challenge {predictionData?.user[0]?.username}
           </h2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "6fr 2fr",
-              maxHeight: "95vh",
-            }}
-          >
+          <div className="predictions__container">
             <div
-              style={{
-                display: "grid",
-                gap: "20px",
-                gridTemplateColumns: "repeat(2,1fr)",
-                overflow: "scroll",
-                padding: "20px",
-              }}
+              className="predictions"
+              onClick={() => ShowFloatingButton(true)}
             >
               {userPredictions.map((_pr, k) => {
                 return (
@@ -395,20 +375,31 @@ const Prediction = () => {
                   </div>
                 );
               })}
+              {floatingButton && (
+                <div className="floatingButton__container">
+                  <Button variant="contained">Challange</Button>
+                </div>
+              )}
             </div>
             <div>
               <div>
                 {activePredition && (
-                  <div>
+                  <div className="activePrediction__container">
                     <h4>Selected Entry</h4>
                     <hr />
-                    <p>Entry ID: {activePredition}</p>
                     <p>
-                      Challenge Entry Amount: {currChallenege.amount / 0.02}PPTT
+                      Entry ID: <span>{activePredition}</span>{" "}
                     </p>
                     <p>
-                      Available Assets: {parseFloat(userETHBalance).toFixed(2)}{" "}
-                      ETH {parseFloat(userPPTTBalance).toFixed(2)} PPTT
+                      Challenge Entry Amount:{" "}
+                      <span>{currChallenege.amount / 0.02}PPTT</span>
+                    </p>
+                    <p>
+                      Available Assets:{" "}
+                      <span>
+                        {parseFloat(userETHBalance).toFixed(2)} ETH{" "}
+                        {parseFloat(userPPTTBalance).toFixed(2)} PPTT
+                      </span>
                     </p>
                     <Button variant="outlined" onClick={() => _joinChallenge()}>
                       Challenge
