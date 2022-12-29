@@ -17,6 +17,7 @@ import Leaderboards from "../../components/Leaderboards/Leaderboards";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import clubFlags from "../../helpers/EPLFlags.json";
 import CarabaoClubFlags from "../../helpers/EFLFlags.json";
+import EPLFlags from "../../helpers/EPLFlags.json";
 import { useLocation } from "react-router-dom";
 
 export const getCountryFlag = (country) => {
@@ -41,8 +42,10 @@ export const getCountryFlag = (country) => {
 export default function Predict() {
   const { state } = useLocation();
 
+  const { marketplaceSlug } = state;
+
   const HomeTeamFlag = (team) => {
-    if (state.marketplaceSlug === "English-Football-League397") {
+    if (marketplaceSlug === "English-Football-League397") {
       return clubFlags.map((club, i) => {
         if (club.name === team) {
           return (
@@ -55,9 +58,25 @@ export default function Predict() {
           );
         }
       });
-    } else if (state.marketplaceSlug === "Carabao-Cup237") {
+    } else if (marketplaceSlug === "Carabao-Cup237") {
       return CarabaoClubFlags.map((club, i) => {
         if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club, i) => {
+        if (
+          club.name.replace(" ", "").toLowerCase().trim() ===
+          team.replace(" ", "").toLowerCase().trim()
+        ) {
           return (
             <img
               src={club.image_url}
@@ -72,7 +91,7 @@ export default function Predict() {
   };
 
   const AwayTeamFlag = (team) => {
-    if (state.marketplaceSlug === "English-Football-League397") {
+    if (marketplaceSlug === "English-Football-League397") {
       return clubFlags.map((club, i) => {
         if (club.name === team) {
           return (
@@ -85,9 +104,25 @@ export default function Predict() {
           );
         }
       });
-    } else if (state.marketplaceSlug === "Carabao-Cup237") {
+    } else if (marketplaceSlug === "Carabao-Cup237") {
       return CarabaoClubFlags.map((club, i) => {
         if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club, i) => {
+        if (
+          club.name.replace(" ", "").toLowerCase().trim() ===
+          team.replace(" ", "").toLowerCase().trim()
+        ) {
           return (
             <img
               src={club.image_url}
@@ -269,13 +304,14 @@ export default function Predict() {
                   >
                     <div>
                       <div className="details">
-                        <Button>
-                          View Answer
-                        </Button>
+                        <Button>View Answer</Button>
                       </div>
                       <p>
                         {data?.user[0] ? (
-                          <a href={"/user-profile/"+data?.user[0].username} className="details__username">
+                          <a
+                            href={"/user-profile/" + data?.user[0].username}
+                            className="details__username"
+                          >
                             {data?.user[0].username}
                           </a>
                         ) : (
@@ -312,7 +348,8 @@ export default function Predict() {
             <div className="predictionTable__competitor">
               <div>
                 <p>{fixture?.HomeTeam}</p>
-                {HomeTeamFlag(fixture.HomeTeam)}
+                {console.log(fixture?.HomeTeam)}
+                {HomeTeamFlag(fixture?.HomeTeam)}
               </div>
               <span>vs</span>
               <div>
@@ -336,7 +373,6 @@ export default function Predict() {
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <div>
-             
               {!status || status !== "closed" ? (
                 timeLeft
               ) : (
@@ -373,16 +409,14 @@ export default function Predict() {
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
-            {
-              status !=="closed" &&
-            
-            <PredictionTabs
-              poolSize={poolSize}
-              fixtureId={fixtureId}
-              setPoolSize={setPoolSize}
-              status={status}
-            />
-}
+            {status !== "closed" && (
+              <PredictionTabs
+                poolSize={poolSize}
+                fixtureId={fixtureId}
+                setPoolSize={setPoolSize}
+                status={status}
+              />
+            )}
           </div>
         </div>
 
