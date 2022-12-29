@@ -88,4 +88,23 @@
       }
     }
   }
+  .details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    gap: 10px;
+    width: fit-content;
+    .custom-chip{
+      padding: 0 15px;
+    }
+
+    p {
+      background: #000;
+      color: #fff9;
+      padding: 1px 15px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+  }
 }

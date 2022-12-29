@@ -80,4 +80,24 @@
   padding: 0.2em;
   color: #00c9a7;
   border-radius: 2px;
+}
+.prediction__items__dialog .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  gap: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.prediction__items__dialog .details .custom-chip {
+  padding: 0 15px;
+}
+.prediction__items__dialog .details p {
+  background: #000;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 1px 15px;
+  border-radius: 10px;
+  font-size: 12px;
 }/*# sourceMappingURL=style.css.map */

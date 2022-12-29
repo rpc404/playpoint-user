@@ -1,11 +1,12 @@
-import { Button } from "@mui/material";
 import moment from "moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles/style.css";
-
-const PredictionItems = ({ predictions, activeOS, fixture ,open}) => {
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+import "./styles/style.css"
+const PredictionItems = ({ predictions, activeOS, fixture }) => {
   const navigate = useNavigate();
+
   let volume = 0;
   return (
     <div className={`prediction__items__dialog ${open}  ${activeOS}`}>
@@ -19,9 +20,23 @@ const PredictionItems = ({ predictions, activeOS, fixture ,open}) => {
               onClick={() => navigate(`/prediction/${data._id}`)}
             >
               <div>
-                <div className="details">
-                  <Button>View Answer</Button>
-                </div>
+                {data.challenges && data.challenges.length > 0 && (
+                  <div className="details">
+                    {data.challenges.map((challenge, key) => {
+                      return (
+                        <Chip
+                        key={key}
+                          variant="outlined"
+                          color="warning"
+                          size="small"
+                          className="custom-chip"
+                          icon={<i className="ri-git-branch-line"></i>}
+                          label={challenge.type.toUpperCase() + " | "+challenge.participants.length + " of " + challenge.slot}
+                        />
+                      );
+                    })}
+                  </div>
+                )}
                 <p>
                   {data?.user[0] ? (
                     <a

@@ -215,7 +215,7 @@ export default function Predict() {
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
-
+      console.log(response)
       sessionStorage.setItem(
         "predictions",
         JSON.stringify(response.data.data.reverse())

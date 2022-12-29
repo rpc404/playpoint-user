@@ -224,17 +224,13 @@ const PoolType = ({
       ).connect(provider.getSigner());
 
       // console.log(ethers.utils.parseEther(_predictionData.amount.toString()), _predictionData.amount)
-      console.log(duoAmount,trioAmount)
+      // console.log(duoAmount,trioAmount)
       return await setPrediction(_predictionData)
         .then(async (res) => {
-          console.log(res.data);
+          // console.log(res.data);
           const data = res.data.prediction[0];
           if (duoAmount > 0 || trioAmount > 0) {
-            toast("Creating Chalenges", {
-              theme: "dark",
-              type: "info",
-              delay: 200,
-            });
+    
             // const _data = [];
             let _amount = 0;
             if (duoAmount > 0) {
@@ -249,8 +245,13 @@ const PoolType = ({
               /**
                * @dev call API to create DUO challenge
                */
+              toast("Creating Duo Chalenges", {
+                theme: "dark",
+                type: "info",
+                delay: 200,
+              });
               const _challenegeResult = await mkaeDuo(duochallenegedata);
-              console.log(_challenegeResult);
+              // console.log(_challenegeResult);
               // _data.push(duochallenegedata);
               _amount += duoAmount;
             }
@@ -264,8 +265,13 @@ const PoolType = ({
                 status: "active",
               };
               // _data.push(triochallenegedata);
+              toast("Creating Trio Chalenges", {
+                theme: "dark",
+                type: "info",
+                delay: 200,
+              });
               const _challenegeResult = await mkaeDuo(triochallenegedata);
-              console.log(_challenegeResult);
+              // console.log(_challenegeResult);
               _amount += trioAmount;
             }
             _predictionData.amount += _amount;
