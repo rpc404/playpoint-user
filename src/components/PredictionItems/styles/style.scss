@@ -13,79 +13,129 @@
 
   .predictedCard__container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    flex-direction: column;
     gap: 8px;
     border-bottom: 0.5px solid #0001;
-    padding: 7px 1.5vw 10px 1.5vw;
+    // padding: 7px 1.5vw 10px 1.5vw;
     animation: ease-in-out;
     // margin-bottom: 0.3em;
     box-shadow: 0px 2px 1px -1px #ffffff4d;
+    position: relative;
 
     &:hover {
       background: #1b1b1b7c;
       cursor: pointer;
     }
 
-    .info {
+    .time {
+        display: flex;
+        position: absolute;
+        right: 5px;
+        top: -5px;
+      p {
+        color: #fff9;
+        padding-left: 20px;
+        padding-top: 10px;
+        font-size: 14px;
+      }
+    }
+
+    .predictionCard {
       display: flex;
       align-items: center;
-      margin-top: 5px;
       justify-content: space-between;
-
-      p:first-child {
-        color: #2ecc71;
-      }
-
-      p:last-child {
-        color: #fff8;
-        font-size: 14px;
-      }
-    }
-
-    canvas {
-      margin-top: 6px;
-    }
-
-    div {
       width: 100%;
-      p {
-        font-size: 14px;
-        color: #3a3a3a;
-        line-height: 1.5;
-      }
+      padding: 10px 16px;
+      transition: .5s ease;
 
-      .details {
+      &:hover {
+        i {
+          display: block;
+        }
+      }
+      gap: 10px;
+      .imageDiv {
+        img {
+          height: 50px;
+          width: 50px;
+        }
+      }
+      .user__details {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 5px;
+        flex: 0 1 250px;
+        .user {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 5px;
+          p {
+            font-size: 18px;
+            color: #bbbbbb;
+            line-height: 1.5;
+            display: flex;
+            // flex: 1 1 200px;
+          }
 
-        .MuiButton-root {
-          text-transform: capitalize;
-          padding: 0;
-          color: #3498db;
+          .details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 5px;
+            gap: 8px;
+
+            .custom-chip {
+              display: flex;
+              gap: 5px;
+              color: rgba(255, 255, 255, 0.616);
+              outline:1px solid rgba(255, 255, 255, 0.495) !important;
+            }
+
+            // .MuiButton-root {
+            //   text-transform: capitalize;
+            //   padding: 0;
+            //   color: #3498db;
+            // }
+          }
         }
+      }
+      .info {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: flex-end;
 
         p {
-          background: #000;
-          color: #fff9;
-          padding: 1px 15px;
-          border-radius: 10px;
-          font-size: 12px;
+          &:first-child {
+            color: #2ecc71;
+            font-size: 1.2em;
+
+            span {
+              font-size: .8em;
+            }
+          }
         }
       }
-      p {
+      i{
         color: #fff;
-        a {
-          width: fit-content;
-          text-decoration: none;
-          background-color: rgba(0, 201, 167, 0.1);
-          padding: 0.2em;
-          color: #00c9a7;
-          border-radius: 2px;
-        }
+        display: none;
       }
     }
+
+}
+
+.MuiChip-root {
+  // height: 5px !important;
+  padding: 3px !important;
+
+  .MuiChip-icon {
+    font-size: 16px !important;
   }
+
+  .MuiChip-label {
+    font-size: 12px;
+  }
+}
 }

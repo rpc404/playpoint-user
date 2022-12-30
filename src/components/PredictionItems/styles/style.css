@@ -12,71 +12,101 @@
 }
 .prediction__items__dialog .predictedCard__container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
   gap: 8px;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
-  padding: 7px 1.5vw 10px 1.5vw;
   -webkit-animation: ease-in-out;
           animation: ease-in-out;
   box-shadow: 0px 2px 1px -1px rgba(255, 255, 255, 0.3019607843);
+  position: relative;
 }
 .prediction__items__dialog .predictedCard__container:hover {
   background: rgba(27, 27, 27, 0.4862745098);
   cursor: pointer;
 }
-.prediction__items__dialog .predictedCard__container .info {
+.prediction__items__dialog .predictedCard__container .time {
+  display: flex;
+  position: absolute;
+  right: 5px;
+  top: -5px;
+}
+.prediction__items__dialog .predictedCard__container .time p {
+  color: rgba(255, 255, 255, 0.6);
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 14px;
+}
+.prediction__items__dialog .predictedCard__container .predictionCard {
   display: flex;
   align-items: center;
-  margin-top: 5px;
   justify-content: space-between;
-}
-.prediction__items__dialog .predictedCard__container .info p:first-child {
-  color: #2ecc71;
-}
-.prediction__items__dialog .predictedCard__container .info p:last-child {
-  color: rgba(255, 255, 255, 0.5333333333);
-  font-size: 14px;
-}
-.prediction__items__dialog .predictedCard__container canvas {
-  margin-top: 6px;
-}
-.prediction__items__dialog .predictedCard__container div {
   width: 100%;
+  padding: 10px 16px;
+  transition: 0.5s ease;
+  gap: 10px;
 }
-.prediction__items__dialog .predictedCard__container div p {
-  font-size: 14px;
-  color: #3a3a3a;
+.prediction__items__dialog .predictedCard__container .predictionCard:hover i {
+  display: block;
+}
+.prediction__items__dialog .predictedCard__container .predictionCard .imageDiv img {
+  height: 50px;
+  width: 50px;
+}
+.prediction__items__dialog .predictedCard__container .predictionCard .user__details {
+  display: flex;
+  align-items: center;
+  flex: 0 1 250px;
+}
+.prediction__items__dialog .predictedCard__container .predictionCard .user__details .user {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+}
+.prediction__items__dialog .predictedCard__container .predictionCard .user__details .user p {
+  font-size: 18px;
+  color: #bbbbbb;
   line-height: 1.5;
+  display: flex;
 }
-.prediction__items__dialog .predictedCard__container div .details {
+.prediction__items__dialog .predictedCard__container .predictionCard .user__details .user .details {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 5px;
+  gap: 8px;
 }
-.prediction__items__dialog .predictedCard__container div .details .MuiButton-root {
-  text-transform: capitalize;
-  padding: 0;
-  color: #3498db;
+.prediction__items__dialog .predictedCard__container .predictionCard .user__details .user .details .custom-chip {
+  display: flex;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.616);
+  outline: 1px solid rgba(255, 255, 255, 0.495) !important;
 }
-.prediction__items__dialog .predictedCard__container div .details p {
-  background: #000;
-  color: rgba(255, 255, 255, 0.6);
-  padding: 1px 15px;
-  border-radius: 10px;
-  font-size: 12px;
+.prediction__items__dialog .predictedCard__container .predictionCard .info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end;
 }
-.prediction__items__dialog .predictedCard__container div p {
+.prediction__items__dialog .predictedCard__container .predictionCard .info p:first-child {
+  color: #2ecc71;
+  font-size: 1.2em;
+}
+.prediction__items__dialog .predictedCard__container .predictionCard .info p:first-child span {
+  font-size: 0.8em;
+}
+.prediction__items__dialog .predictedCard__container .predictionCard i {
   color: #fff;
+  display: none;
 }
-.prediction__items__dialog .predictedCard__container div p a {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  text-decoration: none;
-  background-color: rgba(0, 201, 167, 0.1);
-  padding: 0.2em;
-  color: #00c9a7;
-  border-radius: 2px;
+.prediction__items__dialog .MuiChip-root {
+  padding: 3px !important;
+}
+.prediction__items__dialog .MuiChip-root .MuiChip-icon {
+  font-size: 16px !important;
+}
+.prediction__items__dialog .MuiChip-root .MuiChip-label {
+  font-size: 12px;
 }/*# sourceMappingURL=style.css.map */

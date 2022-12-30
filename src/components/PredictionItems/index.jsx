@@ -1,11 +1,15 @@
-import { Button } from "@mui/material";
 import moment from "moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles/style.css";
+import Chip from "@mui/material/Chip";
 
-const PredictionItems = ({ predictions, activeOS, fixture ,open}) => {
+import "./styles/style.css";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
+
+const PredictionItems = ({ predictions, activeOS, open }) => {
+  const [{ username }] = useRPCContext();
   const navigate = useNavigate();
+
   let volume = 0;
   return (
     <div className={`prediction__items__dialog ${open}  ${activeOS}`}>
@@ -18,29 +22,52 @@ const PredictionItems = ({ predictions, activeOS, fixture ,open}) => {
               key={index}
               onClick={() => navigate(`/prediction/${data._id}`)}
             >
-              <div>
-                <div className="details">
-                  <Button>View Answer</Button>
+              <div className="predictionCard">
+                <div className="imageDiv">
+                  <img
+                    src={`https://robohash.org/${data?.user[0].username}}`}
+                    alt=""
+                    loading="lazy"
+                  />
                 </div>
-                <p>
-                  {data?.user[0] ? (
-                    <a
-                      href={"/user-profile/" + data?.user[0].username}
-                      className="details__username"
-                    >
-                      {data?.user[0].username}
-                    </a>
-                  ) : (
-                    data?.predictedBy
-                  )}{" "}
-                  predicted on {fixture?.HomeTeam} vs {fixture?.AwayTeam}.
-                </p>
+                <div className="user__details">
+                  {data?.user[0] && (
+                    <div className="user">
+                      <p>{data?.user[0].username}</p>
+                      <div className="details">
+                        {data.challenges.length > 0 &&
+                          data.challenges.map((challenge, key) => {
+                            return (
+                              <Chip
+                                key={key}
+                                variant="outlined"
+                                // color="primary"
+                                size="small"
+                                className="custom-chip"
+                                // icon={<i className="ri-git-branch-line"></i>}
+                                label={
+                                  challenge.type +
+                                  " | " +
+                                  challenge.participants.length +
+                                  " of " +
+                                  challenge.slot
+                                }
+                              />
+                            );
+                          })}
+                      </div>
+                    </div>
+                  )}
+                </div>
                 <div className="info">
                   <p>
-                    ${data?.amount}~{(data?.amount / 0.02).toFixed(2)} PPTT
+                    {(data?.amount / 0.02).toFixed(2)} <span>PPTT</span>
                   </p>
-                  <p>{moment(data?.created_at).format("LT")}</p>
                 </div>
+                <i className="ri-arrow-right-line"></i>
+              </div>
+              <div className="time">
+                <p>{moment(data?.created_at).format("LT")}</p>
               </div>
             </div>
           );
@@ -55,5 +82,9 @@ const PredictionItems = ({ predictions, activeOS, fixture ,open}) => {
     </div>
   );
 };
+
+{
+  /* <p>{moment(data?.created_at).format("LT")}</p> */
+}
 
 export default PredictionItems;
