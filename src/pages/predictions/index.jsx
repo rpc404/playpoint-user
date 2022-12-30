@@ -392,8 +392,10 @@ const Prediction = () => {
                   Your Challenge Pools
                 </Typography>
               )}
+
             </Toolbar>
           </AppBar>
+
           {mode == "challenge" && (
             <div>
               <h2 className="dialog__title">
@@ -444,8 +446,6 @@ const Prediction = () => {
                     </div>
                   )}
                 </div>
-                <div>
-                  <div>
                     {activePredition && (
                       <div className="activePrediction__container">
                         <h4>Selected Entry</h4>
@@ -472,10 +472,8 @@ const Prediction = () => {
                         </Button>
                       </div>
                     )}
-                  </div>
+              </div>
 
-                );
-              })}
               {floatingButton && (
                 <div className="floatingButton__container">
                   <Button variant="contained" onClick={() => _joinChallenge()}>
@@ -483,9 +481,11 @@ const Prediction = () => {
                   </Button>
 
                 </div>
-              </div>
-            </div>
           )}
+
+          </div>
+          )}
+
           {
            ( mode=="watch-challenge" && challengeStat) && (
               <div>
@@ -494,25 +494,9 @@ const Prediction = () => {
                   <p>Entry type: {challengeStat.type}</p>
                   <p>Pool status: {challengeStat.status}</p>
                 </div>
-                <div>
-                  {
-                    Array(challengeStat.slot,0).map((res,key)=>{
-                      return <div>
-                        <h2>Slot {key+1}</h2>
-                        {challengeStat.participants[key] && (
-                          challengeStat.participants[key].txnhash
-                        )}
-                      </div>
-                    })
-                  }
-                </div>
-              </div>
-            )
-          }
-          {console.log(challengeStat)}
-        </Dialog>
-      )}
-    </>
+              </div>)}
+        </Dialog> )}
+        </>
   );
 };
 
