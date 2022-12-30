@@ -92,7 +92,6 @@
 }
 .prediction__items__dialog .predictedCard__container .predictionCard .info p:first-child {
   color: #2ecc71;
-  font-size: 1.2em;
 }
 .prediction__items__dialog .predictedCard__container .predictionCard .info p:first-child span {
   font-size: 0.8em;

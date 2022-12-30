@@ -148,6 +148,10 @@
     "image_url": "https://resources.premierleague.com/premierleague/badges/70/t43.png"
   },
   {
+    "name": "Man United",
+    "image_url": "https://resources.premierleague.com/premierleague/badges/70/t1.png"
+  },
+  {
     "name": "Man Utd",
     "image_url": "https://resources.premierleague.com/premierleague/badges/70/t1.png"
   },
@@ -168,7 +172,11 @@
     "image_url": "https://resources.premierleague.com/premierleague/badges/70/t6.png"
   },
   {
-    "name": "Westham",
+    "name": "West ham United",
+    "image_url": "https://resources.premierleague.com/premierleague/badges/70/t21.png"
+  },
+  {
+    "name": "West ham",
     "image_url": "https://resources.premierleague.com/premierleague/badges/70/t21.png"
   },
   {
