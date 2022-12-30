@@ -263,6 +263,14 @@ export default function Navbar() {
             >
               Marketplace
             </div>
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/challenges");
+              }}
+            >
+              Challenges
+            </div>
           </div>
         </div>
 

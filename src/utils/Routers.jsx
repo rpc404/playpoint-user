@@ -11,6 +11,7 @@ import Prediction from "../pages/predictions/index";
 import Transaction from "../pages/transaction/index";
 import PrivacyPolicy from "../pages/privacyPolicy";
 import TermsAndConditions from "../pages/termsAndConditions";
+import Challenges from "../pages/challenges";
 
 export default function PageRouters({ socket }) {
   return (
@@ -26,7 +27,7 @@ export default function PageRouters({ socket }) {
       <Route path="transaction" element={<Transaction />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route path="terms-conditions" element={<TermsAndConditions />} />
-
+      <Route path="challenges" element={<Challenges />} />
     </Routes>
   );
 }
