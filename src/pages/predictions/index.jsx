@@ -473,6 +473,15 @@ const Prediction = () => {
                       </div>
                     )}
                   </div>
+
+                );
+              })}
+              {floatingButton && (
+                <div className="floatingButton__container">
+                  <Button variant="contained" onClick={() => _joinChallenge()}>
+                    Challange
+                  </Button>
+
                 </div>
               </div>
             </div>
