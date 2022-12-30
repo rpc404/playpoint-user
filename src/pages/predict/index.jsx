@@ -53,9 +53,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Predict() {
+  const [marketplaceSlug, setMS] = React.useState("");
   const { state } = useLocation();
 
-  const { marketplaceSlug } = state;
+  if(state){
+    let { marketplaceSlug } = state;
+    setMS(marketplaceSlug);
+  }else{
+
+  }
 
   const [open, setOpen] = React.useState(false);
   const [currentMode, setCurrentMode] = React.useState("");
@@ -285,6 +291,7 @@ export default function Predict() {
             activeOS={activeOS}
             fixture={fixture}
             open={open}
+            
           />
         </div>
         {/*
@@ -361,6 +368,7 @@ export default function Predict() {
                 fixtureId={fixtureId}
                 setPoolSize={setPoolSize}
                 status={status}
+                setMS={setMS}
               />
             )}
           </div>
