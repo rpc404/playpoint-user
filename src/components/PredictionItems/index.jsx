@@ -2,9 +2,12 @@ import moment from "moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
-import "./styles/style.css"
-const PredictionItems = ({ predictions, activeOS, fixture }) => {
+
+import "./styles/style.css";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
+
+const PredictionItems = ({ predictions, activeOS, open }) => {
+  const [{ username }] = useRPCContext();
   const navigate = useNavigate();
 
   return (
@@ -17,45 +20,50 @@ const PredictionItems = ({ predictions, activeOS, fixture }) => {
               key={index}
               onClick={() => navigate(`/prediction/${data._id}`)}
             >
-              <div>
-                {
-                data.challenges &&
-                data.challenges.length > 0 && (
-                  <div className="details">
-                    {data.challenges.map((challenge, key) => {
-                      return (
-                        <Chip
-                        key={key}
-                          variant="outlined"
-                          color="warning"
-                          size="small"
-                          className="custom-chip"
-                          icon={<i className="ri-git-branch-line"></i>}
-                          label={challenge.type.toUpperCase() + " | "+challenge.participants.length + " of " + challenge.slot}
-                        />
-                      );
-                    })}
-                  </div>
-                )}
-                <p>
-                  {data?.user[0] ? (
-                    <a
-                      href={"/user-profile/" + data?.user[0].username}
-                      className="details__username"
-                    >
-                      {data?.user[0].username}
-                    </a>
-                  ) : (
-                    data?.predictedBy
-                  )}{" "}
-                  predicted on {fixture?.HomeTeam} vs {fixture?.AwayTeam}.
-                </p>
+              <div className="predictionCard">
+                <div className="imageDiv">
+                  <img
+                    src={`https://robohash.org/${data?.user[0].username}}`}
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+                <div className="user__details">
+                  {data?.user[0] && (
+                    <div className="user">
+                      <p>{data?.user[0].username}</p>
+                      <div className="details">
+                        {data.challenges && data.challenges.length > 0 &&
+                          data.challenges.map((challenge, key) => {
+                            return (
+                              <Chip
+                                key={key}
+                                variant="outlined"
+                                size="small"
+                                className="custom-chip"
+                                label={
+                                  challenge.type +
+                                  " | " +
+                                  challenge.participants.length +
+                                  " of " +
+                                  challenge.slot
+                                }
+                              />
+                            );
+                          })}
+                      </div>
+                    </div>
+                  )}
+                </div>
                 <div className="info">
                   <p>
-                    ${data?.amount}~{(data?.amount / 0.02).toFixed(2)} PPTT
+                    {(data?.amount / 0.02).toFixed(2)} <span>PPTT</span>
                   </p>
-                  <p>{moment(data?.created_at).format("LT")}</p>
                 </div>
+                <i className="ri-arrow-right-line"></i>
+              </div>
+              <div className="time">
+                <p>{moment(data?.created_at).format("LT")}</p>
               </div>
             </div>
           );
@@ -70,5 +78,9 @@ const PredictionItems = ({ predictions, activeOS, fixture }) => {
     </div>
   );
 };
+
+{
+  /* <p>{moment(data?.created_at).format("LT")}</p> */
+}
 
 export default PredictionItems;

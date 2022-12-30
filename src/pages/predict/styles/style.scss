@@ -2,6 +2,11 @@
   .main__container {
     display: flex;
     align-items: flex-start;
+    @media screen and (min-width: 426px) {
+      display: grid;
+      grid-template-columns: 2fr 4fr 2fr;
+    }
+
     @media screen and (min-width: 1441px) {
       overflow-y: hidden;
     }
@@ -11,7 +16,8 @@
       overflow: hidden;
     }
     .recentPredictions {
-      width: 23vw;
+      // width: 23vw;
+
       @media (max-width: 576px) {
         width: 90%;
         margin: auto;
@@ -28,74 +34,6 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(3.7px);
-      }
-
-      .prediction__items {
-        height: 83vh;
-        overflow-y: scroll;
-        @media screen and (max-width: 425px) {
-          display: none;
-        }
-
-        &.windowsOS {
-          height: 77vh;
-        }
-
-        .predictedCard__container {
-          display: flex;
-          align-items: flex-start;
-          gap: 8px;
-          border-bottom: 0.5px solid #0001;
-          padding: 7px 1.5vw 10px 1.5vw;
-          animation: ease-in-out;
-
-          &:hover {
-            background: #1b1b1b7c;
-            cursor: pointer;
-          }
-
-          .info {
-            display: flex;
-            align-items: center;
-            margin-top: 5px;
-            justify-content: space-between;
-
-            p:first-child {
-              color: #2ecc71;
-            }
-
-            p:last-child {
-              color: #fff8;
-              font-size: 14px;
-            }
-          }
-
-          canvas {
-            margin-top: 6px;
-          }
-
-          div {
-            width: 100%;
-            p {
-              font-size: 14px;
-              color: #3a3a3a;
-              line-height: 1.5;
-            }
-
-            
-            p {
-              color: #fff;
-              a {
-                width: fit-content;
-                text-decoration: none;
-                background-color: rgba(0, 201, 167, 0.1);
-                padding: 0.2em;
-                color: #00c9a7;
-                border-radius: 2px;
-              }
-            }
-          }
-        }
       }
     }
 
@@ -427,10 +365,17 @@
     }
 
     .leaderboards {
-      width: 20vw;
 
-      @media (max-width: 576px) {
-        display: none;
+      // &.true {
+      //   width: 90%;
+      //   margin: auto;
+      //   background-color: #fff;
+      // }
+
+      &.false {
+        @media (max-width: 576px) {
+          display: none;
+        }
       }
 
       .leaderboardsTitle {
@@ -507,7 +452,6 @@
     }
   }
 }
-
 
 .dialog__title {
   text-align: center !important;

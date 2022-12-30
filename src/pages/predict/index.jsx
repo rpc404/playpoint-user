@@ -13,7 +13,7 @@ import {
 } from "../../api/Prediction";
 import moment from "moment";
 import Pusher from "pusher-js";
-import Leaderboards from "../../components/Leaderboards/Leaderboards";
+// import Leaderboards from "../../components/Leaderboards/Leaderboards";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import clubFlags from "../../helpers/EPLFlags.json";
 import CarabaoClubFlags from "../../helpers/EFLFlags.json";
@@ -26,6 +26,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Slide from "@mui/material/Slide";
 import PredictionItems from "../../components/PredictionItems";
+import LeaderBoardList from "../../components/LeaderboardList/Leaderboard";
+
 
 export const getCountryFlag = (country) => {
   let _url = "";
@@ -215,7 +217,7 @@ export default function Predict() {
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
-      console.log(response)
+      console.log(response);
       sessionStorage.setItem(
         "predictions",
         JSON.stringify(response.data.data.reverse())
@@ -282,7 +284,7 @@ export default function Predict() {
             predictions={predictions}
             activeOS={activeOS}
             fixture={fixture}
-            open = {open}
+            open={open}
           />
         </div>
         {/*
@@ -367,7 +369,7 @@ export default function Predict() {
          * @note Leaderboards Predictions
          */}
 
-        <LeaderBoardList fixture={fixture} />
+        <LeaderBoardList fixture={fixture} open={open} />
 
         {/**
          *  @ Dialog for active predictions in mobile view
@@ -380,7 +382,7 @@ export default function Predict() {
             TransitionComponent={Transition}
             className="custom-paper"
           >
-            <AppBar sx={{ position: "relative",background:"#000" }}>
+            <AppBar sx={{ position: "relative", background: "#000" }}>
               <Toolbar>
                 <IconButton
                   edge="start"
@@ -415,9 +417,12 @@ export default function Predict() {
                 predictions={predictions}
                 activeOS={activeOS}
                 fixture={fixture}
+                open={open}
               />
             )}
-            {currentMode === "leaderboard" && <LeaderBoardList />}
+            {currentMode === "leaderboard" && (
+              <LeaderBoardList fixture={fixture} open={open} />
+            )}
           </Dialog>
         )}
       </div>
@@ -426,32 +431,3 @@ export default function Predict() {
 }
 
 
-
-const LeaderBoardList = ({ fixture }) => {
-  return (
-    <div className="leaderboards">
-      <h3 className="leaderboardsTitle">Leaderboards</h3>
-      <div className="leaderboardItemsTitle">
-        <p>
-          Game<i className="ri-game-line"></i>
-        </p>
-        <p>
-          Users<i className="ri-magic-line"></i>
-        </p>
-        <p>
-          Volume<i className="ri-money-dollar-circle-line"></i>
-        </p>
-      </div>
-      {fixture && <Leaderboards />}{" "}
-      {/* {fixture[0].length >=1 && fixture.map((data) => {
-        return (
-          <div className="leaderboardItem__container" key={data}>
-            <p>AUS/QTR</p>
-            <p>123k</p>
-            <p>$432k</p>
-          </div>
-        );
-      })} */}
-    </div>
-  );
-};
