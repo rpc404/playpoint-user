@@ -7,12 +7,10 @@ import "./styles/style.css"
 const PredictionItems = ({ predictions, activeOS, fixture }) => {
   const navigate = useNavigate();
 
-  let volume = 0;
   return (
     <div className={`prediction__items__dialog ${open}  ${activeOS}`}>
       {predictions.length >= 1 ? (
         predictions.map((data, index) => {
-          volume += data?.amount / 0.02;
           return (
             <div
               className="predictedCard__container"
@@ -20,7 +18,9 @@ const PredictionItems = ({ predictions, activeOS, fixture }) => {
               onClick={() => navigate(`/prediction/${data._id}`)}
             >
               <div>
-                {data.challenges && data.challenges.length > 0 && (
+                {
+                data.challenges &&
+                data.challenges.length > 0 && (
                   <div className="details">
                     {data.challenges.map((challenge, key) => {
                       return (
