@@ -52,18 +52,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Predict() {
+  
   const [marketplaceSlug, setMS] = React.useState("");
-  const { state } = useLocation();
 
-  React.useEffect(() => {
-    if (state) {
-      let { marketplaceSlug } = state;
-      setMS(marketplaceSlug);
-    }
-  }, []);
+  const { state } = useLocation();
 
   const [open, setOpen] = React.useState(false);
   const [currentMode, setCurrentMode] = React.useState("");
+  React.useEffect(()=>{
+  if(state){
+    let { marketplaceSlug } = state;
+    setMS(marketplaceSlug);
+  }
+  },[])
 
   const handleClickOpen = (mode) => {
     setOpen(true);
@@ -224,7 +225,7 @@ export default function Predict() {
   const navigate = useNavigate();
   // console.log(predictions)
 
-  let volume = 0;
+  const [volume, setVolume] = React.useState(0)
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -316,6 +317,7 @@ export default function Predict() {
             activeOS={activeOS}
             fixture={fixture}
             open={open}
+            setVolume={setVolume}
           />
         </div>
         {/*
@@ -338,7 +340,7 @@ export default function Predict() {
             <div className="marketInfo">
               {/* @note this needs to be resolved */}
               <div>
-                <p>24h Volume</p>
+                <p>Pool Volume</p>
                 <p>{volume.toFixed(2)} PPTT</p>
               </div>
               <div>
@@ -401,11 +403,7 @@ export default function Predict() {
          * @note Leaderboards Predictions
          */}
 
-        <LeaderBoardList
-          fixture={fixture}
-          open={open}
-          marketplaceSlug={marketplaceSlug}
-        />
+        <LeaderBoardList fixture={fixture} open={open} marketplaceSlug={marketplaceSlug} />
 
         {/**
          *  @ Dialog for active predictions in mobile view

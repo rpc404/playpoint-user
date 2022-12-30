@@ -19,6 +19,10 @@
     overflow: hidden;
   }
 }
+.prediction__container .main__container .recentPredictions {
+  max-height: 85vh;
+  overflow-y: scroll;
+}
 @media (max-width: 576px) {
   .prediction__container .main__container .recentPredictions {
     width: 90%;

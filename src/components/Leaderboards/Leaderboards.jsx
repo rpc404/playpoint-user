@@ -33,6 +33,7 @@ export default function Leaderboards({marketplaceSlug}) {
   const [activeOS, setActiveOS] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [leaderboards, setLeaderboards] = React.useState([]);
+  // console.log(marketplaceSlug)
 
   React.useEffect(() => {
     // Windows
@@ -44,16 +45,12 @@ export default function Leaderboards({marketplaceSlug}) {
 
     // Fetch fixtures
     (async () => {
-      const marketplaceSlug = sessionStorage.getItem("marketplaceSlug");
+      
       if (marketplaceSlug !== "") {
+        sessionStorage.setItem("marketplaceSlug", marketplaceSlug)
         const data = await getLeaderboardByMarketplaceSlug(marketplaceSlug);
         let _leaderboard = data.data.leaderboard;
         setLeaderboards(_leaderboard);
-
-        setLoading(false);
-      } else {
-        const data = await getAllLeaderboards();
-        setLeaderboards(data.data.leaderboards);
         setLoading(false);
       }
     })();

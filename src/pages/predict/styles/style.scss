@@ -16,6 +16,8 @@
       overflow: hidden;
     }
     .recentPredictions {
+      max-height: 85vh;
+      overflow-y: scroll;
 
       @media (max-width: 576px) {
         width: 90%;

@@ -15,7 +15,7 @@ const LeaderBoardList = ({ fixture, open, marketplaceSlug }) => {
             Volume<i className="ri-money-dollar-circle-line"></i>
           </p>
         </div>
-        {fixture && <Leaderboards marketplaceSlug = {marketplaceSlug}/>}
+        {fixture && <Leaderboards marketplaceSlug={marketplaceSlug} />}{" "}
         {/* {fixture[0].length >=1 && fixture.map((data) => {
           return (
             <div className="leaderboardItem__container" key={data}>
