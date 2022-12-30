@@ -1,0 +1,15 @@
+.challenges__Container{
+    display: grid;
+    grid-template-areas: "user all all all";
+    gap: 10px;
+    padding: 1.4em;
+
+    .challenges__UserChallenges{
+        grid-area: "user";
+    }
+    .challenges__AllChallenges{
+        grid-area: "all";
+    }
+}
+
+

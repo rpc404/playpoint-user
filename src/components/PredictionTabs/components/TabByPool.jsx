@@ -56,6 +56,7 @@ const PoolType = ({
   poolSize,
   fixtureId,
   status,
+  setMS
 }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const _predictionData = {
@@ -134,8 +135,8 @@ const PoolType = ({
       const allQuestionairesByFixtureId = await getQuestionaireByFixtureId(
         fixtureId
       );
-      console.log(allQuestionairesByFixtureId)
       let tempQ = allQuestionairesByFixtureId.data.questionaire;
+      setMS(tempQ[0].marketplaceSlug)
       // let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
       //   return (
       //     q.questionaireType === userPrediction.activeQuestionaire &&
@@ -442,7 +443,7 @@ const PoolType = ({
             <h4>Make your Trio Slots Open</h4>
             <Slider
               aria-label="Custom marks"
-              defaultValue={1}
+              defaultValue={0}
               getAriaValueText={valuetext}
               step={1}
               valueLabelDisplay="on"
