@@ -6,7 +6,7 @@ import Chip from "@mui/material/Chip";
 import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 
-const PredictionItems = ({ predictions, activeOS, open }) => {
+const PredictionItems = ({ predictions, activeOS, open, setVolume }) => {
   const [{ username }] = useRPCContext();
   const navigate = useNavigate();
 
@@ -14,6 +14,7 @@ const PredictionItems = ({ predictions, activeOS, open }) => {
     <div className={`prediction__items__dialog ${open}  ${activeOS}`}>
       {predictions.length >= 1 ? (
         predictions.map((data, index) => {
+         
           return (
             <div
               className="predictedCard__container"
