@@ -377,7 +377,9 @@ const Prediction = () => {
               })}
               {floatingButton && (
                 <div className="floatingButton__container">
-                  <Button variant="contained">Challange</Button>
+                  <Button variant="contained" onClick={() => _joinChallenge()}>
+                    Challange
+                  </Button>
                 </div>
               )}
             </div>
