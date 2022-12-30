@@ -1,6 +1,6 @@
 import Leaderboards from "../Leaderboards/Leaderboards";
 
-const LeaderBoardList = ({ fixture, open }) => {
+const LeaderBoardList = ({ fixture, open, marketplaceSlug }) => {
     return (
       <div className={`leaderboards ${open}`}>
         <h3 className="leaderboardsTitle">Leaderboards</h3>
@@ -15,7 +15,7 @@ const LeaderBoardList = ({ fixture, open }) => {
             Volume<i className="ri-money-dollar-circle-line"></i>
           </p>
         </div>
-        {fixture && <Leaderboards />}{" "}
+        {fixture && <Leaderboards marketplaceSlug = {marketplaceSlug}/>}
         {/* {fixture[0].length >=1 && fixture.map((data) => {
           return (
             <div className="leaderboardItem__container" key={data}>

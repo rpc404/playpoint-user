@@ -28,7 +28,6 @@ import Slide from "@mui/material/Slide";
 import PredictionItems from "../../components/PredictionItems";
 import LeaderBoardList from "../../components/LeaderboardList/Leaderboard";
 
-
 export const getCountryFlag = (country) => {
   let _url = "";
   allFlags.map((flag, key) => {
@@ -96,6 +95,19 @@ export default function Predict() {
           );
         }
       });
+    } else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
     }
   };
 
@@ -115,6 +127,19 @@ export default function Predict() {
       });
     } else if (marketplaceSlug === "Carabao-Cup237") {
       return CarabaoClubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club, i) => {
         if (club.name === team) {
           return (
             <img
@@ -299,7 +324,7 @@ export default function Predict() {
               </div>
               <span>vs</span>
               <div>
-                {AwayTeamFlag(fixture.AwayTeam)}
+                {AwayTeamFlag(fixture?.AwayTeam)}
                 <p>{fixture.AwayTeam}</p>
               </div>
             </div>
@@ -369,7 +394,7 @@ export default function Predict() {
          * @note Leaderboards Predictions
          */}
 
-        <LeaderBoardList fixture={fixture} open={open} />
+        <LeaderBoardList fixture={fixture} open={open} marketplaceSlug = {marketplaceSlug}/>
 
         {/**
          *  @ Dialog for active predictions in mobile view
@@ -429,5 +454,3 @@ export default function Predict() {
     </div>
   );
 }
-
-

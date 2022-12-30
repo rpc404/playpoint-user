@@ -8,6 +8,10 @@ import {
 
 import allFlags from "../../helpers/CountryFlags.json";
 import { formatNumber } from "../../utils/NumberFomatter";
+import clubFlags from "../../helpers/EPLFlags.json";
+import CarabaoClubFlags from "../../helpers/EFLFlags.json";
+import EPLFlags from "../../helpers/EPLFlags.json"
+
 export const getCountryShortName = (country) => {
   if (sessionStorage.getItem("marketplaceSlug") != "fifa-worldcup")
     return country;
@@ -24,7 +28,7 @@ export const getCountryShortName = (country) => {
   return name;
 };
 
-export default function Leaderboards() {
+export default function Leaderboards({marketplaceSlug}) {
   const navigate = useNavigate();
   const [activeOS, setActiveOS] = React.useState("");
   const [loading, setLoading] = React.useState(true);
@@ -54,6 +58,99 @@ export default function Leaderboards() {
       }
     })();
   }, []);
+
+  const HomeTeamFlag = (team) => {
+    if (localStorage.getItem("marketplaceSlug") === "English-Football-League397") {
+      return clubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (localStorage.getItem("marketplaceSlug") === "Carabao-Cup237") {
+      return CarabaoClubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club, i) => {
+        if (
+          club.name.replace(" ", "").toLowerCase().trim() ===
+          team.replace(" ", "").toLowerCase().trim()
+        ) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    }
+  };
+
+  const AwayTeamFlag = (team) => {
+    if (marketplaceSlug === "English-Football-League397") {
+      return clubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (marketplaceSlug === "Carabao-Cup237") {
+      return CarabaoClubFlags.map((club, i) => {
+        if (club.name === team) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    } else if (marketplaceSlug === "premiere-league") {
+      return EPLFlags.map((club, i) => {
+        if (
+          club.name.replace(" ", "").toLowerCase().trim() ===
+          team.replace(" ", "").toLowerCase().trim()
+        ) {
+          return (
+            <img
+              src={club.image_url}
+              alt={club.name}
+              key={i}
+              className="home__Image"
+            />
+          );
+        }
+      });
+    }
+  };
+
   return (
     <div className={`leaderboardItems ${activeOS}`}>
       {leaderboards.length > 0 && !loading ? (
@@ -68,17 +165,19 @@ export default function Leaderboards() {
             >
               <p>
                 {getCountryShortName(leaderboard.fixture.HomeTeam)}
-                <img
+                {/* <img
                   src={getCountryShortName(leaderboard.fixture.HomeTeam)}
                   loading="lazy"
                   alt=""
-                />
+                /> */}
+                {HomeTeamFlag(leaderboard.fixture.HomeTeam)}
                 <span>vs</span>
-                <img
+                {/* <img
                   src={getCountryShortName(leaderboard.fixture.AwayTeam)}
                   loading="lazy"
                   alt=""
-                />
+                /> */}
+                {AwayTeamFlag(leaderboard.fixture.AwayTeam)}
                 {getCountryShortName(leaderboard.fixture.AwayTeam)}
               </p>
               <p>{formatNumber(leaderboard.userCount)}</p>
