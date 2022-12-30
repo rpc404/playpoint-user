@@ -226,23 +226,7 @@ export default function Predict() {
         type: "set-predictions",
         payload: response.data.data,
       });
-
-      // let lineChartData = [];
-      // response.data.data.map((prediction, key) => {
-      //   lineChartData.push({
-      //     key: new Date(prediction.created_at),
-      //     data: prediction.amount,
-      //   });
-      // });
-
-      // setLineChartData(lineChartData);
     })();
-
-    // (async () => {
-    //   const response = await getQuestionaireByFixtureId(fixtureId);
-    //   console.log(response.data);
-    //   setQuestionaires(response.data.questionaire);
-    // })();
   }, []);
 
   React.useEffect(() => {

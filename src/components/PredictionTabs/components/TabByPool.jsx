@@ -225,94 +225,111 @@ const PoolType = ({
 
       // console.log(ethers.utils.parseEther(_predictionData.amount.toString()), _predictionData.amount)
       // console.log(duoAmount,trioAmount)
-      return await setPrediction(_predictionData)
-        .then(async (res) => {
-          // console.log(res.data);
-          const data = res.data.prediction[0];
-          if (duoAmount > 0 || trioAmount > 0) {
-    
-            // const _data = [];
-            let _amount = 0;
-            if (duoAmount > 0) {
-              const duochallenegedata = {
-                fixtureId: data.fixtureId,
-                predictionId: data._id,
-                type: "duo",
-                amount: (duoAmount/duoSlots),
-                slot: duoSlots,
-                status: "active",
-              };
-              /**
-               * @dev call API to create DUO challenge
-               */
-              toast("Creating Duo Chalenges", {
-                theme: "dark",
-                type: "info",
-                delay: 200,
-              });
-              const _challenegeResult = await mkaeDuo(duochallenegedata);
-              // console.log(_challenegeResult);
-              // _data.push(duochallenegedata);
-              _amount += duoAmount;
-            }
-            if (trioAmount > 0) {
-              const triochallenegedata = {
-                fixtureId: data.fixtureId,
-                predictionId: data._id,
-                type: "trio",
-                amount: trioAmount,
-                slot: trioSlots,
-                status: "active",
-              };
-              // _data.push(triochallenegedata);
-              toast("Creating Trio Chalenges", {
-                theme: "dark",
-                type: "info",
-                delay: 200,
-              });
-              const _challenegeResult = await mkaeDuo(triochallenegedata);
-              // console.log(_challenegeResult);
-              _amount += trioAmount;
-            }
-            _predictionData.amount += _amount;
+      let _amount = 0;
+      if (duoAmount > 0 || trioAmount > 0) {
+        if (duoAmount > 0) {
+          _amount += duoAmount;
+        }
+        if (trioAmount > 0) {
+          // console.log(_challenegeResult);
+          _amount += trioAmount;
+        }
+        _predictionData.amount += _amount;
+      }
+      function toFixed(x) {
+        if (Math.abs(x) < 1.0) {
+          var e = parseInt(x.toString().split("e-")[1]);
+          if (e) {
+            x *= Math.pow(10, e - 1);
+            x = "0." + new Array(e).join("0") + x.toString().substring(2);
           }
-          function toFixed(x) {
-            if (Math.abs(x) < 1.0) {
-              var e = parseInt(x.toString().split("e-")[1]);
-              if (e) {
-                x *= Math.pow(10, e - 1);
-                x = "0." + new Array(e).join("0") + x.toString().substring(2);
-              }
-            } else {
-              var e = parseInt(x.toString().split("+")[1]);
-              if (e > 20) {
-                e -= 20;
-                x /= Math.pow(10, e);
-                x += new Array(e + 1).join("0");
-              }
-            }
-            return x;
+        } else {
+          var e = parseInt(x.toString().split("+")[1]);
+          if (e > 20) {
+            e -= 20;
+            x /= Math.pow(10, e);
+            x += new Array(e + 1).join("0");
           }
-          const _ppttAmount = _predictionData.amount > 10 ? toFixed((_predictionData.amount / 0.02) * 10 ** 18) : ((_predictionData.amount/0.02) * 1e18).toString();
-          console.log(_ppttAmount);
-          // transfer prediction pool
-          await PPTTContract.transfer(
-            "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
-            _ppttAmount
-          );
-          // console.log(contract)
+        }
+        return x;
+      }
+      const _ppttAmount = _predictionData.amount > 10 ? toFixed((_predictionData.amount / 0.02) * 10 ** 18) : ((_predictionData.amount/0.02) * 1e18).toString();
+      // transfer prediction pool
+      try {   
+        const _res = await PPTTContract.transfer(
+          "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
+          _ppttAmount
+        );
+        if(_res.hash){
           await PredictionContract.setPrediction(
             JSON.stringify(_predictionData.answers),
             _predictionData.questionaireId,
             _predictionData.predictedBy,
             (_predictionData.amount * 1e18).toString()
           );
-          toast("Predicted Successfully!");
-          _predictionData.answers = {};
-          // setTimeout(() => window.location.reload(), 2000);
-        })
-        .catch((err) => console.log(err))
-        .finally(() => setPredicting(false));
+          return await setPrediction(_predictionData)
+            .then(async (res) => {
+              // console.log(res.data);
+              const data = res.data.prediction[0];
+              if(duoAmount > 0){
+                const duochallenegedata = {
+                  fixtureId: data.fixtureId,
+                  predictionId: data._id,
+                  type: "duo",
+                  amount: (duoAmount/duoSlots),
+                  slot: duoSlots,
+                  status: "active",
+                };
+                /**
+                 * @dev call API to create DUO challenge
+                 */
+                toast("Creating Duo Chalenges", {
+                  theme: "dark",
+                  type: "info",
+                  delay: 200,
+                });
+                const _challenegeResult = await mkaeDuo(duochallenegedata);
+              }
+              if(trioAmount>0){
+                const triochallenegedata = {
+                  fixtureId: data.fixtureId,
+                  predictionId: data._id,
+                  type: "trio",
+                  amount: trioAmount,
+                  slot: trioSlots,
+                  status: "active",
+                };
+                // _data.push(triochallenegedata);
+                toast("Creating Trio Chalenges", {
+                  theme: "dark",
+                  type: "info",
+                  delay: 200,
+                });
+                const _challenegeResult = await mkaeDuo(triochallenegedata);
+              }
+              toast("Predicted Successfully!");
+              setTimeout(() => window.location.reload(), 2000);
+            })
+            .catch((err) => console.log(err))
+            .finally(() => setPredicting(false));
+        }else{
+          toast("Entry Failed",{
+            type:'error'
+          });
+          setPredicting(false);
+  
+        }
+      } catch (err) {
+        if(err){
+          console.log(err);
+          toast("Entry Failed",{
+            type:'error'
+          });
+          setPredicting(false);
+        }
+      }
+      // console.log(contract)
+    
     } else return toast.error("Enter All Answers!");
   };
 
@@ -542,6 +559,7 @@ const getAnswer = (prop, handleRadioChange, index) => {
                 onChange={(e) =>
                   handleScoreChange(_index, tag, index, e.target.value)
                 }
+               
               />
             </div>
           ))}

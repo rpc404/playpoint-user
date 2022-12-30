@@ -10,12 +10,10 @@ const PredictionItems = ({ predictions, activeOS, open }) => {
   const [{ username }] = useRPCContext();
   const navigate = useNavigate();
 
-  let volume = 0;
   return (
     <div className={`prediction__items__dialog ${open}  ${activeOS}`}>
       {predictions.length >= 1 ? (
         predictions.map((data, index) => {
-          volume += data?.amount / 0.02;
           return (
             <div
               className="predictedCard__container"
@@ -35,16 +33,14 @@ const PredictionItems = ({ predictions, activeOS, open }) => {
                     <div className="user">
                       <p>{data?.user[0].username}</p>
                       <div className="details">
-                        {data.challenges.length > 0 &&
+                        {data.challenges && data.challenges.length > 0 &&
                           data.challenges.map((challenge, key) => {
                             return (
                               <Chip
                                 key={key}
                                 variant="outlined"
-                                // color="primary"
                                 size="small"
                                 className="custom-chip"
-                                // icon={<i className="ri-git-branch-line"></i>}
                                 label={
                                   challenge.type +
                                   " | " +
