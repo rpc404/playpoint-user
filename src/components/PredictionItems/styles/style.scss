@@ -48,13 +48,13 @@
       width: 100%;
       padding: 10px 16px;
       transition: .5s ease;
+      gap: 10px;
 
       &:hover {
         i {
           display: block;
         }
       }
-      gap: 10px;
       .imageDiv {
         img {
           height: 50px;
@@ -110,7 +110,7 @@
         p {
           &:first-child {
             color: #2ecc71;
-            font-size: 1.2em;
+            // font-size: 1.2em;
 
             span {
               font-size: .8em;
