@@ -55,12 +55,12 @@ export default function Predict() {
   const [marketplaceSlug, setMS] = React.useState("");
   const { state } = useLocation();
 
-  if(state){
-    let { marketplaceSlug } = state;
-    setMS(marketplaceSlug);
-  }else{
-
-  }
+  React.useEffect(() => {
+    if (state) {
+      let { marketplaceSlug } = state;
+      setMS(marketplaceSlug);
+    }
+  }, []);
 
   const [open, setOpen] = React.useState(false);
   const [currentMode, setCurrentMode] = React.useState("");
@@ -316,7 +316,6 @@ export default function Predict() {
             activeOS={activeOS}
             fixture={fixture}
             open={open}
-            
           />
         </div>
         {/*
@@ -402,7 +401,11 @@ export default function Predict() {
          * @note Leaderboards Predictions
          */}
 
-        <LeaderBoardList fixture={fixture} open={open} marketplaceSlug = {marketplaceSlug}/>
+        <LeaderBoardList
+          fixture={fixture}
+          open={open}
+          marketplaceSlug={marketplaceSlug}
+        />
 
         {/**
          *  @ Dialog for active predictions in mobile view
