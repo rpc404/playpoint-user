@@ -1,5 +1,5 @@
 .prediction__items__dialog {
-  height: 90vh;
+  // height: 90vh;
   overflow-y: scroll;
   &.false {
     @media screen and (max-width: 426px) {
@@ -17,11 +17,9 @@
     flex-direction: column;
     gap: 8px;
     border-bottom: 0.5px solid #0001;
-    // padding: 7px 1.5vw 10px 1.5vw;
-    animation: ease-in-out;
-    // margin-bottom: 0.3em;
     box-shadow: 0px 2px 1px -1px #ffffff4d;
     position: relative;
+    
 
     &:hover {
       background: #1b1b1b7c;
@@ -49,6 +47,11 @@
       padding: 10px 16px;
       transition: .5s ease;
       gap: 10px;
+
+      .details {
+        display: flex;
+        gap: 5px;
+      }
 
       &:hover {
         i {
@@ -104,8 +107,8 @@
       .info {
         display: flex;
         align-items: center;
-        width: 100%;
         justify-content: flex-end;
+        gap: 10px;
 
         p {
           &:first-child {
@@ -138,4 +141,25 @@
     font-size: 12px;
   }
 }
+}
+
+.noPrediction__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    object-fit: cover;
+  }
+
+  p {
+    color: #fff9;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.4;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.801);
+    }
+  }
 }

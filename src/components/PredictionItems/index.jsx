@@ -2,6 +2,7 @@ import moment from "moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Chip from "@mui/material/Chip";
+import image from "../../images/oops1.png";
 
 import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
@@ -22,46 +23,49 @@ const PredictionItems = ({ predictions, activeOS, open, setVolume }) => {
               onClick={() => navigate(`/prediction/${data._id}`)}
             >
               <div className="predictionCard">
-                <div className="imageDiv">
-                  <img
-                    src={`https://robohash.org/${data?.user[0].username}}`}
-                    alt=""
-                    loading="lazy"
-                  />
-                </div>
-                <div className="user__details">
-                  {data?.user[0] && (
-                    <div className="user">
-                      <p>{data?.user[0].username}</p>
-                      <div className="details">
-                        {data.challenges && data.challenges.length > 0 &&
-                          data.challenges.map((challenge, key) => {
-                            return (
-                              <Chip
-                                key={key}
-                                variant="outlined"
-                                size="small"
-                                className="custom-chip"
-                                label={
-                                  challenge.type +
-                                  " | " +
-                                  challenge.participants.length +
-                                  " of " +
-                                  challenge.slot
-                                }
-                              />
-                            );
-                          })}
+                <div className="details">
+                  <div className="imageDiv">
+                    <img
+                      src={`https://robohash.org/${data?.user[0].username}}`}
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="user__details">
+                    {data?.user[0] && (
+                      <div className="user">
+                        <p>{data?.user[0].username}</p>
+                        <div className="details">
+                          {data.challenges &&
+                            data.challenges.length > 0 &&
+                            data.challenges.map((challenge, key) => {
+                              return (
+                                <Chip
+                                  key={key}
+                                  variant="outlined"
+                                  size="small"
+                                  className="custom-chip"
+                                  label={
+                                    challenge.type +
+                                    " | " +
+                                    challenge.participants.length +
+                                    " of " +
+                                    challenge.slot
+                                  }
+                                />
+                              );
+                            })}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
                 <div className="info">
                   <p>
                     {(data?.amount / 0.02).toFixed(2)} <span>PPTT</span>
                   </p>
+                  <i className="ri-arrow-right-line"></i>
                 </div>
-                <i className="ri-arrow-right-line"></i>
               </div>
               <div className="time">
                 <p>{moment(data?.created_at).format("LT")}</p>
@@ -70,10 +74,9 @@ const PredictionItems = ({ predictions, activeOS, open, setVolume }) => {
           );
         })
       ) : (
-        <div className="predictedCard__container">
-          <p style={{ color: "#fff" }}>
-            No Predictions available.Be the first one to predict.
-          </p>
+        <div className="noPrediction__container">
+          <img src={image} alt="oops_image" />
+          <p>No Predictions available.Be the first one to predict.</p>
         </div>
       )}
     </div>

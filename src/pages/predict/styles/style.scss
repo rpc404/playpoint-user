@@ -8,7 +8,7 @@
     }
 
     @media screen and (min-width: 1441px) {
-      overflow-y: hidden;
+      overflow-y: hidden !important;
     }
 
     @media (max-width: 576px) {
@@ -16,7 +16,8 @@
       overflow: hidden;
     }
     .recentPredictions {
-      // width: 23vw;
+      max-height: 85vh;
+      overflow-y: scroll;
 
       @media (max-width: 576px) {
         width: 90%;
@@ -39,7 +40,7 @@
 
     .predictionTable {
       flex: 1;
-      border-left: 0.5px solid rgba(255, 255, 255, 0.074);
+      border-left: 0.5px solid rgba(255, 255, 255, 0.267);
       border-right: 0.5px solid rgba(255, 255, 255, 0.074);
       overflow-y: hidden;
       // color: #fff;
@@ -405,12 +406,17 @@
         color: #fff;
 
         p {
-          flex: 1 1 0;
+          // flex: 1 1 0;
           display: flex;
           align-items: center;
           gap: 2px;
+
+          &:nth-child(1){
+            flex: 0 1 300px;
+          }
         }
       }
+
 
       .leaderboardItems {
         font-size: 14px;
@@ -436,11 +442,23 @@
           }
 
           p {
-            flex: 1 1 0;
+            // flex: 1 1 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            // gap: 2px;
+
+            &:nth-child(1){
+              flex: 0 1 300px;
+              display: flex;
+              gap: 5px;
+              justify-content: flex-start;
+            }
+
+            &:nth-child(3){
+              justify-content: flex-end;
+            }
+
             img {
               height: 30px;
               object-fit: cover;

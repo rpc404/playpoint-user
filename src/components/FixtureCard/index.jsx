@@ -16,6 +16,7 @@ export default function FixtureCard({
 }) {
   const navigate = useNavigate();
 
+
   /**
    * @dev only list games according to dates
    */
@@ -181,9 +182,9 @@ export default function FixtureCard({
                     }
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {HomeTeamFlag(data.HomeTeam)}
+                    {HomeTeamFlag(marketplaceSlug, data.HomeTeam)}
                     {gameTime(data)}
-                    {AwayTeamFlag(data.AwayTeam)}
+                    {AwayTeamFlag(marketplaceSlug, data.AwayTeam)}
                     <div className="teamName">{data?.AwayTeam}</div>
                   </Button>
                 )}
@@ -221,6 +222,7 @@ export default function FixtureCard({
                     {CountryFlags.map((country, i) => {
                       return AwayTeamFlag(data, country, i);
                     })} */}
+                    {console.log(data)}
                     {HomeTeamFlag(data.HomeTeam)}
                     {gameTime(data)}
                     {AwayTeamFlag(data.AwayTeam)}
