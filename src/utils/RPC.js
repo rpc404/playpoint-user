@@ -3,10 +3,7 @@ import { setProfile } from "../api/Profile";
 
 const { ethereum } = window;
 
-if(typeof ethereum==="undefined"){
-    alert("Metamask in not installed. Redirecting....");
-    window.location.href = "https://m.playpoint.ai";
-}
+
 
 export const handleRPCWalletLogin = async () => {
   try {
@@ -81,26 +78,28 @@ export const handleRPCWalletLogin = async () => {
 
 export const getPPTTBalance = async (userAddress) => {};
 
-// @note - This is the main function that will be called from the frontend on account change on metamask
-ethereum.on("accountsChanged", async (accounts) => {
-  const tempRpcData = {
-    userPublicAddress: accounts[0],
-    isWalletConnected: true,
-    username: "",
-  };
-  if (accounts[0]) {
-    await setProfile({ data: tempRpcData }).then((res) => {
-      tempRpcData.username = res.data.profile.username;
-    });
-  }
-  const currentDate = new Date();
-  currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
-  localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
-  localStorage.setItem("isRPCUserAuthenticated", true);
-  localStorage.setItem("rpcUserExpiresAt", currentDate);
-  window.location.reload();
-});
+if(typeof ethereum!=="undefined"){
+  // @note - This is the main function that will be called from the frontend on account change on metamask
+  ethereum.on("accountsChanged", async (accounts) => {
+    const tempRpcData = {
+      userPublicAddress: accounts[0],
+      isWalletConnected: true,
+      username: "",
+    };
+    if (accounts[0]) {
+      await setProfile({ data: tempRpcData }).then((res) => {
+        tempRpcData.username = res.data.profile.username;
+      });
+    }
+    const currentDate = new Date();
+    currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
+    localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
+    localStorage.setItem("isRPCUserAuthenticated", true);
+    localStorage.setItem("rpcUserExpiresAt", currentDate);
+    window.location.reload();
+  });
+  ethereum.on("chainChanged", (chainId) => {
+    window.location.reload();
+  });
+}
 
-ethereum.on("chainChanged", (chainId) => {
-  window.location.reload();
-});
