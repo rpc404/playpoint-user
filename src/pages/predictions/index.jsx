@@ -63,16 +63,18 @@ const Prediction = () => {
   React.useEffect(() => {
     setloading(true);
     let allp = JSON.parse(sessionStorage.getItem("predictions"));
-    allp = allp.filter((prediction) => {
-      if (
-        prediction.predictedBy === userPublicAddress &&
-        prediction._id !== pid
-      ) {
-        return prediction;
-      }
-    });
-    setUsePredictions(allp);
-    setloading(false);
+    if(allp){
+      allp = allp.filter((prediction) => {
+        if (
+          prediction.predictedBy === userPublicAddress &&
+          prediction._id !== pid
+        ) {
+          return prediction;
+        }
+      });
+      setUsePredictions(allp);
+      setloading(false);
+    }
   }, [userPublicAddress]);
 
   /**
