@@ -207,3 +207,16 @@
     }
   }
 }
+
+
+.challenege_status_container {
+  .csc__Header{
+    padding: 1.2em;
+    display: flex;
+    gap: 10px;
+    p{
+      padding: 10px;
+      border: 1px solid rgb(23, 122, 49);
+    }
+  }
+}

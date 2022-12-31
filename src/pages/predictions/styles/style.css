@@ -188,4 +188,14 @@
 }
 .activePrediction__container p span {
   color: rgba(255, 255, 255, 0.763);
+}
+
+.challenege_status_container .csc__Header {
+  padding: 1.2em;
+  display: flex;
+  gap: 10px;
+}
+.challenege_status_container .csc__Header p {
+  padding: 10px;
+  border: 1px solid rgb(23, 122, 49);
 }/*# sourceMappingURL=style.css.map */
