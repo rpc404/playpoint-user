@@ -52,19 +52,18 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Predict() {
-  
   const [marketplaceSlug, setMS] = React.useState("");
 
   const { state } = useLocation();
 
   const [open, setOpen] = React.useState(false);
   const [currentMode, setCurrentMode] = React.useState("");
-  React.useEffect(()=>{
-  if(state){
-    let { marketplaceSlug } = state;
-    setMS(marketplaceSlug);
-  }
-  },[])
+  React.useEffect(() => {
+    if (state) {
+      let { marketplaceSlug } = state;
+      setMS(marketplaceSlug);
+    }
+  }, []);
 
   const handleClickOpen = (mode) => {
     setOpen(true);
@@ -225,7 +224,7 @@ export default function Predict() {
   const navigate = useNavigate();
   // console.log(predictions)
 
-  const [volume, setVolume] = React.useState(0)
+  const [volume, setVolume] = React.useState(0);
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -284,6 +283,17 @@ export default function Predict() {
     });
   }, []);
 
+  React.useEffect(() => {
+    const totalVolume = (data,prop) => {
+      return data.reduce((a,b) => {
+        return a + b[prop]
+      },0)
+    }
+
+    const total = totalVolume(predictions,"amount")
+    setVolume((total/0.02))
+  }, [predictions]);
+
   return (
     <div className="prediction__container">
       <Helmet>
@@ -340,7 +350,6 @@ export default function Predict() {
               {/* @note this needs to be resolved */}
               <div>
                 <p>Pool Volume</p>
-                {console.log(volume)}
                 <p>{volume.toFixed(2)} PPTT</p>
               </div>
               <div>
@@ -403,7 +412,11 @@ export default function Predict() {
          * @note Leaderboards Predictions
          */}
 
-        <LeaderBoardList fixture={fixture} open={open} marketplaceSlug={marketplaceSlug} />
+        <LeaderBoardList
+          fixture={fixture}
+          open={open}
+          marketplaceSlug={marketplaceSlug}
+        />
 
         {/**
          *  @ Dialog for active predictions in mobile view
