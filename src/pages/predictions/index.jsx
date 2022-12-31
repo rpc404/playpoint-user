@@ -52,8 +52,11 @@ const Prediction = () => {
 
   React.useEffect(()=>{
     if(mode=="watch-challenge"){
-      getChallenge(currChallenege).then(res=>setCStat(res.data))
-      
+      console.log("fetching");
+      getChallenge(currChallenege).then(res=>{
+        console.log(res.data)
+        setCStat(res.data)
+      }) 
     }
   },[mode])
 
@@ -292,7 +295,7 @@ const Prediction = () => {
           <h2>Your Predictions in same pool</h2>
           {!loading ? (
             <div className="otherpredictions">
-              {userPredictions.map((_pr, k) => {
+              {userPredictions.length > 0 ? userPredictions.map((_pr, k) => {
                 return (
                   <div key={k}>
                     <div className="otherpredictions_box">
@@ -315,7 +318,7 @@ const Prediction = () => {
                     </div>
                   </div>
                 );
-              })}
+              }): <div><h3>Looks like you have only 1 or no entries in this pool</h3><a href={`/predict/${predictionData.fixtureId}`} className="pp_button">Predic Now</a></div>}
             </div>
           ) : (
             <div className="otherpredictionskeleton__container">
@@ -487,14 +490,26 @@ const Prediction = () => {
           )}
 
           {
-           ( mode=="watch-challenge" && challengeStat) && (
-              <div>
-                <div>
+           ( mode=="watch-challenge" && challengeStat) ? (
+              <div className="challenege_status_container">
+                <h3>Challenge ID: #{challengeStat._id.slice(-10,challengeStat._id.length)}</h3>
+                <div className="csc__Header">
                   <p>No of slots: {challengeStat.slot}</p>
-                  <p>Entry type: {challengeStat.type}</p>
+                  <p>Intra Pool: {challengeStat.type}</p>
                   <p>Pool status: {challengeStat.status}</p>
+                  <p>Filled: {challengeStat.slot - (challengeStat.participants.length)}</p>
                 </div>
-              </div>)}
+                <div className="csc__Content">
+                  {
+                    challengeStat.participants.map((_challenger,key)=>{
+                        <p>sdfdfsd</p>
+                    })
+                  }
+                  <div className="card">
+
+                  </div>
+                </div>
+              </div>):<h3>Looks like you have no entries in the pool of </h3>}
         </Dialog> )}
         </>
   );

@@ -223,7 +223,7 @@ export default function Profile() {
                   alt="ethereum"
                   loading="lazy"
                 />
-                <p>{parseFloat(balance.ppttBalance)} PPTT</p>
+                <p>{parseFloat(balance.ppttBalance).toFixed(2)} PPTT</p>
               </div>
               <div className="balance">
                 <img
