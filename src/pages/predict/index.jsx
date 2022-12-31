@@ -249,7 +249,6 @@ export default function Predict() {
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
-      console.log(response);
       sessionStorage.setItem(
         "predictions",
         JSON.stringify(response.data.data.reverse())
@@ -341,6 +340,7 @@ export default function Predict() {
               {/* @note this needs to be resolved */}
               <div>
                 <p>Pool Volume</p>
+                {console.log(volume)}
                 <p>{volume.toFixed(2)} PPTT</p>
               </div>
               <div>
