@@ -199,3 +199,17 @@ footer a {
 h1, h2, h3, h4, h5, p {
   color: #fff;
 }
+.pp_button{
+  color: rgb(241, 231, 231);
+  padding: 5px 10px;
+  border: 0.4px solid rgb(184, 177, 177);
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: block;
+  width: max-content; }
+
+.pp_button:hover{
+  color: rgb(255, 255, 255);
+  border: 0.4px solid rgb(255, 255, 255);
+  }
