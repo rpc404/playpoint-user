@@ -4,8 +4,7 @@ import {
   getQuestionaireByFixtureId,
   setPrediction,
 } from "../../../api/Prediction";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControl from "@mui/material/FormControl";
+
 import "./styles/style.css";
 import { toast } from "react-toastify";
 import loader from "../../../helpers/loading.gif";
@@ -56,7 +55,7 @@ const PoolType = ({
   poolSize,
   fixtureId,
   status,
-  setMS
+  setMS,
 }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const _predictionData = {
@@ -136,7 +135,7 @@ const PoolType = ({
         fixtureId
       );
       let tempQ = allQuestionairesByFixtureId.data.questionaire;
-      setMS(tempQ[0].marketplaceSlug)
+      setMS(tempQ[0].marketplaceSlug);
       // let tempQ = allQuestionairesByFixtureId.data.questionaire.filter((q) => {
       //   return (
       //     q.questionaireType === userPrediction.activeQuestionaire &&
@@ -254,14 +253,17 @@ const PoolType = ({
         }
         return x;
       }
-      const _ppttAmount = _predictionData.amount > 10 ? toFixed((_predictionData.amount / 0.02) * 10 ** 18) : ((_predictionData.amount/0.02) * 1e18).toString();
+      const _ppttAmount =
+        _predictionData.amount > 10
+          ? toFixed((_predictionData.amount / 0.02) * 10 ** 18)
+          : ((_predictionData.amount / 0.02) * 1e18).toString();
       // transfer prediction pool
-      try {   
+      try {
         const _res = await PPTTContract.transfer(
           "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
           _ppttAmount
         );
-        if(_res.hash){
+        if (_res.hash) {
           await PredictionContract.setPrediction(
             JSON.stringify(_predictionData.answers),
             _predictionData.questionaireId,
@@ -272,12 +274,12 @@ const PoolType = ({
             .then(async (res) => {
               // console.log(res.data);
               const data = res.data.prediction[0];
-              if(duoAmount > 0){
+              if (duoAmount > 0) {
                 const duochallenegedata = {
                   fixtureId: data.fixtureId,
                   predictionId: data._id,
                   type: "duo",
-                  amount: (duoAmount/duoSlots),
+                  amount: duoAmount / duoSlots,
                   slot: duoSlots,
                   status: "active",
                 };
@@ -291,7 +293,7 @@ const PoolType = ({
                 });
                 const _challenegeResult = await mkaeDuo(duochallenegedata);
               }
-              if(trioAmount>0){
+              if (trioAmount > 0) {
                 const triochallenegedata = {
                   fixtureId: data.fixtureId,
                   predictionId: data._id,
@@ -313,24 +315,22 @@ const PoolType = ({
             })
             .catch((err) => console.log(err))
             .finally(() => setPredicting(false));
-        }else{
-          toast("Entry Failed",{
-            type:'error'
+        } else {
+          toast("Entry Failed", {
+            type: "error",
           });
           setPredicting(false);
-  
         }
       } catch (err) {
-        if(err){
+        if (err) {
           console.log(err);
-          toast("Entry Failed",{
-            type:'error'
+          toast("Entry Failed", {
+            type: "error",
           });
           setPredicting(false);
         }
       }
       // console.log(contract)
-    
     } else return toast.error("Enter All Answers!");
   };
 
@@ -374,13 +374,13 @@ const PoolType = ({
       </div>
       {isWalletConnected && (
         <>
-        <div className="questionaires">
-          <p className="prediction_rule">
-            Prediction questions are applicable for first 90 minutes of match
-            time only
-          </p>
-         
-          {questionaire.tempQuestionaire[0]?.questionaires.questions.map(
+          <div className="questionaires">
+            <p className="prediction_rule">
+              Prediction questions are applicable for first 90 minutes of match
+              time only
+            </p>
+
+            {questionaire.tempQuestionaire[0]?.questionaires.questions.map(
               (q, index) => (
                 <div className="questionItem" key={index}>
                   <div className="top">
@@ -408,59 +408,58 @@ const PoolType = ({
                 </div>
               )
             )}
-        </div>
-        {
-          questionaire.tempQuestionaire.length > 0 &&
-        <div className="challenges">
-        <FormControlLabel
-          control={<Checkbox onChange={() => setDuoMode(!duoMode)} />}
-          label="Open for Duo"
-        />
-        <FormControlLabel
-          control={<Checkbox onChange={() => setTrioMode(!trioMode)} />}
-          label="Open for Trio"
-        />
-        {duoMode && (
-          <div className="slots">
-            <h4>Drag to make your duo slots open</h4>
-            <Slider
-              aria-label="Custom marks"
-              defaultValue={1}
-              getAriaValueText={(value) => valuetext(value)}
-              step={1}
-              valueLabelDisplay="on"
-              marks={marks}
-              max={10}
-              min={1}
-              onChange={(e, value) => {
-                setduoSlots(value);
-              }}
-            />
           </div>
-        )}
-        {trioMode && (
-          <div className="slots">
-            <h4>Make your Trio Slots Open</h4>
-            <Slider
-              aria-label="Custom marks"
-              defaultValue={0}
-              getAriaValueText={valuetext}
-              step={1}
-              valueLabelDisplay="on"
-              marks={marks}
-              max={10}
-              min={1}
-              onChange={(e, value) => {
-                settrioSlots(value);
-              }}
-            />
-          </div>
-        )}
-      </div>
-        }
+          {questionaire.tempQuestionaire.length > 0 && (
+            <div className="challenges">
+              <FormControlLabel
+                control={<Checkbox onChange={() => setDuoMode(!duoMode)} />}
+                label="Open for Duo"
+              />
+              <FormControlLabel
+                control={<Checkbox onChange={() => setTrioMode(!trioMode)} />}
+                label="Open for Trio"
+              />
+              {duoMode && (
+                <div className="slots">
+                  <h4>Drag to make your duo slots open</h4>
+                  <Slider
+                    aria-label="Custom marks"
+                    defaultValue={1}
+                    getAriaValueText={(value) => valuetext(value)}
+                    step={1}
+                    valueLabelDisplay="on"
+                    marks={marks}
+                    max={10}
+                    min={1}
+                    onChange={(e, value) => {
+                      setduoSlots(value);
+                    }}
+                  />
+                </div>
+              )}
+              {trioMode && (
+                <div className="slots">
+                  <h4>Make your Trio Slots Open</h4>
+                  <Slider
+                    aria-label="Custom marks"
+                    defaultValue={0}
+                    getAriaValueText={valuetext}
+                    step={1}
+                    valueLabelDisplay="on"
+                    marks={marks}
+                    max={10}
+                    min={1}
+                    onChange={(e, value) => {
+                      settrioSlots(value);
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          )}
         </>
       )}
-     
+
       <div className="predictionAmount">
         <div>
           <div className="top">
@@ -552,7 +551,7 @@ const getAnswer = (prop, handleRadioChange, index) => {
           {teams.map((tag, _index) => (
             <div className="wrapper" key={_index}>
               <label className="custom-label">{tag}</label>
-              <input
+              {/* <input
                 type="number"
                 className="custom-input"
                 required
@@ -561,6 +560,16 @@ const getAnswer = (prop, handleRadioChange, index) => {
                   handleScoreChange(_index, tag, index, e.target.value)
                 }
                
+              /> */}
+              <TextField
+                required
+                label="number"
+                id="outlined-number"
+                type={"number"}
+                name={"q_" + index}
+                onChange={(e) =>
+                  handleScoreChange(_index, tag, index, e.target.value)
+                }
               />
             </div>
           ))}
@@ -576,12 +585,22 @@ const getAnswer = (prop, handleRadioChange, index) => {
         </p>
         <div className="row-input">
           <div className="wrapper">
-            <input
+            {/* <input
               type="number"
               className="custom-input"
               required
               name={"q_" + index}
               onChange={(e) => handleRadioChange(index, e.target.value)}
+            /> */}
+            <TextField
+              required
+              label="number"
+              id="outlined-number"
+              type={"number"}
+              name={"q_" + index}
+              onChange={(e) =>
+                handleScoreChange(index, e.target.value)
+              }
             />
           </div>
         </div>

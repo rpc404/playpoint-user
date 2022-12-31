@@ -22,10 +22,32 @@
   gap: 10px;
   margin-top: 10px;
 }
+@media screen and (max-width: 425px) {
+  .row-input {
+    flex-direction: column;
+  }
+}
 .row-input .wrapper {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+.row-input .wrapper .MuiFormLabel-root {
+  top: -5px;
+}
+.row-input .wrapper .MuiFormLabel-root.Mui-focused {
+  color: rgb(233, 233, 233);
+}
+.row-input .wrapper .MuiOutlinedInput-notchedOutline {
+  color: #fff;
+}
+.row-input .wrapper .MuiOutlinedInput-input {
+  outline: 1px solid #fff;
+  background: #fff;
+  padding: 10px;
+}
+.row-input .wrapper .MuiOutlinedInput-input legend {
+  color: #fff !important;
 }
 .row-input .custom-input {
   width: 5vw;
@@ -36,7 +58,13 @@
 }
 .row-input .custom-label {
   font-size: 17px;
-  color: rgb(125, 134, 143);
+  color: rgb(165, 171, 177);
+}
+@media screen and (max-width: 425px) {
+  .row-input .custom-label {
+    display: flex;
+    flex: 0 1 100px;
+  }
 }
 
 .login-btn {
