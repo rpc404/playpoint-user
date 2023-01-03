@@ -49,6 +49,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
 export default function Predict() {
   const [marketplaceSlug, setMS] = React.useState("");
 
@@ -251,11 +252,11 @@ export default function Predict() {
             <div className="predictionTable__competitor">
               <div>
                 <p>{fixture?.HomeTeam}</p>
-                {HomeTeamFlag(marketplaceSlug, fixture?.HomeTeam)}
+                {HomeTeamFlag(fixture?.HomeTeam, marketplaceSlug)}
               </div>
               <span>vs</span>
               <div>
-                {AwayTeamFlag(marketplaceSlug, fixture?.AwayTeam)}
+                {AwayTeamFlag(fixture?.AwayTeam, marketplaceSlug)}
                 <p>{fixture.AwayTeam}</p>
               </div>
             </div>
