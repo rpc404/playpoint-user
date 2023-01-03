@@ -194,7 +194,7 @@ const PoolType = ({
     _predictionData.fixtureId = questionaire.questionaires[0].fixtureId;
     _predictionData.marketplaceSlug =
       questionaire.tempQuestionaire[0].marketplaceSlug;
-
+    let amnt = _predictionData.amount;
     if (validation(_predictionData.answers)) {
       setPredicting(true);
       const provider = new ethers.providers.Web3Provider(ethereum);
@@ -207,7 +207,7 @@ const PoolType = ({
       const PPTTBalance = await PPTTContract.balanceOf(
         _predictionData.predictedBy
       );
-      if (PPTTBalance < _predictionData.amount) {
+      if (PPTTBalance < amnt) {
         return toast("Insufficient PPTT");
       }
 
@@ -225,16 +225,15 @@ const PoolType = ({
 
       // console.log(ethers.utils.parseEther(_predictionData.amount.toString()), _predictionData.amount)
       // console.log(duoAmount,trioAmount)
-      let _amount = 0;
+      
       if (duoAmount > 0 || trioAmount > 0) {
         if (duoAmount > 0) {
-          _amount += duoAmount;
+          amnt += duoAmount;
         }
         if (trioAmount > 0) {
           // console.log(_challenegeResult);
-          _amount += trioAmount;
+          amnt += trioAmount;
         }
-        _predictionData.amount += _amount;
       }
       function toFixed(x) {
         if (Math.abs(x) < 1.0) {
@@ -253,10 +252,7 @@ const PoolType = ({
         }
         return x;
       }
-      const _ppttAmount =
-        _predictionData.amount > 10
-          ? toFixed((_predictionData.amount / 0.02) * 10 ** 18)
-          : ((_predictionData.amount / 0.02) * 1e18).toString();
+      const _ppttAmount = amnt > 10 ? toFixed((amnt / 0.02) * 10 ** 18) : ((amnt/0.02) * 1e18).toString();
       // transfer prediction pool
       try {
         const _res = await PPTTContract.transfer(
@@ -298,7 +294,7 @@ const PoolType = ({
                   fixtureId: data.fixtureId,
                   predictionId: data._id,
                   type: "trio",
-                  amount: trioAmount,
+                  amount: (trioAmount/trioSlots),
                   slot: trioSlots,
                   status: "active",
                 };
@@ -424,13 +420,13 @@ const PoolType = ({
                   <h4>Drag to make your duo slots open</h4>
                   <Slider
                     aria-label="Custom marks"
-                    defaultValue={1}
+                    defaultValue={0}
                     getAriaValueText={(value) => valuetext(value)}
                     step={1}
                     valueLabelDisplay="on"
                     marks={marks}
                     max={10}
-                    min={1}
+                    min={0}
                     onChange={(e, value) => {
                       setduoSlots(value);
                     }}
@@ -448,7 +444,7 @@ const PoolType = ({
                     valueLabelDisplay="on"
                     marks={marks}
                     max={10}
-                    min={1}
+                    min={0}
                     onChange={(e, value) => {
                       settrioSlots(value);
                     }}
@@ -465,13 +461,13 @@ const PoolType = ({
           <div className="top">
             <div>
               <h4>Pool Entry: {totalPredictionPrice / 0.02}PPTT</h4>
-              {duoAmount > 0 && (
+              {(duoAmount > 0 && duoSlots > 0) && (
                 <h4>
                   Duo Entry: {duoSlots} slots x{" "}
                   {userPrediction.activeAmount / 0.02} = {duoAmount / 0.02}PPTT
                 </h4>
               )}
-              {trioAmount > 0 && (
+              {(trioAmount > 0 && duoSlots > 0) && (
                 <h4>
                   Trio Entry: {trioSlots} slots x{" "}
                   {userPrediction.activeAmount / 0.02} = {trioAmount / 0.02}PPTT
