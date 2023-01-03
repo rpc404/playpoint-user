@@ -492,14 +492,14 @@ const Prediction = () => {
           )}
 
           {
-           ( mode=="watch-challenge" && challengeStat) ? (
+           ( mode=="watch-challenge" && challengeStat._id) ? (
               <div className="challenege_status_container">
                 <h3>Challenge ID: #{challengeStat._id.slice(-10,challengeStat._id.length)}</h3>
                 <div className="csc__Header">
                   <p>No of slots: {challengeStat.slot}</p>
                   <p>Intra Pool: {challengeStat.type}</p>
                   <p>Pool status: {challengeStat.status}</p>
-                  <p>Filled: {challengeStat.slot - (challengeStat.participants.length)}</p>
+                  <p>Filled: {(challengeStat.participants.length)}</p>
                 </div>
                 <div className="csc__Content">
                   {
