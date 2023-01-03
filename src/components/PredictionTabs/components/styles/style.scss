@@ -1,57 +1,85 @@
-.row-radio{
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    
-    .wrapper{
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    .custom-label{
-        font-size: 17px;
-        color: rgb(125, 134, 143);
-    }
-    .custom-radio{
-        height: 20px;
-        width: 20px;
-    }
-}
-.row-input{
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+.row-radio {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 
-    .wrapper{
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    .custom-input{
-        width: 5vw;
-        padding: 2px;
-        font-size: 17px;
-        border: none;
-        outline: none;
-    }
-    .custom-label{
-        font-size: 17px;
-        color: rgb(125, 134, 143);
-    }
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .custom-label {
+    font-size: 17px;
+    color: rgb(125, 134, 143);
+  }
+  .custom-radio {
+    height: 20px;
+    width: 20px;
+  }
 }
-.login-btn{
-    background-color: var(--toastify-color-info) !important;
+.row-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+
+  @media screen and (max-width: 425px) {
+    flex-direction: column;
+  }
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .MuiFormLabel-root {
+      top: -5px;
+      &.Mui-focused {
+        color: rgb(233, 233, 233);
+      }
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+      color: #fff;
+    }
+
+    .MuiOutlinedInput-input {
+      outline: 1px solid #fff;
+      background: #fff;
+      padding: 10px;
+
+      legend {
+        color: #fff !important;
+      }
+    }
+  }
+  .custom-input {
+    width: 5vw;
+    padding: 2px;
+    font-size: 17px;
+    border: none;
+    outline: none;
+  }
+  .custom-label {
+    font-size: 17px;
+    color: rgb(165, 171, 177);
+    @media screen and (max-width: 425px) {
+      display: flex;
+      flex: 0 1 100px;
+    }
+  }
 }
-.closed-btn{
-    background-color: rgba(208, 87, 87, 0.912) !important;
+.login-btn {
+  background-color: var(--toastify-color-info) !important;
 }
-.challenges{
- .MuiFormControlLabel-label{
+.closed-btn {
+  background-color: rgba(208, 87, 87, 0.912) !important;
+}
+.challenges {
+  .MuiFormControlLabel-label {
     color: #fffff3;
- }   
- .slots{
-    h4{
-        color: #fffff3;
+  }
+  .slots {
+    h4 {
+      color: #fffff3;
     }
- }
+  }
 }

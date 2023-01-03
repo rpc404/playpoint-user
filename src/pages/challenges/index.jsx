@@ -1,14 +1,17 @@
 import moment from "moment/moment";
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { getAllChallenge } from "../../api/Challenge";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
-import { HomeTeamFlag } from "../predict";
+import GetFlags from "../../utils/GetFlags";
 import "./styles/style.css";
 
 const Challenges = () => {
   const [_challenges, setChalleneges] = React.useState([]);
   const [prop, setActiveProp] = React.useState("");
   const [temp, setTemp] = React.useState([]);
+  const {HomeTeamFlag} = GetFlags();
+  const navigate = useNavigate();
   const [{ userPublicAddress, username, isWalletConnected }, dispatchRPCData] =
     useRPCContext();
 
@@ -67,7 +70,7 @@ const Challenges = () => {
         <div className="cardContainer">
           {temp.map((challenge, key) => {
             return (
-              <div key={key} className="card">
+              <div key={key} className="card" onClick={()=>navigate(`/prediction/${challenge.predictionId._id}`)}>
                 <div className="cardHeader">
                   <h2>ID: #{challenge._id.slice(5, 10)}</h2>
                   <span className={challenge.type}>{challenge.type}</span>
@@ -87,10 +90,10 @@ const Challenges = () => {
                 </div>
                 <div className="fixture">
                   <p>
-                    {HomeTeamFlag(challenge.fixtureId.HomeTeam,challenge.fixtureId.marketplaceSlug)}
+                    {HomeTeamFlag(challenge.fixtureId.marketplaceSlug,challenge.fixtureId.HomeTeam)}
                     {challenge.fixtureId.HomeTeam}</p>
                   <p>{" - "}</p>
-                  <p>{HomeTeamFlag(challenge.fixtureId.AwayTeam,challenge.fixtureId.marketplaceSlug)}{challenge.fixtureId.AwayTeam}</p>
+                  <p>{HomeTeamFlag(challenge.fixtureId.marketplaceSlug,challenge.fixtureId.AwayTeam)}{challenge.fixtureId.AwayTeam}</p>
                 </div>
                 <div className="stat">
                     <p className="amount">{challenge.amount/0.02}PPTT</p>

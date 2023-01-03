@@ -2,10 +2,14 @@ import { Button } from "@mui/material";
 import React from "react";
 import CountryFlags from "../../helpers/CountryFlags.json";
 import { useNavigate } from "react-router-dom";
+import GetFlags from "../../utils/GetFlags";
+import Moment from "moment";
 
 export default function QuickView({ handleModalClose }) {
   const navigate = useNavigate();
   const [gameData, setGameData] = React.useState(null);
+
+  const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
 
   const handleModal = () => {
     document.body.style = "";
@@ -32,24 +36,11 @@ export default function QuickView({ handleModalClose }) {
             </div>
             <div className="topBar">
               <div className="homeTeam">{gameData?.HomeTeam}</div>
-              {CountryFlags.map((country, index) => {
-                return (
-                  country.name === gameData.HomeTeam && (
-                    <img src={country.image} alt={country.image} key={index} />
-                  )
-                );
-              })}
+              {HomeTeamFlag(gameData.marketplaceSlug, gameData.HomeTeam)}
               <div className="gameTime">
-                {gameData?.DateUtc}
-                UTC
+                {Moment(gameData?.DateUtc).format("LL")}
               </div>
-              {CountryFlags.map((country, index) => {
-                return (
-                  country.name === gameData.AwayTeam && (
-                    <img src={country.image} alt={country.image} key={index} />
-                  )
-                );
-              })}
+              {AwayTeamFlag(gameData.marketplaceSlug, gameData.AwayTeam)}
               <div className="awayTeam">{gameData?.AwayTeam}</div>
             </div>
 
@@ -61,9 +52,7 @@ export default function QuickView({ handleModalClose }) {
                 className="predictNow"
                 onClick={() => {
                   document.body.style = "";
-                  navigate(
-                    `/predict/${gameData._id}`
-                  );
+                  navigate(`/predict/${gameData._id}`);
                 }}
               >
                 <i className="ri-boxing-line"></i>Predict Now

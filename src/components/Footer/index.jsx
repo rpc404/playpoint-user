@@ -28,9 +28,12 @@ const index = () => {
             <div>
               <a href="#">Marketplaces</a>
             </div>
-            <a href="#">Fixtures</a>
-            <a href="#">Wallet</a>
-            <a href="#">Launch App</a>
+            <div>
+              <a href="https://docs.playpoint.ai/" target={"_blank"}>
+                Documentation
+              </a>
+            </div>
+            <Link to={"challenges"}>Challenges</Link>
           </div>
         </div>
         <div className="social">
@@ -68,11 +71,16 @@ const index = () => {
       </div>
       <div className="copyright">
         <div className="copy">
-          <Typography>Copyright &copy; Playpoint Labs, 2022. All Rights Reserved</Typography>
+          <Typography>
+            Copyright &copy; Playpoint Labs, 2022. All Rights Reserved
+          </Typography>
           <Link to="privacy-policy">Privacy Policy</Link>
           <Link to="terms-conditions">Terms & Conditions</Link>
         </div>
-        <Typography>Built with ❤️ by Playpoint Labs, in collab with CodewithSudeep & Jcka Labs. </Typography>
+        <Typography>
+          Built with ❤️ by Playpoint Labs, in collab with CodewithSudeep & Jcka
+          Labs.{" "}
+        </Typography>
       </div>
     </div>
   );

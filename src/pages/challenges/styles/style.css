@@ -38,6 +38,7 @@
   padding: 10px;
   background-color: #161616;
   width: 24%;
+  cursor: pointer;
 }
 .challenges__Container .challenges__AllChallenges .cardContainer .card .cardHeader {
   display: flex;

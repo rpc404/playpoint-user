@@ -5,6 +5,9 @@
   padding: 13px 2vw;
   background: #000;
   color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 9;
 
   .logo__container {
     display: flex;
