@@ -51,6 +51,98 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+export const HomeTeamFlag = (team, marketplaceSlug) => {
+  if (marketplaceSlug === "English-Football-League397") {
+    return clubFlags.map((club, i) => {
+      if (club.name === team) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="home__Image"
+          />
+        );
+      }
+    });
+  } else if (marketplaceSlug === "Carabao-Cup237") {
+    return CarabaoClubFlags.map((club, i) => {
+      if (club.name === team) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="home__Image"
+          />
+        );
+      }
+    });
+  } else if (marketplaceSlug === "premiere-league") {
+    return EPLFlags.map((club, i) => {
+      if (
+        club.name.replace(" ", "").toLowerCase().trim() ===
+        team.replace(" ", "").toLowerCase().trim()
+      ) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="home__Image"
+          />
+        );
+      }
+    });
+  }
+};
+
+export const AwayTeamFlag = (team, marketplaceSlug) => {
+  if (marketplaceSlug === "English-Football-League397") {
+    return clubFlags.map((club, i) => {
+      if (club.name === team) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="home__Image"
+          />
+        );
+      }
+    });
+  } else if (marketplaceSlug === "Carabao-Cup237") {
+    return CarabaoClubFlags.map((club, i) => {
+      if (club.name === team) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="home__Image"
+          />
+        );
+      }
+    });
+  } else if (marketplaceSlug === "premiere-league") {
+    return EPLFlags.map((club, i) => {
+      if (
+        club.name.replace(" ", "").toLowerCase().trim() ===
+        team.replace(" ", "").toLowerCase().trim()
+      ) {
+        return (
+          <img
+            src={club.image_url}
+            alt={club.name}
+            key={i}
+            className="home__Image"
+          />
+        );
+      }
+    });
+  }
+};
+
 export default function Predict() {
   
   const [marketplaceSlug, setMS] = React.useState("");
@@ -75,91 +167,7 @@ export default function Predict() {
     setOpen(false);
   };
 
-  const HomeTeamFlag = (team) => {
-    if (marketplaceSlug === "English-Football-League397") {
-      return clubFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    } else if (marketplaceSlug === "Carabao-Cup237") {
-      return CarabaoClubFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    } else if (marketplaceSlug === "premiere-league") {
-      return EPLFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    }
-  };
-
-  const AwayTeamFlag = (team) => {
-    if (marketplaceSlug === "English-Football-League397") {
-      return clubFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    } else if (marketplaceSlug === "Carabao-Cup237") {
-      return CarabaoClubFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    } else if (marketplaceSlug === "premiere-league") {
-      return EPLFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    }
-  };
+   
 
   const calculateTimeLeft = (eventTime) => {
     let duration = moment(eventTime).diff(moment.now(), "seconds");
@@ -328,11 +336,11 @@ export default function Predict() {
             <div className="predictionTable__competitor">
               <div>
                 <p>{fixture?.HomeTeam}</p>
-                {HomeTeamFlag(fixture?.HomeTeam)}
+                {HomeTeamFlag(fixture?.HomeTeam, marketplaceSlug)}
               </div>
               <span>vs</span>
               <div>
-                {AwayTeamFlag(fixture?.AwayTeam)}
+                {AwayTeamFlag(fixture?.AwayTeam, marketplaceSlug)}
                 <p>{fixture.AwayTeam}</p>
               </div>
             </div>

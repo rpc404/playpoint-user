@@ -1,12 +1,100 @@
 .challenges__Container {
-  display: grid;
-  grid-template-areas: "user all all all";
-  gap: 10px;
-  padding: 1.4em;
+  display: flex;
+  gap: 20px;
+  padding: 0 1.4em;
+  justify-content: space-between;
 }
-.challenges__Container .challenges__UserChallenges {
-  grid-area: "user";
+.challenges__Container .filters {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  gap: 2px;
+  max-width: 50%;
+  margin: auto;
+}
+.challenges__Container .filters button {
+  padding: 10px 5px;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 17px;
+  background: #1a1d20;
+  width: 100%;
+  cursor: pointer;
 }
 .challenges__Container .challenges__AllChallenges {
-  grid-area: "all";
+  width: 100%;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 15px;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card {
+  padding: 10px;
+  background-color: #161616;
+  width: 24%;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.4px solid rgba(246, 218, 216, 0.3725490196);
+  padding: 10px 0;
+  margin: 5px 0;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .duo {
+  color: #0ddd97;
+  padding: 2px 15px;
+  border-radius: 5px;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  text-transform: capitalize;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .trio {
+  color: #e7f82e;
+  padding: 2px 15px;
+  border-radius: 5px;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  text-transform: capitalize;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .fixture {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .fixture p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .fixture img {
+  width: 1.5em;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .predictedBy {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 1em;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .predictedBy img {
+  width: 2.5em;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .stat .amount {
+  color: #0ddd97;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .stat .filled {
+  color: crimson;
 }/*# sourceMappingURL=style.css.map */

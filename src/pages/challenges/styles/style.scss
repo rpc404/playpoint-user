@@ -1,15 +1,96 @@
-.challenges__Container{
-    display: grid;
-    grid-template-areas: "user all all all";
-    gap: 10px;
-    padding: 1.4em;
-
-    .challenges__UserChallenges{
-        grid-area: "user";
+.challenges__Container {
+  display: flex;
+  gap: 20px;
+  padding: 0 1.4em;
+  justify-content: space-between;
+  .filters{
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    gap: 2px;
+    max-width: 50%;
+    margin: auto;
+    button{
+        padding: 10px 5px;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 17px;
+        background: #1a1d20;
+        width: 100%;
+        cursor: pointer;
     }
-    .challenges__AllChallenges{
-        grid-area: "all";
+  }
+  .challenges__AllChallenges {
+    width: 100%;
+    .cardContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 15px;
+      .card {
+        padding: 10px;
+        background-color: #161616;
+        width: 24%;
+        .cardHeader{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 0.4px solid #f6dad85f;
+            padding: 10px 0;
+            margin: 5px 0;
+        }
+        .duo {
+          color: #0ddd97;
+          padding: 2px 15px;
+          border-radius: 5px;
+          max-width: fit-content;
+          text-transform: capitalize;
+        }
+        .trio {
+            color: #e7f82e;
+            padding: 2px 15px;
+            border-radius: 5px;
+            max-width: fit-content;
+            text-transform: capitalize;
+          }
+        .fixture {
+          display: flex;
+          gap: 5px;
+          align-items: center;
+          justify-content: center;
+          p{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          }
+          img{
+            width: 1.5em;
+          }
+        }
+        .predictedBy{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 1em;
+            img{
+                width: 2.5em;
+            }
+        }
+        .stat{
+            display: flex;
+            justify-content: space-between;
+            padding: 1em;
+            .amount{
+                color: #0ddd97;
+            }
+            .filled{
+                color: crimson;
+            }
+        }
+      }
     }
+  }
 }
-
-
