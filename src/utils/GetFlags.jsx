@@ -2,10 +2,8 @@ import clubFlags from "../helpers/EPLFlags.json";
 import CarabaoClubFlags from "../helpers/EFLFlags.json";
 import EPLFlags from "../helpers/EPLFlags.json";
 
-
 const GetFlags = () => {
   const HomeTeamFlag = (marketplaceSlug, team) => {
-    console.log(marketplaceSlug);
     if (marketplaceSlug === "English-Football-League397") {
       return clubFlags.map((club, i) => {
         if (club.name === team) {
@@ -34,7 +32,6 @@ const GetFlags = () => {
       });
     } else if (marketplaceSlug === "premiere-league") {
       return EPLFlags.map((club, i) => {
-        club.name === String(team) && console.log(club.name,team)
         if (
           club.name.replace(" ", "").toLowerCase().trim() ===
           String(team).replace(" ", "").toLowerCase().trim()
@@ -51,7 +48,7 @@ const GetFlags = () => {
       });
     }
   };
-  
+
   const AwayTeamFlag = (marketplaceSlug, team) => {
     if (marketplaceSlug === "English-Football-League397") {
       return clubFlags.map((club, i) => {
@@ -81,7 +78,6 @@ const GetFlags = () => {
       });
     } else if (marketplaceSlug === "premiere-league") {
       return EPLFlags.map((club, i) => {
-       club.name === team && console.log(club.name,team)
         if (
           club.name.replace(" ", "").toLowerCase().trim() ===
           String(team).replace(" ", "").toLowerCase().trim()
