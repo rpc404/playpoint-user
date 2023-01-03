@@ -15,9 +15,6 @@ import moment from "moment";
 import Pusher from "pusher-js";
 // import Leaderboards from "../../components/Leaderboards/Leaderboards";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
-import clubFlags from "../../helpers/EPLFlags.json";
-import CarabaoClubFlags from "../../helpers/EFLFlags.json";
-import EPLFlags from "../../helpers/EPLFlags.json";
 import { useLocation } from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
@@ -27,6 +24,7 @@ import Typography from "@mui/material/Typography";
 import Slide from "@mui/material/Slide";
 import PredictionItems from "../../components/PredictionItems";
 import LeaderBoardList from "../../components/LeaderboardList/Leaderboard";
+import GetFlags from "../../utils/GetFlags";
 
 export const getCountryFlag = (country) => {
   let _url = "";
@@ -52,19 +50,20 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Predict() {
-  
   const [marketplaceSlug, setMS] = React.useState("");
+
+  const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
 
   const { state } = useLocation();
 
   const [open, setOpen] = React.useState(false);
   const [currentMode, setCurrentMode] = React.useState("");
-  React.useEffect(()=>{
-  if(state){
-    let { marketplaceSlug } = state;
-    setMS(marketplaceSlug);
-  }
-  },[])
+  React.useEffect(() => {
+    if (state) {
+      let { marketplaceSlug } = state;
+      setMS(marketplaceSlug);
+    }
+  }, []);
 
   const handleClickOpen = (mode) => {
     setOpen(true);
@@ -73,92 +72,6 @@ export default function Predict() {
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const HomeTeamFlag = (team) => {
-    if (marketplaceSlug === "English-Football-League397") {
-      return clubFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    } else if (marketplaceSlug === "Carabao-Cup237") {
-      return CarabaoClubFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    } else if (marketplaceSlug === "premiere-league") {
-      return EPLFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    }
-  };
-
-  const AwayTeamFlag = (team) => {
-    if (marketplaceSlug === "English-Football-League397") {
-      return clubFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    } else if (marketplaceSlug === "Carabao-Cup237") {
-      return CarabaoClubFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    } else if (marketplaceSlug === "premiere-league") {
-      return EPLFlags.map((club, i) => {
-        if (club.name === team) {
-          return (
-            <img
-              src={club.image_url}
-              alt={club.name}
-              key={i}
-              className="home__Image"
-            />
-          );
-        }
-      });
-    }
   };
 
   const calculateTimeLeft = (eventTime) => {
@@ -225,7 +138,7 @@ export default function Predict() {
   const navigate = useNavigate();
   // console.log(predictions)
 
-  const [volume, setVolume] = React.useState(0)
+  const [volume, setVolume] = React.useState(0);
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -249,7 +162,6 @@ export default function Predict() {
 
     (async () => {
       const response = await getAllPredictionsByFixture(fixtureId);
-      console.log(response);
       sessionStorage.setItem(
         "predictions",
         JSON.stringify(response.data.data.reverse())
@@ -284,6 +196,17 @@ export default function Predict() {
       }
     });
   }, []);
+
+  React.useEffect(() => {
+    const totalVolume = (data, prop) => {
+      return data.reduce((a, b) => {
+        return a + b[prop];
+      }, 0);
+    };
+
+    const total = totalVolume(predictions, "amount");
+    setVolume(total / 0.02);
+  }, [predictions]);
 
   return (
     <div className="prediction__container">
@@ -328,11 +251,11 @@ export default function Predict() {
             <div className="predictionTable__competitor">
               <div>
                 <p>{fixture?.HomeTeam}</p>
-                {HomeTeamFlag(fixture?.HomeTeam)}
+                {HomeTeamFlag(marketplaceSlug, fixture?.HomeTeam)}
               </div>
               <span>vs</span>
               <div>
-                {AwayTeamFlag(fixture?.AwayTeam)}
+                {AwayTeamFlag(marketplaceSlug, fixture?.AwayTeam)}
                 <p>{fixture.AwayTeam}</p>
               </div>
             </div>
@@ -403,7 +326,11 @@ export default function Predict() {
          * @note Leaderboards Predictions
          */}
 
-        <LeaderBoardList fixture={fixture} open={open} marketplaceSlug={marketplaceSlug} />
+        <LeaderBoardList
+          fixture={fixture}
+          open={open}
+          marketplaceSlug={marketplaceSlug}
+        />
 
         {/**
          *  @ Dialog for active predictions in mobile view
