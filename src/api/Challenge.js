@@ -17,3 +17,11 @@ export const getChallenge = async (id) => {
   return challenges;
 };
 
+export const getAllChallenge = async () => {
+  var challenges = await axios.get(
+    import.meta.env.VITE_API_URI +
+      `api/v1/get-challenges`
+  );
+  return challenges;
+};
+
