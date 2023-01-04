@@ -4,6 +4,7 @@ import Topbar from "./components/Topbar";
 import { useRPCContext } from "./contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "./contexts/WalletRPC/RPCReducer";
 import PageRouters from "./utils/Routers";
+import Footer from "./components/Footer/index";
 
 export default function App() {
   const [, dispatchRPCData] = useRPCContext();
@@ -31,7 +32,8 @@ export default function App() {
       <Topbar />
       <Navbar />
       <PageRouters socket={channel} />
-
+      <div className="divider"></div>
+      <Footer />
       <div className="snowflakes" aria-hidden="true">
         <div className="snowflake">❅</div>
         <div className="snowflake">❆</div>

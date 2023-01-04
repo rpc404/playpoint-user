@@ -7,7 +7,7 @@ import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceCon
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import Hero from "../../components/Hero";
-import Footer from "../../components/Footer";
+
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
@@ -88,7 +88,7 @@ export default function Home() {
 
       <LeaderboardMain />
       <div className="divider"></div>
-      <Footer />
+
     </div>
   );
 }
