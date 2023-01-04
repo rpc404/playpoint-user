@@ -49,15 +49,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
 export default function Predict() {
   const [marketplaceSlug, setMS] = React.useState("");
 
-  const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
+  // const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
 
   const { state } = useLocation();
 
   const [open, setOpen] = React.useState(false);
+
   const [currentMode, setCurrentMode] = React.useState("");
   React.useEffect(() => {
     if (state) {
@@ -130,7 +130,7 @@ export default function Predict() {
   const [, setQuestionaires] = React.useState([]);
   const [lineChartData, setLineChartData] = React.useState([]);
   const [activeOS, setActiveOS] = React.useState("");
-  const [status, setStatus] = React.useState(false);
+  // const [status, setStatus] = React.useState(false);
   const [{ predictions }, dispatchPredictionsData] = usePredictionsContext();
   const [timeLeft, setTimeLeft] = React.useState(
     calculateTimeLeft(fixture.DateUtc)
@@ -158,7 +158,7 @@ export default function Predict() {
     (async () => {
       const response = await getFixutreById(fixtureId);
       setFixture(response.data?.fixture);
-      setStatus(response.data?.status);
+      // setStatus(response.data?.status);
     })();
 
     (async () => {
@@ -190,6 +190,7 @@ export default function Predict() {
       if (data.data[0].fixtureId == fixtureId) {
         const newPrediction = [data.data[0], ..._predictions];
         sessionStorage.setItem("predictions", JSON.stringify(newPrediction));
+
         dispatchPredictionsData({
           type: "set-predictions",
           payload: newPrediction,
@@ -252,11 +253,11 @@ export default function Predict() {
             <div className="predictionTable__competitor">
               <div>
                 <p>{fixture?.HomeTeam}</p>
-                {HomeTeamFlag(fixture?.HomeTeam, marketplaceSlug)}
+                {GetFlags(marketplaceSlug, fixture?.HomeTeam)}
               </div>
               <span>vs</span>
               <div>
-                {AwayTeamFlag(fixture?.AwayTeam, marketplaceSlug)}
+                {GetFlags(marketplaceSlug, fixture?.AwayTeam)}
                 <p>{fixture.AwayTeam}</p>
               </div>
             </div>

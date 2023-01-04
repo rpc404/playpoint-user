@@ -27,11 +27,11 @@ const Hero = () => {
               showcase, prediction hub, and various prediction pools.
             </Typography>
             <p className="introduction">
-              <span>"Duo"</span> and <span>"trio"</span> pools are new
-              prediction pools that involve predicting the{" "}
-              <span>outcomes of two or three events</span>, respectively. It's
-              not clear how these pools will be structured or how they differ
-              from <span>other prediction pools</span> offered by Playpoint.
+              <span>Duo</span> and <span>Trio</span> are challenges where you
+              can predict and challenge others. In Duo, you can challenge
+              another person, and in Trio, you can challenge two other people.
+              To participate, you can choose how many entries you want to open
+              for others to challenge.
             </p>
             <div className="actions">
               <div

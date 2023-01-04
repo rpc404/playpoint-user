@@ -90,7 +90,7 @@
   justify-content: center;
   gap: 5px;
 }
-@media (max-width: 576px) {
+@media (max-width: 769px) {
   .navbar__container .navbar__authentication {
     display: none;
   }
@@ -98,7 +98,7 @@
 .navbar__container .drawer .MuiDivider-root {
   border-color: rgba(164, 164, 164, 0.887) !important;
 }
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .navbar__container .drawer {
     display: none;
   }

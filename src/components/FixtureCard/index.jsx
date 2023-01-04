@@ -14,7 +14,7 @@ export default function FixtureCard({
 }) {
   const navigate = useNavigate();
 
-  const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
+  // const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
 
   /**
    * @dev only list games according to dates
@@ -72,9 +72,9 @@ export default function FixtureCard({
                     style={{ cursor: "pointer" }}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {HomeTeamFlag(marketplaceSlug, data.HomeTeam)}
+                    {GetFlags(marketplaceSlug, data.HomeTeam)}
                     {gameTime(data)}
-                    {AwayTeamFlag(marketplaceSlug, data.AwayTeam)}
+                    {GetFlags(marketplaceSlug, data.AwayTeam)}
                     <div className="teamName">{data?.AwayTeam}</div>
                   </div>
                 ) : (
@@ -122,14 +122,6 @@ export default function FixtureCard({
                     onClick={() => navigate(`/predict/${data?._id}`)}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {/* {CountryFlags.map((country, i) => {
-                      return HomeTeamFlag(data, country, i);
-                    })}
-                    {gameTime(data)}
-                    {CountryFlags.map((country, i) => {
-                      return AwayTeamFlag(data, country, i);
-                    })} */}
-                    {console.log(data)}
                     {HomeTeamFlag(data.HomeTeam)}
                     {gameTime(data)}
                     {AwayTeamFlag(data.AwayTeam)}
