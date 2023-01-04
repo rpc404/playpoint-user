@@ -310,7 +310,7 @@
         flex-direction: column;
       }
 
-      div {
+      .copy {
         display: flex;
         gap: 15px;
         @media screen and (max-width: 425px) {
@@ -318,11 +318,17 @@
         }
         padding-bottom: 0.5em;
 
-        p {
-          &:nth-child(2),
-          &:nth-child(3) {
-            cursor: pointer;
+        a {
+          color: #fff;
+          text-decoration: none;
+          transition: .4s ease;
+
+          &:hover {
+            color: rgba(255, 255, 255, 0.66);
+            text-decoration: underline;
+            text-underline-offset: 2px;
           }
+
         }
       }
 

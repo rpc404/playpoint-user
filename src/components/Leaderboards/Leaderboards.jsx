@@ -8,9 +8,6 @@ import {
 
 import allFlags from "../../helpers/CountryFlags.json";
 import { formatNumber } from "../../utils/NumberFomatter";
-import clubFlags from "../../helpers/EPLFlags.json";
-import CarabaoClubFlags from "../../helpers/EFLFlags.json";
-import EPLFlags from "../../helpers/EPLFlags.json";
 import GetFlags from "../../utils/GetFlags";
 
 export const getCountryShortName = (country) => {

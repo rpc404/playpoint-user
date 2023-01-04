@@ -58,6 +58,7 @@ export default function Profile() {
   const [{ results, woat }, dispatchPredictionsData] = usePredictionsContext();
   const [_username, setUsername] = useState(username);
   const [value, setValue] = React.useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const [balance, setBalance] = React.useState({
     ethBalance: 0,
@@ -142,7 +143,13 @@ export default function Profile() {
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder={username}
                 />
-                <div style={{ display: "flex", gap: "10px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "10px",
+                    flexDirection: "column",
+                  }}
+                >
                   <p
                     className="accountbtn"
                     onClick={() => {
@@ -151,14 +158,33 @@ export default function Profile() {
                     }}
                   >
                     {/* <div className="address"> */}
-                      {`${userPublicAddress}`.substring(0, 15) +
-                        `...` +
-                        `${userPublicAddress}`.substring(
-                          userPublicAddress.length - 3
-                        )}{" "}
-                      <i className="ri-file-copy-line"></i>
+                    {`${userPublicAddress}`.substring(0, 15) +
+                      `...` +
+                      `${userPublicAddress}`.substring(
+                        userPublicAddress.length - 3
+                      )}{" "}
+                    <i className="ri-file-copy-line"></i>
                     {/* </div> */}
                   </p>
+                  {selectedImage && (
+                    <div>
+                      <img
+                        src={URL.createObjectURL(selectedImage)}
+                        alt="not found"
+                        width={"200px"}
+                      />
+                      <br />
+                      <Button onClick={() => setSelectedImage(null)}>
+                        Remove
+                      </Button>
+                    </div>
+                  )}
+                  <input
+                    type="file"
+                    name="myImage"
+                    accept="image/png, image/gif, image/jpeg"
+                    onChange={(e) => setSelectedImage(e.target.files[0])}
+                  />
                   <Button onClick={() => handleUpdate()}>
                     <i className="ri-send-plane-fill"></i>
                   </Button>
@@ -181,19 +207,18 @@ export default function Profile() {
                         toast("Account number copied!");
                     }}
                   >
-                      {`${userPublicAddress}`.substring(0, 15) +
-                        `...` +
-                        `${userPublicAddress}`.substring(
-                          userPublicAddress.length - 3
-                        )}{" "}
-                      <i className="ri-file-copy-line"></i>
+                    {`${userPublicAddress}`.substring(0, 15) +
+                      `...` +
+                      `${userPublicAddress}`.substring(
+                        userPublicAddress.length - 3
+                      )}{" "}
+                    <i className="ri-file-copy-line"></i>
                   </p>
                   <Button
                     onClick={() => setEditMode(!editMode)}
                     style={{ padding: ".3em" }}
                   >
-                    <i className="ri-pencil-fill"></i> &nbsp;
-                    Edit Profile
+                    <i className="ri-pencil-fill"></i> &nbsp; Edit Profile
                   </Button>
                 </div>
               </div>
@@ -234,7 +259,10 @@ export default function Profile() {
                 <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
               </div>
             </div>
-            <Button className="addMoneyBtn" onClick={() => window.open("https://app.playpoint.ai/","_blank")}>
+            <Button
+              className="addMoneyBtn"
+              onClick={() => window.open("https://app.playpoint.ai/", "_blank")}
+            >
               <i className="ri-add-box-line"></i> Add Money
             </Button>
           </div>
@@ -316,8 +344,11 @@ export default function Profile() {
                           ) : (
                             <>
                               <>
-                                {parseFloat((data.predictionId.amount / 0.02)- data.rewardAmount).toFixed(2)} PPTT ~ $
-                                {data.predictionId.amount}
+                                {parseFloat(
+                                  data.predictionId.amount / 0.02 -
+                                    data.rewardAmount
+                                ).toFixed(2)}{" "}
+                                PPTT ~ ${data.predictionId.amount}
                               </>
                             </>
                           )}
@@ -337,7 +368,12 @@ export default function Profile() {
                         </p>
                         <p>{moment(data.created_at).format("LL")}</p>
                         <p>
-                          <a href={`https://sepolia.etherscan.io/tx/${data.txnhash}`} target='_blank'>View</a>
+                          <a
+                            href={`https://sepolia.etherscan.io/tx/${data.txnhash}`}
+                            target="_blank"
+                          >
+                            View
+                          </a>
                         </p>
                       </div>
                     );

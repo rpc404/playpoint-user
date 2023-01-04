@@ -122,14 +122,6 @@ export default function FixtureCard({
                     onClick={() => navigate(`/predict/${data?._id}`)}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {/* {CountryFlags.map((country, i) => {
-                      return HomeTeamFlag(data, country, i);
-                    })}
-                    {gameTime(data)}
-                    {CountryFlags.map((country, i) => {
-                      return AwayTeamFlag(data, country, i);
-                    })} */}
-                    {console.log(data)}
                     {HomeTeamFlag(data.HomeTeam)}
                     {gameTime(data)}
                     {AwayTeamFlag(data.AwayTeam)}

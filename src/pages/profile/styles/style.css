@@ -210,6 +210,10 @@
   padding: 5px 10px 5px 10px;
   color: #000;
 }
+.profile__container .summary__container .summaryItem div {
+  display: flex;
+  align-items: center;
+}
 .profile__container .summary__container .summaryItem i {
   font-size: 25px;
   color: #6b5ce7;
@@ -218,6 +222,7 @@
 .profile__container .summary__container .summaryItem p {
   font-size: 14px;
   font-weight: 600;
+  color: #000;
 }
 .profile__container .summary__container .summaryItem h3 {
   font-weight: 400;
@@ -312,6 +317,14 @@
   text-transform: uppercase;
   padding: 0 5px;
   font-size: 14px;
+}
+.profile__container .history__container .history__items .history__item p a {
+  color: #000;
+  text-decoration: none;
+}
+.profile__container .history__container .history__items .history__item p a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .profile__container .history__container .history__items .history__item p:nth-child(2) span {
   width: 250px;
