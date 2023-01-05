@@ -111,7 +111,6 @@ const PoolType = ({
 
       (async () => {
         const PPTTBalance = await contract.balanceOf(userPublicAddress);
-
         setBalance(ethers.utils.formatEther(PPTTBalance));
       })();
     }
@@ -218,7 +217,7 @@ const PoolType = ({
       // );
 
       const PredictionContract = new ethers.Contract(
-        "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1",
+        "0x53b0d58C2AFcb19a4305A25Af966Aa26E126dc4F",
         BetaFactoryAPI,
         provider
       ).connect(provider.getSigner());
@@ -256,7 +255,7 @@ const PoolType = ({
       // transfer prediction pool
       try {
         const _res = await PPTTContract.transfer(
-          "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
+          "0x53b0d58C2AFcb19a4305A25Af966Aa26E126dc4F", // contract address
           _ppttAmount
         );
         if (_res.hash) {
