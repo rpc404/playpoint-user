@@ -114,7 +114,7 @@ const Prediction = () => {
     console.log(_ppttAmount);
     // transfer prediction pool
     const txn = await PPTTContract.transfer(
-      "0x30D2B1b7fF7b9aDEdD44B15f575D54ACB09b58a1", // contract address
+      "0x53b0d58C2AFcb19a4305A25Af966Aa26E126dc4F", // contract address
       _ppttAmount
     );
     
