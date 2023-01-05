@@ -595,7 +595,7 @@ const getAnswer = (prop, handleRadioChange, index) => {
               type={"number"}
               name={"q_" + index}
               onChange={(e) =>
-                handleScoreChange(index, e.target.value)
+                handleRadioChange(index, e.target.value)
               }
             />
           </div>
