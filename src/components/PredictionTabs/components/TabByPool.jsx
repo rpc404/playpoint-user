@@ -410,10 +410,10 @@ const PoolType = ({
                 control={<Checkbox onChange={() => setDuoMode(!duoMode)} />}
                 label="Open for Duo"
               />
-              <FormControlLabel
+              {/* <FormControlLabel
                 control={<Checkbox onChange={() => setTrioMode(!trioMode)} />}
                 label="Open for Trio"
-              />
+              /> */}
               {duoMode && (
                 <div className="slots">
                   <h4>Drag to make your duo slots open</h4>
