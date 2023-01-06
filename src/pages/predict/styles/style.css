@@ -160,7 +160,7 @@
   gap: 20px;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: rgb(108, 102, 102);
 }
 @media screen and (max-width: 425px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_detail {
@@ -181,10 +181,10 @@
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: rgb(56, 55, 55);
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .fixture_results .teams_score p {
-  color: #4e4d4d;
+  color: #bcb9b9;
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .graphData {
   margin: 3vh auto;

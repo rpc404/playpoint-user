@@ -155,7 +155,7 @@
           gap: 20px;
           justify-content: center;
           align-items: center;
-          color: #fff;
+          color: rgb(108, 102, 102);
           @media screen and (max-width: 425px) {
             flex-direction: column;
           }
@@ -173,10 +173,10 @@
             text-align: center;
             padding: 5px;
             border-radius: 5px;
-            background-color: #fff;
+            background-color: rgb(56, 55, 55);
 
             p {
-              color: #4e4d4d;
+              color: #bcb9b9;
             }
           }
         }
