@@ -1,7 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Button } from "@mui/material";
-import { LineChart, LineSeries } from "reaviz";
 import PredictionTabs from "../../components/PredictionTabs";
 import "./styles/style.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -52,7 +50,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function Predict() {
   const [marketplaceSlug, setMS] = React.useState("");
 
-  // const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
 
   const { state } = useLocation();
 
@@ -225,14 +222,14 @@ export default function Predict() {
          */}
         <div className="recentPredictions">
           {window.innerWidth <= 425 ? (
-            <>
+            <div className="dialog__buttons">
               <h3 onClick={() => handleClickOpen("prediction")}>
-                Active Predictions
+                View Active Predictions
               </h3>
               <h3 onClick={() => handleClickOpen("leaderboard")}>
                 View Leaderboards
               </h3>
-            </>
+            </div>
           ) : (
             <h3>Active Predictions</h3>
           )}

@@ -267,6 +267,7 @@
 
 .skeleton__container {
   display: flex;
+  overflow-x: hidden;
 }
 .skeleton__container .tabSkeleton {
   display: flex;
