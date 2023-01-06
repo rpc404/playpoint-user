@@ -1,7 +1,4 @@
 .transaction__wrapper {
-  // background-color: #fff;
-  // width: 100%;
-  /* padding: 3vw; */
   color: #fff;
 
   .wrapper {
@@ -12,7 +9,6 @@
     backdrop-filter: blur(5px);
     padding: 0.8em;
     width: 90%;
-    margin: 2em auto;
 
     @media screen and (min-width: 426px) {
       display: grid;

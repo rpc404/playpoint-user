@@ -1,8 +1,23 @@
+.profile__container {
+  display: flex;
+  gap: 30px;
+}
+@media screen and (max-width: 768px) {
+  .profile__container {
+    flex-direction: column;
+  }
+}
 @media screen and (min-width: 769px) {
   .profile__container {
     display: grid;
-    grid-template-columns: 1fr 11fr;
+    grid-template-columns: 1fr 19fr;
   }
+}
+.profile__container .profile__header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 30px;
 }
 @media screen and (min-width: 769px) {
   .profile__container {
@@ -11,4 +26,65 @@
 }
 .profile__container i {
   cursor: pointer;
+}
+
+.profile__box {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .profile__box {
+    flex-direction: column;
+    margin-top: 1.2em;
+    gap: 10px;
+  }
+}
+.profile__box .username {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.profile__box .username h3 {
+  display: flex;
+  gap: 5px;
+  font-size: 1.8em;
+}
+.profile__box .username h3 span {
+  color: #1e8ecb;
+}
+.profile__box .username p {
+  color: #8c8d8d;
+}
+.profile__box .profleImage_box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile__box .profleImage_box p {
+  padding: 0.5em;
+}
+.profile__box .profleImage_box p:first-child {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.profile__box .profleImage_box p:not(.date) {
+  background-color: rgba(245, 245, 245, 0.2901960784);
+  border-radius: 50%;
+}
+.profile__box .profleImage_box p i {
+  font-size: 1.4em;
+}
+.profile__box .profleImage_box p .MuiBadge-badge {
+  top: 5px;
+  right: 4px;
+}
+.profile__box .profleImage_box img {
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=style.css.map */

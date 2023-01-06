@@ -5,19 +5,19 @@ import { getUserPredictions } from "../../api/Prediction";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { setProfile } from "../../api/Profile";
-import { toast } from "react-toastify";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import { getuserResults } from "../../api/Results";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
-import { Link } from "react-router-dom";
 import ProfileComponent from "../../components/Profile/";
 import { useMediaQuery } from "@mui/material";
+import Transaction from "../transaction";
+import moment from "moment/moment";
+import Badge from "@mui/material/Badge";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,8 +71,10 @@ export default function Profile() {
     if (userPublicAddress) {
       (async () => {
         const res = await getuserResults(userPublicAddress);
-        console.log(res);
-        dispatchPredictionsData({ type: "get-results", payload: res.data });
+        dispatchPredictionsData({
+          type: "get-results",
+          payload: res.data.reverse(),
+        });
       })();
     }
     if (username) {
@@ -123,12 +125,13 @@ export default function Profile() {
     setHistory(userProfile.slice((page - 1) * 10, page * 10));
   };
 
+  console.log(history);
+
   return (
     <div className="profile__container">
       <Helmet>
         <title>Profile | Playpoint</title>
       </Helmet>
-
       <div className="tabs">
         <Tabs
           orientation={
@@ -137,30 +140,55 @@ export default function Profile() {
           onChange={handleChange}
           value={value}
           aria-label="Vertical tabs example"
-          variant={useMediaQuery("(max-width:768px)") && "scrollable"}
+          variant={useMediaQuery("(max-width:768px)") ? "scrollable" : "fullWidth"}
+          indicatorColor= "secondary"
+          sx={{backgroundColor:"#0D1016"}}
         >
           <Tab icon={<i className="ri-user-line"></i>} {...a11yProps(0)} />
           <Tab
             icon={<i className="ri-exchange-funds-line"></i>}
             {...a11yProps(1)}
-            LinkComponent={Link}
-            to="/transaction"
           />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
-          <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
         </Tabs>
       </div>
-      <div className="userProfile">
+      <div className="profile__header">
+        <div className="profile__box">
+          <div className="username">
+            <h3>
+              Hello,<span>{username}</span>
+            </h3>
+            <p>Today is {moment().format("MMMM Do YYYY")} </p>
+          </div>
+          <div className="profleImage_box">
+            <p>
+              <Badge color="success" variant="dot">
+                <i className="ri-chat-3-line"></i>
+              </Badge>
+            </p>
+            <p>
+              <Badge color="success" variant="dot">
+                <i className="ri-notification-line"></i>
+              </Badge>
+            </p>
+            <img
+              src={`https://robohash.org/${username}`}
+              alt="robohash_image"
+              loading="lazy"
+            />
+          </div>
+        </div>
         <TabPanel value={value} index={0}>
-          <ProfileComponent
-            username={username}
-            balance={balance}
-            results={results}
-            woat={woat}
-          />
+          <div className="userProfile">
+            <ProfileComponent
+              username={username}
+              balance={balance}
+              results={results}
+              woat={woat}
+            />
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Transaction />
         </TabPanel>
       </div>
     </div>
