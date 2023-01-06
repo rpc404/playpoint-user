@@ -2,7 +2,7 @@
   display: flex;
   gap: 30px;
 
-  @media screen and (max-width:425px) {
+  @media screen and (max-width:768px) {
     flex-direction: column;
   }
 

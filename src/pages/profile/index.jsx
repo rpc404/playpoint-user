@@ -140,7 +140,7 @@ export default function Profile() {
           onChange={handleChange}
           value={value}
           aria-label="Vertical tabs example"
-          variant={useMediaQuery("(max-width:768px)") && "scrollable"}
+          variant={useMediaQuery("(max-width:768px)") ? "scrollable" : "fullWidth"}
           indicatorColor= "secondary"
           sx={{backgroundColor:"#0D1016"}}
         >
