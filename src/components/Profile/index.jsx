@@ -204,7 +204,9 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
                         className="match"
                         style={{ cursor: "pointer" }}
                         onClick={() =>
-                          navigate(`/predict/${data?.predictionId?.fixtureId._id}`)
+                          navigate(
+                            `/predict/${data?.predictionId?.fixtureId._id}`
+                          )
                         }
                       >
                         <span>
@@ -229,10 +231,10 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
                       </p>
                       <p>{moment(data.created_at).format("LL")}</p>
                       <p>
-                        {" "}
                         <a
                           href={`https://sepolia.etherscan.io/tx/${data.txnhash}`}
                           target="_blank"
+                          rel="noreferrer"
                         >
                           View
                         </a>
