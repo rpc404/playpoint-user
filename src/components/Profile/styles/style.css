@@ -30,15 +30,15 @@
 .profile__tab .profile__box .username p {
   color: #8c8d8d;
 }
-.profile__tab .profile__box .profleimage_box {
+.profile__tab .profile__box .profleImage_box {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.profile__tab .profile__box .profleimage_box p {
+.profile__tab .profile__box .profleImage_box p {
   padding: 0.5em;
 }
-.profile__tab .profile__box .profleimage_box p:first-child {
+.profile__tab .profile__box .profleImage_box p:first-child {
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(10px);
@@ -46,14 +46,18 @@
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
-.profile__tab .profile__box .profleimage_box p:not(.date) {
+.profile__tab .profile__box .profleImage_box p:not(.date) {
   background-color: rgba(245, 245, 245, 0.2901960784);
   border-radius: 50%;
 }
-.profile__tab .profile__box .profleimage_box p i {
-  font-size: 1.2em;
+.profile__tab .profile__box .profleImage_box p i {
+  font-size: 1.4em;
 }
-.profile__tab .profile__box .profleimage_box img {
+.profile__tab .profile__box .profleImage_box p .MuiBadge-badge {
+  top: 5px;
+  right: 4px;
+}
+.profile__tab .profile__box .profleImage_box img {
   height: 50px;
   width: 50px;
   -o-object-fit: cover;

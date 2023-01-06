@@ -18,6 +18,7 @@ import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
+import Badge from "@mui/material/Badge";
 
 /**
  *  @ReactChart
@@ -33,7 +34,7 @@ ChartJS.register(
 );
 
 export const options = {
-  responsive:true,
+  responsive: true,
   plugins: {
     legend: {
       position: "top",
@@ -95,13 +96,16 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
           </h3>
           <p>Today is {moment().format("MMMM Do YYYY")} </p>
         </div>
-        <div className="profleimage_box">
-          <p className="date">{moment().format("LL")}</p>
+        <div className="profleImage_box">
           <p>
-            <i className="ri-search-line"></i>
+            <Badge color="success" variant="dot">
+              <i className="ri-chat-3-line"></i>
+            </Badge>
           </p>
           <p>
-            <i className="ri-notification-line"></i>
+            <Badge color="success" variant="dot">
+              <i className="ri-notification-line"></i>
+            </Badge>
           </p>
           <img
             src={`https://robohash.org/${username}`}

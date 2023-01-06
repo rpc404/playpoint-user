@@ -18,7 +18,8 @@ import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 import { Link } from "react-router-dom";
 import ProfileComponent from "../../components/Profile/";
 import { useMediaQuery } from "@mui/material";
-
+import { Routes, Route } from "react-router-dom";
+import Transaction from "../transaction";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -128,7 +129,6 @@ export default function Profile() {
       <Helmet>
         <title>Profile | Playpoint</title>
       </Helmet>
-
       <div className="tabs">
         <Tabs
           orientation={
@@ -146,23 +146,33 @@ export default function Profile() {
             LinkComponent={Link}
             to="/transaction"
           />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
-          <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
         </Tabs>
       </div>
-      <div className="userProfile">
-        <TabPanel value={value} index={0}>
-          <ProfileComponent
-            username={username}
-            balance={balance}
-            results={results}
-            woat={woat}
-          />
-        </TabPanel>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="userProfile">
+              <TabPanel value={value} index={0}>
+                <ProfileComponent
+                  username={username}
+                  balance={balance}
+                  results={results}
+                  woat={woat}
+                />
+              </TabPanel>
+            </div>
+          }
+        />
+        <Route
+          path="/transaction"
+          element={
+            <TabPanel value={value} index={1}>
+              <Transaction />
+            </TabPanel>
+          }
+        />
+      </Routes>
     </div>
   );
 }

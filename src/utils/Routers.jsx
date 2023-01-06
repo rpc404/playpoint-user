@@ -24,7 +24,7 @@ export default function PageRouters({ socket }) {
       <Route path="marketplace" element={<MarketPlace />} />
       <Route path="leaderboards" element={<Leaderboards />} />
       <Route path="prediction/:pid" element={<Prediction />} />
-      <Route path="/transaction" element={<Transaction />} />
+      {/* <Route path="/transaction" element={<Transaction />} /> */}
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route path="terms-conditions" element={<TermsAndConditions />} />
       <Route path="challenges" element={<Challenges />} />
