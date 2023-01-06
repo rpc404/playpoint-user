@@ -29,6 +29,11 @@
     margin: auto;
   }
 }
+.prediction__container .main__container .recentPredictions .dialog__buttons h3 {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  box-shadow: 0px 3px 17px -12px #fff;
+}
 .prediction__container .main__container .recentPredictions h3 {
   padding: 0.8em 1.5vw;
   text-align: center;

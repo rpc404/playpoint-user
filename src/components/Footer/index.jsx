@@ -1,6 +1,7 @@
 import { Typography, Button, InputBase } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import "./styles/style.css"
 
 const index = () => {
   return (

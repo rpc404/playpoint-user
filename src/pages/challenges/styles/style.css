@@ -1,44 +1,52 @@
-.challenges__Container {
-  display: flex;
-  gap: 20px;
-  padding: 0 1.4em;
-  justify-content: space-between;
-}
 .challenges__Container .filters {
   display: flex;
   justify-content: center;
   padding: 1em;
   display: flex;
   justify-content: center;
-  padding: 1em;
+  padding: 2em 0;
   gap: 2px;
-  max-width: 50%;
   margin: auto;
 }
 .challenges__Container .filters button {
-  padding: 10px 5px;
+  padding: 0.5em;
   border: none;
   outline: none;
   color: white;
   font-size: 17px;
   background: #1a1d20;
-  width: 100%;
   cursor: pointer;
 }
+@media screen and (min-width: 426px) {
+  .challenges__Container .filters button {
+    padding: 0.8em;
+  }
+}
+.challenges__Container .filters button:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.challenges__Container .filters button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 .challenges__Container .challenges__AllChallenges {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .challenges__Container .challenges__AllChallenges .cardContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
 }
 .challenges__Container .challenges__AllChallenges .cardContainer .card {
   padding: 10px;
   background-color: #161616;
-  width: 24%;
   cursor: pointer;
+  box-sizing: 1px -1px 13px -9px rgba(255, 255, 255, 0.91);
 }
 .challenges__Container .challenges__AllChallenges .cardContainer .card .cardHeader {
   display: flex;

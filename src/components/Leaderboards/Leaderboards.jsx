@@ -8,9 +8,6 @@ import {
 
 import allFlags from "../../helpers/CountryFlags.json";
 import { formatNumber } from "../../utils/NumberFomatter";
-import clubFlags from "../../helpers/EPLFlags.json";
-import CarabaoClubFlags from "../../helpers/EFLFlags.json";
-import EPLFlags from "../../helpers/EPLFlags.json";
 import GetFlags from "../../utils/GetFlags";
 
 export const getCountryShortName = (country) => {
@@ -36,7 +33,7 @@ export default function Leaderboards({ marketplaceSlug }) {
   const [leaderboards, setLeaderboards] = React.useState([]);
   // console.log(marketplaceSlug)
 
-  const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
+  // const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
 
   React.useEffect(() => {
     // Windows
@@ -60,7 +57,8 @@ export default function Leaderboards({ marketplaceSlug }) {
 
   return (
     <div className={`leaderboardItems ${activeOS}`}>
-      {leaderboards.length > 0 && !loading ? (
+      {leaderboards.length > 0 &&
+        !loading &&
         leaderboards.map((leaderboard, key) => {
           return (
             <div
@@ -72,23 +70,22 @@ export default function Leaderboards({ marketplaceSlug }) {
             >
               <p>
                 {getCountryShortName(leaderboard.fixture.HomeTeam)}
-                {HomeTeamFlag(marketplaceSlug, leaderboard.fixture.HomeTeam)}
+                {GetFlags(marketplaceSlug, leaderboard.fixture.HomeTeam)}
                 <span>vs</span>
-                {AwayTeamFlag(marketplaceSlug, leaderboard.fixture.AwayTeam)}
+                {GetFlags(marketplaceSlug, leaderboard.fixture.AwayTeam)}
                 {getCountryShortName(leaderboard.fixture.AwayTeam)}
               </p>
               <p>{formatNumber(leaderboard.userCount)}</p>
               <p>{formatNumber(leaderboard.volume)}</p>
             </div>
           );
-        })
-      ) : (
+        })}
+      {leaderboards.length < 1 && !loading && (
         <div className="leaderboardItem__container">
           <p style={{ color: "#fff" }}>Leaderboard Not Available!</p>
         </div>
       )}
       {loading &&
-        leaderboards.length < 1 &&
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(
           (_, index) => {
             return (
