@@ -5,21 +5,20 @@ import { getUserPredictions } from "../../api/Prediction";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { setProfile } from "../../api/Profile";
-import { toast } from "react-toastify";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import { getuserResults } from "../../api/Results";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
-import { Link } from "react-router-dom";
 import ProfileComponent from "../../components/Profile/";
 import { useMediaQuery } from "@mui/material";
-import { Routes, Route } from "react-router-dom";
 import Transaction from "../transaction";
+import moment from "moment/moment";
+import Badge from "@mui/material/Badge";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -72,8 +71,10 @@ export default function Profile() {
     if (userPublicAddress) {
       (async () => {
         const res = await getuserResults(userPublicAddress);
-        console.log(res);
-        dispatchPredictionsData({ type: "get-results", payload: res.data });
+        dispatchPredictionsData({
+          type: "get-results",
+          payload: res.data.reverse(),
+        });
       })();
     }
     if (username) {
@@ -124,6 +125,8 @@ export default function Profile() {
     setHistory(userProfile.slice((page - 1) * 10, page * 10));
   };
 
+  console.log(history);
+
   return (
     <div className="profile__container">
       <Helmet>
@@ -138,41 +141,56 @@ export default function Profile() {
           value={value}
           aria-label="Vertical tabs example"
           variant={useMediaQuery("(max-width:768px)") && "scrollable"}
+          indicatorColor= "secondary"
+          sx={{backgroundColor:"#0D1016"}}
         >
           <Tab icon={<i className="ri-user-line"></i>} {...a11yProps(0)} />
           <Tab
             icon={<i className="ri-exchange-funds-line"></i>}
             {...a11yProps(1)}
-            LinkComponent={Link}
-            to="/transaction"
           />
         </Tabs>
       </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="userProfile">
-              <TabPanel value={value} index={0}>
-                <ProfileComponent
-                  username={username}
-                  balance={balance}
-                  results={results}
-                  woat={woat}
-                />
-              </TabPanel>
-            </div>
-          }
-        />
-        <Route
-          path="/transaction"
-          element={
-            <TabPanel value={value} index={1}>
-              <Transaction />
-            </TabPanel>
-          }
-        />
-      </Routes>
+      <div className="profile__header">
+        <div className="profile__box">
+          <div className="username">
+            <h3>
+              Hello,<span>{username}</span>
+            </h3>
+            <p>Today is {moment().format("MMMM Do YYYY")} </p>
+          </div>
+          <div className="profleImage_box">
+            <p>
+              <Badge color="success" variant="dot">
+                <i className="ri-chat-3-line"></i>
+              </Badge>
+            </p>
+            <p>
+              <Badge color="success" variant="dot">
+                <i className="ri-notification-line"></i>
+              </Badge>
+            </p>
+            <img
+              src={`https://robohash.org/${username}`}
+              alt="robohash_image"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <TabPanel value={value} index={0}>
+          <div className="userProfile">
+            <ProfileComponent
+              username={username}
+              balance={balance}
+              results={results}
+              woat={woat}
+            />
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Transaction />
+        </TabPanel>
+      </div>
     </div>
   );
 }
