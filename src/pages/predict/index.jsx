@@ -123,11 +123,9 @@ export default function Predict() {
 
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
-  const { fixtureId } = useParams();
-  const [, setQuestionaires] = React.useState([]);
-  const [lineChartData, setLineChartData] = React.useState([]);
+  const { fixtureId } = useParams();;
   const [activeOS, setActiveOS] = React.useState("");
-  // const [status, setStatus] = React.useState(false);
+  const [_status, setStatus] = React.useState(false);
   const [{ predictions }, dispatchPredictionsData] = usePredictionsContext();
   const [timeLeft, setTimeLeft] = React.useState(
     calculateTimeLeft(fixture.DateUtc)
@@ -155,7 +153,7 @@ export default function Predict() {
     (async () => {
       const response = await getFixutreById(fixtureId);
       setFixture(response.data?.fixture);
-      // setStatus(response.data?.status);
+      setStatus(response.data?.status);
     })();
 
     (async () => {
@@ -274,7 +272,7 @@ export default function Predict() {
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <div>
-              {!status || status !== "closed" ? (
+              {!_status || _status !== "closed" ? (
                 timeLeft
               ) : (
                 <div className="fixture_results">
@@ -310,12 +308,12 @@ export default function Predict() {
                 <i className="ri-bar-chart-2-line"></i> Pool Size: {poolSize}
               </p>
             </div>
-            {status !== "closed" && (
+            {_status !== "closed" && (
               <PredictionTabs
                 poolSize={poolSize}
                 fixtureId={fixtureId}
                 setPoolSize={setPoolSize}
-                status={status}
+                status={_status}
                 setMS={setMS}
               />
             )}
@@ -324,7 +322,7 @@ export default function Predict() {
         {/*
          * @note Leaderboards Predictions
          */}
-
+       
         <LeaderBoardList
           fixture={fixture}
           open={open}
