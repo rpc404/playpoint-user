@@ -84,7 +84,7 @@ const PoolType = ({
     tempQuestionaire: [],
     loading: true,
   });
-
+  console.log(status)
   const [predictionCount, setPredictionCount] = React.useState(1);
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
   const [predicting, setPredicting] = React.useState(false);
@@ -367,7 +367,7 @@ const PoolType = ({
           ))}
         </div>
       </div>
-      {isWalletConnected && (
+      {isWalletConnected && status!=="closed" && (
         <>
           <div className="questionaires">
             <p className="prediction_rule">
