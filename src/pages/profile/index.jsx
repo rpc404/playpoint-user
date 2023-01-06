@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import "./styles/style.css";
-import { Button } from "@mui/material";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import { Helmet } from "react-helmet";
 import { getUserPredictions } from "../../api/Prediction";
-import moment from "moment";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { setProfile } from "../../api/Profile";
 import { toast } from "react-toastify";
-import { getCountryShortName } from "../../components/Leaderboards/Leaderboards";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import { getuserResults } from "../../api/Results";
 import PropTypes from "prop-types";
@@ -20,6 +15,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
+import { Link } from "react-router-dom";
+import ProfileComponent from "../../components/Profile/";
+import { useMediaQuery } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -130,319 +128,40 @@ export default function Profile() {
       <Helmet>
         <title>Profile | Playpoint</title>
       </Helmet>
-      <div className="blob1"></div>
 
-      <div className="userData__container">
-        <div className="userData">
-          <img src={`https://robohash.org/${username}`} alt="" loading="lazy" />
-          <div className="userdetails__container">
-            {editMode ? (
-              <div className="userdetails">
-                <input
-                  value={_username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder={username}
-                />
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "10px",
-                    flexDirection: "column",
-                  }}
-                >
-                  <p
-                    className="accountbtn"
-                    onClick={() => {
-                      navigator.clipboard.writeText(userPublicAddress),
-                        toast("Account number copied!");
-                    }}
-                  >
-                    {/* <div className="address"> */}
-                    {`${userPublicAddress}`.substring(0, 15) +
-                      `...` +
-                      `${userPublicAddress}`.substring(
-                        userPublicAddress.length - 3
-                      )}{" "}
-                    <i className="ri-file-copy-line"></i>
-                    {/* </div> */}
-                  </p>
-                  {selectedImage && (
-                    <div>
-                      <img
-                        src={URL.createObjectURL(selectedImage)}
-                        alt="not found"
-                        width={"200px"}
-                      />
-                      <br />
-                      <Button onClick={() => setSelectedImage(null)}>
-                        Remove
-                      </Button>
-                    </div>
-                  )}
-                  <input
-                    type="file"
-                    name="myImage"
-                    accept="image/png, image/gif, image/jpeg"
-                    onChange={(e) => setSelectedImage(e.target.files[0])}
-                  />
-                  <Button onClick={() => handleUpdate()}>
-                    <i className="ri-send-plane-fill"></i>
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className="userdetails">
-                <h2>@{username}</h2>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "15px",
-                    flexDirection: "column",
-                  }}
-                >
-                  <p
-                    className="accountbtn"
-                    onClick={() => {
-                      navigator.clipboard.writeText(userPublicAddress),
-                        toast("Account number copied!");
-                    }}
-                  >
-                    {`${userPublicAddress}`.substring(0, 15) +
-                      `...` +
-                      `${userPublicAddress}`.substring(
-                        userPublicAddress.length - 3
-                      )}{" "}
-                    <i className="ri-file-copy-line"></i>
-                  </p>
-                  <Button
-                    onClick={() => setEditMode(!editMode)}
-                    style={{ padding: ".3em" }}
-                  >
-                    <i className="ri-pencil-fill"></i> &nbsp; Edit Profile
-                  </Button>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="summary__container">
-            <div className="summaryItem">
-              <i className="ri-money-dollar-circle-line"></i>
-              <div>
-                <p>Your money in pool</p>
-                <h3>500 PPTT</h3>
-              </div>
-            </div>
-            <div className="summaryItem">
-              <i className="ri-bar-chart-grouped-line"></i>
-              <div>
-                <p>Winnings of all time</p>
-                <h3>{woat} PPTT</h3>
-              </div>
-            </div>
-          </div>
-          <div className="balance__container">
-            <div className="balance__wrapper">
-              <div className="balance">
-                <img
-                  src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
-                  alt="ethereum"
-                  loading="lazy"
-                />
-                <p>{parseFloat(balance.ppttBalance).toFixed(2)} PPTT</p>
-              </div>
-              <div className="balance">
-                <img
-                  src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/3a0ba/eth-diamond-rainbow.webp"
-                  alt="ethereum"
-                  loading="lazy"
-                />
-                <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
-              </div>
-            </div>
-            <Button
-              className="addMoneyBtn"
-              onClick={() => window.open("https://app.playpoint.ai/", "_blank")}
-            >
-              <i className="ri-add-box-line"></i> Add Money
-            </Button>
-          </div>
-        </div>
+      <div className="tabs">
+        <Tabs
+          orientation={
+            useMediaQuery("(min-width:769px)") ? "vertical" : "horizontal"
+          }
+          onChange={handleChange}
+          value={value}
+          aria-label="Vertical tabs example"
+          variant={useMediaQuery("(max-width:768px)") && "scrollable"}
+        >
+          <Tab icon={<i className="ri-user-line"></i>} {...a11yProps(0)} />
+          <Tab
+            icon={<i className="ri-exchange-funds-line"></i>}
+            {...a11yProps(1)}
+            LinkComponent={Link}
+            to="/transaction"
+          />
+          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Item Four" {...a11yProps(3)} />
+          <Tab label="Item Five" {...a11yProps(4)} />
+          <Tab label="Item Six" {...a11yProps(5)} />
+          <Tab label="Item Seven" {...a11yProps(6)} />
+        </Tabs>
       </div>
-
-      <div className="history__container">
-        <div className="profile-menus__container">
-          <Box
-            sx={{
-              flexGrow: 2,
-              bgcolor: "none",
-              display: "flex",
-              height: 254,
-              gap: "12px",
-            }}
-          >
-            <Tabs
-              orientation="vertical"
-              variant="scrollable"
-              value={value}
-              onChange={handleChange}
-              aria-label="Profile Menu"
-              // textColor="white"
-              sx={{ borderRight: 1, borderColor: "divider", color: "white" }}
-            >
-              <Tab label="Settled Predictions" {...a11yProps(0)} />
-              <Tab label="Unsettled Predictions" {...a11yProps(1)} />
-              <Tab label="Duo Challenges" {...a11yProps(2)} />
-              <Tab label="Trio Challenges" {...a11yProps(3)} />
-              <Tab label="All Transcations" {...a11yProps(4)} />
-              <Tab label="Extra" {...a11yProps(5)} />
-            </Tabs>
-            <TabPanel
-              value={value}
-              index={0}
-              style={{ flex: 1, marginTop: "1em" }}
-            >
-              <div>
-                <p
-                  style={{
-                    textAlign: "center",
-                    padding: "10px",
-                    color: "#fff",
-                  }}
-                >
-                  <em>
-                    Settled Predictions are those predictions for which either
-                    you're rewarded or lose.
-                  </em>
-                </p>
-                <div className="titles">
-                  <p>ID</p>
-                  <p>Points</p>
-                  <p>win/lose amount</p>
-                  <p>match</p>
-                  <p>date/time</p>
-                  <p>Transaction</p>
-                </div>
-                <div className="history__items">
-                  {results.map((data, index) => {
-                    data.result =
-                      data.predictionId.amount / 0.02 < data.rewardAmount
-                        ? "win"
-                        : "lose";
-                    return (
-                      <div className="history__item" key={index}>
-                        <p>{data._id.substring(4, 15)}</p>
-                        <p className={data.result}>
-                          <span>{data.points || "0"}</span>
-                        </p>
-                        {/* <p>{data.predictionId.amount / 0.02} PPTT</p> */}
-                        <p className={data.result}>
-                          {data.result === "win" ? (
-                            <>
-                              {data.rewardAmount} PPTT ~ $
-                              {data.rewardAmount * 0.02}
-                            </>
-                          ) : (
-                            <>
-                              <>
-                                {parseFloat(
-                                  data.predictionId.amount / 0.02 -
-                                    data.rewardAmount
-                                ).toFixed(2)}{" "}
-                                PPTT ~ ${data.predictionId.amount}
-                              </>
-                            </>
-                          )}
-                        </p>
-                        <p>
-                          <b>
-                            {getCountryShortName(
-                              data?.predictionId?.fixtureId?.HomeTeam
-                            ) || "-"}
-                          </b>{" "}
-                          VS{" "}
-                          <b>
-                            {getCountryShortName(
-                              data?.predictionId?.fixtureId?.AwayTeam
-                            ) || "-"}
-                          </b>
-                        </p>
-                        <p>{moment(data.created_at).format("LL")}</p>
-                        <p>
-                          <a
-                            href={`https://sepolia.etherscan.io/tx/${data.txnhash}`}
-                            target="_blank"
-                          >
-                            View
-                          </a>
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-                <Stack spacing={2}>
-                  <Pagination
-                    count={Math.floor(results.length / 10)}
-                    shape="rounded"
-                    className="pagination"
-                    onClick={(e) => handlePageClick(e)}
-                    hideNextButton
-                    hidePrevButton
-                  />
-                </Stack>
-              </div>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              Item Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              Item Three
-            </TabPanel>
-          </Box>
-        </div>
-      </div>
-
-      <div className="mobhistory_container">
-        {results.map((data, i) => {
-          data.result =
-            data.predictionId.amount / 0.02 < data.rewardAmount
-              ? "win"
-              : "lose";
-          return (
-            <div className="card" key={i}>
-              <div className="id__container">
-                <p className="id">
-                  ID: <em>{data._id.substring(4, 15)}</em>
-                </p>
-              </div>
-              <p className="amount">
-                {` Amount: $${data.predictionId.amount}~${data.predictionId.amount} PPTT`}
-              </p>
-              <p className="result">Result:{data.result || "--"}</p>
-              <p className="win-lose">
-                win/lose amount:{" "}
-                {data.result === "win" || data.result === "lose" ? (
-                  <>
-                    ${data.rewardAmount}~{data.rewardAmount * 0.02} PPTT
-                  </>
-                ) : (
-                  <>{"-"}</>
-                )}
-              </p>
-              <p className="match">
-                Match: <b>{data?.fixtureId?.HomeTeam || "-"}</b> VS{" "}
-                <b>{data?.fixtureId?.AwayTeam || "-"}</b>
-              </p>
-              <p className="date">
-                Date:{moment(data?.created_at).format("LT")}
-              </p>
-              {data.result && (
-                <div className={`winlose`}>
-                  <p className={data.result}>{data.result}</p>
-                </div>
-              )}
-            </div>
-          );
-        })}
+      <div className="userProfile">
+        <TabPanel value={value} index={0}>
+          <ProfileComponent
+            username={username}
+            balance={balance}
+            results={results}
+            woat={woat}
+          />
+        </TabPanel>
       </div>
     </div>
   );

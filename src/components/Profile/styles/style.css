@@ -1,0 +1,337 @@
+.profile__tab {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.profile__tab .profile__box {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .profile__tab .profile__box {
+    flex-direction: column;
+    margin-top: 1.2em;
+    gap: 10px;
+  }
+}
+.profile__tab .profile__box .username {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.profile__tab .profile__box .username h3 {
+  display: flex;
+  gap: 5px;
+  font-size: 1.8em;
+}
+.profile__tab .profile__box .username h3 span {
+  color: #1e8ecb;
+}
+.profile__tab .profile__box .username p {
+  color: #8c8d8d;
+}
+.profile__tab .profile__box .profleimage_box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile__tab .profile__box .profleimage_box p {
+  padding: 0.5em;
+}
+.profile__tab .profile__box .profleimage_box p:first-child {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.profile__tab .profile__box .profleimage_box p:not(.date) {
+  background-color: rgba(245, 245, 245, 0.2901960784);
+  border-radius: 50%;
+}
+.profile__tab .profile__box .profleimage_box p i {
+  font-size: 1.2em;
+}
+.profile__tab .profile__box .profleimage_box img {
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (min-width: 769px) {
+  .userDetails__container {
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    gap: 50px;
+  }
+}
+.userDetails__container .userDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.userDetails__container .userDetails .stats {
+  display: flex;
+  gap: 20px;
+}
+@media screen and (max-width: 768px) {
+  .userDetails__container .userDetails .stats {
+    flex-direction: column;
+  }
+}
+.userDetails__container .userDetails .stats .amounts,
+.userDetails__container .userDetails .stats .active_challenges,
+.userDetails__container .userDetails .stats .total__predictions,
+.userDetails__container .userDetails .stats .pool__pptt,
+.userDetails__container .userDetails .stats .winnings {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  padding: 0.5em 0.8em;
+  text-align: center;
+  line-height: 1.4;
+}
+.userDetails__container .userDetails .stats .amounts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5em 1.5em;
+}
+.userDetails__container .userDetails .stats .amounts p {
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.userDetails__container .userDetails .stats .amounts p img {
+  height: 30px;
+  width: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.userDetails__container .userDetails .stats .active_challenges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 1em;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1.4;
+}
+.userDetails__container .userDetails .stats .pool__pptt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 1em;
+  color: #fff;
+  font-size: 1.1em;
+  gap: 5px;
+  line-height: 1.4;
+  text-align: center;
+}
+.userDetails__container .userDetails .stats .pool__pptt p i {
+  font-size: 1.4em;
+}
+.userDetails__container .userDetails .stats .total__predictions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 1em;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.userDetails__container .userDetails .stats .winnings {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.userDetails__container .userDetails .statGraph {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.userDetails__container .userDetails .statGraph .user_stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.userDetails__container .userDetails .statGraph .user_stat p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.userDetails__container .userDetails .statGraph .user_stat div {
+  display: flex;
+  gap: 10px;
+}
+.userDetails__container .userDetails .statGraph .user_stat div p:nth-child(1) {
+  width: 20px;
+  height: 20px;
+  background-color: #35a2eb;
+}
+.userDetails__container .userDetails .statGraph .user_stat div p:nth-child(3) {
+  width: 20px;
+  height: 20px;
+  background-color: #ff6384;
+}
+.userDetails__container .userDetails .transaction__stats {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(24, 24, 24);
+  padding: 0.5em;
+  border-radius: 5px;
+  box-shadow: 0 1px 20px -5px rgba(145, 146, 163, 0.37);
+}
+@media screen and (max-width: 425px) {
+  .userDetails__container .userDetails .transaction__stats {
+    display: none;
+  }
+}
+.userDetails__container .userDetails .transaction__stats .transaction__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
+}
+.userDetails__container .userDetails .transaction__stats .transaction__title i {
+  font-size: 1.2em;
+}
+.userDetails__container .userDetails .transaction__stats .titles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
+  padding: 0.4em;
+}
+.userDetails__container .userDetails .transaction__stats .titles p:nth-child(2) {
+  justify-self: center;
+}
+.userDetails__container .userDetails .transaction__stats .titles p:nth-child(4) {
+  justify-self: center;
+}
+.userDetails__container .userDetails .transaction__stats .titles p:nth-child(5) {
+  justify-self: center;
+}
+.userDetails__container .userDetails .transaction__stats .titles p:last-child {
+  justify-self: end;
+}
+.userDetails__container .userDetails .transaction__stats .transaction {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
+  align-items: center;
+  padding: 0.4em;
+}
+.userDetails__container .userDetails .transaction__stats .transaction p {
+  align-self: center;
+}
+.userDetails__container .userDetails .transaction__stats .transaction p:nth-child(2) {
+  justify-self: center;
+}
+.userDetails__container .userDetails .transaction__stats .transaction p:nth-child(4) {
+  justify-self: center;
+}
+.userDetails__container .userDetails .transaction__stats .transaction p:nth-child(5) {
+  justify-self: end;
+}
+.userDetails__container .userDetails .transaction__stats .transaction p:last-child {
+  justify-self: end;
+}
+.userDetails__container .userDetails .transaction__stats .transaction p:last-child a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s ease;
+}
+.userDetails__container .userDetails .transaction__stats .transaction p:last-child a:hover {
+  color: rgba(255, 255, 255, 0.688);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.userDetails__container .userDetails .transaction__stats .transaction .win {
+  color: green;
+}
+.userDetails__container .userDetails .transaction__stats .transaction .lose {
+  color: rgb(191, 33, 33);
+}
+.userDetails__container .notifications__container {
+  margin: 1.5em 0 3em;
+}
+.userDetails__container .notifications {
+  display: flex;
+  flex-direction: column;
+}
+.userDetails__container .notifications .notificationtitle__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+}
+.userDetails__container .notifications .notificationtitle__container p i {
+  font-size: 1.2em;
+}
+.userDetails__container .notifications .notificationtitle__container .notification__title {
+  display: flex;
+  gap: 10px;
+}
+.userDetails__container .notifications .notificationtitle__container .notification__title p {
+  display: flex;
+  align-items: center;
+}
+.userDetails__container .notifications .notificationtitle__container .notification__title p i {
+  font-size: 1.2em;
+}
+.userDetails__container .notifications .notification__wrapper {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.userDetails__container .notifications .notification__wrapper .notification {
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
+}
+.userDetails__container .notifications .notification__wrapper .notification div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.userDetails__container .notifications .notification__wrapper .notification div p:nth-child(2) {
+  color: rgba(215, 217, 220, 0.7568627451);
+}
+.userDetails__container .notifications .notification__wrapper .notification img {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.userDetails__container .notifications .notification__wrapper .notification p {
+  line-height: 1.4;
+}
+.userDetails__container .application {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2em 0 0;
+}
+.userDetails__container .application .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userDetails__container .application .application_stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.userDetails__container .application .application_stat .stat_title {
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=style.css.map */

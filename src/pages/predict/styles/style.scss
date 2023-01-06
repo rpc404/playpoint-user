@@ -24,6 +24,16 @@
         margin: auto;
       }
 
+      .dialog__buttons {
+        h3 {
+          background-color: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.452);
+          box-shadow: 0px 3px 17px -12px #fff;
+        }
+
+      }
+      
+
       h3 {
         padding: 0.8em 1.5vw;
         text-align: center;
@@ -366,12 +376,6 @@
     }
 
     .leaderboards {
-
-      // &.true {
-      //   width: 90%;
-      //   margin: auto;
-      //   background-color: #fff;
-      // }
 
       &.false {
         @media (max-width: 576px) {

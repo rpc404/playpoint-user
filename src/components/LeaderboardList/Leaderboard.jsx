@@ -2,7 +2,7 @@ import Leaderboards from "../Leaderboards/Leaderboards";
 
 const LeaderBoardList = ({ fixture, open, marketplaceSlug }) => {
     return (
-      <div className={`leaderboards ${open}`}>
+      <div className={`leaderboards `}>
         <h3 className="leaderboardsTitle">Leaderboards</h3>
         <div className="leaderboardItemsTitle">
           <p>

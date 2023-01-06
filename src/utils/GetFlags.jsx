@@ -33,7 +33,7 @@ const GetFlags = (marketplaceSlug, team) => {
     return EPLFlags.map((club, i) => {
       if (
         club.name.replace(" ", "").toLowerCase().trim() ===
-        String(team).replace(" ", "").toLowerCase().trim()
+        String(team).replace(" ", "").toLowerCase().trim() 
       ) {
         return (
           <img
