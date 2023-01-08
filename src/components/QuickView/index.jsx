@@ -9,7 +9,7 @@ export default function QuickView({ handleModalClose }) {
   const navigate = useNavigate();
   const [gameData, setGameData] = React.useState(null);
 
-  const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
+  // const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
 
   const handleModal = () => {
     document.body.style = "";
@@ -36,11 +36,11 @@ export default function QuickView({ handleModalClose }) {
             </div>
             <div className="topBar">
               <div className="homeTeam">{gameData?.HomeTeam}</div>
-              {HomeTeamFlag(gameData.marketplaceSlug, gameData.HomeTeam)}
+              {GetFlags(gameData.marketplaceSlug, gameData.HomeTeam)}
               <div className="gameTime">
                 {Moment(gameData?.DateUtc).format("LL")}
               </div>
-              {AwayTeamFlag(gameData.marketplaceSlug, gameData.AwayTeam)}
+              {GetFlags(gameData.marketplaceSlug, gameData.AwayTeam)}
               <div className="awayTeam">{gameData?.AwayTeam}</div>
             </div>
 

@@ -5,7 +5,7 @@
 @media screen and (min-width: 426px) {
   .prediction__container .main__container {
     display: grid;
-    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-columns: 2fr 5fr 2fr;
   }
 }
 @media screen and (min-width: 1441px) {
@@ -433,8 +433,9 @@
   justify-content: center;
 }
 .prediction__container .main__container .leaderboards .leaderboardItemsTitle {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  justify-content: center;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding-bottom: 10px;
   font-size: 14px;
@@ -442,13 +443,11 @@
   margin: 0 8px;
   color: #fff;
 }
-.prediction__container .main__container .leaderboards .leaderboardItemsTitle p {
-  display: flex;
-  align-items: center;
-  gap: 2px;
+.prediction__container .main__container .leaderboards .leaderboardItemsTitle p:nth-child(2) {
+  justify-self: end;
 }
-.prediction__container .main__container .leaderboards .leaderboardItemsTitle p:nth-child(1) {
-  flex: 0 1 300px;
+.prediction__container .main__container .leaderboards .leaderboardItemsTitle p:last-child {
+  justify-self: end;
 }
 .prediction__container .main__container .leaderboards .leaderboardItems {
   font-size: 14px;
@@ -461,9 +460,9 @@
 }
 .prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container {
   background: #191a20;
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
   padding: 8px;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
 }
@@ -474,16 +473,13 @@
 .prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 3px;
 }
-.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p:nth-child(1) {
-  flex: 0 1 300px;
-  display: flex;
-  gap: 5px;
-  justify-content: flex-start;
+.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p:nth-child(2) {
+  justify-self: end;
 }
-.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p:nth-child(3) {
-  justify-content: flex-end;
+.prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p:last-child {
+  justify-self: end;
 }
 .prediction__container .main__container .leaderboards .leaderboardItems .leaderboardItem__container p img {
   height: 30px;

@@ -1,0 +1,107 @@
+.signin__container {
+  height: 80vh;
+}
+.signin__container .wrapper {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+@media screen and (min-width: 769px) {
+  .signin__container .wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+  }
+}
+.signin__container .wrapper .signinhero__container {
+  display: flex;
+  flex-direction: column;
+}
+.signin__container .wrapper .signinhero__container h1 {
+  font-size: 1.5em;
+}
+.signin__container .wrapper .signinhero__container p {
+  padding: 1em 0;
+  color: rgba(255, 255, 255, 0.754);
+  font-size: 0.9em;
+}
+.signin__container .wrapper .signin__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.signin__container .wrapper .signin__form .recovery {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.signin__container .wrapper .signin__form .recovery .checkbox_container {
+  display: flex;
+  align-items: center;
+}
+.signin__container .wrapper .signin__form .recovery .checkbox_container label {
+  color: rgba(255, 255, 255, 0.739);
+}
+.signin__container .wrapper .signin__form .recovery p {
+  color: rgba(255, 255, 255, 0.739);
+}
+.signin__container .wrapper .signin__form button {
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0.5em 0.6em;
+  text-transform: capitalize;
+  color: rgba(34, 34, 34, 0.761);
+  font-weight: 600;
+}
+.signin__container .wrapper .signin__form .signup__button {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.808);
+  padding: 5px;
+  text-transform: capitalize;
+}
+.signin__container .wrapper .signin__form .continue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 1em 0;
+}
+.signin__container .wrapper .signin__form .continue div {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.signin__container .wrapper .signin__form .continue div span {
+  border: 1px solid rgba(255, 255, 255, 0.47);
+}
+.signin__container .wrapper .signin__form .continue div span:nth-child(1) {
+  position: absolute;
+  left: 0;
+  right: 70%;
+}
+.signin__container .wrapper .signin__form .continue div span:nth-child(3) {
+  position: absolute;
+  right: 0;
+  left: 70%;
+}
+.signin__container .wrapper .signin__form .continue p {
+  font-size: 1.2em;
+  color: rgba(255, 255, 255, 0.739);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signin__container .wrapper .signin__form .continue p:nth-child(2) i {
+  cursor: pointer;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */

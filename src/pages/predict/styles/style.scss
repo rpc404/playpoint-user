@@ -4,7 +4,7 @@
     align-items: flex-start;
     @media screen and (min-width: 426px) {
       display: grid;
-      grid-template-columns: 2fr 4fr 2fr;
+      grid-template-columns: 2fr 5fr 2fr;
     }
 
     @media screen and (min-width: 1441px) {
@@ -30,7 +30,6 @@
           border: 1px solid rgba(255, 255, 255, 0.452);
           box-shadow: 0px 3px 17px -12px #fff;
         }
-
       }
       h3 {
         padding: 0.8em 1.5vw;
@@ -374,7 +373,6 @@
     }
 
     .leaderboards {
-
       &.false {
         @media (max-width: 576px) {
           display: none;
@@ -398,8 +396,11 @@
       }
 
       .leaderboardItemsTitle {
-        display: flex;
-        justify-content: space-between;
+        // display: flex;
+        // justify-content: space-between;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+        justify-content: center;
         border-bottom: 0.5px solid #0001;
         padding-bottom: 10px;
         font-size: 14px;
@@ -408,17 +409,26 @@
         color: #fff;
 
         p {
-          // flex: 1 1 0;
-          display: flex;
-          align-items: center;
-          gap: 2px;
+          &:nth-child(2) {
+            justify-self: end;
+          }
 
-          &:nth-child(1){
-            flex: 0 1 300px;
+          &:last-child {
+            justify-self: end;
           }
         }
-      }
 
+        // p {
+        //   // flex: 1 1 0;
+        //   display: flex;
+        //   align-items: center;
+        //   gap: 2px;
+
+        //   &:nth-child(1){
+        //     flex: 0 1 300px;
+        //   }
+        // }
+      }
 
       .leaderboardItems {
         font-size: 14px;
@@ -432,9 +442,12 @@
 
         .leaderboardItem__container {
           background: #191a20;
-          display: flex;
+          // display: flex;
+          // align-items: center;
+          // justify-content: space-between;
+          display: grid;
+          grid-template-columns: 3fr 1fr 1fr;
           align-items: center;
-          justify-content: space-between;
           padding: 8px;
           border-bottom: 0.5px solid #0001;
 
@@ -444,22 +457,16 @@
           }
 
           p {
-            // flex: 1 1 0;
             display: flex;
             align-items: center;
-            justify-content: center;
-            // gap: 2px;
-
-            &:nth-child(1){
-              flex: 0 1 300px;
-              display: flex;
-              gap: 5px;
-              justify-content: flex-start;
+            gap: 3px;
+            &:nth-child(2){
+              justify-self: end;
+            }
+            &:last-child {
+              justify-self: end;
             }
 
-            &:nth-child(3){
-              justify-content: flex-end;
-            }
 
             img {
               height: 30px;
@@ -467,6 +474,31 @@
               border-radius: 50%;
             }
           }
+
+          // p {
+          //   // flex: 1 1 0;
+          //   display: flex;
+          //   align-items: center;
+          //   justify-content: center;
+          //   // gap: 2px;
+
+          //   &:nth-child(1){
+          //     flex: 0 1 300px;
+          //     display: flex;
+          //     gap: 5px;
+          //     justify-content: flex-start;
+          //   }
+
+          //   &:nth-child(3){
+          //     justify-content: flex-end;
+          //   }
+
+          //   img {
+          //     height: 30px;
+          //     object-fit: cover;
+          //     border-radius: 50%;
+          //   }
+          // }
         }
       }
     }

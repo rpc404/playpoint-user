@@ -50,7 +50,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function Predict() {
   const [marketplaceSlug, setMS] = React.useState("");
 
-
   const { state } = useLocation();
 
   const [open, setOpen] = React.useState(false);
@@ -71,6 +70,10 @@ export default function Predict() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  React.useEffect(() => {
+    handleClose;
+  }, [open]);
 
   const calculateTimeLeft = (eventTime) => {
     let duration = moment(eventTime).diff(moment.now(), "seconds");
@@ -123,7 +126,7 @@ export default function Predict() {
 
   const [fixture, setFixture] = React.useState({});
   const [poolSize, setPoolSize] = React.useState("unlimited");
-  const { fixtureId } = useParams();;
+  const { fixtureId } = useParams();
   const [activeOS, setActiveOS] = React.useState("");
   const [_status, setStatus] = React.useState(false);
   const [{ predictions }, dispatchPredictionsData] = usePredictionsContext();
@@ -322,7 +325,7 @@ export default function Predict() {
         {/*
          * @note Leaderboards Predictions
          */}
-       
+
         <LeaderBoardList
           fixture={fixture}
           open={open}

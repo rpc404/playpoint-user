@@ -14,8 +14,6 @@ export default function FixtureCard({
 }) {
   const navigate = useNavigate();
 
-  // const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
-
   /**
    * @dev only list games according to dates
    */
@@ -89,9 +87,9 @@ export default function FixtureCard({
                     }
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {HomeTeamFlag(marketplaceSlug, data.HomeTeam)}
+                    {GetFlags(marketplaceSlug, data.HomeTeam)}
                     {gameTime(data)}
-                    {AwayTeamFlag(marketplaceSlug, data.AwayTeam)}
+                    {GetFlags(marketplaceSlug, data.AwayTeam)}
                     <div className="teamName">{data?.AwayTeam}</div>
                   </Button>
                 )}
@@ -122,9 +120,9 @@ export default function FixtureCard({
                     onClick={() => navigate(`/predict/${data?._id}`)}
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
-                    {HomeTeamFlag(data.HomeTeam)}
+                    {GetFlags(marketplaceSlug, data.HomeTeam)}
                     {gameTime(data)}
-                    {AwayTeamFlag(data.AwayTeam)}
+                    {GetFlags(marketplaceSlug, data.AwayTeam)}
                     <div className="teamName">{data?.AwayTeam}</div>
                   </div>
                 ) : (
@@ -134,11 +132,11 @@ export default function FixtureCard({
                   >
                     <div className="teamName">{data?.HomeTeam}</div>
                     {CountryFlags.map((country, i) => {
-                      return HomeTeamFlag(data, country, i);
+                      return GetFlags(marketplaceSlug, country);
                     })}
                     {gameTime(data)}
                     {CountryFlags.map((country, i) => {
-                      return AwayTeamFlag(data, country, i);
+                      return GetFlags(marketplaceSlug, country);
                     })}
                     <div className="teamName">{data?.AwayTeam}</div>
                   </Button>
