@@ -135,7 +135,6 @@
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer {
   flex-direction: column;
-  height: 81vh;
   overflow-y: scroll;
   padding-bottom: 20px;
 }
@@ -221,6 +220,10 @@
 }
 .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container .MuiTab-root {
   text-transform: capitalize;
+}
+.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container .MuiBox-root {
+  width: 95% !important;
+  margin: 0 auto;
 }
 @media screen and (max-width: 425px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container .MuiBox-root {
@@ -456,7 +459,7 @@
 }
 .prediction__container .main__container .leaderboards .leaderboardItems {
   font-size: 14px;
-  height: 80vh;
+  height: 90vh;
   overflow-y: scroll;
   padding-bottom: 10px;
 }

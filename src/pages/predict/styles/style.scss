@@ -135,7 +135,6 @@
 
       .predictionTable__mainContainer {
         flex-direction: column;
-        height: 81vh;
         overflow-y: scroll;
         padding-bottom: 20px;
         @media (max-width: 576px) {
@@ -223,6 +222,8 @@
           }
 
           .MuiBox-root {
+            width: 95% !important;
+            margin: 0 auto;
             @media screen and (max-width: 425px) {
               overflow: hidden;
               padding: 0 0 !important;
@@ -436,7 +437,7 @@
 
       .leaderboardItems {
         font-size: 14px;
-        height: 80vh;
+        height: 90vh;
         overflow-y: scroll;
         padding-bottom: 10px;
 
