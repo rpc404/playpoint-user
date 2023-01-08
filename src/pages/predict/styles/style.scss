@@ -379,6 +379,10 @@
         }
       }
 
+      @media screen and (max-width: 425px) {
+        display: none;
+      }
+
       .leaderboardsTitle {
         font-weight: 500;
         // padding: .8em;
@@ -460,13 +464,12 @@
             display: flex;
             align-items: center;
             gap: 3px;
-            &:nth-child(2){
+            &:nth-child(2) {
               justify-self: end;
             }
             &:last-child {
               justify-self: end;
             }
-
 
             img {
               height: 30px;
