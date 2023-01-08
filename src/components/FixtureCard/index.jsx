@@ -90,7 +90,7 @@ export default function FixtureCard({
                     {GetFlags(marketplaceSlug, data.HomeTeam)}
                     {gameTime(data)}
                     {GetFlags(marketplaceSlug, data.AwayTeam)}
-                    <div className="teamName">{data?.AwayTeam}</div>
+                  <div className="teamName">{data?.AwayTeam}</div>
                   </Button>
                 )}
 
