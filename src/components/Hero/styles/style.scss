@@ -11,6 +11,10 @@
   flex-wrap: wrap;
   z-index: 1;
 
+  p{
+    font-size: 19px;
+  }
+
   .heroContent__container {
     max-width: 35vw;
     h1 {
@@ -77,8 +81,8 @@
     position: relative;
 
     img {
-      width: 18vw;
-      height: 45vh;
+      width: 20vw;
+      height: 48vh;
       border-radius: 200px;
       object-fit: cover;
       border: 5px solid #fff;
@@ -89,7 +93,7 @@
 
     .absoluteImages {
       position: absolute;
-      bottom: -5vh;
+      bottom: -9vh;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -97,13 +101,13 @@
       gap: 30px;
 
       img {
-        width: 11vw;
+        width: 14vw;
         border-radius: 190px;
-        height: 30vh;
+        height: 35vh;
       }
 
       img:last-child {
-        height: 23vh;
+        height: 28vh;
       }
     }
   }
@@ -120,8 +124,8 @@
     }
 
     img {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
     }
 
@@ -134,22 +138,22 @@
         box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
         -webkit-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
         -moz-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
-        width: 180px;
-        height: 33vh;
+        width: 220px;
+        height: 39vh;
         gap: 10px;
         display: flex;
         align-items: center;
         flex-direction: column;
         background: #ffffff74;
         padding: 10px;
-        border-radius: 100px;
+        border-radius: 150px;
 
         div {
           display: flex;
           flex-direction: column;
           background: rgba(0, 0, 0, 0.686);
           padding: 15px;
-          font-size: 14px;
+          font-size: 16px;
           border-radius: 0 75px 75px 75px;
           height: 150px;
         }

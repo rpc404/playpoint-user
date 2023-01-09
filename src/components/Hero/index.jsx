@@ -73,8 +73,7 @@ export default function Hero() {
               <p>
                 <b>P2E Arrives</b>
                 <br />
-                Multi blockchain network enabled, realtime prediction, duo and
-                trio pools, earn PPTT.
+                Multi blockchain network, pools enabled.
               </p>
             </div>
           </div>
