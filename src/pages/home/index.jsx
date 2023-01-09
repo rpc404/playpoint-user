@@ -2,12 +2,13 @@ import React from "react";
 import { Skeleton, Stack } from "@mui/material";
 import "./styles/style.css";
 import MarketplaceCard from "../../components/MarketplaceCard";
-import { getMarketplaces } from "../../api/Marketplace";
-import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
+const { getMarketplaces } = await import("../../api/Marketplace");
+const { useMarketplaceContext } = await import(
+  "../../contexts/Marketplace/MarketplaceContext"
+);
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import Hero from "../../components/Hero";
-
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
@@ -30,7 +31,6 @@ export default function Home() {
 
   return (
     <div className="home__container">
-      {/* <div className="divider"></div> */}
       <Hero />
       <div className="divider"></div>
       <h1 className="home__mainTitle">Active Marketplaces</h1>
@@ -88,7 +88,6 @@ export default function Home() {
 
       <LeaderboardMain />
       <div className="divider"></div>
-
     </div>
   );
 }

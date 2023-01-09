@@ -15,6 +15,7 @@ const Hero = () => {
           <img
             src="https://ik.imagekit.io/domsan/Screenshot_from_2022-12-27_18-11-33_7RvpCg-AN.png?ik-sdk-version=javascript-1.4.3&updatedAt=1672144045460"
             alt="hero Image"
+            loading="lazy"
           />
         </div>
         <div className="heroContent">
