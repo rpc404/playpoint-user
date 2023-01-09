@@ -127,10 +127,14 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                         )}
                       </TableCell>
                       <TableCell align="center">
-                        {moment(row.fixture.DateUtc).format("LL")}
+                        {moment(row.fixture.DateUtc.split(" ")[0]).format("LL")}
                       </TableCell>
-                      <TableCell align="center">{formatNumber(row.userCount)}</TableCell>
-                      <TableCell align="center">{formatNumber(row.volume / 0.02)}</TableCell>
+                      <TableCell align="center">
+                        {formatNumber(row.userCount)}
+                      </TableCell>
+                      <TableCell align="center">
+                        {formatNumber(row.volume / 0.02)}
+                      </TableCell>
                     </TableRow>
                   )
                 );
