@@ -144,8 +144,9 @@ export default function Profile() {
           indicatorColor= "secondary"
           sx={{backgroundColor:"#0D1016"}}
         >
-          <Tab icon={<i className="ri-user-line"></i>} {...a11yProps(0)} />
+          <Tab label = "Profile" icon={<i className="ri-user-line"></i>} {...a11yProps(0)} />
           <Tab
+          label="Transaction"
             icon={<i className="ri-exchange-funds-line"></i>}
             {...a11yProps(1)}
           />

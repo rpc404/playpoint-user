@@ -15,9 +15,6 @@ import {
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
 import { styled } from "@mui/material/styles";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
 import GetFlags from "../../utils/GetFlags";
 import { useNavigate } from "react-router-dom";
 
@@ -70,22 +67,6 @@ export const data = {
     },
   ],
 };
-
-/**
- * @dev Border linear progress bar
- */
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 10,
-  borderRadius: 5,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor:
-      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
-    backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
-  },
-}));
 
 const ProfileComponent = ({ username, balance, results, woat }) => {
   const navigate = useNavigate();
@@ -269,7 +250,7 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
                     />
                     <div>
                       <p>
-                        Suraj Gaire predicted 5000 PPTT on Man utd vs Man city{" "}
+                        {username} predicted 5000 PPTT on Man utd vs Man city
                       </p>
                       <p>1m ago</p>
                     </div>
