@@ -1,6 +1,6 @@
 import moment from "moment/moment";
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAllChallenge } from "../../api/Challenge";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import GetFlags from "../../utils/GetFlags";

@@ -8,11 +8,11 @@
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     padding: 0.8em;
-    width: 90%;
 
     @media screen and (min-width: 426px) {
       display: grid;
       grid-template-columns: 1fr 3fr 1fr;
+      gap: 20px;
     }
 
     .options__container {
@@ -43,14 +43,14 @@
           /* color: #000; */
           gap: 5px;
           cursor: pointer;
-          transition: .5s ease;
+          transition: 0.5s ease;
           a {
             text-decoration: none;
             color: black;
             margin: 3px 7px;
           }
           &:hover {
-           color: rgb(34, 186, 34);
+            color: rgb(34, 186, 34);
           }
         }
       }
@@ -75,8 +75,8 @@
       }
       .button {
         display: flex;
-        gap: 1.6vw;
         align-items: center;
+        gap: 5px;
         i {
           font-size: 1.6rem;
         }
@@ -126,8 +126,7 @@
           gap: 2.8vh;
           margin: 1em 0;
           .details {
-
-            @media screen and (max-width:425px) {
+            @media screen and (max-width: 425px) {
               display: flex;
               flex-direction: column;
               gap: 10px;
@@ -152,8 +151,6 @@
               // align-items: center;
               // justify-content: center;
 
-
-              
               .left_top {
                 display: flex;
                 align-items: center;
@@ -167,16 +164,16 @@
               }
             }
             .success {
-                color: rgb(34, 186, 34);
-              }
+              color: rgb(34, 186, 34);
+            }
           }
         }
       }
     }
     .balance__container {
       display: flex;
-     justify-content: center;
-     align-items: center;
+      justify-content: center;
+      align-items: center;
       @media screen and (max-width: 425px) {
         justify-content: center;
         width: 100%;
@@ -185,6 +182,9 @@
         display: flex;
         flex-direction: column;
         gap: 1.5em;
+        @media screen and (min-width: 426px) {
+          align-items: center;
+        }
 
         @media screen and (max-width: 425px) {
           width: 100%;
@@ -209,7 +209,6 @@
           .amount {
             display: flex;
             gap: 8px;
-
           }
         }
       }
