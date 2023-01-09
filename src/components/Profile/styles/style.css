@@ -3,68 +3,17 @@
   flex-direction: column;
   gap: 50px;
 }
-.profile__tab .profile__box {
-  display: flex;
-  justify-content: space-between;
-}
-@media screen and (max-width: 768px) {
-  .profile__tab .profile__box {
-    flex-direction: column;
-    margin-top: 1.2em;
-    gap: 10px;
-  }
-}
-.profile__tab .profile__box .username {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.profile__tab .profile__box .username h3 {
-  display: flex;
-  gap: 5px;
-  font-size: 1.8em;
-}
-.profile__tab .profile__box .username h3 span {
-  color: #1e8ecb;
-}
-.profile__tab .profile__box .username p {
-  color: #8c8d8d;
-}
-.profile__tab .profile__box .profleimage_box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.profile__tab .profile__box .profleimage_box p {
-  padding: 0.5em;
-}
-.profile__tab .profile__box .profleimage_box p:first-child {
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-.profile__tab .profile__box .profleimage_box p:not(.date) {
-  background-color: rgba(245, 245, 245, 0.2901960784);
-  border-radius: 50%;
-}
-.profile__tab .profile__box .profleimage_box p i {
-  font-size: 1.2em;
-}
-.profile__tab .profile__box .profleimage_box img {
-  height: 50px;
-  width: 50px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1025px) {
   .userDetails__container {
     display: grid;
     grid-template-columns: 5fr 2fr;
     gap: 50px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .userDetails__container {
+    margin-bottom: 1.5em;
   }
 }
 .userDetails__container .userDetails {
@@ -75,6 +24,12 @@
 .userDetails__container .userDetails .stats {
   display: flex;
   gap: 20px;
+}
+@media screen and (min-width: 1025px) {
+  .userDetails__container .userDetails .stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 @media screen and (max-width: 768px) {
   .userDetails__container .userDetails .stats {
@@ -94,14 +49,12 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff;
   padding: 0.5em 0.8em;
-  text-align: center;
   line-height: 1.4;
 }
 .userDetails__container .userDetails .stats .amounts {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 10px;
   padding: 0.5em 1.5em;
 }
@@ -119,43 +72,58 @@
 }
 .userDetails__container .userDetails .stats .active_challenges {
   display: flex;
-  align-items: center;
   justify-content: center;
+  flex-direction: column;
   padding: 0.5em 1em;
   color: #fff;
-  font-size: 1.1em;
-  font-weight: bold;
-  line-height: 1.4;
+}
+.userDetails__container .userDetails .stats .active_challenges p:nth-child(2) {
+  font-size: 2.2em;
+  color: #f35b68;
+  font-weight: 600;
 }
 .userDetails__container .userDetails .stats .pool__pptt {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   padding: 0.5em 1em;
   color: #fff;
   font-size: 1.1em;
   gap: 5px;
   line-height: 1.4;
-  text-align: center;
 }
-.userDetails__container .userDetails .stats .pool__pptt p i {
-  font-size: 1.4em;
+.userDetails__container .userDetails .stats .pool__pptt p:nth-child(2) {
+  font-size: 2.2em;
+  color: #f35b68;
+  font-weight: 600;
+}
+.userDetails__container .userDetails .stats .pool__pptt p:nth-child(2) span {
+  font-size: 0.5em;
 }
 .userDetails__container .userDetails .stats .total__predictions {
   display: flex;
-  align-items: center;
   justify-content: center;
+  flex-direction: column;
   padding: 0.5em 1em;
   color: #fff;
-  font-size: 1.1em;
-  font-weight: bold;
+}
+.userDetails__container .userDetails .stats .total__predictions p:nth-child(2) {
+  font-size: 2.2em;
+  color: #f35b68;
+  font-weight: 600;
 }
 .userDetails__container .userDetails .stats .winnings {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  gap: 5px;
+}
+.userDetails__container .userDetails .stats .winnings p:nth-child(2) {
+  font-size: 2.2em;
+  color: #f35b68;
+  font-weight: 600;
+}
+.userDetails__container .userDetails .stats .winnings p:nth-child(2) span {
+  font-size: 0.5em;
 }
 .userDetails__container .userDetails .statGraph {
   display: flex;
@@ -186,7 +154,13 @@
   height: 20px;
   background-color: #ff6384;
 }
-.userDetails__container .userDetails .transaction__stats {
+@media screen and (max-width: 768px) {
+  .userDetails__container .userDetails .transaction__wrapper {
+    max-width: 1100px;
+    overflow-x: scroll;
+  }
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats {
   display: flex;
   flex-direction: column;
   background-color: rgb(24, 24, 24);
@@ -194,76 +168,117 @@
   border-radius: 5px;
   box-shadow: 0 1px 20px -5px rgba(145, 146, 163, 0.37);
 }
-@media screen and (max-width: 425px) {
-  .userDetails__container .userDetails .transaction__stats {
-    display: none;
+@media screen and (max-width: 768px) {
+  .userDetails__container .userDetails .transaction__wrapper .transaction__stats {
+    width: 1100px;
   }
 }
-.userDetails__container .userDetails .transaction__stats .transaction__title {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction__title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1em 0;
 }
-.userDetails__container .userDetails .transaction__stats .transaction__title i {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction__title i {
   font-size: 1.2em;
 }
-.userDetails__container .userDetails .transaction__stats .titles {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .titles {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
   padding: 0.4em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3294117647);
 }
-.userDetails__container .userDetails .transaction__stats .titles p:nth-child(2) {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .titles p:nth-child(2) {
   justify-self: center;
 }
-.userDetails__container .userDetails .transaction__stats .titles p:nth-child(4) {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .titles p:nth-child(4) {
   justify-self: center;
 }
-.userDetails__container .userDetails .transaction__stats .titles p:nth-child(5) {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .titles p:nth-child(5) {
   justify-self: center;
 }
-.userDetails__container .userDetails .transaction__stats .titles p:last-child {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .titles p:last-child {
   justify-self: end;
 }
-.userDetails__container .userDetails .transaction__stats .transaction {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction__items {
+  max-height: 350px;
+  overflow-y: scroll;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
   align-items: center;
   padding: 0.4em;
 }
-.userDetails__container .userDetails .transaction__stats .transaction p {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match {
+  display: grid;
+  grid-template-columns: 3fr 1fr 3fr;
+  gap: 10px;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(2) {
+  justify-self: center;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(1) {
+  justify-self: start;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p {
   align-self: center;
 }
-.userDetails__container .userDetails .transaction__stats .transaction p:nth-child(2) {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p:nth-child(2) {
   justify-self: center;
 }
-.userDetails__container .userDetails .transaction__stats .transaction p:nth-child(4) {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p:nth-child(4) {
   justify-self: center;
 }
-.userDetails__container .userDetails .transaction__stats .transaction p:nth-child(5) {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p:nth-child(4) img {
+  height: 30px;
+  width: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p:nth-child(5) {
   justify-self: end;
 }
-.userDetails__container .userDetails .transaction__stats .transaction p:last-child {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p:last-child {
   justify-self: end;
 }
-.userDetails__container .userDetails .transaction__stats .transaction p:last-child a {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p:last-child a {
   text-decoration: none;
   color: #fff;
   transition: 0.3s ease;
 }
-.userDetails__container .userDetails .transaction__stats .transaction p:last-child a:hover {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p:last-child a:hover {
   color: rgba(255, 255, 255, 0.688);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.userDetails__container .userDetails .transaction__stats .transaction .win {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .win {
   color: green;
 }
-.userDetails__container .userDetails .transaction__stats .transaction .lose {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .lose {
   color: rgb(191, 33, 33);
 }
-.userDetails__container .notifications__container {
-  margin: 1.5em 0 3em;
+@media screen and (max-width: 425px) {
+  .userDetails__container .notifications__container {
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .userDetails__container .notifications__container {
+    margin: 1.5em 0 3em;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .userDetails__container .notifications__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
 }
 .userDetails__container .notifications {
   display: flex;
@@ -272,7 +287,9 @@
 .userDetails__container .notifications .notificationtitle__container {
   display: flex;
   justify-content: space-between;
-  padding: 1em 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  padding: 20px;
 }
 .userDetails__container .notifications .notificationtitle__container p i {
   font-size: 1.2em;
@@ -289,8 +306,14 @@
   font-size: 1.2em;
 }
 .userDetails__container .notifications .notification__wrapper {
-  max-height: 500px;
+  max-height: 540px;
   overflow-y: scroll;
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .userDetails__container .notifications .notification__wrapper {
+    max-height: 250px;
+    overflow-y: scroll;
+  }
 }
 .userDetails__container .notifications .notification__wrapper .notification {
   display: flex;
@@ -315,23 +338,31 @@
 .userDetails__container .notifications .notification__wrapper .notification p {
   line-height: 1.4;
 }
-.userDetails__container .application {
+.userDetails__container .activities {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 2em 0 0;
+  margin-top: 2em;
 }
-.userDetails__container .application .title {
+@media screen and (min-width: 769px) and (max-width: 1025px) {
+  .userDetails__container .activities {
+    margin: 0;
+  }
+}
+.userDetails__container .activities .title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  padding: 20px;
 }
-.userDetails__container .application .application_stat {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.userDetails__container .activities p {
+  color: rgba(255, 255, 255, 0.745);
+  font-size: 1.2em;
+  transition: 0.4s ease;
 }
-.userDetails__container .application .application_stat .stat_title {
-  display: flex;
-  justify-content: space-between;
+.userDetails__container .activities p:hover {
+  color: #fff;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

@@ -4,7 +4,7 @@
     align-items: flex-start;
     @media screen and (min-width: 426px) {
       display: grid;
-      grid-template-columns: 2fr 4fr 2fr;
+      grid-template-columns: 2fr 5fr 2fr;
     }
 
     @media screen and (min-width: 1441px) {
@@ -30,10 +30,7 @@
           border: 1px solid rgba(255, 255, 255, 0.452);
           box-shadow: 0px 3px 17px -12px #fff;
         }
-
       }
-      
-
       h3 {
         padding: 0.8em 1.5vw;
         text-align: center;
@@ -138,7 +135,6 @@
 
       .predictionTable__mainContainer {
         flex-direction: column;
-        height: 81vh;
         overflow-y: scroll;
         padding-bottom: 20px;
         @media (max-width: 576px) {
@@ -165,7 +161,7 @@
           gap: 20px;
           justify-content: center;
           align-items: center;
-          color: #fff;
+          color: rgb(108, 102, 102);
           @media screen and (max-width: 425px) {
             flex-direction: column;
           }
@@ -183,10 +179,10 @@
             text-align: center;
             padding: 5px;
             border-radius: 5px;
-            background-color: #fff;
+            background-color: rgb(56, 55, 55);
 
             p {
-              color: #4e4d4d;
+              color: #bcb9b9;
             }
           }
         }
@@ -226,6 +222,8 @@
           }
 
           .MuiBox-root {
+            width: 95% !important;
+            margin: 0 auto;
             @media screen and (max-width: 425px) {
               overflow: hidden;
               padding: 0 0 !important;
@@ -376,11 +374,14 @@
     }
 
     .leaderboards {
-
       &.false {
         @media (max-width: 576px) {
           display: none;
         }
+      }
+
+      @media screen and (max-width: 425px) {
+        display: none;
       }
 
       .leaderboardsTitle {
@@ -400,8 +401,11 @@
       }
 
       .leaderboardItemsTitle {
-        display: flex;
-        justify-content: space-between;
+        // display: flex;
+        // justify-content: space-between;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+        justify-content: center;
         border-bottom: 0.5px solid #0001;
         padding-bottom: 10px;
         font-size: 14px;
@@ -410,21 +414,30 @@
         color: #fff;
 
         p {
-          // flex: 1 1 0;
-          display: flex;
-          align-items: center;
-          gap: 2px;
+          &:nth-child(2) {
+            justify-self: end;
+          }
 
-          &:nth-child(1){
-            flex: 0 1 300px;
+          &:last-child {
+            justify-self: end;
           }
         }
-      }
 
+        // p {
+        //   // flex: 1 1 0;
+        //   display: flex;
+        //   align-items: center;
+        //   gap: 2px;
+
+        //   &:nth-child(1){
+        //     flex: 0 1 300px;
+        //   }
+        // }
+      }
 
       .leaderboardItems {
         font-size: 14px;
-        height: 80vh;
+        height: 90vh;
         overflow-y: scroll;
         padding-bottom: 10px;
 
@@ -434,9 +447,12 @@
 
         .leaderboardItem__container {
           background: #191a20;
-          display: flex;
+          // display: flex;
+          // align-items: center;
+          // justify-content: space-between;
+          display: grid;
+          grid-template-columns: 3fr 1fr 1fr;
           align-items: center;
-          justify-content: space-between;
           padding: 8px;
           border-bottom: 0.5px solid #0001;
 
@@ -446,21 +462,14 @@
           }
 
           p {
-            // flex: 1 1 0;
             display: flex;
             align-items: center;
-            justify-content: center;
-            // gap: 2px;
-
-            &:nth-child(1){
-              flex: 0 1 300px;
-              display: flex;
-              gap: 5px;
-              justify-content: flex-start;
+            gap: 3px;
+            &:nth-child(2) {
+              justify-self: end;
             }
-
-            &:nth-child(3){
-              justify-content: flex-end;
+            &:last-child {
+              justify-self: end;
             }
 
             img {
@@ -469,6 +478,31 @@
               border-radius: 50%;
             }
           }
+
+          // p {
+          //   // flex: 1 1 0;
+          //   display: flex;
+          //   align-items: center;
+          //   justify-content: center;
+          //   // gap: 2px;
+
+          //   &:nth-child(1){
+          //     flex: 0 1 300px;
+          //     display: flex;
+          //     gap: 5px;
+          //     justify-content: flex-start;
+          //   }
+
+          //   &:nth-child(3){
+          //     justify-content: flex-end;
+          //   }
+
+          //   img {
+          //     height: 30px;
+          //     object-fit: cover;
+          //     border-radius: 50%;
+          //   }
+          // }
         }
       }
     }

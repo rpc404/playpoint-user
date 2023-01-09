@@ -12,6 +12,7 @@ import Transaction from "../pages/transaction/index";
 import PrivacyPolicy from "../pages/privacyPolicy";
 import TermsAndConditions from "../pages/termsAndConditions";
 import Challenges from "../pages/challenges";
+import SignIn from "../pages/SignIn";
 
 export default function PageRouters({ socket }) {
   return (
@@ -24,10 +25,10 @@ export default function PageRouters({ socket }) {
       <Route path="marketplace" element={<MarketPlace />} />
       <Route path="leaderboards" element={<Leaderboards />} />
       <Route path="prediction/:pid" element={<Prediction />} />
-      <Route path="/transaction" element={<Transaction />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route path="terms-conditions" element={<TermsAndConditions />} />
       <Route path="challenges" element={<Challenges />} />
+      <Route path="signin" element={<SignIn />} />
     </Routes>
   );
 }

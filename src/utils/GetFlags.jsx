@@ -1,6 +1,7 @@
 import clubFlags from "../helpers/EPLFlags.json";
 import CarabaoClubFlags from "../helpers/EFLFlags.json";
 import EPLFlags from "../helpers/EPLFlags.json";
+import CountryFlags from "../helpers/CountryFlags.json";
 
 const GetFlags = (marketplaceSlug, team) => {
   if (marketplaceSlug === "English-Football-League397") {
@@ -33,7 +34,7 @@ const GetFlags = (marketplaceSlug, team) => {
     return EPLFlags.map((club, i) => {
       if (
         club.name.replace(" ", "").toLowerCase().trim() ===
-        String(team).replace(" ", "").toLowerCase().trim() 
+        String(team).replace(" ", "").toLowerCase().trim()
       ) {
         return (
           <img
@@ -44,6 +45,22 @@ const GetFlags = (marketplaceSlug, team) => {
           />
         );
       }
+    });
+  } else if (marketplaceSlug === "fifa-worldcup") {
+    return CountryFlags.map((country, i) => {
+      return (
+        (country.name === team ||
+          (country.name === "United States" && team === "USA") ||
+          (country.name === "South Korea" && team === "Korea Republic")) && (
+          <img
+            src={country?.image}
+            alt={country.name}
+            key={i}
+            loading="lazy"
+            className="Away__Image"
+          />
+        )
+      );
     });
   }
 };

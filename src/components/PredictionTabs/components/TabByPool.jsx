@@ -84,7 +84,7 @@ const PoolType = ({
     tempQuestionaire: [],
     loading: true,
   });
-
+  console.log(status);
   const [predictionCount, setPredictionCount] = React.useState(1);
   const [totalPredictionPrice, setTotalPredictionPrice] = React.useState(0);
   const [predicting, setPredicting] = React.useState(false);
@@ -224,7 +224,7 @@ const PoolType = ({
 
       // console.log(ethers.utils.parseEther(_predictionData.amount.toString()), _predictionData.amount)
       // console.log(duoAmount,trioAmount)
-      
+
       if (duoAmount > 0 || trioAmount > 0) {
         if (duoAmount > 0) {
           amnt += duoAmount;
@@ -251,7 +251,10 @@ const PoolType = ({
         }
         return x;
       }
-      const _ppttAmount = amnt > 10 ? toFixed((amnt / 0.02) * 10 ** 18) : ((amnt/0.02) * 1e18).toString();
+      const _ppttAmount =
+        amnt > 10
+          ? toFixed((amnt / 0.02) * 10 ** 18)
+          : ((amnt / 0.02) * 1e18).toString();
       // transfer prediction pool
       try {
         const _res = await PPTTContract.transfer(
@@ -293,7 +296,7 @@ const PoolType = ({
                   fixtureId: data.fixtureId,
                   predictionId: data._id,
                   type: "trio",
-                  amount: (trioAmount/trioSlots),
+                  amount: trioAmount / trioSlots,
                   slot: trioSlots,
                   status: "active",
                 };
@@ -367,7 +370,7 @@ const PoolType = ({
           ))}
         </div>
       </div>
-      {isWalletConnected && (
+      {isWalletConnected && status !== "closed" && (
         <>
           <div className="questionaires">
             <p className="prediction_rule">
@@ -460,13 +463,13 @@ const PoolType = ({
           <div className="top">
             <div>
               <h4>Pool Entry: {totalPredictionPrice / 0.02}PPTT</h4>
-              {(duoAmount > 0 && duoSlots > 0) && (
+              {duoAmount > 0 && duoSlots > 0 && (
                 <h4>
                   Duo Entry: {duoSlots} slots x{" "}
                   {userPrediction.activeAmount / 0.02} = {duoAmount / 0.02}PPTT
                 </h4>
               )}
-              {(trioAmount > 0 && duoSlots > 0) && (
+              {trioAmount > 0 && duoSlots > 0 && (
                 <h4>
                   Trio Entry: {trioSlots} slots x{" "}
                   {userPrediction.activeAmount / 0.02} = {trioAmount / 0.02}PPTT
@@ -545,7 +548,9 @@ const getAnswer = (prop, handleRadioChange, index) => {
         <div className="row-input">
           {teams.map((tag, _index) => (
             <div className="wrapper" key={_index}>
-              <label className="custom-label">{tag}</label>
+              <label className="custom-label" id={`${tag}`} htmlFor={`${tag}`}>
+                {tag}
+              </label>
               {/* <input
                 type="number"
                 className="custom-input"
@@ -558,8 +563,8 @@ const getAnswer = (prop, handleRadioChange, index) => {
               /> */}
               <TextField
                 required
-                label="number"
-                id="outlined-number"
+                placeholder="number*"
+                id={`${tag}`}
                 type={"number"}
                 name={"q_" + index}
                 onChange={(e) =>
@@ -589,13 +594,11 @@ const getAnswer = (prop, handleRadioChange, index) => {
             /> */}
             <TextField
               required
-              label="number"
+              placeholder="number*"
               id="outlined-number"
               type={"number"}
               name={"q_" + index}
-              onChange={(e) =>
-                handleRadioChange(index, e.target.value)
-              }
+              onChange={(e) => handleRadioChange(index, e.target.value)}
             />
           </div>
         </div>

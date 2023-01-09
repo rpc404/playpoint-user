@@ -4,7 +4,48 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import propTypes from "prop-types";
 import { Typography, Box } from "@mui/material";
-import { BarChart } from "reaviz";
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+      display:false
+    },
+  },
+};
+import { faker } from "@faker-js/faker";
+
+const labels = ["January", "February", "March"];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+    },
+  ],
+};
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,11 +86,6 @@ export default function Transaction() {
     setValue(newValue);
   };
 
-  const data = [
-    { key: "Jan", data: 14 },
-    { key: "Feb", data: 5 },
-    { key: "Mar", data: 18 },
-  ];
 
   return (
     <div className="transaction__wrapper">
@@ -222,7 +258,7 @@ export default function Transaction() {
               </div>
             </div>
             <div className="chart">
-              <BarChart width={150} height={150} data={data} />
+              <Bar options={options} data={data} />
             </div>
           </div>
         </div>

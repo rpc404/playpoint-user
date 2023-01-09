@@ -55,6 +55,8 @@ export default function Leaderboards({ marketplaceSlug }) {
     })();
   }, []);
 
+  // console.log(leaderboards)
+
   return (
     <div className={`leaderboardItems ${activeOS}`}>
       {leaderboards.length > 0 &&

@@ -2,7 +2,7 @@ import React from "react";
 import { Skeleton, Stack } from "@mui/material";
 import "./styles/style.css";
 import MarketplaceCard from "../../components/MarketplaceCard";
-import { getMarketplaces, getMarketplaceStat } from "../../api/Marketplace";
+import { getMarketplaces } from "../../api/Marketplace";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
