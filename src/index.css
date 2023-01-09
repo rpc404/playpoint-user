@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Ubuntu", sans-serif !important;
+  font-family: "Ubuntu", sans-serif;
   z-index: 0;
   user-drag: none;
   -webkit-user-drag: none;

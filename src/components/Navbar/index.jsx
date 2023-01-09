@@ -47,7 +47,9 @@ export default function Navbar() {
         });
 
         const data = {
-          isWalletConnected, username, userPublicAddress,
+          isWalletConnected,
+          username,
+          userPublicAddress,
           userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
           userETHBalance: ethers.utils.formatEther(ethBalance),
         };
