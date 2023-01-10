@@ -2,10 +2,8 @@ import React from "react";
 import { Skeleton, Stack } from "@mui/material";
 import "./styles/style.css";
 import MarketplaceCard from "../../components/MarketplaceCard";
-const { getMarketplaces } = await import("../../api/Marketplace");
-const { useMarketplaceContext } = await import(
-  "../../contexts/Marketplace/MarketplaceContext"
-);
+import { getMarketplaces } from "../../api/Marketplace";
+import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import Hero from "../../components/Hero";
