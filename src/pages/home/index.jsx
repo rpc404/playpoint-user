@@ -29,8 +29,12 @@ export default function Home() {
 
   return (
     <div className="home__container">
-      <Hero />
-      <div className="divider"></div>
+      {window.innerWidth > 992 && (
+        <div>
+          <Hero />
+          <div className="divider"></div>
+        </div>
+      )}
       <h1 className="home__mainTitle">Active Marketplaces</h1>
       <div className="marketplace__items" id="marketplace__items">
         {marketplaces && marketplaces.length >= 1 && !loading ? (

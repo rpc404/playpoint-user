@@ -3,8 +3,6 @@ import { setProfile } from "../api/Profile";
 
 const { ethereum } = window;
 
-
-
 export const handleRPCWalletLogin = async () => {
   try {
     await ethereum.request({
@@ -78,7 +76,7 @@ export const handleRPCWalletLogin = async () => {
 
 export const getPPTTBalance = async (userAddress) => {};
 
-if(typeof ethereum!=="undefined"){
+if (typeof ethereum !== "undefined") {
   // @note - This is the main function that will be called from the frontend on account change on metamask
   ethereum.on("accountsChanged", async (accounts) => {
     const tempRpcData = {
@@ -102,4 +100,3 @@ if(typeof ethereum!=="undefined"){
     window.location.reload();
   });
 }
-
