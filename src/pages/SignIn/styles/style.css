@@ -57,6 +57,26 @@
   width: 100%;
   height: 100%;
 }
+.signin__container .wrapper .signin__form.active {
+  -webkit-animation: fadeOut 2s;
+          animation: fadeOut 2s;
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 .signin__container .wrapper .signin__form .item {
   background-color: #fff;
   display: flex;
@@ -149,6 +169,25 @@
   gap: 20px;
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  -webkit-animation: fadeIn 2s;
+          animation: fadeIn 2s;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .signin__container .wrapper .otp__container img {
   height: 150px;

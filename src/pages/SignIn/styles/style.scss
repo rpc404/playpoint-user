@@ -54,7 +54,17 @@
       gap: 10px;
       width: 100%;
       height: 100%;
-      // overflow: hidden;
+      &.active {
+        animation: fadeOut 2s;
+        @keyframes fadeOut {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+        }
+      }
 
       .item {
         background-color: #fff;
@@ -89,7 +99,7 @@
           align-items: center;
           gap: 5px;
 
-          input[type=checkbox]{
+          input[type="checkbox"] {
             padding: 5px 0;
             margin: 8px 0;
           }
@@ -173,6 +183,18 @@
       gap: 20px;
       width: 100%;
       height: 100%;
+      max-width: 100%;
+      animation: fadeIn 2s;
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+        
+      }
 
       img {
         height: 150px;
