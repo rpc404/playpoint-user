@@ -70,9 +70,9 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
           <Button onClick={() => handleWalletLogin("arbitrum")}>
             🦊 Metamask
           </Button>
-          <Button onClick={() => handleWalletLogin("shasta")}>
+          {/* <Button onClick={() => handleWalletLogin("shasta")}>
             👛 TronLink
-          </Button>
+          </Button> */}
         </div>
 
         <p>

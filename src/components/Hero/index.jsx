@@ -68,10 +68,9 @@ export default function Hero() {
 
       <div className="heroAdditionalInfo">
         <p className="description">
-          Duo and Trio are challenges where you can predict and challenge
-          others. In Duo, you can challenge another person, and in Trio, you can
-          challenge two other people. To participate, you can choose how many
-          entries you want to open for others to challenge.
+          <b>Note</b>: Duo and Trio are challenges where you can predict and
+          challenge others. In Duo, you can challenge another person, and in
+          Trio, you can challenge two other people.
         </p>
         <div className="addtionalInfoContent">
           <div>
@@ -80,19 +79,18 @@ export default function Hero() {
               loading="lazy"
               alt=""
             />
-            <div>
-              <p>
-                <b>P2E Arrives</b>
-                <br />
-                Multi blockchain network, pools enabled.
-              </p>
-            </div>
+            <img
+              className="rotatingImage"
+              src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-11_21-11-41_HPGTmzrrO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673450896932"
+              loading="lazy"
+              alt=""
+            />
           </div>
-          <h1>
-            <span>93k PPTT</span>
-            <br />
-            <span>Pool Amount</span>
-          </h1>
+          <img
+            src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-11_21-16-21_SfQPymXZk.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673451095728"
+            loading="lazy"
+            alt=""
+          />
         </div>
       </div>
     </div>

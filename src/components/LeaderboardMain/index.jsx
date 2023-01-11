@@ -26,7 +26,7 @@ export default function LeaderboardMain() {
   return (
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
-        <h2>📈 Top Ranked Fixtures</h2>
+        <h1>📈 Top Ranked Fixtures</h1>
 
         <FixtureTable
           leaderboard={leaderboards}
