@@ -1,5 +1,4 @@
 import React from "react";
-import Identicon from "react-identicons";
 import "./styles/style.css";
 
 export default function Hero() {
