@@ -1,3 +1,11 @@
+.fixtures__container {
+  margin: 0 5vw;
+}
+@media (max-width: 576px) {
+  .fixtures__container {
+    margin: 0;
+  }
+}
 .fixtures__container h1 {
   font-size: 3.8em;
   padding: 150px 2vw;
@@ -23,23 +31,6 @@
 .fixtures__container h2 {
   padding: 10px 2vw;
 }
-.fixtures__container .fixtureBanner__container {
-  position: relative;
-  overflow-y: hidden;
-}
-.fixtures__container .fixtureBanner__container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.fixtures__container .fixtureBanner__container h1 {
-  z-index: 1;
-}
 .fixtures__container .MuiBox-root {
   padding: 0 2vw;
 }
@@ -47,10 +38,6 @@
   .fixtures__container .MuiBox-root {
     padding: 0;
   }
-}
-.fixtures__container .MuiBox-root .fixtureCardItems__container {
-  height: 70vh;
-  overflow-y: scroll;
 }
 .fixtures__container .MuiBox-root .fixtureCardItems__container .fixtureCard__container {
   padding: 25px 0;

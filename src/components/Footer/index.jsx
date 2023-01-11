@@ -1,7 +1,7 @@
 import { Typography, Button, InputBase } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles/style.css"
+import "./styles/style.css";
 
 const index = () => {
   return (
@@ -17,9 +17,14 @@ const index = () => {
             <h1>Playpoint</h1>
           </div>
           <Typography>
-            Playpoint is an online platform for predicting sporting events using
-            blockchain technology. It includes a marketplace, vendor showcase,
-            prediction hub, and various prediction pools.
+            Playpoint is an online prediction pool platform based on real-time
+            sporting events, supported by decentralized blockchain networks.
+            <br />
+            The affiliated Participants take part in the prediction pool
+            sweepstakes by selecting a match or matches (fixtures) prescribed in
+            the Playpoint Showcase, and ultimately answering to the fixtures
+            related sets of prediction questions composed, assessed or set up by
+            Playpoint Questionnaires hub.
           </Typography>
         </div>
 

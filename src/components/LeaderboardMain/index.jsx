@@ -2,7 +2,6 @@ import { Pagination } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  getAllLeaderboards,
   getLeaderboardByMarketplaceSlug,
 } from "../../api/Leaderboards";
 import { formatNumber } from "../../utils/NumberFomatter";

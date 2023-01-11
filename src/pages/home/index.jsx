@@ -7,6 +7,7 @@ import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceCon
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import Hero from "../../components/Hero";
+import { Helmet } from "react-helmet";
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
@@ -29,6 +30,9 @@ export default function Home() {
 
   return (
     <div className="home__container">
+      <Helmet>
+        <title>Playpoint | Prediction Pool Platform</title>
+      </Helmet>
       {window.innerWidth > 992 && (
         <div>
           <Hero />
