@@ -242,10 +242,17 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
   }
 }
 
-.MuiPagination-ul li button {
+.MuiPagination-ul {
+  margin: 1.5em 0 0;
+}
+
+.MuiButtonBase-root.MuiPaginationItem-root {
+  border: 1px solid rgba(102, 102, 102, 0.5) !important;
   color: #fff;
-  background-color: rgba(75, 75, 75, 0.806);
-  font-size: 1.2em;
+}
+
+.MuiPaginationItem-sizeMedium {
+  color: rgba(159, 157, 157, 0.87) !important;
 }
 
 .MuiTableCell-root {
