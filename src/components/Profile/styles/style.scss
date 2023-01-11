@@ -191,7 +191,6 @@
           justify-content: space-between;
           align-items: center;
           padding: 1em 0;
-          
 
           i {
             font-size: 1.2em;
@@ -231,14 +230,25 @@
 
           .match {
             display: grid;
-            grid-template-columns: 3fr 1fr 3fr;
+            grid-template-columns: 3fr 1fr 1fr 1fr 3fr;
             gap: 10px;
 
+            
+
             span {
-              &:nth-child(2){
+              &:nth-child(1) {
+                justify-self: start;
+              }
+              &:nth-child(2) {
+                justify-self: start;
+              }
+              &:nth-child(3){
                 justify-self: center;
               }
-              &:nth-child(1){
+              &:nth-child(4){
+                justify-self: start;
+              }
+              &:nth-child(5){
                 justify-self: start;
               }
               display: flex;

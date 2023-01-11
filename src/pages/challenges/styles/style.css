@@ -106,4 +106,21 @@
 }
 .challenges__Container .challenges__AllChallenges .cardContainer .card .stat .filled {
   color: crimson;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card .MuiSkeleton-root {
+  background-color: rgba(0, 0, 0, 0.32) !important;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card__header {
+  display: flex;
+  justify-content: space-between;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card_image {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.challenges__Container .challenges__AllChallenges .cardContainer .card_image div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }/*# sourceMappingURL=style.css.map */

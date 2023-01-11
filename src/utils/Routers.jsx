@@ -1,18 +1,22 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Fixture from "../pages/fixture";
-import Predict from "../pages/predict";
-import NotFound from "../pages/404";
-import Home from "../pages/home";
-import Profile from "../pages/profile";
-import MarketPlace from "../pages/Marketplace";
-import Leaderboards from "../pages/Leaderboard/index";
-import Prediction from "../pages/predictions/index";
-import Transaction from "../pages/transaction/index";
-import PrivacyPolicy from "../pages/privacyPolicy";
-import TermsAndConditions from "../pages/termsAndConditions";
-import Challenges from "../pages/challenges";
-import SignIn from "../pages/SignIn";
+/**
+ * @dev Code Splitting at route level... these pages will be called whenever we need them.
+ */
+const Fixture = React.lazy(() => import("../pages/fixture"));
+const Predict = React.lazy(() => import("../pages/predict"));
+const Home = React.lazy(() => import("../pages/home"));
+const Profile = React.lazy(() => import("../pages/profile"));
+const MarketPlace = React.lazy(() => import("../pages/Marketplace"));
+const Leaderboards = React.lazy(() => import("../pages/Leaderboard/index"));
+const Prediction = React.lazy(() => import("../pages/predictions/index"));
+const PrivacyPolicy = React.lazy(() => import("../pages/privacyPolicy"));
+const TermsAndConditions = React.lazy(() =>
+  import("../pages/termsAndConditions")
+);
+const NotFound = React.lazy(() => import("../pages/404"));
+const Challenges = React.lazy(() => import("../pages/challenges"));
+const SignIn = React.lazy(() => import("../pages/SignIn"));
 
 export default function PageRouters({ socket }) {
   return (

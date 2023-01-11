@@ -212,7 +212,7 @@
 }
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match {
   display: grid;
-  grid-template-columns: 3fr 1fr 3fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr 3fr;
   gap: 10px;
 }
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span {
@@ -220,10 +220,19 @@
   align-items: center;
   gap: 5px;
 }
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(1) {
+  justify-self: start;
+}
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(2) {
+  justify-self: start;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(3) {
   justify-self: center;
 }
-.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(1) {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(4) {
+  justify-self: start;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(5) {
   justify-self: start;
 }
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p {

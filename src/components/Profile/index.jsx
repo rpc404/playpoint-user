@@ -194,6 +194,8 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
                           {getCountryShortName(
                             data?.predictionId?.fixtureId?.HomeTeam
                           ) || "-"}
+                        </span>
+                        <span>
                           {GetFlags(
                             data?.predictionId?.fixtureId?.marketplaceSlug,
                             data?.predictionId?.fixtureId?.HomeTeam
@@ -205,6 +207,8 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
                             data?.predictionId?.fixtureId?.marketplaceSlug,
                             data?.predictionId?.fixtureId?.AwayTeam
                           )}
+                        </span>
+                        <span>
                           {getCountryShortName(
                             data?.predictionId?.fixtureId?.AwayTeam
                           ) || "-"}

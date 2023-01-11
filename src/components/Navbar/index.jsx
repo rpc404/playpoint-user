@@ -167,7 +167,8 @@ export default function Navbar() {
                     window.open("https://app.playpoint.ai/", "_blank")
                   }
                 >
-                  <i className="ri-add-box-line"></i> Add Money
+                  <i className="ri-add-box-line"></i>
+                  Add Money
                 </Button>
               </div>
             </ListItem>
@@ -281,7 +282,8 @@ export default function Navbar() {
             onClick={() => window.open("https://app.playpoint.ai/")}
             className="buyButton"
           >
-            <i className="ri-coin-fill"></i> Buy PPTT
+            <i className="ri-coin-fill"></i>
+            Buy PPTT
           </button>
           {isWalletConnected === false ? (
             <Button disabled={loading} onClick={() => handleLogin()}>
@@ -341,7 +343,8 @@ export default function Navbar() {
                 {isWalletConnected === true && <span>{username}</span>}
               </Button>
               <Button onClick={() => handleLogout()}>
-                <i className="ri-logout-box-line"></i> Logout
+                <i className="ri-logout-box-line"></i>
+                Logout
               </Button>
             </>
           )}
