@@ -4,6 +4,12 @@
   font-family: "Playfair Display", serif;
   margin-top: 10px;
 }
+@media (max-width: 576px) {
+  .home__container .home__mainTitle {
+    margin-top: 0;
+    padding-top: 25px;
+  }
+}
 .home__container .marketplace__items {
   padding: 0 5vw;
   display: flex;
@@ -63,8 +69,9 @@
 }
 @media (max-width: 576px) {
   .home__container .marketplace__items .marketplaceCard__container {
-    max-width: 85vw;
-    min-width: 85vw;
+    max-width: 88vw;
+    min-width: 88vw;
+    height: 55vh;
   }
 }
 .home__container .marketplace__items .marketplaceCard__container h1 {
