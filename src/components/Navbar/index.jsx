@@ -32,7 +32,7 @@ export default function Navbar() {
     if (isWalletConnected) {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const contract = new ethers.Contract(
-        "0x53d168578974822bCAa95106C7d5a906BF100948",
+        import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
         ERC20BasicAPI,
         provider
       );
@@ -67,7 +67,7 @@ export default function Navbar() {
     const resData = await handleRPCWalletLogin();
     const provider = new ethers.providers.Web3Provider(ethereum);
     const contract = new ethers.Contract(
-      "0x53d168578974822bCAa95106C7d5a906BF100948",
+      import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
       ERC20BasicAPI,
       provider
     );
@@ -299,7 +299,7 @@ export default function Navbar() {
                       params: {
                         type: "ERC20",
                         options: {
-                          address: "0x53d168578974822bCAa95106C7d5a906BF100948",
+                          address: import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
                           symbol: "PPTT",
                           decimals: 18,
                           image: "https://ik.imagekit.io/lexworld/Logo.png",

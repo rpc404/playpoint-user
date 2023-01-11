@@ -36,12 +36,11 @@ const Prediction = () => {
   const [open, setOpen] = React.useState(false);
   const [challengeStat, setCStat] = React.useState({});
 
-
   React.useEffect(() => {
-    if(!open){
+    if (!open) {
       getPredictionById(pid).then((res) => {
         if (res.data.data) {
-          console.log(res.data.data)
+          console.log(res.data.data);
           setPredictionData(res.data.data[0]);
           setquestions(res.data.data[1]);
           setloading(false);
@@ -50,20 +49,20 @@ const Prediction = () => {
     }
   }, [open, mode]);
 
-  React.useEffect(()=>{
-    if(mode=="watch-challenge"){
+  React.useEffect(() => {
+    if (mode == "watch-challenge") {
       console.log("fetching");
-      getChallenge(currChallenege).then(res=>{
-        console.log(res.data)
-        setCStat(res.data)
-      }) 
+      getChallenge(currChallenege).then((res) => {
+        console.log(res.data);
+        setCStat(res.data);
+      });
     }
-  },[mode])
+  }, [mode]);
 
   React.useEffect(() => {
     setloading(true);
     let allp = JSON.parse(sessionStorage.getItem("predictions"));
-    if(allp){
+    if (allp) {
       allp = allp.filter((prediction) => {
         if (
           prediction.predictedBy === userPublicAddress &&
@@ -85,10 +84,10 @@ const Prediction = () => {
     setMode(_mode);
     setOpen(true);
   };
-  const watchChallenge = (_mode,id) => {
+  const watchChallenge = (_mode, id) => {
     setMode(_mode);
     setOpen(true);
-    setCurrChallenge(id)
+    setCurrChallenge(id);
   };
 
   const handleClose = () => {
@@ -104,23 +103,26 @@ const Prediction = () => {
       type: "info",
     });
     const provider = new ethers.providers.Web3Provider(ethereum);
-      const PPTTContract = new ethers.Contract(
-        "0x53d168578974822bCAa95106C7d5a906BF100948", // Sepolia PPTT Token Address
-        ERC20BasicAPI,
-        provider
-      ).connect(provider.getSigner());
+    const PPTTContract = new ethers.Contract(
+      import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS, // Sepolia PPTT Token Address
+      ERC20BasicAPI,
+      provider
+    ).connect(provider.getSigner());
 
-    const _ppttAmount = currChallenege.amount > 10 ? toFixed((currChallenege.amount / 0.02) * 10 ** 18) : ((currChallenege.amount/0.02) * 1e18).toString();
+    const _ppttAmount =
+      currChallenege.amount > 10
+        ? toFixed((currChallenege.amount / 0.02) * 10 ** 18)
+        : ((currChallenege.amount / 0.02) * 1e18).toString();
     console.log(_ppttAmount);
     // transfer prediction pool
     const txn = await PPTTContract.transfer(
-      "0x53b0d58C2AFcb19a4305A25Af966Aa26E126dc4F", // contract address
+      import.meta.env.VITE_BETA_FACTORY_CONTRACT_ADDRESS, // contract address
       _ppttAmount
     );
-    
+
     const data = {
       predictionId: currChallenege.predictionId,
-      type:currChallenege.type,
+      type: currChallenege.type,
       participants: {
         prediction: activePredition,
         txnhash: txn.hash,
@@ -195,7 +197,7 @@ const Prediction = () => {
                       <p>Total Slot: {challenges.slot}</p>
                       <p>Pool Entry Amount: {challenges.amount / 0.02}PPTT</p>
                       <p>
-                        { predictionData.predictedBy !== userPublicAddress ? 
+                        {predictionData.predictedBy !== userPublicAddress ? (
                           challenges.participants.length < challenges.slot ? (
                             <Button
                               variant="outlined"
@@ -207,21 +209,20 @@ const Prediction = () => {
                               Challenge {challenges.participants.length} of{" "}
                               {challenges.slot}
                             </Button>
-                          ) : 
-                          (
+                          ) : (
                             <p>All Slots Full </p>
                           )
-                         :
-                        (
+                        ) : (
                           <Button
                             variant="outlined"
                             color="error"
-                            onClick={() => watchChallenge("watch-challenge",challenges._id)}
+                            onClick={() =>
+                              watchChallenge("watch-challenge", challenges._id)
+                            }
                           >
                             View Challenge
                           </Button>
-                        ) 
-                        }
+                        )}
                       </p>
                     </div>
                   );
@@ -297,30 +298,42 @@ const Prediction = () => {
           <h2>Your Predictions in same pool</h2>
           {!loading ? (
             <div className="otherpredictions">
-              {userPredictions.length > 0 ? userPredictions.map((_pr, k) => {
-                return (
-                  <div key={k}>
-                    <div className="otherpredictions_box">
-                      {questions?.questionaires?.questions.map(
-                        (question, key) => {
-                          return (
-                            <div
-                              className="question_answer"
-                              key={key}
-                              style={{ margin: "1.2em 0" }}
-                            >
-                              <h4>
-                                Q{key + 1}. {question}
-                              </h4>
-                              <p>Answer: {_pr.answers[key]}</p>
-                            </div>
-                          );
-                        }
-                      )}
+              {userPredictions.length > 0 ? (
+                userPredictions.map((_pr, k) => {
+                  return (
+                    <div key={k}>
+                      <div className="otherpredictions_box">
+                        {questions?.questionaires?.questions.map(
+                          (question, key) => {
+                            return (
+                              <div
+                                className="question_answer"
+                                key={key}
+                                style={{ margin: "1.2em 0" }}
+                              >
+                                <h4>
+                                  Q{key + 1}. {question}
+                                </h4>
+                                <p>Answer: {_pr.answers[key]}</p>
+                              </div>
+                            );
+                          }
+                        )}
+                      </div>
                     </div>
-                  </div>
-                );
-              }): <div><h3>Looks like you have only 1 or no entries in this pool</h3><a href={`/predict/${predictionData.fixtureId}`} className="pp_button">Predic Now</a></div>}
+                  );
+                })
+              ) : (
+                <div>
+                  <h3>Looks like you have only 1 or no entries in this pool</h3>
+                  <a
+                    href={`/predict/${predictionData.fixtureId}`}
+                    className="pp_button"
+                  >
+                    Predic Now
+                  </a>
+                </div>
+              )}
             </div>
           ) : (
             <div className="otherpredictionskeleton__container">
@@ -397,7 +410,6 @@ const Prediction = () => {
                   Your Challenge Pools
                 </Typography>
               )}
-
             </Toolbar>
           </AppBar>
 
@@ -451,32 +463,29 @@ const Prediction = () => {
                     </div>
                   )}
                 </div>
-                    {activePredition && (
-                      <div className="activePrediction__container">
-                        <h4>Selected Entry</h4>
-                        <hr />
-                        <p>
-                          Entry ID: <span>{activePredition}</span>{" "}
-                        </p>
-                        <p>
-                          Challenge Entry Amount:{" "}
-                          <span>{currChallenege.amount / 0.02}PPTT</span>
-                        </p>
-                        <p>
-                          Available Assets:{" "}
-                          <span>
-                            {parseFloat(userETHBalance).toFixed(2)} ETH{" "}
-                            {parseFloat(userPPTTBalance).toFixed(2)} PPTT
-                          </span>
-                        </p>
-                        <Button
-                          variant="outlined"
-                          onClick={() => _joinChallenge()}
-                        >
-                          Challenge
-                        </Button>
-                      </div>
-                    )}
+                {activePredition && (
+                  <div className="activePrediction__container">
+                    <h4>Selected Entry</h4>
+                    <hr />
+                    <p>
+                      Entry ID: <span>{activePredition}</span>{" "}
+                    </p>
+                    <p>
+                      Challenge Entry Amount:{" "}
+                      <span>{currChallenege.amount / 0.02}PPTT</span>
+                    </p>
+                    <p>
+                      Available Assets:{" "}
+                      <span>
+                        {parseFloat(userETHBalance).toFixed(2)} ETH{" "}
+                        {parseFloat(userPPTTBalance).toFixed(2)} PPTT
+                      </span>
+                    </p>
+                    <Button variant="outlined" onClick={() => _joinChallenge()}>
+                      Challenge
+                    </Button>
+                  </div>
+                )}
               </div>
 
               {floatingButton && (
@@ -484,36 +493,36 @@ const Prediction = () => {
                   <Button variant="contained" onClick={() => _joinChallenge()}>
                     Challange
                   </Button>
-
                 </div>
+              )}
+            </div>
           )}
 
-          </div>
+          {mode == "watch-challenge" && challengeStat._id ? (
+            <div className="challenege_status_container">
+              <h3>
+                Challenge ID: #
+                {challengeStat._id.slice(-10, challengeStat._id.length)}
+              </h3>
+              <div className="csc__Header">
+                <p>No of slots: {challengeStat.slot}</p>
+                <p>Intra Pool: {challengeStat.type}</p>
+                <p>Pool status: {challengeStat.status}</p>
+                <p>Filled: {challengeStat.participants.length}</p>
+              </div>
+              <div className="csc__Content">
+                {challengeStat.participants.map((_challenger, key) => {
+                  <p>sdfdfsd</p>;
+                })}
+                <div className="card"></div>
+              </div>
+            </div>
+          ) : (
+            <h3>Looks like you have no entries in the pool of </h3>
           )}
-
-          {
-           ( mode=="watch-challenge" && challengeStat._id) ? (
-              <div className="challenege_status_container">
-                <h3>Challenge ID: #{challengeStat._id.slice(-10,challengeStat._id.length)}</h3>
-                <div className="csc__Header">
-                  <p>No of slots: {challengeStat.slot}</p>
-                  <p>Intra Pool: {challengeStat.type}</p>
-                  <p>Pool status: {challengeStat.status}</p>
-                  <p>Filled: {(challengeStat.participants.length)}</p>
-                </div>
-                <div className="csc__Content">
-                  {
-                    challengeStat.participants.map((_challenger,key)=>{
-                        <p>sdfdfsd</p>
-                    })
-                  }
-                  <div className="card">
-
-                  </div>
-                </div>
-              </div>):<h3>Looks like you have no entries in the pool of </h3>}
-        </Dialog> )}
-        </>
+        </Dialog>
+      )}
+    </>
   );
 };
 

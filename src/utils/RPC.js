@@ -1,3 +1,7 @@
+import {
+  WalletConnectWallet,
+  WalletConnectChainID,
+} from "@tronweb3/walletconnect-tron";
 import { toast } from "react-toastify";
 import { setProfile } from "../api/Profile";
 
@@ -100,3 +104,19 @@ if (typeof ethereum !== "undefined") {
     window.location.reload();
   });
 }
+
+export const handleTRONWALLETLogin = async () => {
+  const wallet = new WalletConnectWallet({
+    network: WalletConnectChainID.Shasta,
+    options: {
+      relayUrl: "wss://relay.walletconnect.com",
+      projectId: "....",
+      metadata: {
+        name: "JustLend",
+        description: "JustLend WalletConnect",
+        url: "https://app.justlend.org/",
+        icons: ["https://app.justlend.org/mainLogo.svg"],
+      },
+    },
+  });
+};
