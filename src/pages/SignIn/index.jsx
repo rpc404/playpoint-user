@@ -8,12 +8,11 @@ const SignIn = () => {
 
   const itemsRef = React.useRef(null);
 
-  // const handleInputChange = (index, e) => {
-  //   setInputValue({ ...inputvalue, [e.target.name]: e.target.value });
-  // };
-
-  console.log(inputvalue);
-  console.log(itemsRef.current);
+  React.useEffect(() => {
+    if (itemsRef.current) {
+      itemsRef.current.focus();
+    }
+  }, []);
 
   return (
     <div className="signin__container">
@@ -64,6 +63,7 @@ const SignIn = () => {
                         maxLength={1}
                         name={`input-${index}`}
                         ref={itemsRef}
+                        // ref={focusInput}
                         value={inputvalue[index]}
                         onChange={(e) => {
                           setInputValue({
@@ -71,10 +71,10 @@ const SignIn = () => {
                             [e.target.name]: e.target.value,
                           });
                         }}
-                        onFocus={(e) => e.target.select}
                         inputMode="numeric"
                         autoComplete="one-time-code"
-                        // autoFocus={itemsRef.current}
+                        onFocus={(e) => e.target.select}
+                        // autoFocus={ }
                       />
                     </div>
                   );

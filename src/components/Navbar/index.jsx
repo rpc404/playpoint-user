@@ -13,15 +13,16 @@ import { useNavigate } from "react-router-dom";
 import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
-import { handleRPCWalletLogin } from "../../utils/RPC";
 import { toast } from "react-toastify";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 
-export default function Navbar() {
+export default function Navbar({ toggleAuthenticationDrawer }) {
   const navigate = useNavigate();
-  const [{ isWalletConnected, username, userPublicAddress }, dispatchRPCData] =
-    useRPCContext();
+  const [
+    { isWalletConnected, username, userPublicAddress, network },
+    dispatchRPCData,
+  ] = useRPCContext();
   const [balance, setBalance] = React.useState({
     ethBalance: 0,
     ppttBalance: 0,
@@ -29,10 +30,11 @@ export default function Navbar() {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    if (isWalletConnected) {
+    if (isWalletConnected && network === "arbitrum") {
       const provider = new ethers.providers.Web3Provider(ethereum);
+
       const contract = new ethers.Contract(
-        "0x53d168578974822bCAa95106C7d5a906BF100948",
+        import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
         ERC20BasicAPI,
         provider
       );
@@ -40,7 +42,6 @@ export default function Navbar() {
       (async () => {
         const ethBalance = await provider.getBalance(userPublicAddress);
         const PPTTBalance = await contract.balanceOf(userPublicAddress);
-
         setBalance({
           ethBalance: ethers.utils.formatEther(ethBalance),
           ppttBalance: ethers.utils.formatEther(PPTTBalance),
@@ -57,36 +58,26 @@ export default function Navbar() {
         await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
       })();
     }
+
+    if (isWalletConnected && network === "shasta") {
+      setBalance({
+        ethBalance: 0,
+        ppttBalance: 0,
+      });
+
+      (async () => {
+        const data = {
+          isWalletConnected,
+          username,
+          userPublicAddress,
+          userPPTTBalance: 0,
+          userETHBalance: 0,
+        };
+
+        await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+      })();
+    }
   }, [isWalletConnected]);
-
-  /**
-   * @dev User wallet authentication
-   */
-  const handleLogin = async () => {
-    setLoading(true);
-    const resData = await handleRPCWalletLogin();
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const contract = new ethers.Contract(
-      "0x53d168578974822bCAa95106C7d5a906BF100948",
-      ERC20BasicAPI,
-      provider
-    );
-
-    const ethBalance = await provider.getBalance(resData.userPublicAddress);
-    const PPTTBalance = await contract.balanceOf(resData.userPublicAddress);
-
-    const data = {
-      ...resData,
-      userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
-      userETHBalance: ethers.utils.formatEther(ethBalance),
-    };
-
-    localStorage.setItem("rpcUserData", JSON.stringify(resData));
-
-    await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
-    toast("Wallet Connected!");
-    setLoading(false);
-  };
 
   const handleLogout = () => {
     dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
@@ -204,11 +195,7 @@ export default function Navbar() {
       <Divider />
       {!isWalletConnected ? (
         <List>
-          <ListItem
-            disabled={loading}
-            disablePadding
-            onClick={() => handleLogin()}
-          >
+          <ListItem disabled={loading} disablePadding>
             <ListItemButton className="drawerListItem">
               <i className="ri-fingerprint-line"></i>
               <ListItemText primary="Login / Register" />
@@ -286,7 +273,10 @@ export default function Navbar() {
             Buy PPTT
           </button>
           {isWalletConnected === false ? (
-            <Button disabled={loading} onClick={() => handleLogin()}>
+            <Button
+              disabled={loading}
+              onClick={() => toggleAuthenticationDrawer()}
+            >
               👛 Connect Wallet
             </Button>
           ) : (
@@ -301,7 +291,8 @@ export default function Navbar() {
                       params: {
                         type: "ERC20",
                         options: {
-                          address: "0x53d168578974822bCAa95106C7d5a906BF100948",
+                          address: import.meta.env
+                            .VITE_BETA_PPTT_CONTRACT_ADDRESS,
                           symbol: "PPTT",
                           decimals: 18,
                           image: "https://ik.imagekit.io/lexworld/Logo.png",

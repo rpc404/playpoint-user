@@ -7,6 +7,7 @@ import LeaderboardMain from "../../components/LeaderboardMain";
 import "./styles/style.css";
 import { getMarketplaces } from "../../api/Marketplace";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
+import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 
 const Leaderboard = () => {
   const [activeOS, setActiveOS] = React.useState("");
@@ -43,7 +44,6 @@ const Leaderboard = () => {
     (async () => {
       if (marketplaces.length === 0) {
         let res = await getMarketplaces();
-        console.log(res);
         res = res.data.marketplaces;
         setMarketplace(res);
 
@@ -55,8 +55,6 @@ const Leaderboard = () => {
       setLoading(false);
     })();
   }, []);
-
-  console.log(marketplace);
 
   return (
     <div className="leaderboard__container">

@@ -1,18 +1,17 @@
 main.leaderboardMain__container {
-  margin: 2em auto;
+  margin: 2em 2vw;
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
   align-items: flex-start;
-  width: 95%;
 
   .fixturesLeaderboard__container {
     flex: 1;
     padding: 10px 0;
-    padding-left: 2vw;
 
-    h2 {
+    h1 {
       margin-bottom: 20px;
+      font-family: "Playfair Display", serif;
     }
 
     .leaderboardskeleton__container {
@@ -34,9 +33,7 @@ main.leaderboardMain__container {
     }
 
     .MuiPaper-root {
-      // background-color: #242323e6;
-      // border-radius: 16px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(143, 143, 143, 0.08);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(3.7px);
@@ -128,8 +125,7 @@ main.leaderboardMain__container {
     padding: 20px;
     padding-bottom: 0;
     overflow-y: scroll;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    background: rgba(143, 143, 143, 0.08);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(3.7px);
@@ -141,6 +137,8 @@ main.leaderboardMain__container {
 
     h2 {
       color: #fff;
+      font-family: "Playfair Display", serif;
+      margin-bottom: 10px;
     }
 
     @media (max-width: 968px) {

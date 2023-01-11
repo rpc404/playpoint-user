@@ -2,7 +2,6 @@ import { Pagination } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  getAllLeaderboards,
   getLeaderboardByMarketplaceSlug,
 } from "../../api/Leaderboards";
 import { formatNumber } from "../../utils/NumberFomatter";
@@ -26,7 +25,7 @@ export default function LeaderboardMain() {
   return (
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
-        <h2>📈 Top Ranked Fixtures</h2>
+        <h1>📈 Top Ranked Fixtures</h1>
 
         <FixtureTable
           leaderboard={leaderboards}
