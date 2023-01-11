@@ -13,6 +13,9 @@
     grid-template-columns: 1fr 19fr;
   }
 }
+.profile__container .MuiButtonBase-root.MuiTab-root {
+  color: #fff;
+}
 .profile__container .profile__header {
   display: flex;
   flex-direction: column;

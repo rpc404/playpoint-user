@@ -1,8 +1,10 @@
 import { toast } from "react-toastify";
 import { setProfile } from "../api/Profile";
+// import { useNavigate } from "react-router-dom";
 const { ethereum } = window;
 
 export const handleRPCWalletLogin = async () => {
+  // const navigate = useNavigate()
   try {
     await ethereum.request({
       method: "wallet_switchEthereumChain",
@@ -68,7 +70,7 @@ export const handleRPCWalletLogin = async () => {
       localStorage.setItem("isRPCUserAuthenticated", true);
       localStorage.setItem("rpcUserExpiresAt", currentDate);
       return tempRpcData;
-    } else alert("Metamask is not installed!");
+    } else navigate("signin?ref=nometamask");
   } catch (error) {
     console.error(error);
   }

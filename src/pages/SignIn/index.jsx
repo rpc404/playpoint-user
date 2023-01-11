@@ -1,9 +1,19 @@
 import React from "react";
 import "./styles/style.css";
-import image from "../../images/verified.png";
+import image from "../../images/security.jpg";
 
 const SignIn = () => {
   const [active, setActive] = React.useState(false);
+  const [inputvalue, setInputValue] = React.useState({});
+
+  const itemsRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (itemsRef.current) {
+      itemsRef.current.focus();
+    }
+  }, []);
+
   return (
     <div className="signin__container">
       <div className="wrapper">
@@ -39,20 +49,39 @@ const SignIn = () => {
             </div>
           ) : (
             <div className="otp__container">
-              <img src={image} alt="verified_image" />
               <div className="title">
                 <h3>OTP Verification</h3>
                 <p>Enter OTP sent to eriag321@gmail.com</p>
               </div>
 
               <div className="boxes">
-                <p className="box"></p>
-                <p className="box"></p>
-                <p className="box"></p>
-                <p className="box"></p>
+                {[0, 1, 2, 3, 4, 5].map((box, index) => {
+                  return (
+                    <div className="box" key={index}>
+                      <input
+                        type="text"
+                        maxLength={1}
+                        name={`input-${index}`}
+                        ref={itemsRef}
+                        // ref={focusInput}
+                        value={inputvalue[index]}
+                        onChange={(e) => {
+                          setInputValue({
+                            ...inputvalue,
+                            [e.target.name]: e.target.value,
+                          });
+                        }}
+                        inputMode="numeric"
+                        autoComplete="one-time-code"
+                        onFocus={(e) => e.target.select}
+                        // autoFocus={ }
+                      />
+                    </div>
+                  );
+                })}
               </div>
 
-              <p>
+              <p className="resend">
                 Didn't receive OTP ? <span>Resend OTP</span>
               </p>
 
