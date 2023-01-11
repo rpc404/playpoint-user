@@ -1,9 +1,28 @@
 import { Typography, Button, InputBase } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./styles/style.css";
 
+
 const index = () => {
+
+  const [email, setEmail] = React.useState("");
+
+const ValidateEmail = (mail) => {
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
+    return (true)
+  }
+  toast("You have entered an invalid email address!",{type:'error'})
+  return (false)
+}
+
+const handleSubmit = () =>{
+  if(ValidateEmail(email)){
+    console.log(email);
+  }
+}
+
   return (
     <div className="footer__container">
       <div className="footer">
@@ -55,8 +74,10 @@ const index = () => {
               <InputBase
                 sx={{ backgroundColor: "#fff", padding: "0 .6em" }}
                 placeholder="Enter Your Email"
+                type="email"
+                onChange={e=>setEmail(e.target.value)}
               />
-              <button>Subscribe</button>
+              <button onClick={()=>handleSubmit()}>Subscribe</button>
             </div>
           </div>
           <div className="icons">
