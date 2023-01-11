@@ -16,12 +16,13 @@ import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { toast } from "react-toastify";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
-import { handleWalletLogin } from "../../utils/WalletLogin";
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
   const navigate = useNavigate();
-  const [{ isWalletConnected, username, userPublicAddress }, dispatchRPCData] =
-    useRPCContext();
+  const [
+    { isWalletConnected, username, userPublicAddress, network },
+    dispatchRPCData,
+  ] = useRPCContext();
   const [balance, setBalance] = React.useState({
     ethBalance: 0,
     ppttBalance: 0,
@@ -29,7 +30,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    if (isWalletConnected) {
+    if (isWalletConnected && network === "arbitrum") {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const contract = new ethers.Contract(
         import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
@@ -52,6 +53,25 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           userPublicAddress,
           userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
           userETHBalance: ethers.utils.formatEther(ethBalance),
+        };
+
+        await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+      })();
+    }
+
+    if (isWalletConnected && network === "shasta") {
+      setBalance({
+        ethBalance: 0,
+        ppttBalance: 0,
+      });
+
+      (async () => {
+        const data = {
+          isWalletConnected,
+          username,
+          userPublicAddress,
+          userPPTTBalance: 0,
+          userETHBalance: 0,
         };
 
         await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });

@@ -2,7 +2,7 @@ export const ACTIONS = {
   WALLET_CONNECT: "wallet-connect",
   WALLET_DISCONNECT: "wallet-disconnect",
   UPDATE_USERNAME: "update-profile",
-  GET_WALLET:"get-wallet",
+  GET_WALLET: "get-wallet",
   GET_NETWORK: "get-network",
 };
 
@@ -12,7 +12,7 @@ export const initialRPCState = {
   userPPTTBalance: 0,
   userETHBalance: 0,
   username: "",
-  network: ""
+  network: "",
 };
 
 export const RPCReducer = (state, action) => {

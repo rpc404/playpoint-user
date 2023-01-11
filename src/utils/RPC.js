@@ -55,6 +55,7 @@ export const handleRPCWalletLogin = async () => {
         userPublicAddress: userAddress[0],
         isWalletConnected: true,
         username: "",
+        network: "arbitrum",
       };
       if (userAddress[0]) {
         await setProfile({ data: tempRpcData }).then((res) => {
@@ -128,6 +129,7 @@ export const handleTRONWALLETLogin = async () => {
     userPublicAddress: "",
     isWalletConnected: true,
     username: "",
+    network: "shasta",
   };
 
   let tronWeb;
@@ -137,13 +139,16 @@ export const handleTRONWALLETLogin = async () => {
     const res = await tronLink.request({ method: "tron_requestAccounts" });
     if (res.code === 200) {
       tronWeb = tronLink.tronWeb;
-      console.log(await tronLink.request({method: 'tron_requestAccounts'}))
+    } else {
+      return toast("Tronlink not installed!");
     }
   }
-  // await setProfile({ data: tempRpcData }).then((res) => {
-  //   tempRpcData.username = res.data.profile.username;
-  //   tempRpcData.userPublicAddress = data.address;
-  // });
+
+  await setProfile({ data: tempRpcData }).then((res) => {
+    tempRpcData.username = res.data.profile.username;
+    tempRpcData.userPublicAddress = tronWeb.defaultAddress.base58;
+  });
+
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
   localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
