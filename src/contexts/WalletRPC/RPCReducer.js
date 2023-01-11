@@ -1,10 +1,9 @@
-const { ethereum } = window;
-
 export const ACTIONS = {
   WALLET_CONNECT: "wallet-connect",
   WALLET_DISCONNECT: "wallet-disconnect",
   UPDATE_USERNAME: "update-profile",
-  GET_WALLET:"get-wallet"
+  GET_WALLET: "get-wallet",
+  GET_NETWORK: "get-network",
 };
 
 export const initialRPCState = {
@@ -13,6 +12,7 @@ export const initialRPCState = {
   userPPTTBalance: 0,
   userETHBalance: 0,
   username: "",
+  network: "",
 };
 
 export const RPCReducer = (state, action) => {
@@ -26,6 +26,7 @@ export const RPCReducer = (state, action) => {
         username: action.payload.username,
         userPPTTBalance: action.payload.userPPTTBalance,
         userETHBalance: action.payload.userETHBalance,
+        network: action.payload.network,
       };
 
     //   @note disconnect wallet

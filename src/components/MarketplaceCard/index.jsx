@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function MarketplaceCard({
-  marketplace,
-  totalFixtures,
-  totalPredictions,
+  marketplace
 }) {
   const navigate = useNavigate();
 
@@ -26,33 +24,13 @@ export default function MarketplaceCard({
 
   return (
     <div
+      style={styles}
       className="marketplaceCard__container"
       onClick={() => {
         closed ? toast("Marketplace Closed") : navHandler(marketplaceSlug);
       }}
     >
-      <div className="coverImage" style={styles}></div>
-      <span className="marketplaceDetails">
-        <span className="marketplaceName">
-          <h4>
-            <i className="ri-football-line"></i> {marketplaceName}
-          </h4>
-        </span>
-        <div className="info">
-          <p>
-            {totalFixtures} <br />
-            <span className="flex">
-              <i className="ri-bubble-chart-line"></i> Fixtures
-            </span>
-          </p>
-          <p>
-            {totalPredictions} <br />
-            <span className="flex">
-              <i className="ri-bar-chart-grouped-line"></i> Total entries
-            </span>
-          </p>
-        </div>
-      </span>
+      <h1>{marketplaceName}</h1>
     </div>
   );
 }

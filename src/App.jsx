@@ -5,11 +5,19 @@ import { useRPCContext } from "./contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "./contexts/WalletRPC/RPCReducer";
 import PageRouters from "./utils/Routers";
 import Footer from "./components/Footer/index";
+import WalletSelection from "./components/WalletSelection";
 
 export default function App() {
   const [, dispatchRPCData] = useRPCContext();
+  const [isAuthenticationDrawerOpen, setIsAuthenticationDrawerOpen] =
+  React.useState(false);
 
-  const [channel, setChannel] = React.useState({});
+  const toggleAuthenticationDrawer = () => {
+    setIsAuthenticationDrawerOpen(true);
+    document.body.style.overflowY = "hidden";
+  };
+
+  const [channel] = React.useState({});
 
   React.useEffect(() => {
     (async () => {
@@ -29,11 +37,18 @@ export default function App() {
 
   return (
     <>
+      {/* <WalletSelection /> */}
+      {isAuthenticationDrawerOpen && (
+        <WalletSelection
+          setIsAuthenticationDrawerOpen={setIsAuthenticationDrawerOpen}
+        />
+      )}
       <Topbar />
-      <Navbar />
+      <Navbar toggleAuthenticationDrawer={toggleAuthenticationDrawer}/>
       <PageRouters socket={channel} />
       <div className="divider"></div>
       <Footer />
+
       <div className="snowflakes" aria-hidden="true">
         <div className="snowflake">❅</div>
         <div className="snowflake">❆</div>

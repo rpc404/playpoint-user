@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import { setProfile } from "../api/Profile";
-
 const { ethereum } = window;
 
 export const handleRPCWalletLogin = async () => {
@@ -56,6 +55,7 @@ export const handleRPCWalletLogin = async () => {
         userPublicAddress: userAddress[0],
         isWalletConnected: true,
         username: "",
+        network: "arbitrum",
       };
       if (userAddress[0]) {
         await setProfile({ data: tempRpcData }).then((res) => {
@@ -100,3 +100,59 @@ if (typeof ethereum !== "undefined") {
     window.location.reload();
   });
 }
+
+export const handleTRONWALLETLogin = async () => {
+  let tronExists = new Promise((resolve, reject) => {
+    let attempts = 0,
+      maxAttempts = 1000;
+    const checkTron = () => {
+      if (window.tronWeb) {
+        resolve(true);
+        return;
+      }
+      attempts++;
+      if (attempts >= maxAttempts) {
+        reject(false);
+        return;
+      }
+      setTimeout(checkTron, 100);
+    };
+    checkTron();
+  });
+
+  if (!tronExists) {
+    alert("Please login into Tronlink wallet extension!");
+    return null;
+  }
+
+  const tempRpcData = {
+    userPublicAddress: "",
+    isWalletConnected: true,
+    username: "",
+    network: "shasta",
+  };
+
+  let tronWeb;
+  if (window.tronLink.ready) {
+    tronWeb = tronLink.tronWeb;
+  } else {
+    const res = await tronLink.request({ method: "tron_requestAccounts" });
+    if (res.code === 200) {
+      tronWeb = tronLink.tronWeb;
+    } else {
+      return toast("Tronlink not installed!");
+    }
+  }
+
+  await setProfile({ data: tempRpcData }).then((res) => {
+    tempRpcData.username = res.data.profile.username;
+    tempRpcData.userPublicAddress = tronWeb.defaultAddress.base58;
+  });
+
+  const currentDate = new Date();
+  currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
+  localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
+  localStorage.setItem("isRPCUserAuthenticated", true);
+  localStorage.setItem("rpcUserExpiresAt", currentDate);
+  return tempRpcData;
+};

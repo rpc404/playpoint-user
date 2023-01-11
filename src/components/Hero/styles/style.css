@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap");
 .hero__container {
   color: #fff;
   background: url("https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-17-59_3qcF77BKy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673267593678") no-repeat;
   box-shadow: inset 0 0 0 2000px rgba(63, 2, 186, 0.635);
   display: flex;
-  padding: 60px 2vw;
+  padding: 50px 2vw 120px 2vw;
   align-items: flex-start;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -54,6 +53,7 @@
   border-radius: 50%;
   background: #fff;
   padding: 2px;
+  cursor: pointer;
 }
 .hero__container .heroContent__container .heroParticipants__container p span {
   font-size: 22px;
@@ -81,6 +81,7 @@
   box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
   -webkit-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
   -moz-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
+  cursor: pointer;
 }
 .hero__container .heroGallery__container .absoluteImages {
   position: absolute;
@@ -110,9 +111,34 @@
   line-height: 1.5;
 }
 .hero__container .heroAdditionalInfo img {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
+  cursor: pointer;
+  transition: 0.4s all ease-in-out;
+}
+.hero__container .heroAdditionalInfo img:hover {
+  box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
+  -webkit-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
+  -moz-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
+  transform: scale3d(1.02, 1.02, 1.02);
+}
+.hero__container .heroAdditionalInfo img.rotatingImage {
+  -webkit-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
+.hero__container .heroAdditionalInfo img.rotatingImage:hover {
+  transform: initial;
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 .hero__container .heroAdditionalInfo .addtionalInfoContent {
   display: flex;
@@ -123,8 +149,6 @@
   box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
   -webkit-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
   -moz-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
-  width: 220px;
-  height: 38vh;
   gap: 10px;
   display: flex;
   align-items: center;
