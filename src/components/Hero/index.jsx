@@ -20,9 +20,21 @@ export default function Hero() {
 
         <div className="heroParticipants__container">
           <div className="userImages">
-            {[0, 1, 2, 3].map((d) => (
-              <Identicon size="35" string={d} key={d} />
-            ))}
+            <img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+              loading="lazy"
+              alt=""
+            />
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              loading="lazy"
+              alt=""
+            />
+            <img
+              src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=712&q=80"
+              loading="lazy"
+              alt=""
+            />
           </div>
           <p>
             <span>2.2k</span> Active Participants

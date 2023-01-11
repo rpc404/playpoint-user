@@ -51,7 +51,10 @@
       gap: 10px;
 
       .userImages {
-        canvas {
+        img {
+          height: 40px;
+          width: 40px;
+          object-fit: cover;
           border-radius: 50%;
           background: #fff;
           padding: 2px;
@@ -139,7 +142,7 @@
         -webkit-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
         -moz-box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
         width: 220px;
-        height: 39vh;
+        height: 38vh;
         gap: 10px;
         display: flex;
         align-items: center;
@@ -148,14 +151,17 @@
         padding: 10px;
         border-radius: 150px;
 
+        p{
+          font-size: 16px;
+        }
+
         div {
           display: flex;
           flex-direction: column;
           background: rgba(0, 0, 0, 0.686);
-          padding: 15px;
-          font-size: 16px;
-          border-radius: 0 75px 75px 75px;
-          height: 150px;
+          padding: 15px 25px;
+          border-radius: 0 75px 105px 105px;
+          height: 130px;
         }
       }
 
