@@ -32,6 +32,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   React.useEffect(() => {
     if (isWalletConnected && network === "arbitrum") {
       const provider = new ethers.providers.Web3Provider(ethereum);
+
       const contract = new ethers.Contract(
         import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
         ERC20BasicAPI,
@@ -41,7 +42,6 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       (async () => {
         const ethBalance = await provider.getBalance(userPublicAddress);
         const PPTTBalance = await contract.balanceOf(userPublicAddress);
-
         setBalance({
           ethBalance: ethers.utils.formatEther(ethBalance),
           ppttBalance: ethers.utils.formatEther(PPTTBalance),
