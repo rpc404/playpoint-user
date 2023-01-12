@@ -109,6 +109,9 @@
 .navbar__container .drawer .drawerListItem {
   gap: 5px !important;
 }
+.navbar__container .drawer .MuiList-root {
+  color: #fff !important;
+}
 
 .MuiDrawer-paper {
   background-color: #151515 !important;
@@ -116,6 +119,15 @@
 
 .MuiDivider-root {
   border-color: rgba(164, 164, 164, 0.887) !important;
+}
+
+.MuiButtonBase-root {
+  color: #fff !important;
+  gap: 10px;
+}
+
+.MuiListItem-root {
+  justify-content: center !important;
 }
 
 .navUserData {
