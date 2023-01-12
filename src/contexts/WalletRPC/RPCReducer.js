@@ -13,6 +13,8 @@ export const initialRPCState = {
   userETHBalance: 0,
   username: "",
   network: "",
+  isNonWalletUser:false,
+
 };
 
 export const RPCReducer = (state, action) => {
@@ -27,6 +29,7 @@ export const RPCReducer = (state, action) => {
         userPPTTBalance: action.payload.userPPTTBalance,
         userETHBalance: action.payload.userETHBalance,
         network: action.payload.network,
+        isNonWalletUser: action.payload.network
       };
 
     //   @note disconnect wallet
@@ -34,7 +37,7 @@ export const RPCReducer = (state, action) => {
       localStorage.removeItem("isRPCUserAuthenticated");
       localStorage.removeItem("rpcUserData");
       localStorage.removeItem("rpcUserExpiresAt");
-
+      localStorage.clear();
       return { ...initialRPCState };
 
     case ACTIONS.UPDATE_USERNAME:
