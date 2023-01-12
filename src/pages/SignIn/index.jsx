@@ -58,20 +58,21 @@ const SignIn = () => {
           setVerifying(true);
           const predictionChannel = pusher.subscribe(`verifiction-${email}`);
           predictionChannel.bind("verified", async (data) => {
-            
+            console.log(data)
             const tempRpcData = {
               userPublicAddress: "",
               isWalletConnected: true,
               username: "",
               network: "shasta",
             };
-            localStorage.setItem("userToken", res.data.accessToken);
+            localStorage.setItem("userToken", data.accessToken);
             tempRpcData.isWalletConnected = true;
-            tempRpcData.username = res.data._user.username;
-            tempRpcData.userPublicAddress = res.data._wallet.wallets[0]?.address
+            tempRpcData.username = data._newUser.username;
+            tempRpcData.userPublicAddress = data._wallets.wallets[0]?.address
             tempRpcData.network = "arbitrum";
             localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
             localStorage.setItem("isNonWalletUser", true);
+            localStorage.setItem("rpcUserWallets", JSON.stringify(data._wallets.wallets));
             const currentDate = new Date();
             currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
             localStorage.setItem("rpcUserExpiresAt", currentDate);

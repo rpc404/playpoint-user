@@ -9,7 +9,7 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
@@ -18,7 +18,9 @@ import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
+
   const navigate = useNavigate();
+  const location = useLocation();
   const [
     { isWalletConnected, username, userPublicAddress, network, isNonWalletUser },
     dispatchRPCData,
@@ -30,6 +32,8 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
+    console.log(isWalletConnected, userPublicAddress, network)
+    
     if (isWalletConnected && network === "arbitrum") {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const contract = new ethers.Contract(
@@ -48,6 +52,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           isWalletConnected,
           username,
           userPublicAddress,
+          network,
           userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
           userETHBalance: ethers.utils.formatEther(ethBalance),
         };
@@ -69,12 +74,14 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           userPublicAddress,
           userPPTTBalance: 0,
           userETHBalance: 0,
+          network
         };
 
         await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
       })();
     }
-  }, [isWalletConnected]);
+  }, [isWalletConnected, userPublicAddress, network]);
+
 
   const handleLogout = () => {
     dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });

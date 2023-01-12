@@ -37,7 +37,7 @@ export const RPCReducer = (state, action) => {
       localStorage.removeItem("isRPCUserAuthenticated");
       localStorage.removeItem("rpcUserData");
       localStorage.removeItem("rpcUserExpiresAt");
-
+      localStorage.clear();
       return { ...initialRPCState };
 
     case ACTIONS.UPDATE_USERNAME:
