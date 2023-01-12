@@ -1,19 +1,47 @@
 import React from "react";
 import "./styles/style.css";
 import image from "../../images/security.jpg";
+import { authenticate } from "../../api/Auth";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [active, setActive] = React.useState(false);
   const [inputvalue, setInputValue] = React.useState({});
+  const [email, setEmail] = React.useState("");
+  const [_activeInput, setActiveInput] = React.useState(-1);
 
-  const itemsRef = React.useRef(null);
-
-  React.useEffect(() => {
-    if (itemsRef.current) {
-      itemsRef.current.focus();
+  const handleChange = (index, value)=>{
+    if(value){
+      sessionStorage.setItem("otp"+index, value);
+      setActiveInput(index);
+    }else{
+      sessionStorage.removeItem("otp"+index);
+      setActiveInput(index-1);
     }
-  }, []);
+  }
 
+  const ValidateEmail = (mail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
+       return (true)
+     }
+     toast("You have entered an invalid email address!",{type:'error'})
+     return (false)
+   }
+
+  const handleSignIn = async () =>{
+    if(ValidateEmail(email)){
+      await authenticate({email}).then(res=>{
+        toast(res.data.msg);
+        if(res.data.msg.toLowerCase()=="otp sent"){
+            setActive(true)
+        }
+      })
+    }
+   
+  }
+  const verify = () =>{
+    toast("Under Maintainance");
+  }
   return (
     <div className="signin__container">
       <div className="wrapper">
@@ -26,7 +54,7 @@ const SignIn = () => {
             <div className={`signin__form ${active ? "active" : ""}`}>
               <div className="item">
                 <div>📥️ Email</div>
-                <input type="email" placeholder="Enter your email address" />
+                <input type="email" placeholder="Enter your email address" onChange={e=>setEmail(e.target.value)} />
               </div>
               <div className="recovery">
                 <div className="checkbox_container">
@@ -35,7 +63,7 @@ const SignIn = () => {
                 </div>
                 <p>Recover Password</p>
               </div>
-              <button onClick={() => setActive(true)}>Sign Up</button>
+              <button onClick={() => handleSignIn()}>Sign Up</button>
               <div className="continue">
                 <div>
                   <span></span>
@@ -51,7 +79,7 @@ const SignIn = () => {
             <div className="otp__container">
               <div className="title">
                 <h3>OTP Verification</h3>
-                <p>Enter OTP sent to eriag321@gmail.com</p>
+                <p>Enter OTP sent to {email}</p>
               </div>
 
               <div className="boxes">
@@ -62,19 +90,14 @@ const SignIn = () => {
                         type="text"
                         maxLength={1}
                         name={`input-${index}`}
-                        ref={itemsRef}
-                        // ref={focusInput}
-                        value={inputvalue[index]}
+                        value={inputvalue.index}
                         onChange={(e) => {
-                          setInputValue({
-                            ...inputvalue,
-                            [e.target.name]: e.target.value,
-                          });
+                          handleChange(index,e.target.value)
                         }}
                         inputMode="numeric"
                         autoComplete="one-time-code"
-                        onFocus={(e) => e.target.select}
-                        // autoFocus={ }
+                        autoFocus={index==_activeInput+2 ? true : false}
+                        disabled={index>_activeInput+1 || index < _activeInput ?true:false}
                       />
                     </div>
                   );
@@ -85,7 +108,7 @@ const SignIn = () => {
                 Didn't receive OTP ? <span>Resend OTP</span>
               </p>
 
-              <button>Confirm OTP</button>
+              <button onClick={()=>verify()}>Confirm OTP</button>
             </div>
           )}
         </div>
