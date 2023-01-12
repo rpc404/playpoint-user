@@ -1,24 +1,41 @@
 import React from "react";
 import "./styles/style.css";
 import image from "../../images/security.jpg";
-import { authenticate } from "../../api/Auth";
+import { authenticate, otplogin, _verify } from "../../api/Auth";
 import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [active, setActive] = React.useState(false);
-  const [inputvalue, setInputValue] = React.useState({});
+  const [inputvalue, setInputValue] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [_activeInput, setActiveInput] = React.useState(-1);
+  const [verified, setVerified] = React.useState(false);
+  const [variant, setVariant] = React.useState("")
 
-  const handleChange = (index, value)=>{
-    if(value){
-      sessionStorage.setItem("otp"+index, value);
-      setActiveInput(index);
-    }else{
-      sessionStorage.removeItem("otp"+index);
-      setActiveInput(index-1);
-    }
-  }
+  // React.useEffect(() => {
+  //   // Enable pusher logging - don't include this in production
+  //   // Pusher.logToConsole = true;
+  //   const pusher = new Pusher("e6640b48a82cccbb13d0", {
+  //     cluster: "ap2",
+  //   });
+  //   pusher.connection.bind("connected", function () {
+  //     console.log("Weboscket Connected");
+  //   });
+  //   const predictionChannel = pusher.subscribe("prediction-channel");
+  //   predictionChannel.bind("new-prediction", (data) => {
+  //     const _predictions =
+  //       JSON.parse(sessionStorage.getItem("predictions")) || [];
+  //     if (data.data[0].fixtureId == fixtureId) {
+  //       const newPrediction = [data.data[0], ..._predictions];
+  //       sessionStorage.setItem("predictions", JSON.stringify(newPrediction));
+
+  //       dispatchPredictionsData({
+  //         type: "set-predictions",
+  //         payload: newPrediction,
+  //       });
+  //     }
+  //   });
+  // }, []);
 
   const ValidateEmail = (mail) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
@@ -32,15 +49,33 @@ const SignIn = () => {
     if(ValidateEmail(email)){
       await authenticate({email}).then(res=>{
         toast(res.data.msg);
-        if(res.data.msg.toLowerCase()=="otp sent"){
-            setActive(true)
+        if(String(res.data.msg).trim()!="You have just reqested for the OTP. please verify or try after a moment"){
+          console.log(res.data.msg);
+          setVariant(res.data.variant)
+          setActive(true)
         }
       })
     }
    
   }
-  const verify = () =>{
-    toast("Under Maintainance");
+  const verify = async () =>{
+    let _otp = inputvalue.trim();
+    if(variant=="0"){
+      await _verify({email:email, token:_otp}).then(res=>{
+        toast(res.data.msg);
+        if(res.data.msg.trim()!="Invalid Token"){
+          console.log(res.data)
+        }
+      })
+    }
+    if(variant=="1"){
+      await otplogin({email:email, token:_otp}).then(res=>{
+        toast(res.data.msg);
+        if(res.data?.msg?.trim()!="Invalid OTP"){
+          console.log(res.data)
+        }
+      })
+    }
   }
   return (
     <div className="signin__container">
@@ -83,35 +118,31 @@ const SignIn = () => {
               </div>
 
               <div className="boxes">
-                {inputs.map((box, index) => {
-                  return (
-                    <div className="box" key={index}>
+                    <div className="box">
                       <input
+                        placeholder="Enter Code"
                         type="text"
-                        maxLength={1}
-                        name={`input-${index}`}
-                        value={inputvalue.index}
+                        maxLength={6}
+                        name={`input-otp`}
+                        value={inputvalue}
                         onChange={(e) => {
-                          handleChange(index,e.target.value)
+                          setInputValue(e.target.value)
                         }}
-                        // onKeyDown={(e) => handleDelete(e, index)}
                         inputMode="numeric"
                         autoComplete="one-time-code"
-                        autoFocus={index==_activeInput+2 ? true : false}
-                        disabled={index>_activeInput+1 || index < _activeInput ?true:false}
                       />
                     </div>
-                  );
-                })}
+                 
               </div>
 
               <p className="resend">
-                Didn't receive OTP ? <span>Resend OTP</span>
+                Didn't receive OTP ? <span onClick={()=>{setActive(false), setInputValue("")}}>Resend OTP</span>
               </p>
 
               <button onClick={()=>verify()}>Confirm OTP</button>
             </div>
           )}
+          {}
         </div>
       </div>
     </div>

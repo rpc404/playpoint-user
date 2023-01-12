@@ -50,7 +50,8 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
 
     if (network === "shasta") {
       setLoading(true);
-      await handleTRONWALLETLogin();
+      const data = await handleTRONWALLETLogin();
+      await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
       handleWalletDrawer();
       setLoading(false);
     }
