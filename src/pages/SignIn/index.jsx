@@ -1,9 +1,38 @@
 import React from "react";
 import "./styles/style.css";
-import image from "../../images/verified.png";
 
 const SignIn = () => {
   const [active, setActive] = React.useState(false);
+  const [inputvalue, setInputValue] = React.useState({});
+
+  const itemsRef = React.useRef([]);
+
+  const inputs = [0, 1, 2, 3, 4, 5];
+
+  React.useEffect(() => {
+    itemsRef.current = itemsRef.current.slice(0, inputs.length);
+  }, []);
+
+  const handleChange = (e, index) => {
+    setInputValue({
+      ...inputvalue,
+      [e.target.name]: e.target.value,
+    });
+    if (index === inputs.length - 1) {
+      return;
+    } else {
+      itemsRef.current[index + 1].focus();
+    }
+  };
+
+  // const handleDelete = (e, index) => {
+  //   if (index === inputs.length - 1) {
+  //     return;
+  //   } else if (e.KeyCode === 8) {
+  //     itemsRef.current[index - 1].focus();
+  //   }
+  // };
+
   return (
     <div className="signin__container">
       <div className="wrapper">
@@ -39,20 +68,36 @@ const SignIn = () => {
             </div>
           ) : (
             <div className="otp__container">
-              <img src={image} alt="verified_image" />
               <div className="title">
                 <h3>OTP Verification</h3>
                 <p>Enter OTP sent to eriag321@gmail.com</p>
               </div>
 
               <div className="boxes">
-                <p className="box"></p>
-                <p className="box"></p>
-                <p className="box"></p>
-                <p className="box"></p>
+                {inputs.map((box, index) => {
+                  return (
+                    <div className="box" key={index}>
+                      <input
+                        type="text"
+                        maxLength={1}
+                        name={`input-${index}`}
+                        ref={(el) => (itemsRef.current[index] = el)}
+                        value={inputvalue[index]}
+                        onChange={(e) => {
+                          handleChange(e, index);
+                        }}
+                        // onKeyDown={(e) => handleDelete(e, index)}
+                        inputMode="numeric"
+                        autoComplete="one-time-code"
+                        onFocus={(e) => e.target.select}
+                        autoFocus={itemsRef}
+                      />
+                    </div>
+                  );
+                })}
               </div>
 
-              <p>
+              <p className="resend">
                 Didn't receive OTP ? <span>Resend OTP</span>
               </p>
 

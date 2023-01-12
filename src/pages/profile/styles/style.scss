@@ -11,6 +11,10 @@
     grid-template-columns: 1fr 19fr;
   }
 
+  .MuiButtonBase-root.MuiTab-root{
+    color: #fff;
+  }
+
   .profile__header {
     display: flex;
     flex-direction: column;

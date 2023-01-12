@@ -14,9 +14,9 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { styled } from "@mui/material/styles";
 import GetFlags from "../../utils/GetFlags";
 import { useNavigate } from "react-router-dom";
+import { Pagination } from "@mui/material";
 
 /**
  *  @ReactChart
@@ -69,6 +69,13 @@ export const data = {
 };
 
 const ProfileComponent = ({ username, balance, results, woat }) => {
+  const [history, setHistory] = React.useState([]);
+  const handlePageClick = (ev) => {
+    const page = ev.target.innerText;
+    setHistory(results.slice((page - 1) * 10, page * 10));
+  };
+
+  
   const navigate = useNavigate();
   return (
     <div className="profile__tab">
@@ -154,7 +161,7 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
                 <p>Transaction</p>
               </div>
               <div className="transaction__items">
-                {results.map((data, index) => {
+                {history.map((data, index) => {
                   data.result =
                     data.predictionId.amount / 0.02 < data.rewardAmount
                       ? "win"
@@ -228,6 +235,12 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
                   );
                 })}
               </div>
+              <Pagination
+                count={10}
+                variant={"outlined"}
+                shape={"rounded"}
+                onChange={handlePageClick}
+              />
             </div>
           </div>
         </div>
