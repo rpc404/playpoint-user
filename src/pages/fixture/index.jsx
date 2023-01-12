@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import "./styles/style.css";
 import { getFixtures } from "../../api/Fixture";
 import { Skeleton } from "@mui/material";
+// import { useQuery } from "react-query";
 
 export default function Fixture() {
   let params = useParams();
@@ -55,6 +56,17 @@ export default function Fixture() {
     document.body.style.overflow = "hidden";
     document.body.style.height = "100vh";
   };
+
+  // const { isLoading, error, data } = useQuery("repoData", () =>
+  //   fetch(
+  //     import.meta.env.VITE_API_URI +
+  //       `api/v1/fixture-marketplace/${marketplaceSlug}`
+  //   ).then((res) => console.log(res.json()))
+  // );
+
+  // if (isLoading) return "Loading...";
+
+  // if (error) return "An error has occurred: " + error.message;
 
   return (
     <div className="fixtures__container">
