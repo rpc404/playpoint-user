@@ -157,5 +157,6 @@ export const handleTRONWALLETLogin = async () => {
   localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
   localStorage.setItem("isRPCUserAuthenticated", true);
   localStorage.setItem("rpcUserExpiresAt", currentDate);
+  
   return tempRpcData;
 };

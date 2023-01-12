@@ -8,8 +8,8 @@ export const authenticate = (data) => {
     return res;
 };
 
-export const verify = (data) => {
-    var res = axios.post(
+export const _verify = async (data) => {
+    var res = await axios.post(
       import.meta.env.VITE_API_URI + `api/v1/verify`,
       data
     );
