@@ -83,7 +83,7 @@ const SignIn = () => {
               </div>
 
               <div className="boxes">
-                {[0, 1, 2, 3, 4, 5].map((box, index) => {
+                {inputs.map((box, index) => {
                   return (
                     <div className="box" key={index}>
                       <input
@@ -94,6 +94,7 @@ const SignIn = () => {
                         onChange={(e) => {
                           handleChange(index,e.target.value)
                         }}
+                        // onKeyDown={(e) => handleDelete(e, index)}
                         inputMode="numeric"
                         autoComplete="one-time-code"
                         autoFocus={index==_activeInput+2 ? true : false}
