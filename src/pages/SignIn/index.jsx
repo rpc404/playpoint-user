@@ -3,39 +3,30 @@ import "./styles/style.css";
 import image from "../../images/security.jpg";
 import { authenticate, otplogin, _verify } from "../../api/Auth";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Pusher from "pusher-js";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 
 const SignIn = () => {
+  const navigate = useNavigate()
   const [active, setActive] = React.useState(false);
   const [inputvalue, setInputValue] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [_activeInput, setActiveInput] = React.useState(-1);
-  const [verified, setVerified] = React.useState(false);
+  const [verifying, setVerifying] = React.useState(false);
   const [variant, setVariant] = React.useState("")
+  const [, dispatchRPCData] = useRPCContext();
+  const pusher = new Pusher("e6640b48a82cccbb13d0", {
+    cluster: "ap2",
+  });
 
-  // React.useEffect(() => {
-  //   // Enable pusher logging - don't include this in production
-  //   // Pusher.logToConsole = true;
-  //   const pusher = new Pusher("e6640b48a82cccbb13d0", {
-  //     cluster: "ap2",
-  //   });
-  //   pusher.connection.bind("connected", function () {
-  //     console.log("Weboscket Connected");
-  //   });
-  //   const predictionChannel = pusher.subscribe("prediction-channel");
-  //   predictionChannel.bind("new-prediction", (data) => {
-  //     const _predictions =
-  //       JSON.parse(sessionStorage.getItem("predictions")) || [];
-  //     if (data.data[0].fixtureId == fixtureId) {
-  //       const newPrediction = [data.data[0], ..._predictions];
-  //       sessionStorage.setItem("predictions", JSON.stringify(newPrediction));
-
-  //       dispatchPredictionsData({
-  //         type: "set-predictions",
-  //         payload: newPrediction,
-  //       });
-  //     }
-  //   });
-  // }, []);
+  React.useEffect(() => {
+    // Enable pusher logging - don't include this in production
+    // Pusher.logToConsole = true;
+    pusher.connection.bind("connected", function () {
+      console.log("Weboscket Connected");
+    });
+  }, []);
 
   const ValidateEmail = (mail) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
@@ -64,15 +55,60 @@ const SignIn = () => {
       await _verify({email:email, token:_otp}).then(res=>{
         toast(res.data.msg);
         if(res.data.msg.trim()!="Invalid Token"){
-          console.log(res.data)
+          setVerifying(true);
+          const predictionChannel = pusher.subscribe(`verifiction-${email}`);
+          predictionChannel.bind("verified", async (data) => {
+            
+            const tempRpcData = {
+              userPublicAddress: "",
+              isWalletConnected: true,
+              username: "",
+              network: "shasta",
+            };
+            localStorage.setItem("userToken", res.data.accessToken);
+            tempRpcData.isWalletConnected = true;
+            tempRpcData.username = res.data._user.username;
+            tempRpcData.userPublicAddress = res.data._wallet.wallets[0]?.address
+            tempRpcData.network = "arbitrum";
+            localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
+            localStorage.setItem("isNonWalletUser", true);
+            const currentDate = new Date();
+            currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
+            localStorage.setItem("rpcUserExpiresAt", currentDate);
+            dispatchRPCData({ type: "wallet-connect", payload: tempRpcData });
+            navigate("/")
+            setVerifying(false)
+          });
         }
       })
     }
     if(variant=="1"){
-      await otplogin({email:email, token:_otp}).then(res=>{
-        toast(res.data.msg);
+      await otplogin({email:email, token:_otp}).then(async res=>{   
         if(res.data?.msg?.trim()!="Invalid OTP"){
-          console.log(res.data)
+          const tempRpcData = {
+            userPublicAddress: "",
+            isWalletConnected: true,
+            username: "",
+            network: "shasta",
+          };
+          localStorage.setItem("userToken", res.data.accessToken);
+          tempRpcData.isWalletConnected = true;
+          tempRpcData.username = res.data._user.username;
+          tempRpcData.userPublicAddress = res.data._wallet.wallets[0]?.address
+          tempRpcData.network = "arbitrum";
+          localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
+          localStorage.setItem("rpcUserWallets", JSON.stringify(res.data._wallet.wallets));
+          localStorage.setItem("isNonWalletUser", true);
+          const currentDate = new Date();
+          currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
+          localStorage.setItem("rpcUserExpiresAt", currentDate);
+          console.log("dispatchingg")
+          dispatchRPCData({ type: "wallet-connect", payload: tempRpcData });
+          navigate("/")
+        }
+      }).catch(err=> {
+        if(err.response){
+          toast(err.response.data.msg)
         }
       })
     }
@@ -85,7 +121,7 @@ const SignIn = () => {
           <p>A whole new productive journey starts right here</p>
         </div>
         <div className="signinform__container">
-          {!active ? (
+          {!verifying ? !active ? (
             <div className={`signin__form ${active ? "active" : ""}`}>
               <div className="item">
                 <div>📥️ Email</div>
@@ -141,8 +177,7 @@ const SignIn = () => {
 
               <button onClick={()=>verify()}>Confirm OTP</button>
             </div>
-          )}
-          {}
+          ):<p>Setting up your account</p>}
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 export default function Navbar({ toggleAuthenticationDrawer }) {
   const navigate = useNavigate();
   const [
-    { isWalletConnected, username, userPublicAddress, network },
+    { isWalletConnected, username, userPublicAddress, network, isNonWalletUser },
     dispatchRPCData,
   ] = useRPCContext();
   const [balance, setBalance] = React.useState({
@@ -32,22 +32,18 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   React.useEffect(() => {
     if (isWalletConnected && network === "arbitrum") {
       const provider = new ethers.providers.Web3Provider(ethereum);
-
       const contract = new ethers.Contract(
         import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
         ERC20BasicAPI,
         provider
       );
-
       (async () => {
         const ethBalance = await provider.getBalance(userPublicAddress);
         const PPTTBalance = await contract.balanceOf(userPublicAddress);
-        
         setBalance({
           ethBalance: ethers.utils.formatEther(ethBalance),
           ppttBalance: ethers.utils.formatEther(PPTTBalance),
         });
-
         const data = {
           isWalletConnected,
           username,
@@ -120,7 +116,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                   alt=""
                   loading="lazy"
                 />
-                <p
+                {/* <p
                   className="accountbtn"
                   onClick={() => {
                     navigator.clipboard.writeText(userPublicAddress),
@@ -133,7 +129,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                       userPublicAddress.length - 3
                     )}{" "}
                   <i className="ri-file-copy-line"></i>
-                </p>
+                </p> */}
                 <h2>@{username}</h2>
                 <div className="balance__wrapper">
                   <div className="balance">
@@ -285,29 +281,31 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               <div
                 className="balance"
                 onClick={(e) => {
-                  e.stopPropagation();
-                  ethereum
-                    .request({
-                      method: "wallet_watchAsset",
-                      params: {
-                        type: "ERC20",
-                        options: {
-                          address: import.meta.env
-                            .VITE_BETA_PPTT_CONTRACT_ADDRESS,
-                          symbol: "PPTT",
-                          decimals: 18,
-                          image: "https://ik.imagekit.io/lexworld/Logo.png",
+                  if(!isNonWalletUser){
+                    e.stopPropagation();
+                    ethereum
+                      .request({
+                        method: "wallet_watchAsset",
+                        params: {
+                          type: "ERC20",
+                          options: {
+                            address: import.meta.env
+                              .VITE_BETA_PPTT_CONTRACT_ADDRESS,
+                            symbol: "PPTT",
+                            decimals: 18,
+                            image: "https://ik.imagekit.io/lexworld/Logo.png",
+                          },
                         },
-                      },
-                    })
-                    .then((success) => {
-                      if (success) {
-                        toast("PPTT successfully added to wallet!");
-                      } else {
-                        throw new Error("Something went wrong.");
-                      }
-                    })
-                    .catch(console.error);
+                      })
+                      .then((success) => {
+                        if (success) {
+                          toast("PPTT successfully added to wallet!");
+                        } else {
+                          throw new Error("Something went wrong.");
+                        }
+                      })
+                      .catch(console.error);
+                  }
                 }}
               >
                 <img
