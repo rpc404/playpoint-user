@@ -6,6 +6,9 @@ import { ACTIONS } from "./contexts/WalletRPC/RPCReducer";
 import PageRouters from "./utils/Routers";
 import Footer from "./components/Footer/index";
 import WalletSelection from "./components/WalletSelection";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+const queryClient = new QueryClient();
 
 export default function App() {
   const [, dispatchRPCData] = useRPCContext();
@@ -36,7 +39,7 @@ export default function App() {
   }, [dispatchRPCData]);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       {/* <WalletSelection /> */}
       {isAuthenticationDrawerOpen && (
         <WalletSelection
@@ -70,6 +73,6 @@ export default function App() {
         <div className="snowflake">❅</div>
         <div className="snowflake">❆</div>
       </div>
-    </>
+    </QueryClientProvider>
   );
 }
