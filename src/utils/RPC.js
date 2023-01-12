@@ -120,17 +120,18 @@ export const handleTRONWALLETLogin = async () => {
     checkTron();
   });
 
-  if (!tronExists) {
-    alert("Please login into Tronlink wallet extension!");
-    return null;
-  }
-
+  
   const tempRpcData = {
     userPublicAddress: "",
     isWalletConnected: true,
     username: "",
     network: "shasta",
   };
+  
+  if (!tronExists) {
+    alert("Please login into Tronlink wallet extension!");
+    return tempRpcData;
+  }
 
   let tronWeb;
   if (window.tronLink.ready) {
@@ -140,14 +141,14 @@ export const handleTRONWALLETLogin = async () => {
     if (res.code === 200) {
       tronWeb = tronLink.tronWeb;
     } else {
-      return toast("Tronlink not installed!");
+      return toast("Make sure tronlink is unlocked!");
     }
   }
 
   await setProfile({ data: tempRpcData }).then((res) => {
     tempRpcData.username = res.data.profile.username;
-    tempRpcData.userPublicAddress = tronWeb.defaultAddress.base58;
   });
+  tempRpcData.userPublicAddress = tronWeb.defaultAddress.base58;
 
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);

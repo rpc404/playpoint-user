@@ -42,6 +42,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       (async () => {
         const ethBalance = await provider.getBalance(userPublicAddress);
         const PPTTBalance = await contract.balanceOf(userPublicAddress);
+        
         setBalance({
           ethBalance: ethers.utils.formatEther(ethBalance),
           ppttBalance: ethers.utils.formatEther(PPTTBalance),
