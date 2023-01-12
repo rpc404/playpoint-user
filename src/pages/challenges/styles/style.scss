@@ -19,8 +19,8 @@
       background: #1a1d20;
       cursor: pointer;
 
-      @media screen and (min-width:426px) {
-        padding: .8em;
+      @media screen and (min-width: 426px) {
+        padding: 0.8em;
       }
 
       &:first-child {
@@ -48,7 +48,7 @@
         padding: 10px;
         background-color: #161616;
         cursor: pointer;
-        box-sizing: 1px -1px 13px -9px rgb(255 255 255 / 91%);;
+        box-sizing: 1px -1px 13px -9px rgb(255 255 255 / 91%);
         .cardHeader {
           display: flex;
           justify-content: space-between;
@@ -104,6 +104,26 @@
             color: crimson;
           }
         }
+        .MuiSkeleton-root {
+          background-color: rgb(0 0 0 / 32%) !important;
+        }
+      }
+
+        .card__header {
+          display: flex;
+          justify-content: space-between;
+        }
+        .card_image {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          }
+
       }
     }
   }

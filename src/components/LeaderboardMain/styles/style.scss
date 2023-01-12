@@ -270,14 +270,27 @@ main.leaderboardMain__container {
   }
 }
 
+// .MuiPagination-ul {
+//   li {
+//     button {
+//       color: #fff;
+//       background-color: rgba(75, 75, 75, 0.806);
+//       font-size: 1.2em;
+//     }
+//   }
+// }
+
 .MuiPagination-ul {
-  li {
-    button {
-      color: #fff;
-      background-color: rgba(75, 75, 75, 0.806);
-      font-size: 1.2em;
-    }
-  }
+  margin: 1.5em 0 0;
+}
+
+.MuiButtonBase-root.MuiPaginationItem-root {
+  border: 1px solid rgba(102 102 102/0.5) !important;
+  color: #fff;
+}
+
+.MuiPaginationItem-sizeMedium {
+  color:rgb(159 157 157 / 87%) !important;
 }
 
 .MuiTableCell-root {

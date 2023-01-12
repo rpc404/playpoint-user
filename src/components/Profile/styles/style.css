@@ -160,6 +160,16 @@
     overflow-x: scroll;
   }
 }
+.userDetails__container .userDetails .transaction__wrapper .MuiPagination-ul {
+  margin: 1.5em 0 0;
+}
+.userDetails__container .userDetails .transaction__wrapper .MuiButtonBase-root.MuiPaginationItem-root {
+  border: 1px solid rgba(102, 102, 102, 0.5) !important;
+  color: #fff;
+}
+.userDetails__container .userDetails .transaction__wrapper .MuiPaginationItem-sizeMedium {
+  color: rgba(159, 157, 157, 0.87) !important;
+}
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats {
   display: flex;
   flex-direction: column;
@@ -200,10 +210,6 @@
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .titles p:last-child {
   justify-self: end;
 }
-.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction__items {
-  max-height: 350px;
-  overflow-y: scroll;
-}
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
@@ -212,7 +218,7 @@
 }
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match {
   display: grid;
-  grid-template-columns: 3fr 1fr 3fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr 3fr;
   gap: 10px;
 }
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span {
@@ -220,10 +226,19 @@
   align-items: center;
   gap: 5px;
 }
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(1) {
+  justify-self: start;
+}
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(2) {
+  justify-self: start;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(3) {
   justify-self: center;
 }
-.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(1) {
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(4) {
+  justify-self: start;
+}
+.userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction .match span:nth-child(5) {
   justify-self: start;
 }
 .userDetails__container .userDetails .transaction__wrapper .transaction__stats .transaction p {

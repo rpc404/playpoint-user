@@ -1,5 +1,21 @@
 .signin__container {
   height: 80vh;
+  background-image: url("../../../images/security1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: center center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    z-index: -1;
+  }
   .wrapper {
     width: 90%;
     height: 100%;
@@ -9,31 +25,98 @@
     justify-content: center;
     gap: 20px;
 
-    @media screen and (min-width: 769px) {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      align-items: center;
+    @media screen and (min-width: 1025px) {
+      width: 80%;
     }
 
     .signinhero__container {
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       h1 {
         font-size: 1.5em;
+
+        @media screen and (min-width: 1025px) {
+          font-size: 2em;
+        }
       }
 
       p {
         padding: 1em 0;
         color: rgba(255, 255, 255, 0.754);
         font-size: 0.9em;
+
+        @media screen and (min-width: 1025px) {
+          font-size: 17px;
+        }
       }
     }
 
+    .signinform__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      @media screen and (min-width: 426px) {
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      @media screen and (min-width: 769px) {
+        width: 50%;
+      }
+
+      @media screen and (min-width: 1025px) {
+        width: 35%;
+      }
+    }
     .signin__form {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      background-color: rgba(10, 10, 10, 0.865);
+      padding: 30px 25px;
+      border-radius: 5px;
+      box-shadow: 0 0 2px 0px #5a5a5a;
+
+      &.active {
+        animation: fadeOut 2s;
+        @keyframes fadeOut {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+        }
+      }
+
+      .item {
+        background-color: transparent;
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 2px;
+        font-size: 16px;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.471);
+
+        input {
+          background-color: transparent;
+          text-align: right;
+          border: none;
+          color: #fff;
+          font-size: 17px;
+
+          &:focus {
+            border: none;
+            outline: none;
+          }
+        }
+      }
 
       .recovery {
         display: flex;
@@ -43,6 +126,12 @@
         .checkbox_container {
           display: flex;
           align-items: center;
+          gap: 5px;
+
+          input[type="checkbox"] {
+            padding: 5px 0;
+            margin: 8px 0;
+          }
 
           label {
             color: rgba(255, 255, 255, 0.739);
@@ -56,22 +145,22 @@
 
       button {
         cursor: pointer;
-        font-size: 1.2em;
-        padding: 0.5em 0.6em;
+        font-size: 18px;
+        padding: 0.3em 0;
         text-transform: capitalize;
         color: rgba(34, 34, 34, 0.761);
-        font-weight: 600;
+        font-weight: 500;
       }
 
-      .signup__button {
-        background: transparent;
-        border: none;
-        outline: none;
-        width: fit-content;
-        color: rgba(255, 255, 255, 0.808);
-        padding: 5px;
-        text-transform: capitalize;
-      }
+      // .signup__button {
+      //   background: transparent;
+      //   border: none;
+      //   outline: none;
+      //   width: fit-content;
+      //   color: rgba(255, 255, 255, 0.808);
+      //   padding: 5px;
+      //   text-transform: capitalize;
+      // }
 
       .continue {
         display: flex;
@@ -88,18 +177,16 @@
           justify-content: center;
           span {
             border: 1px solid rgba(255, 255, 255, 0.47);
-            &:nth-child(1){
+            &:nth-child(1) {
               position: absolute;
               left: 0;
-              right: 70%;
-
+              right: 75%;
             }
-            &:nth-child(3){
+            &:nth-child(3) {
               position: absolute;
               right: 0;
-              left: 70%;
+              left: 75%;
             }
-
           }
         }
 
@@ -116,6 +203,85 @@
             }
           }
         }
+      }
+    }
+    .otp__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      background-color: rgba(10, 10, 10, 0.865);
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 2px 0px #5a5a5a;
+      animation: fadeIn 2s;
+
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      img {
+        height: 150px;
+        width: 150px;
+        object-fit: contain;
+        // border-radius: 50%;
+      }
+
+      .title {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .boxes {
+        display: flex;
+        gap: 10px;
+
+        .box {
+          width: 50px;
+          height: 50px;
+          border: 1px solid #fff;
+          background-color: #fff;
+
+
+          input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: 1em;
+
+            &:focus {
+              border: 2px solid rgb(0, 0, 255);
+            }
+          }
+        }
+      }
+
+      .resend {
+        span {
+          color: rgba(255, 255, 255, 0.677);
+          cursor: pointer;
+          transition: 0.5s ease;
+          &:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+          }
+        }
+      }
+      button {
+        padding: 10px;
+        cursor: pointer;
+        font-size: 16px;
       }
     }
   }

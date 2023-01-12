@@ -1,5 +1,20 @@
 .signin__container {
   height: 80vh;
+  background-image: url("../../../images/security1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: center center;
+}
+.signin__container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
 }
 .signin__container .wrapper {
   width: 90%;
@@ -10,29 +25,105 @@
   justify-content: center;
   gap: 20px;
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1025px) {
   .signin__container .wrapper {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: center;
+    width: 80%;
   }
 }
 .signin__container .wrapper .signinhero__container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .signin__container .wrapper .signinhero__container h1 {
   font-size: 1.5em;
+}
+@media screen and (min-width: 1025px) {
+  .signin__container .wrapper .signinhero__container h1 {
+    font-size: 2em;
+  }
 }
 .signin__container .wrapper .signinhero__container p {
   padding: 1em 0;
   color: rgba(255, 255, 255, 0.754);
   font-size: 0.9em;
 }
+@media screen and (min-width: 1025px) {
+  .signin__container .wrapper .signinhero__container p {
+    font-size: 17px;
+  }
+}
+.signin__container .wrapper .signinform__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 426px) {
+  .signin__container .wrapper .signinform__container {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 769px) {
+  .signin__container .wrapper .signinform__container {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .signin__container .wrapper .signinform__container {
+    width: 35%;
+  }
+}
 .signin__container .wrapper .signin__form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: rgba(10, 10, 10, 0.865);
+  padding: 30px 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 0px #5a5a5a;
+}
+.signin__container .wrapper .signin__form.active {
+  -webkit-animation: fadeOut 2s;
+          animation: fadeOut 2s;
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.signin__container .wrapper .signin__form .item {
+  background-color: transparent;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px;
+  font-size: 16px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.471);
+}
+.signin__container .wrapper .signin__form .item input {
+  background-color: transparent;
+  text-align: right;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+}
+.signin__container .wrapper .signin__form .item input:focus {
+  border: none;
+  outline: none;
 }
 .signin__container .wrapper .signin__form .recovery {
   display: flex;
@@ -42,6 +133,11 @@
 .signin__container .wrapper .signin__form .recovery .checkbox_container {
   display: flex;
   align-items: center;
+  gap: 5px;
+}
+.signin__container .wrapper .signin__form .recovery .checkbox_container input[type=checkbox] {
+  padding: 5px 0;
+  margin: 8px 0;
 }
 .signin__container .wrapper .signin__form .recovery .checkbox_container label {
   color: rgba(255, 255, 255, 0.739);
@@ -51,22 +147,11 @@
 }
 .signin__container .wrapper .signin__form button {
   cursor: pointer;
-  font-size: 1.2em;
-  padding: 0.5em 0.6em;
+  font-size: 18px;
+  padding: 0.3em 0;
   text-transform: capitalize;
   color: rgba(34, 34, 34, 0.761);
-  font-weight: 600;
-}
-.signin__container .wrapper .signin__form .signup__button {
-  background: transparent;
-  border: none;
-  outline: none;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  color: rgba(255, 255, 255, 0.808);
-  padding: 5px;
-  text-transform: capitalize;
+  font-weight: 500;
 }
 .signin__container .wrapper .signin__form .continue {
   display: flex;
@@ -87,12 +172,12 @@
 .signin__container .wrapper .signin__form .continue div span:nth-child(1) {
   position: absolute;
   left: 0;
-  right: 70%;
+  right: 75%;
 }
 .signin__container .wrapper .signin__form .continue div span:nth-child(3) {
   position: absolute;
   right: 0;
-  left: 70%;
+  left: 75%;
 }
 .signin__container .wrapper .signin__form .continue p {
   font-size: 1.2em;
@@ -104,4 +189,80 @@
 .signin__container .wrapper .signin__form .continue p:nth-child(2) i {
   cursor: pointer;
   text-align: center;
+}
+.signin__container .wrapper .otp__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.865);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 0px #5a5a5a;
+  -webkit-animation: fadeIn 2s;
+          animation: fadeIn 2s;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.signin__container .wrapper .otp__container img {
+  height: 150px;
+  width: 150px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.signin__container .wrapper .otp__container .title {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.signin__container .wrapper .otp__container .boxes {
+  display: flex;
+  gap: 10px;
+}
+.signin__container .wrapper .otp__container .boxes .box {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #fff;
+  background-color: #fff;
+}
+.signin__container .wrapper .otp__container .boxes .box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 1em;
+}
+.signin__container .wrapper .otp__container .boxes .box input:focus {
+  border: 2px solid rgb(0, 0, 255);
+}
+.signin__container .wrapper .otp__container .resend span {
+  color: rgba(255, 255, 255, 0.677);
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.signin__container .wrapper .otp__container .resend span:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.signin__container .wrapper .otp__container button {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
 }/*# sourceMappingURL=style.css.map */

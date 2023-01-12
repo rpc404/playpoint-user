@@ -49,7 +49,7 @@ function a11yProps(index) {
 
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
-  const [history, setHistory] = useState([]);
+
   const [editMode, setEditMode] = useState(false);
   const [{ userPublicAddress, username, isWalletConnected }, dispatchRPCData] =
     useRPCContext();
@@ -120,12 +120,6 @@ export default function Profile() {
     setEditMode(false);
   };
 
-  const handlePageClick = (ev) => {
-    const page = ev.target.innerText;
-    setHistory(userProfile.slice((page - 1) * 10, page * 10));
-  };
-
-  console.log(history);
 
   return (
     <div className="profile__container">
