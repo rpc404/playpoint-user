@@ -249,6 +249,9 @@
   text-align: center;
   font-size: 1em;
 }
+.signin__container .wrapper .otp__container .boxes .box input:focus {
+  border: 2px solid rgb(0, 0, 255);
+}
 .signin__container .wrapper .otp__container .resend span {
   color: rgba(255, 255, 255, 0.677);
   cursor: pointer;

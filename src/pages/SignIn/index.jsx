@@ -1,18 +1,37 @@
 import React from "react";
 import "./styles/style.css";
-import image from "../../images/security.jpg";
 
 const SignIn = () => {
   const [active, setActive] = React.useState(false);
   const [inputvalue, setInputValue] = React.useState({});
 
-  const itemsRef = React.useRef(null);
+  const itemsRef = React.useRef([]);
+
+  const inputs = [0, 1, 2, 3, 4, 5];
 
   React.useEffect(() => {
-    if (itemsRef.current) {
-      itemsRef.current.focus();
-    }
+    itemsRef.current = itemsRef.current.slice(0, inputs.length);
   }, []);
+
+  const handleChange = (e, index) => {
+    setInputValue({
+      ...inputvalue,
+      [e.target.name]: e.target.value,
+    });
+    if (index === inputs.length - 1) {
+      return;
+    } else {
+      itemsRef.current[index + 1].focus();
+    }
+  };
+
+  // const handleDelete = (e, index) => {
+  //   if (index === inputs.length - 1) {
+  //     return;
+  //   } else if (e.KeyCode === 8) {
+  //     itemsRef.current[index - 1].focus();
+  //   }
+  // };
 
   return (
     <div className="signin__container">
@@ -55,26 +74,23 @@ const SignIn = () => {
               </div>
 
               <div className="boxes">
-                {[0, 1, 2, 3, 4, 5].map((box, index) => {
+                {inputs.map((box, index) => {
                   return (
                     <div className="box" key={index}>
                       <input
                         type="text"
                         maxLength={1}
                         name={`input-${index}`}
-                        ref={itemsRef}
-                        // ref={focusInput}
+                        ref={(el) => (itemsRef.current[index] = el)}
                         value={inputvalue[index]}
                         onChange={(e) => {
-                          setInputValue({
-                            ...inputvalue,
-                            [e.target.name]: e.target.value,
-                          });
+                          handleChange(e, index);
                         }}
+                        // onKeyDown={(e) => handleDelete(e, index)}
                         inputMode="numeric"
                         autoComplete="one-time-code"
                         onFocus={(e) => e.target.select}
-                        // autoFocus={ }
+                        autoFocus={itemsRef}
                       />
                     </div>
                   );
