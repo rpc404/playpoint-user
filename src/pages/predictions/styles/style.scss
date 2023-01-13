@@ -1,6 +1,6 @@
 .userprediction_container {
   margin: 2em auto;
-  height: calc(100vh - 11.4em);
+  // height: calc(100vh - 11.4em);
   .container {
     display: flex;
     justify-content: space-around;
@@ -23,8 +23,7 @@
     }
     img {
 
-      
-      // width: 10vw;
+    
       border: 1px solid rgba(108, 107, 107, 0.334);
     }
     .answers_area {
