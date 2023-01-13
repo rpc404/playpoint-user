@@ -16,6 +16,7 @@ import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { toast } from "react-toastify";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
+const { ethereum } = window;
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
 
@@ -33,52 +34,95 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
 
   React.useEffect(() => {
     console.log(isWalletConnected, userPublicAddress, network)
-    
-    if (isWalletConnected && network === "arbitrum") {
-      const provider = new ethers.providers.Web3Provider(ethereum);
-      const contract = new ethers.Contract(
-        import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
-        ERC20BasicAPI,
-        provider
-      );
-      (async () => {
-        const ethBalance = await provider.getBalance(userPublicAddress);
-        const PPTTBalance = await contract.balanceOf(userPublicAddress);
+    if(!isNonWalletUser){
+      if (isWalletConnected && network === "arbitrum") {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const contract = new ethers.Contract(
+          import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
+          ERC20BasicAPI,
+          provider
+        );
+        (async () => {
+          const ethBalance = await provider.getBalance(userPublicAddress);
+          const PPTTBalance = await contract.balanceOf(userPublicAddress);
+          setBalance({
+            ethBalance: ethers.utils.formatEther(ethBalance),
+            ppttBalance: ethers.utils.formatEther(PPTTBalance),
+          });
+          const data = {
+            isWalletConnected,
+            username,
+            userPublicAddress,
+            network,
+            userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
+            userETHBalance: ethers.utils.formatEther(ethBalance),
+          };
+  
+          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        })();
+      }
+  
+      if (isWalletConnected && network === "shasta") {
         setBalance({
-          ethBalance: ethers.utils.formatEther(ethBalance),
-          ppttBalance: ethers.utils.formatEther(PPTTBalance),
+          ethBalance: 0,
+          ppttBalance: 0,
         });
-        const data = {
-          isWalletConnected,
-          username,
-          userPublicAddress,
-          network,
-          userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
-          userETHBalance: ethers.utils.formatEther(ethBalance),
-        };
+  
+        (async () => {
+          const data = {
+            isWalletConnected,
+            username,
+            userPublicAddress,
+            userPPTTBalance: 0,
+            userETHBalance: 0,
+            network
+          };
+  
+          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        })();
+      }
+    }else{
+      if (isWalletConnected && network === "arbitrum") {
 
-        await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
-      })();
-    }
-
-    if (isWalletConnected && network === "shasta") {
-      setBalance({
-        ethBalance: 0,
-        ppttBalance: 0,
-      });
-
-      (async () => {
-        const data = {
-          isWalletConnected,
-          username,
-          userPublicAddress,
-          userPPTTBalance: 0,
-          userETHBalance: 0,
-          network
-        };
-
-        await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
-      })();
+        (async () => {
+          const ethBalance = 100*10**12;
+          const PPTTBalance = 100*10**18;
+          setBalance({
+            ethBalance: ethers.utils.formatEther(ethBalance),
+            ppttBalance: ethers.utils.formatEther(PPTTBalance),
+          });
+          const data = {
+            isWalletConnected,
+            username,
+            userPublicAddress,
+            network,
+            userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
+            userETHBalance: ethers.utils.formatEther(ethBalance),
+          };
+  
+          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        })();
+      }
+  
+      if (isWalletConnected && network === "shasta") {
+        setBalance({
+          ethBalance: 0,
+          ppttBalance: 0,
+        });
+  
+        (async () => {
+          const data = {
+            isWalletConnected,
+            username,
+            userPublicAddress,
+            userPPTTBalance: 0,
+            userETHBalance: 0,
+            network
+          };
+  
+          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        })();
+      }
     }
   }, [isWalletConnected, userPublicAddress, network]);
 
@@ -200,7 +244,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       {!isWalletConnected ? (
         <List>
           <ListItem disabled={loading} disablePadding>
-            <ListItemButton className="drawerListItem">
+            <ListItemButton className="drawerListItem"  onClick={() => toggleAuthenticationDrawer()}>
               <i className="ri-fingerprint-line"></i>
               <ListItemText primary="Login / Register" />
             </ListItemButton>
