@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Pusher from "pusher-js";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
-
+import loader from "../../helpers/loading.gif"
 const SignIn = () => {
   const navigate = useNavigate()
   const [active, setActive] = React.useState(false);
@@ -16,6 +16,7 @@ const SignIn = () => {
   const [verifying, setVerifying] = React.useState(false);
   const [variant, setVariant] = React.useState("")
   const [, dispatchRPCData] = useRPCContext();
+  const [_loading, setLoading_] = React.useState(false);
   const pusher = new Pusher("e6640b48a82cccbb13d0", {
     cluster: "ap2",
   });
@@ -37,6 +38,7 @@ const SignIn = () => {
    }
 
   const handleSignIn = async () =>{
+    setLoading_(true);
     if(ValidateEmail(email)){
       await authenticate({email}).then(res=>{
         toast(res.data.msg);
@@ -47,9 +49,11 @@ const SignIn = () => {
         }
       })
     }
+    setLoading_(false);
    
   }
   const verify = async () =>{
+    setLoading_(true);
     let _otp = inputvalue.trim();
     if(variant=="0"){
       await _verify({email:email, token:_otp}).then(res=>{
@@ -77,6 +81,7 @@ const SignIn = () => {
             currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
             localStorage.setItem("rpcUserExpiresAt", currentDate);
             dispatchRPCData({ type: "wallet-connect", payload: tempRpcData });
+            setLoading_(false);
             navigate("/")
             setVerifying(false)
           });
@@ -105,11 +110,13 @@ const SignIn = () => {
           localStorage.setItem("rpcUserExpiresAt", currentDate);
           console.log("dispatchingg")
           dispatchRPCData({ type: "wallet-connect", payload: tempRpcData });
+          setLoading_(false)
           navigate("/")
         }
       }).catch(err=> {
         if(err.response){
           toast(err.response.data.msg)
+          setLoading_(false);
         }
       })
     }
@@ -135,7 +142,11 @@ const SignIn = () => {
                 </div>
                 <p>Recover Password</p>
               </div>
-              <button onClick={() => handleSignIn()}>Sign Up</button>
+              <button onClick={() => handleSignIn()}>
+                {
+                  _loading ? <img src={loader} /> : "Authenticate"
+                }
+              </button>
               <div className="continue">
                 <div>
                   <span></span>
@@ -176,9 +187,17 @@ const SignIn = () => {
                 Didn't receive OTP ? <span onClick={()=>{setActive(false), setInputValue("")}}>Resend OTP</span>
               </p>
 
-              <button onClick={()=>verify()}>Confirm OTP</button>
+              <button onClick={()=>verify()}>
+                
+                {
+                  _loading ? <img src={loader} /> : "Confirm OTP"
+                }
+                </button>
             </div>
-          ):<p>Setting up your account</p>}
+          ):<div>
+              <img src={loader} alt="loader" />
+              <p>Setting up your account</p>
+            </div>}
         </div>
       </div>
     </div>
