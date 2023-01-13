@@ -10,11 +10,12 @@ import { RPCProvider } from "./contexts/WalletRPC/RPCContext";
 import { MarketplaceProvider } from "./contexts/Marketplace/MarketplaceContext";
 import { FixtureProvider } from "./contexts/Fixture/FixtureContext";
 import { PredictionsProvider } from "./contexts/Predictions/PredictionsContext";
+import Loader from "./components/Loader";
 import { inject } from "@vercel/analytics";
 
 inject();
 
-const Loader = ()=><p>Loading</p>
+// const Loader = ()=><p>Loading</p>
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
