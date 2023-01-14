@@ -18,6 +18,9 @@ import { useMediaQuery } from "@mui/material";
 import Transaction from "../transaction";
 import moment from "moment/moment";
 import Badge from "@mui/material/Badge";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import EditProfile from "../../components/EditProfile/EditProfile";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -56,7 +59,6 @@ export default function Profile() {
   const [{ results, woat }, dispatchPredictionsData] = usePredictionsContext();
   const [_username, setUsername] = useState(username);
   const [value, setValue] = React.useState(0);
-  const [selectedImage, setSelectedImage] = useState(null);
 
   const [balance, setBalance] = React.useState({
     ethBalance: 0,
@@ -102,24 +104,23 @@ export default function Profile() {
     }
   }, [isWalletConnected]);
 
-  const handleUpdate = async () => {
-    await setProfile({ data: { username: _username, userPublicAddress } }).then(
-      (res) => {
-        const rpcUserData = {
-          isWalletConnected: true,
-          userPublicAddress: userPublicAddress,
-          username: _username,
-        };
-        localStorage.setItem("rpcUserData", JSON.stringify(rpcUserData));
-      }
-    );
-    dispatchRPCData({
-      type: ACTIONS.UPDATE_USERNAME,
-      payload: { username: _username },
-    });
-    setEditMode(false);
-  };
-
+  // const handleUpdate = async () => {
+  //   await setProfile({ data: { username: _username, userPublicAddress } }).then(
+  //     (res) => {
+  //       const rpcUserData = {
+  //         isWalletConnected: true,
+  //         userPublicAddress: userPublicAddress,
+  //         username: _username,
+  //       };
+  //       localStorage.setItem("rpcUserData", JSON.stringify(rpcUserData));
+  //     }
+  //   );
+  //   dispatchRPCData({
+  //     type: ACTIONS.UPDATE_USERNAME,
+  //     payload: { username: _username },
+  //   });
+  //   setEditMode(false);
+  // };
 
   return (
     <div className="profile__container">
@@ -134,15 +135,32 @@ export default function Profile() {
           onChange={handleChange}
           value={value}
           aria-label="Vertical tabs example"
-          variant={useMediaQuery("(max-width:768px)") ? "scrollable" : "fullWidth"}
-          indicatorColor= "secondary"
-          sx={{backgroundColor:"#0D1016"}}
+          variant={
+            useMediaQuery("(max-width:768px)") ? "scrollable" : "fullWidth"
+          }
+          indicatorColor="secondary"
+          sx={{ backgroundColor: "#0D1016" }}
         >
-          <Tab label = "Profile" icon={<i className="ri-user-line"></i>} {...a11yProps(0)} />
           <Tab
-          label="Transaction"
+            label="Profile"
+            icon={<i className="ri-user-line"></i>}
+            {...a11yProps(0)}
+            LinkComponent={Link}
+            to="/profile"
+          />
+          <Tab
+            label="Transaction"
             icon={<i className="ri-exchange-funds-line"></i>}
             {...a11yProps(1)}
+            LinkComponent={Link}
+            to="/profile/transaction"
+          />
+          <Tab
+            label="Edit"
+            icon={<i className="ri-edit-box-line"></i>}
+            {...a11yProps(2)}
+            LinkComponent={Link}
+            to="/profile/edit"
           />
         </Tabs>
       </div>
@@ -153,6 +171,21 @@ export default function Profile() {
               Hello,<span>{username}</span>
             </h3>
             <p>Today is {moment().format("MMMM Do YYYY")} </p>
+            <p className="address">
+              {String(userPublicAddress).substring(0, 5) +
+                "..." +
+                String(userPublicAddress).substring(
+                  userPublicAddress.length - 5
+                )}
+              <i
+                className="ri-file-copy-line"
+                onClick={() =>
+                  navigator.clipboard.writeText(userPublicAddress).then(() => {
+                    toast("Account address copied");
+                  })
+                }
+              ></i>
+            </p>
           </div>
           <div className="profleImage_box">
             <p>
@@ -184,6 +217,9 @@ export default function Profile() {
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Transaction />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <EditProfile />
         </TabPanel>
       </div>
     </div>

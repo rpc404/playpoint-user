@@ -22,6 +22,8 @@ export default function LeaderboardMain() {
     setLoading(false);
   }, []);
 
+  console.log(leaderboards);
+
   return (
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">

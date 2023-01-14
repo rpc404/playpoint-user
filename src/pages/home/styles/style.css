@@ -11,29 +11,68 @@
   }
 }
 .home__container .marketplace__items {
-  padding: 0 5vw;
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 30px;
-  flex-direction: row;
-  padding-bottom: 70px;
+  display: grid;
+  gap: 35px;
+  padding-bottom: 40px;
+}
+@media screen and (min-width: 576px) {
+  .home__container .marketplace__items {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 .home__container .marketplace__items .skeleton__container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 35px;
 }
 @media screen and (min-width: 576px) {
   .home__container .marketplace__items .skeleton__container {
-    justify-content: space-evenly;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
   .home__container .marketplace__items .skeleton__container {
-    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+@media screen and (min-width: 1440px) {
+  .home__container .marketplace__items .skeleton__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 1700px) {
+  .home__container .marketplace__items .skeleton__container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.home__container .marketplace__items .skeleton__container .stack {
+  width: 90vw;
+}
+@media screen and (min-width: 576px) {
+  .home__container .marketplace__items .skeleton__container .stack {
+    width: 40vw;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .home__container .marketplace__items .skeleton__container .stack {
+    width: 28vw;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .home__container .marketplace__items .skeleton__container .stack {
+    width: 20vw;
+  }
+}
+@media screen and (min-width: 1700px) {
+  .home__container .marketplace__items .skeleton__container .stack {
+    width: 17vw;
+  }
+}
+.home__container .marketplace__items .skeleton__container .stack .inner__skeletons {
+  display: flex;
+  justify-content: space-between;
 }
 @media (max-width: 576px) {
   .home__container .marketplace__items {
@@ -41,11 +80,8 @@
   }
 }
 .home__container .marketplace__items .marketplaceCard__container {
-  flex: 1 1 0;
   height: 45vh;
   text-decoration: none;
-  max-width: 16vw;
-  min-width: 16vw;
   color: #fff;
   border-radius: 32px;
   background-position: bottom bottom;
@@ -69,9 +105,8 @@
 }
 @media (max-width: 576px) {
   .home__container .marketplace__items .marketplaceCard__container {
-    max-width: 88vw;
-    min-width: 88vw;
-    height: 55vh;
+    max-width: 85vw;
+    min-width: 85vw;
   }
 }
 .home__container .marketplace__items .marketplaceCard__container h1 {

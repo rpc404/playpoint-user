@@ -15,7 +15,6 @@ import { inject } from "@vercel/analytics";
 
 inject();
 
-// const Loader = ()=><p>Loading</p>
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>

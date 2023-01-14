@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import EditProfile from "../components/EditProfile/EditProfile";
+import Transaction from "../pages/transaction";
 /**
  * @dev Code Splitting at route level... these pages will be called whenever we need them.
  */
@@ -23,7 +25,10 @@ export default function PageRouters({ socket }) {
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home />} />
-      <Route path="profile" element={<Profile />} />
+      <Route path="profile" element={<Profile />}>
+        <Route path="transaction" element={<Transaction />} />
+        <Route path="edit" element={<EditProfile />} />
+      </Route>
       <Route path="fixture/:slug" element={<Fixture />} />
       <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
       <Route path="marketplace" element={<MarketPlace />} />
