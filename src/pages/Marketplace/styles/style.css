@@ -123,11 +123,8 @@
   }
 }
 .marketplace__container .marketplace__items .marketplaceCard__container {
-  flex: 1 1 0;
   height: 45vh;
   text-decoration: none;
-  max-width: 16vw;
-  min-width: 16vw;
   color: #fff;
   border-radius: 32px;
   background-position: bottom bottom;

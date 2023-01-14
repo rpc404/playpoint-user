@@ -220,6 +220,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               </ListItemButton>
             </ListItem>
           </List>
+          
         </div>
       )}
       {isWalletConnected && <Divider />}
@@ -240,6 +241,15 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           </ListItemButton>
         </ListItem>
       </List>
+      <Divider />
+      <List>
+            <ListItem disablePadding onClick={() => navigate("/challenges")}>
+              <ListItemButton className="drawerListItem">
+              <i className="ri-gift-line"></i>
+                <ListItemText primary="Challenges" />
+              </ListItemButton>
+            </ListItem>
+          </List>
       <Divider />
       {!isWalletConnected ? (
         <List>

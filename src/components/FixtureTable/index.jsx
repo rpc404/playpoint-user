@@ -6,47 +6,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import CountryFlags from "../../helpers/CountryFlags.json";
 import { Link } from "react-router-dom";
 import { Skeleton, Stack } from "@mui/material";
 import moment from "moment";
 import { formatNumber } from "../../utils/NumberFomatter";
+import GetFlags from "../../utils/GetFlags";
 
 export default function FixtureTable({ leaderboard, currPage, loading }) {
-  const HomeTeamFlag = (d, c, i) => {
-    return (
-      (c.name === d?.HomeTeam ||
-        (c.name === "United States" && d?.HomeTeam === "USA") ||
-        (c.name === "South Korea" && d?.HomeTeam === "Korea Republic")) && (
-        <img
-          src={c.image}
-          alt={c.name}
-          key={i}
-          loading="lazy"
-          className="home__Image"
-          style={{ flex: "1", alignItems: "center" }}
-        />
-      )
-    );
-  };
-
-  const AwayTeamFlag = (d, c, i) => {
-    return (
-      (c.name === d?.AwayTeam ||
-        (c.name === "United States" && d?.AwayTeam === "USA") ||
-        (c.name === "South Korea" && d?.AwayTeam === "Korea Republic")) && (
-        <img
-          src={c?.image}
-          alt={c.name}
-          key={i}
-          loading="lazy"
-          className="Away__Image"
-          style={{ flex: "1" }}
-        />
-      )
-    );
-  };
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -89,13 +55,15 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                           >
                             {row.fixture.HomeTeam}
                           </div>
-                          {CountryFlags.map((country, index) => {
-                            return HomeTeamFlag(row.fixture, country, index);
-                          })}
+                          {GetFlags(
+                            row.fixture.marketplaceSlug,
+                            row.fixture.HomeTeam
+                          )}
                           <p>vs</p>
-                          {CountryFlags.map((country, index) => {
-                            return AwayTeamFlag(row.fixture, country, index);
-                          })}
+                          {GetFlags(
+                            row.fixture.marketplaceSlug,
+                            row.fixture.AwayTeam
+                          )}
                           <div className="awayTeam" style={{ flex: "1" }}>
                             {row.fixture.AwayTeam}
                           </div>

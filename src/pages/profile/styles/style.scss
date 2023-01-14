@@ -13,6 +13,8 @@
 
   .MuiButtonBase-root.MuiTab-root{
     color: #fff;
+    flex-direction: row;
+    align-items: center;
   }
 
   .profile__header {
@@ -45,7 +47,23 @@
   .username {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+
+    .address {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin:.5em 0;
+      background-color: rgba(123, 123, 123, 0.339);
+      width: fit-content;
+      padding: .5em;
+      border-radius: 5px;
+      color: #fff8;
+
+      i {
+        cursor: pointer;
+      }
+    }
 
     h3 {
       display: flex;
@@ -97,4 +115,8 @@
       object-fit: cover;
     }
   }
+}
+
+.MuiBox-root {
+  padding: 0 0 !important;
 }

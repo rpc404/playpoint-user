@@ -1,6 +1,8 @@
 .hero__container {
   color: #fff;
   background: url("https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-17-59_3qcF77BKy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673267593678") no-repeat;
+  background-size: cover;
+  background-position: center top;
   box-shadow: inset 0 0 0 2000px rgba(63, 2, 186, 0.635);
   display: flex;
   padding: 50px 2vw 120px 2vw;
