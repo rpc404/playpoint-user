@@ -17,6 +17,9 @@
   background: #1a1d20;
   cursor: pointer;
 }
+.challenges__Container .filters button.active {
+  border-bottom: 1px solid #20ce43;
+}
 @media screen and (min-width: 426px) {
   .challenges__Container .filters button {
     padding: 0.8em;
