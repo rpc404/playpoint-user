@@ -1,5 +1,4 @@
 import { Skeleton } from "@mui/material";
-import { Stack } from "@mui/system";
 import moment from "moment/moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +12,7 @@ const Challenges = () => {
   const [prop, setActiveProp] = React.useState("");
   const [temp, setTemp] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  // const { HomeTeamFlag } = GetFlags;
+  const [tabBtn, setTabBtn] = React.useState("all");
   const navigate = useNavigate();
   const [{ userPublicAddress, username, isWalletConnected }, dispatchRPCData] =
     useRPCContext();
@@ -57,7 +56,7 @@ const Challenges = () => {
       );
       setTemp(_temp);
     }
-    if (prop == "my") {
+    if (prop == "my challenges") {
       _temp = _challenges.filter(
         (_challenge) => _challenge.owner.walletID == userPublicAddress
       );
@@ -69,13 +68,28 @@ const Challenges = () => {
     <div className="challenges__Container">
       <div className="challenges__AllChallenges">
         <div className="filters">
-          <button onClick={() => setActiveProp("all")}>All</button>
-          <button onClick={() => setActiveProp("duo")}>Duo</button>
-          <button onClick={() => setActiveProp("trio")}>Trio</button>
-          <button onClick={() => setActiveProp("filled")}>Filled</button>
-          <button onClick={() => setActiveProp("unfilled")}>Unfilled</button>
+          {["all", "duo", "trio", "filled", "unfilled"].map((button, index) => {
+            return (
+              <button
+                key={index}
+                onClick={() => {
+                  setTabBtn(button), setActiveProp(button);
+                }}
+                className={button === tabBtn ? "active" : ""}
+              >
+                {button}
+              </button>
+            );
+          })}
           {isWalletConnected && (
-            <button onClick={() => setActiveProp("my")}>My Challenges</button>
+            <button
+              onClick={() => {
+                setActiveProp("my challenges"), setTabBtn("my challenges");
+              }}
+              className={tabBtn === "my challenges" ? "active" : ""}
+            >
+              My Challenges
+            </button>
           )}
         </div>
         <div className="cardContainer">
