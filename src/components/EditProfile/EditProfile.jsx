@@ -42,10 +42,7 @@ const EditProfile = () => {
         <label htmlFor="profileimage">Choose a profile Image</label>
         {selectedImage && (
           <div className="profile">
-            <img
-              src={URL.createObjectURL(selectedImage)}
-              alt="profile_image"
-            />
+            <img src={URL.createObjectURL(selectedImage)} alt="profile_image" />
             <br />
             <button onClick={() => setSelectedImage(null)}>Remove</button>
           </div>

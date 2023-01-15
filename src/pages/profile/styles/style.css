@@ -2,6 +2,12 @@
   display: flex;
   gap: 30px;
 }
+.profile__container .MuiBox-root {
+  padding: 0 !important;
+}
+.profile__container .MuiBox-root.MuiTabs-indicator {
+  background-color: green;
+}
 @media screen and (max-width: 768px) {
   .profile__container {
     flex-direction: column;

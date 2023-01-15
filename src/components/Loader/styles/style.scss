@@ -19,7 +19,8 @@
       background-color: #fff9;
       border-radius: 0.5rem;
       background-color: transparent;
-      animation: bounce 1s ease infinite;
+      animation: bounce 1s ease infinite alternate;
+      -webkit-animation: bounce 1s ease infinite alternate;
 
       @keyframes bounce {
         0% {

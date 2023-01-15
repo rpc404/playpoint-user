@@ -8,7 +8,6 @@ import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import Hero from "../../components/Hero";
 import { Helmet } from "react-helmet";
-// import "../Marketplace/styles/style.css"
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();

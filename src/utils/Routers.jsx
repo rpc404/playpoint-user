@@ -1,9 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import EditProfile from "../components/EditProfile/EditProfile";
-import Transaction from "../pages/transaction";
+
 /**
- * @dev Code Splitting at route level... these pages will be called whenever we need them.
+ * @dev Code Splitting at route level... these pages will be called whenever we change our route.
  */
 const Fixture = React.lazy(() => import("../pages/fixture"));
 const Predict = React.lazy(() => import("../pages/predict"));
@@ -19,6 +18,10 @@ const TermsAndConditions = React.lazy(() =>
 const NotFound = React.lazy(() => import("../pages/404"));
 const Challenges = React.lazy(() => import("../pages/challenges"));
 const SignIn = React.lazy(() => import("../pages/SignIn"));
+const EditProfile = React.lazy(() =>
+  import("../components/EditProfile/EditProfile")
+);
+const Transaction = React.lazy(() => import("../pages/transaction"));
 
 export default function PageRouters({ socket }) {
   return (
