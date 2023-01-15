@@ -9,18 +9,21 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { toast } from "react-toastify";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
+const { ethereum } = window;
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
+
   const navigate = useNavigate();
+  const location = useLocation();
   const [
-    { isWalletConnected, username, userPublicAddress, network },
+    { isWalletConnected, username, userPublicAddress, network, isNonWalletUser },
     dispatchRPCData,
   ] = useRPCContext();
   const [balance, setBalance] = React.useState({
@@ -30,55 +33,99 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    if (isWalletConnected && network === "arbitrum") {
-      const provider = new ethers.providers.Web3Provider(ethereum);
-
-      const contract = new ethers.Contract(
-        import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
-        ERC20BasicAPI,
-        provider
-      );
-
-      (async () => {
-        const ethBalance = await provider.getBalance(userPublicAddress);
-        const PPTTBalance = await contract.balanceOf(userPublicAddress);
-        
+    console.log(isWalletConnected, userPublicAddress, network)
+    if(!isNonWalletUser){
+      if (isWalletConnected && network === "arbitrum") {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const contract = new ethers.Contract(
+          import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
+          ERC20BasicAPI,
+          provider
+        );
+        (async () => {
+          const ethBalance = await provider.getBalance(userPublicAddress);
+          const PPTTBalance = await contract.balanceOf(userPublicAddress);
+          setBalance({
+            ethBalance: ethers.utils.formatEther(ethBalance),
+            ppttBalance: ethers.utils.formatEther(PPTTBalance),
+          });
+          const data = {
+            isWalletConnected,
+            username,
+            userPublicAddress,
+            network,
+            userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
+            userETHBalance: ethers.utils.formatEther(ethBalance),
+          };
+  
+          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        })();
+      }
+  
+      if (isWalletConnected && network === "shasta") {
         setBalance({
-          ethBalance: ethers.utils.formatEther(ethBalance),
-          ppttBalance: ethers.utils.formatEther(PPTTBalance),
+          ethBalance: 0,
+          ppttBalance: 0,
         });
+  
+        (async () => {
+          const data = {
+            isWalletConnected,
+            username,
+            userPublicAddress,
+            userPPTTBalance: 0,
+            userETHBalance: 0,
+            network
+          };
+  
+          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        })();
+      }
+    }else{
+      if (isWalletConnected && network === "arbitrum") {
 
-        const data = {
-          isWalletConnected,
-          username,
-          userPublicAddress,
-          userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
-          userETHBalance: ethers.utils.formatEther(ethBalance),
-        };
-
-        await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
-      })();
+        (async () => {
+          const ethBalance = 100*10**12;
+          const PPTTBalance = 100*10**18;
+          setBalance({
+            ethBalance: ethers.utils.formatEther(ethBalance),
+            ppttBalance: ethers.utils.formatEther(PPTTBalance),
+          });
+          const data = {
+            isWalletConnected,
+            username,
+            userPublicAddress,
+            network,
+            userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
+            userETHBalance: ethers.utils.formatEther(ethBalance),
+          };
+  
+          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        })();
+      }
+  
+      if (isWalletConnected && network === "shasta") {
+        setBalance({
+          ethBalance: 0,
+          ppttBalance: 0,
+        });
+  
+        (async () => {
+          const data = {
+            isWalletConnected,
+            username,
+            userPublicAddress,
+            userPPTTBalance: 0,
+            userETHBalance: 0,
+            network
+          };
+  
+          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        })();
+      }
     }
+  }, [isWalletConnected, userPublicAddress, network]);
 
-    if (isWalletConnected && network === "shasta") {
-      setBalance({
-        ethBalance: 0,
-        ppttBalance: 0,
-      });
-
-      (async () => {
-        const data = {
-          isWalletConnected,
-          username,
-          userPublicAddress,
-          userPPTTBalance: 0,
-          userETHBalance: 0,
-        };
-
-        await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
-      })();
-    }
-  }, [isWalletConnected]);
 
   const handleLogout = () => {
     dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
@@ -120,7 +167,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                   alt=""
                   loading="lazy"
                 />
-                <p
+                {/* <p
                   className="accountbtn"
                   onClick={() => {
                     navigator.clipboard.writeText(userPublicAddress),
@@ -133,7 +180,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                       userPublicAddress.length - 3
                     )}{" "}
                   <i className="ri-file-copy-line"></i>
-                </p>
+                </p> */}
                 <h2>@{username}</h2>
                 <div className="balance__wrapper">
                   <div className="balance">
@@ -207,7 +254,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       {!isWalletConnected ? (
         <List>
           <ListItem disabled={loading} disablePadding>
-            <ListItemButton className="drawerListItem">
+            <ListItemButton className="drawerListItem"  onClick={() => toggleAuthenticationDrawer()}>
               <i className="ri-fingerprint-line"></i>
               <ListItemText primary="Login / Register" />
             </ListItemButton>
@@ -295,29 +342,31 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               <div
                 className="balance"
                 onClick={(e) => {
-                  e.stopPropagation();
-                  ethereum
-                    .request({
-                      method: "wallet_watchAsset",
-                      params: {
-                        type: "ERC20",
-                        options: {
-                          address: import.meta.env
-                            .VITE_BETA_PPTT_CONTRACT_ADDRESS,
-                          symbol: "PPTT",
-                          decimals: 18,
-                          image: "https://ik.imagekit.io/lexworld/Logo.png",
+                  if(!isNonWalletUser){
+                    e.stopPropagation();
+                    ethereum
+                      .request({
+                        method: "wallet_watchAsset",
+                        params: {
+                          type: "ERC20",
+                          options: {
+                            address: import.meta.env
+                              .VITE_BETA_PPTT_CONTRACT_ADDRESS,
+                            symbol: "PPTT",
+                            decimals: 18,
+                            image: "https://ik.imagekit.io/lexworld/Logo.png",
+                          },
                         },
-                      },
-                    })
-                    .then((success) => {
-                      if (success) {
-                        toast("PPTT successfully added to wallet!");
-                      } else {
-                        throw new Error("Something went wrong.");
-                      }
-                    })
-                    .catch(console.error);
+                      })
+                      .then((success) => {
+                        if (success) {
+                          toast("PPTT successfully added to wallet!");
+                        } else {
+                          throw new Error("Something went wrong.");
+                        }
+                      })
+                      .catch(console.error);
+                  }
                 }}
               >
                 <img

@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { ethers } from "ethers";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
@@ -9,6 +10,8 @@ import { handleRPCWalletLogin, handleTRONWALLETLogin } from "../../utils/RPC";
 import "./styles/style.css";
 
 export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
+
+  const navigate = useNavigate()
   const [
     { isWalletConnected, username, userPublicAddress, network },
     dispatchRPCData,
@@ -38,6 +41,7 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
         ...resData,
         userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
         userETHBalance: ethers.utils.formatEther(ethBalance),
+        isNonWalletUser:false,
       };
 
       localStorage.setItem("rpcUserData", JSON.stringify(resData));
@@ -50,9 +54,12 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
 
     if (network === "shasta") {
       setLoading(true);
-      await handleTRONWALLETLogin();
-      handleWalletDrawer();
-      setLoading(false);
+      const data = await handleTRONWALLETLogin();
+      if(data.isWalletConnected){
+        await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+        handleWalletDrawer();
+        setLoading(false);
+      }
     }
   };
 
@@ -72,6 +79,9 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
           </Button>
           <Button onClick={() => handleWalletLogin("shasta")}>
             👛 TronLink
+          </Button>
+          <Button onClick={() => {handleWalletDrawer(), navigate("/signin")}}>
+            ✉️ Email
           </Button>
         </div>
 

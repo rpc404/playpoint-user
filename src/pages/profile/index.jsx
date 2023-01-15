@@ -55,7 +55,7 @@ export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
 
   const [editMode, setEditMode] = useState(false);
-  const [{ userPublicAddress, username, isWalletConnected }, dispatchRPCData] =
+  const [{ userPublicAddress, username, isWalletConnected, isNonWalletUser }, dispatchRPCData] =
     useRPCContext();
   const [{ results, woat }, dispatchPredictionsData] = usePredictionsContext();
   const [_username, setUsername] = useState(username);
@@ -88,7 +88,7 @@ export default function Profile() {
   }, [userPublicAddress]);
 
   React.useEffect(() => {
-    if (isWalletConnected) {
+    if (isWalletConnected && !isNonWalletUser) {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const contract = new ethers.Contract(
         "0x53d168578974822bCAa95106C7d5a906BF100948",

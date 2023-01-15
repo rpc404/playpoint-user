@@ -1,7 +1,10 @@
+import React from "react";
 import { toast } from "react-toastify";
 import { setProfile } from "../api/Profile";
-// import { useNavigate } from "react-router-dom";
+import { useRPCContext } from "../contexts/WalletRPC/RPCContext";
+import { ACTIONS } from "../contexts/WalletRPC/RPCReducer";
 const { ethereum } = window;
+const nonWallet = localStorage.getItem("isNonWalletUser");
 
 export const handleRPCWalletLogin = async () => {
   // const navigate = useNavigate()
@@ -58,6 +61,7 @@ export const handleRPCWalletLogin = async () => {
         isWalletConnected: true,
         username: "",
         network: "arbitrum",
+        isNonWalletUser:false,
       };
       if (userAddress[0]) {
         await setProfile({ data: tempRpcData }).then((res) => {
@@ -76,15 +80,18 @@ export const handleRPCWalletLogin = async () => {
   }
 };
 
-export const getPPTTBalance = async (userAddress) => {};
+const url = window.location.protocol+"//"+window.location.host+window.location.pathname
 
-if (typeof ethereum !== "undefined") {
+// export const getPPTTBalance = async (userAddress) => {};
+
+if (typeof ethereum !== "undefined" && !nonWallet) {
   // @note - This is the main function that will be called from the frontend on account change on metamask
   ethereum.on("accountsChanged", async (accounts) => {
     const tempRpcData = {
       userPublicAddress: accounts[0],
       isWalletConnected: true,
       username: "",
+      network:"arbitrum"
     };
     if (accounts[0]) {
       await setProfile({ data: tempRpcData }).then((res) => {
@@ -96,7 +103,8 @@ if (typeof ethereum !== "undefined") {
     localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
     localStorage.setItem("isRPCUserAuthenticated", true);
     localStorage.setItem("rpcUserExpiresAt", currentDate);
-    window.location.reload();
+    console.log(url)
+    window.location.assign(url+"?ref=switchAccount")
   });
   ethereum.on("chainChanged", (chainId) => {
     window.location.reload();
@@ -125,9 +133,10 @@ export const handleTRONWALLETLogin = async () => {
   
   const tempRpcData = {
     userPublicAddress: "",
-    isWalletConnected: true,
+    isWalletConnected: false,
     username: "",
     network: "shasta",
+    isNonWalletUser:false
   };
   
   if (!tronExists) {
@@ -151,11 +160,12 @@ export const handleTRONWALLETLogin = async () => {
     tempRpcData.username = res.data.profile.username;
   });
   tempRpcData.userPublicAddress = tronWeb.defaultAddress.base58;
-
+  tempRpcData.isWalletConnected =true;
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
-  localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
-  localStorage.setItem("isRPCUserAuthenticated", true);
   localStorage.setItem("rpcUserExpiresAt", currentDate);
+  localStorage.setItem("isRPCUserAuthenticated", true);
+  localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
+  
   return tempRpcData;
 };
