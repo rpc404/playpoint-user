@@ -1,6 +1,7 @@
 import React from "react";
 import { Skeleton, Stack } from "@mui/material";
 import "./styles/style.css";
+import "../../components/MarketplaceItems/styles/style.css";
 import MarketplaceCard from "../../components/MarketplaceCard";
 import { getMarketplaces } from "../../api/Marketplace";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
@@ -8,7 +9,6 @@ import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import Hero from "../../components/Hero";
 import { Helmet } from "react-helmet";
-// import "../Marketplace/styles/style.css"
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();

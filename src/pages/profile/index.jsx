@@ -21,6 +21,7 @@ import Badge from "@mui/material/Badge";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import EditProfile from "../../components/EditProfile/EditProfile";
+import { useLocation } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -69,6 +70,8 @@ export default function Profile() {
     setValue(newValue);
   };
 
+  const location = useLocation();
+
   React.useEffect(() => {
     if (userPublicAddress) {
       (async () => {
@@ -104,23 +107,12 @@ export default function Profile() {
     }
   }, [isWalletConnected]);
 
-  // const handleUpdate = async () => {
-  //   await setProfile({ data: { username: _username, userPublicAddress } }).then(
-  //     (res) => {
-  //       const rpcUserData = {
-  //         isWalletConnected: true,
-  //         userPublicAddress: userPublicAddress,
-  //         username: _username,
-  //       };
-  //       localStorage.setItem("rpcUserData", JSON.stringify(rpcUserData));
-  //     }
-  //   );
-  //   dispatchRPCData({
-  //     type: ACTIONS.UPDATE_USERNAME,
-  //     payload: { username: _username },
-  //   });
-  //   setEditMode(false);
-  // };
+  React.useEffect(() => {
+    let path = location.pathname;
+    if (path === "/profile" && value !== 0) setValue(0);
+    else if (path === "/profile/transaction" && value !== 1) setValue(1);
+    else if (path === "/profile/edit" && value !== 2) setValue(2);
+  }, [value]);
 
   return (
     <div className="profile__container">
@@ -138,7 +130,7 @@ export default function Profile() {
           variant={
             useMediaQuery("(max-width:768px)") ? "scrollable" : "fullWidth"
           }
-          indicatorColor="secondary"
+          // indicatorColor="primary"
           sx={{ backgroundColor: "#0D1016" }}
         >
           <Tab
