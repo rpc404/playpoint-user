@@ -2,7 +2,7 @@
   padding: 50px 5vw 40px 5vw;
   color: #fff;
   font-family: "Playfair Display", serif;
-  font-size: 45px;
+  font-size: 35px;
 }
 @media (max-width: 576px) {
   .home__container .home__mainTitle {
