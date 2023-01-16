@@ -46,7 +46,7 @@ const EditProfile = () => {
               src={`${URL.createObjectURL(selectedImage)}`}
               alt="profile_image"
             />
-            <br />text reinterpreted as HTML code scanning github error
+            <br />
             <button onClick={() => setSelectedImage(null)}>Remove</button>
           </div>
         )}
