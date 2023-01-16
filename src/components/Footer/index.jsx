@@ -8,7 +8,7 @@ const index = () => {
   const [email, setEmail] = React.useState("");
 
   const ValidateEmail = (mail) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
       return true;
     }
     toast("You have entered an invalid email address!", { type: "error" });
@@ -80,7 +80,12 @@ const index = () => {
             <a rel="norefferer" target="_blank" href="https://github.com/L1Playpoint" className="icon">
               <i className="ri-github-fill"></i>
             </a>
-            <a rel="norefferer" target="_blank" href="#" className="icon">
+            <a
+              href="https://discord.gg/YXvCFeGb"
+              target={"_blank"}
+              rel="noopener noreferrer"
+              className="icon"
+            >
               <i className="ri-discord-fill"></i>
             </a>
             <a rel="norefferer" target="_blank" href="#" className="icon">

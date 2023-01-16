@@ -6,15 +6,15 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Pusher from "pusher-js";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
-import loader from "../../helpers/loading.gif"
+import loader from "../../helpers/loading.gif";
 const SignIn = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [active, setActive] = React.useState(false);
   const [inputvalue, setInputValue] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [_activeInput, setActiveInput] = React.useState(-1);
   const [verifying, setVerifying] = React.useState(false);
-  const [variant, setVariant] = React.useState("")
+  const [variant, setVariant] = React.useState("");
   const [, dispatchRPCData] = useRPCContext();
   const [_loading, setLoading_] = React.useState(false);
   const pusher = new Pusher("e6640b48a82cccbb13d0", {
@@ -30,39 +30,41 @@ const SignIn = () => {
   }, []);
 
   const ValidateEmail = (mail) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
-       return (true)
-     }
-     toast("You have entered an invalid email address!",{type:'error'})
-     return (false)
-   }
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
+      return true;
+    }
+    toast("You have entered an invalid email address!", { type: "error" });
+    return false;
+  };
 
-  const handleSignIn = async () =>{
+  const handleSignIn = async () => {
     setLoading_(true);
-    if(ValidateEmail(email)){
-      await authenticate({email}).then(res=>{
+    if (ValidateEmail(email)) {
+      await authenticate({ email }).then((res) => {
         toast(res.data.msg);
-        if(String(res.data.msg).trim()!="You have just reqested for the OTP. please verify or try after a moment"){
+        if (
+          String(res.data.msg).trim() !=
+          "You have just reqested for the OTP. please verify or try after a moment"
+        ) {
           console.log(res.data.msg);
-          setVariant(res.data.variant)
-          setActive(true)
+          setVariant(res.data.variant);
+          setActive(true);
         }
-      })
+      });
     }
     setLoading_(false);
-   
-  }
-  const verify = async () =>{
+  };
+  const verify = async () => {
     setLoading_(true);
     let _otp = inputvalue.trim();
-    if(variant=="0"){
-      await _verify({email:email, token:_otp}).then(res=>{
+    if (variant == "0") {
+      await _verify({ email: email, token: _otp }).then((res) => {
         toast(res.data.msg);
-        if(res.data.msg.trim()!="Invalid Token"){
+        if (res.data.msg.trim() != "Invalid Token") {
           setVerifying(true);
           const predictionChannel = pusher.subscribe(`verifiction-${email}`);
           predictionChannel.bind("verified", async (data) => {
-            console.log(data)
+            console.log(data);
             const tempRpcData = {
               userPublicAddress: "",
               isWalletConnected: true,
@@ -72,55 +74,64 @@ const SignIn = () => {
             localStorage.setItem("userToken", data.accessToken);
             tempRpcData.isWalletConnected = true;
             tempRpcData.username = data._newUser.username;
-            tempRpcData.userPublicAddress = data._wallets.wallets[0]?.address
+            tempRpcData.userPublicAddress = data._wallets.wallets[0]?.address;
             tempRpcData.network = "arbitrum";
             localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
             localStorage.setItem("isNonWalletUser", true);
-            localStorage.setItem("rpcUserWallets", JSON.stringify(data._wallets.wallets));
+            localStorage.setItem(
+              "rpcUserWallets",
+              JSON.stringify(data._wallets.wallets)
+            );
             const currentDate = new Date();
             currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
             localStorage.setItem("rpcUserExpiresAt", currentDate);
             dispatchRPCData({ type: "wallet-connect", payload: tempRpcData });
             setLoading_(false);
-            navigate("/")
-            setVerifying(false)
+            navigate("/");
+            setVerifying(false);
           });
         }
-      })
+      });
     }
-    if(variant=="1"){
-      await otplogin({email:email, token:_otp}).then(async res=>{   
-        if(res.data?.msg?.trim()!="Invalid OTP"){
-          const tempRpcData = {
-            userPublicAddress: "",
-            isWalletConnected: true,
-            username: "",
-            network: "shasta",
-          };
-          localStorage.setItem("userToken", res.data.accessToken);
-          tempRpcData.isWalletConnected = true;
-          tempRpcData.username = res.data._user.username;
-          tempRpcData.userPublicAddress = res.data._wallet.wallets[0]?.address
-          tempRpcData.network = "arbitrum";
-          localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
-          localStorage.setItem("rpcUserWallets", JSON.stringify(res.data._wallet.wallets));
-          localStorage.setItem("isNonWalletUser", true);
-          const currentDate = new Date();
-          currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
-          localStorage.setItem("rpcUserExpiresAt", currentDate);
-          console.log("dispatchingg")
-          dispatchRPCData({ type: "wallet-connect", payload: tempRpcData });
-          setLoading_(false)
-          navigate("/")
-        }
-      }).catch(err=> {
-        if(err.response){
-          toast(err.response.data.msg)
-          setLoading_(false);
-        }
-      })
+    if (variant == "1") {
+      await otplogin({ email: email, token: _otp })
+        .then(async (res) => {
+          if (res.data?.msg?.trim() != "Invalid OTP") {
+            const tempRpcData = {
+              userPublicAddress: "",
+              isWalletConnected: true,
+              username: "",
+              network: "shasta",
+            };
+            localStorage.setItem("userToken", res.data.accessToken);
+            tempRpcData.isWalletConnected = true;
+            tempRpcData.username = res.data._user.username;
+            tempRpcData.userPublicAddress =
+              res.data._wallet.wallets[0]?.address;
+            tempRpcData.network = "arbitrum";
+            localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
+            localStorage.setItem(
+              "rpcUserWallets",
+              JSON.stringify(res.data._wallet.wallets)
+            );
+            localStorage.setItem("isNonWalletUser", true);
+            const currentDate = new Date();
+            currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
+            localStorage.setItem("rpcUserExpiresAt", currentDate);
+            console.log("dispatchingg");
+            dispatchRPCData({ type: "wallet-connect", payload: tempRpcData });
+            setLoading_(false);
+            navigate("/");
+          }
+        })
+        .catch((err) => {
+          if (err.response) {
+            toast(err.response.data.msg);
+            setLoading_(false);
+          }
+        });
     }
-  }
+  };
   return (
     <div className="signin__container">
       <div className="wrapper">
@@ -129,75 +140,84 @@ const SignIn = () => {
           <p>A whole new productive journey starts right here</p>
         </div>
         <div className="signinform__container">
-          {!verifying ? !active ? (
-            <div className={`signin__form ${active ? "active" : ""}`}>
-              <div className="item">
-                <div>📥️ Email</div>
-                <input type="email" placeholder="Enter your email address" onChange={e=>setEmail(e.target.value)} />
-              </div>
-              <div className="recovery">
-                <div className="checkbox_container">
-                  <input type="checkbox" id="checkbox" />
-                  <label htmlFor="checkbox">Keep Me login</label>
+          {!verifying ? (
+            !active ? (
+              <div className={`signin__form ${active ? "active" : ""}`}>
+                <div className="item">
+                  <div>📥️ Email</div>
+                  <input
+                    type="email"
+                    placeholder="Enter your email address"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
-                <p>Recover Password</p>
-              </div>
-              <button onClick={() => handleSignIn()}>
-                {
-                  _loading ? <img src={loader} /> : "Authenticate"
-                }
-              </button>
-              <div className="continue">
-                <div>
-                  <span></span>
-                  <p>or Continue With</p>
-                  <span></span>
+                <div className="recovery">
+                  <div className="checkbox_container">
+                    <input type="checkbox" id="checkbox" />
+                    <label htmlFor="checkbox">Keep Me login</label>
+                  </div>
+                  <p>Recover Password</p>
                 </div>
-                <p>
-                  <i className="ri-google-fill"></i>
-                </p>
-              </div>
-            </div>
-          ) : (
-            <div className="otp__container">
-              <div className="title">
-                <h3>OTP Verification</h3>
-                <p>Enter OTP sent to {email}</p>
-              </div>
-
-              <div className="boxes">
-                    <div className="box">
-                      <input
-                        placeholder="Enter Code"
-                        type="text"
-                        maxLength={6}
-                        name={`input-otp`}
-                        value={inputvalue}
-                        onChange={(e) => {
-                          setInputValue(e.target.value)
-                        }}
-                        inputMode="numeric"
-                        autoComplete="one-time-code"
-                      />
-                    </div>
-                 
-              </div>
-
-              <p className="resend">
-                Didn't receive OTP ? <span onClick={()=>{setActive(false), setInputValue("")}}>Resend OTP</span>
-              </p>
-
-              <button onClick={()=>verify()}>
-                
-                {
-                  _loading ? <img src={loader} /> : "Confirm OTP"
-                }
+                <button onClick={() => handleSignIn()}>
+                  {_loading ? <img src={loader} /> : "Authenticate"}
                 </button>
-            </div>
-          ):<div>
+                <div className="continue">
+                  <div>
+                    <span></span>
+                    <p>or Continue With</p>
+                    <span></span>
+                  </div>
+                  <p>
+                    <i className="ri-google-fill"></i>
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="otp__container">
+                <div className="title">
+                  <h3>OTP Verification</h3>
+                  <p>Enter OTP sent to {email}</p>
+                </div>
+
+                <div className="boxes">
+                  <div className="box">
+                    <input
+                      placeholder="Enter Code"
+                      type="text"
+                      maxLength={6}
+                      name={`input-otp`}
+                      value={inputvalue}
+                      onChange={(e) => {
+                        setInputValue(e.target.value);
+                      }}
+                      inputMode="numeric"
+                      autoComplete="one-time-code"
+                    />
+                  </div>
+                </div>
+
+                <p className="resend">
+                  Didn't receive OTP ?{" "}
+                  <span
+                    onClick={() => {
+                      setActive(false), setInputValue("");
+                    }}
+                  >
+                    Resend OTP
+                  </span>
+                </p>
+
+                <button onClick={() => verify()}>
+                  {_loading ? <img src={loader} /> : "Confirm OTP"}
+                </button>
+              </div>
+            )
+          ) : (
+            <div>
               <img src={loader} alt="loader" />
               <p>Setting up your account</p>
-            </div>}
+            </div>
+          )}
         </div>
       </div>
     </div>
