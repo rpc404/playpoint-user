@@ -19,11 +19,15 @@ import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 const { ethereum } = window;
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
-
   const navigate = useNavigate();
-  const location = useLocation();
   const [
-    { isWalletConnected, username, userPublicAddress, network, isNonWalletUser },
+    {
+      isWalletConnected,
+      username,
+      userPublicAddress,
+      network,
+      isNonWalletUser,
+    },
     dispatchRPCData,
   ] = useRPCContext();
   const [balance, setBalance] = React.useState({
@@ -33,8 +37,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    console.log(isWalletConnected, userPublicAddress, network)
-    if(!isNonWalletUser){
+    if (!isNonWalletUser) {
       if (isWalletConnected && network === "arbitrum") {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const contract = new ethers.Contract(
@@ -57,17 +60,20 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
             userETHBalance: ethers.utils.formatEther(ethBalance),
           };
-  
-          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+
+          await dispatchRPCData({
+            type: ACTIONS.WALLET_CONNECT,
+            payload: data,
+          });
         })();
       }
-  
+
       if (isWalletConnected && network === "shasta") {
         setBalance({
           ethBalance: 0,
           ppttBalance: 0,
         });
-  
+
         (async () => {
           const data = {
             isWalletConnected,
@@ -75,18 +81,20 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             userPublicAddress,
             userPPTTBalance: 0,
             userETHBalance: 0,
-            network
+            network,
           };
-  
-          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+
+          await dispatchRPCData({
+            type: ACTIONS.WALLET_CONNECT,
+            payload: data,
+          });
         })();
       }
-    }else{
+    } else {
       if (isWalletConnected && network === "arbitrum") {
-
         (async () => {
-          const ethBalance = 100*10**12;
-          const PPTTBalance = 100*10**18;
+          const ethBalance = 100 * 10 ** 12;
+          const PPTTBalance = 100 * 10 ** 18;
           setBalance({
             ethBalance: ethers.utils.formatEther(ethBalance),
             ppttBalance: ethers.utils.formatEther(PPTTBalance),
@@ -99,17 +107,20 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
             userETHBalance: ethers.utils.formatEther(ethBalance),
           };
-  
-          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+
+          await dispatchRPCData({
+            type: ACTIONS.WALLET_CONNECT,
+            payload: data,
+          });
         })();
       }
-  
+
       if (isWalletConnected && network === "shasta") {
         setBalance({
           ethBalance: 0,
           ppttBalance: 0,
         });
-  
+
         (async () => {
           const data = {
             isWalletConnected,
@@ -117,15 +128,17 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             userPublicAddress,
             userPPTTBalance: 0,
             userETHBalance: 0,
-            network
+            network,
           };
-  
-          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+
+          await dispatchRPCData({
+            type: ACTIONS.WALLET_CONNECT,
+            payload: data,
+          });
         })();
       }
     }
   }, [isWalletConnected, userPublicAddress, network]);
-
 
   const handleLogout = () => {
     dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
@@ -220,7 +233,6 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               </ListItemButton>
             </ListItem>
           </List>
-          
         </div>
       )}
       {isWalletConnected && <Divider />}
@@ -243,18 +255,21 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       </List>
       <Divider />
       <List>
-            <ListItem disablePadding onClick={() => navigate("/challenges")}>
-              <ListItemButton className="drawerListItem">
-              <i className="ri-gift-line"></i>
-                <ListItemText primary="Challenges" />
-              </ListItemButton>
-            </ListItem>
-          </List>
+        <ListItem disablePadding onClick={() => navigate("/challenges")}>
+          <ListItemButton className="drawerListItem">
+            <i className="ri-gift-line"></i>
+            <ListItemText primary="Challenges" />
+          </ListItemButton>
+        </ListItem>
+      </List>
       <Divider />
       {!isWalletConnected ? (
         <List>
           <ListItem disabled={loading} disablePadding>
-            <ListItemButton className="drawerListItem"  onClick={() => toggleAuthenticationDrawer()}>
+            <ListItemButton
+              className="drawerListItem"
+              onClick={() => toggleAuthenticationDrawer()}
+            >
               <i className="ri-fingerprint-line"></i>
               <ListItemText primary="Login / Register" />
             </ListItemButton>
@@ -276,17 +291,32 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   return (
     <>
       <div className="navbar__container">
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-            navigate("/");
-          }}
-          className="logo__container"
-        >
-          <img src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580" />
-          <h3>Playpoint</h3>
+        <div className="logo__container">
+          <img
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("/");
+            }}
+            src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
+          />
+          <h3
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("/");
+            }}
+          >
+            Playpoint
+          </h3>
 
           <div className="navLinks">
+          <div
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/");
+              }}
+            >
+              Home
+            </div>
             <div
               onClick={(e) => {
                 e.stopPropagation();
@@ -342,7 +372,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               <div
                 className="balance"
                 onClick={(e) => {
-                  if(!isNonWalletUser){
+                  if (!isNonWalletUser) {
                     e.stopPropagation();
                     ethereum
                       .request({
@@ -415,7 +445,6 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           </Drawer>
         </div>
       </div>
-      <div className="divider"></div>
     </>
   );
 }

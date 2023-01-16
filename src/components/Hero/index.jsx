@@ -4,6 +4,7 @@ import "./styles/style.css";
 export default function Hero() {
   return (
     <div className="hero__container">
+      <div className="divider"></div>
       <div className="heroContent__container">
         <h1>
           Discover
@@ -93,6 +94,7 @@ export default function Hero() {
           />
         </div>
       </div>
+      <div className="divider last"></div>
     </div>
   );
 }

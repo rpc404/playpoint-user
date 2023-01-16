@@ -2,12 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px 2vw;
-  background: #000;
+  padding: 13px 25px;
+  background: rgb(63 1 186 / 64%);
   color: #fff;
   position: sticky;
   top: 0;
   z-index: 9;
+  position: relative;
+  margin: 20px 1.5vw 0 1.5vw;
+  border-radius: 25px 25px 0 0;
 
   .logo__container {
     display: flex;
@@ -24,11 +27,19 @@
     }
 
     .navLinks {
-      margin-left: 25px;
       display: flex;
       align-items: center;
       flex-direction: row;
-      gap: 25px;
+      gap: 35px;
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate3d(-50%, -20%, 0);
+      padding: 0 50px;
+      padding-bottom: 5px;
+      background: #000;
+      height: 95%;
+      border-radius: 0 0 35px 35px;
 
       @media (max-width: 576px) {
         display: none;
@@ -38,8 +49,9 @@
         color: rgba(254, 254, 254, 0.7);
         text-decoration: none;
         transition: 0.2s all ease-in-out;
-        font-weight: 300;
+        font-weight: 500;
         font-size: 15px;
+
         &:hover {
           color: #fff;
         }
@@ -118,8 +130,6 @@
       color: #fff !important;
     }
   }
-
-
 }
 
 .MuiDrawer-paper {

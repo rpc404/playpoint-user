@@ -47,6 +47,9 @@
   flex-direction: column;
   gap: 20px;
 }
+.footer__container .footer .links__container .links h2 {
+  font-family: "Playfair Display", serif;
+}
 .footer__container .footer .links__container .links a {
   color: rgba(254, 254, 254, 0.7);
   transition: 0.2s all ease-in-out;
@@ -70,13 +73,16 @@
   flex-direction: column;
   gap: 10px;
 }
+.footer__container .footer .social .text h2 {
+  font-family: "Playfair Display", serif;
+}
 .footer__container .footer .social .text .subscribe {
   display: flex;
   gap: 10px;
 }
 .footer__container .footer .social .text .subscribe button {
   padding: 0 0.5em;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   font-size: 1rem;
   cursor: pointer;
   color: rgb(41, 41, 41);
@@ -84,13 +90,10 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border: 1px solid rgba(13, 235, 198, 0.4745098039);
-  background: linear-gradient(rgb(0, 0, 0), rgba(60, 59, 59, 0.35));
   color: #fff;
   transition: 0.4s ease;
-}
-.footer__container .footer .social .text .subscribe button:hover {
-  background-color: #0debc6;
+  background-color: #6169ff;
+  border: none;
 }
 .footer__container .footer .social .text p {
   color: rgba(255, 255, 255, 0.797);
@@ -130,7 +133,7 @@
 }
 .footer__container .copyright .copy {
   display: flex;
-  gap: 15px;
+  gap: 35px;
   padding-bottom: 0.5em;
 }
 @media screen and (max-width: 425px) {

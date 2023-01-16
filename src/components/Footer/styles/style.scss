@@ -47,6 +47,11 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        h2 {
+          font-family: "Playfair Display", serif;
+        }
+
         a {
           color: rgba(254, 254, 254, 0.7);
           transition: 0.2s all ease-in-out;
@@ -73,26 +78,26 @@
         flex-direction: column;
         gap: 10px;
 
+        h2 {
+          font-family: "Playfair Display", serif;
+        }
+
         .subscribe {
           display: flex;
           gap: 10px;
 
           button {
             padding: 0 0.5em;
-            /* text-transform: uppercase; */
+            text-transform: uppercase;
             font-size: 1rem;
             cursor: pointer;
             color: rgb(41, 41, 41);
             border-radius: 3px;
             width: fit-content;
-            border: 1px solid #0debc679;
-            background: linear-gradient(rgb(0, 0, 0), rgba(60, 59, 59, 0.35));
             color: #fff;
             transition: 0.4s ease;
-
-            &:hover {
-              background-color: #0debc6;
-            }
+            background-color: #6169ff;
+            border: none;
           }
         }
 
@@ -135,7 +140,7 @@
 
     .copy {
       display: flex;
-      gap: 15px;
+      gap: 35px;
       @media screen and (max-width: 425px) {
         flex-direction: column;
       }

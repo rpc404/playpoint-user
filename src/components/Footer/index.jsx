@@ -4,24 +4,22 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./styles/style.css";
 
-
 const index = () => {
-
   const [email, setEmail] = React.useState("");
 
-const ValidateEmail = (mail) => {
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
-    return (true)
-  }
-  toast("You have entered an invalid email address!",{type:'error'})
-  return (false)
-}
+  const ValidateEmail = (mail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    toast("You have entered an invalid email address!", { type: "error" });
+    return false;
+  };
 
-const handleSubmit = () =>{
-  if(ValidateEmail(email)){
-    console.log(email);
-  }
-}
+  const handleSubmit = () => {
+    if (ValidateEmail(email)) {
+      console.log(email);
+    }
+  };
 
   return (
     <div className="footer__container">
@@ -49,7 +47,7 @@ const handleSubmit = () =>{
 
         <div className="links__container">
           <div className="links">
-            <h3>About Playpoint</h3>
+            <h2>About Playpoint</h2>
             <div>
               <a href="#">Marketplaces</a>
             </div>
@@ -63,9 +61,7 @@ const handleSubmit = () =>{
         </div>
         <div className="social">
           <div className="text">
-            <h3>
-              <strong>Join Our Newsletter</strong>
-            </h3>
+            <h2>Join Our Newsletter</h2>
             <Typography>
               Stay up to date with our news, blog posts, and announcements by
               subscribing to our Newsletter.
@@ -75,22 +71,22 @@ const handleSubmit = () =>{
                 sx={{ backgroundColor: "#fff", padding: "0 .6em" }}
                 placeholder="Enter Your Email"
                 type="email"
-                onChange={e=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <button onClick={()=>handleSubmit()}>Subscribe</button>
+              <button onClick={() => handleSubmit()}>Subscribe</button>
             </div>
           </div>
           <div className="icons">
-            <a href="https://github.com/L1Playpoint" className="icon">
+            <a rel="norefferer" target="_blank" href="https://github.com/L1Playpoint" className="icon">
               <i className="ri-github-fill"></i>
             </a>
-            <a href="#" className="icon">
+            <a rel="norefferer" target="_blank" href="#" className="icon">
               <i className="ri-discord-fill"></i>
             </a>
-            <a href="#" className="icon">
+            <a rel="norefferer" target="_blank" href="#" className="icon">
               <i className="ri-telegram-fill"></i>
             </a>
-            <a href="https://twitter.com/PlaypointP2E">
+            <a rel="norefferer" target="_blank" href="https://twitter.com/PlaypointP2E">
               <i className="ri-twitter-fill"></i>
             </a>
           </div>
@@ -104,10 +100,7 @@ const handleSubmit = () =>{
           <Link to="privacy-policy">Privacy Policy</Link>
           <Link to="terms-conditions">Terms & Conditions</Link>
         </div>
-        <Typography>
-          Built with ❤️ by Playpoint Labs, in collab with CodewithSudeep & Jcka
-          Labs.{" "}
-        </Typography>
+        <Typography>Built with ❤️ by CodewithSudeep & Jcka Labs. </Typography>
       </div>
     </div>
   );

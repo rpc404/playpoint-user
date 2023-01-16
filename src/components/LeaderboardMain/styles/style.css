@@ -1,5 +1,5 @@
 main.leaderboardMain__container {
-  margin: 2em 2vw;
+  margin: 2em 3vw;
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
@@ -109,6 +109,7 @@ main.leaderboardMain__container .usersLeaderboard__container {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(3.7px);
   margin-top: 56px;
+  min-width: 16.5vw;
 }
 @media screen and (max-width: 425px) {
   main.leaderboardMain__container .usersLeaderboard__container {
@@ -174,6 +175,10 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
   justify-content: space-between;
   font-size: 14px;
 }
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser .gameDetails div {
+  display: flex;
+  gap: 8px;
+}
 @media (max-width: 968px) {
   main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .topUser .gameDetails {
     margin-top: 15px;
@@ -191,6 +196,10 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
   gap: 8px;
   margin-bottom: 15px;
   color: #fff;
+  transition: 0.1s all ease-in-out;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User:hover {
+  background: rgba(255, 255, 255, 0.0666666667);
 }
 @media (max-width: 968px) {
   main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User {
@@ -212,7 +221,7 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
 }
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
 }
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 a {
   color: rgba(255, 255, 255, 0.6);
@@ -225,6 +234,11 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
   justify-content: space-between;
   font-size: 14px;
   margin-top: 10px;
+  gap: 30px;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User .gameDetails div {
+  display: flex;
+  gap: 10px;
 }
 @media (max-width: 968px) {
   main.leaderboardMain__container {

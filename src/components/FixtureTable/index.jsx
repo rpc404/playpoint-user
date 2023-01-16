@@ -18,17 +18,17 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center">Rank</TableCell>
-            <TableCell>Fixture</TableCell>
-            <TableCell align="center">Marketplace</TableCell>
+            <TableCell align="center">🏆 Rank</TableCell>
+            <TableCell align="center">🎢 Fixture</TableCell>
+            <TableCell align="center">🎫 Marketplace</TableCell>
             <TableCell className="mostActiveUser" align="center">
-              Most Active User
+            🤠 Most Active User
             </TableCell>
             <TableCell className="gameInformation" align="center">
-              Game Information
+            🎲 Game Information
             </TableCell>
-            <TableCell align="center">Total Users</TableCell>
-            <TableCell align="center">Total Volume(PPTT)</TableCell>
+            <TableCell align="center">🎮 Total Users</TableCell>
+            <TableCell align="center">💵 Total Volume(PPTT)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -70,7 +70,8 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                         </div>
                       </TableCell>
                       <TableCell align="center">
-                        <Link to="/fixture">Fifa Worldcup</Link>
+                        {/* @note Why is this marketplace hard coded */}
+                        <Link to="/fixture">{row.fixture.marketplaceSlug}</Link>
                       </TableCell>
                       <TableCell align="center">
                         {row.topuser ? (
