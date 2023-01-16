@@ -37,9 +37,6 @@ export default function LeaderboardMain() {
           count={Math.ceil(leaderboards.length / 10)}
           onChange={(e) => setCurrPage(e.target.innerText)}
           variant="outlined"
-          // shape={"rounded"}
-          // hideNextButton
-          // hidePrevButton
         />
       </div>
 
@@ -94,12 +91,12 @@ export default function LeaderboardMain() {
                     </h4>
                     <div className="gameDetails">
                       <div>
-                        <p>Points</p>
+                        <p>Pts.</p>
                         <span>{formatNumber(user?.points)}</span>
                       </div>
 
                       <div>
-                        <p>Amount</p>
+                        <p>Amt</p>
                         <span>{formatNumber(user?.amount)} PPTT</span>
                       </div>
                     </div>

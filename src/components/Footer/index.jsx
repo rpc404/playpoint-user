@@ -51,7 +51,7 @@ const index = () => {
 
         <div className="links__container">
           <div className="links">
-            <h3>About Playpoint</h3>
+            <h2>About Playpoint</h2>
             <div>
               <a href="#">Marketplaces</a>
             </div>
@@ -65,9 +65,7 @@ const index = () => {
         </div>
         <div className="social">
           <div className="text">
-            <h3>
-              <strong>Join Our Newsletter</strong>
-            </h3>
+            <h2>Join Our Newsletter</h2>
             <Typography>
               Stay up to date with our news, blog posts, and announcements by
               subscribing to our Newsletter.
@@ -83,7 +81,7 @@ const index = () => {
             </div>
           </div>
           <div className="icons">
-            <a href="https://github.com/L1Playpoint" className="icon">
+            <a rel="norefferer" target="_blank" href="https://github.com/L1Playpoint" className="icon">
               <i className="ri-github-fill"></i>
             </a>
             <a
@@ -94,10 +92,10 @@ const index = () => {
             >
               <i className="ri-discord-fill"></i>
             </a>
-            <a href="#" className="icon">
+            <a rel="norefferer" target="_blank" href="#" className="icon">
               <i className="ri-telegram-fill"></i>
             </a>
-            <a href="https://twitter.com/PlaypointP2E">
+            <a rel="norefferer" target="_blank" href="https://twitter.com/PlaypointP2E">
               <i className="ri-twitter-fill"></i>
             </a>
           </div>
@@ -111,10 +109,7 @@ const index = () => {
           <Link to="privacy-policy">Privacy Policy</Link>
           <Link to="terms-conditions">Terms & Conditions</Link>
         </div>
-        <Typography>
-          Built with ❤️ by Playpoint Labs, in collab with CodewithSudeep & Jcka
-          Labs.{" "}
-        </Typography>
+        <Typography>Built with ❤️ by CodewithSudeep & Jcka Labs. </Typography>
       </div>
     </div>
   );
