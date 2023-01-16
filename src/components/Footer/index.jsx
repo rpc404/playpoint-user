@@ -4,24 +4,26 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./styles/style.css";
 
-
 const index = () => {
-
   const [email, setEmail] = React.useState("");
 
-const ValidateEmail = (mail) => {
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
-    return (true)
-  }
-  toast("You have entered an invalid email address!",{type:'error'})
-  return (false)
-}
+  const ValidateEmail = (mail) => {
+    if (
+      /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
+        mail
+      )
+    ) {
+      return true;
+    }
+    toast("You have entered an invalid email address!", { type: "error" });
+    return false;
+  };
 
-const handleSubmit = () =>{
-  if(ValidateEmail(email)){
-    console.log(email);
-  }
-}
+  const handleSubmit = () => {
+    if (ValidateEmail(email)) {
+      console.log(email);
+    }
+  };
 
   return (
     <div className="footer__container">
@@ -75,16 +77,21 @@ const handleSubmit = () =>{
                 sx={{ backgroundColor: "#fff", padding: "0 .6em" }}
                 placeholder="Enter Your Email"
                 type="email"
-                onChange={e=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <button onClick={()=>handleSubmit()}>Subscribe</button>
+              <button onClick={() => handleSubmit()}>Subscribe</button>
             </div>
           </div>
           <div className="icons">
             <a href="https://github.com/L1Playpoint" className="icon">
               <i className="ri-github-fill"></i>
             </a>
-            <a href="#" className="icon">
+            <a
+              href="https://discord.gg/YXvCFeGb"
+              target={"_blank"}
+              rel="noopener noreferrer"
+              className="icon"
+            >
               <i className="ri-discord-fill"></i>
             </a>
             <a href="#" className="icon">
