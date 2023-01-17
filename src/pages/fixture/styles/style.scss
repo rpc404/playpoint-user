@@ -196,27 +196,28 @@
 
         .closeBtn {
           display: flex;
+          color: red!important;
+          gap: 0;
+          text-transform: uppercase!important;
+          font-weight: 500;
           align-items: center;
-          color: red;
           text-transform: capitalize;
           padding: 0;
-
+          
           i {
             font-size: 20px;
           }
         }
-
+        
         .info__container {
           display: flex;
           align-items: center;
           justify-content: space-between;
-
+          
           span {
             color: #7a7a7a;
           }
           button {
-            background: #000;
-            color: #fff;
             text-transform: capitalize;
           }
         }

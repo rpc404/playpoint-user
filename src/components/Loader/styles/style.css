@@ -4,8 +4,13 @@
   height: 100vh;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .loader__container .loading__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
   width: 4em;
   height: 4em;
   display: flex;
