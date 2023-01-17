@@ -37,7 +37,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    if (!isNonWalletUser) {
+    // if (!isNonWalletUser) {
       if (isWalletConnected && network === "arbitrum") {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const contract = new ethers.Contract(
@@ -90,7 +90,8 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           });
         })();
       }
-    } else {
+    // } 
+    else {
       if (isWalletConnected && network === "arbitrum") {
         (async () => {
           const ethBalance = 100 * 10 ** 12;
@@ -138,7 +139,10 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
         })();
       }
     }
-  }, [isWalletConnected, userPublicAddress, network]);
+  },
+   [isWalletConnected, userPublicAddress, network]);
+
+  console.log(balance);
 
   const handleLogout = () => {
     dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
