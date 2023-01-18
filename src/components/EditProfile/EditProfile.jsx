@@ -44,10 +44,17 @@ const EditProfile = () => {
           <div className="profile">
             <img
               src={`${URL.createObjectURL(selectedImage)}`}
+              onLoad={URL.revokeObjectURL(selectedImage)}
               alt="profile_image"
             />
             <br />
-            <button onClick={() => setSelectedImage(null)}>Remove</button>
+            <button
+              onClick={() => {
+                setSelectedImage(null);
+              }}
+            >
+              Remove
+            </button>
           </div>
         )}
 

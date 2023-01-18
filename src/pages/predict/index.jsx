@@ -14,6 +14,7 @@ import Slide from "@mui/material/Slide";
 import PredictionItems from "../../components/PredictionItems";
 import LeaderBoardList from "../../components/LeaderboardList/Leaderboard";
 import GetFlags from "../../utils/GetFlags";
+import useWindowDimensions from "../../helpers/UseWindowDimension";
 import PredictionTabs from "../../components/PredictionTabs";
 import { getAllPredictionsByFixture } from "../../api/Prediction";
 import allFlags from "../../helpers/CountryFlags.json";
@@ -131,8 +132,6 @@ export default function Predict() {
     calculateTimeLeft(fixture.DateUtc)
   );
 
-  const navigate = useNavigate();
-
   const [volume, setVolume] = React.useState(0);
 
   React.useEffect(() => {
@@ -204,6 +203,8 @@ export default function Predict() {
     setVolume(total / 0.02);
   }, [predictions]);
 
+  const { width } = useWindowDimensions();
+
   return (
     <div className="prediction__container">
       <Helmet>
@@ -218,12 +219,18 @@ export default function Predict() {
          * @note Recent Predictions
          */}
         <div className="recentPredictions">
-          {window.innerWidth <= 425 ? (
+          {width <= 768 ? (
             <div className="dialog__buttons">
-              <h3 onClick={() => handleClickOpen("prediction")}>
+              <h3
+                onClick={() => handleClickOpen("prediction")}
+                style={{ cursor: "pointer" }}
+              >
                 View Active Predictions
               </h3>
-              <h3 onClick={() => handleClickOpen("leaderboard")}>
+              <h3
+                onClick={() => handleClickOpen("leaderboard")}
+                style={{ cursor: "pointer" }}
+              >
                 View Leaderboards
               </h3>
             </div>
@@ -331,13 +338,18 @@ export default function Predict() {
         {/**
          *  @ Dialog for active predictions in mobile view
          */}
-        {window.innerWidth <= 425 && (
+        {width <= 768 && (
           <Dialog
             fullScreen
             open={open}
             onClose={handleClose}
             TransitionComponent={Transition}
             className="custom-paper"
+            PaperProps={{
+              style: {
+                background: "#000",
+              },
+            }}
           >
             <AppBar sx={{ position: "relative", background: "#000" }}>
               <Toolbar>

@@ -90,7 +90,8 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           });
         })();
       }
-    } else {
+    } 
+    else {
       if (isWalletConnected && network === "arbitrum") {
         (async () => {
           const ethBalance = 100 * 10 ** 12;
@@ -138,7 +139,10 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
         })();
       }
     }
-  }, [isWalletConnected, userPublicAddress, network]);
+  },
+   [isWalletConnected, userPublicAddress, network]);
+
+  console.log(balance);
 
   const handleLogout = () => {
     dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
@@ -180,20 +184,6 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                   alt=""
                   loading="lazy"
                 />
-                {/* <p
-                  className="accountbtn"
-                  onClick={() => {
-                    navigator.clipboard.writeText(userPublicAddress),
-                      toast("Account number copied!");
-                  }}
-                >
-                  {`${userPublicAddress}`.substring(0, 15) +
-                    `...` +
-                    `${userPublicAddress}`.substring(
-                      userPublicAddress.length - 3
-                    )}{" "}
-                  <i className="ri-file-copy-line"></i>
-                </p> */}
                 <h2>@{username}</h2>
                 <div className="balance__wrapper">
                   <div className="balance">

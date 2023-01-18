@@ -10,6 +10,7 @@ import LeaderboardMain from "../../components/LeaderboardMain";
 import Hero from "../../components/Hero";
 import { Helmet } from "react-helmet";
 import Marquee from "react-fast-marquee";
+import useWindowDimensions from "../../helpers/UseWindowDimension";
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
@@ -30,13 +31,14 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
 
+  const { width } = useWindowDimensions();
   return (
     <div className="home__container">
       <Helmet>
         <title>Playpoint | Prediction Pool Platform</title>
       </Helmet>
 
-      {window.innerWidth > 992 && (
+      {width > 992 && (
         <div>
           <Hero />
         </div>

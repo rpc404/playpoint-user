@@ -250,6 +250,8 @@ const ProfileComponent = ({
                 variant={"outlined"}
                 shape={"rounded"}
                 onChange={(e) => setCurrPage(e.target.innerText)}
+                hideNextButton
+                hidePrevButton
               />
             </div>
           </div>
