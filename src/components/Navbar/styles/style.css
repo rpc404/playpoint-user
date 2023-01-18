@@ -42,7 +42,7 @@
   height: 95%;
   border-radius: 0 0 35px 35px;
 }
-@media (max-width: 576px) {
+@media (max-width: 1024px) {
   .navbar__container .logo__container .navLinks {
     display: none;
   }
@@ -101,7 +101,7 @@
   justify-content: center;
   gap: 5px;
 }
-@media (max-width: 769px) {
+@media (max-width: 1025px) {
   .navbar__container .navbar__authentication {
     display: none;
   }
@@ -109,7 +109,7 @@
 .navbar__container .drawer .MuiDivider-root {
   border-color: rgba(164, 164, 164, 0.887) !important;
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1025px) {
   .navbar__container .drawer {
     display: none;
   }

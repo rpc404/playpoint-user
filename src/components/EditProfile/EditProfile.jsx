@@ -48,7 +48,13 @@ const EditProfile = () => {
               alt="profile_image"
             />
             <br />
-            <button onClick={() => setSelectedImage(null)}>Remove</button>
+            <button
+              onClick={() => {
+                setSelectedImage(null);
+              }}
+            >
+              Remove
+            </button>
           </div>
         )}
 

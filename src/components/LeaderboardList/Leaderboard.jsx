@@ -1,10 +1,14 @@
 import Leaderboards from "../Leaderboards/Leaderboards";
+import "./styles/style.css";
 
 const LeaderBoardList = ({ fixture, open, marketplaceSlug }) => {
   return (
-    <div className={`leaderboards `}>
+    <div className={`leaderboards ${open}`}>
       <h3 className="leaderboardsTitle">Leaderboards</h3>
-      <div className="leaderboardItemsTitle">
+      <div
+        className="leaderboardItemsTitle"
+        style={{ display: "grid", gridTemplateColumns: "3fr 1fr 1fr" }}
+      >
         <p>
           Game<i className="ri-game-line"></i>
         </p>

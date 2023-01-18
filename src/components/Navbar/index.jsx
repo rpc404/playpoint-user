@@ -37,7 +37,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    // if (!isNonWalletUser) {
+    if (!isNonWalletUser) {
       if (isWalletConnected && network === "arbitrum") {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const contract = new ethers.Contract(
@@ -90,7 +90,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           });
         })();
       }
-    // } 
+    } 
     else {
       if (isWalletConnected && network === "arbitrum") {
         (async () => {
@@ -184,20 +184,6 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                   alt=""
                   loading="lazy"
                 />
-                {/* <p
-                  className="accountbtn"
-                  onClick={() => {
-                    navigator.clipboard.writeText(userPublicAddress),
-                      toast("Account number copied!");
-                  }}
-                >
-                  {`${userPublicAddress}`.substring(0, 15) +
-                    `...` +
-                    `${userPublicAddress}`.substring(
-                      userPublicAddress.length - 3
-                    )}{" "}
-                  <i className="ri-file-copy-line"></i>
-                </p> */}
                 <h2>@{username}</h2>
                 <div className="balance__wrapper">
                   <div className="balance">

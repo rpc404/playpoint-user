@@ -41,7 +41,7 @@
       height: 95%;
       border-radius: 0 0 35px 35px;
 
-      @media (max-width: 576px) {
+      @media (max-width: 1024px) {
         display: none;
       }
 
@@ -107,7 +107,7 @@
       justify-content: center;
       gap: 5px;
     }
-    @media (max-width: 769px) {
+    @media (max-width: 1025px) {
       display: none;
     }
   }
@@ -116,7 +116,7 @@
     .MuiDivider-root {
       border-color: rgba(164, 164, 164, 0.887) !important;
     }
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1025px) {
       display: none;
     }
     i {

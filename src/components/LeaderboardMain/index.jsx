@@ -37,6 +37,8 @@ export default function LeaderboardMain() {
           count={Math.ceil(leaderboards.length / 10)}
           onChange={(e) => setCurrPage(e.target.innerText)}
           variant="outlined"
+          hideNextButton
+          hidePrevButton
         />
       </div>
 

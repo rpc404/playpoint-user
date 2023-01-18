@@ -14,7 +14,7 @@ import Box from "@mui/material/Box";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 import ProfileComponent from "../../components/Profile/";
-import { useMediaQuery } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 import Transaction from "../transaction";
 import moment from "moment/moment";
 import Badge from "@mui/material/Badge";
@@ -22,6 +22,9 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import EditProfile from "../../components/EditProfile/EditProfile";
 import { useLocation } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import Switch from "@mui/material/Switch";
+import Stack from "@mui/material/Stack";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,12 +54,59 @@ function a11yProps(index) {
   };
 }
 
+//
+const AntSwitch = styled(Switch)(({ theme }) => ({
+  width: 28,
+  height: 16,
+  padding: 0,
+  display: "flex",
+  "&:active": {
+    "& .MuiSwitch-thumb": {
+      width: 15,
+    },
+    "& .MuiSwitch-switchBase.Mui-checked": {
+      transform: "translateX(9px)",
+    },
+  },
+  "& .MuiSwitch-switchBase": {
+    padding: 2,
+    "&.Mui-checked": {
+      transform: "translateX(12px)",
+      color: "#fff",
+      "& + .MuiSwitch-track": {
+        opacity: 1,
+        backgroundColor: theme.palette.mode === "dark" ? "#177ddc" : "#1890ff",
+      },
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    boxShadow: "0 2px 4px 0 rgb(0 35 11 / 20%)",
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    transition: theme.transitions.create(["width"], {
+      duration: 200,
+    }),
+  },
+  "& .MuiSwitch-track": {
+    borderRadius: 16 / 2,
+    opacity: 1,
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? "rgba(255,255,255,.35)"
+        : "rgba(0,0,0,.25)",
+    boxSizing: "border-box",
+  },
+}));
+
 export default function Profile() {
   const [userProfile, setUserProfile] = React.useState([]);
 
   const [editMode, setEditMode] = useState(false);
-  const [{ userPublicAddress, username, isWalletConnected, isNonWalletUser }, dispatchRPCData] =
-    useRPCContext();
+  const [
+    { userPublicAddress, username, isWalletConnected, isNonWalletUser },
+    dispatchRPCData,
+  ] = useRPCContext();
   const [{ results, woat }, dispatchPredictionsData] = usePredictionsContext();
   const [_username, setUsername] = useState(username);
   const [value, setValue] = React.useState(0);
@@ -88,7 +138,7 @@ export default function Profile() {
   }, [userPublicAddress]);
 
   React.useEffect(() => {
-    if (isWalletConnected ) {
+    if (isWalletConnected) {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const contract = new ethers.Contract(
         "0x53d168578974822bCAa95106C7d5a906BF100948",
@@ -130,7 +180,6 @@ export default function Profile() {
           variant={
             useMediaQuery("(max-width:768px)") ? "scrollable" : "fullWidth"
           }
-          // indicatorColor="primary"
           sx={{ backgroundColor: "#0D1016" }}
         >
           <Tab
@@ -163,21 +212,33 @@ export default function Profile() {
               Hello,<span>{username}</span>
             </h3>
             <p>Today is {moment().format("MMMM Do YYYY")} </p>
-            <p className="address">
-              {String(userPublicAddress).substring(0, 5) +
-                "..." +
-                String(userPublicAddress).substring(
-                  userPublicAddress.length - 5
-                )}
-              <i
-                className="ri-file-copy-line"
-                onClick={() =>
-                  navigator.clipboard.writeText(userPublicAddress).then(() => {
-                    toast("Account address copied");
-                  })
-                }
-              ></i>
-            </p>
+            <div style={{ display: "flex",justifyContent:"space-between" }}>
+              <p className="address">
+                {String(userPublicAddress).substring(0, 5) +
+                  "..." +
+                  String(userPublicAddress).substring(
+                    userPublicAddress.length - 5
+                  )}
+                <i
+                  className="ri-file-copy-line"
+                  onClick={() =>
+                    navigator.clipboard
+                      .writeText(userPublicAddress)
+                      .then(() => {
+                        toast("Account address copied");
+                      })
+                  }
+                ></i>
+              </p>
+              {/* <Stack direction="row" spacing={1} alignItems="center">
+                <Typography>Off</Typography>
+                <AntSwitch
+                  defaultChecked
+                  inputProps={{ "aria-label": "ant design" }}
+                />
+                <Typography>On</Typography>
+              </Stack> */}
+            </div>
           </div>
           <div className="profleImage_box">
             <p>
