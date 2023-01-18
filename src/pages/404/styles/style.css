@@ -3,8 +3,8 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: 45px;
   gap: 10px;
+  padding: 50px 0;
 }
 .notFound__container img {
   width: 30vw;
@@ -17,7 +17,16 @@
   }
 }
 .notFound__container .MuiButton-root {
+  margin-top: 25px;
+  background: #fff;
+  color: #000 !important;
   gap: 5px;
   font-size: 18px;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+.notFound__container .MuiButton-root:hover {
+  background: #fff;
+  color: #000 !important;
 }/*# sourceMappingURL=style.css.map */

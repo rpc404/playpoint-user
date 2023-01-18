@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     margin: 15px 2vw;
+    margin-top: 35px;
     justify-content: space-between;
 
     h1 {
@@ -21,7 +22,6 @@
       justify-content: center;
       color: #bbc4cf;
       border: 1px solid currentColor;
-      border-radius: 16px;
       width: 20vw;
       margin: 0 auto;
 
@@ -31,7 +31,6 @@
 
       .icon {
         padding: 0.5em;
-        border-right: 1px solid;
       }
 
       input[type="input"] {

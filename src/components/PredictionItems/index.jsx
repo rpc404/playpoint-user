@@ -2,20 +2,16 @@ import moment from "moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Chip from "@mui/material/Chip";
-import image from "../../images/oops1.png";
 
 import "./styles/style.css";
-import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 
 const PredictionItems = ({ predictions, activeOS, open, setVolume }) => {
-  const [{ username }] = useRPCContext();
   const navigate = useNavigate();
 
   return (
     <div className={`prediction__items__dialog ${open}  ${activeOS}`}>
       {predictions.length >= 1 ? (
         predictions.map((data, index) => {
-         
           return (
             <div
               className="predictedCard__container"
@@ -75,8 +71,18 @@ const PredictionItems = ({ predictions, activeOS, open, setVolume }) => {
         })
       ) : (
         <div className="noPrediction__container">
-          <img src={image} alt="oops_image" />
-          <p>No Predictions available.Be the first one to predict.</p>
+          <img
+          style={{width: "85%", display: "block", margin: "20px auto"}}
+            src={
+              "https://ik.imagekit.io/domsan/Screenshot_from_2023-01-17_19-41-13_0ZKDW-A-q.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673963784391"
+            }
+            alt="oops_image"
+          />
+          <p>
+            No Predictions available.
+            <br />
+            Be the first one to Predict & Earn.
+          </p>
         </div>
       )}
     </div>
