@@ -1,18 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import PredictionTabs from "../../components/PredictionTabs";
-import "./styles/style.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { getFixutreById } from "../../api/Fixture";
-import allFlags from "../../helpers/CountryFlags.json";
-import {
-  getAllPredictionsByFixture,
-  getQuestionaireByFixtureId,
-} from "../../api/Prediction";
 import moment from "moment";
 import Pusher from "pusher-js";
-// import Leaderboards from "../../components/Leaderboards/Leaderboards";
-import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import { useLocation } from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
@@ -20,14 +10,21 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Slide from "@mui/material/Slide";
+
 import PredictionItems from "../../components/PredictionItems";
 import LeaderBoardList from "../../components/LeaderboardList/Leaderboard";
 import GetFlags from "../../utils/GetFlags";
 import useWindowDimensions from "../../helpers/UseWindowDimension";
+import PredictionTabs from "../../components/PredictionTabs";
+import { getAllPredictionsByFixture } from "../../api/Prediction";
+import allFlags from "../../helpers/CountryFlags.json";
+import { getFixutreById } from "../../api/Fixture";
+import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
+import "./styles/style.css";
 
 export const getCountryFlag = (country) => {
   let _url = "";
-  allFlags.map((flag, key) => {
+  allFlags.map((flag) => {
     if (flag.name === country) {
       _url = flag.image;
     } else if (country === "USA") {
@@ -274,7 +271,7 @@ export default function Predict() {
               </div>
               <div>
                 <p>Total Predictions</p>
-                <p>{predictions.length >= 1 && predictions.length}</p>
+                <p>{predictions.length >= 1 ? predictions.length : 0}</p>
               </div>
             </div>
           </div>

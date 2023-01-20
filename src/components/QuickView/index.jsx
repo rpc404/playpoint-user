@@ -31,7 +31,7 @@ export default function QuickView({ handleModalClose }) {
                 Football / <span>{gameData.marketplaceSlug}</span>
               </div>
               <Button onClick={handleModal} className="closeBtn">
-                Close <i className="ri-close-line"></i>
+              <i className="ri-close-line"></i>Close
               </Button>
             </div>
             <div className="topBar">

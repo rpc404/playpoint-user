@@ -48,7 +48,7 @@ export default function FixtureCard({
   return (
     <div className="fixtureCard__container">
       <Typography component={"span"} variant={"h3"}>
-        <i className="ri-calendar-line"></i> {data}
+      🗓️ {data}
       </Typography>
 
       {getGamesByDate(data)
@@ -90,7 +90,7 @@ export default function FixtureCard({
                     {GetFlags(marketplaceSlug, data.HomeTeam)}
                     {gameTime(data)}
                     {GetFlags(marketplaceSlug, data.AwayTeam)}
-                  <div className="teamName">{data?.AwayTeam}</div>
+                    <div className="teamName">{data?.AwayTeam}</div>
                   </Button>
                 )}
 
