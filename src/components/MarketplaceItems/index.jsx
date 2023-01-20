@@ -31,12 +31,12 @@ const MarketplaceItems = ({ marketplaces, loading, searchFixture }) => {
                   height={"16vh"}
                   className={"skeleton"}
                 />
-                <Skeleton width={150} height={30} />
-                <div className="inner__skeletons">
+                {/* <Skeleton width={150} height={30} /> */}
+                {/* <div className="inner__skeletons">
                   {[0, 1, 2].map((skeleton) => {
                     return <Skeleton width={40} height={40} key={skeleton} />;
                   })}
-                </div>
+                </div> */}
               </Stack>
             );
           })}

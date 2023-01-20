@@ -90,8 +90,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           });
         })();
       }
-    } 
-    else {
+    } else {
       if (isWalletConnected && network === "arbitrum") {
         (async () => {
           const ethBalance = 100 * 10 ** 12;
@@ -139,10 +138,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
         })();
       }
     }
-  },
-   [isWalletConnected, userPublicAddress, network]);
-
-  console.log(balance);
+  }, [isWalletConnected, userPublicAddress, network]);
 
   const handleLogout = () => {
     dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
@@ -169,11 +165,15 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      // sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      // onKeyDown={toggleDrawer(anchor, false)}
     >
+      <div className="crossicon__container">
+        <p onClick={toggleDrawer(anchor, false)}>
+          <i className="ri-close-fill"></i>
+        </p>
+      </div>
       {isWalletConnected && (
         <div className="userData__container">
           <List>
@@ -216,8 +216,16 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             </ListItem>
           </List>
           <List>
-            <ListItem disablePadding onClick={() => navigate("/profile")}>
-              <ListItemButton className="drawerListItem">
+            <ListItem
+              disablePadding
+              onClick={() => {
+                navigate("/profile");
+              }}
+            >
+              <ListItemButton
+                className="drawerListItem"
+                onClick={toggleDrawer(anchor, false)}
+              >
                 <i className="ri-user-line"></i>
                 <ListItemText primary="Profile" />
               </ListItemButton>
@@ -227,8 +235,16 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       )}
       {isWalletConnected && <Divider />}
       <List>
-        <ListItem disablePadding onClick={() => navigate("/leaderboards")}>
-          <ListItemButton className="drawerListItem">
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/leaderboards"), toggleDrawer(anchor, false);
+          }}
+        >
+          <ListItemButton
+            className="drawerListItem"
+            onClick={toggleDrawer(anchor, false)}
+          >
             <i className="ri-bar-chart-grouped-line"></i>
             <ListItemText primary="Leaderboards" />
           </ListItemButton>
@@ -236,8 +252,13 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       </List>
       <Divider />
       <List>
-        <ListItem disablePadding onClick={() => navigate("/marketplace")}>
-          <ListItemButton className="drawerListItem">
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/marketplace"), toggleDrawer(anchor, false);
+          }}
+        >
+          <ListItemButton className="drawerListItem"  onClick={toggleDrawer(anchor, false)}>
             <i className="ri-football-line"></i>
             <ListItemText primary="Marketplaces" />
           </ListItemButton>
@@ -245,8 +266,16 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       </List>
       <Divider />
       <List>
-        <ListItem disablePadding onClick={() => navigate("/challenges")}>
-          <ListItemButton className="drawerListItem">
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/challenges"), toggleDrawer(anchor, false);
+          }}
+        >
+          <ListItemButton
+            className="drawerListItem"
+            onClick={toggleDrawer(anchor, false)}
+          >
             <i className="ri-gift-line"></i>
             <ListItemText primary="Challenges" />
           </ListItemButton>
@@ -255,7 +284,11 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       <Divider />
       {!isWalletConnected ? (
         <List>
-          <ListItem disabled={loading} disablePadding>
+          <ListItem
+            disabled={loading}
+            disablePadding
+            onClick={toggleDrawer(anchor, false)}
+          >
             <ListItemButton
               className="drawerListItem"
               onClick={() => toggleAuthenticationDrawer()}
@@ -268,7 +301,10 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       ) : (
         <List>
           <ListItem disablePadding onClick={() => handleLogout()}>
-            <ListItemButton className="drawerListItem">
+            <ListItemButton
+              className="drawerListItem"
+              onClick={toggleDrawer(anchor, false)}
+            >
               <i className="ri-logout-box-line"></i>
               <ListItemText primary="Logout" />
             </ListItemButton>
@@ -299,7 +335,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           </h3>
 
           <div className="navLinks">
-          <div
+            <div
               onClick={(e) => {
                 e.stopPropagation();
                 navigate("/");
@@ -429,7 +465,6 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             anchor={"right"}
             open={navSMState["right"]}
             onClose={toggleDrawer("right", false)}
-            // style={{ backgroundColor: "#1c1b1b" }}
           >
             {list("right")}
           </Drawer>
