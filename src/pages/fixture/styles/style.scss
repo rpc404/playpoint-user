@@ -66,102 +66,154 @@
         .gameDetails__item {
           font-size: 14px;
           display: flex;
-          align-items: center;
           justify-content: space-between;
           color: #5a5a5a;
           border-bottom: 0.5px solid #9a9a9a;
           padding: 15px 0;
           position: relative;
+          flex-direction: column;
 
-          .gameDetails__location {
-            display: flex;
-            align-items: center;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            gap: 5px;
-            // transform: translate3d(-50%, -50%, 0);
-            color: #fff9;
-
-            @media (max-width: 576px) {
-              display: none;
-            }
+          @media screen and (max-width: 425px) {
+            flex-direction: column;
+            align-items: baseline;
           }
 
-          .gameDetails__teamDetails {
+          .status {
             display: flex;
             align-items: center;
-            gap: 5px;
-            justify-content: left;
-            flex: 0 1 600px;
-
-            @media (max-width: 576px) {
-              gap: 8px;
-              text-transform: capitalize;
-              flex: 1;
-              justify-content: left;
-            }
-
-            .teamName {
-              font-weight: 500;
-              color: #fff;
-              font-size: 17px;
-              display: flex;
-              align-items: center;
-              width: 6.5vw;
-              justify-content: center;
-              text-align: center;
-              flex: 1;
-
-              @media (max-width: 576px) {
-                font-size: 14px;
-                width: 100%;
+            gap: 10px;
+            &.open {
+              p {
+                color: rgb(0, 167, 0);
               }
             }
-
-            .home__Image,
-            .Away__Image {
-              width: 35px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              img {
-                width: 100%;
+            &.closed {
+              p {
+                color: rgba(255, 255, 255, 0.569);
               }
             }
+            .dot {
+              width: 8px;
+              height: 8px;
+              background-color: green;
+              border-radius: 50%;
+              animation: bubble 1.4s ease infinite forwards alternate;
 
-            .gameTime {
-              border: 1px solid #9a9a9a;
-              padding: 3px;
-              font-size: 14px;
-              color: #fff;
-              // width: 70px;
-              // flex: 1;
-              text-align: center;
-            }
-          }
-
-          .gameDetails__action {
-            @media (max-width: 576px) {
-              display: none;
-            }
-            .MuiButton-root {
-              text-transform: capitalize;
-              padding: 1px 5px;
-              color: #fff;
-
-              @media (max-width: 576px) {
-                padding: 1px 2px;
-                min-width: 30px;
-
-                i {
-                  font-size: 18px;
+              @keyframes bubble {
+                0% {
+                  transform: scale(1);
+                }
+                100% {
+                  transform: scale(1.15);
                 }
               }
+            }
+          }
+          .gameDetails {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
 
-              &.quickView {
+            .gameDetails__location {
+              display: flex;
+              align-items: center;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              gap: 5px;
+              // transform: translate3d(-50%, -50%, 0);
+              color: #fff9;
+  
+              @media (max-width: 576px) {
+                display: none;
+              }
+            }
+  
+            .gameDetails__teamDetails {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              justify-content: left;
+  
+              @media (max-width: 576px) {
+                gap: 8px;
+                text-transform: capitalize;
+                flex: 1;
+                justify-content: left;
+              }
+              @media screen and (min-width:577px) {
+                flex: 0 1 350px;
+              }
+  
+              @media screen and (min-width:769px) {
+                flex: 0 1 450px;
+              }
+  
+              @media screen and (min-width:1025px) {
+                flex: 0 1 600px;
+              }
+  
+              .teamName {
+                font-weight: 500;
+                color: #fff;
+                font-size: 17px;
+                display: flex;
+                align-items: center;
+                width: 6.5vw;
+                justify-content: center;
+                text-align: center;
+                flex: 1;
+  
+                @media (max-width: 576px) {
+                  font-size: 14px;
+                  width: 100%;
+                }
+              }
+  
+              .home__Image,
+              .Away__Image {
+                width: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+  
+                img {
+                  width: 100%;
+                }
+              }
+  
+              .gameTime {
                 border: 1px solid #9a9a9a;
+                padding: 3px;
+                font-size: 14px;
+                color: #fff;
+                // width: 70px;
+                // flex: 1;
+                text-align: center;
+              }
+            }
+  
+            .gameDetails__action {
+              @media (max-width: 576px) {
+                display: none;
+              }
+              .MuiButton-root {
+                text-transform: capitalize;
+                padding: 1px 5px;
+                color: #fff;
+  
+                @media (max-width: 576px) {
+                  padding: 1px 2px;
+                  min-width: 30px;
+  
+                  i {
+                    font-size: 18px;
+                  }
+                }
+  
+                &.quickView {
+                  border: 1px solid #9a9a9a;
+                }
               }
             }
           }
@@ -196,24 +248,24 @@
 
         .closeBtn {
           display: flex;
-          color: red!important;
+          color: red !important;
           gap: 0;
-          text-transform: uppercase!important;
+          text-transform: uppercase !important;
           font-weight: 500;
           align-items: center;
           text-transform: capitalize;
           padding: 0;
-          
+
           i {
             font-size: 20px;
           }
         }
-        
+
         .info__container {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          
+
           span {
             color: #7a7a7a;
           }
