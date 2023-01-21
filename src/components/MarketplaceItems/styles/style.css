@@ -5,10 +5,13 @@
 }
 @media screen and (min-width: 576px) {
   .marketplace__items {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     width: 90%;
     margin: 0 auto;
   }
+}
+.marketplace__items.marketplace {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 .marketplace__items .skeleton__container {
   display: grid;

@@ -4,9 +4,12 @@
   padding-bottom: 40px;
 
   @media screen and (min-width: 576px) {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     width: 90%;
     margin: 0 auto;
+  }
+  &.marketplace {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
   .skeleton__container {
@@ -33,6 +36,7 @@
 
     .stack {
       width: 90vw;
+
 
       @media screen and (min-width: 576px) {
         width: 40vw;

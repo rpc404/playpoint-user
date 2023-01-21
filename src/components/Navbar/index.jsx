@@ -165,7 +165,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
 
   const list = (anchor) => (
     <Box
-      // sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
       // onKeyDown={toggleDrawer(anchor, false)}
     >
@@ -219,7 +219,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             <ListItem
               disablePadding
               onClick={() => {
-                navigate("/profile");
+                navigate("/profile"), toggleDrawer(anchor, false);
               }}
             >
               <ListItemButton
@@ -258,7 +258,10 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             navigate("/marketplace"), toggleDrawer(anchor, false);
           }}
         >
-          <ListItemButton className="drawerListItem"  onClick={toggleDrawer(anchor, false)}>
+          <ListItemButton
+            className="drawerListItem"
+            onClick={toggleDrawer(anchor, false)}
+          >
             <i className="ri-football-line"></i>
             <ListItemText primary="Marketplaces" />
           </ListItemButton>

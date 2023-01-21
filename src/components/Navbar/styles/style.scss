@@ -137,6 +137,14 @@
   background-color: #000000 !important;
   width: 100% !important;
 
+  @media screen and (min-width:426px) {
+    width: 40% !important;
+  }
+
+  @media screen and (min-width:769px) {
+    width: 30% !important;
+  }
+
   .MuiBox-root {
     width: 95%;
     margin: 0 auto;
