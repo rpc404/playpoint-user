@@ -11,6 +11,7 @@ import Hero from "../../components/Hero";
 import { Helmet } from "react-helmet";
 import Marquee from "react-fast-marquee";
 import useWindowDimensions from "../../helpers/UseWindowDimension";
+import MarketplaceItems from "../../components/MarketplaceItems";
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
@@ -45,56 +46,7 @@ export default function Home() {
       )}
 
       <h1 className="home__mainTitle">Active Marketplaces</h1>
-      <div className="marketplace__items" id="marketplace__items">
-        {marketplaces && marketplaces.length >= 1 && !loading ? (
-          marketplaces.map((marketplace, index) => {
-            if (!marketplace.closed)
-              return (
-                <MarketplaceCard
-                  marketplace={marketplace}
-                  key={index}
-                  totalFixtures={marketplace.fixtures.length}
-                  totalPredictions={marketplace.prediction.length}
-                />
-              );
-          })
-        ) : (
-          <div className="skeleton__container">
-            {[0, 1, 2, 3, 4].map((data) => {
-              return (
-                <Stack key={data}>
-                  <Skeleton
-                    animation="wave"
-                    variant="rectangular"
-                    // width={window.innerWidth < 576 ? "80vw" : "17vw"}
-                    height={"16vh"}
-                    className="skeleton"
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Skeleton width={280} height={40} />
-                    <Skeleton width={70} />
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    {[0, 1, 2, 3].map((data) => {
-                      return <Skeleton width={50} height={40} key={data} />;
-                    })}
-                  </div>
-                </Stack>
-              );
-            })}
-          </div>
-        )}
-      </div>
+      <MarketplaceItems marketplaces={marketplaces} loading={loading} />
 
       <Marquee speed={70}>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((d) => {

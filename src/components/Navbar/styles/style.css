@@ -107,7 +107,7 @@
   }
 }
 .navbar__container .drawer .MuiDivider-root {
-  border-color: rgba(164, 164, 164, 0.887) !important;
+  border-color: rgba(164, 164, 164, 0.329) !important;
 }
 @media screen and (min-width: 1025px) {
   .navbar__container .drawer {
@@ -125,11 +125,26 @@
 }
 
 .MuiDrawer-paper {
-  background-color: #151515 !important;
+  background-color: #000000 !important;
+  width: 100% !important;
+}
+@media screen and (min-width: 426px) {
+  .MuiDrawer-paper {
+    width: 40% !important;
+  }
+}
+@media screen and (min-width: 769px) {
+  .MuiDrawer-paper {
+    width: 30% !important;
+  }
+}
+.MuiDrawer-paper .MuiBox-root {
+  width: 95%;
+  margin: 0 auto;
 }
 
 .MuiDivider-root {
-  border-color: rgba(164, 164, 164, 0.887) !important;
+  border-color: rgba(164, 164, 164, 0.188) !important;
 }
 
 .MuiButtonBase-root {
@@ -178,4 +193,21 @@
   display: flex;
   gap: 5px;
   outline: 1px solid #fff !important;
+}
+
+.crossicon__container {
+  display: flex;
+  padding: 16px 0;
+  justify-content: flex-end;
+}
+.crossicon__container p {
+  display: flex;
+  margin-top: 10px;
+  height: 100%;
+}
+.crossicon__container p i {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 28px;
 }/*# sourceMappingURL=style.css.map */

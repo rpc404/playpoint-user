@@ -1,9 +1,7 @@
 import React from "react";
-import MarketplaceCard from "../../components/MarketplaceCard";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 import { getMarketplaces } from "../../api/Marketplace";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
-import { Skeleton, Stack } from "@mui/material";
 import Fuse from "fuse.js";
 import "./styles/style.css";
 import MarketplaceItems from "../../components/MarketplaceItems";
@@ -15,7 +13,6 @@ const MarketPlace = () => {
   const [searchFixture, setSearchedFixture] = React.useState(marketplaces);
 
   const location = useLocation();
-  console.log(location);
 
   const handleSearch = (query) => {
     if (!query) {
@@ -70,7 +67,7 @@ const MarketPlace = () => {
       <MarketplaceItems
         marketplaces={marketplaces}
         loading={loading}
-        {...(location.pathname === "/marketplace" ? { searchFixture } : {})}
+        {...(location.pathname === "/marketplace" && { searchFixture })}
       />
     </div>
   );
