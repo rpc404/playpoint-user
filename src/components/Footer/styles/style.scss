@@ -109,20 +109,79 @@
       @media screen and (min-width: 769px) {
         margin-top: 1em;
       }
-
-      .icons {
-        font-size: 2rem;
-        display: flex;
-        gap: 1vw;
-        a {
-          cursor: pointer;
-          text-decoration: none;
-          color: white;
-          transition: 0.4s ease;
-          &:hover {
-            transform: scale(1.2);
+      .icons__container {
+        @media screen and (min-width:426px) {
+          display: flex;
+          gap: 150px;
+          align-items: center;
+        }
+        .icons {
+          font-size: 2rem;
+          display: flex;
+          gap: 1vw;
+          a {
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            transition: 0.4s ease;
+            &:hover {
+              transform: scale(1.2);
+            }
           }
         }
+        .dropdown {
+          position: relative;
+
+          .dropdown__btn {
+            padding: 0.5em;
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            i {
+              font-size: 1.2em;
+              &:first-child {
+                color: #6169ff;
+              }
+              &:last-child {
+                color: rgba(0, 0, 0, 0.889);
+                font-size: 1.4em;
+              }
+            }
+          }
+
+          .dropdown-content {
+            position: absolute;
+            bottom: 32px;
+            padding: 0.5em;
+            background: rgb(42, 42, 42);
+            li {
+              list-style: none;
+
+              button {
+                color: #fff;
+                background-color: transparent;
+                width: 100%;
+                border: none;
+                margin: 0.2em 0;
+                cursor: pointer;
+                padding: 0.4em .5em;
+                display: flex;
+                gap: 5px;
+                align-items: center;
+
+                &:hover {
+                  background-color: rgb(219, 219, 219);
+                  color: #000;
+                }
+              }
+            }
+          }
+        }
+
       }
     }
   }

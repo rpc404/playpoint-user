@@ -19,7 +19,16 @@ export default function Topbar() {
       </div>
       <div className="imgContainers">
         {flags.map((d, i) => {
-          return <img src={d.image} alt={d.name} key={i} loading="lazy" />;
+          return (
+            <img
+              src={d.image}
+              alt={d.name}
+              key={i}
+              loading="lazy"
+              height={"29"}
+              width={"29"}
+            />
+          );
         })}
       </div>
     </div>

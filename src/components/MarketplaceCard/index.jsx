@@ -2,9 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function MarketplaceCard({
-  marketplace
-}) {
+export default function MarketplaceCard({ marketplace }) {
   const navigate = useNavigate();
 
   const navHandler = (marketplaceSlug) => {
@@ -15,8 +13,12 @@ export default function MarketplaceCard({
       },
     });
   };
-  const { marketplaceCoverImage, marketplaceName, marketplaceSlug, closed } =
-    marketplace;
+  const {
+    marketplaceCoverImage,
+    marketplaceName,
+    marketplaceSlug,
+    closed,
+  } = marketplace;
 
   const styles = {
     background: `url(${marketplaceCoverImage?.url}) center /cover no-repeat`,
@@ -30,7 +32,7 @@ export default function MarketplaceCard({
         closed ? toast("Marketplace Closed") : navHandler(marketplaceSlug);
       }}
     >
-      <h1>{marketplaceName}</h1>
+      <h1>{`${marketplaceName}`}</h1>
     </div>
   );
 }

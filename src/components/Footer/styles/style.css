@@ -104,19 +104,73 @@
     margin-top: 1em;
   }
 }
-.footer__container .footer .social .icons {
+@media screen and (min-width: 426px) {
+  .footer__container .footer .social .icons__container {
+    display: flex;
+    gap: 150px;
+    align-items: center;
+  }
+}
+.footer__container .footer .social .icons__container .icons {
   font-size: 2rem;
   display: flex;
   gap: 1vw;
 }
-.footer__container .footer .social .icons a {
+.footer__container .footer .social .icons__container .icons a {
   cursor: pointer;
   text-decoration: none;
   color: white;
   transition: 0.4s ease;
 }
-.footer__container .footer .social .icons a:hover {
+.footer__container .footer .social .icons__container .icons a:hover {
   transform: scale(1.2);
+}
+.footer__container .footer .social .icons__container .dropdown {
+  position: relative;
+}
+.footer__container .footer .social .icons__container .dropdown .dropdown__btn {
+  padding: 0.5em;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.footer__container .footer .social .icons__container .dropdown .dropdown__btn i {
+  font-size: 1.2em;
+}
+.footer__container .footer .social .icons__container .dropdown .dropdown__btn i:first-child {
+  color: #6169ff;
+}
+.footer__container .footer .social .icons__container .dropdown .dropdown__btn i:last-child {
+  color: rgba(0, 0, 0, 0.889);
+  font-size: 1.4em;
+}
+.footer__container .footer .social .icons__container .dropdown .dropdown-content {
+  position: absolute;
+  bottom: 32px;
+  padding: 0.5em;
+  background: rgb(42, 42, 42);
+}
+.footer__container .footer .social .icons__container .dropdown .dropdown-content li {
+  list-style: none;
+}
+.footer__container .footer .social .icons__container .dropdown .dropdown-content li button {
+  color: #fff;
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  margin: 0.2em 0;
+  cursor: pointer;
+  padding: 0.4em 0.5em;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.footer__container .footer .social .icons__container .dropdown .dropdown-content li button:hover {
+  background-color: rgb(219, 219, 219);
+  color: #000;
 }
 .footer__container .copyright {
   padding: 20px 5vw;
