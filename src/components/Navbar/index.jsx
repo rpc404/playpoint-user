@@ -16,10 +16,12 @@ import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { toast } from "react-toastify";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
+import { useTranslation } from "react-i18next";
 const { ethereum } = window;
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [
     {
       isWalletConnected,
@@ -210,7 +212,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                   }
                 >
                   <i className="ri-add-box-line"></i>
-                  Add Money
+                  {"Add Money"}
                 </Button>
               </div>
             </ListItem>
@@ -227,7 +229,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 onClick={toggleDrawer(anchor, false)}
               >
                 <i className="ri-user-line"></i>
-                <ListItemText primary="Profile" />
+                <ListItemText primary={`${t("Profile")}`} />
               </ListItemButton>
             </ListItem>
           </List>
@@ -246,7 +248,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             onClick={toggleDrawer(anchor, false)}
           >
             <i className="ri-bar-chart-grouped-line"></i>
-            <ListItemText primary="Leaderboards" />
+            <ListItemText primary={`${t("Leaderboards")}`} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -263,7 +265,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             onClick={toggleDrawer(anchor, false)}
           >
             <i className="ri-football-line"></i>
-            <ListItemText primary="Marketplaces" />
+            <ListItemText primary={`${t("Marketplaces")}`} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -280,7 +282,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             onClick={toggleDrawer(anchor, false)}
           >
             <i className="ri-gift-line"></i>
-            <ListItemText primary="Challenges" />
+            <ListItemText primary={`${t("Challenges")}`} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -297,7 +299,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               onClick={() => toggleAuthenticationDrawer()}
             >
               <i className="ri-fingerprint-line"></i>
-              <ListItemText primary="Login / Register" />
+              <ListItemText primary={`${t("Login/Register")}`} />
             </ListItemButton>
           </ListItem>
         </List>
@@ -309,7 +311,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               onClick={toggleDrawer(anchor, false)}
             >
               <i className="ri-logout-box-line"></i>
-              <ListItemText primary="Logout" />
+              <ListItemText primary={`${t("Logout")}`} />
             </ListItemButton>
           </ListItem>
         </List>
@@ -344,7 +346,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 navigate("/");
               }}
             >
-              Home
+              {t("Home")}
             </div>
             <div
               onClick={(e) => {
@@ -352,7 +354,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 window.open("https://docs.playpoint.ai/");
               }}
             >
-              Documentation
+              {t("Documentation")}
             </div>
             <div
               onClick={(e) => {
@@ -360,7 +362,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 navigate("/leaderboards");
               }}
             >
-              Leaderboards
+              {t("Leaderboards")}
             </div>
             <div
               onClick={(e) => {
@@ -368,7 +370,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 navigate("/marketplace");
               }}
             >
-              Marketplace
+              {t("Marketplace")}
             </div>
             <div
               onClick={(e) => {
@@ -376,7 +378,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 navigate("/challenges");
               }}
             >
-              Challenges
+              {t("Challenges")}
             </div>
           </div>
         </div>
@@ -387,14 +389,14 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             className="buyButton"
           >
             <i className="ri-coin-fill"></i>
-            Buy PPTT
+            {t("BuyPPTT")}
           </button>
           {isWalletConnected === false ? (
             <Button
               disabled={loading}
               onClick={() => toggleAuthenticationDrawer()}
             >
-              👛 Connect Wallet
+              👛 {t("ConnectWallet")}
             </Button>
           ) : (
             <>
@@ -454,7 +456,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               </Button>
               <Button onClick={() => handleLogout()}>
                 <i className="ri-logout-box-line"></i>
-                Logout
+                {t("Logout")}
               </Button>
             </>
           )}

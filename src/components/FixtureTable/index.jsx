@@ -11,24 +11,26 @@ import { Skeleton, Stack } from "@mui/material";
 import moment from "moment";
 import { formatNumber } from "../../utils/NumberFomatter";
 import GetFlags from "../../utils/GetFlags";
+import { useTranslation } from "react-i18next";
 
 export default function FixtureTable({ leaderboard, currPage, loading }) {
+  const { t } = useTranslation();
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center">🏆 Rank</TableCell>
-            <TableCell align="center">🎢 Fixture</TableCell>
-            <TableCell align="center">🎫 Marketplace</TableCell>
+            <TableCell align="center">🏆 {t("Rank")}</TableCell>
+            <TableCell align="center">🎢 {t("Fixture")}</TableCell>
+            <TableCell align="center">🎫 {t("Marketplace")}</TableCell>
             <TableCell className="mostActiveUser" align="center">
-            🤠 Most Active User
+              🤠 {t("MostActiveUser")}
             </TableCell>
             <TableCell className="gameInformation" align="center">
-            🎲 Game Information
+              🎲 {t("GameInformation")}
             </TableCell>
-            <TableCell align="center">🎮 Total Users</TableCell>
-            <TableCell align="center">💵 Total Volume(PPTT)</TableCell>
+            <TableCell align="center">🎮 {t("TotalUsers")}</TableCell>
+            <TableCell align="center">💵 {t("TotalVolume(PPTT)")}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -84,9 +86,8 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                             }}
                           >
                             <img
-                              src={`https://robohash.org/${
-                                row.topuser.name || "_0"
-                              }`}
+                              src={`https://robohash.org/${row.topuser.name ||
+                                "_0"}`}
                               loading="lazy"
                             />
                             <Link to="/profile">{row.topuser.name}</Link>

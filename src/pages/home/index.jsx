@@ -12,11 +12,14 @@ import { Helmet } from "react-helmet";
 import Marquee from "react-fast-marquee";
 import useWindowDimensions from "../../helpers/UseWindowDimension";
 import MarketplaceItems from "../../components/MarketplaceItems";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [loading, setLoading] = React.useState(true);
 
+  const { t } = useTranslation();
+  
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
@@ -36,7 +39,7 @@ export default function Home() {
   return (
     <div className="home__container">
       <Helmet>
-        <title>Playpoint | Prediction Pool Platform</title>
+        <title>{t("HemletTitle")}</title>
       </Helmet>
 
       {width > 992 && (
@@ -45,14 +48,14 @@ export default function Home() {
         </div>
       )}
 
-      <h1 className="home__mainTitle">Active Marketplaces</h1>
+      <h1 className="home__mainTitle">{t("ActiveMarketplaces")}</h1>
       <MarketplaceItems marketplaces={marketplaces} loading={loading} />
 
       <Marquee speed={70}>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((d) => {
           return (
             <>
-              <h1>Predict to Earn</h1>
+              <h1>{t("PredicttoEarn")}</h1>
               <h1> ❄️ </h1>
             </>
           );

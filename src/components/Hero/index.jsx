@@ -1,17 +1,19 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import "./styles/style.css";
 
 export default function Hero() {
+  const { t } = useTranslation();
   return (
     <div className="hero__container">
       <div className="divider"></div>
       <div className="heroContent__container">
         <h1>
-          Discover
+          {t("Discover")}
           <br />
-          Predict to Earn
+          {t("predict_to_win")}
           <br />
-          And Win Awards
+          {t("WinAwards")}
         </h1>
 
         <div className="heroDivider">
@@ -37,15 +39,11 @@ export default function Hero() {
             />
           </div>
           <p>
-            <span>2.2k</span> Active Participants
+            <span>2.2k</span> {t('ActiveParticipants')}
           </p>
         </div>
 
-        <p className="description">
-          Playpoint is an online platform for predicting sporting events using
-          blockchain technology. It includes a marketplace, vendor showcase,
-          prediction hub, and various prediction pools.
-        </p>
+        <p className="description">{t("HeroIntroduction")}</p>
       </div>
       <div className="heroGallery__container">
         <img
@@ -69,9 +67,7 @@ export default function Hero() {
 
       <div className="heroAdditionalInfo">
         <p className="description">
-          <b>Note</b>: Duo and Trio are challenges where you can predict and
-          challenge others. In Duo, you can challenge another person, and in
-          Trio, you can challenge two other people.
+          <b>{t("Note")}</b>: {t("NoteIntro")}
         </p>
         <div className="addtionalInfoContent">
           <div>

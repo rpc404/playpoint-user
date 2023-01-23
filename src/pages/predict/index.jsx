@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import moment from "moment";
 import Pusher from "pusher-js";
 import { useLocation } from "react-router-dom";
@@ -173,7 +173,7 @@ export default function Predict() {
     const pusher = new Pusher("e6640b48a82cccbb13d0", {
       cluster: "ap2",
     });
-    pusher.connection.bind("connected", function () {
+    pusher.connection.bind("connected", function() {
       console.log("Weboscket Connected");
     });
     const predictionChannel = pusher.subscribe("prediction-channel");
