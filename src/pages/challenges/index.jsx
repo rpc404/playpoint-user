@@ -2,7 +2,6 @@ import { Skeleton } from "@mui/material";
 import moment from "moment/moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllChallenge } from "../../api/Challenge";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import GetFlags from "../../utils/GetFlags";
 import "./styles/style.css";
@@ -14,12 +13,16 @@ const Challenges = () => {
   const [loading, setLoading] = React.useState(true);
   const [tabBtn, setTabBtn] = React.useState("all");
   const navigate = useNavigate();
-  const [{ userPublicAddress, username, isWalletConnected }, dispatchRPCData] =
-    useRPCContext();
+  const [
+    { userPublicAddress, username, isWalletConnected },
+    dispatchRPCData,
+  ] = useRPCContext();
 
   React.useEffect(() => {
     (async () => {
-      const data = await getAllChallenge();
+      const data = await (
+        await import("../../api/Challenge")
+      ).getAllChallenge();
       setChalleneges(data.data.reverse());
       setLoading(false);
     })();
@@ -121,9 +124,8 @@ const Challenges = () => {
 
                     <div className="predictedBy">
                       <img
-                        src={`https://robohash.org/${
-                          challenge.owner.username || "_0"
-                        }`}
+                        src={`https://robohash.org/${challenge.owner.username ||
+                          "_0"}`}
                         loading="lazy"
                       />
                       <p className="pp__flex1">{challenge.owner.username}</p>

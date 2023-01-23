@@ -2,18 +2,18 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Topbar from "./components/Topbar";
 import { useRPCContext } from "./contexts/WalletRPC/RPCContext";
-import { ACTIONS } from "./contexts/WalletRPC/RPCReducer";
 import PageRouters from "./utils/Routers";
 import Footer from "./components/Footer/index";
-import WalletSelection from "./components/WalletSelection";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
-
-const queryClient = new QueryClient();
+const WalletSelection = React.lazy(() =>
+  import("./components/WalletSelection")
+);
 
 export default function App() {
   const [, dispatchRPCData] = useRPCContext();
-  const [isAuthenticationDrawerOpen, setIsAuthenticationDrawerOpen] =
-  React.useState(false);
+  const [
+    isAuthenticationDrawerOpen,
+    setIsAuthenticationDrawerOpen,
+  ] = React.useState(false);
 
   const toggleAuthenticationDrawer = () => {
     setIsAuthenticationDrawerOpen(true);
@@ -31,7 +31,8 @@ export default function App() {
       ) {
         const data = JSON.parse(localStorage.getItem("rpcUserData"));
         await dispatchRPCData({
-          type: ACTIONS.WALLET_CONNECT,
+          type: (await import("./contexts/WalletRPC/RPCReducer")).ACTIONS
+            .WALLET_CONNECT,
           payload: data,
         });
       }
@@ -39,7 +40,7 @@ export default function App() {
   }, [dispatchRPCData]);
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       {/* <WalletSelection /> */}
       {isAuthenticationDrawerOpen && (
         <WalletSelection
@@ -47,7 +48,7 @@ export default function App() {
         />
       )}
       <Topbar />
-      <Navbar toggleAuthenticationDrawer={toggleAuthenticationDrawer}/>
+      <Navbar toggleAuthenticationDrawer={toggleAuthenticationDrawer} />
       <PageRouters socket={channel} />
       <div className="divider"></div>
       <Footer />
@@ -73,6 +74,6 @@ export default function App() {
         <div className="snowflake">❅</div>
         <div className="snowflake">❆</div>
       </div>
-    </QueryClientProvider>
+    </>
   );
 }

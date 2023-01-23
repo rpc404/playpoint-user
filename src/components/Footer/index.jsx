@@ -30,7 +30,7 @@ const index = () => {
     },
     {
       code: "es",
-      name: "spanish",
+      name: "Español",
       country_code: "es",
     },
     {
@@ -55,7 +55,7 @@ const index = () => {
     },
     {
       code: "ja",
-      name: "Japanese",
+      name: "日本",
       country_code: "jp",
     },
   ];

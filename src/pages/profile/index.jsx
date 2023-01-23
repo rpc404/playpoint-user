@@ -137,6 +137,10 @@ export default function Profile() {
     }
   }, [userPublicAddress]);
 
+  const network = JSON.parse(localStorage.getItem("rpcUserData"));
+
+  
+
   React.useEffect(() => {
     if (isWalletConnected) {
       const provider = new ethers.providers.Web3Provider(ethereum);
@@ -212,7 +216,7 @@ export default function Profile() {
               Hello,<span>{username}</span>
             </h3>
             <p>Today is {moment().format("MMMM Do YYYY")} </p>
-            <div style={{ display: "flex",justifyContent:"space-between" }}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               <p className="address">
                 {String(userPublicAddress).substring(0, 5) +
                   "..." +
@@ -230,14 +234,14 @@ export default function Profile() {
                   }
                 ></i>
               </p>
-              {/* <Stack direction="row" spacing={1} alignItems="center">
+              <Stack direction="row" spacing={1} alignItems="center">
                 <Typography>Off</Typography>
                 <AntSwitch
                   defaultChecked
                   inputProps={{ "aria-label": "ant design" }}
                 />
-                <Typography>On</Typography>
-              </Stack> */}
+                <Typography>ERC20</Typography>
+              </Stack>
             </div>
           </div>
           <div className="profleImage_box">
