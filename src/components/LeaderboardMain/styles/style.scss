@@ -1,5 +1,5 @@
 main.leaderboardMain__container {
-  margin: 2em 2vw;
+  margin: 2em 3vw;
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
@@ -130,6 +130,8 @@ main.leaderboardMain__container {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(3.7px);
     margin-top: 56px;
+    min-width: 16.5vw;
+
     @media screen and (max-width: 425px) {
       width: 90%;
       margin: 1em auto;
@@ -194,6 +196,11 @@ main.leaderboardMain__container {
           justify-content: space-between;
           font-size: 14px;
 
+          div{
+            display: flex;
+            gap: 8px;
+          }
+
           @media (max-width: 968px) {
             margin-top: 15px;
             font-size: 14px;
@@ -213,6 +220,11 @@ main.leaderboardMain__container {
         gap: 8px;
         margin-bottom: 15px;
         color: #fff;
+        transition: .1s all ease-in-out;
+
+        &:hover{
+          background: #fff1;
+        }
 
         @media (max-width: 968px) {
           gap: 15px;
@@ -232,14 +244,14 @@ main.leaderboardMain__container {
 
         h4 {
           font-weight: 500;
-          font-size: 16px;
+          font-size: 15px;
 
           a {
             color: #fff9;
           }
         }
 
-        .user__info{
+        .user__info {
           width: 100%;
         }
 
@@ -248,6 +260,11 @@ main.leaderboardMain__container {
           justify-content: space-between;
           font-size: 14px;
           margin-top: 10px;
+          gap: 30px;
+          div{
+            display: flex;
+            gap: 10px;
+          }
         }
       }
     }
@@ -290,7 +307,7 @@ main.leaderboardMain__container {
 }
 
 .MuiPaginationItem-sizeMedium {
-  color:rgb(159 157 157 / 87%) !important;
+  color: rgb(159 157 157 / 87%) !important;
 }
 
 .MuiTableCell-root {

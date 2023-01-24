@@ -1,7 +1,12 @@
 .prediction__items__dialog {
   overflow-y: scroll;
 }
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 768px) {
+  .prediction__items__dialog {
+    border-top: 0.5px solid rgba(255, 255, 255, 0.734);
+  }
+}
+@media screen and (max-width: 768px) {
   .prediction__items__dialog.false {
     display: none;
   }

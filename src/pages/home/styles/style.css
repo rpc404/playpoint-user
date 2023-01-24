@@ -1,8 +1,8 @@
 .home__container .home__mainTitle {
-  padding: 30px 5vw 30px 5vw;
+  padding: 50px 5vw 40px 5vw;
   color: #fff;
   font-family: "Playfair Display", serif;
-  margin-top: 10px;
+  font-size: 45px;
 }
 @media (max-width: 576px) {
   .home__container .home__mainTitle {
@@ -10,93 +10,16 @@
     padding-top: 25px;
   }
 }
-.home__container .marketplace__items {
-  padding: 0 5vw;
+.home__container .marquee {
   display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 30px;
-  flex-direction: row;
-  padding-bottom: 70px;
+  align-items: center;
+  gap: 20px;
 }
-.home__container .marketplace__items .skeleton__container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
+.home__container .marquee-container {
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  padding: 15px 0;
 }
-@media screen and (min-width: 576px) {
-  .home__container .marketplace__items .skeleton__container {
-    justify-content: space-evenly;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .home__container .marketplace__items .skeleton__container {
-    justify-content: space-between;
-  }
-}
-@media (max-width: 576px) {
-  .home__container .marketplace__items {
-    justify-content: center;
-  }
-}
-.home__container .marketplace__items .marketplaceCard__container {
-  flex: 1 1 0;
-  height: 45vh;
-  text-decoration: none;
-  max-width: 16vw;
-  min-width: 16vw;
-  color: #fff;
-  border-radius: 32px;
-  background-position: bottom bottom;
-  overflow: hidden;
-  box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
-  -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  padding: 48px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  transition: 0.4s all ease-in-out;
-  justify-content: flex-end;
-}
-.home__container .marketplace__items .marketplaceCard__container:hover {
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.726);
-}
-.home__container .marketplace__items .marketplaceCard__container:hover h1 {
-  display: block;
-}
-@media (max-width: 576px) {
-  .home__container .marketplace__items .marketplaceCard__container {
-    max-width: 88vw;
-    min-width: 88vw;
-    height: 55vh;
-  }
-}
-.home__container .marketplace__items .marketplaceCard__container h1 {
+.home__container .marquee-container .overlay {
   display: none;
-  font-family: "Playfair Display", serif;
-  line-height: 1.2;
-  transition: 0.4s all ease-in-out;
-}
-.home__container .marketplace__items .marketplaceCard__container .info {
-  display: flex;
-  align-items: center;
-  padding-bottom: 10px;
-}
-.home__container .marketplace__items .marketplaceCard__container .info p {
-  flex: 1 1 0;
-  font-size: 14px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home__container .marketplace__items .marketplaceCard__container .info p .flex {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 13px;
-  margin-top: 3px;
 }/*# sourceMappingURL=style.css.map */

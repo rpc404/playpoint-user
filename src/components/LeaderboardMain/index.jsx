@@ -1,4 +1,5 @@
 import { Pagination } from "@mui/material";
+import { t } from "i18next";
 import React from "react";
 import { Link } from "react-router-dom";
 import {
@@ -25,7 +26,7 @@ export default function LeaderboardMain() {
   return (
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
-        <h1>📈 Top Ranked Fixtures</h1>
+        <h1>📈 {t('TopRankedFixtures')}</h1>
 
         <FixtureTable
           leaderboard={leaderboards}
@@ -37,14 +38,13 @@ export default function LeaderboardMain() {
           count={Math.ceil(leaderboards.length / 10)}
           onChange={(e) => setCurrPage(e.target.innerText)}
           variant="outlined"
-          // shape={"rounded"}
-          // hideNextButton
-          // hidePrevButton
+          hideNextButton
+          hidePrevButton
         />
       </div>
 
       <div className="usersLeaderboard__container">
-        <h2>⛹️ Top Ranked Users</h2>
+        <h2>⛹️ {t('TopRankedUsers')}</h2>
         <div className="topThreeUsers">
           <div className="topUser">
             <div className="user__avatar">
@@ -54,7 +54,7 @@ export default function LeaderboardMain() {
               />
             </div>
             <div className="user__info">
-              <h1>🥇1st Place</h1>
+              <h1>🥇{t('1stPlace')}</h1>
               <h4>
                 <Link to={`/profile/@${topRanked[0]?.username}`}>
                   {topRanked[0]?.username},{" "}
@@ -65,12 +65,12 @@ export default function LeaderboardMain() {
             </div>
             <div className="gameDetails">
               <div>
-                <p>Points</p>
+                <p>{t('Points')}</p>
                 <span>{formatNumber(topRanked[0]?.points)}</span>
               </div>
 
               <div>
-                <p>Amount</p>
+                <p>{t('Amount')}</p>
                 <span>{formatNumber(topRanked[0]?.amount)} PPTT</span>
               </div>
             </div>
@@ -94,12 +94,12 @@ export default function LeaderboardMain() {
                     </h4>
                     <div className="gameDetails">
                       <div>
-                        <p>Points</p>
+                        <p>Pts.</p>
                         <span>{formatNumber(user?.points)}</span>
                       </div>
 
                       <div>
-                        <p>Amount</p>
+                        <p>Amt</p>
                         <span>{formatNumber(user?.amount)} PPTT</span>
                       </div>
                     </div>

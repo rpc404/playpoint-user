@@ -16,14 +16,20 @@ import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { toast } from "react-toastify";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
+import { useTranslation } from "react-i18next";
 const { ethereum } = window;
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
-
   const navigate = useNavigate();
-  const location = useLocation();
+  const { t } = useTranslation();
   const [
-    { isWalletConnected, username, userPublicAddress, network, isNonWalletUser },
+    {
+      isWalletConnected,
+      username,
+      userPublicAddress,
+      network,
+      isNonWalletUser,
+    },
     dispatchRPCData,
   ] = useRPCContext();
   const [balance, setBalance] = React.useState({
@@ -33,8 +39,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    console.log(isWalletConnected, userPublicAddress, network)
-    if(!isNonWalletUser){
+    if (!isNonWalletUser) {
       if (isWalletConnected && network === "arbitrum") {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const contract = new ethers.Contract(
@@ -57,17 +62,20 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
             userETHBalance: ethers.utils.formatEther(ethBalance),
           };
-  
-          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+
+          await dispatchRPCData({
+            type: ACTIONS.WALLET_CONNECT,
+            payload: data,
+          });
         })();
       }
-  
+
       if (isWalletConnected && network === "shasta") {
         setBalance({
           ethBalance: 0,
           ppttBalance: 0,
         });
-  
+
         (async () => {
           const data = {
             isWalletConnected,
@@ -75,18 +83,20 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             userPublicAddress,
             userPPTTBalance: 0,
             userETHBalance: 0,
-            network
+            network,
           };
-  
-          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+
+          await dispatchRPCData({
+            type: ACTIONS.WALLET_CONNECT,
+            payload: data,
+          });
         })();
       }
-    }else{
+    } else {
       if (isWalletConnected && network === "arbitrum") {
-
         (async () => {
-          const ethBalance = 100*10**12;
-          const PPTTBalance = 100*10**18;
+          const ethBalance = 100 * 10 ** 12;
+          const PPTTBalance = 100 * 10 ** 18;
           setBalance({
             ethBalance: ethers.utils.formatEther(ethBalance),
             ppttBalance: ethers.utils.formatEther(PPTTBalance),
@@ -99,17 +109,20 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
             userETHBalance: ethers.utils.formatEther(ethBalance),
           };
-  
-          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+
+          await dispatchRPCData({
+            type: ACTIONS.WALLET_CONNECT,
+            payload: data,
+          });
         })();
       }
-  
+
       if (isWalletConnected && network === "shasta") {
         setBalance({
           ethBalance: 0,
           ppttBalance: 0,
         });
-  
+
         (async () => {
           const data = {
             isWalletConnected,
@@ -117,15 +130,17 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             userPublicAddress,
             userPPTTBalance: 0,
             userETHBalance: 0,
-            network
+            network,
           };
-  
-          await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+
+          await dispatchRPCData({
+            type: ACTIONS.WALLET_CONNECT,
+            payload: data,
+          });
         })();
       }
     }
   }, [isWalletConnected, userPublicAddress, network]);
-
 
   const handleLogout = () => {
     dispatchRPCData({ type: ACTIONS.WALLET_DISCONNECT });
@@ -154,9 +169,13 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      // onKeyDown={toggleDrawer(anchor, false)}
     >
+      <div className="crossicon__container">
+        <p onClick={toggleDrawer(anchor, false)}>
+          <i className="ri-close-fill"></i>
+        </p>
+      </div>
       {isWalletConnected && (
         <div className="userData__container">
           <List>
@@ -167,20 +186,6 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                   alt=""
                   loading="lazy"
                 />
-                {/* <p
-                  className="accountbtn"
-                  onClick={() => {
-                    navigator.clipboard.writeText(userPublicAddress),
-                      toast("Account number copied!");
-                  }}
-                >
-                  {`${userPublicAddress}`.substring(0, 15) +
-                    `...` +
-                    `${userPublicAddress}`.substring(
-                      userPublicAddress.length - 3
-                    )}{" "}
-                  <i className="ri-file-copy-line"></i>
-                </p> */}
                 <h2>@{username}</h2>
                 <div className="balance__wrapper">
                   <div className="balance">
@@ -207,16 +212,24 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                   }
                 >
                   <i className="ri-add-box-line"></i>
-                  Add Money
+                  {"Add Money"}
                 </Button>
               </div>
             </ListItem>
           </List>
           <List>
-            <ListItem disablePadding onClick={() => navigate("/profile")}>
-              <ListItemButton className="drawerListItem">
+            <ListItem
+              disablePadding
+              onClick={() => {
+                navigate("/profile"), toggleDrawer(anchor, false);
+              }}
+            >
+              <ListItemButton
+                className="drawerListItem"
+                onClick={toggleDrawer(anchor, false)}
+              >
                 <i className="ri-user-line"></i>
-                <ListItemText primary="Profile" />
+                <ListItemText primary={`${t("Profile")}`} />
               </ListItemButton>
             </ListItem>
           </List>
@@ -224,38 +237,81 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
       )}
       {isWalletConnected && <Divider />}
       <List>
-        <ListItem disablePadding onClick={() => navigate("/leaderboards")}>
-          <ListItemButton className="drawerListItem">
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/leaderboards"), toggleDrawer(anchor, false);
+          }}
+        >
+          <ListItemButton
+            className="drawerListItem"
+            onClick={toggleDrawer(anchor, false)}
+          >
             <i className="ri-bar-chart-grouped-line"></i>
-            <ListItemText primary="Leaderboards" />
+            <ListItemText primary={`${t("Leaderboards")}`} />
           </ListItemButton>
         </ListItem>
       </List>
       <Divider />
       <List>
-        <ListItem disablePadding onClick={() => navigate("/marketplace")}>
-          <ListItemButton className="drawerListItem">
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/marketplace"), toggleDrawer(anchor, false);
+          }}
+        >
+          <ListItemButton
+            className="drawerListItem"
+            onClick={toggleDrawer(anchor, false)}
+          >
             <i className="ri-football-line"></i>
-            <ListItemText primary="Marketplaces" />
+            <ListItemText primary={`${t("Marketplaces")}`} />
+          </ListItemButton>
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/challenges"), toggleDrawer(anchor, false);
+          }}
+        >
+          <ListItemButton
+            className="drawerListItem"
+            onClick={toggleDrawer(anchor, false)}
+          >
+            <i className="ri-gift-line"></i>
+            <ListItemText primary={`${t("Challenges")}`} />
           </ListItemButton>
         </ListItem>
       </List>
       <Divider />
       {!isWalletConnected ? (
         <List>
-          <ListItem disabled={loading} disablePadding>
-            <ListItemButton className="drawerListItem"  onClick={() => toggleAuthenticationDrawer()}>
+          <ListItem
+            disabled={loading}
+            disablePadding
+            onClick={toggleDrawer(anchor, false)}
+          >
+            <ListItemButton
+              className="drawerListItem"
+              onClick={() => toggleAuthenticationDrawer()}
+            >
               <i className="ri-fingerprint-line"></i>
-              <ListItemText primary="Login / Register" />
+              <ListItemText primary={`${t("Login/Register")}`} />
             </ListItemButton>
           </ListItem>
         </List>
       ) : (
         <List>
           <ListItem disablePadding onClick={() => handleLogout()}>
-            <ListItemButton className="drawerListItem">
+            <ListItemButton
+              className="drawerListItem"
+              onClick={toggleDrawer(anchor, false)}
+            >
               <i className="ri-logout-box-line"></i>
-              <ListItemText primary="Logout" />
+              <ListItemText primary={`${t("Logout")}`} />
             </ListItemButton>
           </ListItem>
         </List>
@@ -266,24 +322,39 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   return (
     <>
       <div className="navbar__container">
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-            navigate("/");
-          }}
-          className="logo__container"
-        >
-          <img src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580" />
-          <h3>Playpoint</h3>
+        <div className="logo__container">
+          <img
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("/");
+            }}
+            src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
+          />
+          <h3
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("/");
+            }}
+          >
+            Playpoint
+          </h3>
 
           <div className="navLinks">
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/");
+              }}
+            >
+              {t("Home")}
+            </div>
             <div
               onClick={(e) => {
                 e.stopPropagation();
                 window.open("https://docs.playpoint.ai/");
               }}
             >
-              Documentation
+              {t("Documentation")}
             </div>
             <div
               onClick={(e) => {
@@ -291,7 +362,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 navigate("/leaderboards");
               }}
             >
-              Leaderboards
+              {t("Leaderboards")}
             </div>
             <div
               onClick={(e) => {
@@ -299,7 +370,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 navigate("/marketplace");
               }}
             >
-              Marketplace
+              {t("Marketplace")}
             </div>
             <div
               onClick={(e) => {
@@ -307,7 +378,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 navigate("/challenges");
               }}
             >
-              Challenges
+              {t("Challenges")}
             </div>
           </div>
         </div>
@@ -318,21 +389,21 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             className="buyButton"
           >
             <i className="ri-coin-fill"></i>
-            Buy PPTT
+            {t("BuyPPTT")}
           </button>
           {isWalletConnected === false ? (
             <Button
               disabled={loading}
               onClick={() => toggleAuthenticationDrawer()}
             >
-              👛 Connect Wallet
+              👛 {t("ConnectWallet")}
             </Button>
           ) : (
             <>
               <div
                 className="balance"
                 onClick={(e) => {
-                  if(!isNonWalletUser){
+                  if (!isNonWalletUser) {
                     e.stopPropagation();
                     ethereum
                       .request({
@@ -385,7 +456,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               </Button>
               <Button onClick={() => handleLogout()}>
                 <i className="ri-logout-box-line"></i>
-                Logout
+                {t("Logout")}
               </Button>
             </>
           )}
@@ -399,13 +470,11 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             anchor={"right"}
             open={navSMState["right"]}
             onClose={toggleDrawer("right", false)}
-            // style={{ backgroundColor: "#1c1b1b" }}
           >
             {list("right")}
           </Drawer>
         </div>
       </div>
-      <div className="divider"></div>
     </>
   );
 }

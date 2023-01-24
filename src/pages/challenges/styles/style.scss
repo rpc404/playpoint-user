@@ -19,6 +19,10 @@
       background: #1a1d20;
       cursor: pointer;
 
+      &.active {
+        border-bottom: 1px solid #20ce43;
+      }
+
       @media screen and (min-width: 426px) {
         padding: 0.8em;
       }
@@ -109,21 +113,20 @@
         }
       }
 
-        .card__header {
-          display: flex;
-          justify-content: space-between;
-        }
-        .card_image {
+      .card__header {
+        display: flex;
+        justify-content: space-between;
+      }
+      .card_image {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-
-          div {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-          }
-
+          gap: 5px;
+        }
       }
     }
   }

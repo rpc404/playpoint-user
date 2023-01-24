@@ -1,18 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import PredictionTabs from "../../components/PredictionTabs";
-import "./styles/style.css";
-import { useNavigate, useParams } from "react-router-dom";
-import { getFixutreById } from "../../api/Fixture";
-import allFlags from "../../helpers/CountryFlags.json";
-import {
-  getAllPredictionsByFixture,
-  getQuestionaireByFixtureId,
-} from "../../api/Prediction";
+import { useParams } from "react-router-dom";
 import moment from "moment";
 import Pusher from "pusher-js";
-// import Leaderboards from "../../components/Leaderboards/Leaderboards";
-import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import { useLocation } from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
@@ -20,13 +10,21 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Slide from "@mui/material/Slide";
+
 import PredictionItems from "../../components/PredictionItems";
 import LeaderBoardList from "../../components/LeaderboardList/Leaderboard";
 import GetFlags from "../../utils/GetFlags";
+import useWindowDimensions from "../../helpers/UseWindowDimension";
+import PredictionTabs from "../../components/PredictionTabs";
+import { getAllPredictionsByFixture } from "../../api/Prediction";
+import allFlags from "../../helpers/CountryFlags.json";
+import { getFixutreById } from "../../api/Fixture";
+import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
+import "./styles/style.css";
 
 export const getCountryFlag = (country) => {
   let _url = "";
-  allFlags.map((flag, key) => {
+  allFlags.map((flag) => {
     if (flag.name === country) {
       _url = flag.image;
     } else if (country === "USA") {
@@ -134,9 +132,6 @@ export default function Predict({toggleAuthenticationDrawer}) {
     calculateTimeLeft(fixture.DateUtc)
   );
 
-  const navigate = useNavigate();
-  // console.log(predictions)
-
   const [volume, setVolume] = React.useState(0);
 
   React.useEffect(() => {
@@ -178,7 +173,7 @@ export default function Predict({toggleAuthenticationDrawer}) {
     const pusher = new Pusher("e6640b48a82cccbb13d0", {
       cluster: "ap2",
     });
-    pusher.connection.bind("connected", function () {
+    pusher.connection.bind("connected", function() {
       console.log("Weboscket Connected");
     });
     const predictionChannel = pusher.subscribe("prediction-channel");
@@ -208,6 +203,8 @@ export default function Predict({toggleAuthenticationDrawer}) {
     setVolume(total / 0.02);
   }, [predictions]);
 
+  const { width } = useWindowDimensions();
+
   return (
     <div className="prediction__container">
       <Helmet>
@@ -222,12 +219,18 @@ export default function Predict({toggleAuthenticationDrawer}) {
          * @note Recent Predictions
          */}
         <div className="recentPredictions">
-          {window.innerWidth <= 425 ? (
+          {width <= 768 ? (
             <div className="dialog__buttons">
-              <h3 onClick={() => handleClickOpen("prediction")}>
+              <h3
+                onClick={() => handleClickOpen("prediction")}
+                style={{ cursor: "pointer" }}
+              >
                 View Active Predictions
               </h3>
-              <h3 onClick={() => handleClickOpen("leaderboard")}>
+              <h3
+                onClick={() => handleClickOpen("leaderboard")}
+                style={{ cursor: "pointer" }}
+              >
                 View Leaderboards
               </h3>
             </div>
@@ -269,7 +272,7 @@ export default function Predict({toggleAuthenticationDrawer}) {
               </div>
               <div>
                 <p>Total Predictions</p>
-                <p>{predictions.length >= 1 && predictions.length}</p>
+                <p>{predictions.length >= 1 ? predictions.length : 0}</p>
               </div>
             </div>
           </div>
@@ -337,13 +340,18 @@ export default function Predict({toggleAuthenticationDrawer}) {
         {/**
          *  @ Dialog for active predictions in mobile view
          */}
-        {window.innerWidth <= 425 && (
+        {width <= 768 && (
           <Dialog
             fullScreen
             open={open}
             onClose={handleClose}
             TransitionComponent={Transition}
             className="custom-paper"
+            PaperProps={{
+              style: {
+                background: "#000",
+              },
+            }}
           >
             <AppBar sx={{ position: "relative", background: "#000" }}>
               <Toolbar>

@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   margin: 15px 2vw;
+  margin-top: 35px;
   justify-content: space-between;
 }
 .leaderboard__container .filterarea h1 {
@@ -20,7 +21,6 @@
   justify-content: center;
   color: #bbc4cf;
   border: 1px solid currentColor;
-  border-radius: 16px;
   width: 20vw;
   margin: 0 auto;
 }
@@ -31,7 +31,6 @@
 }
 .leaderboard__container .filterarea .search__container .icon {
   padding: 0.5em;
-  border-right: 1px solid;
 }
 .leaderboard__container .filterarea .search__container input[type=input] {
   font-size: 16px;

@@ -68,14 +68,21 @@ export const data = {
   ],
 };
 
-const ProfileComponent = ({ username, balance, results, woat }) => {
+const ProfileComponent = ({
+  username,
+  balance,
+  results,
+  woat,
+  
+}) => {
   const [history, setHistory] = React.useState([]);
+  const [currPage, setCurrPage] = React.useState(1);
+
   const handlePageClick = (ev) => {
     const page = ev.target.innerText;
     setHistory(results.slice((page - 1) * 10, page * 10));
   };
 
-  
   const navigate = useNavigate();
   return (
     <div className="profile__tab">
@@ -161,85 +168,90 @@ const ProfileComponent = ({ username, balance, results, woat }) => {
                 <p>Transaction</p>
               </div>
               <div className="transaction__items">
-                {history.map((data, index) => {
+                {results.map((data, index) => {
                   data.result =
                     data.predictionId.amount / 0.02 < data.rewardAmount
                       ? "win"
                       : "lose";
                   return (
-                    <div className="transaction" key={index}>
-                      <p>
-                        {data._id.substring(0, 10)}...
-                        {data._id.substring(data._id.length - 5)}
-                      </p>
-                      <p className={data.result}>{data.points || "0"}</p>
-                      <p className={data.result}>
-                        {data.result === "win" ? (
-                          <>{parseFloat(data.rewardAmount).toFixed(2)} PPTT</>
-                        ) : (
-                          <>
+                    index < currPage * 10 &&
+                    index >= (currPage - 1) * 10 && (
+                      <div className="transaction" key={index}>
+                        <p>
+                          {data._id.substring(0, 10)}...
+                          {data._id.substring(data._id.length - 5)}
+                        </p>
+                        <p className={data.result}>{data.points || "0"}</p>
+                        <p className={data.result}>
+                          {data.result === "win" ? (
+                            <>{parseFloat(data.rewardAmount).toFixed(2)} PPTT</>
+                          ) : (
                             <>
-                              {parseFloat(
-                                data.predictionId.amount / 0.02 -
-                                  data.rewardAmount
-                              ).toFixed(2)}{" "}
-                              PPTT
+                              <>
+                                {parseFloat(
+                                  data.predictionId.amount / 0.02 -
+                                    data.rewardAmount
+                                ).toFixed(2)}{" "}
+                                PPTT
+                              </>
                             </>
-                          </>
-                        )}
-                      </p>
-                      <p
-                        className="match"
-                        style={{ cursor: "pointer" }}
-                        onClick={() =>
-                          navigate(
-                            `/predict/${data?.predictionId?.fixtureId._id}`
-                          )
-                        }
-                      >
-                        <span>
-                          {getCountryShortName(
-                            data?.predictionId?.fixtureId?.HomeTeam
-                          ) || "-"}
-                        </span>
-                        <span>
-                          {GetFlags(
-                            data?.predictionId?.fixtureId?.marketplaceSlug,
-                            data?.predictionId?.fixtureId?.HomeTeam
                           )}
-                        </span>
-                        <span>VS</span>
-                        <span>
-                          {GetFlags(
-                            data?.predictionId?.fixtureId?.marketplaceSlug,
-                            data?.predictionId?.fixtureId?.AwayTeam
-                          )}
-                        </span>
-                        <span>
-                          {getCountryShortName(
-                            data?.predictionId?.fixtureId?.AwayTeam
-                          ) || "-"}
-                        </span>
-                      </p>
-                      <p>{moment(data.created_at).format("LL")}</p>
-                      <p>
-                        <a
-                          href={`https://sepolia.etherscan.io/tx/${data.txnhash}`}
-                          target="_blank"
-                          rel="noreferrer"
+                        </p>
+                        <p
+                          className="match"
+                          style={{ cursor: "pointer" }}
+                          onClick={() =>
+                            navigate(
+                              `/predict/${data?.predictionId?.fixtureId._id}`
+                            )
+                          }
                         >
-                          View
-                        </a>
-                      </p>
-                    </div>
+                          <span>
+                            {getCountryShortName(
+                              data?.predictionId?.fixtureId?.HomeTeam
+                            ) || "-"}
+                          </span>
+                          <span>
+                            {GetFlags(
+                              data?.predictionId?.fixtureId?.marketplaceSlug,
+                              data?.predictionId?.fixtureId?.HomeTeam
+                            )}
+                          </span>
+                          <span>VS</span>
+                          <span>
+                            {GetFlags(
+                              data?.predictionId?.fixtureId?.marketplaceSlug,
+                              data?.predictionId?.fixtureId?.AwayTeam
+                            )}
+                          </span>
+                          <span>
+                            {getCountryShortName(
+                              data?.predictionId?.fixtureId?.AwayTeam
+                            ) || "-"}
+                          </span>
+                        </p>
+                        <p>{moment(data.created_at).format("LL")}</p>
+                        <p>
+                          <a
+                            href={`https://sepolia.etherscan.io/tx/${data.txnhash}`}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            View
+                          </a>
+                        </p>
+                      </div>
+                    )
                   );
                 })}
               </div>
               <Pagination
-                count={10}
+                count={Math.ceil(results.length / 10)}
                 variant={"outlined"}
                 shape={"rounded"}
-                onChange={handlePageClick}
+                onChange={(e) => setCurrPage(e.target.innerText)}
+                hideNextButton
+                hidePrevButton
               />
             </div>
           </div>

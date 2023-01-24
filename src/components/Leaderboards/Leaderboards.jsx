@@ -1,10 +1,7 @@
 import { Skeleton } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  getAllLeaderboards,
-  getLeaderboardByMarketplaceSlug,
-} from "../../api/Leaderboards";
+import { getLeaderboardByMarketplaceSlug } from "../../api/Leaderboards";
 
 import allFlags from "../../helpers/CountryFlags.json";
 import { formatNumber } from "../../utils/NumberFomatter";
@@ -31,9 +28,6 @@ export default function Leaderboards({ marketplaceSlug }) {
   const [activeOS, setActiveOS] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [leaderboards, setLeaderboards] = React.useState([]);
-  // console.log(marketplaceSlug)
-
-  // const { HomeTeamFlag, AwayTeamFlag } = GetFlags();
 
   React.useEffect(() => {
     // Windows
@@ -54,8 +48,6 @@ export default function Leaderboards({ marketplaceSlug }) {
       }
     })();
   }, []);
-
-  // console.log(leaderboards)
 
   return (
     <div className={`leaderboardItems ${activeOS}`}>

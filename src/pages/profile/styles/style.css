@@ -2,6 +2,12 @@
   display: flex;
   gap: 30px;
 }
+.profile__container .MuiBox-root {
+  padding: 0 !important;
+}
+.profile__container .MuiBox-root.MuiTabs-indicator {
+  background-color: green;
+}
 @media screen and (max-width: 768px) {
   .profile__container {
     flex-direction: column;
@@ -15,6 +21,8 @@
 }
 .profile__container .MuiButtonBase-root.MuiTab-root {
   color: #fff;
+  flex-direction: row;
+  align-items: center;
 }
 .profile__container .profile__header {
   display: flex;
@@ -45,7 +53,23 @@
 .profile__box .username {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+.profile__box .username .address {
+  display: flex;
+  align-items: center;
   gap: 5px;
+  margin: 0.5em 0;
+  background-color: rgba(123, 123, 123, 0.339);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5em;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.5333333333);
+}
+.profile__box .username .address i {
+  cursor: pointer;
 }
 .profile__box .username h3 {
   display: flex;
@@ -90,4 +114,8 @@
   width: 50px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.MuiBox-root {
+  padding: 0 0 !important;
 }/*# sourceMappingURL=style.css.map */

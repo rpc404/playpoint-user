@@ -1,9 +1,9 @@
 .home__container {
   .home__mainTitle {
-    padding: 30px 5vw 30px 5vw;
+    padding: 50px 5vw 40px 5vw;
     color: #fff;
     font-family: "Playfair Display", serif;
-    margin-top: 10px;
+    font-size: 45px;
 
     @media (max-width: 576px) {
       margin-top: 0;
@@ -11,99 +11,19 @@
     }
   }
 
-  .marketplace__items {
-    padding: 0 5vw;
+
+  .marquee{
     display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 30px;
-    flex-direction: row;
-    padding-bottom: 70px;
+    align-items: center;
+    gap: 20px;
+  }
 
-    .skeleton__container {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-
-      @media screen and (min-width: 576px) {
-        justify-content: space-evenly;
-      }
-
-      @media screen and (min-width: 1024px) {
-        justify-content: space-between;
-      }
-    }
-
-    @media (max-width: 576px) {
-      justify-content: center;
-    }
-
-    .marketplaceCard__container {
-      flex: 1 1 0;
-      height: 45vh;
-      text-decoration: none;
-      max-width: 16vw;
-      min-width: 16vw;
-      color: #fff;
-      border-radius: 32px;
-      background-position: bottom bottom;
-      overflow: hidden;
-      box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
-      -webkit-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
-      -moz-box-shadow: 4px 6px 10px 8px rgba(0, 0, 0, 0.08);
-      cursor: pointer;
-      padding: 48px;
-      display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-      transition: 0.4s all ease-in-out;
-      justify-content: flex-end;
-
-      &:hover {
-        box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.726);
-
-        h1 {
-          display: block;
-        }
-      }
-
-      @media (max-width: 576px) {
-        max-width: 88vw;
-        min-width: 88vw;
-        height: 55vh;
-      }
-
-      h1 {
-        display: none;
-        font-family: "Playfair Display", serif;
-        line-height: 1.2;
-        transition: 0.4s all ease-in-out;
-      }
-
-      .info {
-        display: flex;
-        align-items: center;
-        padding-bottom: 10px;
-
-        p {
-          flex: 1 1 0;
-          font-size: 14px;
-          text-align: center;
-          display: flex;
-          // flex-direction: column;
-          align-items: center;
-          justify-content: center;
-
-          .flex {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 13px;
-            margin-top: 3px;
-          }
-        }
-      }
+  .marquee-container{
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    padding: 15px 0;
+    .overlay{
+      display: none;
     }
   }
 }

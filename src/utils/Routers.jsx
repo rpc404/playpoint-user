@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+
 /**
- * @dev Code Splitting at route level... these pages will be called whenever we need them.
+ * @dev Code Splitting at route level... these pages will be called whenever we change our route.
  */
 const Fixture = React.lazy(() => import("../pages/fixture"));
 const Predict = React.lazy(() => import("../pages/predict"));
@@ -17,13 +18,20 @@ const TermsAndConditions = React.lazy(() =>
 const NotFound = React.lazy(() => import("../pages/404"));
 const Challenges = React.lazy(() => import("../pages/challenges"));
 const SignIn = React.lazy(() => import("../pages/SignIn"));
+const EditProfile = React.lazy(() =>
+  import("../components/EditProfile/EditProfile")
+);
+const Transaction = React.lazy(() => import("../pages/transaction"));
 
 export default function PageRouters({ socket, toggleAuthenticationDrawer }) {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home />} />
-      <Route path="profile" element={<Profile />} />
+      <Route path="profile" element={<Profile />}>
+        <Route path="transaction" element={<Transaction />} />
+        <Route path="edit" element={<EditProfile />} />
+      </Route>
       <Route path="fixture/:slug" element={<Fixture />} />
       <Route path="predict/:fixtureId" element={<Predict socket={socket} toggleAuthenticationDrawer={toggleAuthenticationDrawer} />} />
       <Route path="marketplace" element={<MarketPlace />} />

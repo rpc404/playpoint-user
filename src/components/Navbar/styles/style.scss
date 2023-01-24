@@ -2,12 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px 2vw;
-  background: #000;
+  padding: 13px 25px;
+  background: rgb(63 1 186 / 64%);
   color: #fff;
   position: sticky;
   top: 0;
   z-index: 9;
+  position: relative;
+  margin: 20px 1.5vw 0 1.5vw;
+  border-radius: 25px 25px 0 0;
 
   .logo__container {
     display: flex;
@@ -24,13 +27,21 @@
     }
 
     .navLinks {
-      margin-left: 25px;
       display: flex;
       align-items: center;
       flex-direction: row;
-      gap: 25px;
+      gap: 35px;
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate3d(-50%, -20%, 0);
+      padding: 0 50px;
+      padding-bottom: 5px;
+      background: #000;
+      height: 95%;
+      border-radius: 0 0 35px 35px;
 
-      @media (max-width: 576px) {
+      @media (max-width: 1024px) {
         display: none;
       }
 
@@ -38,8 +49,9 @@
         color: rgba(254, 254, 254, 0.7);
         text-decoration: none;
         transition: 0.2s all ease-in-out;
-        font-weight: 300;
+        font-weight: 500;
         font-size: 15px;
+
         &:hover {
           color: #fff;
         }
@@ -95,16 +107,17 @@
       justify-content: center;
       gap: 5px;
     }
-    @media (max-width: 769px) {
+    @media (max-width: 1025px) {
       display: none;
     }
   }
 
   .drawer {
     .MuiDivider-root {
-      border-color: rgba(164, 164, 164, 0.887) !important;
+      border-color: rgba(164, 164, 164, 0.329) !important;
+      // border-color: 1px solid hsla(0,0%,100%,.16) !important;
     }
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1025px) {
       display: none;
     }
     i {
@@ -118,16 +131,28 @@
       color: #fff !important;
     }
   }
-
-
 }
 
 .MuiDrawer-paper {
-  background-color: #151515 !important;
+  background-color: #000000 !important;
+  width: 100% !important;
+
+  @media screen and (min-width:426px) {
+    width: 40% !important;
+  }
+
+  @media screen and (min-width:769px) {
+    width: 30% !important;
+  }
+
+  .MuiBox-root {
+    width: 95%;
+    margin: 0 auto;
+  }
 }
 
 .MuiDivider-root {
-  border-color: rgba(164, 164, 164, 0.887) !important;
+  border-color: rgba(164, 164, 164, 0.188) !important;
 }
 
 .MuiButtonBase-root {
@@ -175,5 +200,23 @@
     display: flex;
     gap: 5px;
     outline: 1px solid #fff !important;
+  }
+}
+
+.crossicon__container {
+  display: flex;
+  padding: 16px 0;
+
+  justify-content: flex-end;
+
+  p {
+    display: flex;
+    margin-top: 10px;
+    height: 100%;
+
+    i {
+      width: fit-content;
+      font-size: 28px;
+    }
   }
 }

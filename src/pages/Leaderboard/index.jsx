@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  getAllLeaderboards,
-  getLeaderboardByMarketplaceSlug,
-} from "../../api/Leaderboards";
 import LeaderboardMain from "../../components/LeaderboardMain";
 import "./styles/style.css";
-import { getMarketplaces } from "../../api/Marketplace";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
-import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
 
 const Leaderboard = () => {
   const [activeOS, setActiveOS] = React.useState("");
@@ -28,12 +22,16 @@ const Leaderboard = () => {
     (async () => {
       const marketplaceSlug = sessionStorage.getItem("marketplaceSlug");
       if (marketplaceSlug !== "") {
-        const data = await getLeaderboardByMarketplaceSlug(marketplaceSlug);
+        const data = await (
+          await import("../../api/Leaderboards")
+        ).getLeaderboardByMarketplaceSlug(marketplaceSlug);
         let _leaderboard = data.data.leaderboard;
         setLeaderboards(_leaderboard);
         setLoading(false);
       } else {
-        const data = await getAllLeaderboards();
+        const data = (
+          await import("../../api/Leaderboards")
+        ).getAllLeaderboards();
         setLeaderboards(data.data.leaderboards);
         setLoading(false);
       }
@@ -43,12 +41,13 @@ const Leaderboard = () => {
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
-        let res = await getMarketplaces();
+        let res = (await import("../../api/Marketplace")).getMarketplaces();
         res = res.data.marketplaces;
         setMarketplace(res);
 
         dispatchMarketplaceData({
-          type: ACTIONS.SET_ALL_MARKETPLACE,
+          type: (await import("../../contexts/Marketplace/MarketplaceReducer"))
+            .ACTIONS.SET_ALL_MARKETPLACE,
           payload: res,
         });
       }

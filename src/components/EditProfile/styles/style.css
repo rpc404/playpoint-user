@@ -1,0 +1,78 @@
+.editprofile__container {
+  color: #fff;
+}
+.editprofile__container label {
+  font-size: 1.3em;
+}
+.editprofile__container input {
+  font-size: 1.01em;
+}
+.editprofile__container .editusername {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 1em 0;
+}
+.editprofile__container .editusername label {
+  color: #fff;
+}
+.editprofile__container .editusername input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.588);
+  padding: 0.5em 0;
+  color: #fff;
+}
+@media screen and (min-width: 769px) {
+  .editprofile__container .editusername input {
+    width: 40%;
+  }
+}
+.editprofile__container .editProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 1em 0;
+}
+.editprofile__container .editProfile label,
+.editprofile__container .editProfile input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.editprofile__container .editProfile .profile img {
+  width: 250px;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.editprofile__container .editProfile .profile button {
+  background-color: rgba(255, 0, 0, 0.706);
+  border: none;
+  color: #fff;
+  padding: 0.5em 0.8em;
+  font-size: 1.01em;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.editprofile__container .buttons {
+  display: flex;
+  gap: 10px;
+}
+.editprofile__container .buttons button {
+  padding: 0.5em 0.8em;
+  margin: 1em 0;
+  font-size: 1.01em;
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.editprofile__container .buttons .cancel {
+  background-color: rgba(255, 0, 0, 0.706);
+}
+.editprofile__container .buttons .save {
+  background-color: green;
+}/*# sourceMappingURL=style.css.map */

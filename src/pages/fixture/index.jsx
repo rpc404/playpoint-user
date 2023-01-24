@@ -1,12 +1,10 @@
 import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-import FixtureCard from "../../components/FixtureCard";
+import { Box, Tab, Tabs } from "@mui/material";
+const FixtureCard = React.lazy(() => import("../../components/FixtureCard"));
 import { Helmet } from "react-helmet";
 import SetFixtureGamedates from "../../utils/SetFixtureGamedates";
 import { a11yProps, TabPanel } from "../../components/TabPanel";
-import QuickView from "../../components/QuickView";
+const QuickView = React.lazy(() => import("../../components/QuickView"));
 import { useParams } from "react-router-dom";
 import "./styles/style.css";
 import { getFixtures } from "../../api/Fixture";
@@ -182,19 +180,25 @@ export default function Fixture() {
               scrollButtons="auto"
               aria-label="scrollable auto tabs example"
             >
-              {[
-                "all",
-                "group a",
-                "group b",
-                "group c",
-                "group d",
-                "group e",
-                "group f",
-                "group g",
-                "group h",
-              ].map((value, index) => {
-                return <Tab label={value} {...a11yProps(index)} key={index} />;
-              })}
+              {marketplaceSlug === "fifa-worldcup" ? (
+                [
+                  "all",
+                  "group a",
+                  "group b",
+                  "group c",
+                  "group d",
+                  "group e",
+                  "group f",
+                  "group g",
+                  "group h",
+                ].map((value, index) => {
+                  return (
+                    <Tab label={value} {...a11yProps(index)} key={index} />
+                  );
+                })
+              ) : (
+                <Tab label={"all"} {...a11yProps(1)} />
+              )}
             </Tabs>
           </Box>
 
@@ -216,6 +220,7 @@ export default function Fixture() {
               );
             })}
           </TabPanel>
+
           <TabPanel
             className="fixtureCardItems__container"
             value={groupValue}
@@ -234,6 +239,7 @@ export default function Fixture() {
               );
             })}
           </TabPanel>
+
           <TabPanel
             className="fixtureCardItems__container"
             value={groupValue}

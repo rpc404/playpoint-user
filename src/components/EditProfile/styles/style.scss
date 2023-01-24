@@ -1,0 +1,81 @@
+.editprofile__container {
+  color: #fff;
+
+  label {
+    font-size: 1.3em;
+  }
+  input {
+    font-size: 1.01em;
+  }
+  .editusername {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 1em 0;
+    // width: fit-content;
+
+    label {
+      color: #fff;
+    }
+
+    input {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.588);
+      padding: 0.5em 0;
+      color: #fff;
+
+      @media screen and (min-width: 769px) {
+        width: 40%;
+      }
+    }
+  }
+  .editProfile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 1em 0;
+    label,
+    input {
+      width: fit-content;
+    }
+    .profile {
+      img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      button {
+        background-color: rgba(255, 0, 0, 0.706);
+        border: none;
+        color: #fff;
+        padding: 0.5em 0.8em;
+        font-size: 1.01em;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    gap: 10px;
+    button {
+      padding: 0.5em 0.8em;
+      margin: 1em 0;
+      font-size: 1.01em;
+      border: none;
+      color: #fff;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .cancel {
+      background-color: rgba(255, 0, 0, 0.706);
+    }
+
+    .save {
+      background-color: green;
+    }
+  }
+}
