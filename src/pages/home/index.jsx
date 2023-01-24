@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 
 export default function Home() {
-  const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext()
+  const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
 
   const [loading, setLoading] = React.useState(true);
 
@@ -54,10 +54,10 @@ export default function Home() {
       <Marquee speed={70}>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((d) => {
           return (
-            <>
+            <div key={d} className="marquee-item">
               <h1>{t("PredicttoEarn")}</h1>
               <h1> ❄️ </h1>
-            </>
+            </div>
           );
         })}
       </Marquee>

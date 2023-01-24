@@ -3,14 +3,17 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getPredictionById } from "../../api/Prediction";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Slide from "@mui/material/Slide";
-import { Skeleton, Stack } from "@mui/material";
+import {
+  Slide,
+  Typography,
+  IconButton,
+  Toolbar,
+  AppBar,
+  Dialog,
+  Button,
+  Stack,
+  Skeleton,
+} from "@mui/material";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 
@@ -142,9 +145,8 @@ const Prediction = () => {
           <div className="container">
             <div className="profile_area">
               <img
-                src={`https://robohash.org/${
-                  predictionData.user[0].username || "aa"
-                }`}
+                src={`https://robohash.org/${predictionData.user[0].username ||
+                  "aa"}`}
                 loading="lazy"
               />
               <h3>

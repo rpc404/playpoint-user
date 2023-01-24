@@ -4,6 +4,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import GetFlags from "../../utils/GetFlags";
+import { useTranslation } from "react-i18next";
 import "./styles/style.css";
 
 const Challenges = () => {
@@ -11,7 +12,9 @@ const Challenges = () => {
   const [prop, setActiveProp] = React.useState("");
   const [temp, setTemp] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  const [tabBtn, setTabBtn] = React.useState("all");
+  const { t } = useTranslation();
+
+  const [tabBtn, setTabBtn] = React.useState(`${t("all")}`);
   const navigate = useNavigate();
   const [
     { userPublicAddress, username, isWalletConnected },
@@ -36,30 +39,30 @@ const Challenges = () => {
 
   React.useEffect(() => {
     let _temp = [];
-    if (prop == "all") {
+    if (prop == `${t("all")}`) {
       setTemp(_challenges);
     }
-    if (prop == "duo") {
+    if (prop == `${t("duo")}`) {
       _temp = _challenges.filter((_challenge) => _challenge.type == "duo");
       setTemp(_temp);
     }
-    if (prop == "trio") {
+    if (prop == `${t("trio")}`) {
       _temp = _challenges.filter((_challenge) => _challenge.type == "trio");
       setTemp(_temp);
     }
-    if (prop == "filled") {
+    if (prop == `${t("filled")}`) {
       _temp = _challenges.filter(
         (_challenge) => _challenge.slot == _challenge.participants.length
       );
       setTemp(_temp);
     }
-    if (prop == "unfilled") {
+    if (prop == `${t("unfilled")}`) {
       _temp = _challenges.filter(
         (_challenge) => _challenge.slot > _challenge.participants.length
       );
       setTemp(_temp);
     }
-    if (prop == "my challenges") {
+    if (prop == `${t('my challenges')}`) {
       _temp = _challenges.filter(
         (_challenge) => _challenge.owner.walletID == userPublicAddress
       );
@@ -71,7 +74,13 @@ const Challenges = () => {
     <div className="challenges__Container">
       <div className="challenges__AllChallenges">
         <div className="filters">
-          {["all", "duo", "trio", "filled", "unfilled"].map((button, index) => {
+          {[
+            `${t("all")}`,
+            `${t("duo")}`,
+            `${t("trio")}`,
+            `${t("filled")}`,
+            `${t("unfilled")}`,
+          ].map((button, index) => {
             return (
               <button
                 key={index}
@@ -91,7 +100,7 @@ const Challenges = () => {
               }}
               className={tabBtn === "my challenges" ? "active" : ""}
             >
-              My Challenges
+              {t("My Challenges")}
             </button>
           )}
         </div>

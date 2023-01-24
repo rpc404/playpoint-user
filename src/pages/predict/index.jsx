@@ -4,15 +4,20 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import Pusher from "pusher-js";
 import { useLocation } from "react-router-dom";
-import Dialog from "@mui/material/Dialog";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Slide from "@mui/material/Slide";
-
-import PredictionItems from "../../components/PredictionItems";
-import LeaderBoardList from "../../components/LeaderboardList/Leaderboard";
+import {
+  Slide,
+  Typography,
+  IconButton,
+  Toolbar,
+  AppBar,
+  Dialog,
+} from "@mui/material";
+const PredictionItems = React.lazy(() =>
+  import("../../components/PredictionItems")
+);
+const LeaderBoardList = React.lazy(() =>
+  import("../../components/LeaderboardList/Leaderboard")
+);
 import GetFlags from "../../utils/GetFlags";
 import useWindowDimensions from "../../helpers/UseWindowDimension";
 import PredictionTabs from "../../components/PredictionTabs";
