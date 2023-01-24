@@ -110,8 +110,12 @@
         margin-top: 1em;
       }
       .icons__container {
-        @media screen and (min-width:426px) {
-          display: flex;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @media screen and (min-width: 426px) {
+          flex-direction: row;
           gap: 150px;
           align-items: center;
         }
@@ -158,6 +162,7 @@
             bottom: 32px;
             padding: 0.5em;
             background: rgb(42, 42, 42);
+            width: 150px;
             li {
               list-style: none;
 
@@ -168,9 +173,9 @@
                 border: none;
                 margin: 0.2em 0;
                 cursor: pointer;
-                padding: 0.4em .5em;
+                padding: .5em;
                 display: flex;
-                gap: 5px;
+                gap: 10px;
                 align-items: center;
 
                 &:hover {
@@ -181,7 +186,6 @@
             }
           }
         }
-
       }
     }
   }

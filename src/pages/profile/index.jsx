@@ -234,14 +234,14 @@ export default function Profile() {
                   }
                 ></i>
               </p>
-              <Stack direction="row" spacing={1} alignItems="center">
+              {/* <Stack direction="row" spacing={1} alignItems="center">
                 <Typography>Off</Typography>
                 <AntSwitch
                   defaultChecked
                   inputProps={{ "aria-label": "ant design" }}
                 />
                 <Typography>ERC20</Typography>
-              </Stack>
+              </Stack> */}
             </div>
           </div>
           <div className="profleImage_box">

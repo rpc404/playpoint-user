@@ -1,67 +1,17 @@
 import { Typography, InputBase } from "@mui/material";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./styles/style.css";
 import { useTranslation } from "react-i18next";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import { languages } from "../../utils/languages";
 
 const index = () => {
   const [email, setEmail] = React.useState("");
-  const [lang, setLang] = React.useState("");
   const [clicked, setClicked] = React.useState(false);
 
-  // Contains the value and text for the options
-  const languages = [
-    {
-      code: "en",
-      name: "English",
-      country_code: "gb",
-    },
-    {
-      code: "fr",
-      name: "Français",
-      country_code: "fr",
-    },
-    {
-      code: "hi",
-      name: "हिंदी",
-      country_code: "in",
-    },
-    {
-      code: "es",
-      name: "Español",
-      country_code: "es",
-    },
-    {
-      code: "tl",
-      name: "Flipino",
-      country_code: "tl",
-    },
-    {
-      code: "zh",
-      name: "中國人",
-      country_code: "cn",
-    },
-    {
-      code: "en-CA",
-      name: "English (CA)",
-      country_code: "ca",
-    },
-    {
-      code: "en-AU",
-      name: "English (AU)",
-      country_code: "au",
-    },
-    {
-      code: "ja",
-      name: "日本",
-      country_code: "jp",
-    },
-  ];
-
   const { t, i18n } = useTranslation();
-  const location = useLocation();
   const ValidateEmail = (mail) => {
     if (
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
@@ -78,13 +28,6 @@ const index = () => {
     if (ValidateEmail(email)) {
       console.log(email);
     }
-  };
-
-  const handleChange = (e) => {
-    let loc = location.pathname;
-    // const temp = i18n.changeLanguage(e.target.value);
-    setLang(e.target.value);
-    window.location.replace(loc + "?lang=" + lang);
   };
 
   return (
