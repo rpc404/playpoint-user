@@ -56,6 +56,7 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
       setLoading(true);
       const data = await handleTRONWALLETLogin();
       if(data.isWalletConnected){
+      localStorage.setItem("rpcUserData", JSON.stringify(data));
         await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
         handleWalletDrawer();
         setLoading(false);

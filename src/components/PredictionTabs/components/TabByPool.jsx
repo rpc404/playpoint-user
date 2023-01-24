@@ -18,6 +18,7 @@ import TextField from "@mui/material/TextField";
 // import index from "../../Footer";
 import Checkbox from "@mui/material/Checkbox";
 import { mkaeDuo } from "../../../api/Challenge";
+import WalletSelection from "../../WalletSelection";
 
 /**
  * @dev utils for slider
@@ -56,6 +57,8 @@ const PoolType = ({
   fixtureId,
   status,
   setMS,
+  toggleAuthenticationDrawer
+
 }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const _predictionData = {
@@ -333,9 +336,11 @@ const PoolType = ({
   };
 
   const handleLogin = async () => {
-    const data = await handleRPCWalletLogin();
-    await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
-    toast("Wallet Connected!");
+
+    // const data = await handleRPCWalletLogin();
+    // await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+    // toast("Wallet Connected!");
+    toggleAuthenticationDrawer();
   };
 
   return (

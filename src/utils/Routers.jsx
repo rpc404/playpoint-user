@@ -18,14 +18,14 @@ const NotFound = React.lazy(() => import("../pages/404"));
 const Challenges = React.lazy(() => import("../pages/challenges"));
 const SignIn = React.lazy(() => import("../pages/SignIn"));
 
-export default function PageRouters({ socket }) {
+export default function PageRouters({ socket, toggleAuthenticationDrawer }) {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home />} />
       <Route path="profile" element={<Profile />} />
       <Route path="fixture/:slug" element={<Fixture />} />
-      <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
+      <Route path="predict/:fixtureId" element={<Predict socket={socket} toggleAuthenticationDrawer={toggleAuthenticationDrawer} />} />
       <Route path="marketplace" element={<MarketPlace />} />
       <Route path="leaderboards" element={<Leaderboards />} />
       <Route path="prediction/:pid" element={<Prediction />} />
