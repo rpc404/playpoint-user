@@ -9,7 +9,7 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 import { useTranslation } from "react-i18next";
+import useWindowDimensions from "../../helpers/UseWindowDimension";
 const { ethereum } = window;
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
@@ -154,6 +155,8 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
     right: false,
   });
 
+  const [showmore, setShowMore] = React.useState(false);
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -164,6 +167,8 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
 
     setnavSMState({ ...navSMState, [anchor]: open });
   };
+
+  const { width } = useWindowDimensions();
 
   const list = (anchor) => (
     <Box
@@ -384,21 +389,82 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
         </div>
 
         <div className="navbar__authentication">
-          <button
-            onClick={() => window.open("https://app.playpoint.ai/")}
-            className="buyButton"
-          >
-            <i className="ri-coin-fill"></i>
-            {t("BuyPPTT")}
-          </button>
-          {isWalletConnected === false ? (
-            <Button
-              disabled={loading}
-              onClick={() => toggleAuthenticationDrawer()}
-            >
-              👛 {t("ConnectWallet")}
-            </Button>
-          ) : (
+          {isWalletConnected && (
+            <div className="more">
+              <div
+                className="tooltip"
+                style={{ cursor: "pointer" }}
+                onClick={() => setShowMore((prev) => !prev)}
+              >
+                <i className="ri-more-2-line"></i>
+              </div>
+              <div className={`balance__container ${showmore ? "show" : ""} ?`}>
+                <div
+                  className="balance"
+                  onClick={(e) => {
+                    if (!isNonWalletUser) {
+                      e.stopPropagation();
+                      ethereum
+                        .request({
+                          method: "wallet_watchAsset",
+                          params: {
+                            type: "ERC20",
+                            options: {
+                              address: import.meta.env
+                                .VITE_BETA_PPTT_CONTRACT_ADDRESS,
+                              symbol: "PPTT",
+                              decimals: 18,
+                              image: "https://ik.imagekit.io/lexworld/Logo.png",
+                            },
+                          },
+                        })
+                        .then((success) => {
+                          if (success) {
+                            toast("PPTT successfully added to wallet!");
+                          } else {
+                            throw new Error("Something went wrong.");
+                          }
+                        })
+                        .catch(console.error);
+                    }
+                  }}
+                >
+                  <img
+                    src="https://ethereum.org/static/4f10d2777b2d14759feb01c65b2765f7/69ce7/eth-glyph-colored.webp"
+                    alt="ethereum"
+                    loading="lazy"
+                  />
+                  <p>{parseFloat(balance.ppttBalance).toFixed(2)} PPTT</p>
+                </div>
+                <div className="balance">
+                  <img
+                    src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/3a0ba/eth-diamond-rainbow.webp"
+                    alt="ethereum"
+                    loading="lazy"
+                  />
+                  <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
+                </div>
+                <button
+                  onClick={() => window.open("https://app.playpoint.ai/")}
+                  className="buyButton"
+                >
+                  <i className="ri-coin-fill"></i>
+                  {t("BuyPPTT")}
+                </button>
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate("/profile");
+                  }}
+                >
+                  <i className="ri-user-line"></i>{" "}
+                  {isWalletConnected === true && <span>{username}</span>}
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {width > 1537 && (
             <>
               <div
                 className="balance"
@@ -445,15 +511,37 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 />
                 <p>{parseFloat(balance.ethBalance).toFixed(2)} ETH</p>
               </div>
-              <Button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigate("/profile");
-                }}
-              >
-                <i className="ri-user-line"></i>{" "}
-                {isWalletConnected === true && <span>{username}</span>}
-              </Button>
+            </>
+          )}
+          {width > 1537 && (
+            <button
+              onClick={() => window.open("https://app.playpoint.ai/")}
+              className="buyButton"
+            >
+              <i className="ri-coin-fill"></i>
+              {t("BuyPPTT")}
+            </button>
+          )}
+          {isWalletConnected === false ? (
+            <Button
+              disabled={loading}
+              onClick={() => toggleAuthenticationDrawer()}
+            >
+              👛 {t("ConnectWallet")}
+            </Button>
+          ) : (
+            <>
+              {width > 1537 && (
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate("/profile");
+                  }}
+                >
+                  <i className="ri-user-line"></i>{" "}
+                  {isWalletConnected === true && <span>{username}</span>}
+                </Button>
+              )}
               <Button onClick={() => handleLogout()}>
                 <i className="ri-logout-box-line"></i>
                 {t("Logout")}
