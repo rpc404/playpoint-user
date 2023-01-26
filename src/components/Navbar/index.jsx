@@ -464,7 +464,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             </div>
           )}
 
-          {width > 1537 && (
+          {width > 1537 && isWalletConnected && (
             <>
               <div
                 className="balance"
