@@ -9,6 +9,9 @@ import useWindowDimensions from "../../helpers/UseWindowDimension";
 import MarketplaceItems from "../../components/MarketplaceItems";
 import { useTranslation } from "react-i18next";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
+import { getMarketplaces } from "../../api/Marketplace";
+import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
+import { useQuery } from "react-query";
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
@@ -20,13 +23,10 @@ export default function Home() {
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
-        let res = await (
-          await import("../../api/Marketplace")
-        ).getMarketplaces();
+        let res = await getMarketplaces();
         res = res.data.marketplaces;
         dispatchMarketplaceData({
-          type: (await import("../../contexts/Marketplace/MarketplaceReducer"))
-            .ACTIONS.SET_ALL_MARKETPLACE,
+          type: ACTIONS.SET_ALL_MARKETPLACE,
           payload: res,
         });
       }
@@ -34,6 +34,23 @@ export default function Home() {
     })();
     window.scrollTo(0, 0);
   }, []);
+
+  // const { isLoading, error, data } = useQuery(
+  //   "getMarketplaces",
+  //   () =>
+  //     getMarketplaces().then((res) => {
+  //       res = res.data.marketplaces;
+
+  //       dispatchMarketplaceData({
+  //         type: ACTIONS.SET_ALL_MARKETPLACE,
+  //         payload: res,
+  //       });
+  //     }),
+  //   {
+  //     retry: false,
+  //     refetchOnWindowFocus: false,
+  //   }
+  // );
 
   const { width } = useWindowDimensions();
   return (
