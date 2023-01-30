@@ -172,6 +172,8 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               navigate("/");
             }}
             src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
+            height={"40"}
+            width ="40"
           />
           <h3
             onClick={(e) => {

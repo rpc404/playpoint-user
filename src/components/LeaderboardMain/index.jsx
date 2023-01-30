@@ -49,6 +49,8 @@ export default function LeaderboardMain() {
               <img
                 src={`https://robohash.org/${topRanked[0]?.username || "_0"}`}
                 loading="lazy"
+                height={"200"}
+                width={"200"}
               />
             </div>
             <div className="user__info">
@@ -81,6 +83,8 @@ export default function LeaderboardMain() {
                     <img
                       src={`https://robohash.org/${user?.username || "_0"}`}
                       loading="lazy"
+                      height={"40"}
+                      width="40"
                     />
                   </div>
                   <div className="user__info">

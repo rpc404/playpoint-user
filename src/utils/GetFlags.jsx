@@ -13,6 +13,8 @@ const GetFlags = (marketplaceSlug, team) => {
             alt={club.name}
             key={i}
             className="home__Image"
+            width={"30"}
+            height={"30"}
           />
         );
       }
@@ -26,6 +28,8 @@ const GetFlags = (marketplaceSlug, team) => {
             alt={club.name}
             key={i}
             className="home__Image"
+            width={"30"}
+            height={"30"}
           />
         );
       }
@@ -42,6 +46,8 @@ const GetFlags = (marketplaceSlug, team) => {
             alt={club.name}
             key={i}
             className="home__Image"
+            width={"30"}
+            height={"30"}
           />
         );
       }
@@ -58,6 +64,8 @@ const GetFlags = (marketplaceSlug, team) => {
             key={i}
             loading="lazy"
             className="Away__Image"
+            width={"30"}
+            height={"30"}
           />
         )
       );
