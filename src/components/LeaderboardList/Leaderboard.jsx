@@ -1,3 +1,4 @@
+import React from "react";
 const Leaderboards = React.lazy(() => import("../Leaderboards/Leaderboards"));
 import "./styles/style.css";
 

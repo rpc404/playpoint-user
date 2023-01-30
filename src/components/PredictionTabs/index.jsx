@@ -1,6 +1,6 @@
 import { Tabs, Tab, Box } from "@mui/material";
 import * as React from "react";
-import { a11yProps, TabPanel } from "./components/MuiTabsHelpers";
+import { TabPanel, a11yProps } from "../../components/TabPanel";
 import PoolType from "./components/TabByPool";
 
 function PredictionTabs({ poolSize, setPoolSize, fixtureId, status, setMS, toggleAuthenticationDrawer }) {
