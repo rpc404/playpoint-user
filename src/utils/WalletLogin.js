@@ -14,7 +14,7 @@ export const handleWalletLogin = async (network) => {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const contract = new ethers.Contract(
       import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
-      import("./ERC20BasicABI.json"),
+      await import("./ERC20BasicABI.json"),
       provider
     );
 
