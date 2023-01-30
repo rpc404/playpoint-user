@@ -1,4 +1,4 @@
-import Leaderboards from "../Leaderboards/Leaderboards";
+const Leaderboards = React.lazy(() => import("../Leaderboards/Leaderboards"));
 import "./styles/style.css";
 
 const LeaderBoardList = ({ fixture, open, marketplaceSlug }) => {

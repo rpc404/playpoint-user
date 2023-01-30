@@ -175,6 +175,7 @@
 }
 .navbar__container .drawer i {
   font-size: 22px;
+  cursor: pointer;
 }
 .navbar__container .drawer .drawerListItem {
   gap: 5px !important;
@@ -252,21 +253,4 @@
   display: flex;
   gap: 5px;
   outline: 1px solid #fff !important;
-}
-
-.crossicon__container {
-  display: flex;
-  padding: 16px 0;
-  justify-content: flex-end;
-}
-.crossicon__container p {
-  display: flex;
-  margin-top: 10px;
-  height: 100%;
-}
-.crossicon__container p i {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  font-size: 28px;
 }/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,17 @@
+.crossicon__container {
+  display: flex;
+  padding: 16px 0;
+  justify-content: flex-end;
+}
+.crossicon__container p {
+  display: flex;
+  margin-top: 10px;
+  height: 100%;
+}
+.crossicon__container p i {
+  cursor: pointer;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 28px;
+}/*# sourceMappingURL=style.css.map */

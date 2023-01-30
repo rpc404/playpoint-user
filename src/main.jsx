@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-const App = React.lazy(() => import("./App"));
+import App from "./App";
 import "remixicon/fonts/remixicon.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";

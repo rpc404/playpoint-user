@@ -1,4 +1,10 @@
-import { Button, FormControlLabel, Slider } from "@mui/material";
+import {
+  Button,
+  FormControlLabel,
+  Slider,
+  TextField,
+  Checkbox,
+} from "@mui/material";
 import React from "react";
 import {
   getQuestionaireByFixtureId,
@@ -14,9 +20,6 @@ import { ACTIONS } from "../../../contexts/WalletRPC/RPCReducer";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../../utils/ERC20BasicABI.json";
 import BetaFactoryAPI from "../../../utils/BetaFactoryABI.json";
-import TextField from "@mui/material/TextField";
-// import index from "../../Footer";
-import Checkbox from "@mui/material/Checkbox";
 import { mkaeDuo } from "../../../api/Challenge";
 
 /**

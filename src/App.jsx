@@ -1,24 +1,25 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Topbar from "./components/Topbar";
+const Navbar = React.lazy(() => import("./components/Navbar"));
+const Topbar = React.lazy(() => import("./components/Topbar"));
 import { useRPCContext } from "./contexts/WalletRPC/RPCContext";
-import PageRouters from "./utils/Routers";
-import Footer from "./components/Footer/index";
+const PageRouters = React.lazy(() => import("./utils/Routers"));
+const Footer = React.lazy(() => import("./components/Footer/index"));
 const WalletSelection = React.lazy(() =>
   import("./components/WalletSelection")
 );
 
 export default function App() {
   const [, dispatchRPCData] = useRPCContext();
-  const [
-    isAuthenticationDrawerOpen,
-    setIsAuthenticationDrawerOpen,
-  ] = React.useState(false);
+  const [isAuthenticationDrawerOpen, setIsAuthenticationDrawerOpen] =
+    React.useState(false);
 
   const toggleAuthenticationDrawer = () => {
     setIsAuthenticationDrawerOpen(true);
     document.body.style.overflowY = "hidden";
   };
+  React.useEffect(() => {
+    toggleAuthenticationDrawer;
+  }, [isAuthenticationDrawerOpen]);
 
   const [channel] = React.useState({});
 
@@ -31,8 +32,9 @@ export default function App() {
       ) {
         const data = JSON.parse(localStorage.getItem("rpcUserData"));
         await dispatchRPCData({
-          type: (await import("./contexts/WalletRPC/RPCReducer")).ACTIONS
-            .WALLET_CONNECT,
+          type: (
+            await import("./contexts/WalletRPC/RPCReducer")
+          ).ACTIONS.WALLET_CONNECT,
           payload: data,
         });
       }

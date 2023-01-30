@@ -1,58 +1,29 @@
 import React, { useState } from "react";
 import "./styles/style.css";
 import { Helmet } from "react-helmet";
-import { getUserPredictions } from "../../api/Prediction";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
-import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
-import { setProfile } from "../../api/Profile";
 import { usePredictionsContext } from "../../contexts/Predictions/PredictionsContext";
 import { getuserResults } from "../../api/Results";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
+import {
+  Tabs,
+  Tab,
+  Badge,
+  Switch,
+  useMediaQuery,
+  styled,
+} from "@mui/material/";
 import { ethers } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
-import ProfileComponent from "../../components/Profile/";
-import { Typography, useMediaQuery } from "@mui/material";
-import Transaction from "../transaction";
+const ProfileComponent = React.lazy(() => import("../../components/Profile"));
+const Transaction = React.lazy(() => import("../transaction"));
 import moment from "moment/moment";
-import Badge from "@mui/material/Badge";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import EditProfile from "../../components/EditProfile/EditProfile";
+const EditProfile = React.lazy(() =>
+  import("../../components/EditProfile/EditProfile")
+);
 import { useLocation } from "react-router-dom";
-import { styled } from "@mui/material/styles";
-import Switch from "@mui/material/Switch";
-import Stack from "@mui/material/Stack";
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box>{children}</Box>}
-    </div>
-  );
-}
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
+import { TabPanel, a11yProps } from "../../components/TabPanel";
 
 //
 const AntSwitch = styled(Switch)(({ theme }) => ({
@@ -138,8 +109,6 @@ export default function Profile() {
   }, [userPublicAddress]);
 
   const network = JSON.parse(localStorage.getItem("rpcUserData"));
-
-  
 
   React.useEffect(() => {
     if (isWalletConnected) {

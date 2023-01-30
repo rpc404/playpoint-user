@@ -1,6 +1,6 @@
 import { Skeleton, Stack } from "@mui/material";
 import React from "react";
-import MarketplaceCard from "../MarketplaceCard";
+const MarketplaceCard = React.lazy(() => import("../MarketplaceCard"));
 import "./styles/style.css";
 import { useLocation } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const MarketplaceItems = ({ marketplaces, loading, searchFixture }) => {
                 variant="rectangular"
                 height={"45vh"}
                 className={"skeleton"}
-                sx = {{borderRadius:"32px"}}
+                sx={{ borderRadius: "32px" }}
               />
             </Stack>
           );

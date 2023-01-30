@@ -1,9 +1,7 @@
 import React from "react";
 import "./styles/style.css";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import propTypes from "prop-types";
-import { Typography, Box } from "@mui/material";
+import { Tabs, Tab } from "@mui/material";
+import { TabPanel, a11yProps } from "../../components/TabPanel";
 
 import {
   Chart as ChartJS,
@@ -29,7 +27,7 @@ export const options = {
   plugins: {
     legend: {
       position: "top",
-      display:false
+      display: false,
     },
   },
 };
@@ -47,45 +45,12 @@ export const data = {
   ],
 };
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography variant="div">{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: propTypes.node,
-  index: propTypes.number.isRequired,
-  value: propTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
 export default function Transaction() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
 
   return (
     <div className="transaction__wrapper">

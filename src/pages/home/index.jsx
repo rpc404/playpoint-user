@@ -1,17 +1,20 @@
 import React from "react";
 import "./styles/style.css";
 import "../../components/MarketplaceItems/styles/style.css";
-import LeaderboardMain from "../../components/LeaderboardMain";
-import Hero from "../../components/Hero";
+const LeaderboardMain = React.lazy(() =>
+  import("../../components/LeaderboardMain")
+);
+const Hero = React.lazy(() => import("../../components/Hero"));
 import { Helmet } from "react-helmet";
 import Marquee from "react-fast-marquee";
 import useWindowDimensions from "../../helpers/UseWindowDimension";
-import MarketplaceItems from "../../components/MarketplaceItems";
+const MarketplaceItems = React.lazy(() =>
+  import("../../components/MarketplaceItems")
+);
 import { useTranslation } from "react-i18next";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 import { getMarketplaces } from "../../api/Marketplace";
 import { ACTIONS } from "../../contexts/Marketplace/MarketplaceReducer";
-import { useQuery } from "react-query";
 
 export default function Home() {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();

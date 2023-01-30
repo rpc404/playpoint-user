@@ -1,14 +1,17 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Skeleton,
+  Stack,
+} from "@mui/material";
 import { Link } from "react-router-dom";
-import { Skeleton, Stack } from "@mui/material";
-import moment from "moment";
+const { default: moment } = await import("moment");
 import { formatNumber } from "../../utils/NumberFomatter";
 import GetFlags from "../../utils/GetFlags";
 import { useTranslation } from "react-i18next";
@@ -86,8 +89,9 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                             }}
                           >
                             <img
-                              src={`https://robohash.org/${row.topuser.name ||
-                                "_0"}`}
+                              src={`https://robohash.org/${
+                                row.topuser.name || "_0"
+                              }`}
                               loading="lazy"
                             />
                             <Link to="/profile">{row.topuser.name}</Link>
@@ -109,7 +113,7 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                   )
                 );
               })
-            : [0, 1, 2, 3, 4, 5, 6, 7].map((skeleton, i) => {
+            : [0, 1, 2, 3, 4, 5, 6, 7].map((_skeleton, i) => {
                 return (
                   <TableRow
                     key={i}

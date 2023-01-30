@@ -1,0 +1,18 @@
+.crossicon__container {
+  display: flex;
+  padding: 16px 0;
+
+  justify-content: flex-end;
+
+  p {
+    display: flex;
+    margin-top: 10px;
+    height: 100%;
+
+    i {
+      cursor: pointer;
+      width: fit-content;
+      font-size: 28px;
+    }
+  }
+}

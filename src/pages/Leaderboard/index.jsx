@@ -1,5 +1,7 @@
 import React from "react";
-import LeaderboardMain from "../../components/LeaderboardMain";
+const LeaderboardMain = React.lazy(() =>
+  import("../../components/LeaderboardMain")
+);
 import "./styles/style.css";
 import { useMarketplaceContext } from "../../contexts/Marketplace/MarketplaceContext";
 
