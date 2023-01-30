@@ -16,10 +16,8 @@ const Challenges = () => {
 
   const [tabBtn, setTabBtn] = React.useState(`${t("all")}`);
   const navigate = useNavigate();
-  const [
-    { userPublicAddress, username, isWalletConnected },
-    dispatchRPCData,
-  ] = useRPCContext();
+  const [{ userPublicAddress, username, isWalletConnected }, dispatchRPCData] =
+    useRPCContext();
 
   React.useEffect(() => {
     (async () => {
@@ -62,7 +60,7 @@ const Challenges = () => {
       );
       setTemp(_temp);
     }
-    if (prop == `${t('my challenges')}`) {
+    if (prop == `${t("my challenges")}`) {
       _temp = _challenges.filter(
         (_challenge) => _challenge.owner.walletID == userPublicAddress
       );
@@ -133,9 +131,12 @@ const Challenges = () => {
 
                     <div className="predictedBy">
                       <img
-                        src={`https://robohash.org/${challenge.owner.username ||
-                          "_0"}`}
+                        src={`https://robohash.org/${
+                          challenge.owner.username || "_0"
+                        }`}
                         loading="lazy"
+                        height={"40"}
+                        width={"40"}
                       />
                       <p className="pp__flex1">{challenge.owner.username}</p>
                       <p>

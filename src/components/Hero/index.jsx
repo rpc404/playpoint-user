@@ -47,15 +47,21 @@ export default function Hero() {
           loading="lazy"
           src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-35-22_zJL0CkuV9o.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673268642929"
           alt=""
+          height={"420"}
+          width={"285"}
         />
         <div className="absoluteImages">
           <img
             src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-33-26_E0Q8XT_Y3.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673268519443"
-            alt=""
+            alt="1st_absolutehero_image"
+            height={"305"}
+            width={"200"}
           />
           <img
             src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-31-23_ZNdB8ldbl.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673268422379"
-            alt=""
+            alt="2nd_absolute_heroimage"
+            height={"245"}
+            width={"200"}
           />
         </div>
       </div>
@@ -68,17 +74,23 @@ export default function Hero() {
           <div>
             <img
               src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-56-19_aZevJJ4V3y.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673269899496"
-              alt=""
+              alt="1st_addtional_image"
+              height={"220"}
+              width={"220"}
             />
             <img
               className="rotatingImage"
               src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-11_21-11-41_HPGTmzrrO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673450896932"
-              alt=""
+              alt="2nd_additional_image"
+              height={"220"}
+              width={"220"}
             />
           </div>
           <img
             src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-11_21-16-21_SfQPymXZk.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673451095728"
-            alt=""
+            alt="3rd_additional_image"
+            height={"220"}
+            width={"220"}
           />
         </div>
       </div>

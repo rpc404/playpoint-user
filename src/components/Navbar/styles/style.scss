@@ -187,6 +187,7 @@
     }
     i {
       font-size: 22px;
+      cursor: pointer;
     }
     .drawerListItem {
       gap: 5px !important;
@@ -265,23 +266,5 @@
     display: flex;
     gap: 5px;
     outline: 1px solid #fff !important;
-  }
-}
-
-.crossicon__container {
-  display: flex;
-  padding: 16px 0;
-
-  justify-content: flex-end;
-
-  p {
-    display: flex;
-    margin-top: 10px;
-    height: 100%;
-
-    i {
-      width: fit-content;
-      font-size: 28px;
-    }
   }
 }

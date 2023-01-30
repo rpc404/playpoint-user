@@ -2,11 +2,9 @@ import { Pagination } from "@mui/material";
 import { t } from "i18next";
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  getLeaderboardByMarketplaceSlug,
-} from "../../api/Leaderboards";
+import { getLeaderboardByMarketplaceSlug } from "../../api/Leaderboards";
 import { formatNumber } from "../../utils/NumberFomatter";
-import FixtureTable from "../FixtureTable";
+const FixtureTable = React.lazy(() => import("../FixtureTable"));
 import "./styles/style.css";
 
 export default function LeaderboardMain() {
@@ -26,7 +24,7 @@ export default function LeaderboardMain() {
   return (
     <main className="leaderboardMain__container">
       <div className="fixturesLeaderboard__container">
-        <h1>📈 {t('TopRankedFixtures')}</h1>
+        <h1>📈 {t("TopRankedFixtures")}</h1>
 
         <FixtureTable
           leaderboard={leaderboards}
@@ -44,17 +42,19 @@ export default function LeaderboardMain() {
       </div>
 
       <div className="usersLeaderboard__container">
-        <h2>⛹️ {t('TopRankedUsers')}</h2>
+        <h2>⛹️ {t("TopRankedUsers")}</h2>
         <div className="topThreeUsers">
           <div className="topUser">
             <div className="user__avatar">
               <img
                 src={`https://robohash.org/${topRanked[0]?.username || "_0"}`}
                 loading="lazy"
+                height={"200"}
+                width={"200"}
               />
             </div>
             <div className="user__info">
-              <h1>🥇{t('1stPlace')}</h1>
+              <h1>🥇{t("1stPlace")}</h1>
               <h4>
                 <Link to={`/profile/@${topRanked[0]?.username}`}>
                   {topRanked[0]?.username},{" "}
@@ -65,12 +65,12 @@ export default function LeaderboardMain() {
             </div>
             <div className="gameDetails">
               <div>
-                <p>{t('Points')}</p>
+                <p>{t("Points")}</p>
                 <span>{formatNumber(topRanked[0]?.points)}</span>
               </div>
 
               <div>
-                <p>{t('Amount')}</p>
+                <p>{t("Amount")}</p>
                 <span>{formatNumber(topRanked[0]?.amount)} PPTT</span>
               </div>
             </div>
@@ -83,6 +83,8 @@ export default function LeaderboardMain() {
                     <img
                       src={`https://robohash.org/${user?.username || "_0"}`}
                       loading="lazy"
+                      height={"40"}
+                      width="40"
                     />
                   </div>
                   <div className="user__info">

@@ -21,7 +21,7 @@ export default function MarketplaceCard({ marketplace }) {
   } = marketplace;
 
   const styles = {
-    background: `url(${marketplaceCoverImage?.url}) center /cover no-repeat`,
+    background: `url(${marketplaceCoverImage?.url}) top center /cover no-repeat`,
   };
 
   return (

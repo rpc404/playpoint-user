@@ -1,7 +1,7 @@
 import moment from "moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Chip from "@mui/material/Chip";
+import { Chip } from "@mui/material";
 
 import "./styles/style.css";
 
@@ -72,7 +72,7 @@ const PredictionItems = ({ predictions, activeOS, open, setVolume }) => {
       ) : (
         <div className="noPrediction__container">
           <img
-          style={{width: "85%", display: "block", margin: "20px auto"}}
+            style={{ width: "85%", display: "block", margin: "20px auto" }}
             src={
               "https://ik.imagekit.io/domsan/Screenshot_from_2023-01-17_19-41-13_0ZKDW-A-q.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673963784391"
             }

@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles/style.css";
-import image from "../../images/security.jpg";
 import { authenticate, otplogin, _verify } from "../../api/Auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +29,11 @@ const SignIn = () => {
   }, []);
 
   const ValidateEmail = (mail) => {
-    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
+    if (
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        mail
+      )
+    ) {
       return true;
     }
     toast("You have entered an invalid email address!", { type: "error" });
