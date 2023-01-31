@@ -12,8 +12,9 @@ import { FixtureProvider } from "./contexts/Fixture/FixtureContext";
 import { PredictionsProvider } from "./contexts/Predictions/PredictionsContext";
 import Loader from "./components/Loader";
 import "./i18n";
+import { Buffer } from "buffer";
 import { inject } from "@vercel/analytics";
-
+window.Buffer = Buffer;
 inject();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
