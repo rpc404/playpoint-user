@@ -51,17 +51,18 @@ export default function LeaderboardMain() {
                 loading="lazy"
                 height={"200"}
                 width={"200"}
+                alt={`${topRanked[0]?.username}'s__image`}
               />
             </div>
             <div className="user__info">
               <h1>🥇{t("1stPlace")}</h1>
-              <h4>
+              <h2>
                 <Link to={`/profile/@${topRanked[0]?.username}`}>
                   {topRanked[0]?.username},{" "}
                   {String(topRanked[0]?.wallet).substring(0, 5)}...
                   {String(topRanked[0]?.wallet).substring(10, 16)}
                 </Link>
-              </h4>
+              </h2>
             </div>
             <div className="gameDetails">
               <div>
@@ -85,15 +86,16 @@ export default function LeaderboardMain() {
                       loading="lazy"
                       height={"40"}
                       width="40"
+                      alt={`${user?.username}'s_image`}
                     />
                   </div>
                   <div className="user__info">
-                    <h4>
+                    <h3>
                       <Link to={`/profile/@${user?.username}`}>
                         {user?.username}, {String(user?.wallet).substring(0, 5)}
                         ...{String(user?.wallet).substring(10, 16)}
                       </Link>
-                    </h4>
+                    </h3>
                     <div className="gameDetails">
                       <div>
                         <p>Pts.</p>

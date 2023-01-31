@@ -242,7 +242,7 @@ main.leaderboardMain__container {
           }
         }
 
-        h4 {
+        h3 {
           font-weight: 500;
           font-size: 15px;
 
@@ -253,6 +253,10 @@ main.leaderboardMain__container {
 
         .user__info {
           width: 100%;
+
+          h3 {
+            color: #6d6f71;
+          }
         }
 
         .gameDetails {

@@ -95,6 +95,7 @@ export default function FixtureTable({ leaderboard, currPage, loading }) {
                               loading="lazy"
                               height={"30"}
                               width={"30"}
+                              alt={`${row.topuser.name}_image`}
                             />
                             <Link to="/profile">{row.topuser.name}</Link>
                           </div>
