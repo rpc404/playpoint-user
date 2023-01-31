@@ -1,6 +1,8 @@
 .hero__container {
   color: #fff;
-  background: url("https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-17-59_3qcF77BKy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673267593678") no-repeat;
+  background-image: url("https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-17-59_3qcF77BKy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673267593678") no-repeat;
+  background-image: -webkit-image-set(url("../../../images/herobg.avif") 1x, url("https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-17-59_3qcF77BKy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673267593678") 2x);
+  background-image: image-set(url("../../../images/herobg.avif") 1x, url("https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-17-59_3qcF77BKy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673267593678") 2x);
   background-size: cover;
   background-position: center top;
   box-shadow: inset 0 0 0 2000px rgba(63, 2, 186, 0.635);
@@ -104,12 +106,15 @@
   align-items: center;
   gap: 30px;
 }
-.hero__container .heroGallery__container .absoluteImages img {
+.hero__container .heroGallery__container .absoluteImages picture img {
+  width: 14vw;
+}
+.hero__container .heroGallery__container .absoluteImages picture:first-child img {
   width: 14vw;
   border-radius: 190px;
   height: 35vh;
 }
-.hero__container .heroGallery__container .absoluteImages img:last-child {
+.hero__container .heroGallery__container .absoluteImages picture:last-child img:last-child {
   height: 28vh;
 }
 .hero__container .heroAdditionalInfo {
