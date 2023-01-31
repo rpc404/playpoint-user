@@ -44,20 +44,22 @@ export default function Hero() {
       </div>
       <div className="heroGallery__container">
         <img
-          loading="lazy"
+          loading="eager"
           src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-35-22_zJL0CkuV9o.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673268642929"
           alt=""
-          height={"420"}
-          width={"285"}
+          height={"460"}
+          width={"320"}
         />
         <div className="absoluteImages">
           <img
+            loading="eager"
             src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-33-26_E0Q8XT_Y3.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673268519443"
             alt="1st_absolutehero_image"
-            height={"305"}
-            width={"200"}
+            height={"335"}
+            width={"222"}
           />
           <img
+            loading="eager"
             src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-31-23_ZNdB8ldbl.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673268422379"
             alt="2nd_absolute_heroimage"
             height={"245"}
@@ -77,6 +79,7 @@ export default function Hero() {
               alt="1st_addtional_image"
               height={"220"}
               width={"220"}
+              loading="eager"
             />
             <img
               className="rotatingImage"
@@ -84,6 +87,7 @@ export default function Hero() {
               alt="2nd_additional_image"
               height={"220"}
               width={"220"}
+              loading="eager"
             />
           </div>
           <img
@@ -91,6 +95,7 @@ export default function Hero() {
             alt="3rd_additional_image"
             height={"220"}
             width={"220"}
+            loading="eager"
           />
         </div>
       </div>

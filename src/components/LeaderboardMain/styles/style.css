@@ -219,15 +219,18 @@ main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top
     height: 50px;
   }
 }
-main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 {
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h3 {
   font-weight: 500;
   font-size: 15px;
 }
-main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h4 a {
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User h3 a {
   color: rgba(255, 255, 255, 0.6);
 }
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User .user__info {
   width: 100%;
+}
+main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User .user__info h3 {
+  color: #6d6f71;
 }
 main.leaderboardMain__container .usersLeaderboard__container .topThreeUsers .top3User .gameDetails {
   display: flex;

@@ -88,6 +88,7 @@ const index = () => {
                 target="_blank"
                 href="https://github.com/L1Playpoint"
                 className="icon"
+                aria-label="github_icon"
               >
                 <i className="ri-github-fill"></i>
               </a>
@@ -96,16 +97,24 @@ const index = () => {
                 target={"_blank"}
                 rel="noopener noreferrer"
                 className="icon"
+                aria-label="discord_icon"
               >
                 <i className="ri-discord-fill"></i>
               </a>
-              <a rel="norefferer" target="_blank" href="#" className="icon">
+              <a
+                rel="norefferer"
+                target="_blank"
+                href="#"
+                className="icon"
+                aria-label="telegram_icon"
+              >
                 <i className="ri-telegram-fill"></i>
               </a>
               <a
                 rel="norefferer"
                 target="_blank"
                 href="https://twitter.com/PlaypointP2E"
+                aria-label="twitter_icon"
               >
                 <i className="ri-twitter-fill"></i>
               </a>
@@ -115,6 +124,7 @@ const index = () => {
               <button
                 onClick={() => setClicked((prev) => !prev)}
                 className="dropdown__btn"
+                aria-label="Languages"
               >
                 <i className="ri-global-line"></i>
                 <i className="ri-arrow-drop-down-line"></i>
