@@ -14,6 +14,7 @@ export default defineConfig({
   build: {
     sourcemap: true,
     target: "esnext",
+    cssCodeSplit: false,
     rollupOptions: {
       output: {
         entryFileNames: "[name].js",
