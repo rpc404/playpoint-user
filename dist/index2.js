@@ -1,0 +1,2 @@
+import{R as s,a as i,j as e}from"./js/index.js";import{a as l}from"./CountryFlags.js";function o(){const[r,n]=s.useState([]);return s.useEffect(()=>{var a=[];for(let t=0;t<l.length;t++)a.push(l[t]);n([...new Set(a)])},[]),i("div",{className:"topbar__container",children:[i("div",{className:"details",children:["Participating Country Sites ",e("i",{className:"ri-attachment-line"})]}),e("div",{className:"imgContainers",children:r.map((a,t)=>e("img",{src:a.image,alt:a.name,loading:"lazy",height:"29",width:"29"},t))})]})}export{o as default};
+//# sourceMappingURL=index2.js.map

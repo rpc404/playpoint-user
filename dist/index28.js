@@ -1,0 +1,2 @@
+import{u as d,j as a,Q as m}from"./js/index.js";function u({marketplace:t}){const r=d(),s=e=>{sessionStorage.setItem("marketplaceSlug",e),r(`/fixture/${e}`,{state:{marketplaceSlug:e}})},{marketplaceCoverImage:c,marketplaceName:l,marketplaceSlug:n,closed:o}=t,i={background:`url(${c?.url}) top center /cover no-repeat`};return a("div",{style:i,className:"marketplaceCard__container",onClick:()=>{o?m("Marketplace Closed"):s(n)},children:a("h1",{children:`${l}`})})}export{u as default};
+//# sourceMappingURL=index28.js.map

@@ -1,0 +1,2 @@
+import{a as t}from"./axios.js";const n=async a=>{var e=await t.post("https://api.playpoint.ai/api/v1/new-challenge",a);return e},p=async a=>{var e=await t.get(`https://api.playpoint.ai/api/v1/get-challenge/${a}`);return e},i=async()=>{var a=await t.get("https://api.playpoint.ai/api/v1/get-challenges");return a};export{i as getAllChallenge,p as getChallenge,n as mkaeDuo};
+//# sourceMappingURL=Challenge.js.map

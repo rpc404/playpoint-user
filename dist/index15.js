@@ -1,0 +1,2 @@
+import{u as a,a as i,j as t}from"./js/index.js";import{B as s}from"./Button.js";import"./styled.js";import"./ButtonBase.js";import"./useForkRef.js";function d(){const o=a();return i("div",{className:"notFound__container",children:[t("img",{src:"https://ik.imagekit.io/domsan/Screenshot_from_2023-01-17_19-50-15_MjZ-ZL5ay.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673964329695",alt:"404 Image Request",loading:"lazy"}),t(s,{onClick:()=>o("/"),children:"Go Back Home"})]})}export{d as default};
+//# sourceMappingURL=index15.js.map

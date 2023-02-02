@@ -15,9 +15,10 @@ export default defineConfig({
     sourcemap: true,
     target: "esnext",
     cssCodeSplit: false,
+    emptyOutDir:true,
     rollupOptions: {
       output: {
-        entryFileNames: "[name].js",
+        entryFileNames: "js/[name].js",
         chunkFileNames: "[name].js",
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split(".").at(1);
