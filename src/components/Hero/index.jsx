@@ -44,7 +44,7 @@ export default function Hero() {
             </picture>
             <picture>
               <source
-                src={person2nd}
+                srcSet={person2nd}
                 media="(min-width:992px)"
                 type="image/avif"
               />
