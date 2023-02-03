@@ -14,6 +14,8 @@ import Loader from "./components/Loader";
 import "./i18n";
 import { Buffer } from "buffer";
 import { inject } from "@vercel/analytics";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "./components/ErrorFallback";
 window.Buffer = Buffer;
 inject();
 
@@ -23,21 +25,23 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <MarketplaceProvider>
         <FixtureProvider>
           <PredictionsProvider>
-            <Suspense fallback={<Loader />}>
-              <App />
-              <ToastContainer
-                position="top-center"
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
-            </Suspense>
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <Suspense fallback={<Loader />}>
+                <App />
+                <ToastContainer
+                  position="top-center"
+                  autoClose={2000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
+              </Suspense>
+            </ErrorBoundary>
           </PredictionsProvider>
         </FixtureProvider>
       </MarketplaceProvider>
