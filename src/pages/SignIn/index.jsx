@@ -74,7 +74,7 @@ const SignIn = () => {
               username: "",
               network: "shasta",
             };
-            localStorage.setItem("userToken", data.accessToken);
+            localStorage.setItem("userToken", data.token);
             tempRpcData.isWalletConnected = true;
             tempRpcData.username = data._newUser.username;
             tempRpcData.userPublicAddress = data._wallets.wallets[0]?.address;
@@ -210,8 +210,12 @@ const SignIn = () => {
                   </span>
                 </p>
 
-                <button onClick={() => verify()}>
-                  {_loading ? <img src={loader} /> : "Confirm OTP"}
+              <button onClick={()=>verify()}>
+                <p>
+                {
+                  _loading ? <img src={loader} /> : "Confirm OTP"
+                }
+                </p>
                 </button>
               </div>
             )

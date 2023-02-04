@@ -50,8 +50,8 @@ export default function App() {
         />
       )}
       <Topbar />
-      <Navbar toggleAuthenticationDrawer={toggleAuthenticationDrawer} />
-      <PageRouters socket={channel} />
+      <Navbar toggleAuthenticationDrawer={toggleAuthenticationDrawer}/>
+      <PageRouters socket={channel} toggleAuthenticationDrawer={toggleAuthenticationDrawer} />
       <div className="divider"></div>
       <Footer />
 

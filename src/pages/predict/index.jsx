@@ -50,7 +50,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Predict() {
+export default function Predict({toggleAuthenticationDrawer}) {
   const [marketplaceSlug, setMS] = React.useState("");
 
   const { state } = useLocation();
@@ -249,6 +249,7 @@ export default function Predict() {
             fixture={fixture}
             open={open}
             setVolume={setVolume}
+            
           />
         </div>
         {/*
@@ -326,6 +327,7 @@ export default function Predict() {
                 setPoolSize={setPoolSize}
                 status={_status}
                 setMS={setMS}
+                toggleAuthenticationDrawer={toggleAuthenticationDrawer}
               />
             )}
           </div>
