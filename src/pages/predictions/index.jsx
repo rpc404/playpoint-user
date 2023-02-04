@@ -14,8 +14,7 @@ import {
   Stack,
   Skeleton,
 } from "@mui/material";
-import { ethers } from "ethers";
-import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
+import { BrowserProvider, Contract } from "ethers";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -105,10 +104,10 @@ const Prediction = () => {
     toast("Challenging..", {
       type: "info",
     });
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const PPTTContract = new ethers.Contract(
+    const provider = new BrowserProvider(ethereum);
+    const PPTTContract = new Contract(
       import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS, // Sepolia PPTT Token Address
-      ERC20BasicAPI,
+      import("../../utils/ERC20BasicABI.json"),
       provider
     ).connect(provider.getSigner());
 
@@ -145,8 +144,9 @@ const Prediction = () => {
           <div className="container">
             <div className="profile_area">
               <img
-                src={`https://robohash.org/${predictionData.user[0].username ||
-                  "aa"}`}
+                src={`https://robohash.org/${
+                  predictionData.user[0].username || "aa"
+                }`}
                 loading="lazy"
               />
               <h3>

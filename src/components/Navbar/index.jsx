@@ -5,8 +5,7 @@ import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { toast } from "react-toastify";
-import { ethers } from "ethers";
-import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
+import { formatEther, BrowserProvider, Contract } from "ethers";
 import { useTranslation } from "react-i18next";
 import useWindowDimensions from "../../helpers/UseWindowDimension";
 import DrawerList from "../DrawerList";
@@ -34,26 +33,26 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   React.useEffect(() => {
     if (!isNonWalletUser) {
       if (isWalletConnected && network === "arbitrum") {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const contract = new ethers.Contract(
+        const provider = new BrowserProvider(ethereum);
+        const contract = new Contract(
           import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
-          ERC20BasicAPI,
+          import("../../utils/ERC20BasicABI.json"),
           provider
         );
         (async () => {
           const ethBalance = await provider.getBalance(userPublicAddress);
           const PPTTBalance = await contract.balanceOf(userPublicAddress);
           setBalance({
-            ethBalance: ethers.utils.formatEther(ethBalance),
-            ppttBalance: ethers.utils.formatEther(PPTTBalance),
+            ethBalance: formatEther(ethBalance),
+            ppttBalance: formatEther(PPTTBalance),
           });
           const data = {
             isWalletConnected,
             username,
             userPublicAddress,
             network,
-            userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
-            userETHBalance: ethers.utils.formatEther(ethBalance),
+            userPPTTBalance: formatEther(PPTTBalance),
+            userETHBalance: formatEther(ethBalance),
           };
 
           await dispatchRPCData({
@@ -91,16 +90,16 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           const ethBalance = 100 * 10 ** 12;
           const PPTTBalance = 100 * 10 ** 18;
           setBalance({
-            ethBalance: ethers.utils.formatEther(ethBalance),
-            ppttBalance: ethers.utils.formatEther(PPTTBalance),
+            ethBalance: formatEther(ethBalance),
+            ppttBalance: formatEther(PPTTBalance),
           });
           const data = {
             isWalletConnected,
             username,
             userPublicAddress,
             network,
-            userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
-            userETHBalance: ethers.utils.formatEther(ethBalance),
+            userPPTTBalance: formatEther(PPTTBalance),
+            userETHBalance: formatEther(ethBalance),
           };
 
           await dispatchRPCData({
@@ -173,7 +172,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             }}
             src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
             height={"40"}
-            width ="40"
+            width="40"
             alt="playpoint_logo"
           />
           <h3

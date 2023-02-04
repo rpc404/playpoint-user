@@ -1,4 +1,5 @@
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
+import { formatEther, BrowserProvider, Contract } from "ethers";
 import { toast } from "react-toastify";
 import { handleRPCWalletLogin, handleTRONWALLETLogin } from "./RPC";
 import { useRPCContext } from "../contexts/WalletRPC/RPCContext";
@@ -11,8 +12,8 @@ export const handleWalletLogin = async (network) => {
 
   if (network === "arbitrum") {
     const resData = await handleRPCWalletLogin();
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const contract = new ethers.Contract(
+    const provider = new BrowserProvider(ethereum);
+    const contract = new Contract(
       import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
       await import("./ERC20BasicABI.json"),
       provider
@@ -23,8 +24,8 @@ export const handleWalletLogin = async (network) => {
 
     const data = {
       ...resData,
-      userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
-      userETHBalance: ethers.utils.formatEther(ethBalance),
+      userPPTTBalance: formatEther(PPTTBalance),
+      userETHBalance: formatEther(ethBalance),
     };
 
     localStorage.setItem("rpcUserData", JSON.stringify(resData));

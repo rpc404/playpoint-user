@@ -1,17 +1,15 @@
 import { Button } from "@mui/material";
-import { ethers } from "ethers";
+import { formatEther, BrowserProvider, Contract } from "ethers";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
-import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 import { handleRPCWalletLogin, handleTRONWALLETLogin } from "../../utils/RPC";
 import "./styles/style.css";
 
 export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [
     { isWalletConnected, username, userPublicAddress, network },
     dispatchRPCData,
@@ -27,10 +25,10 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
     if (network === "arbitrum") {
       setLoading(true);
       const resData = await handleRPCWalletLogin();
-      const provider = new ethers.providers.Web3Provider(ethereum);
-      const contract = new ethers.Contract(
+      const provider = new BrowserProvider(ethereum);
+      const contract = new Contract(
         import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
-        ERC20BasicAPI,
+        await import("../../utils/ERC20BasicABI.json"),
         provider
       );
 
@@ -39,9 +37,9 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
 
       const data = {
         ...resData,
-        userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
-        userETHBalance: ethers.utils.formatEther(ethBalance),
-        isNonWalletUser:false,
+        userPPTTBalance: formatEther(PPTTBalance),
+        userETHBalance: formatEther(ethBalance),
+        isNonWalletUser: false,
       };
 
       localStorage.setItem("rpcUserData", JSON.stringify(resData));
@@ -55,7 +53,7 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
     if (network === "shasta") {
       setLoading(true);
       const data = await handleTRONWALLETLogin();
-      if(data.isWalletConnected){
+      if (data.isWalletConnected) {
         await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
         handleWalletDrawer();
         setLoading(false);
@@ -80,7 +78,11 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
           <Button onClick={() => handleWalletLogin("shasta")}>
             👛 TronLink
           </Button>
-          <Button onClick={() => {handleWalletDrawer(), navigate("/signin")}}>
+          <Button
+            onClick={() => {
+              handleWalletDrawer(), navigate("/signin");
+            }}
+          >
             ✉️ Email
           </Button>
         </div>
