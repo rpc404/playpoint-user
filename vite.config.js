@@ -12,13 +12,13 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: "inline",
+    sourcemap: true,
     target: "esnext",
     cssCodeSplit: false,
     rollupOptions: {
       output: {
         entryFileNames: "[name].js",
-        chunkFileNames: "js/[name].js",
+        chunkFileNames: "[name].js",
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split(".").at(1);
           if (/svg|gif|tiff|bmp|ico/i.test(extType)) {
