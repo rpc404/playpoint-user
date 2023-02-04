@@ -12,7 +12,7 @@ import {
   useMediaQuery,
   styled,
 } from "@mui/material/";
-import { ethers } from "ethers";
+import { formatEther, BrowserProvider, Contract } from "ethers";
 import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 const ProfileComponent = React.lazy(() => import("../../components/Profile"));
 const Transaction = React.lazy(() => import("../transaction"));
@@ -112,8 +112,8 @@ export default function Profile() {
 
   React.useEffect(() => {
     if (isWalletConnected) {
-      const provider = new ethers.providers.Web3Provider(ethereum);
-      const contract = new ethers.Contract(
+      const provider = new BrowserProvider(ethereum);
+      const contract = new Contract(
         "0x53d168578974822bCAa95106C7d5a906BF100948",
         ERC20BasicAPI,
         provider
@@ -123,8 +123,8 @@ export default function Profile() {
         const PPTTBalance = await contract.balanceOf(userPublicAddress);
 
         setBalance({
-          ethBalance: ethers.utils.formatEther(ethBalance),
-          ppttBalance: ethers.utils.formatEther(PPTTBalance),
+          ethBalance: formatEther(ethBalance),
+          ppttBalance: formatEther(PPTTBalance),
         });
       })();
     }
