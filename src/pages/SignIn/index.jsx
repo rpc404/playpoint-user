@@ -72,7 +72,7 @@ const SignIn = () => {
               userPublicAddress: "",
               isWalletConnected: true,
               username: "",
-              network: "shasta",
+              network: "arbitrum",
             };
             localStorage.setItem("userToken", data.token);
             tempRpcData.isWalletConnected = true;
