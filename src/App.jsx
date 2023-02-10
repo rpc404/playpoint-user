@@ -8,6 +8,9 @@ const WalletSelection = React.lazy(() =>
   import("./components/WalletSelection")
 );
 
+import  {Orbis}  from "@orbisclub/orbis-sdk";
+let orbis = new Orbis();
+
 export default function App() {
   const [, dispatchRPCData] = useRPCContext();
   const [isAuthenticationDrawerOpen, setIsAuthenticationDrawerOpen] =
@@ -31,12 +34,35 @@ export default function App() {
         expiryDate.getTime() > Date.now()
       ) {
         const data = JSON.parse(localStorage.getItem("rpcUserData"));
+      
+    
         await dispatchRPCData({
           type: (
             await import("./contexts/WalletRPC/RPCReducer")
           ).ACTIONS.WALLET_CONNECT,
           payload: data,
         });
+        console.info(import.meta.env.VITE_ORBIS_GROUP)
+        let g = await orbis.getGroup(import.meta.env.VITE_ORBIS_GROUP);
+        console.log(g);
+        // let res = await orbis.connect_v2({ 
+        //   provider: window.ethereum,
+        //   lit: true
+        // });
+
+        // /** Check if connection is successful or not */
+        // if(res.status == 200) {
+        //   console.log(res);
+        //   // let res2 = await orbis.createPost({
+        //   //   body: "gm!",
+        //   //   context: "playpoint-app"
+        //   // });
+        //   // console.log(res2);
+        // } else {
+        //   console.log("Error connecting to Ceramic: ", res);
+        //   alert("Error connecting to Ceramic.");
+        // }
+
       }
     })();
   }, [dispatchRPCData]);
