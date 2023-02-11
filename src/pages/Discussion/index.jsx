@@ -1,5 +1,4 @@
 import React from "react";
-import { Scrollbars } from "react-custom-scrollbars";
 import "./styles/style.css";
 
 const Discussion = () => {
