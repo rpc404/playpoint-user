@@ -231,7 +231,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
                 e.stopPropagation(), navigate("/discussion");
               }}
             >
-              Discussion
+              {t("Discussion")}
             </div>
           </div>
         </div>
