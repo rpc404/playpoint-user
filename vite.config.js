@@ -9,7 +9,7 @@ import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfil
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), NgmiPolyfill({defineGlobal:"globalThis"})],
   css: {
     postcss: {
       plugins: [autoprefixer({}), cssnanoPlugin()],
@@ -34,7 +34,7 @@ export default defineConfig({
       plugins: [
         // Enable rollup polyfills plugin
         // used during production bundling
-        NgmiPolyfill()
+        NgmiPolyfill({defineGlobal:"globalThis"})
     ]
     },
   },
