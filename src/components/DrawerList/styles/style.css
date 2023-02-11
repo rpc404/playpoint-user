@@ -10,7 +10,6 @@
 }
 .crossicon__container p i {
   cursor: pointer;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   font-size: 28px;

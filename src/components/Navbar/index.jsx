@@ -9,6 +9,7 @@ import { formatEther, BrowserProvider, Contract } from "ethers";
 import { useTranslation } from "react-i18next";
 import useWindowDimensions from "../../helpers/UseWindowDimension";
 import DrawerList from "../DrawerList";
+import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 const { ethereum } = window;
 
 export default function Navbar({ toggleAuthenticationDrawer }) {
@@ -31,12 +32,12 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    if (!isNonWalletUser) {
+    if (isNonWalletUser) {
       if (isWalletConnected && network === "arbitrum") {
         const provider = new BrowserProvider(ethereum);
         const contract = new Contract(
           import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
-          import("../../utils/ERC20BasicABI.json"),
+          ERC20BasicAPI,
           provider
         );
         (async () => {
@@ -225,6 +226,13 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             >
               {t("Challenges")}
             </div>
+            <div
+              onClick={(e) => {
+                e.stopPropagation(), navigate("/discussion");
+              }}
+            >
+              Discusson
+            </div>
           </div>
         </div>
 
@@ -304,7 +312,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
             </div>
           )}
 
-          {width > 1537 && isWalletConnected && (
+          {width > 1441 && isWalletConnected && (
             <>
               <div
                 className="balance"
@@ -353,7 +361,7 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               </div>
             </>
           )}
-          {width > 1537 && (
+          {width > 1441 && (
             <button
               onClick={() => window.open("https://app.playpoint.ai/")}
               className="buyButton"
@@ -362,31 +370,29 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
               {t("BuyPPTT")}
             </button>
           )}
-          {isWalletConnected === false ? (
+          {isWalletConnected === false && (
             <Button
               disabled={loading}
               onClick={() => toggleAuthenticationDrawer()}
             >
               👛 {t("ConnectWallet")}
             </Button>
-          ) : (
-            <>
-              {width > 1537 && (
-                <Button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate("/profile");
-                  }}
-                >
-                  <i className="ri-user-line"></i>{" "}
-                  {isWalletConnected === true && <span>{username}</span>}
-                </Button>
-              )}
-              <Button onClick={() => handleLogout()}>
-                <i className="ri-logout-box-line"></i>
-                {t("Logout")}
-              </Button>
-            </>
+          )}
+          {isWalletConnected && (
+            <Button
+              onClick={(e) => {
+                e.stopPropagation(), navigate("/profile");
+              }}
+            >
+              <i className="ri-user-line"></i>
+              {username}
+            </Button>
+          )}
+          {isWalletConnected && (
+            <Button onClick={() => handleLogout()}>
+              {" "}
+              <i className="ri-logout-box-line"></i> {t("Logout")}
+            </Button>
           )}
         </div>
 

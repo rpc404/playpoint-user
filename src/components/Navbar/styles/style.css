@@ -5,7 +5,6 @@
   padding: 13px 25px;
   background: rgba(63, 1, 186, 0.64);
   color: #fff;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 9;
@@ -42,7 +41,7 @@
   height: 95%;
   border-radius: 0 0 35px 35px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
   .navbar__container .logo__container .navLinks {
     display: none;
   }
@@ -65,11 +64,6 @@
 .navbar__container .navbar__authentication .more {
   position: relative;
   display: none;
-}
-@media screen and (min-width: 1025px) and (max-width: 1536px) {
-  .navbar__container .navbar__authentication .more {
-    display: block;
-  }
 }
 .navbar__container .navbar__authentication .more .balance__container {
   background-color: #000;
@@ -160,7 +154,7 @@
   justify-content: center;
   gap: 5px;
 }
-@media (max-width: 1025px) {
+@media (max-width: 1440px) {
   .navbar__container .navbar__authentication {
     display: none;
   }
@@ -168,7 +162,7 @@
 .navbar__container .drawer .MuiDivider-root {
   border-color: rgba(164, 164, 164, 0.329) !important;
 }
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1441px) {
   .navbar__container .drawer {
     display: none;
   }
@@ -190,10 +184,15 @@
 }
 @media screen and (min-width: 426px) {
   .MuiDrawer-paper {
-    width: 40% !important;
+    width: 50% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .MuiDrawer-paper {
+    width: 35% !important;
+  }
+}
+@media screen and (min-width: 1025px) {
   .MuiDrawer-paper {
     width: 30% !important;
   }
@@ -222,6 +221,9 @@
   align-items: center;
   gap: 20px;
   margin-bottom: 10px;
+  padding: 0 30px 20px;
+  border-radius: 5px;
+  width: 80%;
 }
 .navUserData img {
   height: 150px;

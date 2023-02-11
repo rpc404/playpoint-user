@@ -1,8 +1,9 @@
-// import { ethers } from "ethers";
 import { formatEther, BrowserProvider, Contract } from "ethers";
 import { toast } from "react-toastify";
 import { handleRPCWalletLogin, handleTRONWALLETLogin } from "./RPC";
 import { useRPCContext } from "../contexts/WalletRPC/RPCContext";
+import ERC20BasicAPI from "../utils/ERC20BasicABI.json";
+const { ethereum } = window;
 
 /**
  * @dev User wallet authentication
@@ -15,7 +16,7 @@ export const handleWalletLogin = async (network) => {
     const provider = new BrowserProvider(ethereum);
     const contract = new Contract(
       import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
-      await import("./ERC20BasicABI.json"),
+      ERC20BasicAPI,
       provider
     );
 

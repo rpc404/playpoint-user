@@ -44,7 +44,6 @@
 .transaction__wrapper .wrapper .options__container .options .links {
   display: flex;
   align-items: center;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   /* color: #000; */

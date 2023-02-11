@@ -84,16 +84,7 @@
   box-shadow: 0 0 2px 0px #5a5a5a;
 }
 .signin__container .wrapper .signin__form.active {
-  -webkit-animation: fadeOut 2s;
-          animation: fadeOut 2s;
-}
-@-webkit-keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  animation: fadeOut 2s;
 }
 @keyframes fadeOut {
   from {
@@ -200,16 +191,7 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 2px 0px #5a5a5a;
-  -webkit-animation: fadeIn 2s;
-          animation: fadeIn 2s;
-}
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  animation: fadeIn 2s;
 }
 @keyframes fadeIn {
   from {

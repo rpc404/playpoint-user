@@ -12,11 +12,9 @@ import { FixtureProvider } from "./contexts/Fixture/FixtureContext";
 import { PredictionsProvider } from "./contexts/Predictions/PredictionsContext";
 import Loader from "./components/Loader";
 import "./i18n";
-import { Buffer } from "buffer";
 import { inject } from "@vercel/analytics";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallback";
-window.Buffer = Buffer;
 inject();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
