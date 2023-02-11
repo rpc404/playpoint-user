@@ -9,12 +9,13 @@ import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfil
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), NgmiPolyfill({defineGlobal:"globalThis"})],
+  plugins: [react()],
   css: {
     postcss: {
       plugins: [autoprefixer({}), cssnanoPlugin()],
     },
   },
+
   build: {
     sourcemap: "inline",
     target: "esnext",
@@ -31,27 +32,6 @@ export default defineConfig({
           return `assets/${extType}/[name].[ext]`;
         },
       },
-      plugins: [
-        // Enable rollup polyfills plugin
-        // used during production bundling
-        NgmiPolyfill({defineGlobal:"globalThis"})
-    ]
     },
   },
-  optimizeDeps: {
-    esbuildOptions: {
-        // Node.js global to browser globalThis
-        define: {
-            global: 'globalThis'
-        },
-        // Enable esbuild polyfill plugins
-        plugins: [
-            NodeGlobalsPolyfillPlugin({
-                process: true,
-                buffer: true
-            }),
-            NodeModulesPolyfillPlugin()
-        ]
-    }
-},
 });
