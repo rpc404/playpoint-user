@@ -12,6 +12,7 @@ const Leaderboard = () => {
   const [{ marketplaces }, dispatchMarketplaceData] = useMarketplaceContext();
   const [marketplace, setMarketplace] = React.useState([]);
 
+  const controller = new AbortController();
   React.useEffect(() => {
     // Windows
     if (navigator.appVersion.indexOf("Win") != -1) setActiveOS("windowsOS");
@@ -21,12 +22,13 @@ const Leaderboard = () => {
     else setActiveOS("otherOS");
 
     // Fetch fixtures
+
     (async () => {
       const marketplaceSlug = sessionStorage.getItem("marketplaceSlug");
       if (marketplaceSlug !== "") {
         const data = await (
           await import("../../api/Leaderboards")
-        ).getLeaderboardByMarketplaceSlug(marketplaceSlug);
+        ).getLeaderboardByMarketplaceSlug(marketplaceSlug, controller);
         let _leaderboard = data.data.leaderboard;
         setLeaderboards(_leaderboard);
         setLoading(false);
@@ -38,12 +40,17 @@ const Leaderboard = () => {
         setLoading(false);
       }
     })();
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
-        let res = (await import("../../api/Marketplace")).getMarketplaces();
+        let res = (await import("../../api/Marketplace")).getMarketplaces(
+          controller
+        );
         res = res.data.marketplaces;
         setMarketplace(res);
 
