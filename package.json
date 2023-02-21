@@ -54,6 +54,6 @@
     "babel-plugin-import": "^1.13.6",
     "cssnano": "^5.1.14",
     "postcss": "^8.4.21",
-    "vite": "4.1.1"
+    "vite": "4.1.4"
   }
 }
