@@ -80,7 +80,8 @@ export default function App() {
       <PageRouters socket={channel} toggleAuthenticationDrawer={toggleAuthenticationDrawer} />
       <div className="divider"></div>
       <Footer />
-
+      
+{/* 
       <div className="snowflakes" aria-hidden="true">
         <div className="snowflake">❅</div>
         <div className="snowflake">❆</div>
@@ -101,7 +102,7 @@ export default function App() {
         <div className="snowflake">❆</div>
         <div className="snowflake">❅</div>
         <div className="snowflake">❆</div>
-      </div>
+      </div> */}
     </>
   );
 }
