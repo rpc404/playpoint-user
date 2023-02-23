@@ -6,7 +6,7 @@ export const getLeaderboardByMarketplaceSlug = async (
 ) => {
   return await axios.get(
     import.meta.env.VITE_API_URI + "api/v1/leaderboards/" + marketplaceSlug,
-    { signal: controller.signal }
+    { signal: controller?.signal }
   );
 };
 
