@@ -41,12 +41,14 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           provider
         );
         (async () => {
+          // eth contract
           const ethBalance = await provider.getBalance(userPublicAddress);
           const PPTTBalance = await contract.balanceOf(userPublicAddress);
           setBalance({
             ethBalance: formatEther(ethBalance),
             ppttBalance: formatEther(PPTTBalance),
           });
+          
           const data = {
             isWalletConnected,
             username,
@@ -86,14 +88,16 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
         })();
       }
     } else {
+      console.log("NON WALLET USER FOUND", network)
       if (isWalletConnected && network === "arbitrum") {
         (async () => {
-          const ethBalance = 100 * 10 ** 12;
-          const PPTTBalance = 100 * 10 ** 18;
+          const ethBalance = (10 * 10**18).toString();
+          const PPTTBalance = (10 * 10**18).toString();
           setBalance({
             ethBalance: formatEther(ethBalance),
             ppttBalance: formatEther(PPTTBalance),
           });
+          console.log(balance)
           const data = {
             isWalletConnected,
             username,
