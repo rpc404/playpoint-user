@@ -23,10 +23,13 @@ export default function Home() {
 
   const { t } = useTranslation();
 
+  // const abortControllerRef = React.useRef(new AbortController())
+
+  const controller = new AbortController();
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
-        let res = await getMarketplaces();
+        let res = await getMarketplaces(controller);
         res = res.data.marketplaces;
         dispatchMarketplaceData({
           type: ACTIONS.SET_ALL_MARKETPLACE,
@@ -36,6 +39,9 @@ export default function Home() {
       setLoading(false);
     })();
     window.scrollTo(0, 0);
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   // const { isLoading, error, data } = useQuery(

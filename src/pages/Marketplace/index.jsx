@@ -35,11 +35,11 @@ const MarketPlace = () => {
       }
     }
   };
-
+  const controller = new AbortController();
   React.useEffect(() => {
     (async () => {
       if (marketplaces.length === 0) {
-        let res = await getMarketplaces();
+        let res = await getMarketplaces(controller);
         res = res.data.marketplaces;
         setSearchedFixture(res);
 
@@ -50,6 +50,9 @@ const MarketPlace = () => {
       }
       setLoading(false);
     })();
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (

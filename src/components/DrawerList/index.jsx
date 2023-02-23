@@ -145,6 +145,23 @@ export default function DrawerList({
         </ListItem>
       </List>
       <Divider />
+      <List>
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/discussion"), toggleDrawer(anchor, false);
+          }}
+        >
+          <ListItemButton
+            className="drawerListItem"
+            onClick={toggleDrawer(anchor, false)}
+          >
+            <i className="ri-discuss-line"></i>
+            <ListItemText primary={`${t("Discussion")}`} />
+          </ListItemButton>
+        </ListItem>
+      </List>
+      <Divider />
       {!isWalletConnected ? (
         <List>
           <ListItem

@@ -1,0 +1,197 @@
+.discussion__container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 10fr 3fr;
+  height: 100vh;
+  width: 98%;
+  margin: 1em auto;
+  gap: 15px;
+  position: relative;
+}
+.discussion__container .refresh__divider {
+  background-color: rgba(172, 172, 179, 0.4196078431);
+  height: 1px;
+}
+.discussion__container .discussion__menuIcons {
+  background-color: #2e2e3f;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+.discussion__container .discussion__menuIcons img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding: 10px;
+  aspect-ratio: attr(width)/arrt(height);
+}
+.discussion__container .menuLists {
+  background-color: #2e2e3f;
+  height: -moz-min-content;
+  height: min-content;
+  border-radius: 5px;
+}
+.discussion__container .menuLists .menus {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.discussion__container .menuLists .menus p {
+  color: #acacb3;
+}
+.discussion__container .menuLists .menus h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #efefef;
+  cursor: pointer;
+}
+.discussion__container .discussions {
+  border: 1px dashed #717171;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: 5px !important; /* for firefox */
+  position: relative;
+}
+.discussion__container .discussions::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+  height: 10px;
+}
+.discussion__container .discussions::-webkit-scrollbar-track {
+  background: transparent;
+}
+.discussion__container .discussions::-webkit-scrollbar-thumb {
+  background-color: #59585d;
+  border-radius: 8px;
+  border-left: none;
+  border-right: none;
+}
+.discussion__container .discussions::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+.discussion__container .discussions::-webkit-scrollbar-track-piece:start {
+  margin-top: 1px;
+}
+.discussion__container .discussions::-webkit-scrollbar-track-piece:end {
+  margin-bottom: 10px;
+}
+.discussion__container .discussions .wrapper {
+  width: 98%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.discussion__container .discussions .wrapper .connect {
+  background-color: #2e2e3f;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.discussion__container .discussions .wrapper .connect p {
+  color: #b7d8d9;
+  font-size: 1.1em;
+}
+.discussion__container .discussions .wrapper .connect p span {
+  color: #fff;
+}
+.discussion__container .discussions .wrapper .connect button {
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+}
+.discussion__container .discussions .wrapper .refresh {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.discussion__container .discussions .wrapper .refresh p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 10px;
+  background-color: #1c1d23;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.discussion__container .discussions .wrapper .userDetails__container {
+  display: flex;
+  flex-direction: column;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container {
+  display: flex;
+  align-items: center;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .userInfo {
+  display: flex;
+  gap: 10px;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .userInfo p:last-child {
+  color: rgba(255, 255, 255, 0.464);
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .icons_container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 5px;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .icons_container .left {
+  display: flex;
+  gap: 10px;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .icons_container .left p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.discussion__container .active__users p:first-child {
+  color: #acacb3;
+  margin: 10px 0;
+}
+.discussion__container .active__users .user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.discussion__container .active__users .user div {
+  display: flex;
+  align-items: center;
+}
+.discussion__container .active__users .user div img {
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.discussion__container .active__users .user button {
+  padding: 5px;
+  cursor: pointer;
+  font-size: 1.001em;
+}/*# sourceMappingURL=style.css.map */

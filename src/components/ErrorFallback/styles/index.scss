@@ -1,0 +1,19 @@
+.errorfallback__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    gap: 20px;
+
+    pre {
+        color: #fff;
+    }
+
+    p {
+        &:last-child {
+            font-size: 1.1em;
+        }
+    }
+}

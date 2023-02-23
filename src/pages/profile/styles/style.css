@@ -61,7 +61,6 @@
   gap: 5px;
   margin: 0.5em 0;
   background-color: rgba(123, 123, 123, 0.339);
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding: 0.5em;

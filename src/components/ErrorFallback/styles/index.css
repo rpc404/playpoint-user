@@ -1,0 +1,15 @@
+.errorfallback__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  gap: 20px;
+}
+.errorfallback__container pre {
+  color: #fff;
+}
+.errorfallback__container p:last-child {
+  font-size: 1.1em;
+}/*# sourceMappingURL=index.css.map */

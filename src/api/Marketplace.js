@@ -1,8 +1,9 @@
 import axios from "axios";
 
-export const getMarketplaces = async () => {
+export const getMarketplaces = async (controller) => {
   var marketplaces = await axios.get(
-    import.meta.env.VITE_API_URI + "api/v1/marketplace"
+    import.meta.env.VITE_API_URI + "api/v1/marketplace",
+    { signal: controller.signal }
   );
   return marketplaces;
 };

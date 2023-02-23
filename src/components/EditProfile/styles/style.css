@@ -37,7 +37,6 @@
 }
 .editprofile__container .editProfile label,
 .editprofile__container .editProfile input {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }

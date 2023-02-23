@@ -1,0 +1,217 @@
+.discussion__container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 10fr 3fr;
+  height: 100vh;
+  width: 98%;
+  margin: 1em auto;
+  gap: 15px;
+  position: relative;
+
+  .refresh__divider {
+    background-color: #acacb36b;
+    height: 1px;
+  }
+
+  .discussion__menuIcons {
+    background-color: #2e2e3f;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      padding: 10px;
+      aspect-ratio: attr(width) / arrt(height);
+    }
+  }
+  .menuLists {
+    background-color: #2e2e3f;
+    height: min-content;
+    border-radius: 5px;
+
+    .menus {
+      padding: 10px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      p {
+        color: #acacb3;
+      }
+
+      h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #efefef;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .discussions {
+    border: 1px dashed #717171;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: 5px !important; /* for firefox */
+    position: relative;
+
+    &::-webkit-scrollbar {
+      display: block ;
+      width: 5px;
+      height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #59585d;
+      border-radius: 8px;
+      border-left: none;
+      border-right: none;
+    }
+    &::-webkit-scrollbar-track-piece {
+      background: transparent;
+      &:start {
+        margin-top: 1px;
+      }
+      &:end {
+        margin-bottom: 10px;
+      }
+    }
+
+    .wrapper {
+      width: 98%;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .connect {
+        background-color: #2e2e3f;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+
+        p {
+          color: #b7d8d9;
+          font-size: 1.1em;
+          span {
+            color: #fff;
+          }
+        }
+        button {
+          padding: 10px;
+          cursor: pointer;
+          border: none;
+        }
+      }
+      .refresh {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        p {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          padding: 8px 10px;
+          background-color: #1c1d23;
+          width: fit-content;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+      }
+      .userDetails__container {
+        display: flex;
+        flex-direction: column;
+
+        .userdetails {
+          display: flex;
+          justify-content: space-between;
+          margin: 0 0 10px;
+
+          .userimage__container {
+            display: flex;
+            align-items: center;
+            img {
+              height: 50px;
+              width: 50px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+
+            .user {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+
+              .userInfo {
+                display: flex;
+                gap: 10px;
+
+                p {
+                  &:last-child {
+                    color: rgba(255, 255, 255, 0.464);
+                  }
+                }
+              }
+              .icons_container {
+                display: flex;
+                justify-content: space-between;
+                margin: 0 0 5px;
+
+                .left {
+                  display: flex;
+                  gap: 10px;
+                  p {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    color: #fff9;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .active__users {
+    p {
+      &:first-child {
+        color: #acacb3;
+        margin: 10px 0;
+      }
+    }
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        align-items: center;
+        img {
+          height: 50px;
+          width: 50px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      button {
+        padding: 5px;
+        cursor: pointer;
+        font-size: 1.001em;
+      }
+    }
+  }
+}

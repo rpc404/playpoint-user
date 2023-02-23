@@ -22,6 +22,7 @@ const EditProfile = React.lazy(() =>
   import("../components/EditProfile/EditProfile")
 );
 const Transaction = React.lazy(() => import("../pages/transaction"));
+const Discussion = React.lazy(() => import("../pages/Discussion"));
 
 export default function PageRouters({ socket, toggleAuthenticationDrawer }) {
   return (
@@ -41,6 +42,7 @@ export default function PageRouters({ socket, toggleAuthenticationDrawer }) {
       <Route path="terms-conditions" element={<TermsAndConditions />} />
       <Route path="challenges" element={<Challenges />} />
       <Route path="signin" element={<SignIn />} />
+      <Route path="discussion" element={<Discussion />} />
     </Routes>
   );
 }
