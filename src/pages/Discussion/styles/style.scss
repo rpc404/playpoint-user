@@ -1,6 +1,6 @@
 .discussion__container {
   display: grid;
-  grid-template-columns: 1fr 2.5fr 10fr 3fr;
+  grid-template-columns: 2.5fr 10fr 3fr;
   height: 100vh;
   width: 98%;
   margin: 1em auto;
@@ -59,13 +59,12 @@
     position: relative;
 
     &::-webkit-scrollbar {
-      display: block ;
+      display: block;
       width: 5px;
       height: 10px;
     }
     &::-webkit-scrollbar-track {
       background: transparent;
-
     }
     &::-webkit-scrollbar-thumb {
       background-color: #59585d;
@@ -112,6 +111,9 @@
           padding: 10px;
           cursor: pointer;
           border: none;
+          background-color: #6169ff;
+          color: #fff;
+          font-size: 16px;
         }
       }
       .refresh {
@@ -186,11 +188,46 @@
     }
   }
   .active__users {
-    p {
-      &:first-child {
-        color: #acacb3;
-        margin: 10px 0;
+    .profile {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #2e2e3f;
+      border-radius: 5px;
+      margin: 0 0 20px;
+
+      .notification {
+        border: 1px solid #b9b9b9;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
       }
+
+      .account_details {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          aspect-ratio: attr(width) / attr(height);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+      }
+    }
+
+    .active_title {
+      color: #acacb3;
+      margin: 10px 0 5px;
     }
     .user {
       display: flex;
@@ -208,9 +245,15 @@
         }
       }
       button {
-        padding: 5px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        padding: 5px 10px;
         cursor: pointer;
         font-size: 1.001em;
+        background-color: #6169ff;
+        color: #fff;
+        border: none;
       }
     }
   }

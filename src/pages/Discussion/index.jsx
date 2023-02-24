@@ -1,17 +1,21 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import "./styles/style.css";
 
 const Discussion = () => {
   return (
     <div className="discussion__container">
-      <div className="discussion__menuIcons">
+      <Helmet>
+        <title>Playpoint | Discussion</title>
+      </Helmet>
+      {/* <div className="discussion__menuIcons">
         <img
           src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
           alt="playpoint__logo"
           height={"80px"}
           width={"80px"}
         />
-      </div>
+      </div> */}
       <div className="menuLists">
         <div className="menus">
           <p>Menu</p>
@@ -74,13 +78,37 @@ const Discussion = () => {
       </div>
 
       <div className="active__users">
-        <p>Active users</p>
+        <div className="profile">
+          <p className="notification">
+            <i className="ri-notification-line"></i>
+          </p>
+          <div className="account_details">
+            <img
+              src="https://www.robohash.org/1"
+              alt="robohash_img"
+              height={"50"}
+              width={"50"}
+            />
+            <div>
+              <p>id</p>
+              <p>
+                <i className="ri-wallet-line"></i>
+              </p>
+            </div>
+            <p>
+              <i className="ri-more-2-fill"></i>
+            </p>
+          </div>
+        </div>
+        <p className="active_title">Active users</p>
         <div className="user">
           <div>
             <img src="https://www.robohash.org/1" alt="robohash_img" />
             <p>username</p>
           </div>
-          <button>follow</button>
+          <button>
+            <i className="ri-user-follow-fill"></i> Follow
+          </button>
         </div>
       </div>
     </div>

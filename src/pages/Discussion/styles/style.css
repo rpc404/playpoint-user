@@ -1,6 +1,6 @@
 .discussion__container {
   display: grid;
-  grid-template-columns: 1fr 2.5fr 10fr 3fr;
+  grid-template-columns: 2.5fr 10fr 3fr;
   height: 100vh;
   width: 98%;
   margin: 1em auto;
@@ -106,6 +106,9 @@
   padding: 10px;
   cursor: pointer;
   border: none;
+  background-color: #6169ff;
+  color: #fff;
+  font-size: 16px;
 }
 .discussion__container .discussions .wrapper .refresh {
   display: flex;
@@ -170,9 +173,42 @@
   gap: 5px;
   color: rgba(255, 255, 255, 0.6);
 }
-.discussion__container .active__users p:first-child {
+.discussion__container .active__users .profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #2e2e3f;
+  border-radius: 5px;
+  margin: 0 0 20px;
+}
+.discussion__container .active__users .profile .notification {
+  border: 1px solid #b9b9b9;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.discussion__container .active__users .profile .account_details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.discussion__container .active__users .profile .account_details img {
+  aspect-ratio: attr(width)/attr(height);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.discussion__container .active__users .profile .account_details div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.discussion__container .active__users .active_title {
   color: #acacb3;
-  margin: 10px 0;
+  margin: 10px 0 5px;
 }
 .discussion__container .active__users .user {
   display: flex;
@@ -191,7 +227,13 @@
   border-radius: 50%;
 }
 .discussion__container .active__users .user button {
-  padding: 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 5px 10px;
   cursor: pointer;
   font-size: 1.001em;
+  background-color: #6169ff;
+  color: #fff;
+  border: none;
 }/*# sourceMappingURL=style.css.map */
