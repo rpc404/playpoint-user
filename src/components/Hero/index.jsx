@@ -83,9 +83,10 @@ export default function Hero() {
           />
           <img
             src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-35-22_zJL0CkuV9o.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673268642929"
-            alt=""
+            alt="hero gallery image"
             height={"460"}
             width={"320"}
+            loading="eager"
           />
         </picture>
         <div className="absoluteImages">
@@ -135,8 +136,8 @@ export default function Hero() {
                 srcSet={additional1stImage}
                 type="image/avif"
                 media="(min-width:992px)"
-                width={"718"}
-                height={"698"}
+                width={"200"}
+                height={"200"}
               />
               <img
                 src="https://ik.imagekit.io/domsan/Screenshot_from_2023-01-09_18-56-19_aZevJJ4V3y.png?ik-sdk-version=javascript-1.4.3&updatedAt=1673269899496"

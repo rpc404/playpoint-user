@@ -178,7 +178,7 @@ export default function Predict() {
     const pusher = new Pusher("e6640b48a82cccbb13d0", {
       cluster: "ap2",
     });
-    pusher.connection.bind("connected", function() {
+    pusher.connection.bind("connected", function () {
       console.log("Weboscket Connected");
     });
     const predictionChannel = pusher.subscribe("prediction-channel");
@@ -258,13 +258,27 @@ export default function Predict() {
           <div className="predictionTable__topBar">
             <div className="predictionTable__competitor">
               <div>
-                <p>{fixture?.HomeTeam}</p>
-                {GetFlags(marketplaceSlug, fixture?.HomeTeam)}
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {GetFlags(marketplaceSlug, fixture?.HomeTeam)}
+                  <p>{fixture?.HomeTeam}</p>
+                </div>
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <h2 style={{ fontSize: "1.5em" }}>
+                    {fixture?.HomeTeamScore}
+                  </h2>
+                </div>
               </div>
-              <span>vs</span>
+              <span style={{ fontSize: "2.5em" }}>-</span>
               <div>
-                {GetFlags(marketplaceSlug, fixture?.AwayTeam)}
-                <p>{fixture.AwayTeam}</p>
+                <div>
+                  <h2 style={{ fontSize: "1.5em" }}>
+                    {fixture?.AwayTeamScore}
+                  </h2>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {GetFlags(marketplaceSlug, fixture?.AwayTeam)}
+                  <p>{fixture.AwayTeam}</p>
+                </div>
               </div>
             </div>
 

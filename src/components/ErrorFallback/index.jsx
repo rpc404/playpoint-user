@@ -9,6 +9,7 @@ const ErrorFallback = ({ error }) => {
         There might be network issue so please reload or try again after
         sometime.
       </p>
+      <button onClick={() => window.location.reload()}>reload</button>
     </div>
   );
 };

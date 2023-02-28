@@ -1,21 +1,16 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import "./styles/style.css";
 
-const Discussion = () => {
+const Discussion = ({ toggleAuthenticationDrawer }) => {
+  const [{ isWalletConnected }] = useRPCContext();
+
   return (
     <div className="discussion__container">
       <Helmet>
         <title>Playpoint | Discussion</title>
       </Helmet>
-      {/* <div className="discussion__menuIcons">
-        <img
-          src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
-          alt="playpoint__logo"
-          height={"80px"}
-          width={"80px"}
-        />
-      </div> */}
       <div className="menuLists">
         <div className="menus">
           <p>Menu</p>
@@ -29,13 +24,17 @@ const Discussion = () => {
       </div>
       <div className="discussions">
         <div className="wrapper">
-          <div className="connect">
-            <p>
-              You can connect using <span>Metamask</span> or <span>Tron</span>{" "}
-              wallet to share content.
-            </p>
-            <button>Connect</button>
-          </div>
+          {isWalletConnected === false && (
+            <div className="connect">
+              <p>
+                You can connect using <span>Metamask</span> or <span>Tron</span>{" "}
+                wallet to share content.
+              </p>
+              <button onClick={() => toggleAuthenticationDrawer()}>
+                Connect
+              </button>
+            </div>
+          )}
           <div className="refresh">
             <p role={"button"}>
               <i className="ri-refresh-line"></i>

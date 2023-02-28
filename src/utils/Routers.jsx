@@ -24,7 +24,7 @@ const EditProfile = React.lazy(() =>
 const Transaction = React.lazy(() => import("../pages/transaction"));
 const Discussion = React.lazy(() => import("../pages/Discussion"));
 
-export default function PageRouters({ socket }) {
+export default function PageRouters({ socket, toggleAuthenticationDrawer }) {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
@@ -42,7 +42,12 @@ export default function PageRouters({ socket }) {
       <Route path="terms-conditions" element={<TermsAndConditions />} />
       <Route path="challenges" element={<Challenges />} />
       <Route path="signin" element={<SignIn />} />
-      <Route path="discussion" element={<Discussion />} />
+      <Route
+        path="discussion"
+        element={
+          <Discussion toggleAuthenticationDrawer={toggleAuthenticationDrawer} />
+        }
+      />
     </Routes>
   );
 }

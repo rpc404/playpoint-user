@@ -13,12 +13,8 @@ export default function MarketplaceCard({ marketplace }) {
       },
     });
   };
-  const {
-    marketplaceCoverImage,
-    marketplaceName,
-    marketplaceSlug,
-    closed,
-  } = marketplace;
+  const { marketplaceCoverImage, marketplaceName, marketplaceSlug, closed } =
+    marketplace;
 
   const styles = {
     background: `url(${marketplaceCoverImage?.url}) top center /cover no-repeat`,
@@ -31,6 +27,7 @@ export default function MarketplaceCard({ marketplace }) {
       onClick={() => {
         closed ? toast("Marketplace Closed") : navHandler(marketplaceSlug);
       }}
+      data-bgSrc={`${marketplaceCoverImage?.url}`}
     >
       <h1>{`${marketplaceName}`}</h1>
     </div>

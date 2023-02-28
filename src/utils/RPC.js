@@ -46,7 +46,8 @@ export const handleRPCWalletLogin = async () => {
       const userAddress = await ethereum.request({
         method: "eth_requestAccounts",
       });
-
+      console.log(userAddress);
+      console.log(ethereum.isMetaMask)
       if (ethereum.isMetaMask)
         console.log(
           "Metamask Says: Other EVM Compatible Wallets not detected!"
@@ -55,13 +56,13 @@ export const handleRPCWalletLogin = async () => {
         console.log(
           "Metamask Says: Other EVM Compatible wallets maybe installed!"
         );
-
+        console.log(userAddress);
       const tempRpcData = {
         userPublicAddress: userAddress[0],
         isWalletConnected: true,
         username: "",
         network: "arbitrum",
-        isNonWalletUser:false,
+        isNonWalletUser: false,
       };
       if (userAddress[0]) {
         await setProfile({ data: tempRpcData }).then((res) => {
@@ -80,7 +81,11 @@ export const handleRPCWalletLogin = async () => {
   }
 };
 
-const url = window.location.protocol+"//"+window.location.host+window.location.pathname
+const url =
+  window.location.protocol +
+  "//" +
+  window.location.host +
+  window.location.pathname;
 
 // export const getPPTTBalance = async (userAddress) => {};
 
@@ -91,7 +96,7 @@ if (typeof ethereum !== "undefined" && !nonWallet) {
       userPublicAddress: accounts[0],
       isWalletConnected: true,
       username: "",
-      network:"arbitrum"
+      network: "arbitrum",
     };
     if (accounts[0]) {
       await setProfile({ data: tempRpcData }).then((res) => {
@@ -103,8 +108,8 @@ if (typeof ethereum !== "undefined" && !nonWallet) {
     localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
     localStorage.setItem("isRPCUserAuthenticated", true);
     localStorage.setItem("rpcUserExpiresAt", currentDate);
-    console.log(url)
-    window.location.assign(url+"?ref=switchAccount")
+    console.log(url);
+    window.location.assign(url + "?ref=switchAccount");
   });
   ethereum.on("chainChanged", (chainId) => {
     window.location.reload();
@@ -130,15 +135,14 @@ export const handleTRONWALLETLogin = async () => {
     checkTron();
   });
 
-  
   const tempRpcData = {
     userPublicAddress: "",
     isWalletConnected: false,
     username: "",
     network: "shasta",
-    isNonWalletUser:false
+    isNonWalletUser: false,
   };
-  
+
   if (!tronExists) {
     alert("Please login into Tronlink wallet extension!");
     return tempRpcData;
@@ -160,12 +164,12 @@ export const handleTRONWALLETLogin = async () => {
     tempRpcData.username = res.data.profile.username;
   });
   tempRpcData.userPublicAddress = tronWeb.defaultAddress.base58;
-  tempRpcData.isWalletConnected =true;
+  tempRpcData.isWalletConnected = true;
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + 6 * 60 * 60 * 1000);
   localStorage.setItem("rpcUserExpiresAt", currentDate);
   localStorage.setItem("isRPCUserAuthenticated", true);
   localStorage.setItem("rpcUserData", JSON.stringify(tempRpcData));
-  
+
   return tempRpcData;
 };

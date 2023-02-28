@@ -87,7 +87,6 @@
   cursor: pointer;
   color: rgb(41, 41, 41);
   border-radius: 3px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   color: #fff;

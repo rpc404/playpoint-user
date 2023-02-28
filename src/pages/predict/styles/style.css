@@ -59,39 +59,46 @@
   }
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar {
+  background-image: url("../../../images/stock.webp");
+  background-image: -webkit-image-set(url("../../../images/stock.avif") 1x, url("../../../images/stock.webp") 2x);
+  background-image: image-set(url("../../../images/stock.avif") 1x, url("../../../images/stock.webp") 2x);
+  background-size: cover;
+  background-position: center center;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.0666666667);
   padding: 10px 1vw 10px 1vw;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  z-index: 0;
+  justify-content: center;
+  flex-direction: column;
   color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(3.7px);
-  height: 60px;
+  height: 350px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar {
-    height: auto;
-  }
-}
-@media (max-width: 768px) {
-  .prediction__container .main__container .predictionTable .predictionTable__topBar {
-    flex-direction: column;
+    height: 450px;
   }
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor {
   display: flex;
-  gap: 5px;
   align-items: center;
+  gap: 5px;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-background-clip: text;
+  background-clip: text;
+  width: 90%;
+  margin: 0 auto;
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div {
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 5px;
   font-weight: 500;
   font-size: 18px;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div {
@@ -99,23 +106,21 @@
   }
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div img {
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
 }
-@media (max-width: 576px) {
-  .prediction__container .main__container .predictionTable .predictionTable__topBar .predictionTable__competitor div img {
-    width: 40px;
-    height: 40px;
-  }
-}
 .prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
   font-size: 14px;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-background-clip: text;
+  background-clip: text;
   /* & > div > p:last-child {
     color: #fff;
   } */
@@ -124,7 +129,7 @@
   .prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div {
     margin-top: 8px;
     display: flex;
-    font-size: 12px;
+    font-size: 1.2em;
   }
 }
 .prediction__container .main__container .predictionTable .predictionTable__topBar .marketInfo div p {
@@ -347,9 +352,9 @@
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount,
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount,
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount {
     flex-direction: column;
     gap: 15px;
   }
@@ -362,9 +367,9 @@
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount div,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount div,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount div,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount div {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount div,
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount div,
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount div {
     flex: 1;
   }
 }
@@ -379,9 +384,9 @@
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .top,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .top,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .top,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .top {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .top,
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .top,
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .top {
     width: 90vw;
   }
 }
@@ -401,9 +406,9 @@
 }
 @media (max-width: 576px) {
   .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-0 .predictionAmount .MuiSlider-root,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .MuiSlider-root,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .MuiSlider-root,
-.prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .MuiSlider-root {
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-1 .predictionAmount .MuiSlider-root,
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-2 .predictionAmount .MuiSlider-root,
+  .prediction__container .main__container .predictionTable .predictionTable__mainContainer .predictionTabs__container #simple-tabpanel-3 .predictionAmount .MuiSlider-root {
     width: 85vw;
   }
 }
