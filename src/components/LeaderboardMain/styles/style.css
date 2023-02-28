@@ -84,7 +84,7 @@ main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-ro
 }
 @media screen and (max-width: 968px) {
   main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .fixtureContent .homeTeam,
-main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .fixtureContent .awayTeam {
+  main.leaderboardMain__container .fixturesLeaderboard__container .MuiTableCell-root .fixtureContent .awayTeam {
     gap: 5px;
   }
 }

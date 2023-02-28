@@ -1,26 +1,62 @@
 import React from "react";
 import "./styles/style.css";
+import  {Orbis}  from "@orbisclub/orbis-sdk";
+let orbis = new Orbis();
 
 const Discussion = () => {
+  const [groupData, setGroupData] = React.useState({});
+  const [discussionData, setDiscussionData] = React.useState([]);
+  const [activeChannel, setActiveChannel] = React.useState([]);
+  React.useEffect(() => {
+    (async () => {
+      let {data} = await orbis.getGroup(import.meta.env.VITE_ORBIS_GROUP);
+      setGroupData(data);
+      setActiveChannel(data.channels[0].stream_id);
+    // console.log(data);
+
+        // let res = await orbis.connect_v2({ 
+        //   provider: window.ethereum,
+        //   lit: true
+        // });
+
+        // /** Check if connection is successful or not */
+        // if(res.status == 200) {
+        //   console.log(res);
+        //   // let res2 = await orbis.createPost({
+        //   //   body: "gm!",
+        //   //   context: "playpoint-app"
+        //   // });
+        //   // console.log(res2);
+        // } else {
+        //   console.log("Error connecting to Ceramic: ", res);
+        //   alert("Error connecting to Ceramic.");
+        // }
+    })();
+  },[])
+
+  React.useEffect(() => {
+    if(activeChannel){
+      getPosts(activeChannel)
+    }
+  }, [activeChannel])
+
+  // get channels posts
+  const getPosts = async (context) => {
+    const {data,error} = await orbis.getPosts({ context });
+    setDiscussionData(data);
+    console.log(data);
+
+  }
+
   return (
     <div className="discussion__container">
-      <div className="discussion__menuIcons">
-        <img
-          src="https://ik.imagekit.io/domsan/Logo_0vBSw9piY.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662803005580"
-          alt="playpoint__logo"
-          height={"80px"}
-          width={"80px"}
-        />
-      </div>
       <div className="menuLists">
         <div className="menus">
-          <p>Menu</p>
-          <h3># Welcome</h3>
-          <h3># Announcements</h3>
-          <h3>
-            <i className="ri-global-line"></i>
-            Global
-          </h3>
+          {
+            groupData?.channels && groupData?.channels.map((channel, key) =>  <button id={channel.content.group_id} key={key} onClick={()=>setActiveChannel(channel.stream_id)}>{channel.content.name}</button>)
+          }
+         
+          
         </div>
       </div>
       <div className="discussions">
@@ -39,7 +75,7 @@ const Discussion = () => {
             </p>
             <div className="refresh__divider"></div>
           </div>
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((_, index) => {
+          {discussionData.map((data, index) => {
             return (
               <div className="userDetails__container" key={index}>
                 <div className="userdetails">
@@ -47,10 +83,10 @@ const Discussion = () => {
                     <img src="https://www.robohash.org/1" alt="robohash_img" />
                     <div className="user">
                       <div className="userInfo">
-                        <p>Suraj Gaire</p>
-                        <p>Id</p>
+                        {/* <p>Suraj Gaire</p> */}
+                        <p>{data.creator}</p>
                       </div>
-                      <p>Testing again</p>
+                      <p>{data.content.body}</p>
                       <div className="icons_container">
                         <div className="left">
                           <p>

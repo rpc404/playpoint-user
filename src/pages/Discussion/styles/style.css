@@ -1,6 +1,6 @@
 .discussion__container {
   display: grid;
-  grid-template-columns: 1fr 2.5fr 10fr 3fr;
+  grid-template-columns: 2.5fr 10fr 3fr;
   height: 100vh;
   width: 98%;
   margin: 1em auto;
