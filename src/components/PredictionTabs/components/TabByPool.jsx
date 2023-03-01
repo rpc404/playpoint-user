@@ -19,6 +19,7 @@ import { useRPCContext } from "../../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../../contexts/WalletRPC/RPCReducer";
 import { formatEther, BrowserProvider, Contract } from "ethers";
 import { mkaeDuo } from "../../../api/Challenge";
+import WalletSelection from "../../WalletSelection";
 
 /**
  * @dev utils for slider
@@ -57,6 +58,8 @@ const PoolType = ({
   fixtureId,
   status,
   setMS,
+  toggleAuthenticationDrawer
+
 }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const _predictionData = {
@@ -333,9 +336,11 @@ const PoolType = ({
   };
 
   const handleLogin = async () => {
-    const data = await handleRPCWalletLogin();
-    await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
-    toast("Wallet Connected!");
+
+    // const data = await handleRPCWalletLogin();
+    // await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
+    // toast("Wallet Connected!");
+    toggleAuthenticationDrawer();
   };
 
   return (

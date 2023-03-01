@@ -15,7 +15,9 @@ import "./i18n";
 import { inject } from "@vercel/analytics";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallback";
+const { Buffer } = import("buffer")
 inject();
+Window.Buffer = Buffer;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>

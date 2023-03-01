@@ -59,55 +59,40 @@
       }
 
       .predictionTable__topBar {
-        background-image: url("../../../images/stock.webp");
+        background-image: url("../../../images/predictionbg.webp");
         background-image: -webkit-image-set(
-          url("../../../images/stock.avif") 1x,
-          url("../../../images/stock.webp") 2x
+          url("../../../images/predictionbg.avif") 1x,
+          url("../../../images/predictionbg.webp") 2x
         );
         background-image: image-set(
-          url("../../../images/stock.avif") 1x,
-          url("../../../images/stock.webp") 2x
+          url("../../../images/predictionbg.avif") 1x,
+          url("../../../images/predictionbg.webp") 2x
         );
         background-size: cover;
         background-position: center center;
-        border-bottom: 0.5px solid #0001;
         padding: 10px 1vw 10px 1vw;
-        // border-bottom-left-radius: 20px;
-        // border-bottom-right-radius: 20px;
         display: flex;
-        // gap: 50px;
-
-        // justify-content: space-between;
-        // -webkit-mask-image: linear-gradient(
-        //   rgb(0 0 0 /1),
-        //   rgb(0 0 0 /1),
-        //   rgb(0 0 0/0)
-        // );
-
-        // mask-image: linear-gradient(rgb(0 0 0/1), rgb(0 0 0/1), rgb(0 0 0/0));
         z-index: 0;
 
         justify-content: center;
         flex-direction: column;
         color: #fff;
-
-        // &::after {
-        //   display: block;
-        //   content: "";
-        //   background: linear-gradient(
-        //     to top,
-        //     rgba(0, 0, 0, 0.6),
-        //     transparent 50%
-        //   );
-        // }
-        // background: rgba(255, 255, 255, 0.08);
-        // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        // backdrop-filter: blur(10px);
-        // -webkit-backdrop-filter: blur(3.7px);
         height: 350px;
+        position: relative;
 
         @media screen and (min-width: 768px) {
           height: 450px;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: rgba($color: #000000, $alpha: 0.5);
+          z-index: -1;
         }
 
         // @media (max-width: 768px) {
@@ -125,6 +110,18 @@
 
           width: 90%;
           margin: 0 auto;
+          .score_details {
+            display: flex;
+
+            @media screen and (min-width: 426px) {
+              gap: 20px;
+            }
+            .teamscore {
+              @media screen and (min-width: 425px) {
+                font-size: 2em;
+              }
+            }
+          }
 
           div {
             width: 100%;
@@ -211,6 +208,7 @@
           }
         }
         .fixture_detail {
+          padding: 2em 0 0;
           display: flex;
           gap: 20px;
           justify-content: center;
@@ -222,6 +220,15 @@
           p {
             display: flex;
             gap: 5px;
+          }
+        }
+        .marketInfo {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          padding: 20px 0;
+          div {
+            display: flex;
           }
         }
         .fixture_results {

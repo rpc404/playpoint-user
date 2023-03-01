@@ -34,7 +34,7 @@ export default function PageRouters({ socket, toggleAuthenticationDrawer }) {
         <Route path="edit" element={<EditProfile />} />
       </Route>
       <Route path="fixture/:slug" element={<Fixture />} />
-      <Route path="predict/:fixtureId" element={<Predict socket={socket} />} />
+      <Route path="predict/:fixtureId" element={<Predict socket={socket} toggleAuthenticationDrawer={toggleAuthenticationDrawer} />} />
       <Route path="marketplace" element={<MarketPlace />} />
       <Route path="leaderboards" element={<Leaderboards />} />
       <Route path="prediction/:pid" element={<Prediction />} />
