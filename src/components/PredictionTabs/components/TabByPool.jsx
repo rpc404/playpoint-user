@@ -20,6 +20,7 @@ import { ACTIONS } from "../../../contexts/WalletRPC/RPCReducer";
 import { formatEther, BrowserProvider, Contract } from "ethers";
 import { mkaeDuo } from "../../../api/Challenge";
 import WalletSelection from "../../WalletSelection";
+import ABI from "../../../utils/ERC20BasicABI.json"
 
 /**
  * @dev utils for slider
@@ -108,7 +109,7 @@ const PoolType = ({
       const provider = new BrowserProvider(ethereum);
       const contract = new Contract(
         "0x53d168578974822bCAa95106C7d5a906BF100948",
-        import("../../../utils/ERC20BasicABI.json"),
+        ABI,
         provider
       );
 
