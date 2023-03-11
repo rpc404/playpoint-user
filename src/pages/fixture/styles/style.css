@@ -94,16 +94,7 @@
   height: 8px;
   background-color: green;
   border-radius: 50%;
-  -webkit-animation: bubble 1.4s ease infinite forwards alternate;
-          animation: bubble 1.4s ease infinite forwards alternate;
-}
-@-webkit-keyframes bubble {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.15);
-  }
+  animation: bubble 1.4s ease infinite forwards alternate;
 }
 @keyframes bubble {
   0% {

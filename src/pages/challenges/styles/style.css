@@ -62,7 +62,6 @@
   color: #0ddd97;
   padding: 2px 15px;
   border-radius: 5px;
-  max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
   text-transform: capitalize;
@@ -71,7 +70,6 @@
   color: #e7f82e;
   padding: 2px 15px;
   border-radius: 5px;
-  max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
   text-transform: capitalize;

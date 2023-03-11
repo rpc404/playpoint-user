@@ -141,16 +141,10 @@
   transform: scale3d(1.02, 1.02, 1.02);
 }
 .hero__container .heroAdditionalInfo img.rotatingImage {
-  -webkit-animation: spin 4s linear infinite;
   animation: spin 4s linear infinite;
 }
 .hero__container .heroAdditionalInfo img.rotatingImage:hover {
   transform: initial;
-}
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(-360deg);
-  }
 }
 @keyframes spin {
   100% {
