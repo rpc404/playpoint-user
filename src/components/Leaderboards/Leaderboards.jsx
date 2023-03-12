@@ -29,6 +29,7 @@ export default function Leaderboards({ marketplaceSlug }) {
   const [loading, setLoading] = React.useState(true);
   const [leaderboards, setLeaderboards] = React.useState([]);
 
+  const controller = new AbortController();
   React.useEffect(() => {
     // Windows
     if (navigator.appVersion.indexOf("Win") != -1) setActiveOS("windowsOS");
@@ -41,12 +42,18 @@ export default function Leaderboards({ marketplaceSlug }) {
     (async () => {
       if (marketplaceSlug !== "") {
         sessionStorage.setItem("marketplaceSlug", marketplaceSlug);
-        const data = await getLeaderboardByMarketplaceSlug(marketplaceSlug);
+        const data = await getLeaderboardByMarketplaceSlug(
+          marketplaceSlug,
+          controller
+        );
         let _leaderboard = data.data.leaderboard;
         setLeaderboards(_leaderboard);
         setLoading(false);
       }
     })();
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (

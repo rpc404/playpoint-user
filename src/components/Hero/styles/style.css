@@ -89,6 +89,7 @@
   width: 20vw;
   height: 48vh;
   border-radius: 200px;
+  aspect-ratio: attr(width)/attr(height);
   -o-object-fit: cover;
      object-fit: cover;
   border: 5px solid #fff;
@@ -108,11 +109,14 @@
 }
 .hero__container .heroGallery__container .absoluteImages picture img {
   width: 14vw;
+  aspect-ratio: attr(width)/attr(height);
+  height: auto;
 }
 .hero__container .heroGallery__container .absoluteImages picture:first-child img {
   width: 14vw;
   border-radius: 190px;
   height: 35vh;
+  aspect-ratio: attr(width)/attr(height);
 }
 .hero__container .heroGallery__container .absoluteImages picture:last-child img:last-child {
   height: 28vh;
@@ -128,8 +132,7 @@
   line-height: 1.5;
 }
 .hero__container .heroAdditionalInfo img {
-  width: 220px;
-  height: 220px;
+  aspect-ratio: attr(width)/attr(height);
   border-radius: 50%;
   cursor: pointer;
   transition: 0.4s all ease-in-out;

@@ -13,12 +13,16 @@ export default function LeaderboardMain() {
   const [topRanked, setTopRanked] = React.useState([]);
   const [currPage, setCurrPage] = React.useState(1);
 
+  const controller = new AbortController();
   React.useEffect(() => {
-    getLeaderboardByMarketplaceSlug("fifa-worldcup").then((res) => {
+    getLeaderboardByMarketplaceSlug("fifa-worldcup", controller).then((res) => {
       setTopRanked(res.data.topranked);
       setLeaderboards(res.data.leaderboard);
     });
     setLoading(false);
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (

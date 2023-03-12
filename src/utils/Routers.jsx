@@ -42,7 +42,12 @@ export default function PageRouters({ socket, toggleAuthenticationDrawer }) {
       <Route path="terms-conditions" element={<TermsAndConditions />} />
       <Route path="challenges" element={<Challenges />} />
       <Route path="signin" element={<SignIn />} />
-      <Route path="discussion" element={<Discussion />} />
+      <Route
+        path="discussion"
+        element={
+          <Discussion toggleAuthenticationDrawer={toggleAuthenticationDrawer} />
+        }
+      />
     </Routes>
   );
 }

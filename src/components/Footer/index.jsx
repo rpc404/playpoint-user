@@ -30,6 +30,17 @@ const index = () => {
     }
   };
 
+  React.useEffect(() => {
+    window.onclick = (e) => {
+      if (
+        (e.target.className !== "dropdown__btn") &
+        (e.target.classList[1] !== "icon")
+      ) {
+        setClicked(false);
+      }
+    };
+  }, []);
+
   return (
     <div className="footer__container">
       <div className="footer">
@@ -126,8 +137,8 @@ const index = () => {
                 className="dropdown__btn"
                 aria-label="Languages"
               >
-                <i className="ri-global-line"></i>
-                <i className="ri-arrow-drop-down-line"></i>
+                <i className="ri-global-line icon"></i>
+                <i className="ri-arrow-drop-down-line icon"></i>
               </button>
               {clicked && (
                 <ul className="dropdown-content">

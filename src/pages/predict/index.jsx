@@ -50,7 +50,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Predict({toggleAuthenticationDrawer}) {
+export default function Predict({ toggleAuthenticationDrawer }) {
   const [marketplaceSlug, setMS] = React.useState("");
 
   const { state } = useLocation();
@@ -178,7 +178,7 @@ export default function Predict({toggleAuthenticationDrawer}) {
     const pusher = new Pusher("e6640b48a82cccbb13d0", {
       cluster: "ap2",
     });
-    pusher.connection.bind("connected", function() {
+    pusher.connection.bind("connected", function () {
       console.log("Weboscket Connected");
     });
     const predictionChannel = pusher.subscribe("prediction-channel");
@@ -249,7 +249,6 @@ export default function Predict({toggleAuthenticationDrawer}) {
             fixture={fixture}
             open={open}
             setVolume={setVolume}
-            
           />
         </div>
         {/*
@@ -259,18 +258,43 @@ export default function Predict({toggleAuthenticationDrawer}) {
           <div className="predictionTable__topBar">
             <div className="predictionTable__competitor">
               <div>
-                <p>{fixture?.HomeTeam}</p>
-                {GetFlags(marketplaceSlug, fixture?.HomeTeam)}
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {GetFlags(marketplaceSlug, fixture?.HomeTeam)}
+                  <p>{fixture?.HomeTeam}</p>
+                </div>
               </div>
-              <span>vs</span>
+              {!_status || _status !== "closed" ? (
+                timeLeft
+              ) : (
+                <div className="score_details">
+                  <div
+                    style={{ display: "flex", justifyContent: "flex-end" }}
+                    className="teamscore"
+                  >
+                    <h2 style={{ fontSize: "1.5em" }}>
+                      {fixture?.HomeTeamScore}
+                    </h2>
+                  </div>
+                  <span style={{ fontSize: "2.5em" }} className="span">
+                    -
+                  </span>
+                  <div className="teamscore">
+                    <h2 style={{ fontSize: "1.5em" }}>
+                      {fixture?.AwayTeamScore}
+                    </h2>
+                  </div>
+                </div>
+              )}
               <div>
-                {GetFlags(marketplaceSlug, fixture?.AwayTeam)}
-                <p>{fixture.AwayTeam}</p>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {GetFlags(marketplaceSlug, fixture?.AwayTeam)}
+                  <p style={{ textAlign: "center" }}>{fixture.AwayTeam}</p>
+                </div>
               </div>
             </div>
 
-            <div className="marketInfo">
-              {/* @note this needs to be resolved */}
+            {/* @note this needs to be resolved */}
+            {/* <div className="marketInfo">
               <div>
                 <p>Pool Volume</p>
                 <p>{volume.toFixed(2)} PPTT</p>
@@ -279,12 +303,12 @@ export default function Predict({toggleAuthenticationDrawer}) {
                 <p>Total Predictions</p>
                 <p>{predictions.length >= 1 ? predictions.length : 0}</p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className={`predictionTable__mainContainer ${activeOS}`}>
             <div>
-              {!_status || _status !== "closed" ? (
+              {/* {!_status || _status !== "closed" ? (
                 timeLeft
               ) : (
                 <div className="fixture_results">
@@ -297,7 +321,7 @@ export default function Predict({toggleAuthenticationDrawer}) {
                     <p>{fixture.AwayTeam}</p>
                   </div>
                 </div>
-              )}
+              )} */}
               <div className="fixture_detail">
                 <p>
                   <i className="ri-map-pin-line"></i>
@@ -309,6 +333,16 @@ export default function Predict({toggleAuthenticationDrawer}) {
                   <span>Match Number: </span>
                   {fixture.MatchNumber}
                 </p>
+              </div>
+              <div className="marketInfo">
+                <div>
+                  <p>Pool Volume: </p>
+                  <p>{volume.toFixed(2)} PPTT</p>
+                </div>
+                <div>
+                  <p>Total Predictions:</p>
+                  <p>{predictions.length >= 1 ? predictions.length : 0}</p>
+                </div>
               </div>
             </div>
             <div className="eventDetails">

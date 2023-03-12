@@ -111,6 +111,7 @@
       width: 20vw;
       height: 48vh;
       border-radius: 200px;
+      aspect-ratio: attr(width) / attr(height);
       object-fit: cover;
       border: 5px solid #fff;
       box-shadow: 1px -8px 15px -1px rgba(255, 255, 255, 0.51);
@@ -131,12 +132,15 @@
       picture {
         img {
           width: 14vw;
+          aspect-ratio: attr(width) / attr(height);
+          height: auto;
         }
         &:first-child {
           img {
             width: 14vw;
             border-radius: 190px;
             height: 35vh;
+            aspect-ratio: attr(width) / attr(height);
           }
         }
         &:last-child {
@@ -160,8 +164,7 @@
     }
 
     img {
-      width: 220px;
-      height: 220px;
+      aspect-ratio: attr(width) / attr(height);
       border-radius: 50%;
       cursor: pointer;
       transition: 0.4s all ease-in-out;

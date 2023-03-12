@@ -14,7 +14,9 @@ import {
   Stack,
   Skeleton,
 } from "@mui/material";
-import { BrowserProvider, Contract } from "ethers";
+import { ethers } from "ethers";
+import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
+import BetaFactoryAPI from "../../utils/BetaFactoryABI.json";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -104,10 +106,10 @@ const Prediction = () => {
     toast("Challenging..", {
       type: "info",
     });
-    const provider = new BrowserProvider(ethereum);
-    const PPTTContract = new Contract(
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const PPTTContract = new ethers.Contract(
       import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS, // Sepolia PPTT Token Address
-      import("../../utils/ERC20BasicABI.json"),
+      ERC20BasicAPI,
       provider
     ).connect(provider.getSigner());
 

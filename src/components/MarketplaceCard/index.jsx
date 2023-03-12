@@ -13,12 +13,8 @@ export default function MarketplaceCard({ marketplace }) {
       },
     });
   };
-  const {
-    marketplaceCoverImage,
-    marketplaceName,
-    marketplaceSlug,
-    closed,
-  } = marketplace;
+  const { marketplaceCoverImage, marketplaceName, marketplaceSlug, closed } =
+    marketplace;
 
   const styles = {
     background: `url(${marketplaceCoverImage?.url}) top center /cover no-repeat`,

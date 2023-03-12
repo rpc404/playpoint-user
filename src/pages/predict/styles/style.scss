@@ -59,51 +59,96 @@
       }
 
       .predictionTable__topBar {
-        border-bottom: 0.5px solid #0001;
+        background-image: url("../../../images/predictionbg.webp");
+        background-image: -webkit-image-set(
+          url("../../../images/predictionbg.avif") 1x,
+          url("../../../images/predictionbg.webp") 2x
+        );
+        background-image: image-set(
+          url("../../../images/predictionbg.avif") 1x,
+          url("../../../images/predictionbg.webp") 2x
+        );
+        background-size: cover;
+        background-position: center center;
         padding: 10px 1vw 10px 1vw;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        z-index: 0;
+
+        justify-content: center;
+        flex-direction: column;
         color: #fff;
-        background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(3.7px);
-        height: 60px;
-        @media screen and (max-width: 768px) {
-          height: auto;
+        height: 350px;
+        position: relative;
+
+        @media screen and (min-width: 768px) {
+          height: 450px;
         }
 
-        @media (max-width: 768px) {
-          flex-direction: column;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: rgba($color: #000000, $alpha: 0.5);
+          z-index: -1;
         }
+
+        // @media (max-width: 768px) {
+        //   flex-direction: column;
+        // }
 
         .predictionTable__competitor {
           display: flex;
-          gap: 5px;
           align-items: center;
+          gap: 5px;
+          // color: #fff;
+          -webkit-text-fill-color: rgb(255, 255, 255);
+          -webkit-background-clip: text;
+          background-clip: text;
+
+          width: 90%;
+          margin: 0 auto;
+          .score_details {
+            display: flex;
+
+            @media screen and (min-width: 426px) {
+              gap: 20px;
+            }
+            .teamscore {
+              @media screen and (min-width: 425px) {
+                font-size: 2em;
+              }
+            }
+          }
 
           div {
+            width: 100%;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 5px;
             font-weight: 500;
             font-size: 18px;
+            -webkit-text-fill-color: rgb(255, 255, 255);
+            -webkit-background-clip: text;
+            background-clip: text;
 
             @media (max-width: 576px) {
               font-size: 20px;
             }
 
             img {
-              width: 30px;
-              height: 30px;
+              width: 60px;
+              height: 60px;
               object-fit: cover;
               border-radius: 50%;
 
-              @media (max-width: 576px) {
-                width: 40px;
-                height: 40px;
-              }
+              // @media (max-width: 576px) {
+              //   width: 40px;
+              //   height: 40px;
+              // }
             }
           }
         }
@@ -111,14 +156,18 @@
         .marketInfo {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 15px;
           font-size: 14px;
+          -webkit-text-fill-color: rgb(255, 255, 255);
+          -webkit-background-clip: text;
+          background-clip: text;
 
           div {
             @media (max-width: 768px) {
               margin-top: 8px;
               display: flex;
-              font-size: 12px;
+              font-size: 1.2em;
             }
 
             p {
@@ -159,6 +208,7 @@
           }
         }
         .fixture_detail {
+          padding: 2em 0 0;
           display: flex;
           gap: 20px;
           justify-content: center;
@@ -170,6 +220,15 @@
           p {
             display: flex;
             gap: 5px;
+          }
+        }
+        .marketInfo {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          padding: 20px 0;
+          div {
+            display: flex;
           }
         }
         .fixture_results {
