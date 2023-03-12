@@ -1,11 +1,12 @@
 import { Button } from "@mui/material";
-import { formatEther, BrowserProvider, Contract } from "ethers";
+import { ethers } from "ethers";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { handleRPCWalletLogin, handleTRONWALLETLogin } from "../../utils/RPC";
+import ERC20BasicAPI from "../../utils/ERC20BasicABI.json";
 import "./styles/style.css";
 
 export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
@@ -25,10 +26,10 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
     if (network === "arbitrum") {
       setLoading(true);
       const resData = await handleRPCWalletLogin();
-      const provider = new BrowserProvider(ethereum);
-      const contract = new Contract(
-        import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
-        await import("../../utils/ERC20BasicABI.json"),
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const contract = new ethers.Contract(
+        "0x53d168578974822bCAa95106C7d5a906BF100948",
+        ERC20BasicAPI,
         provider
       );
 
@@ -53,8 +54,8 @@ export default function WalletSelection({ setIsAuthenticationDrawerOpen }) {
     if (network === "shasta") {
       setLoading(true);
       const data = await handleTRONWALLETLogin();
-      if(data.isWalletConnected){
-      localStorage.setItem("rpcUserData", JSON.stringify(data));
+      if (data.isWalletConnected) {
+        localStorage.setItem("rpcUserData", JSON.stringify(data));
         await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
         handleWalletDrawer();
         setLoading(false);

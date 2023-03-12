@@ -17,9 +17,11 @@ import loader from "../../../helpers/loading.gif";
 import { handleRPCWalletLogin } from "../../../utils/RPC";
 import { useRPCContext } from "../../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../../contexts/WalletRPC/RPCReducer";
-import { formatEther, BrowserProvider, Contract } from "ethers";
+import { ethers } from "ethers";
 import { mkaeDuo } from "../../../api/Challenge";
 import WalletSelection from "../../WalletSelection";
+import ERC20BasicAPI from "../../../utils/ERC20BasicABI.json";
+import BetaFactoryAPI from "../../../utils/BetaFactoryABI.json";
 
 /**
  * @dev utils for slider
@@ -58,8 +60,7 @@ const PoolType = ({
   fixtureId,
   status,
   setMS,
-  toggleAuthenticationDrawer
-
+  toggleAuthenticationDrawer,
 }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const _predictionData = {
@@ -105,16 +106,17 @@ const PoolType = ({
 
   React.useEffect(() => {
     if (isWalletConnected) {
-      const provider = new BrowserProvider(ethereum);
-      const contract = new Contract(
+      // const provider = new ethers.BrowserProvider(window.ethereum);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const contract = new ethers.Contract(
         "0x53d168578974822bCAa95106C7d5a906BF100948",
-        import("../../../utils/ERC20BasicABI.json"),
+        ERC20BasicAPI,
         provider
       );
 
       (async () => {
         const PPTTBalance = await contract.balanceOf(userPublicAddress);
-        setBalance(formatEther(PPTTBalance));
+        setBalance(ethers.utils.formatEther(PPTTBalance));
       })();
     }
   }, [isWalletConnected]);
@@ -199,17 +201,16 @@ const PoolType = ({
     let amnt = _predictionData.amount;
     if (validation(_predictionData.answers)) {
       setPredicting(true);
-      const provider = new BrowserProvider(ethereum);
-      const PPTTContract = new Contract(
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const PPTTContract = new ethers.Contract(
         "0x53d168578974822bCAa95106C7d5a906BF100948", // Sepolia PPTT Token Address
-        import("../../../utils/ERC20BasicABI.json"),
-        provider
-      ).connect(provider.getSigner());
-
-      const PPTTBalance = await PPTTContract.balanceOf(
-        _predictionData.predictedBy
+        ERC20BasicAPI,
+        provider.getSigner()
       );
-      if (PPTTBalance < amnt) {
+     
+    
+      // console.log(PPTTBalance);
+      if (balance < amnt) {
         return toast("Insufficient PPTT");
       }
 
@@ -219,9 +220,9 @@ const PoolType = ({
       //   ((_predictionData.amount / 0.02) * 1e18).toString()
       // );
 
-      const PredictionContract = new Contract(
+      const PredictionContract = new ethers.Contract(
         "0x53b0d58C2AFcb19a4305A25Af966Aa26E126dc4F",
-        import("../../../utils/BetaFactoryABI.json"),
+        BetaFactoryAPI,
         provider
       ).connect(provider.getSigner());
 
@@ -260,6 +261,7 @@ const PoolType = ({
           : ((amnt / 0.02) * 1e18).toString();
       // transfer prediction pool
       try {
+        console.log(PPTTContract)
         const _res = await PPTTContract.transfer(
           "0x53b0d58C2AFcb19a4305A25Af966Aa26E126dc4F", // contract address
           _ppttAmount
@@ -336,7 +338,6 @@ const PoolType = ({
   };
 
   const handleLogin = async () => {
-
     // const data = await handleRPCWalletLogin();
     // await dispatchRPCData({ type: ACTIONS.WALLET_CONNECT, payload: data });
     // toast("Wallet Connected!");

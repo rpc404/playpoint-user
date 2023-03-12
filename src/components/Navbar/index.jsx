@@ -5,7 +5,7 @@ import "./styles/style.css";
 import { useRPCContext } from "../../contexts/WalletRPC/RPCContext";
 import { ACTIONS } from "../../contexts/WalletRPC/RPCReducer";
 import { toast } from "react-toastify";
-import { formatEther, BrowserProvider, Contract } from "ethers";
+import { ethers } from "ethers";
 import { useTranslation } from "react-i18next";
 import useWindowDimensions from "../../helpers/UseWindowDimension";
 import DrawerList from "../DrawerList";
@@ -34,8 +34,8 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
   React.useEffect(() => {
     if (isNonWalletUser) {
       if (isWalletConnected && network === "arbitrum") {
-        const provider = new BrowserProvider(ethereum);
-        const contract = new Contract(
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const contract = new ethers.Contract(
           import.meta.env.VITE_BETA_PPTT_CONTRACT_ADDRESS,
           ERC20BasicAPI,
           provider
@@ -45,17 +45,17 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
           const ethBalance = await provider.getBalance(userPublicAddress);
           const PPTTBalance = await contract.balanceOf(userPublicAddress);
           setBalance({
-            ethBalance: formatEther(ethBalance),
-            ppttBalance: formatEther(PPTTBalance),
+            ethBalance: ethers.utils.formatEther(ethBalance),
+            ppttBalance: ethers.utils.formatEther(PPTTBalance),
           });
-          
+
           const data = {
             isWalletConnected,
             username,
             userPublicAddress,
             network,
-            userPPTTBalance: formatEther(PPTTBalance),
-            userETHBalance: formatEther(ethBalance),
+            userPPTTBalance: ethers.utils.formatEther(PPTTBalance),
+            userETHBalance: ethers.utils.formatEther(ethBalance),
           };
 
           await dispatchRPCData({
@@ -88,16 +88,16 @@ export default function Navbar({ toggleAuthenticationDrawer }) {
         })();
       }
     } else {
-      console.log("NON WALLET USER FOUND", network)
+      console.log("NON WALLET USER FOUND", network);
       if (isWalletConnected && network === "arbitrum") {
         (async () => {
-          const ethBalance = (10 * 10**18).toString();
-          const PPTTBalance = (10 * 10**18).toString();
+          const ethBalance = (10 * 10 ** 18).toString();
+          const PPTTBalance = (10 * 10 ** 18).toString();
           setBalance({
             ethBalance: formatEther(ethBalance),
             ppttBalance: formatEther(PPTTBalance),
           });
-          console.log(balance)
+          console.log(balance);
           const data = {
             isWalletConnected,
             username,

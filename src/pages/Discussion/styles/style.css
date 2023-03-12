@@ -1,57 +1,149 @@
 .discussion__container {
-  display: grid;
-  grid-template-columns: 2.5fr 10fr 3fr;
-  height: 100vh;
   width: 98%;
   margin: 1em auto;
   gap: 15px;
   position: relative;
 }
+@media screen and (min-width: 769px) {
+  .discussion__container {
+    display: grid;
+    grid-template-columns: 2.5fr 10fr 3fr;
+    height: 80vh;
+  }
+}
 .discussion__container .refresh__divider {
   background-color: rgba(172, 172, 179, 0.4196078431);
   height: 1px;
 }
-.discussion__container .discussion__menuIcons {
-  background-color: #2e2e3f;
-  border-radius: 8px;
+.discussion__container .menu__container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
 }
-.discussion__container .discussion__menuIcons img {
-  width: 80px;
-  height: 80px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  padding: 10px;
-  aspect-ratio: attr(width)/arrt(height);
-}
-.discussion__container .menuLists {
+.discussion__container .menu__container .menuLists {
   background-color: #2e2e3f;
   height: -moz-min-content;
   height: min-content;
   border-radius: 5px;
+  padding: 0.5em;
 }
-.discussion__container .menuLists .menus {
-  padding: 10px 15px;
+.discussion__container .menu__container .menuLists .userdetails {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.discussion__container .menu__container .menuLists .userdetails p {
+  color: rgba(255, 255, 255, 0.6);
+}
+.discussion__container .menu__container .menuLists .userdetails .image_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.discussion__container .menu__container .menuLists .userdetails .image_container img {
+  border-radius: 50%;
+  aspect-ratio: attr(width)/attr(height);
+}
+.discussion__container .menu__container .menuLists .userdetails h2 {
+  text-align: center;
+}
+.discussion__container .menu__container .menuLists .userdetails .userAddress_container {
+  display: flex;
+  justify-content: center;
+}
+.discussion__container .menu__container .menuLists .userdetails .userAddress_container .userAddress {
+  border: 1px dotted #fff;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.4em;
+  border-radius: 5px;
+}
+.discussion__container .menu__container .menuLists .menus {
+  padding: 20px 15px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.discussion__container .menuLists .menus p {
+.discussion__container .menu__container .menuLists .menus p {
   color: #acacb3;
 }
-.discussion__container .menuLists .menus h3 {
+.discussion__container .menu__container .menuLists .menus h3 {
   display: flex;
   align-items: center;
   gap: 10px;
   color: #efefef;
   cursor: pointer;
 }
+.discussion__container .menu__container .menuLists .menus button {
+  all: unset;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+}
+.discussion__container .menu__container .menuLists .menus button.active {
+  color: #fff;
+}
+.discussion__container .menu__container .notification__container {
+  background-color: #2e2e3f;
+  padding: 0.5em;
+  margin-top: auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: 0.2s;
+}
+.discussion__container .menu__container .notification__container .notification__icon {
+  display: flex;
+  justify-content: flex-end;
+}
+.discussion__container .menu__container .notification__container .notification__icon p {
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  cursor: pointer;
+}
+.discussion__container .menu__container .notification__container .notifications {
+  max-height: 350px;
+  overflow-y: auto;
+  z-index: 0;
+}
+.discussion__container .menu__container .notification__container .notifications.show {
+  animation: show 0.2s ease-in forwards;
+}
+@keyframes show {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.discussion__container .menu__container .notification__container .notifications .notification {
+  display: flex;
+  margin: 10px 0;
+  padding: 10px;
+  align-items: center;
+  gap: 5px;
+  background-color: rgba(113, 113, 113, 0.3882352941);
+  border-radius: 5px;
+}
+.discussion__container .menu__container .notification__container .notifications .notification:hover {
+  background-color: rgba(89, 88, 93, 0.3764705882);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.discussion__container .menu__container .notification__container .notifications .notification i {
+  cursor: pointer;
+}
+.discussion__container .menu__container .notification__container .notifications .notification img {
+  border-radius: 50%;
+}
 .discussion__container .discussions {
   border: 1px dashed #717171;
-  overflow-y: scroll;
   overflow-x: hidden;
-  scrollbar-width: 5px !important; /* for firefox */
   position: relative;
 }
 .discussion__container .discussions::-webkit-scrollbar {
@@ -85,6 +177,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  height: 100%;
 }
 .discussion__container .discussions .wrapper .connect {
   background-color: #2e2e3f;
@@ -126,18 +219,114 @@
   border-radius: 3px;
   cursor: pointer;
 }
+.discussion__container .discussions .wrapper .refresh p .loader {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 32px 0 #fff, -32px 0 #fff;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+@keyframes flash {
+  0% {
+    background-color: rgba(255, 255, 255, 0.1333333333);
+    box-shadow: 32px 0 rgba(255, 255, 255, 0.1333333333), -32px 0 #fff;
+  }
+  50% {
+    background-color: #fff;
+    box-shadow: 32px 0 rgba(255, 255, 255, 0.1333333333), -32px 0 rgba(255, 255, 255, 0.1333333333);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.1333333333);
+    box-shadow: 32px 0 #fff, -32px 0 rgba(255, 255, 255, 0.1333333333);
+  }
+}
+.discussion__container .discussions .wrapper .discussions__container__chats {
+  max-height: 550px;
+  display: flex;
+  flex-grow: 1;
+}
+.discussion__container .discussions .wrapper .discussions__container__chats i {
+  cursor: pointer;
+}
+.discussion__container .discussions .wrapper .discussions__container__chats .scroll_to_bottom {
+  position: absolute;
+  position: -webkit-sticky;
+  bottom: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+  right: 1px;
+  all: unset;
+  color: #ffffff;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.4941176471);
+  padding: 0.8em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28' width='28' height='28'%3E%3Cpath fill='#fff' d='M0 0h24v24H0z'/%3E%3Cpath d='M13 12h7l-8 8-8-8h7V4h2z'/%3E%3C/svg%3E");
+  border-radius: 50%;
+  animation: bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .discussion__container .discussions .wrapper .userDetails__container {
   display: flex;
   flex-direction: column;
 }
+.discussion__container .discussions .wrapper .userDetails__container .more__wrapper {
+  position: relative;
+}
+.discussion__container .discussions .wrapper .userDetails__container .more__wrapper .more__container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: #2e2e3f;
+  width: 120px;
+  top: 100%;
+  right: 80%;
+  border-radius: 5px;
+  z-index: 5;
+}
+.discussion__container .discussions .wrapper .userDetails__container .more__wrapper .more__container button {
+  all: unset;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5em;
+}
+.discussion__container .discussions .wrapper .userDetails__container .more__wrapper .more__container button:not(:last-child) {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom: 1px solid #6e6e6e;
+}
+.discussion__container .discussions .wrapper .userDetails__container .more__wrapper .more__container button:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.discussion__container .discussions .wrapper .userDetails__container .more__wrapper .more__container button:hover {
+  background-color: #59585d;
+}
+.discussion__container .discussions .wrapper .userDetails__container .more__wrapper .more__container .delete {
+  color: red;
+}
+.discussion__container .discussions .wrapper .userDetails__container:last-child .more__wrapper .more__container {
+  top: -400%;
+}
 .discussion__container .discussions .wrapper .userDetails__container .userdetails {
   display: flex;
-  justify-content: space-between;
-  margin: 0 0 10px;
+  margin: 10px 0 10px;
 }
 .discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 .discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container img {
   height: 50px;
@@ -150,13 +339,45 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 .discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .userInfo {
   display: flex;
   gap: 10px;
+  justify-content: space-between;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .userInfo p {
+  color: rgba(255, 255, 255, 0.464);
 }
 .discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .userInfo p:last-child {
   color: rgba(255, 255, 255, 0.464);
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .edit__user {
+  display: flex;
+  flex-direction: column;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .edit__user input {
+  width: 100%;
+  all: unset;
+  background-color: #2E2E3F;
+  color: #fff;
+  padding: 0.3em;
+  margin: 0.2em 0 0.5em;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .edit__user .buttons {
+  display: flex;
+  gap: 5px;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .edit__user .buttons button {
+  all: unset;
+  padding: 0.5em;
+  cursor: pointer;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .edit__user .buttons button:first-child {
+  color: red;
+}
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .edit__user .buttons button:last-child {
+  color: green;
 }
 .discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .icons_container {
   display: flex;
@@ -173,38 +394,32 @@
   gap: 5px;
   color: rgba(255, 255, 255, 0.6);
 }
-.discussion__container .active__users .profile {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #2e2e3f;
-  border-radius: 5px;
-  margin: 0 0 20px;
-}
-.discussion__container .active__users .profile .notification {
-  border: 1px solid #b9b9b9;
-  padding: 10px;
-  border-radius: 50%;
+.discussion__container .discussions .wrapper .userDetails__container .userdetails .userimage__container .user .icons_container .left p i {
   cursor: pointer;
 }
-.discussion__container .active__users .profile .account_details {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.discussion__container .discussions .wrapper .textarea__container {
+  position: relative;
+  margin-top: auto;
 }
-.discussion__container .active__users .profile .account_details img {
-  aspect-ratio: attr(width)/attr(height);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.discussion__container .discussions .wrapper .textarea__container textarea {
+  width: 100%;
+  background-color: #2e2e3f;
+  resize: none;
+  outline: none;
+  border: none;
+  padding: 0.5em;
+  color: #fff;
+  font-size: 1.1em;
 }
-.discussion__container .active__users .profile .account_details div {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.discussion__container .discussions .wrapper .textarea__container button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  all: unset;
+  cursor: pointer;
+  padding: 0.3em 0.5em;
+  background-color: #6169ff;
+  color: #fff;
 }
 .discussion__container .active__users .active_title {
   color: #acacb3;

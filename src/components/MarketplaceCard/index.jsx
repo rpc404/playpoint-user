@@ -27,7 +27,6 @@ export default function MarketplaceCard({ marketplace }) {
       onClick={() => {
         closed ? toast("Marketplace Closed") : navHandler(marketplaceSlug);
       }}
-      data-bgSrc={`${marketplaceCoverImage?.url}`}
     >
       <h1>{`${marketplaceName}`}</h1>
     </div>
