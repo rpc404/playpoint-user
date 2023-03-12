@@ -8,12 +8,13 @@ import moment from "moment";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { toast } from "react-toastify";
 import axios from "axios";
- 
+
 
 const Discussion = () => {
   const [groupData, setGroupData] = React.useState({});
   const [discussionData, setDiscussionData] = React.useState([]);
   const [activeChannel, setActiveChannel] = React.useState([]);
+
   const [{ userPublicAddress, username }] = useRPCContext();
   const [showNotification, setShowNotification] = React.useState(false);
   const [groupMembers, setGropMembers] = React.useState([]);
@@ -262,6 +263,7 @@ const Discussion = () => {
               })}
             </div>
           )}
+
         </div>
       </div>
       <div className="discussions">
